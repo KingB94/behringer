@@ -3,11 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
+    <style>
+      .btn {
+        display: inline-block;
+        padding: 0.5em 1em;
+        margin: 0.2em;
+        font-size: 1em;
+        text-decoration: none;
+        color: white;
+        background: #007BFF;
+        border-radius: 4px;
+      }
+      .btn:hover { background: #0056b3; }
+    </style>
 </head>
 <body>
     <h1>Willkommen</h1>
-    <button onclick="location.href='{{ url_for('eins') }}'">Eins</button>
-    <button onclick="location.href='{{ url_for('zwei') }}'">Zwei</button>
-    <button onclick="location.href='{{ url_for('drei') }}'">Drei</button>
+    <a href="{{ url_for('eins') }}" class="btn">Eins</a>
+    <a href="{{ url_for('zwei') }}" class="btn">Zwei</a>
+    <a href="{{ url_for('drei') }}" class="btn">Drei</a>
 </body>
 </html>
