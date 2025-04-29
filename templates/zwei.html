@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Behringer &amp; Partner</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        /* css/styles.css */
+        /* 1. Basis & Variablen */
+        :root {
+            --clr-primary: #005a9c;
+            --clr-secondary: #333;
+            --clr-bg-alt: #f7f7f7;
+            --clr-gradient-start: #004a80;
+            --clr-gradient-end: #006bb3;
+            --space: 1.5rem;
+            --font-sans: 'Open Sans', sans-serif;
+            --font-heading: 'Montserrat', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--clr-secondary);
+            line-height: 1.6;
+            background: #fff;
+        }
+
+        /* 2. Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space);
+        }
+
+        /* 3. Header */
+        .site-header {
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space) 0;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: var(--space);
+        }
+
+        .nav-list a {
+            font-weight: 500;
+            transition: color .2s;
+        }
+
+        .nav-list a:hover {
+            color: var(--clr-primary);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-list {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: var(--space);
+                flex-direction: column;
+                background: #fff;
+                padding: var(--space);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-list.open {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+        }
+
+        /* 4. Hero */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 6rem 1rem;
+            background: linear-gradient(to bottom right, var(--clr-gradient-start), var(--clr-gradient-end));
+        }
+
+        /* Slideshow */
+        .hero-slideshow {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .hero-slideshow .hero-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity .8s;
+        }
+
+        .hero-slideshow .hero-img.active {
+            opacity: 0.4;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-heading);
+            font-size: 2.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            font-weight: 600;
+            padding: .75rem 1.5rem;
+            border-radius: 4px;
+            transition: background .2s;
+        }
+
+        .btn-primary {
+            background: var(--clr-primary);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #004a80;
+        }
+
+        .btn-secondary {
+            background: #fff;
+            color: var(--clr-primary);
+        }
+
+        .btn-secondary:hover {
+            background: #f0f0f0;
+        }
+
+        /* 1. Überschrift etwas größer und zentriert */
+        #about h2 {
+            font-size: 2.5rem;
+            /* statt 2rem */
+            margin-bottom: 1.5rem;
+            /* etwas weniger Abstand */
+            text-align: center;
+        }
+
+        /* 2. Text-Container auf max-Breite begrenzen und zentrieren */
+        #about .about-grid {
+            display: block;
+            /* kein zweispaltiges Grid mehr */
+            max-width: 800px;
+            /* Wunschbreite, anpassen nach Belieben */
+            margin: 0 auto;
+            /* horizontal zentrieren */
+            text-align: center;
+            /* Text zentrieren */
+            padding: 0 1rem;
+            /* etwas Innenabstand für mobile */
+        }
+
+        /* 3. Fließtext größer und mit mehr Zeilenhöhe */
+        #about .text p {
+            font-size: 1.25rem;
+            /* statt 1rem */
+            line-height: 1.8;
+            /* etwas lockerer */
+            margin-bottom: 2rem;
+        }
+
+        /* 4. Liste zentriert, größere Items und Icons */
+        #about .text ul {
+            list-style: none;
+            /* Standard-Punkte entfernen */
+            padding: 0;
+            margin: 0 auto 0;
+            /* zentriert, kein extra bottom */
+            display: inline-block;
+            /* damit margin:auto wirkt */
+            text-align: left;
+            /* Items linksbündig innerhalb Block */
+        }
+
+        #about .text ul li {
+            font-size: 1.125rem;
+            margin-bottom: 0.75rem;
+            position: relative;
+            padding-left: 1.5rem;
+            /* Platz fürs Icon */
+        }
+
+        /* 5. Check-Icon vor jeden Listeneintrag */
+        #about .text ul li::before {
+            content: "✔︎";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--clr-primary);
+            font-size: 1rem;
+            line-height: 1.125rem;
+        }
+
+        /* 5. Sektionen */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section:nth-of-type(even) {
+            background: var(--clr-bg-alt);
+        }
+
+        .section h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        /* 6. About-Grid */
+        .about-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .about-grid {
+                grid-template-columns: repeat(2, 1fr);
+                align-items: center;
+            }
+        }
+
+        /* 1. Services-Grid: immer 4 Spalten */
+        .services-grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        /* 2. Einzelne Kachel als Flex-Container, kein Padding mehr auf der Kachel selbst */
+        .service-card {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            /* padding raus, stattdessen im Titelbereich */
+        }
+
+        /* 3. Bild füllt die komplette Breite und hat eine feste Höhe */
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            /* Höhe nach Wunsch anpassen */
+            object-fit: cover;
+            /* skaliert ohne Verzerren */
+            flex-shrink: 0;
+        }
+
+        /* 4. Titelbereich mit Padding unter dem Bild */
+        .service-card h3 {
+            margin: 0;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--clr-primary);
+            flex-shrink: 0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 8. Company-Grid */
+        .company-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .company-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .timeline {
+            list-style: none;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--clr-primary);
+        }
+
+        .timeline li {
+            margin-bottom: 2rem;
+        }
+
+        .timeline .year {
+            display: inline-block;
+            background: var(--clr-primary);
+            color: #fff;
+            font-weight: 600;
+            padding: .25rem .75rem;
+            border-radius: 4px;
+            margin-bottom: .5rem;
+        }
+
+        .timeline-img {
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            margin: .5rem 0 1rem;
+            border-radius: 4px;
+        }
+
+        /* 9. Download-Grid */
+        .downloads-grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            text-align: center;
+        }
+
+        .download-card img {
+            width: 100%;
+            border-radius: 4px;
+            margin-bottom: .5rem;
+        }
+
+        /* 10. Kontakt-Grid */
+        .contact-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: .75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: var(--font-sans);
+        }
+
+        .contact-form button {
+            width: fit-content;
+        }
+
+        .contact-photo {
+            width: 100%;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        /* 11. Footer */
+        .site-footer {
+            background: var(--clr-secondary);
+            color: #eee;
+            padding: 4rem 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .site-footer a {
+            color: #eee;
+            text-decoration: none;
+        }
+
+        .site-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: .9rem;
+            border-top: 1px solid rgba(255, 255, 255, .2);
+            margin-top: 2rem;
+            padding-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <img src="/IBB/static/images/logo.png" alt="Behringer & Partner Logo" width="150" loading="lazy">
+            </a>
+            <button class="nav-toggle" aria-label="Menü öffnen">☰</button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="#about">Über uns</a></li>
+                    <li><a href="#services">Leistungen</a></li>
+                    <li><a href="#company">Unternehmen</a></li>
+                    <li><a href="#downloads">Downloads</a></li>
+                    <li><a href="#contact" class="btn btn-primary">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-slideshow">
+            <img src="/IBB/static/images/engineering.jpg" alt="Ingenieur plant Tiefbauprojekt" class="hero-img active" loading="lazy">
+            <img src="/IBB/static/images/working.jpg" alt="Arbeiter auf der Baustelle" class="hero-img" loading="lazy">
+            <img src="/IBB/static/images/working (2).jpg" alt="Team in Aktion" class="hero-img" loading="lazy">
+        </div>
+        <div class="hero-content">
+            <h1>Ihr Partner im Tiefbau seit 1968</h1>
+            <p>Wirtschaftliche und nachhaltige Lösungen mit modernster Technik.</p>
+            <a href="#about" class="btn btn-secondary">Mehr erfahren</a>
+        </div>
+    </section>
+
+    <main>
+        <section id="about" class="section about">
+            <div class="container">
+                <h2>Über uns</h2>
+                <div class="about-grid">
+                    <div class="text">
+                        <p><strong>Behringer &amp; Partner</strong> verbindet bewährte Erfahrung mit modernster Technik,
+                            um wirtschaftliche und nachhaltige Lösungen zu realisieren.</p>
+                        <ul>
+                            <li>Machbarkeitsstudien &amp; Wirtschaftlichkeitsanalysen</li>
+                            <li>Moderne Vermessungs- &amp; GIS-Technologien</li>
+                            <li>Koordination aller Projektpartner</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ersetzt in eurem HTML die bestehende services-Sektion durch diese: -->
+        <section id="services" class="section services">
+            <div class="container">
+                <h2>Leistungen</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <img src="/IBB/static/images/ingenieur.jpg" alt="Siedlungswasserwirtschaft" width="64" height="64" loading="lazy">
+                        <h3>Siedlungswasserwirtschaft</h3>
+                    </div>
+                    <div class="service-card">
+                        <img src="/IBB/static/images/hero.jpg" alt="Straßenbau &amp; Brückenbau" width="64" height="64" loading="lazy">
+                        <h3>Straßenbau &amp; Brückenbau</h3>
+                    </div>
+                    <div class="service-card">
+                        <img src="/IBB/static/images/working (2).jpg" alt="Fernwärme" width="64" height="64" loading="lazy">
+                        <h3>Fernwärme</h3>
+                    </div>
+                    <div class="service-card">
+                        <img src="/IBB/static/images/working.jpg" alt="Hydraulische Nachweise" width="64" height="64" loading="lazy">
+                        <h3>Hydraulische Nachweise</h3>
+                    </div>
+                    <div class="service-card">
+                        <img src="/IBB/static/images/excavator.jpg" alt="Baulanderschließung" width="64" height="64" loading="lazy">
+                        <h3>Baulanderschließung</h3>
+                    </div>
+                    <div class="service-card">
+                        <img src="/IBB/static/images/bohrmaschine_zeichner.jpg" alt="Kommunales GIS" width="64" height="64" loading="lazy">
+                        <h3>Kommunales GIS</h3>
+                    </div>
+                    <div class="service-card">
+                        <img src="/IBB/static/images/roundabout.jpg" alt="Sanierungen" width="64" height="64" loading="lazy">
+                        <h3>Sanierungen</h3>
+                    </div>
+                    <div class="service-card">
+                        <img src="/IBB/static/images/bridge.jpg" alt="Wasserbau" width="64" height="64" loading="lazy">
+                        <h3>Wasserbau</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact">
+            <div class="container contact-grid">
+                <form class="contact-form">
+                    <input type="text" name="name" placeholder="Ihr Name" required>
+                    <input type="email" name="email" placeholder="Ihre E-Mail" required>
+                    <textarea name="message" placeholder="Ihre Nachricht" rows="6" required></textarea>
+                    <button type="submit" class="btn btn-primary">Nachricht senden</button>
+                </form>
+                <div class="contact-info">
+                    <iframe
+                        src="https://maps.google.com/maps?q=Luitpoldallee%2032,%2084453%20Mühldorf%20am%20Inn&hl=de&z=15&output=embed"
+                        loading="lazy" aria-label="Karte zu Behringer & Partner"></iframe>
+                    <address>
+                        <p><strong>Behringer &amp; Partner mbB</strong><br>
+                            Luitpoldallee 32<br>
+                            D-84453 Mühldorf a. Inn</p>
+                        <p>Tel: <a href="tel:+4986319867900">+49 8631 98679-00</a><br>
+                            E-Mail: <a href="mailto:info@ib-behringer.de">info@ib-behringer.de</a></p>
+                    </address>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <!-- Footer-Spalten analog zum Original -->
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Ingenieurbüro Behringer &amp; Partner mbB</p>
+            <p><a href="#impressum">Impressum</a> | <a href="#datenschutz">Datenschutz</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Navigation Toggle
+            const toggle = document.querySelector('.nav-toggle');
+            const navList = document.querySelector('.nav-list');
+            toggle.addEventListener('click', () => {
+                navList.classList.toggle('open');
+            });
+
+            // Hero-Slideshow
+            const slides = document.querySelectorAll('.hero-slideshow .hero-img');
+            let current = 0;
+            setInterval(() => {
+                slides[current].classList.remove('active');
+                current = (current + 1) % slides.length;
+                slides[current].classList.add('active');
+            }, 5000);
+        });
+    </script>
+</body>
+
+</html>
