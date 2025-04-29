@@ -471,9 +471,9 @@
     <!-- Slider -->
     <div class="slider">
       <div class="slides">
-        <img src="/IBB/static/images/zeichnerpc.jpg" alt="Slide 1">
-        <img src="/IBB/static/images/bohrmaschine_zeichner.jpg" alt="Slide 2">
-        <img src="/IBB/static/images/bagger.jpg" alt="Slide 3">
+        <img src="{{ url_for('static', filename='zeichnerpc.jpg') }}" alt="Slide 1">
+        <img src="{{ url_for('static', filename='bohrmaschine_zeichner.jpg') }}" alt="Slide 2">
+        <img src="{{ url_for('static', filename='bagger.jpg') }}" alt="Slide 3">
       </div>
       <button class="prev">&#10094;</button>
       <button class="next">&#10095;</button>
