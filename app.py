@@ -18,5 +18,9 @@ def zwei():
 def drei():
     return render_template('drei.html')
 
+@app.route('/vier')
+def vier():
+    return render_template('vier.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
