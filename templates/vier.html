@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Mühldorf – Simbach – Roßbach (Ultra Modern Concept)</title>
+<meta name="robots" content="max-image-preview:large">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@500;700&display=swap" rel="stylesheet">
+<!-- Font Awesome for Icons (Example) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+<style id="ultra-modern-styles">
+    :root {
+        --color-primary: #0A2540; /* Deep, sophisticated blue */
+        --color-secondary: #007AFF; /* Bright, modern blue for accents/CTAs */
+        --color-accent: #42A5F5; /* Lighter accent blue or a contrasting color like a warm orange */
+        --color-gradient: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-accent) 100%);
+        --color-text: #334155; /* Dark grayish blue for text */
+        --color-text-light: #64748B;
+        --color-background: #FFFFFF;
+        --color-background-alt: #F8FAFC; /* Very light gray for section backgrounds */
+        --color-border: #E2E8F0;
+
+        --font-primary: 'Inter', sans-serif;
+        --font-secondary: 'Plus Jakarta Sans', sans-serif; /* For headings or special text */
+
+        --container-width: 1200px;
+        --spacing-unit: 1rem; /* 16px */
+        --border-radius-sm: 4px;
+        --border-radius-md: 8px;
+        --border-radius-lg: 16px;
+
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Base & Resets */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: var(--font-primary);
+        line-height: 1.7;
+        color: var(--color-text);
+        background-color: var(--color-background);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden; /* Prevent horizontal scroll from off-canvas menu */
+    }
+    body.no-scroll { overflow-y: hidden; } /* For when mobile menu is open */
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--color-secondary); text-decoration: none; transition: color 0.2s ease-in-out; }
+    a:hover { color: var(--color-accent); }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-secondary);
+        font-weight: 700;
+        line-height: 1.3;
+        color: var(--color-primary);
+        margin-bottom: calc(var(--spacing-unit) * 1.5);
+    }
+    h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 800;}
+    h2 { font-size: clamp(2rem, 4vw, 2.75rem); }
+    h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+
+    .container {
+        width: 90%;
+        max-width: var(--container-width);
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 var(--spacing-unit);
+    }
+
+    .section-padding { padding: calc(var(--spacing-unit) * 5) 0; }
+    .section-bg-alt { background-color: var(--color-background-alt); }
+
+    .btn {
+        display: inline-block;
+        font-family: var(--font-secondary);
+        font-weight: 700;
+        padding: calc(var(--spacing-unit) * 0.8) calc(var(--spacing-unit) * 1.8);
+        border-radius: var(--border-radius-md);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: none;
+        font-size: 1rem;
+    }
+    .btn-primary {
+        background-image: var(--color-gradient);
+        color: var(--color-background);
+        box-shadow: var(--shadow-md);
+    }
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+    }
+    .btn-secondary {
+        background-color: transparent;
+        color: var(--color-secondary);
+        border: 2px solid var(--color-secondary);
+    }
+    .btn-secondary:hover {
+        background-color: var(--color-secondary);
+        color: var(--color-background);
+    }
+
+    /* Header */
+    .site-header {
+        background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent for effect if sticky */
+        backdrop-filter: blur(10px); /* Glassmorphism touch */
+        padding: var(--spacing-unit) 0;
+        border-bottom: 1px solid var(--color-border);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    .site-header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .site-branding .site-title a {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: var(--color-primary);
+        /* Ideally, replace with an SVG logo */
+    }
+    
+    .site-branding .site-title a {
+    background: url('{{ url_for("static", filename="images/logo.png") }}') center/contain no-repeat;
+    width: 150px;
+    height: auto;
+    text-indent: -9999px;
+    overflow: hidden;
+}
+
+
+    /* Desktop Navigation */
+    .main-navigation-desktop ul {
+        list-style: none;
+        display: flex;
+    }
+    .main-navigation-desktop ul li {
+        margin-left: calc(var(--spacing-unit) * 1.5);
+    }
+    .main-navigation-desktop ul li a {
+        color: var(--color-text);
+        font-weight: 600;
+        padding: 0.5rem 0;
+        position: relative;
+    }
+    .main-navigation-desktop ul li a::after { /* Underline hover effect */
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--color-secondary);
+        transition: width 0.3s ease;
+    }
+    .main-navigation-desktop ul li a:hover::after,
+    .main-navigation-desktop ul li.current-menu-item > a::after {
+        width: 100%;
+    }
+    .main-navigation-desktop .sub-menu { /* Basic dropdown setup */
+        display: none;
+        position: absolute;
+        background-color: var(--color-background);
+        box-shadow: var(--shadow-lg);
+        padding: var(--spacing-unit);
+        border-radius: var(--border-radius-md);
+        z-index: 1001;
+        min-width: 220px;
+        margin-top: 0.5rem;
+    }
+    .main-navigation-desktop li:hover > .sub-menu { display: block; }
+    .main-navigation-desktop .sub-menu li { margin: 0; }
+    .main-navigation-desktop .sub-menu li a {
+        display: block;
+        padding: 0.75rem var(--spacing-unit);
+        color: var(--color-text);
+        font-weight: 500;
+    }
+    .main-navigation-desktop .sub-menu li a:hover {
+        background-color: var(--color-background-alt);
+        color: var(--color-secondary);
+    }
+    .main-navigation-desktop .sub-menu li a::after { display: none; } /* No underline for submenu items */
+
+    /* Mobile Navigation Toggle */
+    .menu-toggle-mobile {
+        display: none; /* Hidden on desktop */
+        background: none;
+        border: none;
+        color: var(--color-primary);
+        font-size: 1.8rem;
+        cursor: pointer;
+        padding: 0.5rem;
+    }
+
+    /* Off-Canvas Mobile Navigation */
+    .main-navigation-mobile {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Start off-screen */
+        width: min(80%, 300px);
+        height: 100vh;
+        background-color: var(--color-primary);
+        box-shadow: var(--shadow-lg);
+        z-index: 1005;
+        transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 1.5);
+        overflow-y: auto;
+    }
+    .main-navigation-mobile.is-active { right: 0; }
+    .main-navigation-mobile ul { list-style: none; }
+    .main-navigation-mobile ul li a {
+        display: block;
+        color: var(--color-background);
+        font-size: 1.2rem;
+        font-weight: 600;
+        padding: var(--spacing-unit) 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .main-navigation-mobile ul li:last-child a { border-bottom: none; }
+    .main-navigation-mobile .sub-menu { padding-left: var(--spacing-unit); }
+    .main-navigation-mobile .sub-menu li a { font-size: 1rem; padding: 0.75rem 0; }
+    .close-mobile-menu {
+        position: absolute;
+        top: var(--spacing-unit);
+        right: var(--spacing-unit);
+        background: none;
+        border: none;
+        color: var(--color-background);
+        font-size: 2rem;
+        cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero-section {
+        background-color: var(--color-primary);
+        /* Replace with a high-quality, relevant background image */
+        background-image: linear-gradient(rgba(10, 37, 64, 0.8), rgba(10, 37, 64, 0.8)), url('https://www.ib-behringer.de/wp/wp-content/uploads/2017/03/CIMG1275-1160x280.jpg');
+        background-size: cover;
+        background-position: center;
+        color: var(--color-background);
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        padding: calc(var(--spacing-unit) * 4) 0;
+    }
+    .hero-section .container { max-width: 800px; }
+    .hero-section h1 {
+        color: var(--color-background);
+        margin-bottom: var(--spacing-unit);
+        /* text-shadow: 0 2px 4px rgba(0,0,0,0.3); */
+    }
+    .hero-section .subtitle {
+        font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+        color: var(--color-accent); /* Light blue on dark bg */
+        margin-bottom: calc(var(--spacing-unit) * 2);
+        opacity: 0.9;
+    }
+    .hero-section .btn { margin-top: var(--spacing-unit); }
+
+    /* Intro Section (below hero) */
+    .intro-section .container {
+        text-align: center;
+        max-width: 900px;
+    }
+    .intro-section h2 { color: var(--color-primary); }
+    .intro-section p {
+        font-size: 1.1rem;
+        color: var(--color-text-light);
+        margin-bottom: calc(var(--spacing-unit) * 2);
+    }
+    .intro-section .instagram-link img { /* For the small instagram icon */
+        width: 32px !important; height: auto !important;
+        display: inline-block; vertical-align: middle;
+        margin-left: 0.5rem;
+        transition: transform 0.3s ease;
+    }
+    .intro-section .instagram-link:hover img { transform: scale(1.1); }
+
+
+    /* Services Highlight Section */
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: calc(var(--spacing-unit) * 2.5);
+        margin-top: calc(var(--spacing-unit) * 2.5);
+    }
+    .service-card {
+        background-color: var(--color-background);
+        padding: calc(var(--spacing-unit) * 2);
+        border-radius: var(--border-radius-lg);
+        box-shadow: var(--shadow-md);
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-lg);
+    }
+    .service-card .icon {
+        font-size: 2.5rem;
+        color: var(--color-secondary);
+        margin-bottom: var(--spacing-unit);
+        display: inline-block;
+        background-image: var(--color-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+    }
+    .service-card h3 {
+        font-size: 1.3rem;
+        color: var(--color-primary);
+        margin-bottom: 0.75rem;
+    }
+    .service-card p {
+        font-size: 0.95rem;
+        color: var(--color-text-light);
+        line-height: 1.6;
+    }
+
+    /* News/Projects Section */
+    .news-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: calc(var(--spacing-unit) * 2.5);
+        margin-top: calc(var(--spacing-unit) * 2.5);
+    }
+    .news-item-card {
+        background-color: var(--color-background);
+        border-radius: var(--border-radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .news-item-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-lg);
+    }
+    .news-item-card .card-image img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+    }
+    .news-item-card .card-content {
+        padding: calc(var(--spacing-unit) * 1.5);
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    .news-item-card .card-date {
+        font-size: 0.85rem;
+        color: var(--color-text-light);
+        margin-bottom: 0.5rem;
+    }
+    .news-item-card h3 {
+        font-size: 1.25rem;
+        margin-bottom: var(--spacing-unit);
+    }
+    .news-item-card h3 a { color: var(--color-primary); }
+    .news-item-card h3 a:hover { color: var(--color-secondary); }
+    .news-item-card .card-excerpt {
+        font-size: 0.95rem;
+        color: var(--color-text-light);
+        margin-bottom: var(--spacing-unit);
+        flex-grow: 1;
+    }
+    .news-item-card .read-more {
+        font-weight: 600;
+        color: var(--color-secondary);
+        display: inline-block;
+    }
+     .news-item-card .read-more i { margin-left: 0.3rem; }
+    .news-item-card .leistungen-badge {
+        font-size: 0.8rem;
+        color: var(--color-secondary);
+        border: 1px solid var(--color-secondary);
+        padding: 0.25rem 0.5rem;
+        border-radius: var(--border-radius-sm);
+        display: inline-block;
+        margin-top: auto; /* Pushes to bottom */
+    }
+
+
+    /* Call to Action Section */
+    .cta-section {
+        background-image: var(--color-gradient);
+        color: var(--color-background);
+        text-align: center;
+    }
+    .cta-section h2 { color: var(--color-background); }
+    .cta-section p {
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: calc(var(--spacing-unit) * 2);
+        opacity: 0.9;
+    }
+    .cta-section .btn-primary { /* Special styling for CTA button on gradient */
+        background: var(--color-background);
+        color: var(--color-secondary);
+    }
+    .cta-section .btn-primary:hover {
+         background: var(--color-background-alt);
+    }
+
+
+    /* Footer */
+    .site-footer {
+        background-color: var(--color-primary);
+        color: rgba(255,255,255,0.7);
+        padding: calc(var(--spacing-unit) * 4) 0;
+        font-size: 0.9rem;
+    }
+    .site-footer .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: calc(var(--spacing-unit) * 3);
+    }
+    .footer-column h4 {
+        font-size: 1.1rem;
+        color: var(--color-background);
+        margin-bottom: var(--spacing-unit);
+    }
+    .footer-column ul { list-style: none; }
+    .footer-column ul li { margin-bottom: 0.5rem; }
+    .footer-column ul li a {
+        color: rgba(255,255,255,0.7);
+    }
+    .footer-column ul li a:hover {
+        color: var(--color-background);
+    }
+    .footer-column p { margin-bottom: 0.5rem; }
+    .footer-socials a {
+        display: inline-block;
+        margin-right: var(--spacing-unit);
+        font-size: 1.3rem;
+        color: rgba(255,255,255,0.7);
+    }
+    .footer-socials a:hover { color: var(--color-background); }
+    .footer-bottom {
+        text-align: center;
+        margin-top: calc(var(--spacing-unit) * 3);
+        padding-top: calc(var(--spacing-unit) * 1.5);
+        border-top: 1px solid rgba(255,255,255,0.2);
+        font-size: 0.85rem;
+    }
+
+    /* Cookie Notice - Basic Theming */
+    #cookie-notice {
+        background-color: var(--color-primary) !important;
+        color: var(--color-background) !important;
+        font-family: var(--font-primary);
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    }
+    #cookie-notice .cn-button {
+        background-image: var(--color-gradient) !important;
+        color: var(--color-background) !important;
+        border-radius: var(--border-radius-md) !important;
+        padding: 0.7em 1.5em !important;
+        font-weight: 600 !important;
+        margin-left: var(--spacing-unit) !important;
+    }
+     #cookie-notice .cn-button.cn-refuse-cookie {
+        background: transparent !important;
+        border: 1px solid var(--color-accent) !important;
+        color: var(--color-accent) !important;
+    }
+
+
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
+        .main-navigation-desktop { display: none; }
+        .menu-toggle-mobile { display: block; }
+    }
+    @media (max-width: 768px) {
+        .hero-section { min-height: 60vh; }
+        .site-footer .container {
+            grid-template-columns: 1fr; /* Stack footer columns */
+            text-align: center;
+        }
+        .footer-column ul { padding-left: 0; }
+        .footer-socials { text-align: center; margin-bottom: var(--spacing-unit); }
+    }
+
+    /* Skip Link */
+    .skip-link {
+        position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
+        background: var(--color-primary); color: var(--color-background); padding: 15px; z-index: 10000;
+        border-radius: 0 0 var(--border-radius-md) 0;
+    }
+    .skip-link:focus { left: 0; top: 0; width: auto; height: auto; }
+
+</style>
+
+</head>
+<body class="home page-template-default">
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	<header id="masthead" class="site-header" role="banner">
+        <div class="container">
+            <div class="site-branding">
+                <h1 class="site-title"><a href="https://www.ib-behringer.de/" rel="home"></a></h1>
+            </div>
+            <nav id="site-navigation-desktop" class="main-navigation-desktop" role="navigation">
+                 <ul id="primary-menu-desktop" class="menu">
+                    <li class="menu-item current-menu-item"><a href="#">IB-Behringer</a></li>
+                    <li class="menu-item menu-item-has-children"><a href="#">Leistungen</a>
+                        <ul class="sub-menu">
+                            <li><a href="#">Siedlungswasserwirtschaft</a></li>
+                            <li><a href="#">Straßenbau & Brückenbau</a></li>
+                            <li><a href="#">Fernwärme</a></li>
+                            <li><a href="#">Hydraulische Nachweise</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item menu-item-has-children"><a href="#">Unternehmen</a>
+                         <ul class="sub-menu">
+                            <li><a href="#">Neuigkeiten</a></li>
+                            <li><a href="#">Team</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item"><a href="#">Downloads</a></li>
+                    <li class="menu-item"><a href="#">Kontakt</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle-mobile" aria-controls="primary-menu-mobile" aria-expanded="false" aria-label="Menü öffnen">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+	</header>
+
+    <nav id="main-navigation-mobile" class="main-navigation-mobile">
+        <button class="close-mobile-menu" aria-label="Menü schließen"><i class="fas fa-times"></i></button>
+        <ul id="primary-menu-mobile" class="menu">
+            <!-- Mobile menu items will be populated by JS or duplicated here -->
+            <li><a href="#">IB-Behringer</a></li>
+            <li><a href="#">Leistungen</a>
+                <ul class="sub-menu">
+                    <li><a href="#">Siedlungswasserwirtschaft</a></li>
+                    <li><a href="#">Straßenbau & Brückenbau</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Unternehmen</a></li>
+            <li><a href="#">Downloads</a></li>
+            <li><a href="#">Kontakt</a></li>
+        </ul>
+    </nav>
+
+
+	<main id="content" class="site-content">
+        <section class="hero-section">
+            <div class="container">
+                <h1>Kompetenz im Tiefbau seit 55 Jahren</h1>
+                <p class="subtitle">Ingenieurbüro Behringer & Partner – Wir gestalten Infrastruktur für morgen.</p>
+                <a href="#intro" class="btn btn-primary">Mehr erfahren <i class="fas fa-arrow-down" style="margin-left: 0.5em;"></i></a>
+                <a href="/kontakt/" class="btn btn-secondary" style="margin-left: 1em;">Projekt anfragen</a>
+            </div>
+        </section>
+
+        <section id="intro" class="intro-section section-padding">
+            <div class="container">
+                <h2>Ihr verlässlicher Partner für Ingenieurleistungen</h2>
+                <p>Das Ingenieurbüro Behringer & Partner bearbeitet ein breites Leistungsspektrum im Tiefbau und bringt dabei die Erfahrung aus über 55 Jahren erfolgreichem Wirken ein. Ein Team geschulter Ingenieure und Techniker berät und betreut fachkundig öffentliche und private Bauherren.
+                <a href="https://www.instagram.com/ibb_mue/" class="instagram-link" target="_blank" rel="noopener">
+                    Folgen Sie uns auf <img loading="lazy" decoding="async" src="https://www.ib-behringer.de/wp/wp-content/uploads/2025/01/th.jpg" alt="Instagram">
+                </a>
+                </p>
+            </div>
+        </section>
+
+        <section class="services-highlight-section section-padding section-bg-alt">
+            <div class="container">
+                <h2 style="text-align: center;">Unsere Kernkompetenzen</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <span class="icon"><i class="fas fa-water"></i></span>
+                        <h3>Siedlungswasserwirtschaft</h3>
+                        <p>Planung und Betreuung von Wasserversorgungs- und Abwasserentsorgungsanlagen.</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="icon"><i class="fas fa-road"></i></span>
+                        <h3>Straßen- & Brückenbau</h3>
+                        <p>Entwurf, Planung und Bauüberwachung für Verkehrsinfrastrukturprojekte.</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="icon"><i class="fas fa-city"></i></span>
+                        <h3>Baulanderschließung</h3>
+                        <p>Komplette Erschließungsplanung für Wohn- und Gewerbegebiete.</p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: calc(var(--spacing-unit) * 2.5);">
+                    <a href="/leistungen/" class="btn btn-secondary">Alle Leistungen anzeigen</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="news-section section-padding">
+            <div class="container">
+                <h2 style="text-align: center;">Aktuelle Projekte & Neuigkeiten</h2>
+                <div class="news-grid">
+                     <article class="news-item-card">
+                        <a href="#" class="card-image">
+                            <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2024/10/final_Gemeinde-Schwindegg-Bautafeln-15-10-2024-270x150.jpg" alt="Neubaugebiet Schwindegg">
+                        </a>
+                        <div class="card-content">
+                            <p class="card-date">31. Oktober 2024</p>
+                            <h3><a href="#">Spatenstich Neubaugebiet Allersheim, Schwindegg</a></h3>
+                            <p class="card-excerpt">Feierlicher Spatenstich für das Neubaugebiet in Schwindegg. Die Tiefbauarbeiten beginnen im November...</p>
+                            <a href="#" class="read-more">Weiterlesen <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    <article class="news-item-card">
+                        <a href="#" class="card-image">
+                             <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2024/10/003-270x150.jpg" alt="Bahnunterführung Klugham">
+                        </a>
+                        <div class="card-content">
+                            <p class="card-date">25. Oktober 2024</p>
+                            <h3><a href="#">Bahnunterführung Klugham fertiggestellt</a></h3>
+                            <p class="card-excerpt">Die Erneuerung der Bahnunterführung in Klugham schafft eine zeitgemäße Straßenführung...</p>
+                            <div class="leistungen-badge">Straßenbau & Brückenbau</div>
+                            <!-- <a href="#" class="read-more">Details zum Projekt <i class="fas fa-arrow-right"></i></a> -->
+                        </div>
+                    </article>
+                    <article class="news-item-card">
+                        <a href="#" class="card-image">
+                            <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2024/11/S477-270x150.jpg" alt="Kreisverkehr Marktl">
+                        </a>
+                        <div class="card-content">
+                            <p class="card-date">27. September 2024</p>
+                            <h3><a href="#">Kreisverkehr in Marktl für Verkehr freigegeben</a></h3>
+                            <p class="card-excerpt">Der neue Kreisverkehr verbindet die Kreisstraßen AÖ22 und AÖ24 und dient als wichtiger Autobahnzubringer...</p>
+                            <a href="#" class="read-more">Mehr erfahren <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+                 <div style="text-align: center; margin-top: calc(var(--spacing-unit) * 2.5);">
+                    <a href="/neuigkeiten/" class="btn btn-secondary">Alle Neuigkeiten</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section section-padding">
+            <div class="container">
+                <h2>Starten Sie Ihr nächstes Projekt mit uns.</h2>
+                <p>Wir freuen uns darauf, Ihre Visionen Wirklichkeit werden zu lassen. Kontaktieren Sie uns für eine unverbindliche Beratung.</p>
+                <a href="/kontakt/" class="btn btn-primary">Jetzt Kontakt aufnehmen</a>
+            </div>
+        </section>
+
+	</main><!-- #content -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-column">
+                <h4>IB-Behringer</h4>
+                <p>Luitpoldallee 32<br>D-84453 Mühldorf a. Inn</p>
+                <p>
+                    Tel: +49 (0)8631 98679-00<br>
+                    Mail: <a href="mailto:info@ib-behringer.de">info@ib-behringer.de</a>
+                </p>
+            </div>
+            <div class="footer-column">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#">Startseite</a></li>
+                    <li><a href="#">Leistungen</a></li>
+                    <li><a href="#">Unternehmen</a></li>
+                    <li><a href="#">Projekte</a></li>
+                    <li><a href="#">Karriere</a></li>
+                    <li><a href="#">Kontakt</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Leistungen</h4>
+                <ul>
+                    <li><a href="#">Siedlungswasserwirtschaft</a></li>
+                    <li><a href="#">Straßenbau & Brückenbau</a></li>
+                    <li><a href="#">Baulanderschließung</a></li>
+                    <li><a href="#">Kommunales GIS</a></li>
+                    <li><a href="#">Weitere Leistungen...</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Folgen Sie uns</h4>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/ibb_mue/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <!-- Add other social links if available: LinkedIn, Xing etc. -->
+                    <!-- <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a> -->
+                </div>
+                 <h4 style="margin-top: 1.5rem;">Wir unterstützen</h4>
+                 <a href="#"><img src="https://www.ib-behringer.de/wp/wp-content/uploads/2022/12/Suedansicht-2-150x150.jpg" alt="Mädchenschule Chato" style="width:80px; border-radius:var(--border-radius-sm); margin-top:0.5rem;"></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                © <span id="current-year"></span> Ingenieurbüro Behringer & Partner mbB (Ultra Modern Concept).
+                <a href="/impressum/" style="margin-left:1em; color:rgba(255,255,255,0.7);">Impressum & Datenschutz</a>
+            </div>
+        </div>
+	</footer>
+</div><!-- #page -->
+
+<!-- Cookie Notice (existing HTML, styled via CSS) -->
+<div id="cookie-notice" role="dialog" class="cookie-notice-hidden cookie-revoke-hidden cn-position-bottom cn-effect-fade" aria-label="Cookie Notice" style="background-color: rgba(65,140,199,1);"><div class="cookie-notice-container" style="color: #fff"><span id="cn-notice-text" class="cn-text-container">Diese Website benutzt Cookies. Wenn Sie die Website optimal weiter nutzen möchten, können Sie hier Zustimmen. Zur eingeschränkten Nutzung klicken Sie bitte auf Ablehnen. </span><span id="cn-notice-buttons" class="cn-buttons-container"><a href="#" id="cn-accept-cookie" data-cookie-set="accept" class="cn-set-cookie cn-button cn-button-custom button" aria-label="Zustimmen">Zustimmen</a><a href="#" id="cn-refuse-cookie" data-cookie-set="refuse" class="cn-set-cookie cn-button cn-button-custom button cn-refuse-cookie" aria-label="Ablehnen">Ablehnen</a></span><span id="cn-close-notice" data-cookie-set="accept" class="cn-close-icon" title="Ablehnen"></span></div></div>
+
+<script>
+    // Basic Off-Canvas Menu Toggle
+    const menuToggleMobile = document.querySelector('.menu-toggle-mobile');
+    const mobileNav = document.querySelector('.main-navigation-mobile');
+    const closeMobileMenu = document.querySelector('.close-mobile-menu');
+    const body = document.body;
+
+    function toggleMobileMenu() {
+        mobileNav.classList.toggle('is-active');
+        body.classList.toggle('no-scroll');
+        const isExpanded = menuToggleMobile.getAttribute('aria-expanded') === 'true';
+        menuToggleMobile.setAttribute('aria-expanded', !isExpanded);
+    }
+
+    if (menuToggleMobile && mobileNav && closeMobileMenu) {
+        menuToggleMobile.addEventListener('click', toggleMobileMenu);
+        closeMobileMenu.addEventListener('click', toggleMobileMenu);
+
+        // Optional: Close menu if clicking outside of it (more complex)
+        // document.addEventListener('click', function(event) {
+        //   if (mobileNav.classList.contains('is-active') &&
+        //       !mobileNav.contains(event.target) &&
+        //       !menuToggleMobile.contains(event.target)) {
+        //     toggleMobileMenu();
+        //   }
+        // });
+    }
+
+    // Set current year in footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
