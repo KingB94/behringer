@@ -126,21 +126,22 @@
         justify-content: space-between;
         align-items: center;
     }
-    .site-branding .site-title a {
-        font-size: 1.8rem;
-        font-weight: 800;
-        color: var(--color-primary);
-        /* Ideally, replace with an SVG logo */
-    }
-    
-    .site-branding .site-title a {
+.site-branding .site-title a {
+    display: block; /* Wichtig, damit width und height korrekt angewendet werden */
     background: url('{{ url_for("static", filename="images/logo.png") }}') center/contain no-repeat;
     width: 150px;
-    height: auto;
-    text-indent: -9999px;
-    overflow: hidden;
+    height: 50px;   /* << KORREKTUR: Setzen Sie hier eine explizite Höhe!
+                       Passen Sie diesen Wert (z.B. 50px) an das tatsächliche
+                       Seitenverhältnis Ihres Logos bei 150px Breite an.
+                       Wenn Ihr Logo z.B. quadratisch wäre, dann 150px. */
+    text-indent: -9999px; /* Versteckt den Textinhalt des Links, falls vorhanden */
+    overflow: hidden;    /* Stellt sicher, dass der eingerückte Text keine Probleme macht */
+    /* Die folgenden Eigenschaften sind für ein reines Bild-Logo nicht notwendig
+       und können entfernt werden, wenn der Link keinen sichtbaren Text haben soll: */
+    /* font-size: 1.8rem; */
+    /* font-weight: 800; */
+    /* color: var(--color-primary); */
 }
-
 
     /* Desktop Navigation */
     .main-navigation-desktop ul {
