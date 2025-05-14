@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Behringer & Partner</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        /* css/styles.css */
+        /* 1. Basis & Variablen */
+        :root {
+            --clr-primary: #005a9c;
+            --clr-secondary: #333;
+            --clr-accent: #007bff;
+            /* Eine Akzentfarbe, falls benötigt */
+            --clr-bg: #fff;
+            --clr-bg-alt: #f7f7f7;
+            --clr-gradient-start: #004a80;
+            --clr-gradient-end: #006bb3;
+            --clr-white: #fff;
+            --clr-text-light: #f1f1f1;
+            /* Für hellen Text auf dunklem Hintergrund */
+            --clr-border: #e0e0e0;
+            /* Für allgemeine Ränder */
+
+            --font-sans: 'Open Sans', sans-serif;
+            --font-heading: 'Montserrat', sans-serif;
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space: 1.5rem;
+            --space-md: 2rem;
+            --space-lg: 3rem;
+            --space-xl: 4rem;
+
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            /* Für größere Elemente ggf. */
+
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 5px 10px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.15);
+            /* Stärkerer Schatten für Hervorhebungen */
+
+            --transition-default: all 0.3s ease-in-out;
+            /* Einheitlicher Übergang */
+
+            /* Projektsektion Variablen (bereits vorhanden, überprüft) */
+            --clr-medium-blue: #0077cc;
+            --clr-light-blue: #3399e6;
+            --clr-project-bg: var(--clr-bg-alt);
+            --radius-card: var(--radius-md);
+            /* Konsolidiert mit globalen Radien */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            /* Smooth scroll für Ankerlinks */
+            font-size: 100%;
+            /* Basis für rem-Einheiten */
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--clr-secondary);
+            line-height: 1.7;
+            /* Etwas mehr Zeilenhöhe für bessere Lesbarkeit */
+            background: var(--clr-bg);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--clr-primary);
+            transition: var(--transition-default);
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: var(--clr-gradient-start);
+            /* Dunklerer Primärton beim Hover */
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-heading);
+            color: var(--clr-secondary);
+            margin-bottom: var(--space-sm);
+            line-height: 1.3;
+        }
+
+        /* 2. Container */
+        .container {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--space);
+            padding-right: var(--space);
+        }
+
+        /* .container.px-4-custom wurde beibehalten für die "Über uns" Sektion, aber könnte generalisiert werden */
+
+
+        /* 3. Header */
+        .site-header {
+            background: var(--clr-white);
+            box-shadow: var(--shadow-md);
+            /* Konsistenter Schatten */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-sm) 0;
+            /* Leicht reduziertes Padding */
+        }
+
+        .logo img {
+            display: block;
+            max-height: 60px;
+            /* Geringfügig angepasst */
+            width: auto;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: var(--space-md);
+            /* Etwas mehr Abstand */
+            align-items: center;
+        }
+
+        .nav-list>li>a,
+        .nav-list>li>span {
+            font-weight: 600;
+            color: var(--clr-secondary);
+            padding: var(--space-xs) 0;
+            transition: color .2s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            position: relative;
+            /* Für After-Element Hover-Effekt */
+        }
+
+        /* Subtiler Hover-Effekt für Nav-Links */
+        .nav-list>li>a:not(.btn)::after,
+        .nav-list>li>span::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--clr-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-list>li>a:hover::after,
+        .nav-list>li>span:hover::after {
+            width: 100%;
+        }
+
+
+        .nav-list>li>a:hover,
+        .nav-list>li>span:hover {
+            color: var(--clr-primary);
+        }
+
+        .nav-list>li>a.btn {
+            color: var(--clr-white);
+            padding: 10px;
+        }
+
+        .nav-list>li>a.btn:hover {
+            color: var(--clr-white);
+            background: var(--clr-gradient-start);
+            /* Hover für Button in Nav */
+        }
+
+        .nav-list>li>a.btn::after {
+            display: none;
+        }
+
+        /* Keinen Unterstrich für Buttons */
+
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--clr-secondary);
+            cursor: pointer;
+            padding: var(--space-xs);
+        }
+
+        .nav-item.dropdown {
+            position: relative;
+        }
+
+        .dropdown-arrow {
+            font-size: 0.7em;
+            margin-left: 0.4em;
+            transition: transform 0.25s ease-in-out;
+        }
+
+        .nav-item.dropdown:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            list-style: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--clr-white);
+            border: 1px solid var(--clr-border);
+            box-shadow: var(--shadow-md);
+            border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+            padding: var(--space-xs) 0;
+            min-width: 240px;
+            /* Etwas breiter */
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+        }
+
+        .nav-item.dropdown:hover>.dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 0.75rem var(--space-sm);
+            /* Mehr Padding */
+            font-weight: 500;
+            color: var(--clr-secondary);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: var(--clr-bg-alt);
+            color: var(--clr-primary);
+        }
+
+        @media (max-width: 992px) {
+            .header-inner {
+                padding: var(--space-sm) var(--space);
+            }
+
+            .logo img {
+                max-height: 50px;
+            }
+
+            .nav-list {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                width: 100%;
+                flex-direction: column;
+                background: var(--clr-white);
+                padding: var(--space);
+                box-shadow: var(--shadow-lg);
+                gap: 0;
+                align-items: flex-start;
+            }
+
+            .nav-list.open {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-item.dropdown .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                padding-left: var(--space);
+                padding-top: var(--space-xs);
+                padding-bottom: var(--space-xs);
+                min-width: auto;
+                background-color: transparent;
+            }
+
+            .nav-item.dropdown .dropdown-menu li a {
+                padding: var(--space-xs) 0;
+                font-weight: normal;
+            }
+
+            .nav-list>li>a,
+            .nav-list>li>span {
+                padding: var(--space-sm) 0;
+                width: 100%;
+            }
+
+            .nav-list>li:not(:last-child)>a,
+            .nav-list>li:not(:last-child)>span {
+                border-bottom: 1px solid var(--clr-border);
+            }
+
+            .nav-list>li>a.btn {
+                display: inline-block;
+                width: auto;
+                margin-top: var(--space-sm);
+                padding: .75rem 1.5rem !important;
+            }
+
+            .nav-list>li>a:not(.btn)::after,
+            .nav-list>li>span::after {
+                display: none;
+            }
+
+            /* Hover-Linie auf Mobil ausblenden */
+        }
+
+        /* 4. Hero */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            color: var(--clr-white);
+            padding: var(--space-xl) var(--space-sm);
+            min-height: 70vh;
+            background: linear-gradient(to bottom right, var(--clr-gradient-start), var(--clr-gradient-end));
+            /* Fallback */
+            margin-bottom: var(--space-xl);
+        }
+
+        .hero::before {
+            /* Overlay */
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 90, 156, 0.45);
+            z-index: 1;
+        }
+
+        .hero-slideshow {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .hero-slideshow .hero-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .hero-slideshow .hero-img.active {
+            opacity: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.25rem, 5vw, 3.25rem);
+            margin-bottom: var(--space-sm);
+            color: var(--clr-white);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            margin-bottom: var(--space-md);
+            color: var(--clr-text-light);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.85rem var(--space-md);
+            border-radius: var(--radius-sm);
+            transition: var(--transition-default);
+            border: 1px solid transparent;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--clr-primary);
+            color: var(--clr-white);
+        }
+
+        .btn-primary:hover {
+            background: var(--clr-gradient-start);
+            color: var(--clr-white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-secondary {
+            background: var(--clr-white);
+            color: var(--clr-primary);
+            border-color: var(--clr-border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--clr-bg-alt);
+            color: var(--clr-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* 5. Sektionen Basis */
+        .section {
+            padding: var(--space-lg) 0;
+        }
+
+        @media (min-width: 768px) {
+            .section {
+                padding: var(--space-xl) 0;
+            }
+        }
+
+        .section.bg-alternate {
+            background: var(--clr-bg-alt);
+        }
+
+        .section:nth-of-type(even):not(#about):not(.projects):not(.hero + *) {
+            background: var(--clr-bg-alt);
+        }
+
+
+        .section-title,
+        .section h2:not(#about-headline) {
+            font-family: var(--font-heading);
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            text-align: center;
+            margin-bottom: var(--space-sm);
+            color: var(--clr-secondary);
+        }
+
+        #projects .section-title {
+            font-size: clamp(2rem, 4.5vw, 2.5rem);
+        }
+
+        .section-subtitle {
+            font-size: clamp(1rem, 2vw, 1.125rem);
+            text-align: center;
+            color: #666;
+            margin-bottom: var(--space-lg);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section Specific Styles */
+        #about {
+            /* Standard padding from .section is applied */
+            margin-bottom: 6rem; /* NEU: Größerer Abstand zur nächsten Sektion */
+        }
+
+        #about-headline {
+            font-size: clamp(2rem, 4.5vw, 2.5rem);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            text-align: center;
+            color: var(--clr-secondary);
+            margin-bottom: var(--space-md); /* Abstand zwischen Headline und folgendem Inhalt */
+        }
+
+        /* NEU: Stile für den Inhalt, der eingeblendet wird */
+        #about .about-reveal-content {
+            opacity: 0;
+            transform: translateY(30px);
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 0.5s ease-out, 
+                        transform 0.5s ease-out, 
+                        max-height 0.7s ease-in-out;
+        }
+
+        #about .about-reveal-content.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: 2000px; /* Ausreichend hohe Zahl für den Inhalt. Ggf. anpassen. */
+        }
+
+
+        #about .container.px-4-custom { /* Bestehende spezifische Stile für #about */
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        #about .text-lg {
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+        }
+
+        #about .mb-4 {
+            margin-bottom: 1rem;
+        }
+
+        #about .mb-6 {
+            margin-bottom: 1.5rem;
+        }
+
+        #about .font-medium {
+            font-weight: 500;
+        }
+
+        #about .flex {
+            display: flex;
+        }
+
+        #about .flex-wrap {
+            flex-wrap: wrap;
+        }
+
+        #about .gap-4 {
+            gap: 1rem;
+        }
+
+        #about .gap-12 {
+            gap: 3rem;
+        }
+
+        #about .grid {
+            display: grid;
+        }
+
+        #about .grid-cols-1 {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+
+        @media (min-width: 1024px) {
+            #about .lg\:grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            #about .lg\:order-1 {
+                order: 1;
+            }
+
+            #about .lg\:order-2 {
+                order: 2;
+            }
+        }
+
+        #about .items-center {
+            align-items: center;
+        }
+
+        #about .order-1 {
+            order: 1;
+        }
+
+        #about .order-2 {
+            order: 2;
+        }
+
+        #about .rounded-lg {
+            border-radius: var(--radius-lg);
+        }
+
+        #about .shadow-xl {
+            box-shadow: var(--shadow-xl);
+        }
+
+        #about .relative {
+            position: relative;
+        }
+
+        #about .h-96 {
+            height: 24rem;
+        }
+
+        #about .overflow-hidden {
+            overflow: hidden;
+        }
+
+        #about .object-cover {
+            object-fit: cover;
+        }
+
+        #about .w-full {
+            width: 100%;
+        }
+
+        #about .h-full {
+            height: 100%;
+        }
+
+        #about .absolute {
+            position: absolute;
+        }
+
+        #about .bottom-0 {
+            bottom: 0;
+        }
+
+        #about .left-0 {
+            left: 0;
+        }
+
+        #about .right-0 {
+            right: 0;
+        }
+
+        #about .bg-gradient-to-t {
+            background-image: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+        }
+
+        #about .p-6 {
+            padding: 1.5rem;
+        }
+
+        #about .btn.bg-primary { /* Bestehende Button-Overrides für #about */
+            background-color: var(--clr-primary) !important;
+            color: var(--clr-white) !important;
+        }
+
+        #about .btn.bg-primary:hover {
+            background-color: var(--clr-gradient-start) !important;
+        }
+
+        #about .btn.border-primary {
+            border-color: var(--clr-primary) !important;
+            color: var(--clr-primary) !important;
+        }
+
+        #about .btn.border-primary:hover {
+            background-color: var(--clr-primary) !important;
+            color: var(--clr-white) !important;
+        }
+
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            gap: var(--space-md);
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+
+        @media (min-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .service-card {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            transition: var(--transition-default);
+            background-color: var(--clr-white);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            flex-shrink: 0;
+            border-bottom: 1px solid var(--clr-border);
+        }
+
+        .service-card h3 {
+            margin: 0;
+            padding: var(--space-sm) var(--space-sm) var(--space-md);
+            text-align: center;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--clr-primary);
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.4;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Projects Section */
+        .projects {
+            background-color: var(--clr-project-bg);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        @media (min-width: 768px) {
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .projects-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-radius: var(--radius-card);
+            padding: var(--space-md);
+            color: var(--clr-white);
+            min-height: 22rem;
+            transform: translateY(0);
+            transition: var(--transition-default);
+            box-shadow: var(--shadow-md);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .project-blue {
+            background-color: var(--clr-primary);
+        }
+
+        .project-medium-blue {
+            background-color: var(--clr-medium-blue);
+        }
+
+        .project-light-blue {
+            background-color: var(--clr-light-blue);
+        }
+
+        .project-category {
+            font-size: 0.8rem;
+            font-weight: 600;
+            opacity: 0.85;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .project-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            margin-top: var(--space-xs);
+            margin-bottom: var(--space-sm);
+            color: var(--clr-white);
+            line-height: 1.3;
+        }
+
+        .project-card p {
+            opacity: 0.9;
+            margin-bottom: var(--space-md);
+            font-size: 0.9rem;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+
+        .project-link {
+            margin-top: auto;
+            padding-top: var(--space-sm);
+        }
+
+        .project-link a {
+            display: inline-flex;
+            align-items: center;
+            font-weight: 600;
+            color: var(--clr-white);
+            text-decoration: none;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+
+        .project-link a:hover {
+            opacity: 0.85;
+            transform: translateX(3px);
+        }
+
+        .project-link svg {
+            margin-left: 0.5rem;
+            stroke: var(--clr-white);
+            width: 18px;
+            height: 18px;
+        }
+
+
+        /* Company-Grid & Downloads-Grid */
+        .info-card-grid {
+            display: grid;
+            gap: var(--space-md);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            margin-top: var(--space-lg);
+        }
+
+        .info-card {
+            background-color: var(--clr-white);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-default);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .info-card img.icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: var(--space-sm);
+        }
+
+        .info-card h3 {
+            font-size: 1.25rem;
+            color: var(--clr-primary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .info-card p {
+            font-size: 0.95rem;
+            margin-bottom: var(--space-sm);
+            flex-grow: 1;
+        }
+
+        .info-card .btn {
+            margin-top: auto;
+            width: fit-content;
+        }
+
+        .timeline {
+            list-style: none;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--clr-primary);
+        }
+
+        .timeline li {
+            margin-bottom: 2rem;
+        }
+
+        .timeline .year {
+            display: inline-block;
+            background: var(--clr-primary);
+            color: var(--clr-white);
+            font-weight: 600;
+            padding: .25rem .75rem;
+            border-radius: var(--radius-sm);
+            margin-bottom: .5rem;
+        }
+
+        .timeline-img {
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            margin: .5rem 0 1rem;
+            border-radius: var(--radius-sm);
+        }
+
+
+        /* Kontakt-Grid */
+        .contact-grid {
+            display: grid;
+            gap: var(--space-lg);
+        }
+
+        #contact .contact-grid {
+            margin-top: var(--space-lg);
+        }
+
+        @media (min-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+                align-items: start;
+            }
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: var(--space-sm);
+            margin-bottom: var(--space-sm);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--clr-primary);
+            box-shadow: 0 0 0 2px rgba(0, 90, 156, 0.2);
+        }
+
+        .contact-form button {
+            width: fit-content;
+        }
+
+        .contact-info {
+            padding-top: var(--space-xs);
+        }
+
+        .contact-info address p {
+            margin-bottom: var(--space-sm);
+            line-height: 1.8;
+        }
+
+        .contact-info address strong {
+            font-weight: 600;
+            color: var(--clr-secondary);
+        }
+
+        .contact-info iframe {
+            width: 100%;
+            height: 300px;
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-md);
+            border: 1px solid var(--clr-border);
+        }
+
+
+        /* Footer */
+        .site-footer {
+            background: var(--clr-secondary);
+            color: var(--clr-text-light);
+            padding: var(--space-xl) 0 var(--space-lg);
+        }
+
+        .footer-grid {
+            display: grid;
+            gap: var(--space-md);
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .site-footer h4 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--clr-white);
+            margin-bottom: var(--space-sm);
+            font-size: 1.1rem;
+        }
+
+        .site-footer ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .site-footer ul li {
+            margin-bottom: var(--space-xs);
+        }
+
+        .site-footer a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .site-footer a:hover {
+            color: var(--clr-white);
+            text-decoration: underline;
+        }
+
+        .site-footer address {
+            font-style: normal;
+            line-height: 1.7;
+            color: #ccc;
+        }
+
+        .site-footer address a {
+            color: inherit;
+        }
+
+        .site-footer address a:hover {
+            color: var(--clr-white);
+        }
+
+
+        .footer-bottom {
+            text-align: center;
+            font-size: .9rem;
+            border-top: 1px solid rgba(255, 255, 255, .1);
+            margin-top: var(--space-lg);
+            padding-top: var(--space-lg);
+            color: #aaa;
+        }
+
+        .footer-bottom p {
+            margin-bottom: var(--space-xs);
+        }
+
+        .footer-bottom a {
+            color: #ccc;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--clr-white);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <img src="/IBB/static/images/logo.png" alt="Behringer & Partner Logo" loading="lazy">
+            </a>
+            <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="#about">Über uns</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#services">Leistungen <span class="dropdown-arrow">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#service-siedlung">Siedlungswasserwirtschaft</a></li>
+                            <li><a href="#service-strassen">Straßenbau & Brückenbau</a></li>
+                            <li><a href="#service-fernwaerme">Fernwärme</a></li>
+                            <li><a href="#service-hydraulik">Hydraulische Nachweise</a></li>
+                            <li><a href="#service-bauland">Baulanderschließung</a></li>
+                            <li><a href="#service-gis">Kommunales GIS</a></li>
+                            <li><a href="#service-sanierung">Sanierungen</a></li>
+                            <li><a href="#service-wasserbau">Wasserbau</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#projects">Projekte</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#company">Unternehmen <span class="dropdown-arrow">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#company-news">Neuigkeiten</a></li>
+                            <li><a href="#company-team">Team</a></li>
+                            <li><a href="#company-history">Firmengeschichte</a></li>
+                            <li><a href="#company-jobs">Stellenangebote</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#downloads">Downloads</a></li>
+                    <li><a href="#contact" class="btn btn-primary">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-slideshow">
+            <img src="/IBB/static/images/engineering.jpg" alt="Ingenieur plant Tiefbauprojekt" class="hero-img active"
+                loading="lazy">
+            <img src="/IBB/static/images/working.jpg" alt="Arbeiter auf der Baustelle" class="hero-img" loading="lazy">
+            <img src="/IBB/static/images/working (2).jpg" alt="Team in Aktion" class="hero-img" loading="lazy">
+        </div>
+        <div class="hero-content">
+            <h1>Ihr Partner im Tiefbau seit 1968</h1>
+            <p>Wirtschaftliche und nachhaltige Lösungen mit modernster Technik.</p>
+            <a href="#about" class="btn btn-secondary">Mehr erfahren</a>
+        </div>
+    </section>
+
+    <main>
+        <!-- HINWEIS: Klasse von section-padding zu section geändert -->
+        <section id="about" class="section">
+            <div class="container mx-auto px-4-custom">
+                <h2 id="about-headline">Wer wir sind und was uns antreibt</h2>
+
+                <!-- NEU: Wrapper für den Inhalt, der per Scroll eingeblendet wird -->
+                <div class="about-reveal-content">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div class="order-2 lg:order-1">
+                            <p class="text-lg mb-4">
+                                Seit über 25 Jahren ist das Ingenieurbüro Behringer Ihr verlässlicher Partner für
+                                anspruchsvolle Projekte im Bauingenieurwesen. Mit unserer langjährigen Erfahrung und einem
+                                Team hochqualifizierter Ingenieure stehen wir für Innovation, Präzision und nachhaltige
+                                Qualität.
+                            </p>
+                            <p class="text-lg mb-6">
+                                Unser Fokus liegt auf maßgeschneiderten und wirtschaftlichen Lösungen, die den höchsten
+                                technischen Standards entsprechen und zukunftsorientierte Perspektiven eröffnen. Wir
+                                begleiten Sie von der ersten Idee bis zur erfolgreichen Realisierung.
+                            </p>
+                            <div class="flex flex-wrap gap-4">
+                                <a href="#company-history"
+                                    class="btn bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded">
+                                    Unsere Geschichte
+                                </a>
+                                <a href="#company-team"
+                                    class="btn border border-primary text-primary hover:bg-primary hover:text-white px-4 py-2 rounded">
+                                    Unser Team kennenlernen
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="order-1 lg:order-2">
+                            <div class="relative h-96 overflow-hidden rounded-lg shadow-xl">
+                                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+                                    alt="Team des Ingenieurbüros Behringer bei der Planung"
+                                    class="object-cover w-full h-full" loading="lazy" />
+                                <div
+                                    class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- Ende .about-reveal-content -->
+            </div>
+        </section>
+
+        <section id="services" class="section services bg-alternate">
+            <div class="container">
+                <h2 class="section-title">Leistungen</h2>
+                <p class="section-subtitle">Entdecken Sie unser breites Spektrum an Ingenieurdienstleistungen.</p>
+                <div class="services-grid">
+                    <div class="service-card" id="service-siedlung">
+                        <img src="/IBB/static/images/ingenieur.jpg" alt="Siedlungswasserwirtschaft" loading="lazy">
+                        <h3>Siedlungswasserwirtschaft</h3>
+                    </div>
+                    <div class="service-card" id="service-strassen">
+                        <img src="/IBB/static/images/hero.jpg" alt="Straßenbau & Brückenbau" loading="lazy">
+                        <h3>Straßenbau & Brückenbau</h3>
+                    </div>
+                    <div class="service-card" id="service-fernwaerme">
+                        <img src="/IBB/static/images/working (2).jpg" alt="Fernwärme" loading="lazy">
+                        <h3>Fernwärme</h3>
+                    </div>
+                    <div class="service-card" id="service-hydraulik">
+                        <img src="/IBB/static/images/working.jpg" alt="Hydraulische Nachweise" loading="lazy">
+                        <h3>Hydraulische Nachweise</h3>
+                    </div>
+                    <div class="service-card" id="service-bauland">
+                        <img src="/IBB/static/images/excavator.jpg" alt="Baulanderschließung" loading="lazy">
+                        <h3>Baulanderschließung</h3>
+                    </div>
+                    <div class="service-card" id="service-gis">
+                        <img src="/IBB/static/images/bohrmaschine_zeichner.jpg" alt="Kommunales GIS" loading="lazy">
+                        <h3>Kommunales GIS</h3>
+                    </div>
+                    <div class="service-card" id="service-sanierung">
+                        <img src="/IBB/static/images/roundabout.jpg" alt="Sanierungen" loading="lazy">
+                        <h3>Sanierungen</h3>
+                    </div>
+                    <div class="service-card" id="service-wasserbau">
+                        <img src="/IBB/static/images/bridge.jpg" alt="Wasserbau" loading="lazy">
+                        <h3>Wasserbau</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section projects">
+            <div class="container">
+                <h2 class="section-title">Unsere Projekte</h2>
+                <p class="section-subtitle">
+                    Einblicke in erfolgreich abgeschlossene Referenzprojekte unseres Ingenieurbüros.
+                </p>
+
+                <div class="projects-grid">
+                    <div class="project-card project-blue">
+                        <span class="project-category">Straßenbau</span>
+                        <h3>Umgehungsstraße B12</h3>
+                        <p>Planung und Bauüberwachung der neuen Umgehungsstraße mit komplexen Kreuzungsbauwerken.</p>
+                        <div class="project-link">
+                            <a href="#">
+                                <span>Mehr erfahren</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M5 12h14"></path>
+                                    <path d="m12 5 7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card project-medium-blue">
+                        <span class="project-category">Wasserbau</span>
+                        <h3>Hochwasserschutz Mühldorf</h3>
+                        <p>Konzeption und Umsetzung von Hochwasserschutzmaßnahmen für die Innenstadt.</p>
+                        <div class="project-link">
+                            <a href="#">
+                                <span>Mehr erfahren</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M5 12h14"></path>
+                                    <path d="m12 5 7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card project-light-blue">
+                        <span class="project-category">Tiefbau & Erschließung</span>
+                        <h3>Neubaugebiet Sonnenhang</h3>
+                        <p>Komplette Erschließung eines Neubaugebiets mit Straßen, Kanälen und Versorgungsleitungen.</p>
+                        <div class="project-link">
+                            <a href="#">
+                                <span>Mehr erfahren</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M5 12h14"></path>
+                                    <path d="m12 5 7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="company" class="section bg-alternate">
+            <div class="container">
+                <h2 class="section-title">Das Unternehmen</h2>
+                <p class="section-subtitle">Erfahren Sie mehr über uns, unsere Werte und was uns auszeichnet.</p>
+
+                <div class="info-card-grid">
+                    <div class="info-card" id="company-news">
+                        <h3>Neuigkeiten</h3>
+                        <p>Bleiben Sie auf dem Laufenden über aktuelle Projekte, Entwicklungen und Veranstaltungen in
+                            unserem Büro.</p>
+                        <a href="#" class="btn btn-primary btn-sm">Zu den News</a>
+                    </div>
+                    <div class="info-card" id="company-team">
+                        <h3>Unser Team</h3>
+                        <p>Lernen Sie die engagierten Köpfe hinter Behringer & Partner kennen. Erfahrung und Expertise
+                            vereint.</p>
+                        <a href="#" class="btn btn-primary btn-sm">Team kennenlernen</a>
+                    </div>
+                    <div class="info-card" id="company-history">
+                        <h3>Firmengeschichte</h3>
+                        <p>Seit 1968 gestalten wir Infrastruktur. Erfahren Sie mehr über unsere Meilensteine und
+                            Entwicklung.</p>
+                        <a href="#" class="btn btn-primary btn-sm">Unsere Historie</a>
+                    </div>
+                    <div class="info-card" id="company-jobs">
+                        <h3>Karriere & Stellenangebote</h3>
+                        <p>Werden Sie Teil unseres Teams! Entdecken Sie aktuelle Jobangebote und Karrieremöglichkeiten.
+                        </p>
+                        <a href="#" class="btn btn-primary btn-sm">Zu den Stellen</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="downloads" class="section">
+            <div class="container">
+                <h2 class="section-title">Downloads</h2>
+                <p class="section-subtitle">Nützliche Dokumente, Broschüren und Informationen zum Herunterladen.</p>
+                <div class="info-card-grid">
+                    <div class="info-card">
+                        <h3>Firmenbroschüre</h3>
+                        <p>Unsere aktuelle Firmenbroschüre mit detaillierten Informationen zu Leistungen und Referenzen.
+                        </p>
+                        <a href="#" class="btn btn-primary btn-sm">Download PDF</a>
+                    </div>
+                    <div class="info-card">
+                        <h3>Zertifikate</h3>
+                        <p>Unsere Qualifikationen und Zertifizierungen als Nachweis unserer Kompetenz und Qualität.</p>
+                        <a href="#" class="btn btn-primary btn-sm">Zertifikate ansehen</a>
+                    </div>
+                    <div class="info-card">
+                        <h3>Informationsmaterial</h3>
+                        <p>Weitere nützliche Dokumente und Fachinformationen zu spezifischen Themenbereichen.</p>
+                        <a href="#" class="btn btn-primary btn-sm">Material sichten</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact bg-alternate">
+            <div class="container">
+                <h2 class="section-title">Kontakt</h2>
+                <p class="section-subtitle">Wir freuen uns auf Ihre Nachricht, Ihren Anruf oder Ihren Besuch.</p>
+                <div class="contact-grid">
+                    <form class="contact-form">
+                        <input type="text" name="name" placeholder="Ihr Name" required>
+                        <input type="email" name="email" placeholder="Ihre E-Mail" required>
+                        <textarea name="message" placeholder="Ihre Nachricht" rows="6" required></textarea>
+                        <button type="submit" class="btn btn-primary">Nachricht senden</button>
+                    </form>
+                    <div class="contact-info">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10628.897101529734!2d12.524255!3d48.24081!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4775e9bce4a6f33b%3A0x34a400004c486cde!2sINGENIEURB%C3%9CRO%20BEHRINGER%20%26%20PARTNER!5e0!3m2!1sde!2sus!4v1747041657899!5m2!1sde!2sus"
+                            style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <address>
+                            <p><strong>Behringer & Partner mbB</strong><br>
+                                Luitpoldallee 32<br>
+                                D-84453 Mühldorf a. Inn</p>
+                            <p>Tel: <a href="tel:+4986319867900">+49 8631 98679-00</a><br>
+                                E-Mail: <a href="mailto:info@ib-behringer.de">info@ib-behringer.de</a></p>
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#about">Über uns</a></li>
+                    <li><a href="#services">Leistungen</a></li>
+                    <li><a href="#projects">Projekte</a></li>
+                    <li><a href="#company">Unternehmen</a></li>
+                    <li><a href="#downloads">Downloads</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Top Leistungen</h4>
+                <ul>
+                    <li><a href="#service-siedlung">Siedlungswasserwirtschaft</a></li>
+                    <li><a href="#service-strassen">Straßenbau & Brückenbau</a></li>
+                    <li><a href="#service-fernwaerme">Fernwärme</a></li>
+                    <li><a href="#service-wasserbau">Wasserbau</a></li>
+                    <li><a href="#services">Alle Leistungen...</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Kontakt</h4>
+                <address>
+                    Behringer & Partner mbB<br>
+                    Luitpoldallee 32<br>
+                    D-84453 Mühldorf a. Inn<br>
+                    <a href="tel:+4986319867900">Tel: +49 8631 98679-00</a><br>
+                    <a href="mailto:info@ib-behringer.de">E-Mail: info@ib-behringer.de</a>
+                </address>
+            </div>
+            <div>
+                <h4>Rechtliches</h4>
+                <ul>
+                    <li><a href="#impressum">Impressum</a></li>
+                    <li><a href="#datenschutz">Datenschutz</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© <span id="current-year">2024</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
+            <p><a href="#impressum">Impressum</a> | <a href="#datenschutz">Datenschutz</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Navigation Toggle
+            const toggle = document.querySelector('.nav-toggle');
+            const navList = document.querySelector('.nav-list');
+            if (toggle && navList) {
+                toggle.addEventListener('click', () => {
+                    const isOpen = navList.classList.toggle('open');
+                    toggle.setAttribute('aria-expanded', isOpen);
+                    toggle.innerHTML = isOpen ? '×' : '☰';
+                });
+            }
+
+            // Hero-Slideshow
+            const slides = document.querySelectorAll('.hero-slideshow .hero-img');
+            if (slides.length > 1) {
+                let current = 0;
+                slides[current].classList.add('active');
+                setInterval(() => {
+                    slides[current].classList.remove('active');
+                    current = (current + 1) % slides.length;
+                    slides[current].classList.add('active');
+                }, 5000);
+            } else if (slides.length === 1) {
+                slides[0].classList.add('active');
+            }
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href.length > 1 && href.startsWith('#') && document.querySelector(href)) {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(href);
+                        if (targetElement) {
+                            const headerOffset = document.querySelector('.site-header') ? document.querySelector('.site-header').offsetHeight : 0;
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+
+                        if (navList && navList.classList.contains('open') && this.closest('.nav-list')) {
+                            navList.classList.remove('open');
+                            toggle.setAttribute('aria-expanded', 'false');
+                            toggle.innerHTML = '☰';
+                        }
+                    }
+                });
+            });
+
+            // Update current year in footer
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+
+            // NEU: IntersectionObserver für die "Über uns"-Sektion
+            const aboutSection = document.getElementById('about');
+            const aboutContentToReveal = aboutSection ? aboutSection.querySelector('.about-reveal-content') : null;
+
+            if (aboutSection && aboutContentToReveal) {
+                const revealAboutContent = (entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            aboutContentToReveal.classList.add('is-visible');
+                            observer.unobserve(entry.target); // Animation nur einmal auslösen
+                        }
+                    });
+                };
+
+                const aboutObserverOptions = {
+                    root: null, // Beobachtet im Haupt-Viewport
+                    rootMargin: '0px',
+                    threshold: 0.1 // Element wird als "sichtbar" betrachtet, wenn 10% davon im Viewport sind
+                };
+
+                const aboutObserver = new IntersectionObserver(revealAboutContent, aboutObserverOptions);
+                aboutObserver.observe(aboutSection); // Beobachte die gesamte #about Sektion
+            }
+        });
+    </script>
+</body>
+
+</html>
