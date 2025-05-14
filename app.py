@@ -22,5 +22,9 @@ def drei():
 def vier():
     return render_template('vier.html')
 
+@app.route('/fuenf')
+def vier():
+    return render_template('fuenf.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
