@@ -23,7 +23,7 @@ def vier():
     return render_template('vier.html')
 
 @app.route('/fuenf')
-def vier():
+def fuenf():
     return render_template('fuenf.html')
 
 if __name__ == '__main__':
