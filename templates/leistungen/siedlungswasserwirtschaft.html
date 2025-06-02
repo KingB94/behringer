@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Siedlungswasserwirtschaft - Behringer & Partner</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* css/styles.css */
+        /* 1. Basis & Variablen */
+        :root {
+            --clr-primary: #005a9c;
+            --clr-secondary: #333;
+            --clr-accent: #007bff;
+            --clr-bg: #fff;
+            --clr-bg-alt: #f7f7f7;
+            --clr-gradient-start: #004a80;
+            --clr-gradient-end: #006bb3;
+            --clr-white: #fff;
+            --clr-text-light: #f1f1f1;
+            --clr-border: #e0e0e0;
+
+            --font-sans: 'Open Sans', sans-serif;
+            --font-heading: 'Montserrat', sans-serif;
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space: 1.5rem;
+            --space-md: 2rem;
+            --space-lg: 3rem;
+            --space-xl: 4rem;
+
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 5px 10px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.15);
+
+            --transition-default: all 0.3s ease-in-out;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 100%;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--clr-secondary);
+            line-height: 1.7;
+            background: var(--clr-bg);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--clr-primary);
+            transition: var(--transition-default);
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: var(--clr-gradient-start);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-heading);
+            color: var(--clr-secondary);
+            margin-bottom: var(--space-sm);
+            line-height: 1.3;
+        }
+
+        /* 2. Container */
+        .container {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--space);
+            padding-right: var(--space);
+        }
+
+        /* 3. Header */
+        .site-header {
+            background: var(--clr-white);
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-sm) 0; 
+        }
+
+        .logo img {
+            display: block;
+            max-height: 80px; /* Consistent with main page */
+            width: auto;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: var(--space-md);
+            align-items: center;
+        }
+
+        .nav-list>li>a,
+        .nav-list>li>span {
+            font-weight: 600;
+            color: var(--clr-secondary);
+            padding: var(--space-xs) 0;
+            transition: color .2s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav-list>li>a:not(.btn)::after,
+        .nav-list>li>span::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--clr-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-list>li>a:hover::after,
+        .nav-list>li>span:hover::after {
+            width: 100%;
+        }
+
+        .nav-list>li>a:hover,
+        .nav-list>li>span:hover {
+            color: var(--clr-primary);
+        }
+
+        .nav-list>li>a.btn {
+            color: var(--clr-white);
+            padding: 10px; 
+        }
+         .nav-list>li>a.btn:hover {
+            color: var(--clr-white);
+            background: var(--clr-gradient-start);
+        }
+        .nav-list>li>a.btn::after {
+            display: none;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--clr-secondary);
+            cursor: pointer;
+            padding: var(--space-xs);
+        }
+
+        .nav-item.dropdown {
+            position: relative;
+        }
+
+        .dropdown-arrow {
+            font-size: 0.7em;
+            margin-left: 0.4em;
+            transition: transform 0.25s ease-in-out;
+        }
+
+        .nav-item.dropdown:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+         .nav-item.dropdown > a.active .dropdown-arrow,
+        .nav-item.dropdown > span.active .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            list-style: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--clr-white);
+            border: 1px solid var(--clr-border);
+            box-shadow: var(--shadow-md);
+            border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+            padding: var(--space-xs) 0;
+            min-width: 240px;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+        }
+
+        .nav-item.dropdown:hover>.dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 0.75rem var(--space-sm);
+            font-weight: 500;
+            color: var(--clr-secondary);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: var(--clr-bg-alt);
+            color: var(--clr-primary);
+        }
+        
+        .dropdown-menu li a.active-service-link { /* Style for active service page in dropdown */
+            background-color: var(--clr-bg-alt);
+            color: var(--clr-primary);
+            font-weight: 700;
+        }
+
+
+        @media (max-width: 992px) {
+            .header-inner {
+                padding: var(--space-sm) var(--space); 
+            }
+            .logo img {
+                max-height: 50px;
+            }
+            .nav-list {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                width: 100%;
+                flex-direction: column;
+                background: var(--clr-white);
+                padding: var(--space);
+                box-shadow: var(--shadow-lg);
+                gap: 0;
+                align-items: flex-start;
+            }
+            .nav-list.open {
+                display: flex;
+                max-height: calc(100vh - 85px); 
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            .nav-toggle {
+                display: block;
+            }
+            .nav-item.dropdown .dropdown-menu {
+                position: static; 
+                opacity: 0; 
+                visibility: visible; 
+                transform: none; 
+                box-shadow: none;
+                border: none;
+                padding-left: var(--space); 
+                padding-top: 0; 
+                padding-bottom: 0; 
+                min-width: auto;
+                background-color: transparent;
+                max-height: 0; 
+                overflow: hidden;
+                transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out,
+                            margin-top 0.3s ease-in-out, margin-bottom 0.3s ease-in-out;
+            }
+            .nav-item.dropdown .dropdown-menu.submenu-open {
+                opacity: 1;
+                max-height: 500px; 
+                margin-top: var(--space-xs);
+                margin-bottom: var(--space-xs); 
+            }
+            .nav-item.dropdown .dropdown-menu li a {
+                padding: var(--space-xs) 0; 
+                font-weight: normal;
+            }
+             .nav-item.dropdown .dropdown-menu li a:hover {
+                background-color: transparent; 
+                color: var(--clr-primary); 
+            }
+            .nav-list>li>a,
+            .nav-list>li>span {
+                padding: var(--space-sm) 0; 
+                width: 100%;
+                display: flex; 
+                justify-content: space-between; 
+                align-items: center; 
+            }
+            .nav-list>li:not(:last-child)>a,
+            .nav-list>li:not(:last-child)>span {
+                border-bottom: 1px solid var(--clr-border);
+            }
+            .nav-list>li>a.btn {
+                display: inline-block; 
+                width: auto;
+                margin-top: var(--space-sm);
+                padding: .75rem 1.5rem !important; 
+            }
+            .nav-list>li>a:not(.btn)::after,
+            .nav-list>li>span::after {
+                display: none; 
+            }
+        }
+
+        /* Button Styles (from main page) */
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.85rem var(--space-md);
+            border-radius: var(--radius-sm);
+            transition: var(--transition-default);
+            border: 1px solid transparent;
+            cursor: pointer;
+            text-align: center;
+        }
+        .btn-primary {
+            background: var(--clr-primary);
+            color: var(--clr-white);
+        }
+        .btn-primary:hover {
+            background: var(--clr-gradient-start);
+            color: var(--clr-white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+        .btn-secondary {
+            background: var(--clr-white);
+            color: var(--clr-primary);
+            border-color: var(--clr-border);
+        }
+        .btn-secondary:hover {
+            background: var(--clr-bg-alt);
+            color: var(--clr-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* 5. Sektionen Basis (from main page) */
+        .section {
+            padding: var(--space-lg) 0;
+        }
+        @media (min-width: 768px) {
+            .section {
+                padding: var(--space-xl) 0;
+            }
+        }
+        .section.bg-alternate {
+            background: var(--clr-bg-alt);
+        }
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            text-align: center;
+            margin-bottom: var(--space-sm);
+            color: var(--clr-secondary);
+        }
+        .section-subtitle {
+            font-size: clamp(1rem, 2vw, 1.125rem);
+            text-align: center;
+            color: #666;
+            margin-bottom: var(--space-lg);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+      
+        /* STILE FÜR SIEDLUNGSWASSERWIRTSCHAFT-SEITE */
+        .service-hero { 
+            min-height: 35vh; 
+            padding: var(--space-lg) var(--space-sm);
+            background: linear-gradient(to bottom right, var(--clr-primary), var(--clr-gradient-end));
+            color: var(--clr-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 0; /* No bottom margin, section below will handle spacing */
+        }
+        .service-hero .hero-content h1 {
+            font-size: clamp(2rem, 4.5vw, 2.8rem); 
+            margin-bottom: var(--space-xs);
+            color: var(--clr-white);
+        }
+        .service-hero .hero-content p {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            max-width: 800px; 
+            margin-bottom: 0;
+            color: var(--clr-text-light);
+        }
+
+        .leistungsumfang-list,
+        .zertifizierungen-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: var(--space-md);
+            font-size: 1.05rem;
+        }
+        .leistungsumfang-list {
+            column-count: 1;
+        }
+        @media (min-width: 576px) {
+            .leistungsumfang-list {
+                column-count: 2;
+            }
+        }
+        @media (min-width: 992px) {
+            .leistungsumfang-list {
+                column-count: 3;
+            }
+        }
+        .leistungsumfang-list li,
+        .zertifizierungen-list li {
+            padding-left: 2em;
+            position: relative;
+            margin-bottom: var(--space-sm);
+        }
+        .leistungsumfang-list li::before,
+        .zertifizierungen-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--clr-primary);
+            font-weight: bold;
+            font-size: 1.2em;
+            top: -0.1em;
+        }
+        .zertifizierungen-list li {
+            font-weight: 500;
+        }
+
+
+        .beitraege-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Default to 1 column for cards */
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        .beitrag-card {
+            background-color: var(--clr-white);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-default);
+            display: flex; /* For image and content side-by-side */
+            flex-direction: column; /* Stack image and content on small screens */
+            overflow: hidden; /* Ensure rounded corners clip content */
+        }
+        @media (min-width: 768px) {
+            .beitrag-card {
+                flex-direction: row; /* Image and content side-by-side on larger screens */
+            }
+        }
+
+        .beitrag-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        .beitrag-card-image {
+            flex-shrink: 0;
+            width: 100%; /* Full width on small screens */
+        }
+        .beitrag-card-image img {
+            width: 100%;
+            height: 200px; /* Fixed height for consistency */
+            object-fit: cover;
+        }
+        @media (min-width: 768px) {
+            .beitrag-card-image {
+                width: 250px; /* Fixed width for image on larger screens */
+                height: auto; /* Auto height to maintain aspect ratio based on fixed width */
+            }
+             .beitrag-card-image img {
+                height: 100%; /* Fill the container height */
+             }
+        }
+
+
+        .beitrag-card-content {
+            padding: var(--space-md);
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .beitrag-card .beitrag-date {
+            font-size: 0.8rem;
+            color: #777;
+            margin-bottom: var(--space-xs);
+            display: block;
+        }
+        .beitrag-card h3 {
+            font-size: 1.15rem;
+            color: var(--clr-primary);
+            margin-top: 0;
+            margin-bottom: var(--space-xs);
+            line-height: 1.4;
+        }
+         .beitrag-card h3 a {
+            color: var(--clr-primary);
+         }
+         .beitrag-card h3 a:hover {
+            color: var(--clr-gradient-start);
+         }
+
+        .beitrag-card p {
+            font-size: 0.9rem;
+            margin-bottom: var(--space-sm);
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+        .beitrag-card .read-more {
+            color: var(--clr-primary);
+            font-weight: 600;
+            text-decoration: none; /* Remove underline by default */
+            display: inline-block;
+            margin-top: var(--space-xs);
+        }
+        .beitrag-card .read-more:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+        .beitrag-card .beitrag-leistungen {
+            font-size: 0.8rem;
+            color: #555;
+            margin-top: auto; 
+            padding-top: var(--space-sm);
+            border-top: 1px solid var(--clr-border);
+            line-height: 1.5;
+        }
+        .beitrag-card .beitrag-leistungen strong {
+            font-weight: 600;
+            color: var(--clr-secondary);
+        }
+        .beitrag-card.hidden-beitrag {
+            display: none;
+        }
+        #loadMoreBeitraegeBtn {
+            display: block;
+            margin: var(--space-lg) auto 0;
+        }
+
+
+        /* Footer (aus Hauptseite) */
+        .site-footer {
+            background: var(--clr-secondary);
+            color: var(--clr-text-light);
+            padding: var(--space-xl) 0 var(--space-lg);
+        }
+        .footer-grid { display: grid; gap: var(--space-md); }
+        @media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } }
+        @media (min-width: 1024px) { .footer-grid { grid-template-columns: repeat(5, 1fr); } } /* Matched Startpage */
+         @media (min-width: 1200px) { .footer-grid { grid-template-columns: repeat(5, 1fr); } }
+
+
+        .site-footer h4 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--clr-white);
+            margin-bottom: var(--space-sm);
+            font-size: 1.1rem;
+        }
+        .site-footer ul { list-style: none; padding-left: 0; margin: 0; }
+        .site-footer ul li { margin-bottom: var(--space-xs); }
+        .site-footer a { color: #ccc; text-decoration: none; }
+        .site-footer a:hover { color: var(--clr-white); text-decoration: underline; }
+        .site-footer address { font-style: normal; line-height: 1.7; color: #ccc; }
+        .site-footer address a { color: inherit; }
+        .site-footer address a:hover { color: var(--clr-white); }
+        
+        .footer-socials a {
+            display: inline-block; 
+            margin-right: var(--space-sm); 
+            font-size: 1.6rem; 
+            color: #ccc; 
+            text-decoration: none; 
+        }
+        .footer-socials a:last-child { margin-right: 0; }
+        .footer-socials a:hover { color: var(--clr-white); text-decoration: none;}
+
+        .footer-bottom {
+            text-align: center;
+            font-size: .9rem;
+            border-top: 1px solid rgba(255, 255, 255, .1);
+            margin-top: var(--space-lg);
+            padding-top: var(--space-lg);
+            color: #aaa;
+        }
+        .footer-bottom p { margin-bottom: var(--space-xs); }
+        .footer-bottom a { color: #ccc; }
+        .footer-bottom a:hover { color: var(--clr-white); }
+
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <img src="/IBB/static/images/logo.png" alt="Behringer & Partner Logo" loading="lazy">
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html#about">Über uns</a></li>
+                    <li><a href="index.html#news">Neuigkeiten</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="index.html#services">Leistungen <span class="dropdown-arrow">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="siedlungswasserwirtschaft.html" class="active-service-link">Siedlungswasserwirtschaft</a></li>
+                            <li><a href="index.html#service-strassen">Straßenbau & Brückenbau</a></li>
+                            <li><a href="index.html#service-fernwaerme">Fernwärme</a></li>
+                            <li><a href="index.html#service-hydraulik">Hydraulische Nachweise</a></li>
+                            <li><a href="index.html#service-bauland">Baulanderschließung</a></li>
+                            <li><a href="index.html#service-gis">Kommunales GIS</a></li>
+                            <li><a href="index.html#service-sanierung">Sanierungen</a></li>
+                            <li><a href="index.html#service-wasserbau">Wasserbau</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="index.html#company">Unternehmen <span class="dropdown-arrow">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html#company-team">Team</a></li>
+                            <li><a href="index.html#company-history">Firmengeschichte</a></li>
+                            <li><a href="index.html#company-jobs">Stellenangebote</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="index.html#contact" class="btn btn-primary">Kontakt</a></li>
+                </ul>
+            </nav>
+            <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+        </div>
+    </header>
+
+    <section class="service-hero">
+        <div class="hero-content">
+            <h1>Siedlungswasserwirtschaft</h1>
+            <p>Ihr Experte für Planung, Bau und Sanierung in allen Bereichen der Wasserver- und Abwasserentsorgung.</p>
+        </div>
+    </section>
+
+    <main>
+        <section id="leistungsumfang" class="section"> <!-- Weiß -->
+            <div class="container">
+                <h2 class="section-title">Leistungsumfang</h2>
+                <ul class="leistungsumfang-list">
+                    <li>Brunnenbau</li>
+                    <li>Hochbehälter</li>
+                    <li>Wasserversorgungsnetze</li>
+                    <li>Trinkwasseraufbereitung</li>
+                    <li>Kläranlagen</li>
+                    <li>Abwasserentsorgungsnetze</li>
+                    <li>Regenwasserbewirtschaftung</li>
+                    <li>Hydraulische Berechnungen</li>
+                    <li>Schmutzfrachtberechnungen</li>
+                    <li>Sanierungen</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="zertifizierungen" class="section bg-alternate"> <!-- Hellgrau -->
+            <div class="container">
+                <h2 class="section-title">Zertifizierungen</h2>
+                <ul class="zertifizierungen-list">
+                    <li>DWA geprüfter Fachplaner Starkregenvorsorge</li>
+                    <!-- Weitere Zertifikate könnten hier folgen -->
+                </ul>
+            </div>
+        </section>
+
+        <section id="beitraege" class="section"> <!-- Weiß -->
+            <div class="container">
+                <h2 class="section-title">Referenzprojekte Siedlungswasserwirtschaft</h2>
+                <p class="section-subtitle">Ausgewählte Projekte und Beiträge aus dem Bereich Siedlungswasserwirtschaft.</p>
+                
+                <div class="beitraege-grid">
+                    <article class="beitrag-card">
+                        <div class="beitrag-card-image">
+                            <a href="#"><img src="https://via.placeholder.com/270x180.png?text=Projektbild" alt="Erschließung Neubaugebiet Am Unterfeld"></a>
+                        </div>
+                        <div class="beitrag-card-content">
+                            <span class="beitrag-date">22. August 2023</span>
+                            <h3><a href="#">Erschließung Neubaugebiet Am Unterfeld</a></h3>
+                            <p>In der Gemeinde Obertaufkirchen enstehen im Ortsteil Oberornau 18 Bauparzellen für Wohnbebauung. Insgesamt werden für die Erschließung ca. 365 m Schmutzwasserkanal, 425 m Regenwasserkanal und 475 m Hauptwasserleitung hergestellt. Als Regenrückhaltebecken w... <a href="#" class="read-more">(mehr)</a></p>
+                            <div class="beitrag-leistungen">
+                                <strong>Leistungen:</strong> Baulanderschließung, Siedlungswasserwirtschaft, Straßenbau & Brückenbau
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="beitrag-card">
+                        <div class="beitrag-card-image">
+                             <a href="#"><img src="https://via.placeholder.com/270x180.png?text=Projektbild" alt="Regenüberlauf Hummel in Massing"></a>
+                        </div>
+                        <div class="beitrag-card-content">
+                            <span class="beitrag-date">20. August 2023</span>
+                            <h3><a href="#">Regenüberlauf Hummel in Massing</a></h3>
+                            <p>In der Vergangenheit haben sich im Kanalnetz des Marktes Massing bereits diverse hydraulische Überlastungen in Form von Überstau gezeigt. An Hand einer hydraulischen Überrechnung des Kanalnetzes wurden Lösungen aufgezeigt, um die Problemstellen in den Grif... <a href="#" class="read-more">(mehr)</a></p>
+                            <div class="beitrag-leistungen">
+                                <strong>Leistungen:</strong> Hydraulische Nachweise, Siedlungswasserwirtschaft
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="beitrag-card hidden-beitrag">
+                        <div class="beitrag-card-image">
+                            <a href="#"><img src="https://via.placeholder.com/270x180.png?text=Projektbild" alt="Umbau der Kläranlagen Wittibreut und Ulbering"></a>
+                        </div>
+                        <div class="beitrag-card-content">
+                            <span class="beitrag-date">26. Juli 2021</span>
+                            <h3><a href="#">Umbau der Kläranlagen Wittibreut und Ulbering</a></h3>
+                            <p>Die Gemeinde entschied sich aus wirtschaftlichen Gründen die Kläranalage in Wittibreut aufzulassen und das Abwasser über eine 3,6 km lange Druckleitung an die Kläranlage des Ortsteils Ulbering einzuleiten. An der Kläranlage Wittibreut wird eine Pumpsta... <a href="#" class="read-more">(mehr)</a></p>
+                            <div class="beitrag-leistungen">
+                                <strong>Leistungen:</strong> Siedlungswasserwirtschaft
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="beitrag-card hidden-beitrag">
+                        <div class="beitrag-card-image">
+                            <a href="#"><img src="https://via.placeholder.com/270x180.png?text=Projektbild" alt="Wasserversorgung Unterzarnham"></a>
+                        </div>
+                        <div class="beitrag-card-content">
+                            <span class="beitrag-date">22. Januar 2021</span>
+                            <h3><a href="#">Wasserversorgung Unterzarnham</a></h3>
+                            <p>In der Gemeinde Unterreit wird der Ort Unterzarnham an das öffentliche Wasserversorgungsnetz des Wasserzweckverbandes der Taufkirchner Gruppe angeschlossen. Die Wasserhauptleitung wird auf einer Länge von ca. 2,1 km vom Bestand an der Staatsstraße 2092 bis... <a href="#" class="read-more">(mehr)</a></p>
+                            <div class="beitrag-leistungen">
+                                <strong>Leistungen:</strong> Siedlungswasserwirtschaft
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="beitrag-card hidden-beitrag">
+                        <div class="beitrag-card-image">
+                            <a href="#"><img src="https://via.placeholder.com/270x180.png?text=Projektbild" alt="Erschließung Neubaugebiet an der Eichkapelle"></a>
+                        </div>
+                        <div class="beitrag-card-content">
+                            <span class="beitrag-date">20. November 2020</span>
+                            <h3><a href="#">Erschließung Neubaugebiet an der Eichkapelle</a></h3>
+                            <p>In der Stadt Mühldorf enstehen im Rahmen dieses Projektes insgesamt 67 Bauparzellen für Einfamilienhäuser und diverse Parzellen für Reihen- und Mehrfamilienhäuser auf einer Gesamtfläche von ca. 9,7 Hektar. Für die Erschließung werden ca. 1.300 m Schmut... <a href="#" class="read-more">(mehr)</a></p>
+                            <div class="beitrag-leistungen">
+                                <strong>Leistungen:</strong> Baulanderschließung, Siedlungswasserwirtschaft, Straßenbau & Brückenbau
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article class="beitrag-card hidden-beitrag">
+                        <div class="beitrag-card-image">
+                            <a href="#"><img src="https://via.placeholder.com/270x180.png?text=Projektbild" alt="Sanierung Ludwig-der-Bayer-Straße"></a>
+                        </div>
+                        <div class="beitrag-card-content">
+                            <span class="beitrag-date">13. Dezember 2019</span>
+                            <h3><a href="#">Sanierung Ludwig-der-Bayer-Straße</a></h3>
+                            <p>In der Gemeinde Mettenheim erfolgt aktuell der erste Bauabschnitt für die Sanierung der Ludwig-der-Bayer-Straße in Metteheim-Hart. Neben der Sanierung der Kanalisation sowohl durch Innensanierung als auch durch Neubau, wird die komplette Wasserversorgung ern... <a href="#" class="read-more">(mehr)</a></p>
+                            <div class="beitrag-leistungen">
+                                <strong>Leistungen:</strong> Sanierungen, Siedlungswasserwirtschaft, Straßenbau & Brückenbau
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="beitrag-card hidden-beitrag">
+                        <div class="beitrag-card-image">
+                             <a href="#"><img src="https://via.placeholder.com/270x180.png?text=Projektbild" alt="Erschließung Neubaugebiet Kumpfmühle"></a>
+                        </div>
+                        <div class="beitrag-card-content">
+                            <span class="beitrag-date">13. Dezember 2019</span>
+                            <h3><a href="#">Erschließung Neubaugebiet Kumpfmühle</a></h3>
+                            <p>Im Markt Kraiburg enstehen im Rahmen dieses Projektes insgesamt 20 Bauparzellen. Insgesamt werden für die Erschließung ca. 370 m Schmutzwasserkanal, 320 m Regenwasserkanal und 520 m Hauptwasserleitung hergestellt. Als Regenrückhaltebecken wird ein unterirdi... <a href="#" class="read-more">(mehr)</a></p>
+                            <div class="beitrag-leistungen">
+                                <strong>Leistungen:</strong> Baulanderschließung, Siedlungswasserwirtschaft, Straßenbau & Brückenbau
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="beitrag-card hidden-beitrag">
+                        <div class="beitrag-card-image">
+                            <a href="#"><img src="https://via.placeholder.com/270x180.png?text=Projektbild" alt="Fernwärme Erschließung Waldkraiburg West"></a>
+                        </div>
+                        <div class="beitrag-card-content">
+                            <span class="beitrag-date">08. Januar 2019</span>
+                            <h3><a href="#">Fernwärme Erschließung Waldkraiburg West</a></h3>
+                            <p>Nach Inbetriebnahme der Geothermiequelle ist es Ziel der Stadtwerke Waldkraiburg GmbH, die Stadt Waldkraiburg durch die Installation eines umfassenden Fernwärmenetzes wärmetechnisch zu erschließen. In diesem Abschnitt wurden im Jahr 2018 insgesamt ca. 2.200... <a href="#" class="read-more">(mehr)</a></p>
+                            <div class="beitrag-leistungen">
+                                <strong>Leistungen:</strong> Siedlungswasserwirtschaft
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="beitrag-card hidden-beitrag">
+                        <div class="beitrag-card-image">
+                             <a href="#"><img src="https://via.placeholder.com/270x180.png?text=Projektbild" alt="Neubaugebiet Gründl West"></a>
+                        </div>
+                        <div class="beitrag-card-content">
+                            <span class="beitrag-date">18. Dezember 2018</span>
+                            <h3><a href="#">Neubaugebiet Gründl West</a></h3>
+                            <p>Die Gemeinde Polling hat auf einer Fläche von ca. 1,6 Hektar 15 Bauparzellen in Gründl, Gemeinde Polling erschlossen. Neben den Verkehrswegen auf Grundlage des Bebauungsplans wurde auch die Schmutz- und Regenwasserbeseitigung incl. Sickerbecken und die Wasse... <a href="#" class="read-more">(mehr)</a></p>
+                            <div class="beitrag-leistungen">
+                                <strong>Leistungen:</strong> Baulanderschließung, Siedlungswasserwirtschaft, Straßenbau & Brückenbau
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="beitrag-card hidden-beitrag">
+                        <div class="beitrag-card-image">
+                           <a href="#"><img src="https://via.placeholder.com/270x180.png?text=Projektbild" alt="Urbane Sturzfluten Markt Buchbach"></a>
+                        </div>
+                        <div class="beitrag-card-content">
+                            <span class="beitrag-date">24. November 2017</span>
+                            <h3><a href="#">Urbane Sturzfluten Markt Buchbach</a></h3>
+                            <p>Ziel der Starkregensimulation ist es für den Ortsbereich des Marktes Buchbach aufzuzeigen, welche Gebiete und Anwesen bei einer urbanen Sturzflut aktuell betroffen sind. Zum einen dienen die Ergebnisse der Bürgerinformation. Zum anderen können auch Gefahren... <a href="#" class="read-more">(mehr)</a></p>
+                            <div class="beitrag-leistungen">
+                                <strong>Leistungen:</strong> Hydraulische Nachweise, Siedlungswasserwirtschaft
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <button id="loadMoreBeitraegeBtn" class="btn btn-primary">Weitere Projekte anzeigen</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html#about">Über uns</a></li>
+                    <li><a href="index.html#news">Neuigkeiten</a></li>
+                    <li><a href="index.html#services">Leistungen</a></li>
+                    <li><a href="index.html#company">Unternehmen</a></li>
+                    <li><a href="index.html#contact">Kontakt</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Leistungen</h4>
+                <ul>
+                    <li><a href="siedlungswasserwirtschaft.html">Siedlungswasserwirtschaft</a></li>
+                    <li><a href="index.html#service-strassen">Straßenbau & Brückenbau</a></li>
+                    <li><a href="index.html#service-fernwaerme">Fernwärme</a></li>
+                    <li><a href="index.html#service-hydraulik">Hydraulische Nachweise</a></li>
+                    <li><a href="index.html#service-bauland">Baulanderschließung</a></li>
+                    <li><a href="index.html#service-gis">Kommunales GIS</a></li>
+                    <li><a href="index.html#service-sanierung">Sanierungen</a></li>
+                    <li><a href="index.html#service-wasserbau">Wasserbau</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Kontakt</h4>
+                <address>
+                    Behringer & Partner mbB<br>
+                    Luitpoldallee 32<br>
+                    D-84453 Mühldorf a. Inn<br>
+                    <a href="tel:+4986319867900">Tel: +49 8631 98679-00</a><br>
+                    <a href="mailto:info@ib-behringer.de">E-Mail: info@ib-behringer.de</a>
+                </address>
+            </div>
+            <div>
+                <h4>Rechtliches</h4>
+                <ul>
+                    <li><a href="impressum.html">Impressum</a></li> <!-- Annahme: separate Seiten -->
+                    <li><a href="datenschutz.html">Datenschutz</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Folgen Sie uns</h4>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/ibb_mue/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+                 <h4 style="margin-top: 1.5rem;">Wir unterstützen</h4>
+                 <p style="margin-bottom: var(--space-xs); line-height: 1.4;">
+                    <a href="maedchenschule-chato.html">Mädchenschule Chato, Tansania</a>
+                 </p>
+                 <a href="maedchenschule-chato.html">
+                    <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2022/12/Suedansicht-2-150x150.jpg" alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© <span id="current-year">2024</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
+            <p><a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navList = document.querySelector('.main-nav .nav-list');
+            const siteHeader = document.querySelector('.site-header');
+
+            // 1. Main Navigation Toggle (Hamburger)
+            if (navToggle && navList) {
+                navToggle.addEventListener('click', () => {
+                    const isOpen = navList.classList.toggle('open');
+                    navToggle.setAttribute('aria-expanded', isOpen);
+                    navToggle.innerHTML = isOpen ? '×' : '☰';
+                     if (!isOpen) { // Close submenus when main nav closes
+                        navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
+                        navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
+                    }
+                });
+            }
+            
+            // 2. Mobile Dropdown Submenu Toggle
+            const dropdownToggles = navList ? navList.querySelectorAll('.nav-item.dropdown > a, .nav-item.dropdown > span') : [];
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', function(event) {
+                    // Only prevent default and toggle for mobile view if it's a dropdown toggle
+                    if (navToggle && window.getComputedStyle(navToggle).display !== 'none') {
+                        // Check if the clicked element is a dropdown toggle (has a dropdown-arrow sibling or is a span)
+                        const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
+                        if (hasArrow) {
+                            event.preventDefault(); 
+                            const submenu = this.parentElement.querySelector('.dropdown-menu');
+                            if (submenu) submenu.classList.toggle('submenu-open');
+                            this.classList.toggle('active'); // For rotating the arrow
+                        }
+                    }
+                });
+            });
+
+
+            // 3. Smooth Scroll for on-page anchors & Close mobile nav
+             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    // Ensure it's an on-page anchor and not just "#"
+                    if (href.length > 1 && href.startsWith('#')) {
+                        const targetElement = document.querySelector(href);
+                        if (targetElement) {
+                            e.preventDefault();
+                            let headerOffset = siteHeader ? siteHeader.offsetHeight : 0;
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+
+                            // Close mobile nav if open and the link is in the nav
+                            if (navList && navList.classList.contains('open') && this.closest('.nav-list')) {
+                                navList.classList.remove('open');
+                                navToggle.setAttribute('aria-expanded', 'false');
+                                navToggle.innerHTML = '☰';
+                                navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
+                                navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
+                            }
+                        }
+                    } else if (href === '#' && this.closest('.nav-list.open')) { // Handle case where a dropdown toggle (href="#") is clicked in mobile
+                        e.preventDefault(); // Prevent jumping to top
+                         // Logic for mobile dropdown toggle is handled in section 2
+                    }
+                });
+            });
+            
+            // "Weitere Projekte anzeigen" Button
+            const loadMoreBtn = document.getElementById('loadMoreBeitraegeBtn');
+            if (loadMoreBtn) {
+                const hiddenBeitraege = document.querySelectorAll('.beitrag-card.hidden-beitrag');
+                if (hiddenBeitraege.length === 0) {
+                    loadMoreBtn.style.display = 'none'; // Hide button if no hidden items
+                } else {
+                    loadMoreBtn.addEventListener('click', () => {
+                        hiddenBeitraege.forEach(beitrag => {
+                            beitrag.classList.remove('hidden-beitrag');
+                            // beitrag.style.display = 'flex'; // or 'block' depending on your .beitrag-card default
+                        });
+                        loadMoreBtn.style.display = 'none'; // Hide button after loading
+                    });
+                }
+            }
+            
+            // Update current year in footer
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>
