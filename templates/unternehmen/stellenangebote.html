@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stellenangebote - Behringer & Partner</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* css/styles.css */
+        /* 1. Basis & Variablen */
+        :root {
+            --clr-primary: #005a9c;
+            --clr-secondary: #333;
+            --clr-accent: #007bff;
+            /* Eine Akzentfarbe, falls benötigt */
+            --clr-bg: #fff;
+            --clr-bg-alt: #f7f7f7;
+            --clr-gradient-start: #004a80;
+            --clr-gradient-end: #006bb3;
+            --clr-white: #fff;
+            --clr-text-light: #f1f1f1;
+            /* Für hellen Text auf dunklem Hintergrund */
+            --clr-border: #e0e0e0;
+            /* Für allgemeine Ränder */
+
+            --font-sans: 'Open Sans', sans-serif;
+            --font-heading: 'Montserrat', sans-serif;
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space: 1.5rem;
+            --space-md: 2rem;
+            --space-lg: 3rem;
+            --space-xl: 4rem;
+
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            /* Für größere Elemente ggf. */
+
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 5px 10px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.15);
+            /* Stärkerer Schatten für Hervorhebungen */
+
+            --transition-default: all 0.3s ease-in-out;
+            /* Einheitlicher Übergang */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 100%;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--clr-secondary);
+            line-height: 1.7;
+            background: var(--clr-bg);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--clr-primary);
+            transition: var(--transition-default);
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: var(--clr-gradient-start);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-heading);
+            color: var(--clr-secondary);
+            margin-bottom: var(--space-sm);
+            line-height: 1.3;
+        }
+
+        /* 2. Container */
+        .container {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--space);
+            padding-right: var(--space);
+        }
+
+        /* 3. Header */
+        .site-header {
+            background: var(--clr-white);
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-sm) 0;
+        }
+
+        .logo img {
+            display: block;
+            max-height: 80px;
+            width: auto;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: var(--space-md);
+            align-items: center;
+        }
+
+        .nav-list>li>a,
+        .nav-list>li>span {
+            font-weight: 600;
+            color: var(--clr-secondary);
+            padding: var(--space-xs) 0;
+            transition: color .2s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav-list>li>a:not(.btn)::after,
+        .nav-list>li>span::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--clr-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-list>li>a:hover::after,
+        .nav-list>li>span:hover::after {
+            width: 100%;
+        }
+
+        .nav-list>li>a:hover,
+        .nav-list>li>span:hover {
+            color: var(--clr-primary);
+        }
+
+        .nav-list>li>a.btn {
+            color: var(--clr-white);
+            padding: 10px;
+        }
+        
+        .nav-list>li>a.btn:hover {
+            color: var(--clr-white);
+            background: var(--clr-gradient-start);
+        }
+
+        .nav-list>li>a.btn::after {
+            display: none;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--clr-secondary);
+            cursor: pointer;
+            padding: var(--space-xs);
+        }
+
+        .nav-item.dropdown {
+            position: relative;
+        }
+
+        .dropdown-arrow {
+            font-size: 0.7em;
+            margin-left: 0.4em;
+            transition: transform 0.25s ease-in-out;
+        }
+
+        .nav-item.dropdown:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+        
+        .nav-item.dropdown>a.active .dropdown-arrow,
+        .nav-item.dropdown>span.active .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            list-style: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--clr-white);
+            border: 1px solid var(--clr-border);
+            box-shadow: var(--shadow-md);
+            border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+            padding: var(--space-xs) 0;
+            min-width: 240px;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+        }
+
+        .nav-item.dropdown:hover>.dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 0.75rem var(--space-sm);
+            font-weight: 500;
+            color: var(--clr-secondary);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: var(--clr-bg-alt);
+            color: var(--clr-primary);
+        }
+
+        @media (max-width: 992px) {
+            .header-inner { padding: var(--space-sm) var(--space); }
+            .logo img { max-height: 50px; }
+            .nav-list {
+                display: none; position: absolute; top: 100%; left: 0; right: 0; width: 100%;
+                flex-direction: column; background: var(--clr-white); padding: var(--space);
+                box-shadow: var(--shadow-lg); gap: 0; align-items: flex-start;
+            }
+            .nav-list.open { display: flex; max-height: calc(100vh - 70px); overflow-y: auto; -webkit-overflow-scrolling: touch;}
+            .nav-toggle { display: block; }
+            .nav-item.dropdown .dropdown-menu {
+                position: static; opacity: 0; visibility: visible; transform: none; box-shadow: none;
+                border: none; padding-left: var(--space); padding-top: 0; padding-bottom: 0;
+                min-width: auto; background-color: transparent; max-height: 0; overflow: hidden;
+                transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, margin-top 0.3s ease-in-out, margin-bottom 0.3s ease-in-out;
+            }
+            .nav-item.dropdown .dropdown-menu.submenu-open {
+                opacity: 1; max-height: 500px; margin-top: var(--space-xs); margin-bottom: var(--space-xs);
+            }
+            .nav-item.dropdown .dropdown-menu li a { padding: var(--space-xs) 0; font-weight: normal; }
+            .nav-item.dropdown .dropdown-menu li a:hover { background-color: transparent; color: var(--clr-primary); }
+            .nav-list>li>a, .nav-list>li>span {
+                padding: var(--space-sm) 0; width: 100%; display: flex; justify-content: space-between; align-items: center;
+            }
+            .nav-list>li:not(:last-child)>a, .nav-list>li:not(:last-child)>span { border-bottom: 1px solid var(--clr-border); }
+            .nav-list>li>a.btn { display: inline-block; width: auto; margin-top: var(--space-sm); padding: .75rem 1.5rem !important; }
+            .nav-list>li>a:not(.btn)::after, .nav-list>li>span::after { display: none; }
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block; text-decoration: none; font-weight: 600;
+            padding: 0.85rem var(--space-md); border-radius: var(--radius-sm);
+            transition: var(--transition-default); border: 1px solid transparent;
+            cursor: pointer; text-align: center;
+        }
+        .btn-primary { background: var(--clr-primary); color: var(--clr-white); }
+        .btn-primary:hover { background: var(--clr-gradient-start); color: var(--clr-white); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+        .btn-secondary { background: var(--clr-white); color: var(--clr-primary); border-color: var(--clr-border); }
+        .btn-secondary:hover { background: var(--clr-bg-alt); color: var(--clr-primary); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+        .btn-sm { padding: 0.6rem var(--space-sm); font-size: 0.9rem; }
+
+        /* 5. Sektionen Basis */
+        .section { padding: var(--space-lg) 0; }
+        @media (min-width: 768px) { .section { padding: var(--space-xl) 0; } }
+        .section.bg-alternate { background: var(--clr-bg-alt); }
+        .section-title, .section h2 {
+            font-family: var(--font-heading); font-size: clamp(1.75rem, 4vw, 2.25rem);
+            text-align: center; margin-bottom: var(--space-sm); color: var(--clr-secondary);
+        }
+        .section-title.text-left, .section h2.text-left { text-align: left; }
+        .section-subtitle {
+            font-size: clamp(1rem, 2vw, 1.125rem); text-align: center; color: #666;
+            margin-bottom: var(--space-lg); max-width: 700px; margin-left: auto; margin-right: auto;
+        }
+
+        /* Subpage Header */
+        .page-header-section {
+            padding-top: var(--space-md); padding-bottom: var(--space-md);
+            background-color: var(--clr-bg-alt); border-bottom: 1px solid var(--clr-border);
+        }
+        .page-title {
+            font-size: clamp(2rem, 5vw, 2.75rem); color: var(--clr-primary);
+            margin-top: var(--space-sm); margin-bottom: 0;
+        }
+        .breadcrumbs {
+            font-size: 0.9rem; color: #555; margin-bottom: var(--space-xs);
+        }
+        .breadcrumbs a { color: var(--clr-primary); text-decoration: none; }
+        .breadcrumbs a:hover { text-decoration: underline; }
+        .breadcrumbs .arrow { margin: 0 0.4em; color: #777; }
+
+        /* Stellenangebote Page Specific Styles */
+        .stellenangebote-section .container {
+            max-width: 800px; /* Good width for single column content */
+        }
+
+        .job-posting {
+            background-color: var(--clr-white);
+            border: 2px solid var(--clr-primary); /* Using primary color from original style */
+            border-radius: var(--radius-lg); /* Original had 10px */
+            padding: var(--space-md);
+            margin-bottom: var(--space-lg);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-default);
+            text-align: center; /* Center content inside the card */
+        }
+        .job-posting:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .job-posting .availability {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--clr-secondary);
+            margin-bottom: var(--space-xs);
+            display: block;
+        }
+
+        .job-posting .job-title {
+            font-size: 1.75rem; /* Original had medium-font-size, this is an equivalent */
+            font-weight: 700;
+            color: var(--clr-primary);
+            margin-bottom: var(--space-sm);
+            display: block; /* Make it a block to take full width */
+            text-decoration: none; /* Remove default link underline */
+        }
+        .job-posting .job-title:hover {
+            color: var(--clr-gradient-start);
+            text-decoration: underline; /* Add underline on hover for clarity */
+        }
+        
+        .job-application-info {
+            margin-top: var(--space-lg);
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        .job-application-info p {
+            margin-bottom: var(--space-sm);
+        }
+        .job-application-info strong {
+            color: var(--clr-primary);
+        }
+
+
+        /* Footer */
+        .site-footer {
+            background: var(--clr-secondary); color: var(--clr-text-light);
+            padding: var(--space-xl) 0 var(--space-lg);
+        }
+        .footer-grid { display: grid; gap: var(--space-md); }
+        @media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } }
+        @media (min-width: 1024px) { .footer-grid { grid-template-columns: repeat(5, 1fr); } }
+        .site-footer h4 {
+            font-family: var(--font-heading); font-weight: 600; color: var(--clr-white);
+            margin-bottom: var(--space-sm); font-size: 1.1rem;
+        }
+        .site-footer ul { list-style: none; padding-left: 0; margin: 0; }
+        .site-footer ul li { margin-bottom: var(--space-xs); }
+        .site-footer a { color: #ccc; text-decoration: none; }
+        .site-footer a:hover { color: var(--clr-white); text-decoration: underline; }
+        .site-footer address { font-style: normal; line-height: 1.7; color: #ccc; }
+        .site-footer address a { color: inherit; }
+        .site-footer address a:hover { color: var(--clr-white); }
+        .footer-socials a {
+            display: inline-block; margin-right: var(--space-sm); font-size: 1.6rem;
+            color: #ccc; text-decoration: none;
+        }
+        .footer-socials a:last-child { margin-right: 0; }
+        .footer-socials a:hover { color: var(--clr-white); text-decoration: none; }
+        .footer-bottom {
+            text-align: center; font-size: .9rem; border-top: 1px solid rgba(255, 255, 255, .1);
+            margin-top: var(--space-lg); padding-top: var(--space-lg); color: #aaa;
+        }
+        .footer-bottom p { margin-bottom: var(--space-xs); }
+        .footer-bottom a { color: #ccc; }
+        .footer-bottom a:hover { color: var(--clr-white); }
+
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <img src="/IBB/static/images/logo.png" alt="Behringer & Partner Logo" loading="lazy">
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html#about">Über uns</a></li>
+                    <li><a href="index.html#news">Neuigkeiten</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="index.html#services">Leistungen <span class="dropdown-arrow">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html#service-siedlung">Siedlungswasserwirtschaft</a></li>
+                            <li><a href="index.html#service-strassen">Straßenbau & Brückenbau</a></li>
+                            <li><a href="index.html#service-fernwaerme">Fernwärme</a></li>
+                            <li><a href="hydraulische-nachweise.html">Hydraulische Nachweise</a></li>
+                            <li><a href="baulanderschliessung.html">Baulanderschließung</a></li>
+                            <li><a href="kommunales-gis.html">Kommunales GIS</a></li>
+                            <li><a href="sanierungen.html">Sanierungen</a></li>
+                            <li><a href="wasserbau.html">Wasserbau</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="index.html#company">Unternehmen <span class="dropdown-arrow">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="team.html">Team</a></li>
+                            <li><a href="index.html#company-history">Firmengeschichte</a></li>
+                            <li><a href="netzwerk.html">Netzwerk</a></li>
+                            <li><a href="stellenangebote.html">Stellenangebote</a></li> <!-- Link to this page -->
+                        </ul>
+                    </li>
+                    <li><a href="index.html#contact" class="btn btn-primary">Kontakt</a></li>
+                </ul>
+            </nav>
+            <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header-section">
+            <div class="container">
+                <div id="breadcrumbs" class="breadcrumbs">
+                    <a href="index.html#company" title="Unternehmen">Unternehmen</a>
+                    <span class="arrow">-></span>
+                    <span>Stellenangebote</span>
+                </div>
+                <h1 class="page-title">Aktuelle Stellenangebote</h1>
+            </div>
+        </section>
+
+        <section class="section stellenangebote-section">
+            <div class="container">
+                
+                <div class="job-posting">
+                    <span class="availability">Ab sofort</span>
+                    <a href="https://www.ib-behringer.de/bauzeichner-m-w-d/" class="job-title" target="_blank" rel="noopener">Bauzeichner m/w/d</a>
+                </div>
+
+                <div class="job-posting">
+                    <span class="availability">Ab Oktober 2025</span>
+                    <a href="https://www.ib-behringer.de/duales-studium-bauingenieurwesen/" class="job-title" target="_blank" rel="noopener">Duales Studium Bauingenieurwesen</a>
+                </div>
+
+                <div class="job-posting">
+                    <span class="availability">Ab August / September 2025</span>
+                    <!-- Note: The original link was split. Assuming it's for AZUBI CAD. -->
+                    <a href="https://www.ib-behringer.de/azubi-cad/" class="job-title" target="_blank" rel="noopener">AZUBI CAD m/w/d</a>
+                </div>
+                
+                <div class="job-posting">
+                    <span class="availability">Ab März 2025</span>
+                    <a href="https://www.ib-behringer.de/buerokraft-m-w-d/" class="job-title" target="_blank" rel="noopener">Bürokraft m/w/d</a>
+                </div>
+
+                <div class="job-application-info">
+                    <p>Interessiert? Wir freuen uns auf Ihre aussagekräftige Bewerbung!</p>
+                    <p>Senden Sie Ihre Unterlagen bitte per E-Mail an:<br>
+                        <a href="mailto:info@ib-behringer.de"><strong>info@ib-behringer.de</strong></a>
+                    </p>
+                    <p>oder per Post an:<br>
+                        <strong>Ingenieurbüro Behringer & Partner mbB</strong><br>
+                        Luitpoldallee 32<br>
+                        D-84453 Mühldorf a. Inn
+                    </p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html#about">Über uns</a></li>
+                    <li><a href="index.html#news">Neuigkeiten</a></li>
+                    <li><a href="index.html#services">Leistungen</a></li>
+                    <li><a href="index.html#company">Unternehmen</a></li>
+                    <li><a href="index.html#contact">Kontakt</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Leistungen</h4>
+                <ul>
+                    <li><a href="index.html#service-siedlung">Siedlungswasserwirtschaft</a></li>
+                    <li><a href="index.html#service-strassen">Straßenbau & Brückenbau</a></li>
+                    <li><a href="index.html#service-fernwaerme">Fernwärme</a></li>
+                    <li><a href="hydraulische-nachweise.html">Hydraulische Nachweise</a></li>
+                    <li><a href="baulanderschliessung.html">Baulanderschließung</a></li>
+                    <li><a href="kommunales-gis.html">Kommunales GIS</a></li>
+                    <li><a href="sanierungen.html">Sanierungen</a></li>
+                    <li><a href="wasserbau.html">Wasserbau</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Kontakt</h4>
+                <address>
+                    Behringer & Partner mbB<br>
+                    Luitpoldallee 32<br>
+                    D-84453 Mühldorf a. Inn<br>
+                    <a href="tel:+4986319867900">Tel: +49 8631 98679-00</a><br>
+                    <a href="mailto:info@ib-behringer.de">E-Mail: info@ib-behringer.de</a>
+                </address>
+            </div>
+            <div>
+                <h4>Rechtliches</h4>
+                <ul>
+                    <li><a href="#impressum">Impressum</a></li> 
+                    <li><a href="#datenschutz">Datenschutz</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Folgen Sie uns</h4>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/ibb_mue/" target="_blank" rel="noopener" aria-label="Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                </div>
+                <h4 style="margin-top: 1.5rem;">Wir unterstützen</h4>
+                <p style="margin-bottom: var(--space-xs); line-height: 1.4;">
+                    <a href="maedchenschule-chato.html">Mädchenschule Chato, Tansania</a>
+                </p>
+                <a href="maedchenschule-chato.html">
+                    <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2022/12/Suedansicht-2-150x150.jpg"
+                        alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© <span id="current-year">2024</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
+            <p><a href="#impressum">Impressum</a> | <a href="#datenschutz">Datenschutz</a></p> 
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navList = document.querySelector('.main-nav .nav-list');
+            const siteHeader = document.querySelector('.site-header');
+
+            if (navToggle && navList) {
+                navToggle.addEventListener('click', () => {
+                    const isOpen = navList.classList.toggle('open');
+                    navToggle.setAttribute('aria-expanded', isOpen);
+                    navToggle.innerHTML = isOpen ? '×' : '☰';
+                    if (!isOpen) {
+                        navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
+                        navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
+                    }
+                });
+            }
+
+            const dropdownToggles = navList ? navList.querySelectorAll('.nav-item.dropdown > a, .nav-item.dropdown > span') : [];
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', function (event) {
+                    if (navToggle && window.getComputedStyle(navToggle).display !== 'none') {
+                        const hasSubmenu = this.parentElement.querySelector('.dropdown-menu');
+                        if (hasSubmenu) { 
+                            event.preventDefault();
+                            const submenu = this.parentElement.querySelector('.dropdown-menu');
+                            if (submenu) submenu.classList.toggle('submenu-open');
+                            this.classList.toggle('active');
+                        }
+                    }
+                });
+            });
+            
+            document.querySelectorAll('a[href^="#"], a[href^="index.html#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    let fullHref = this.getAttribute('href');
+                    let targetHref = fullHref.includes('#') ? '#' + fullHref.split('#')[1] : fullHref;
+                    
+                    let targetPage = fullHref.split('#')[0];
+                    if (targetPage === "") targetPage = window.location.pathname.split('/').pop() || 'index.html'; 
+
+                    let currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+                    if (targetHref.startsWith('#') && targetHref.length > 1 && (targetPage === currentPage || (targetPage === "index.html" && currentPage === ""))) {
+                        const targetElement = document.querySelector(targetHref);
+                        if (targetElement) {
+                            e.preventDefault();
+                            let headerOffset = siteHeader ? siteHeader.offsetHeight : 0;
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                        }
+                    } else if (fullHref === '#') { 
+                        e.preventDefault();
+                    }
+
+                    const isMobileView = navToggle && window.getComputedStyle(navToggle).display !== 'none';
+                    let isMobileDropdownToggleItself = false;
+                     if (isMobileView && this.parentElement && this.parentElement.classList.contains('dropdown') && this.closest('.nav-list') && this.querySelector('.dropdown-arrow')) {
+                        isMobileDropdownToggleItself = true;
+                    }
+
+                    if (isMobileView && navList && navList.classList.contains('open') && this.closest('.nav-list') && !isMobileDropdownToggleItself) {
+                        navList.classList.remove('open');
+                        if (navToggle) {
+                            navToggle.setAttribute('aria-expanded', 'false');
+                            navToggle.innerHTML = '☰';
+                        }
+                        navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
+                        navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
+                    }
+                });
+            });
+
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>
