@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fernwärme - Behringer & Partner</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        /* css/styles.css */
+        /* 1. Basis & Variablen */
+        :root {
+            --clr-primary: #005a9c;
+            --clr-secondary: #333;
+            --clr-accent: #007bff;
+            /* Eine Akzentfarbe, falls benötigt */
+            --clr-bg: #fff;
+            --clr-bg-alt: #f7f7f7;
+            --clr-gradient-start: #004a80;
+            --clr-gradient-end: #006bb3;
+            --clr-white: #fff;
+            --clr-text-light: #f1f1f1;
+            /* Für hellen Text auf dunklem Hintergrund */
+            --clr-border: #e0e0e0;
+            /* Für allgemeine Ränder */
+
+            --font-sans: 'Open Sans', sans-serif;
+            --font-heading: 'Montserrat', sans-serif;
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space: 1.5rem;
+            --space-md: 2rem;
+            --space-lg: 3rem;
+            --space-xl: 4rem;
+
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            /* Für größere Elemente ggf. */
+
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 5px 10px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.15);
+            /* Stärkerer Schatten für Hervorhebungen */
+
+            --transition-default: all 0.3s ease-in-out;
+            /* Einheitlicher Übergang */
+
+            /* Projektsektion Variablen (bereits vorhanden, überprüft) */
+            --clr-medium-blue: #0077cc;
+            --clr-light-blue: #3399e6;
+            --clr-project-bg: var(--clr-bg-alt);
+            --radius-card: var(--radius-md);
+            /* Konsolidiert mit globalen Radien */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            /* Smooth scroll für Ankerlinks */
+            font-size: 100%;
+            /* Basis für rem-Einheiten */
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--clr-secondary);
+            line-height: 1.7;
+            /* Etwas mehr Zeilenhöhe für bessere Lesbarkeit */
+            background: var(--clr-bg);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--clr-primary);
+            transition: var(--transition-default);
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: var(--clr-gradient-start);
+            /* Dunklerer Primärton beim Hover */
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-heading);
+            color: var(--clr-secondary);
+            margin-bottom: var(--space-sm);
+            line-height: 1.3;
+        }
+
+        /* 2. Container */
+        .container {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--space);
+            padding-right: var(--space);
+        }
+        
+        .container-narrow { /* Für Textblöcke, die nicht die volle Breite benötigen */
+            max-width: 800px; 
+        }
+
+
+        /* 3. Header */
+        .site-header {
+            background: var(--clr-white);
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-sm) 0;
+        }
+
+        .logo img {
+            display: block;
+            max-height: 60px;
+            width: auto;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: var(--space-md);
+            align-items: center;
+        }
+
+        .nav-list>li>a,
+        .nav-list>li>span {
+            font-weight: 600;
+            color: var(--clr-secondary);
+            padding: var(--space-xs) 0;
+            transition: color .2s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav-list>li>a:not(.btn)::after,
+        .nav-list>li>span::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--clr-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-list>li>a:hover::after,
+        .nav-list>li>span:hover::after {
+            width: 100%;
+        }
+
+
+        .nav-list>li>a:hover,
+        .nav-list>li>span:hover {
+            color: var(--clr-primary);
+        }
+
+        .nav-list>li>a.btn {
+            color: var(--clr-white);
+            padding: 10px;
+        }
+
+        .nav-list>li>a.btn:hover {
+            color: var(--clr-white);
+            background: var(--clr-gradient-start);
+        }
+
+        .nav-list>li>a.btn::after {
+            display: none;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--clr-secondary);
+            cursor: pointer;
+            padding: var(--space-xs);
+        }
+
+        .nav-item.dropdown {
+            position: relative;
+        }
+
+        .dropdown-arrow {
+            font-size: 0.7em;
+            margin-left: 0.4em;
+            transition: transform 0.25s ease-in-out;
+        }
+
+        .nav-item.dropdown:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            list-style: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--clr-white);
+            border: 1px solid var(--clr-border);
+            box-shadow: var(--shadow-md);
+            border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+            padding: var(--space-xs) 0;
+            min-width: 240px;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+        }
+
+        .nav-item.dropdown:hover>.dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 0.75rem var(--space-sm);
+            font-weight: 500;
+            color: var(--clr-secondary);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: var(--clr-bg-alt);
+            color: var(--clr-primary);
+        }
+
+        @media (max-width: 992px) {
+            .header-inner {
+                padding: var(--space-sm) var(--space);
+            }
+
+            .logo img {
+                max-height: 50px;
+            }
+
+            .nav-list {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                width: 100%;
+                flex-direction: column;
+                background: var(--clr-white);
+                padding: var(--space);
+                box-shadow: var(--shadow-lg);
+                gap: 0;
+                align-items: flex-start;
+            }
+
+            .nav-list.open {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-item.dropdown .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                padding-left: var(--space);
+                padding-top: var(--space-xs);
+                padding-bottom: var(--space-xs);
+                min-width: auto;
+                background-color: transparent;
+            }
+
+            .nav-item.dropdown .dropdown-menu li a {
+                padding: var(--space-xs) 0;
+                font-weight: normal;
+            }
+
+            .nav-list>li>a,
+            .nav-list>li>span {
+                padding: var(--space-sm) 0;
+                width: 100%;
+            }
+
+            .nav-list>li:not(:last-child)>a,
+            .nav-list>li:not(:last-child)>span {
+                border-bottom: 1px solid var(--clr-border);
+            }
+
+            .nav-list>li>a.btn {
+                display: inline-block;
+                width: auto;
+                margin-top: var(--space-sm);
+                padding: .75rem 1.5rem !important;
+            }
+
+            .nav-list>li>a:not(.btn)::after,
+            .nav-list>li>span::after {
+                display: none;
+            }
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.85rem var(--space-md);
+            border-radius: var(--radius-sm);
+            transition: var(--transition-default);
+            border: 1px solid transparent;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--clr-primary);
+            color: var(--clr-white);
+        }
+
+        .btn-primary:hover {
+            background: var(--clr-gradient-start);
+            color: var(--clr-white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-secondary {
+            background: var(--clr-white);
+            color: var(--clr-primary);
+            border-color: var(--clr-border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--clr-bg-alt);
+            color: var(--clr-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* 5. Sektionen Basis */
+        .section {
+            padding: var(--space-lg) 0;
+        }
+
+        @media (min-width: 768px) {
+            .section {
+                padding: var(--space-xl) 0;
+            }
+        }
+        
+        /* Greift, wenn eine .section die zweite .section nach einem .service-hero ist */
+        .service-hero + .section + .section {
+             background: var(--clr-bg-alt);
+        }
+        /* Wenn die erste Section nach dem Hero explizit bg-alternate hat, soll die zweite es nicht haben */
+        .service-hero + .section.bg-alternate + .section {
+            background: var(--clr-bg);
+        }
+
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            text-align: center;
+            margin-bottom: var(--space-sm);
+            color: var(--clr-secondary);
+        }
+
+        .section-subtitle {
+            font-size: clamp(1rem, 2vw, 1.125rem);
+            text-align: center;
+            color: #666;
+            margin-bottom: var(--space-lg);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .text-content p { /* Für reine Textabschnitte in Sektionen */
+            margin-bottom: var(--space);
+        }
+        .text-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Footer (aus Hauptseite) */
+        .site-footer {
+            background: var(--clr-secondary);
+            color: var(--clr-text-light);
+            padding: var(--space-xl) 0 var(--space-lg);
+        }
+        .footer-grid { display: grid; gap: var(--space-md); }
+        @media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } }
+        @media (min-width: 1024px) { .footer-grid { grid-template-columns: repeat(4, 1fr); } }
+        .site-footer h4 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--clr-white);
+            margin-bottom: var(--space-sm);
+            font-size: 1.1rem;
+        }
+        .site-footer ul { list-style: none; padding-left: 0; margin: 0; }
+        .site-footer ul li { margin-bottom: var(--space-xs); }
+        .site-footer a { color: #ccc; text-decoration: none; }
+        .site-footer a:hover { color: var(--clr-white); text-decoration: underline; }
+        .site-footer address { font-style: normal; line-height: 1.7; color: #ccc; }
+        .site-footer address a { color: inherit; }
+        .site-footer address a:hover { color: var(--clr-white); }
+        .footer-bottom {
+            text-align: center;
+            font-size: .9rem;
+            border-top: 1px solid rgba(255, 255, 255, .1);
+            margin-top: var(--space-lg);
+            padding-top: var(--space-lg);
+            color: #aaa;
+        }
+        .footer-bottom p { margin-bottom: var(--space-xs); }
+        .footer-bottom a { color: #ccc; }
+        .footer-bottom a:hover { color: var(--clr-white); }
+
+        /* STILE FÜR UNTERSEITEN (aus siedlungswasserwirtschaft.html übernommen) */
+        .service-hero { 
+            min-height: 35vh; 
+            padding: var(--space-lg) var(--space-sm);
+            background: linear-gradient(to bottom right, var(--clr-primary), var(--clr-gradient-end));
+            color: var(--clr-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: var(--space-lg); 
+        }
+        .service-hero .hero-content h1 {
+            font-size: clamp(2rem, 4.5vw, 2.8rem); 
+            color: var(--clr-white);
+            margin-bottom: var(--space-xs);
+        }
+        .service-hero .hero-content p {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            max-width: 800px; 
+            margin-bottom: 0;
+        }
+
+        .beitraege-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        .beitrag-card {
+            background-color: var(--clr-white);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-default);
+            display: flex;
+            flex-direction: column;
+        }
+        .beitrag-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        .beitrag-card .beitrag-date {
+            font-size: 0.85rem;
+            color: #777;
+            margin-bottom: var(--space-xs);
+            display: block;
+        }
+        .beitrag-card h3 {
+            font-size: 1.2rem;
+            color: var(--clr-primary);
+            margin-top: 0;
+            margin-bottom: var(--space-sm);
+            line-height: 1.4;
+        }
+        .beitrag-card p {
+            font-size: 0.95rem;
+            margin-bottom: var(--space-sm);
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+        .beitrag-card .read-more {
+            color: var(--clr-primary);
+            font-weight: 600;
+            text-decoration: underline;
+        }
+         .beitrag-card .read-more:hover {
+            text-decoration: none;
+         }
+        .beitrag-card .beitrag-leistungen {
+            font-size: 0.85rem;
+            color: var(--clr-secondary);
+            margin-top: auto; /* Push to bottom */
+            padding-top: var(--space-sm);
+            border-top: 1px solid var(--clr-border);
+            line-height: 1.5;
+        }
+        .beitrag-card .beitrag-leistungen strong {
+            font-weight: 600;
+            color: var(--clr-secondary);
+        }
+
+        .beitrags-navigation {
+            text-align: center;
+            margin-top: var(--space-lg);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--clr-border);
+        }
+        .beitrags-navigation .btn {
+             margin: 0 var(--space-xs);
+        }
+
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo"> <!-- Link zur Hauptseite -->
+                <img src="/IBB/static/images/logo.png" alt="Behringer & Partner Logo" loading="lazy">
+            </a>
+            <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html#about">Über uns</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="index.html#services">Leistungen <span class="dropdown-arrow">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="siedlungswasserwirtschaft.html">Siedlungswasserwirtschaft</a></li>
+                            <li><a href="strassenbau-brueckenbau.html">Straßenbau & Brückenbau</a></li>
+                            <li><a href="fernwaerme.html">Fernwärme</a></li> <!-- Aktive Seite -->
+                            <li><a href="index.html#service-hydraulik">Hydraulische Nachweise</a></li>
+                            <li><a href="index.html#service-bauland">Baulanderschließung</a></li>
+                            <li><a href="index.html#service-gis">Kommunales GIS</a></li>
+                            <li><a href="index.html#service-sanierung">Sanierungen</a></li>
+                            <li><a href="index.html#service-wasserbau">Wasserbau</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="index.html#projects">Projekte</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="index.html#company">Unternehmen <span class="dropdown-arrow">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html#company-news">Neuigkeiten</a></li>
+                            <li><a href="index.html#company-team">Team</a></li>
+                            <li><a href="index.html#company-history">Firmengeschichte</a></li>
+                            <li><a href="index.html#company-jobs">Stellenangebote</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="index.html#downloads">Downloads</a></li>
+                    <li><a href="index.html#contact" class="btn btn-primary">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="service-hero">
+        <div class="hero-content">
+            <h1>Fernwärme</h1>
+            <p>Nachhaltige Wärmeversorgung für Kommunen und Unternehmen – zukunftssicher und effizient.</p>
+        </div>
+    </section>
+
+    <main>
+        <section id="fernwaerme-info" class="section">
+            <div class="container container-narrow text-content"> <!-- container-narrow für bessere Lesbarkeit des Textes -->
+                <h2 class="section-title">Effiziente Wärme für die Zukunft</h2>
+                <p>
+                    Fernwärme ist eine bewährte Technologie, die in vielen Ländern bereits deutlich mehr genutzt wird als in Deutschland. 
+                    Dabei wird Wärme aus einer zentralen Heizungsanlage über ein gut isoliertes Rohrleitungssystem zu den Verbrauchern transportiert. 
+                    Die Wärme kann dabei aus unterschiedlichsten Quellen stammen.
+                </p>
+                <p>
+                    Aus ökologischer Sicht hat Fernwärme viele Vorteile: Durch die Nutzung von erneuerbaren Energien können die CO2-Emissionen 
+                    erheblich reduziert werden. Zudem werden lokale Ressourcen genutzt, was die Abhängigkeit von fossilen Brennstoffen 
+                    verringert und die regionale Wirtschaft stärkt.
+                </p>
+                <p>
+                    Als Ingenieurbüro haben wir langjährige Erfahrung in der Planung und Umsetzung von Fernwärmeprojekten. 
+                    Wir unterstützen Sie bei der Auswahl der geeigneten Wärmequelle, der Planung des Leitungssystems und der Integration 
+                    in Ihre bestehende Infrastruktur. Auch bei der Beantragung von Fördermitteln und der Umsetzung von 
+                    Energieeffizienzmaßnahmen stehen wir Ihnen gerne zur Seite.
+                </p>
+                <p>
+                    Überzeugen Sie sich von den Vorteilen der Fernwärme und lassen Sie uns gemeinsam eine nachhaltige und 
+                    zukunftsfähige Energieversorgung für Ihre Kommune planen. 
+                    <a href="index.html#contact">Kontaktieren Sie uns gerne</a> für weitere Informationen oder ein unverbindliches Beratungsgespräch.
+                </p>
+            </div>
+        </section>
+
+        <section id="beitraege" class="section"> <!-- bg-alternate wird hier automatisch durch CSS Regel angewendet -->
+            <div class="container">
+                <h2 class="section-title">Referenzprojekte Fernwärme</h2>
+                <p class="section-subtitle">Ausgewählte Projekte und Beiträge aus dem Bereich Fernwärme.</p>
+                
+                <div class="beitraege-grid">
+                    <article class="beitrag-card">
+                        <span class="beitrag-date">17. August 2023</span>
+                        <h3>Fernwärmeversorgung Waldkraiburg 2023</h3>
+                        <p>Aktuell läuft das Projekt der Fernwärmeversorgung der Rosenstraße, Kopernikusstraße, Metzner Straße und des Altvaterwegs. Von der Planung bis zur Umsetzung dürfen wir das Projekt im Namen der Stadtwerke Waldkraiburg betreuen. Die Fernwärmeversorgung ... <a href="#" class="read-more">(mehr)</a></p>
+                        <div class="beitrag-leistungen">
+                            <strong>Leistungen:</strong> Fernwärme
+                        </div>
+                    </article>
+
+                    <article class="beitrag-card">
+                        <span class="beitrag-date">17. April 2023</span>
+                        <h3>Fernwärmeversorgung Reichertsheim</h3>
+                        <p>Die Gemeinde Reichertsheim plant für das Jahr 2024 die Umsetzung eines Fernwärmeprojektes. Das Ziel des Projektes ist es, eine nachhaltige und umweltfreundliche Energieversorgung für die Bewohner und Unternehmen der Gemeinde zu schaffen. Um das Projekt z ... <a href="#" class="read-more">(mehr)</a></p>
+                        <div class="beitrag-leistungen">
+                            <strong>Leistungen:</strong> Fernwärme
+                        </div>
+                    </article>
+
+                    <article class="beitrag-card">
+                        <span class="beitrag-date">17. April 2022</span>
+                        <h3>Fernwärmeversorgung Waldkraiburg 2022</h3>
+                        <p>Das Projekt der Fernwärmeversorgung der Aussiger, Reichenberger, Birken, Tropauer Straße und des Olmützer Wegs in Waldkraiburg wurde im Jahr 2022 erfolgreich umgesetzt. Von der Planung bis zur Umsetzung durften wir das Projekt im Namen der Stadtwerke Waldkr ... <a href="#" class="read-more">(mehr)</a></p>
+                        <div class="beitrag-leistungen">
+                            <strong>Leistungen:</strong> Fernwärme
+                        </div>
+                    </article>
+
+                    <article class="beitrag-card">
+                        <span class="beitrag-date">17. April 2021</span>
+                        <h3>Fernwärmeversorgung Waldkraiburg 2021</h3>
+                        <p>Das Projekt der Fernwärmeversorgung der Siemens, Brünner, Siebenbürgen, Riesengebirgs und Adlergebirgsstraße in Waldkraiburg wurde im Jahr 2021 erfolgreich umgesetzt. Von der Planung bis zur Umsetzung durften wir das Projekt im Namen der Stadtwerke Waldkra ... <a href="#" class="read-more">(mehr)</a></p>
+                        <div class="beitrag-leistungen">
+                            <strong>Leistungen:</strong> Fernwärme
+                        </div>
+                    </article>
+                    
+                    <article class="beitrag-card">
+                        <span class="beitrag-date">17. April 2020</span>
+                        <h3>Fernwärmeversorgung Waldkraiburg 2020</h3>
+                        <p>Das Projekt der Fernwärmeversorgung der Böhmerwald, Braunauer, Fanz-List-Straße in Waldkraiburg wurde im Jahr 2020 erfolgreich umgesetzt. Von der Planung bis zur Umsetzung durften wir das Projekt im Namen der Stadtwerke Waldkraiburg betreuen. Die Fernwä ... <a href="#" class="read-more">(mehr)</a></p>
+                        <div class="beitrag-leistungen">
+                            <strong>Leistungen:</strong> Fernwärme
+                        </div>
+                    </article>
+
+                    <article class="beitrag-card">
+                        <span class="beitrag-date">13. April 2018</span>
+                        <h3>Fernwärmeversorgung Waldkraiburg 2018</h3>
+                        <p>Das Projekt der Fernwärmeversorgung der Aussiger, Reichenberger und Erzgebirgestraße in Waldkraiburg wurde im Jahr 2018 erfolgreich umgesetzt. Von der Planung bis zur Umsetzung durften wir das Projekt im Namen der Stadtwerke Waldkraiburg betreuen. Die Fer ... <a href="#" class="read-more">(mehr)</a></p>
+                        <div class="beitrag-leistungen">
+                            <strong>Leistungen:</strong> Fernwärme
+                        </div>
+                    </article>
+                </div>
+
+                <nav class="beitrags-navigation" aria-label="Beitragsnavigation">
+                    <a href="#" class="btn btn-secondary">« Ältere Beiträge</a>
+                    <!-- <a href="#" class="btn btn-secondary">Neuere Beiträge »</a> -->
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html#about">Über uns</a></li>
+                    <li><a href="index.html#services">Leistungen</a></li>
+                    <li><a href="index.html#projects">Projekte</a></li>
+                    <li><a href="index.html#company">Unternehmen</a></li>
+                    <li><a href="index.html#downloads">Downloads</a></li>
+                    <li><a href="index.html#contact">Kontakt</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Top Leistungen</h4>
+                <ul>
+                    <li><a href="siedlungswasserwirtschaft.html">Siedlungswasserwirtschaft</a></li>
+                    <li><a href="strassenbau-brueckenbau.html">Straßenbau & Brückenbau</a></li>
+                    <li><a href="fernwaerme.html">Fernwärme</a></li>
+                    <li><a href="index.html#service-wasserbau">Wasserbau</a></li>
+                    <li><a href="index.html#services">Alle Leistungen...</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Kontakt</h4>
+                <address>
+                    Behringer & Partner mbB<br>
+                    Luitpoldallee 32<br>
+                    D-84453 Mühldorf a. Inn<br>
+                    <a href="tel:+4986319867900">Tel: +49 8631 98679-00</a><br>
+                    <a href="mailto:info@ib-behringer.de">E-Mail: info@ib-behringer.de</a>
+                </address>
+            </div>
+            <div>
+                <h4>Rechtliches</h4>
+                <ul>
+                    <li><a href="index.html#impressum">Impressum</a></li> 
+                    <li><a href="index.html#datenschutz">Datenschutz</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© <span id="current-year">2024</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
+            <p><a href="index.html#impressum">Impressum</a> | <a href="index.html#datenschutz">Datenschutz</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Navigation Toggle
+            const toggle = document.querySelector('.nav-toggle');
+            const navList = document.querySelector('.nav-list');
+            if (toggle && navList) {
+                toggle.addEventListener('click', () => {
+                    const isOpen = navList.classList.toggle('open');
+                    toggle.setAttribute('aria-expanded', isOpen);
+                    toggle.innerHTML = isOpen ? '×' : '☰';
+                });
+            }
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href.startsWith('#') && document.querySelector(href)) {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(href);
+                        if (targetElement) {
+                            const headerOffset = document.querySelector('.site-header') ? document.querySelector('.site-header').offsetHeight : 0;
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                         if (navList && navList.classList.contains('open') && this.closest('.nav-list')) {
+                            navList.classList.remove('open');
+                            toggle.setAttribute('aria-expanded', 'false');
+                            toggle.innerHTML = '☰';
+                        }
+                    }
+                });
+            });
+            
+            // Update current year in footer
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+
+</html>
