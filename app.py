@@ -6,7 +6,7 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-# ─── Routes for “other” (root-level) templates ─────────────────────────────────
+# ─── Routes for “other” (root-level or specific subfolder like “sonstiges”) templates ─────
 
 @app.route('/firmengeschichte')
 def firmengeschichte():
@@ -15,12 +15,12 @@ def firmengeschichte():
 
 @app.route('/impressum')
 def impressum():
-    # If impressum.html is in “templates/”
+    # If impressum.html is in “templates/sonstiges/”
     return render_template('sonstiges/impressum.html')
 
 @app.route('/maedchenschule-chato')
 def maedchenschule_chato():
-    # If maedchenschule-chato.html is in “templates/”
+    # If maedchenschule-chato.html is in “templates/sonstiges/”
     return render_template('sonstiges/maedchenschule-chato.html')
 
 # ─── Routes for “leistungen” subfolder ──────────────────────────────────────────
@@ -37,6 +37,19 @@ def siedlungswasserwirtschaft():
 def strassenbau_brueckenbau():
     return render_template('leistungen/strassenbau-brueckenbau.html')
 
+# ─── Routes for “unternehmen” subfolder ──────────────────────────────────────────
+
+@app.route('/unternehmen/team')
+def unternehmen_team():
+    return render_template('unternehmen/team.html')
+
+@app.route('/unternehmen/netzwerk')
+def unternehmen_netzwerk():
+    return render_template('unternehmen/netzwerk.html')
+
+@app.route('/unternehmen/stellenangebote')
+def unternehmen_stellenangebote():
+    return render_template('unternehmen/stellenangebote.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
