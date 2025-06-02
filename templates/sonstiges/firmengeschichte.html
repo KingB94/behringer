@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Firmengeschichte - Behringer & Partner</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        /* css/styles.css */
+        /* 1. Basis & Variablen */
+        :root {
+            --clr-primary: #005a9c;
+            --clr-secondary: #333;
+            --clr-accent: #007bff;
+            /* Eine Akzentfarbe, falls benötigt */
+            --clr-bg: #fff;
+            --clr-bg-alt: #f7f7f7;
+            --clr-gradient-start: #004a80;
+            --clr-gradient-end: #006bb3;
+            --clr-white: #fff;
+            --clr-text-light: #f1f1f1;
+            /* Für hellen Text auf dunklem Hintergrund */
+            --clr-border: #e0e0e0;
+            /* Für allgemeine Ränder */
+
+            --font-sans: 'Open Sans', sans-serif;
+            --font-heading: 'Montserrat', sans-serif;
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space: 1.5rem;
+            --space-md: 2rem;
+            --space-lg: 3rem;
+            --space-xl: 4rem;
+
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            /* Für größere Elemente ggf. */
+
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 5px 10px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.15);
+            /* Stärkerer Schatten für Hervorhebungen */
+
+            --transition-default: all 0.3s ease-in-out;
+            /* Einheitlicher Übergang */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 100%;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--clr-secondary);
+            line-height: 1.7;
+            background: var(--clr-bg);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--clr-primary);
+            transition: var(--transition-default);
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: var(--clr-gradient-start);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-heading);
+            color: var(--clr-secondary);
+            margin-bottom: var(--space-sm);
+            line-height: 1.3;
+        }
+
+        /* 2. Container */
+        .container {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--space);
+            padding-right: var(--space);
+        }
+        .container-narrow {
+            max-width: 800px; 
+        }
+
+
+        /* 3. Header */
+        .site-header {
+            background: var(--clr-white);
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-sm) 0;
+        }
+
+        .logo img {
+            display: block;
+            max-height: 60px;
+            width: auto;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: var(--space-md);
+            align-items: center;
+        }
+
+        .nav-list>li>a,
+        .nav-list>li>span {
+            font-weight: 600;
+            color: var(--clr-secondary);
+            padding: var(--space-xs) 0;
+            transition: color .2s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav-list>li>a:not(.btn)::after,
+        .nav-list>li>span::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--clr-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-list>li>a:hover::after,
+        .nav-list>li>span:hover::after {
+            width: 100%;
+        }
+
+
+        .nav-list>li>a:hover,
+        .nav-list>li>span:hover {
+            color: var(--clr-primary);
+        }
+
+        .nav-list>li>a.btn {
+            color: var(--clr-white);
+            padding: 10px;
+        }
+
+        .nav-list>li>a.btn:hover {
+            color: var(--clr-white);
+            background: var(--clr-gradient-start);
+        }
+
+        .nav-list>li>a.btn::after {
+            display: none;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--clr-secondary);
+            cursor: pointer;
+            padding: var(--space-xs);
+        }
+
+        .nav-item.dropdown {
+            position: relative;
+        }
+
+        .dropdown-arrow {
+            font-size: 0.7em;
+            margin-left: 0.4em;
+            transition: transform 0.25s ease-in-out;
+        }
+
+        .nav-item.dropdown:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            list-style: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--clr-white);
+            border: 1px solid var(--clr-border);
+            box-shadow: var(--shadow-md);
+            border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+            padding: var(--space-xs) 0;
+            min-width: 240px;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+        }
+
+        .nav-item.dropdown:hover>.dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 0.75rem var(--space-sm);
+            font-weight: 500;
+            color: var(--clr-secondary);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: var(--clr-bg-alt);
+            color: var(--clr-primary);
+        }
+
+        @media (max-width: 992px) {
+            .header-inner {
+                padding: var(--space-sm) var(--space);
+            }
+
+            .logo img {
+                max-height: 50px;
+            }
+
+            .nav-list {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                width: 100%;
+                flex-direction: column;
+                background: var(--clr-white);
+                padding: var(--space);
+                box-shadow: var(--shadow-lg);
+                gap: 0;
+                align-items: flex-start;
+            }
+
+            .nav-list.open {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-item.dropdown .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                padding-left: var(--space);
+                padding-top: var(--space-xs);
+                padding-bottom: var(--space-xs);
+                min-width: auto;
+                background-color: transparent;
+            }
+
+            .nav-item.dropdown .dropdown-menu li a {
+                padding: var(--space-xs) 0;
+                font-weight: normal;
+            }
+
+            .nav-list>li>a,
+            .nav-list>li>span {
+                padding: var(--space-sm) 0;
+                width: 100%;
+            }
+
+            .nav-list>li:not(:last-child)>a,
+            .nav-list>li:not(:last-child)>span {
+                border-bottom: 1px solid var(--clr-border);
+            }
+
+            .nav-list>li>a.btn {
+                display: inline-block;
+                width: auto;
+                margin-top: var(--space-sm);
+                padding: .75rem 1.5rem !important;
+            }
+
+            .nav-list>li>a:not(.btn)::after,
+            .nav-list>li>span::after {
+                display: none;
+            }
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.85rem var(--space-md);
+            border-radius: var(--radius-sm);
+            transition: var(--transition-default);
+            border: 1px solid transparent;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--clr-primary);
+            color: var(--clr-white);
+        }
+
+        .btn-primary:hover {
+            background: var(--clr-gradient-start);
+            color: var(--clr-white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* 5. Sektionen Basis */
+        .section {
+            padding: var(--space-lg) 0;
+        }
+
+        @media (min-width: 768px) {
+            .section {
+                padding: var(--space-xl) 0;
+            }
+        }
+        
+        .service-hero + .section { /* Keine spezielle Hintergrundfarbe für die erste Section nach dem Hero */
+             background: var(--clr-bg);
+        }
+        .section.bg-alternate {
+            background: var(--clr-bg-alt);
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            text-align: center;
+            margin-bottom: var(--space-sm);
+            color: var(--clr-secondary);
+        }
+
+        .section-subtitle {
+            font-size: clamp(1rem, 2vw, 1.125rem);
+            text-align: center;
+            color: #666;
+            margin-bottom: var(--space-lg);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Footer */
+        .site-footer {
+            background: var(--clr-secondary);
+            color: var(--clr-text-light);
+            padding: var(--space-xl) 0 var(--space-lg);
+        }
+        .footer-grid { display: grid; gap: var(--space-md); }
+        @media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } }
+        @media (min-width: 1024px) { .footer-grid { grid-template-columns: repeat(4, 1fr); } }
+        .site-footer h4 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--clr-white);
+            margin-bottom: var(--space-sm);
+            font-size: 1.1rem;
+        }
+        .site-footer ul { list-style: none; padding-left: 0; margin: 0; }
+        .site-footer ul li { margin-bottom: var(--space-xs); }
+        .site-footer a { color: #ccc; text-decoration: none; }
+        .site-footer a:hover { color: var(--clr-white); text-decoration: underline; }
+        .site-footer address { font-style: normal; line-height: 1.7; color: #ccc; }
+        .site-footer address a { color: inherit; }
+        .site-footer address a:hover { color: var(--clr-white); }
+        .footer-bottom {
+            text-align: center;
+            font-size: .9rem;
+            border-top: 1px solid rgba(255, 255, 255, .1);
+            margin-top: var(--space-lg);
+            padding-top: var(--space-lg);
+            color: #aaa;
+        }
+        .footer-bottom p { margin-bottom: var(--space-xs); }
+        .footer-bottom a { color: #ccc; }
+        .footer-bottom a:hover { color: var(--clr-white); }
+
+        /* STILE FÜR UNTERSEITEN HERO (aus anderen Unterseiten) */
+        .service-hero { 
+            min-height: 35vh; 
+            padding: var(--space-lg) var(--space-sm);
+            background: linear-gradient(to bottom right, var(--clr-primary), var(--clr-gradient-end));
+            color: var(--clr-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: var(--space-lg); 
+        }
+        .service-hero .hero-content h1 {
+            font-size: clamp(2rem, 4.5vw, 2.8rem); 
+            margin-bottom: var(--space-xs);
+        }
+        .service-hero .hero-content p {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            max-width: 800px; 
+            margin-bottom: 0;
+        }
+
+        /* NEUE STILE FÜR FIRMENGESCHICHTE (Timeline) */
+        .timeline {
+            list-style: none;
+            padding: 0;
+            position: relative;
+            margin-top: var(--space-lg);
+        }
+        .timeline::before { /* Die vertikale Linie */
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 40px; /* Zentriert den Punkt des Jahres relativ zur Linie */
+            width: 4px;
+            background-color: var(--clr-primary);
+            border-radius: 2px;
+        }
+        @media (max-width: 767px) {
+            .timeline::before {
+                left: 20px; /* Anpassung für kleinere Bildschirme */
+            }
+        }
+
+
+        .timeline-item {
+            position: relative;
+            padding-left: 80px; /* Platz für Jahreszahl und Punkt */
+            margin-bottom: var(--space-lg);
+        }
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        @media (max-width: 767px) {
+            .timeline-item {
+                padding-left: 50px; /* Weniger Platz auf kleineren Bildschirmen */
+            }
+        }
+
+
+        .timeline-year {
+            position: absolute;
+            left: 0;
+            top: 0; 
+            transform: translateY(2px); /* Feinjustierung der vertikalen Position */
+            background-color: var(--clr-primary);
+            color: var(--clr-white);
+            font-weight: 700;
+            font-size: 1rem;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            width: 60px; /* Feste Breite für die Jahreszahl-Box */
+            text-align: center;
+            z-index: 2; /* GEÄNDERT: Jahreszahl-Box liegt jetzt über dem Punkt */
+        }
+        @media (max-width: 767px) {
+            .timeline-year {
+                width: 50px;
+                font-size: 0.9rem;
+                padding: calc(var(--space-xs) / 1.5) calc(var(--space-sm) / 1.5);
+                left: -10px; /* Behält Ihre vorherige mobile Anpassung bei */
+                /* transform: translateY(0); Ggf. hier auch anpassen für perfekte vertikale Ausrichtung zum Punkt */
+            }
+        }
+
+        .timeline-item::after { /* Der Punkt auf der Linie */
+            content: '';
+            position: absolute;
+            left: 31px; /* Positioniert den Punkt in der Mitte der Linie */
+            top: 8px; /* Vertikal zur Jahreszahl anpassen */
+            width: 18px;
+            height: 18px;
+            background-color: var(--clr-white); /* Punkt bleibt weiß */
+            border: 4px solid var(--clr-primary); /* Rand bleibt blau */
+            border-radius: 50%;
+            z-index: 1; /* GEÄNDERT: Punkt liegt jetzt unter der Jahreszahl-Box, aber über der Zeitlinie */
+        }
+        @media (max-width: 767px) {
+            .timeline-item::after {
+                left: 11px; 
+                width: 16px;
+                height: 16px;
+                /* top: 6px; Ggf. hier auch anpassen für perfekte vertikale Ausrichtung */
+            }
+        }
+
+        .timeline-content {
+            background-color: var(--clr-bg-alt);
+            padding: var(--space);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--clr-border);
+        }
+        .timeline-content h4 { /* Für die "Überschrift" des Eintrags */
+            font-size: 1.15rem;
+            color: var(--clr-primary);
+            margin-top: 0;
+            margin-bottom: var(--space-xs);
+        }
+        .timeline-content p {
+            font-size: 0.95rem;
+            margin-bottom: var(--space-xs);
+            line-height: 1.6;
+        }
+        .timeline-content p:last-child {
+            margin-bottom: 0;
+        }
+        .timeline-content strong { /* Für Partner etc. */
+            font-weight: 600;
+            color: var(--clr-secondary);
+        }
+
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <img src="/IBB/static/images/logo.png" alt="Behringer & Partner Logo" loading="lazy">
+            </a>
+            <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html#about">Über uns</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="index.html#services">Leistungen <span class="dropdown-arrow">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="siedlungswasserwirtschaft.html">Siedlungswasserwirtschaft</a></li>
+                            <li><a href="strassenbau-brueckenbau.html">Straßenbau & Brückenbau</a></li>
+                            <li><a href="fernwaerme.html">Fernwärme</a></li>
+                            <li><a href="index.html#service-hydraulik">Hydraulische Nachweise</a></li>
+                            <li><a href="index.html#service-bauland">Baulanderschließung</a></li>
+                            <li><a href="index.html#service-gis">Kommunales GIS</a></li>
+                            <li><a href="index.html#service-sanierung">Sanierungen</a></li>
+                            <li><a href="index.html#service-wasserbau">Wasserbau</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="index.html#projects">Projekte</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="index.html#company">Unternehmen <span class="dropdown-arrow">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html#company-news">Neuigkeiten</a></li>
+                            <li><a href="index.html#company-team">Team</a></li>
+                            <li><a href="firmengeschichte.html">Firmengeschichte</a></li> <!-- Aktive Seite -->
+                            <li><a href="index.html#company-jobs">Stellenangebote</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="index.html#downloads">Downloads</a></li>
+                    <li><a href="index.html#contact" class="btn btn-primary">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="service-hero">
+        <div class="hero-content">
+            <h1>Unsere Geschichte</h1>
+            <p>Meilensteine und Entwicklung des Ingenieurbüros Behringer & Partner seit 1968.</p>
+        </div>
+    </section>
+
+    <main>
+        <section id="history-timeline" class="section">
+            <div class="container container-narrow">
+                <!-- <h2 class="section-title">Firmengeschichte</h2> wird durch Hero abgedeckt -->
+                <ul class="timeline">
+                    <li class="timeline-item">
+                        <div class="timeline-year">2018</div>
+                        <div class="timeline-content">
+                            <h4>50-jähriges Firmenjubiläum</h4>
+                            <p>IB Behringer & Partner mbB</p>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-year">2017</div>
+                        <div class="timeline-content">
+                            <h4>Änderung der Geschäftsform</h4>
+                            <p>Umwandlung in eine Partnerschaftsgesellschaft mit beschränkter Haftung.</p>
+                            <p><strong>Name:</strong> Ingenieurbüro Behringer & Partner mbB</p>
+                            <p><strong>Partner:</strong> Dipl. Ing. (FH) Hermann Behringer, Dipl. Ing. (FH) Robert Behringer, Dipl. Ing. (FH) Alexander Reindl, Robert Sagstetter</p>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-year">2016</div>
+                        <div class="timeline-content">
+                            <h4>Neuer Firmensitz</h4>
+                            <p>Umzug von der Montgelassstraße in Mühldorf in den neuen Firmensitz in der Luitpoldallee 32 in Mühldorf am Inn.</p>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-year">2015</div>
+                        <div class="timeline-content">
+                            <h4>Stilllegung Standort Waldkraiburg</h4>
+                            <p>Stilllegung der Ingenieurbüro Behringer GmbH & Co KG in Waldkraiburg. Weiterführung der laufenden Projekte durch das Ingenieurbüro Behringer & Partner in Mühldorf.</p>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-year">2013</div>
+                        <div class="timeline-content">
+                            <h4>Namensänderung</h4>
+                            <p>Ingenieurbüro INTRES GmBH & Co. KG wird zu: <strong>Ingenieurbüro Behringer GmbH & Co KG</strong><br>Berliner Straße 16, D – 84478 Waldkraiburg.</p>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-year">2012</div>
+                        <div class="timeline-content">
+                            <h4>Auflösung & Gründung</h4>
+                            <p>Auflösung der Behringer und Zechmeister OEG in Braunau.</p>
+                            <p>Gründung der Zweigstelle Ingenieurbüro Behringer & Partner, Bahnhofplatz 4, 84359 Simbach a. Inn, Landkreis Rottal-Inn.</p>
+                        </div>
+                    </li>
+                     <li class="timeline-item">
+                        <div class="timeline-year">2011</div>
+                        <div class="timeline-content">
+                            <h4>Gründung Zweigstelle & Geschäftsformänderung</h4>
+                            <p>Gründung der Zweigstelle Ingenieurbüro Behringer & Partner, Haselbach 6, 94439 Roßbach, Landkreis Rottal-Inn.</p>
+                            <p>Änderung der Geschäftsform in eine Partnerschaftsgesellschaft.<br>
+                            <strong>Name:</strong> Ingenieurbüro Behringer & Partner<br>
+                            <strong>Partner:</strong> Dipl. Ing. (FH) Hermann Behringer, Dipl. Ing. (FH) Robert Behringer, Dipl. Ing. (FH) Alexander Reindl, Robert Sagstetter</p>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-year">2008</div>
+                        <div class="timeline-content">
+                            <h4>Jubiläen</h4>
+                            <p>40-jähriges Firmenjubiläum | IB Behringer</p>
+                            <p>10-jähriges Firmenjubiläum | OEG Braunau</p>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-year">2005</div>
+                        <div class="timeline-content">
+                            <h4>Gründungen</h4>
+                            <p>Gründung der Behringer Grundstückserschliessungs GmbH, Mongelasstraße 10, D – 84453 Mühldorf.</p>
+                            <p>Gründung des Ingenieurbüros für Tiefbau und Regenerative Energiesysteme INTRES GmBH & Co. KG, Berliner Straße 16, D – 84478 Waldkraiburg.</p>
+                            <p>Gründung der Behringer und Zechmeister OEG, Laabstraße 6, A – 5280 Braunau a. Inn.</p>
+                        </div>
+                    </li>
+                     <li class="timeline-item">
+                        <div class="timeline-year">2003</div>
+                        <div class="timeline-content">
+                            <h4>Umzug des Firmensitzes</h4>
+                            <p>Umzug in die Mongelasstraße 10, in Mühldorf Nord.</p>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-year">2002</div>
+                        <div class="timeline-content">
+                            <h4>Übernahme als Einzelunternehmen</h4>
+                            <p>Löschung der Partnerschaftsgesellschaft am 30. Juni 2002. Übernahme des Büros Mühldorf und Braunau durch Herrn Dipl. Ing. Hermann Behringer als Einzelunternehmen.</p>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-year">2001</div>
+                        <div class="timeline-content">
+                            <h4>Verstorben</h4>
+                            <p>Herr Regierungsbaumeister Dipl. Ing. Richard Zink verstirbt am 30.12.2001.</p>
+                        </div>
+                    </li>
+                     <li class="timeline-item">
+                        <div class="timeline-year">1998</div>
+                        <div class="timeline-content">
+                            <h4>Gründung Büro Braunau</h4>
+                            <p>Gründung eines eigenständigen Büros als OEG in Braunau am Inn (Austria).</p>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-year">1996</div>
+                        <div class="timeline-content">
+                            <h4>Änderung der Geschäftsform</h4>
+                            <p>Umwandlung in eine Partnerschaftsgesellschaft.</p>
+                            <p><strong>Name:</strong> Ingenieurbüro Zink und Partner</p>
+                            <p><strong>Partner:</strong> Regierungsbaumeister Dipl. Ing. Richard Zink und Dipl. Ing. (FH) Hermann Behringer</p>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-year">1974</div>
+                        <div class="timeline-content">
+                            <h4>Eintritt Hermann Behringer</h4>
+                            <p>Eintritt des Dipl. Ing. (FH) Hermann Behringer in das Einzelunternehmen Ingenieurbüro Zink.</p>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-year">1968</div>
+                        <div class="timeline-content">
+                            <h4>Gründung des Ingenieurbüros</h4>
+                            <p>Gründung im Juli 1968 als Einzelunternehmen durch Herrn Regierungsbaumeister Dipl. Ing. Richard Zink in Mühldorf am Inn, in der Nikolausstrasse 4.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html#about">Über uns</a></li>
+                    <li><a href="index.html#services">Leistungen</a></li>
+                    <li><a href="index.html#projects">Projekte</a></li>
+                    <li><a href="index.html#company">Unternehmen</a></li>
+                    <li><a href="index.html#downloads">Downloads</a></li>
+                    <li><a href="index.html#contact">Kontakt</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Top Leistungen</h4>
+                <ul>
+                    <li><a href="siedlungswasserwirtschaft.html">Siedlungswasserwirtschaft</a></li>
+                    <li><a href="strassenbau-brueckenbau.html">Straßenbau & Brückenbau</a></li>
+                    <li><a href="fernwaerme.html">Fernwärme</a></li>
+                    <li><a href="index.html#service-wasserbau">Wasserbau</a></li>
+                    <li><a href="index.html#services">Alle Leistungen...</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Kontakt</h4>
+                <address>
+                    Behringer & Partner mbB<br>
+                    Luitpoldallee 32<br>
+                    D-84453 Mühldorf a. Inn<br>
+                    <a href="tel:+4986319867900">Tel: +49 8631 98679-00</a><br>
+                    <a href="mailto:info@ib-behringer.de">E-Mail: info@ib-behringer.de</a>
+                </address>
+            </div>
+            <div>
+                <h4>Rechtliches</h4>
+                <ul>
+                    <li><a href="index.html#impressum">Impressum</a></li> 
+                    <li><a href="index.html#datenschutz">Datenschutz</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© <span id="current-year">2024</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
+            <p><a href="index.html#impressum">Impressum</a> | <a href="index.html#datenschutz">Datenschutz</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Navigation Toggle
+            const toggle = document.querySelector('.nav-toggle');
+            const navList = document.querySelector('.nav-list');
+            if (toggle && navList) {
+                toggle.addEventListener('click', () => {
+                    const isOpen = navList.classList.toggle('open');
+                    toggle.setAttribute('aria-expanded', isOpen);
+                    toggle.innerHTML = isOpen ? '×' : '☰';
+                });
+            }
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href.startsWith('#') && document.querySelector(href)) {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(href);
+                        if (targetElement) {
+                            const headerOffset = document.querySelector('.site-header') ? document.querySelector('.site-header').offsetHeight : 0;
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                         if (navList && navList.classList.contains('open') && this.closest('.nav-list')) {
+                            navList.classList.remove('open');
+                            toggle.setAttribute('aria-expanded', 'false');
+                            toggle.innerHTML = '☰';
+                        }
+                    }
+                });
+            });
+            
+            // Update current year in footer
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+
+</html>
