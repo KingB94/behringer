@@ -1103,7 +1103,7 @@
 <header class="site-header">
     <div class="container header-inner">
         <a href="#" class="logo">
-            <img src='{{ url_for("static", filename="images/logo.png") }}' alt="Behringer & Partner Logo" loading="lazy">
+            <img src="/IBB/static/images/logo.png" alt="Behringer & Partner Logo" loading="lazy">
         </a>
         <nav class="main-nav">
             <ul class="nav-list">
@@ -1112,9 +1112,9 @@
                 <li class="nav-item dropdown">
                     <a href="#services">Leistungen <span class="dropdown-arrow">▼</span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
-                        <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
-                        <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
+                        <li><a href="#service-siedlung">Siedlungswasserwirtschaft</a></li>
+                        <li><a href="#service-strassen">Straßenbau & Brückenbau</a></li>
+                        <li><a href="#service-fernwaerme">Fernwärme</a></li>
                         <li><a href="#service-hydraulik">Hydraulische Nachweise</a></li>
                         <li><a href="#service-bauland">Baulanderschließung</a></li>
                         <li><a href="#service-gis">Kommunales GIS</a></li>
@@ -1125,9 +1125,10 @@
                 <li class="nav-item dropdown">
                     <a href="#company">Unternehmen <span class="dropdown-arrow">▼</span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#company-team">Team</a></li>
-                        <li><a href="{{ url_for('firmengeschichte') }}">Firmengeschichte</a></li>
-                        <li><a href="#company-jobs">Stellenangebote</a></li>
+                        <li><a href="unternehmen/team.html">Team</a></li>
+                        <li><a href="#company-history">Firmengeschichte</a></li>
+                        <li><a href="unternehmen/netzwerk.html">Netzwerk</a></li>
+                        <li><a href="unternehmen/stellenangebote.html">Stellenangebote</a></li>
                     </ul>
                 </li>
                 <li><a href="#contact" class="btn btn-primary">Kontakt</a></li>
@@ -1139,10 +1140,10 @@
 
     <section class="hero">
         <div class="hero-slideshow">
-            <img src="{{ url_for('static', filename='images/engineering.jpg') }}" alt="Ingenieur plant Tiefbauprojekt" class="hero-img active"
+            <img src="/IBB/static/images/engineering.jpg" alt="Ingenieur plant Tiefbauprojekt" class="hero-img active"
                 loading="lazy">
-            <img src="{{ url_for('static', filename='images/working.jpg') }}" alt="Arbeiter auf der Baustelle" class="hero-img" loading="lazy">
-            <img src="{{ url_for('static', filename='images/working (2).jpg') }}" alt="Team in Aktion" class="hero-img" loading="lazy">
+            <img src="/IBB/static/images/working.jpg" alt="Arbeiter auf der Baustelle" class="hero-img" loading="lazy">
+            <img src="/IBB/static/images/working (2).jpg" alt="Team in Aktion" class="hero-img" loading="lazy">
         </div>
         <div class="hero-content">
             <h1>Ihr Partner im Tiefbau seit 1968</h1>
@@ -1164,11 +1165,11 @@
                                 Wir entwickeln maßgeschneiderte, wirtschaftliche Lösungen nach höchsten technischen Standards und begleiten Sie von der Idee bis zur erfolgreichen Realisierung Ihres Projekts.
                             </p>
                             <div class="flex flex-wrap gap-4">
-                                <a href="{{ url_for('firmengeschichte') }}"
+                                <a href="#company-history"
                                     class="btn bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded">
                                     Unsere Geschichte
                                 </a>
-                                <a href="#company-team"
+                                <a href="unternehmen/team.html"
                                     class="btn border border-primary text-primary hover:bg-primary hover:text-white px-4 py-2 rounded">
                                     Unser Team kennenlernen
                                 </a>
@@ -1229,35 +1230,35 @@
                 <p class="section-subtitle">Entdecken Sie unser breites Spektrum an Ingenieurdienstleistungen.</p>
                 <div class="services-grid">
                     <div class="service-card" id="service-siedlung">
-                        <img src="{{ url_for('static', filename='images/ingenieur.jpg') }}" alt="Siedlungswasserwirtschaft" loading="lazy">
+                        <img src="/IBB/static/images/ingenieur.jpg" alt="Siedlungswasserwirtschaft" loading="lazy">
                         <h3>Siedlungswasserwirtschaft</h3>
                     </div>
                     <div class="service-card" id="service-strassen">
-                        <img src="{{ url_for('static', filename='images/hero.jpg') }}" alt="Straßenbau & Brückenbau" loading="lazy">
+                        <img src="/IBB/static/images/hero.jpg" alt="Straßenbau & Brückenbau" loading="lazy">
                         <h3>Straßenbau & Brückenbau</h3>
                     </div>
                     <div class="service-card" id="service-fernwaerme">
-                        <img src="{{ url_for('static', filename='images/working (2).jpg') }}" alt="Fernwärme" loading="lazy">
+                        <img src="/IBB/static/images/working (2).jpg" alt="Fernwärme" loading="lazy">
                         <h3>Fernwärme</h3>
                     </div>
                     <div class="service-card" id="service-hydraulik">
-                        <img src="{{ url_for('static', filename='images/working.jpg') }}" alt="Hydraulische Nachweise" loading="lazy">
+                        <img src="/IBB/static/images/working.jpg" alt="Hydraulische Nachweise" loading="lazy">
                         <h3>Hydraulische Nachweise</h3>
                     </div>
                     <div class="service-card" id="service-bauland">
-                        <img src="{{ url_for('static', filename='images/excavator.jpg') }}" alt="Baulanderschließung" loading="lazy">
+                        <img src="/IBB/static/images/excavator.jpg" alt="Baulanderschließung" loading="lazy">
                         <h3>Baulanderschließung</h3>
                     </div>
                     <div class="service-card" id="service-gis">
-                        <img src="{{ url_for('static', filename='images/bohrmaschine-zeichner.jpg') }}" alt="Kommunales GIS" loading="lazy">
+                        <img src="/IBB/static/images/bohrmaschine_zeichner.jpg" alt="Kommunales GIS" loading="lazy">
                         <h3>Kommunales GIS</h3>
                     </div>
                     <div class="service-card" id="service-sanierung">
-                        <img src="{{ url_for('static', filename='images/roundabout.jpg') }}" alt="Sanierungen" loading="lazy">
+                        <img src="/IBB/static/images/roundabout.jpg" alt="Sanierungen" loading="lazy">
                         <h3>Sanierungen</h3>
                     </div>
                     <div class="service-card" id="service-wasserbau">
-                        <img src="{{ url_for('static', filename='images/bridge.jpg') }}" alt="Wasserbau" loading="lazy">
+                        <img src="/IBB/static/images/bridge.jpg" alt="Wasserbau" loading="lazy">
                         <h3>Wasserbau</h3>
                     </div>
                 </div>
@@ -1273,7 +1274,7 @@
                         <h3>Unser Team</h3>
                         <p>Lernen Sie die engagierten Köpfe hinter Behringer & Partner kennen. Erfahrung und Expertise
                             vereint.</p>
-                        <a href="#" class="btn btn-primary btn-sm">Team kennenlernen</a>
+                        <a href="unternehmen/team.html" class="btn btn-primary btn-sm">Team kennenlernen</a>
                     </div>
                     <div class="info-card" id="company-history">
                         <h3>Firmengeschichte</h3>
@@ -1285,7 +1286,7 @@
                         <h3>Karriere & Stellenangebote</h3>
                         <p>Werden Sie Teil unseres Teams! Entdecken Sie aktuelle Jobangebote und Karrieremöglichkeiten.
                         </p>
-                        <a href="#" class="btn btn-primary btn-sm">Zu den Stellen</a>
+                        <a href="unternehmen/stellenangebote.html" class="btn btn-primary btn-sm">Zu den Stellen</a>
                     </div>
                 </div>
             </div>
@@ -1335,9 +1336,9 @@
             <div>
                 <h4>Leistungen</h4>
                 <ul>
-                    <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
-                    <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
-                    <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
+                    <li><a href="#service-siedlung">Siedlungswasserwirtschaft</a></li>
+                    <li><a href="#service-strassen">Straßenbau & Brückenbau</a></li>
+                    <li><a href="#service-fernwaerme">Fernwärme</a></li>
                     <li><a href="#service-hydraulik">Hydraulische Nachweise</a></li>
                     <li><a href="#service-bauland">Baulanderschließung</a></li>
                     <li><a href="#service-gis">Kommunales GIS</a></li>
@@ -1358,7 +1359,7 @@
             <div>
                 <h4>Rechtliches</h4>
                 <ul>
-                    <li><a href="{{ url_for('impressum') }}">Impressum</a></li>
+                    <li><a href="#impressum">Impressum</a></li>
                     <li><a href="#datenschutz">Datenschutz</a></li>
                 </ul>
             </div>
@@ -1369,16 +1370,16 @@
                 </div>
                  <h4 style="margin-top: 1.5rem;">Wir unterstützen</h4>
                  <p style="margin-bottom: var(--space-xs); line-height: 1.4;">
-                    <a href="{{ url_for('maedchenschule_chato') }}">Mädchenschule Chato, Tansania</a>
+                    <a href="maedchenschule-chato.html">Mädchenschule Chato, Tansania</a>
                  </p>
-                 <a href="{{ url_for('maedchenschule_chato') }}">
+                 <a href="maedchenschule-chato.html">
                     <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2022/12/Suedansicht-2-150x150.jpg" alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
                 </a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© <span id="current-year">2025</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
-            <p><a href="{{ url_for('impressum') }}">Impressum</a> | <a href="#datenschutz">Datenschutz</a></p>
+            <p>© <span id="current-year">2024</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
+            <p><a href="#impressum">Impressum</a> | <a href="#datenschutz">Datenschutz</a></p>
         </div>
     </footer>
 
@@ -1405,11 +1406,25 @@
             const dropdownToggles = navList ? navList.querySelectorAll('.nav-item.dropdown > a, .nav-item.dropdown > span') : [];
             dropdownToggles.forEach(toggle => {
                 toggle.addEventListener('click', function(event) {
-                    if (navToggle && window.getComputedStyle(navToggle).display !== 'none') {
-                        event.preventDefault(); 
-                        const submenu = this.parentElement.querySelector('.dropdown-menu');
-                        if (submenu) submenu.classList.toggle('submenu-open');
-                        this.classList.toggle('active');
+                    if (navToggle && window.getComputedStyle(navToggle).display !== 'none') { // Only for mobile view
+                        // Prevent default if it's a link that shouldn't navigate but just toggle
+                        const href = this.getAttribute('href');
+                        if (href && href.startsWith('#')) { // If it's an anchor link that is also a dropdown toggle
+                             // Check if it has a submenu
+                            const submenu = this.parentElement.querySelector('.dropdown-menu');
+                            if (submenu) { // If there is a submenu, prevent default to toggle it
+                                event.preventDefault();
+                                submenu.classList.toggle('submenu-open');
+                                this.classList.toggle('active');
+                            }
+                            // If it's an anchor but no submenu, let it scroll (no event.preventDefault())
+                        } else if (!href || href === '#') { // If it's a span or a dummy link, always prevent default
+                            event.preventDefault();
+                            const submenu = this.parentElement.querySelector('.dropdown-menu');
+                            if (submenu) submenu.classList.toggle('submenu-open');
+                            this.classList.toggle('active');
+                        }
+                        // If it's a real page link (e.g., unternehmen/team.html), do not preventDefault, let it navigate
                     }
                 });
             });
@@ -1418,13 +1433,19 @@
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
-                    if (href.length <= 1 && href !== '#') return;
+                    if (href.length <= 1 && href !== '#') return; // Ignore empty or just "#" hrefs for scrolling logic
 
                     const targetElement = (href === '#') ? null : document.querySelector(href);
                     const isMobileView = navToggle && window.getComputedStyle(navToggle).display !== 'none';
+                    
                     let isMobileDropdownToggleItself = false;
                     if (isMobileView && this.parentElement && this.parentElement.classList.contains('dropdown') && this.closest('.nav-list') && this.querySelector('.dropdown-arrow')) {
-                        isMobileDropdownToggleItself = true;
+                        // This logic is to identify if the clicked link is the main toggle for a dropdown in mobile view
+                        // If it has a submenu, the mobile dropdown toggle logic (event listener above) will handle it.
+                        const submenu = this.parentElement.querySelector('.dropdown-menu');
+                        if (submenu) {
+                             isMobileDropdownToggleItself = true;
+                        }
                     }
 
                     if (!isMobileDropdownToggleItself && targetElement) {
@@ -1433,16 +1454,28 @@
                         const elementPosition = targetElement.getBoundingClientRect().top;
                         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                         window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    } else if (href === '#' && !targetElement && !isMobileDropdownToggleItself) { 
+                        // Handles clicking on <a href="#"> for top of page or similar, but not dropdown toggles
+                         e.preventDefault();
+                         window.scrollTo({ top: 0, behavior: 'smooth' });
                     }
 
+
+                    // Close mobile nav if an item (not a dropdown toggle itself) is clicked
                     if (isMobileView && navList && navList.classList.contains('open') && this.closest('.nav-list') && !isMobileDropdownToggleItself) {
-                        navList.classList.remove('open');
-                        if (navToggle) {
-                            navToggle.setAttribute('aria-expanded', 'false');
-                            navToggle.innerHTML = '☰';
+                        // Check if the clicked item is inside a submenu that is open
+                        // If it's a link within an already open mobile submenu, or a top-level link that's not a dropdown toggle
+                        const parentDropdownMenu = this.closest('.dropdown-menu');
+                        if (!parentDropdownMenu || (parentDropdownMenu && parentDropdownMenu.classList.contains('submenu-open'))) {
+                            navList.classList.remove('open');
+                            if (navToggle) {
+                                navToggle.setAttribute('aria-expanded', 'false');
+                                navToggle.innerHTML = '☰';
+                            }
+                             // Close all submenus when main mobile nav closes
+                            navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
+                            navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
                         }
-                        navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
-                        navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
                     }
                 });
             });
