@@ -1103,7 +1103,7 @@
 <header class="site-header">
     <div class="container header-inner">
         <a href="#" class="logo">
-            <img src="/IBB/static/images/logo.png" alt="Behringer & Partner Logo" loading="lazy">
+            <img src='{{ url_for("static", filename="images/logo.png") }}' alt="Behringer & Partner Logo" loading="lazy">
         </a>
         <nav class="main-nav">
             <ul class="nav-list">
@@ -1112,9 +1112,9 @@
                 <li class="nav-item dropdown">
                     <a href="#services">Leistungen <span class="dropdown-arrow">▼</span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#service-siedlung">Siedlungswasserwirtschaft</a></li>
-                        <li><a href="#service-strassen">Straßenbau & Brückenbau</a></li>
-                        <li><a href="#service-fernwaerme">Fernwärme</a></li>
+                        <li><a href="{{ url_for('siedlungswasserwirtschaft.html') }}">Siedlungswasserwirtschaft</a></li>
+                        <li><a href="{{ url_for('strassenbau-brueckenbau.html') }}">Straßenbau & Brückenbau</a></li>
+                        <li><a href="{{ url_for('fernwaerme.html') }}">Fernwärme</a></li>
                         <li><a href="#service-hydraulik">Hydraulische Nachweise</a></li>
                         <li><a href="#service-bauland">Baulanderschließung</a></li>
                         <li><a href="#service-gis">Kommunales GIS</a></li>
@@ -1126,7 +1126,7 @@
                     <a href="#company">Unternehmen <span class="dropdown-arrow">▼</span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#company-team">Team</a></li>
-                        <li><a href="#company-history">Firmengeschichte</a></li>
+                        <li><a href="{{ url_for('firmengeschichte.html') }}">Firmengeschichte</a></li>
                         <li><a href="#company-jobs">Stellenangebote</a></li>
                     </ul>
                 </li>
@@ -1139,10 +1139,10 @@
 
     <section class="hero">
         <div class="hero-slideshow">
-            <img src="/IBB/static/images/engineering.jpg" alt="Ingenieur plant Tiefbauprojekt" class="hero-img active"
+            <img src="{{ url_for('static', filename='images/engineering.jpg') }}" alt="Ingenieur plant Tiefbauprojekt" class="hero-img active"
                 loading="lazy">
-            <img src="/IBB/static/images/working.jpg" alt="Arbeiter auf der Baustelle" class="hero-img" loading="lazy">
-            <img src="/IBB/static/images/working (2).jpg" alt="Team in Aktion" class="hero-img" loading="lazy">
+            <img src="{{ url_for('static', filename='images/working.jpg') }}" alt="Arbeiter auf der Baustelle" class="hero-img" loading="lazy">
+            <img src="{{ url_for('static', filename='images/working (2).jpg') }}" alt="Team in Aktion" class="hero-img" loading="lazy">
         </div>
         <div class="hero-content">
             <h1>Ihr Partner im Tiefbau seit 1968</h1>
@@ -1164,7 +1164,7 @@
                                 Wir entwickeln maßgeschneiderte, wirtschaftliche Lösungen nach höchsten technischen Standards und begleiten Sie von der Idee bis zur erfolgreichen Realisierung Ihres Projekts.
                             </p>
                             <div class="flex flex-wrap gap-4">
-                                <a href="#company-history"
+                                <a href="{{ url_for('firmengeschichte.html') }}"
                                     class="btn bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded">
                                     Unsere Geschichte
                                 </a>
@@ -1229,35 +1229,35 @@
                 <p class="section-subtitle">Entdecken Sie unser breites Spektrum an Ingenieurdienstleistungen.</p>
                 <div class="services-grid">
                     <div class="service-card" id="service-siedlung">
-                        <img src="/IBB/static/images/ingenieur.jpg" alt="Siedlungswasserwirtschaft" loading="lazy">
+                        <img src="{{ url_for('static', filename='images/ingenieur.jpg') }}" alt="Siedlungswasserwirtschaft" loading="lazy">
                         <h3>Siedlungswasserwirtschaft</h3>
                     </div>
                     <div class="service-card" id="service-strassen">
-                        <img src="/IBB/static/images/hero.jpg" alt="Straßenbau & Brückenbau" loading="lazy">
+                        <img src="{{ url_for('static', filename='images/hero.jpg') }}" alt="Straßenbau & Brückenbau" loading="lazy">
                         <h3>Straßenbau & Brückenbau</h3>
                     </div>
                     <div class="service-card" id="service-fernwaerme">
-                        <img src="/IBB/static/images/working (2).jpg" alt="Fernwärme" loading="lazy">
+                        <img src="{{ url_for('static', filename='images/working (2).jpg') }}" alt="Fernwärme" loading="lazy">
                         <h3>Fernwärme</h3>
                     </div>
                     <div class="service-card" id="service-hydraulik">
-                        <img src="/IBB/static/images/working.jpg" alt="Hydraulische Nachweise" loading="lazy">
+                        <img src="{{ url_for('static', filename='images/working.jpg') }}" alt="Hydraulische Nachweise" loading="lazy">
                         <h3>Hydraulische Nachweise</h3>
                     </div>
                     <div class="service-card" id="service-bauland">
-                        <img src="/IBB/static/images/excavator.jpg" alt="Baulanderschließung" loading="lazy">
+                        <img src="{{ url_for('static', filename='images/excavator.jpg') }}" alt="Baulanderschließung" loading="lazy">
                         <h3>Baulanderschließung</h3>
                     </div>
                     <div class="service-card" id="service-gis">
-                        <img src="/IBB/static/images/bohrmaschine_zeichner.jpg" alt="Kommunales GIS" loading="lazy">
+                        <img src="{{ url_for('static', filename='images/bohrmaschine-zeichner.jpg') }}" alt="Kommunales GIS" loading="lazy">
                         <h3>Kommunales GIS</h3>
                     </div>
                     <div class="service-card" id="service-sanierung">
-                        <img src="/IBB/static/images/roundabout.jpg" alt="Sanierungen" loading="lazy">
+                        <img src="{{ url_for('static', filename='images/roundabout.jpg') }}" alt="Sanierungen" loading="lazy">
                         <h3>Sanierungen</h3>
                     </div>
                     <div class="service-card" id="service-wasserbau">
-                        <img src="/IBB/static/images/bridge.jpg" alt="Wasserbau" loading="lazy">
+                        <img src="{{ url_for('static', filename='images/bridge.jpg') }}" alt="Wasserbau" loading="lazy">
                         <h3>Wasserbau</h3>
                     </div>
                 </div>
@@ -1335,9 +1335,9 @@
             <div>
                 <h4>Leistungen</h4>
                 <ul>
-                    <li><a href="#service-siedlung">Siedlungswasserwirtschaft</a></li>
-                    <li><a href="#service-strassen">Straßenbau & Brückenbau</a></li>
-                    <li><a href="#service-fernwaerme">Fernwärme</a></li>
+                    <li><a href="{{ url_for('siedlungswasserwirtschaft.html') }}">Siedlungswasserwirtschaft</a></li>
+                    <li><a href="{{ url_for('strassenbau-brueckenbau.html') }}">Straßenbau & Brückenbau</a></li>
+                    <li><a href="{{ url_for('fernwaerme.html') }}">Fernwärme</a></li>
                     <li><a href="#service-hydraulik">Hydraulische Nachweise</a></li>
                     <li><a href="#service-bauland">Baulanderschließung</a></li>
                     <li><a href="#service-gis">Kommunales GIS</a></li>
@@ -1358,7 +1358,7 @@
             <div>
                 <h4>Rechtliches</h4>
                 <ul>
-                    <li><a href="#impressum">Impressum</a></li>
+                    <li><a href="{{ url_for('impressum.html') }}">Impressum</a></li>
                     <li><a href="#datenschutz">Datenschutz</a></li>
                 </ul>
             </div>
@@ -1369,16 +1369,16 @@
                 </div>
                  <h4 style="margin-top: 1.5rem;">Wir unterstützen</h4>
                  <p style="margin-bottom: var(--space-xs); line-height: 1.4;">
-                    <a href="maedchenschule-chato.html">Mädchenschule Chato, Tansania</a>
+                    <a href="{{ url_for('maedchenschule-chato.html') }}">Mädchenschule Chato, Tansania</a>
                  </p>
-                 <a href="maedchenschule-chato.html">
+                 <a href="{{ url_for('maedchenschule-chato.html') }}">
                     <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2022/12/Suedansicht-2-150x150.jpg" alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
                 </a>
             </div>
         </div>
         <div class="footer-bottom">
             <p>© <span id="current-year">2024</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
-            <p><a href="#impressum">Impressum</a> | <a href="#datenschutz">Datenschutz</a></p>
+            <p><a href="{{ url_for('impressum.html') }}">Impressum</a> | <a href="#datenschutz">Datenschutz</a></p>
         </div>
     </footer>
 
