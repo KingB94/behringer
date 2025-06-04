@@ -280,7 +280,7 @@
             }
             .nav-list.open {
                 display: flex;
-                max-height: calc(100vh - 85px); 
+                max-height: calc(100vh - 70px); /* Adjusted based on smaller logo height */
                 overflow-y: auto;
                 -webkit-overflow-scrolling: touch;
             }
@@ -392,7 +392,7 @@
             font-family: var(--font-heading);
             font-size: clamp(1.75rem, 4vw, 2.25rem);
             text-align: center;
-            margin-bottom: var(--space-md); /* Increased margin for better separation */
+            margin-bottom: var(--space-md); 
             color: var(--clr-secondary);
         }
       
@@ -402,7 +402,7 @@
             padding-bottom: var(--space-xl);
         }
         .legal-content-section .container {
-            max-width: 900px; /* Slightly narrower for better readability of text */
+            max-width: 900px; 
         }
         .legal-content-section h1, 
         .legal-content-section h2 {
@@ -411,7 +411,7 @@
             font-size: clamp(1.5rem, 3.5vw, 2rem);
         }
         .legal-content-section h1:first-child {
-             margin-top: 0; /* No top margin for the very first heading */
+             margin-top: 0; 
              text-align: center;
              font-size: clamp(2rem, 4.5vw, 2.8rem);
              margin-bottom: var(--space-lg);
@@ -495,35 +495,36 @@
 <body>
     <header class="site-header">
         <div class="container header-inner">
-            <a href="index.html" class="logo">
-                <img src="/IBB/static/images/logo.png" alt="Behringer & Partner Logo" loading="lazy">
+            <a href="{{ url_for('index') }}" class="logo">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Behringer & Partner Logo" loading="lazy">
             </a>
             <nav class="main-nav">
                 <ul class="nav-list">
-                    <li><a href="index.html#about">Über uns</a></li>
-                    <li><a href="index.html#news">Neuigkeiten</a></li>
+                    <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
+                    <li><a href="{{ url_for('index') }}#news">Neuigkeiten</a></li>
                     <li class="nav-item dropdown">
-                        <a href="index.html#services">Leistungen <span class="dropdown-arrow">▼</span></a>
+                        <a href="{{ url_for('index') }}#services">Leistungen <span class="dropdown-arrow">▼</span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="siedlungswasserwirtschaft.html">Siedlungswasserwirtschaft</a></li>
-                            <li><a href="index.html#service-strassen">Straßenbau & Brückenbau</a></li>
-                            <li><a href="index.html#service-fernwaerme">Fernwärme</a></li>
-                            <li><a href="index.html#service-hydraulik">Hydraulische Nachweise</a></li>
-                            <li><a href="index.html#service-bauland">Baulanderschließung</a></li>
-                            <li><a href="index.html#service-gis">Kommunales GIS</a></li>
-                            <li><a href="index.html#service-sanierung">Sanierungen</a></li>
-                            <li><a href="index.html#service-wasserbau">Wasserbau</a></li>
+                            <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
+                            <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
+                            <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
+                            <li><a href="{{ url_for('index') }}#service-hydraulik">Hydraulische Nachweise</a></li>
+                            <li><a href="{{ url_for('index') }}#service-bauland">Baulanderschließung</a></li>
+                            <li><a href="{{ url_for('index') }}#service-gis">Kommunales GIS</a></li>
+                            <li><a href="{{ url_for('index') }}#service-sanierung">Sanierungen</a></li>
+                            <li><a href="{{ url_for('index') }}#service-wasserbau">Wasserbau</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="index.html#company">Unternehmen <span class="dropdown-arrow">▼</span></a>
+                        <a href="{{ url_for('index') }}#company">Unternehmen <span class="dropdown-arrow">▼</span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="index.html#company-team">Team</a></li>
-                            <li><a href="index.html#company-history">Firmengeschichte</a></li>
-                            <li><a href="index.html#company-jobs">Stellenangebote</a></li>
+                            <li><a href="{{ url_for('unternehmen_team') }}">Team</a></li>
+                            <li><a href="{{ url_for('firmengeschichte') }}">Firmengeschichte</a></li>
+                            <li><a href="{{ url_for('unternehmen_netzwerk') }}">Netzwerk</a></li>
+                            <li><a href="{{ url_for('unternehmen_stellenangebote') }}">Stellenangebote</a></li>
                         </ul>
                     </li>
-                    <li><a href="index.html#contact" class="btn btn-primary">Kontakt</a></li>
+                    <li><a href="{{ url_for('index') }}#contact" class="btn btn-primary">Kontakt</a></li>
                 </ul>
             </nav>
             <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
@@ -533,9 +534,8 @@
     <main>
         <section class="legal-content-section">
             <div class="container">
-                <!-- Original content from your request, wrapped in a div for styling if needed -->
                 <div class="entry-content">
-                    <h1 class="entry-title">Impressum & Datenschutz</h1>
+                    <h1 class="entry-title">Impressum</h1> {/* Changed from "Impressum & Datenschutz" as Datenschutz is a subsection */}
                     
                     <p><strong>Ingenieurbüro Behringer & Partner mbB<br>
                     </strong>Beratender Ingenieur, Bauingenieure und staatlich geprüfter Bautechniker<strong><br>
@@ -564,7 +564,7 @@
                     <p><strong>Berufshaftplicht</strong><br>
                     VHV Hannover / Geltungsbereich: Deutschland</p>
                     <p><strong>Die maßgeblichen berufsrechtlichen Regelungen finden Sie hier<br>
-                    </strong><a href="http://www.bayika.de/">Bayerische Ingenieurkammer Bau</a><strong><br>
+                    </strong><a href="http://www.bayika.de/" target="_blank" rel="noopener">Bayerische Ingenieurkammer Bau</a><strong><br> {/* External link, no url_for */}
                     </strong>Mitglied: Dipl.-Ing. (FH) Robert Behringer, Beratender Ingenieur<strong><br>
                     </strong></p>
                     <p><strong>Haftung für Links</strong><br>
@@ -574,7 +574,7 @@
                     Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.<br>
                     Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
                     
-                    <h2>Datenschutzerklärung</h2>
+                    <h2 id="datenschutz">Datenschutzerklärung</h2> {/* Added id="datenschutz" here */}
                     <p>Verantwortliche Stelle im Sinne der Datenschutzgesetze, insbesondere der EU-Datenschutzgrundverordnung (DSGVO), ist:</p>
                     <p><strong>Ingenieurbüro Behringer & Partner mbB<br>
                     </strong>Beratender Ingenieur, Bauingenieure und staatlich geprüfter Bautechniker<br>
@@ -621,7 +621,7 @@
                     <p>Diese Website benutzt Google Analytics, einen Webanalysedienst der Google Inc. (folgend: Google). Google Analytics verwendet sog. „Cookies“, also Textdateien, die auf Ihrem Computer gespeichert werden und die eine Analyse der Benutzung der Webseite durch Sie ermöglichen. Die durch das Cookie erzeugten Informationen über Ihre Benutzung dieser Webseite werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert. Aufgrund der Aktivierung der IP-Anonymisierung auf diesen Webseiten, wird Ihre IP-Adresse von Google jedoch innerhalb von Mitgliedstaaten der Europäischen Union oder in anderen Vertragsstaaten des Abkommens über den Europäischen Wirtschaftsraum zuvor gekürzt. Nur in Ausnahmefällen wird die volle IP-Adresse an einen Server von Google in den USA übertragen und dort gekürzt. Im Auftrag des Betreibers dieser Website wird Google diese Informationen benutzen, um Ihre Nutzung der Webseite auszuwerten, um Reports über die Webseitenaktivitäten zusammenzustellen und um weitere mit der Websitenutzung und der Internetnutzung verbundene Dienstleistungen gegenüber dem Webseitenbetreiber zu erbringen. Die im Rahmen von Google Analytics von Ihrem Browser übermittelte IP-Adresse wird nicht mit anderen Daten von Google zusammengeführt.</p>
                     <p>Die Zwecke der Datenverarbeitung liegen in der Auswertung der Nutzung der Website und in der Zusammenstellung von Reports über Aktivitäten auf der Website. Auf Grundlage der Nutzung der Website und des Internets sollen dann weitere verbundene Dienstleistungen erbracht werden. Die Verarbeitung beruht auf dem berechtigten Interesse des Webseitenbetreibers.</p>
                     <p>Sie können die Speicherung der Cookies durch eine entsprechende Einstellung Ihrer Browser-Software verhindern; wir weisen Sie jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht sämtliche Funktionen dieser Website vollumfänglich werden nutzen können. Sie können darüber hinaus die Erfassung der durch das Cookie erzeugten und auf Ihre Nutzung der Webseite bezogenen Daten (inkl. Ihrer IP-Adresse) an Google sowie die Verarbeitung dieser Daten durch Google verhindern, indem sie das unter dem folgenden Link verfügbare Browser-Plugin herunterladen und installieren: <a href="https://tools.google.com/dlpage/gaoptout?hl=de" target="_blank" rel="noopener noreferrer">Browser Add On zur Deaktivierung von Google Analytics</a>.</p>
-                    <p>Zusätzlich oder als Alternative zum Browser-Add-On können Sie das Tracking durch Google Analytics auf unseren Seiten unterbinden, indem Sie <a title="Google Analytics Opt-Out-Cookie setzen" href="#">diesen Link anklicken</a>. Dabei wird ein Opt-Out-Cookie auf Ihrem Gerät installiert. Damit wird die Erfassung durch Google Analytics für diese Website und für diesen Browser zukünftig verhindert, so lange das Cookie in Ihrem Browser installiert bleibt.</p>
+                    <p>Zusätzlich oder als Alternative zum Browser-Add-On können Sie das Tracking durch Google Analytics auf unseren Seiten unterbinden, indem Sie <a title="Google Analytics Opt-Out-Cookie setzen" href="javascript:gaOptout()">diesen Link anklicken</a>. Dabei wird ein Opt-Out-Cookie auf Ihrem Gerät installiert. Damit wird die Erfassung durch Google Analytics für diese Website und für diesen Browser zukünftig verhindert, so lange das Cookie in Ihrem Browser installiert bleibt.</p>
                     <h3>Verwendung von Google Maps</h3>
                     <p>Diese Webseite verwendet Google Maps API, um geographische Informationen visuell darzustellen. Bei der Nutzung von Google Maps werden von Google auch Daten über die Nutzung der Kartenfunktionen durch Besucher erhoben, verarbeitet und genutzt. Nähere Informationen über die Datenverarbeitung durch Google können Sie <a href="https://www.google.com/privacypolicy.html" target="_blank" rel="noopener noreferrer">den Google-Datenschutzhinweisen</a> entnehmen. Dort können Sie im Datenschutzcenter auch Ihre persönlichen Datenschutz-Einstellungen verändern.</p>
                     <p>Ausführliche Anleitungen zur Verwaltung der eigenen Daten im Zusammenhang mit Google-Produkten<a href="https://www.dataliberation.org/" target="_blank" rel="noopener noreferrer"> finden Sie hier</a>.</p>
@@ -647,24 +647,24 @@
             <div>
                 <h4>Navigation</h4>
                 <ul>
-                    <li><a href="index.html#about">Über uns</a></li>
-                    <li><a href="index.html#news">Neuigkeiten</a></li>
-                    <li><a href="index.html#services">Leistungen</a></li>
-                    <li><a href="index.html#company">Unternehmen</a></li>
-                    <li><a href="index.html#contact">Kontakt</a></li>
+                    <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
+                    <li><a href="{{ url_for('index') }}#news">Neuigkeiten</a></li>
+                    <li><a href="{{ url_for('index') }}#services">Leistungen</a></li>
+                    <li><a href="{{ url_for('index') }}#company">Unternehmen</a></li>
+                    <li><a href="{{ url_for('index') }}#contact">Kontakt</a></li>
                 </ul>
             </div>
             <div>
                 <h4>Leistungen</h4>
                 <ul>
-                    <li><a href="siedlungswasserwirtschaft.html">Siedlungswasserwirtschaft</a></li>
-                    <li><a href="index.html#service-strassen">Straßenbau & Brückenbau</a></li>
-                    <li><a href="index.html#service-fernwaerme">Fernwärme</a></li>
-                    <li><a href="index.html#service-hydraulik">Hydraulische Nachweise</a></li>
-                    <li><a href="index.html#service-bauland">Baulanderschließung</a></li>
-                    <li><a href="index.html#service-gis">Kommunales GIS</a></li>
-                    <li><a href="index.html#service-sanierung">Sanierungen</a></li>
-                    <li><a href="index.html#service-wasserbau">Wasserbau</a></li>
+                    <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
+                    <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
+                    <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
+                    <li><a href="{{ url_for('index') }}#service-hydraulik">Hydraulische Nachweise</a></li>
+                    <li><a href="{{ url_for('index') }}#service-bauland">Baulanderschließung</a></li>
+                    <li><a href="{{ url_for('index') }}#service-gis">Kommunales GIS</a></li>
+                    <li><a href="{{ url_for('index') }}#service-sanierung">Sanierungen</a></li>
+                    <li><a href="{{ url_for('index') }}#service-wasserbau">Wasserbau</a></li>
                 </ul>
             </div>
             <div>
@@ -680,8 +680,8 @@
             <div>
                 <h4>Rechtliches</h4>
                 <ul>
-                    <li><a href="impressum.html">Impressum</a></li> 
-                    <li><a href="datenschutz.html">Datenschutz</a></li>
+                    <li><a href="{{ url_for('impressum') }}">Impressum</a></li> 
+                    <li><a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></li> {/* Points to anchor on this page */}
                 </ul>
             </div>
             <div>
@@ -691,20 +691,29 @@
                 </div>
                  <h4 style="margin-top: 1.5rem;">Wir unterstützen</h4>
                  <p style="margin-bottom: var(--space-xs); line-height: 1.4;">
-                    <a href="maedchenschule-chato.html">Mädchenschule Chato, Tansania</a>
+                    <a href="{{ url_for('maedchenschule_chato') }}">Mädchenschule Chato, Tansania</a>
                  </p>
-                 <a href="maedchenschule-chato.html">
+                 <a href="{{ url_for('maedchenschule_chato') }}">
                     <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2022/12/Suedansicht-2-150x150.jpg" alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
                 </a>
             </div>
         </div>
         <div class="footer-bottom">
             <p>© <span id="current-year">2024</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
-            <p><a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
+            <p><a href="{{ url_for('impressum') }}">Impressum</a> | <a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></p> {/* Points to anchor on this page */}
         </div>
     </footer>
 
     <script>
+        // GA Opt-out function (if you intend to use it like this)
+        var gaProperty = 'UA-XXXXXXXX-X'; // Replace with your GA Property ID if needed, or handle dynamically
+        var disableStr = 'ga-disable-' + gaProperty;
+        function gaOptout() {
+            document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+            window[disableStr] = true;
+            alert('Das Tracking durch Google Analytics wurde für diese Website in diesem Browser deaktiviert.');
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const navToggle = document.querySelector('.nav-toggle');
             const navList = document.querySelector('.main-nav .nav-list');
@@ -728,41 +737,57 @@
             dropdownToggles.forEach(toggle => {
                 toggle.addEventListener('click', function(event) {
                     if (navToggle && window.getComputedStyle(navToggle).display !== 'none') {
-                        const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
-                        if (hasArrow) {
+                        const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN'; // SPAN for dropdowns that are not links
+                        if (hasArrow) { // It's a dropdown toggle
                             event.preventDefault(); 
                             const submenu = this.parentElement.querySelector('.dropdown-menu');
                             if (submenu) submenu.classList.toggle('submenu-open');
                             this.classList.toggle('active'); 
                         }
+                        // Else, it's a normal link within a dropdown or a top-level link, let it navigate
                     }
                 });
             });
 
 
             // 3. Smooth Scroll for on-page anchors & Close mobile nav
-             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+             document.querySelectorAll('a[href]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
-                    if (href.length > 1 && href.startsWith('#')) {
+                    const isMobileView = navToggle && window.getComputedStyle(navToggle).display !== 'none';
+                    let isMobileDropdownToggleItself = false;
+                    
+                    if (isMobileView && this.parentElement && this.parentElement.classList.contains('dropdown') && this.closest('.nav-list') && this.querySelector('.dropdown-arrow')) {
+                        const submenu = this.parentElement.querySelector('.dropdown-menu');
+                        if (submenu) { 
+                            isMobileDropdownToggleItself = true;
+                        }
+                    }
+
+                    if (href.startsWith('#') && href.length > 1) {
                         const targetElement = document.querySelector(href);
-                        if (targetElement) {
+                        if (targetElement) { 
                             e.preventDefault();
                             let headerOffset = siteHeader ? siteHeader.offsetHeight : 0;
                             const elementPosition = targetElement.getBoundingClientRect().top;
                             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                             window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                        }
+                    } else if (href === '#') { 
+                         e.preventDefault();
+                         window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
 
-                            if (navList && navList.classList.contains('open') && this.closest('.nav-list')) {
-                                navList.classList.remove('open');
+                    if (isMobileView && navList && navList.classList.contains('open') && !isMobileDropdownToggleItself) {
+                         if (!href.startsWith('#') || (href.startsWith('#') && document.querySelector(href))) { 
+                            navList.classList.remove('open');
+                            if (navToggle) {
                                 navToggle.setAttribute('aria-expanded', 'false');
                                 navToggle.innerHTML = '☰';
-                                navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
-                                navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
                             }
+                            navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
+                            navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
                         }
-                    } else if (href === '#' && this.closest('.nav-list.open')) { 
-                        e.preventDefault(); 
                     }
                 });
             });
