@@ -141,7 +141,7 @@
             padding: var(--space-sm) 0;
         }
 
-        .logo img { /* Adjusted from 60px to 80px to match index.html */
+        .logo img { 
             display: block;
             max-height: 80px; 
             width: auto;
@@ -274,10 +274,10 @@
             background-color: var(--clr-bg-alt);
             color: var(--clr-primary);
         }
-        .dropdown-menu li a.active-subpage-link { /* Style for active subpage in dropdown */
+        .dropdown-menu li a.active-service-link { /* Style for active service page in dropdown */
             background-color: var(--clr-bg-alt);
             color: var(--clr-primary);
-            font-weight: 700; /* Or other distinctive style */
+            font-weight: 700;
         }
 
 
@@ -293,7 +293,7 @@
             .nav-list {
                 display: none;
                 position: absolute;
-                top: 100%; /* Positioned relative to header-inner's bottom */
+                top: 100%; 
                 left: 0;
                 right: 0;
                 width: 100%;
@@ -301,15 +301,15 @@
                 background: var(--clr-white);
                 padding: var(--space);
                 box-shadow: var(--shadow-lg);
-                gap: 0; /* Reset gap for vertical layout */
-                align-items: flex-start; /* Align items to the start */
+                gap: 0; 
+                align-items: flex-start; 
             }
 
             .nav-list.open {
                 display: flex;
-                max-height: calc(100vh - 70px); /* Adjust 70px to actual mobile header height if needed */
+                max-height: calc(100vh - 82px); /* Adjusted for actual mobile header height */
                 overflow-y: auto;
-                -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+                -webkit-overflow-scrolling: touch; 
             }
 
             .nav-toggle {
@@ -317,31 +317,31 @@
             }
 
             .nav-item.dropdown .dropdown-menu {
-                position: static; /* Overrides absolute positioning */
-                opacity: 0; /* Initially hidden for transition */
-                visibility: visible; /* Keep visible for layout purposes, opacity controls view */
-                transform: none; /* No transform needed */
+                position: static; 
+                opacity: 0; 
+                visibility: visible; 
+                transform: none; 
                 box-shadow: none;
                 border: none;
-                padding-left: var(--space); /* Indent submenu items */
+                padding-left: var(--space); 
                 padding-top: 0; 
                 padding-bottom: 0;
                 min-width: auto;
                 background-color: transparent;
-                max-height: 0; /* Core of collapse mechanism */
+                max-height: 0; 
                 overflow: hidden;
                 transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out,
                             margin-top 0.3s ease-in-out, margin-bottom 0.3s ease-in-out;
             }
             .nav-item.dropdown .dropdown-menu.submenu-open {
                 opacity: 1;
-                max-height: 500px; /* Adjust if more items are expected */
+                max-height: 500px; 
                 margin-top: var(--space-xs); 
                 margin-bottom: var(--space-xs); 
             }
 
             .nav-item.dropdown .dropdown-menu li a {
-                padding: var(--space-xs) 0; /* Vertical padding for submenu items */
+                padding: var(--space-xs) 0; 
                 font-weight: normal;
             }
             .nav-item.dropdown .dropdown-menu li a:hover {
@@ -354,9 +354,9 @@
             .nav-list>li>span {
                 padding: var(--space-sm) 0; 
                 width: 100%;
-                display: flex; /* Added for aligning text and arrow */
-                justify-content: space-between; /* Pushes arrow to the right */
-                align-items: center; /* Vertically aligns text and arrow */
+                display: flex; 
+                justify-content: space-between; 
+                align-items: center; 
             }
 
             .nav-list>li:not(:last-child)>a,
@@ -365,15 +365,15 @@
             }
 
             .nav-list>li>a.btn {
-                display: inline-block; /* Allow button to not take full width */
+                display: inline-block; 
                 width: auto;
                 margin-top: var(--space-sm);
-                padding: .75rem 1.5rem !important; /* Ensure padding overrides */
+                padding: .75rem 1.5rem !important; 
             }
 
             .nav-list>li>a:not(.btn)::after,
             .nav-list>li>span::after {
-                display: none; /* Remove desktop hover underlines */
+                display: none; 
             }
         }
 
@@ -429,14 +429,17 @@
         .section.bg-alternate {
             background: var(--clr-bg-alt);
         }
-        /* Greift, wenn eine .section die zweite .section nach einem .service-hero ist */
-        .service-hero + .section + .section {
+        /* Alternating background for sections on service detail pages */
+        .page-header-section + .section { /* First section after header */
+            /* Default background (white or as set by body) */
+        }
+        .page-header-section + .section + .section { /* Second section after header */
              background: var(--clr-bg-alt);
         }
-        /* Wenn die erste Section nach dem Hero explizit bg-alternate hat, soll die zweite es nicht haben */
-        .service-hero + .section.bg-alternate + .section {
-            background: var(--clr-bg);
+        .page-header-section + .section + .section + .section { /* Third section */
+            background: var(--clr-bg); /* white again */
         }
+        /* And so on if more sections */
 
 
         .section-title {
@@ -504,28 +507,40 @@
         .footer-bottom a { color: #ccc; }
         .footer-bottom a:hover { color: var(--clr-white); }
 
-        /* STILE FÜR UNTERSEITEN */
-        .service-hero { 
-            min-height: 35vh; 
-            padding: var(--space-lg) var(--space-sm);
-            background: linear-gradient(to bottom right, var(--clr-primary), var(--clr-gradient-end));
-            color: var(--clr-white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            margin-bottom: var(--space-lg); 
+        /* STYLES FÜR Leistungs-Detailseiten (z.B. Fernwärme) */
+        /* Page Header (ersetzt .service-hero für einen allgemeineren Look) */
+        .page-header-section {
+            padding-top: var(--space-md);
+            padding-bottom: var(--space-md);
+            background-color: var(--clr-bg-alt); 
+            border-bottom: 1px solid var(--clr-border);
+            margin-bottom: var(--space-lg); /* Added margin to separate from first content section */
         }
-        .service-hero .hero-content h1 {
-            font-size: clamp(2rem, 4.5vw, 2.8rem); 
-            color: var(--clr-white);
+        .page-title {
+            font-size: clamp(2rem, 5vw, 2.75rem); 
+            color: var(--clr-primary); 
+            margin-top: var(--space-sm);
+            margin-bottom: 0; 
+            text-align: left;
+        }
+        .breadcrumbs {
+            font-size: 0.9rem;
+            color: #555; 
             margin-bottom: var(--space-xs);
+            text-align: left;
         }
-        .service-hero .hero-content p {
-            font-size: clamp(1rem, 2vw, 1.15rem);
-            max-width: 800px; 
-            margin-bottom: 0;
+        .breadcrumbs a {
+            color: var(--clr-primary);
+            text-decoration: none;
         }
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+        .breadcrumbs .arrow {
+            margin: 0 0.4em;
+            color: #777; 
+        }
+
 
         .beitraege-grid {
             display: grid;
@@ -544,6 +559,10 @@
             display: flex;
             flex-direction: column;
         }
+        #beitraege.bg-alternate .beitrag-card { /* Ensure cards are white on alt bg */
+            background-color: var(--clr-white);
+        }
+
         .beitrag-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-md);
@@ -587,6 +606,25 @@
             font-weight: 600;
             color: var(--clr-secondary);
         }
+         .beitrag-card .beitrag-leistungen a {
+            color: var(--clr-secondary);
+            text-decoration: none;
+            margin-left: var(--space-xs);
+            padding: 0.1em 0.3em;
+            border-radius: var(--radius-sm);
+            background-color: var(--clr-bg); /* Default white background for tags */
+            border: 1px solid var(--clr-border);
+            transition: background-color 0.2s, color 0.2s;
+        }
+        #beitraege.bg-alternate .beitrag-card .beitrag-leistungen a {
+             background-color: #e9e9e9; /* Slightly darker than page bg-alt for contrast */
+        }
+        .beitrag-card .beitrag-leistungen a:hover {
+            color: var(--clr-primary);
+            text-decoration: none;
+            background-color: #e0e0e0;
+        }
+
 
         .beitrags-navigation {
             text-align: center;
@@ -616,12 +654,12 @@
                         <ul class="dropdown-menu">
                             <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
                             <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
-                            <li><a href="{{ url_for('fernwaerme') }}" class="active-subpage-link">Fernwärme</a></li>
-                            <li><a href="{{ url_for('index') }}#service-hydraulik">Hydraulische Nachweise</a></li>
-                            <li><a href="{{ url_for('index') }}#service-bauland">Baulanderschließung</a></li>
-                            <li><a href="{{ url_for('index') }}#service-gis">Kommunales GIS</a></li>
-                            <li><a href="{{ url_for('index') }}#service-sanierung">Sanierungen</a></li>
-                            <li><a href="{{ url_for('index') }}#service-wasserbau">Wasserbau</a></li>
+                            <li><a href="{{ url_for('fernwaerme') }}" class="active-service-link">Fernwärme</a></li>
+                            <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
+                            <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
+                            <li><a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a></li>
+                            <li><a href="{{ url_for('sanierungen') }}">Sanierungen</a></li>
+                            <li><a href="{{ url_for('wasserbau') }}">Wasserbau</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -640,17 +678,23 @@
         </div>
     </header>
 
-    <section class="service-hero">
-        <div class="hero-content">
-            <h1>Fernwärme</h1>
-            <p>Nachhaltige Wärmeversorgung für Kommunen und Unternehmen – zukunftssicher und effizient.</p>
+    <section class="page-header-section"> <!-- Changed from .service-hero -->
+        <div class="container">
+            <div id="breadcrumbs" class="breadcrumbs">
+                <a href="{{ url_for('index') }}#services" title="Leistungen">Leistungen</a>
+                <span class="arrow">></span>
+                <span>Fernwärme</span>
+            </div>
+            <h1 class="page-title">Fernwärme</h1>
+            <!-- Optional: Subtitle can go here if needed -->
+            <!-- <p class="section-subtitle text-left" style="text-align: left; max-width: none; margin-left:0; margin-bottom:0;">Nachhaltige Wärmeversorgung für Kommunen und Unternehmen – zukunftssicher und effizient.</p> -->
         </div>
     </section>
 
     <main>
         <section id="fernwaerme-info" class="section">
             <div class="container container-narrow text-content"> 
-                <h2 class="section-title">Effiziente Wärme für die Zukunft</h2>
+                <h2 class="section-title" style="text-align: left; margin-bottom: var(--space-md);">Effiziente Wärme für die Zukunft</h2>
                 <p>
                     Fernwärme ist eine bewährte Technologie, die in vielen Ländern bereits deutlich mehr genutzt wird als in Deutschland. 
                     Dabei wird Wärme aus einer zentralen Heizungsanlage über ein gut isoliertes Rohrleitungssystem zu den Verbrauchern transportiert. 
@@ -675,7 +719,7 @@
             </div>
         </section>
 
-        <section id="beitraege" class="section"> 
+        <section id="beitraege" class="section bg-alternate"> 
             <div class="container">
                 <h2 class="section-title">Referenzprojekte Fernwärme</h2>
                 <p class="section-subtitle">Ausgewählte Projekte und Beiträge aus dem Bereich Fernwärme.</p>
@@ -686,7 +730,7 @@
                         <h3>Fernwärmeversorgung Waldkraiburg 2023</h3>
                         <p>Aktuell läuft das Projekt der Fernwärmeversorgung der Rosenstraße, Kopernikusstraße, Metzner Straße und des Altvaterwegs. Von der Planung bis zur Umsetzung dürfen wir das Projekt im Namen der Stadtwerke Waldkraiburg betreuen. Die Fernwärmeversorgung ... <a href="#" class="read-more">(mehr)</a></p>
                         <div class="beitrag-leistungen">
-                            <strong>Leistungen:</strong> Fernwärme
+                            <strong>Leistungen:</strong> <a href="{{ url_for('fernwaerme') }}">Fernwärme</a>
                         </div>
                     </article>
 
@@ -695,7 +739,7 @@
                         <h3>Fernwärmeversorgung Reichertsheim</h3>
                         <p>Die Gemeinde Reichertsheim plant für das Jahr 2024 die Umsetzung eines Fernwärmeprojektes. Das Ziel des Projektes ist es, eine nachhaltige und umweltfreundliche Energieversorgung für die Bewohner und Unternehmen der Gemeinde zu schaffen. Um das Projekt z ... <a href="#" class="read-more">(mehr)</a></p>
                         <div class="beitrag-leistungen">
-                            <strong>Leistungen:</strong> Fernwärme
+                            <strong>Leistungen:</strong> <a href="{{ url_for('fernwaerme') }}">Fernwärme</a>
                         </div>
                     </article>
 
@@ -704,7 +748,7 @@
                         <h3>Fernwärmeversorgung Waldkraiburg 2022</h3>
                         <p>Das Projekt der Fernwärmeversorgung der Aussiger, Reichenberger, Birken, Tropauer Straße und des Olmützer Wegs in Waldkraiburg wurde im Jahr 2022 erfolgreich umgesetzt. Von der Planung bis zur Umsetzung durften wir das Projekt im Namen der Stadtwerke Waldkr ... <a href="#" class="read-more">(mehr)</a></p>
                         <div class="beitrag-leistungen">
-                            <strong>Leistungen:</strong> Fernwärme
+                            <strong>Leistungen:</strong> <a href="{{ url_for('fernwaerme') }}">Fernwärme</a>
                         </div>
                     </article>
 
@@ -713,7 +757,7 @@
                         <h3>Fernwärmeversorgung Waldkraiburg 2021</h3>
                         <p>Das Projekt der Fernwärmeversorgung der Siemens, Brünner, Siebenbürgen, Riesengebirgs und Adlergebirgsstraße in Waldkraiburg wurde im Jahr 2021 erfolgreich umgesetzt. Von der Planung bis zur Umsetzung durften wir das Projekt im Namen der Stadtwerke Waldkra ... <a href="#" class="read-more">(mehr)</a></p>
                         <div class="beitrag-leistungen">
-                            <strong>Leistungen:</strong> Fernwärme
+                            <strong>Leistungen:</strong> <a href="{{ url_for('fernwaerme') }}">Fernwärme</a>
                         </div>
                     </article>
                     
@@ -722,7 +766,7 @@
                         <h3>Fernwärmeversorgung Waldkraiburg 2020</h3>
                         <p>Das Projekt der Fernwärmeversorgung der Böhmerwald, Braunauer, Fanz-List-Straße in Waldkraiburg wurde im Jahr 2020 erfolgreich umgesetzt. Von der Planung bis zur Umsetzung durften wir das Projekt im Namen der Stadtwerke Waldkraiburg betreuen. Die Fernwä ... <a href="#" class="read-more">(mehr)</a></p>
                         <div class="beitrag-leistungen">
-                            <strong>Leistungen:</strong> Fernwärme
+                            <strong>Leistungen:</strong> <a href="{{ url_for('fernwaerme') }}">Fernwärme</a>
                         </div>
                     </article>
 
@@ -731,7 +775,7 @@
                         <h3>Fernwärmeversorgung Waldkraiburg 2018</h3>
                         <p>Das Projekt der Fernwärmeversorgung der Aussiger, Reichenberger und Erzgebirgestraße in Waldkraiburg wurde im Jahr 2018 erfolgreich umgesetzt. Von der Planung bis zur Umsetzung durften wir das Projekt im Namen der Stadtwerke Waldkraiburg betreuen. Die Fer ... <a href="#" class="read-more">(mehr)</a></p>
                         <div class="beitrag-leistungen">
-                            <strong>Leistungen:</strong> Fernwärme
+                            <strong>Leistungen:</strong> <a href="{{ url_for('fernwaerme') }}">Fernwärme</a>
                         </div>
                     </article>
                 </div>
@@ -762,11 +806,11 @@
                     <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
                     <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
                     <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
-                    <li><a href="{{ url_for('index') }}#service-hydraulik">Hydraulische Nachweise</a></li>
-                    <li><a href="{{ url_for('index') }}#service-bauland">Baulanderschließung</a></li>
-                    <li><a href="{{ url_for('index') }}#service-gis">Kommunales GIS</a></li>
-                    <li><a href="{{ url_for('index') }}#service-sanierung">Sanierungen</a></li>
-                    <li><a href="{{ url_for('index') }}#service-wasserbau">Wasserbau</a></li>
+                    <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
+                    <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
+                    <li><a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a></li>
+                    <li><a href="{{ url_for('sanierungen') }}">Sanierungen</a></li>
+                    <li><a href="{{ url_for('wasserbau') }}">Wasserbau</a></li>
                 </ul>
             </div>
             <div>
@@ -796,7 +840,7 @@
                     <a href="{{ url_for('maedchenschule_chato') }}">Mädchenschule Chato, Tansania</a>
                  </p>
                  <a href="{{ url_for('maedchenschule_chato') }}">
-                    <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2022/12/Suedansicht-2-150x150.jpg" alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
+                    <img src="{{ url_for('static', filename='images/chato_schule_thumb.jpg') }}" alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
                 </a>
             </div>
         </div>
@@ -830,15 +874,13 @@
             dropdownToggles.forEach(toggle => {
                 toggle.addEventListener('click', function(event) {
                     if (navToggle && window.getComputedStyle(navToggle).display !== 'none') { // Only for mobile view
-                        const href = this.getAttribute('href');
-                        const submenu = this.parentElement.querySelector('.dropdown-menu');
-
-                        if (submenu) { // If it's a dropdown toggle (has a submenu)
+                        const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
+                        if (hasArrow) { // Only act if it's a dropdown toggle
                             event.preventDefault(); 
-                            submenu.classList.toggle('submenu-open');
+                            const submenu = this.parentElement.querySelector('.dropdown-menu');
+                            if (submenu) submenu.classList.toggle('submenu-open');
                             this.classList.toggle('active'); 
                         }
-                        // Else, it's a normal link within a dropdown or a top-level link, let it navigate
                     }
                 });
             });
@@ -847,33 +889,35 @@
             // 3. Smooth Scroll for on-page anchors & Close mobile nav
              document.querySelectorAll('a[href]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
+                    const hrefAttribute = this.getAttribute('href');
                     const isMobileView = navToggle && window.getComputedStyle(navToggle).display !== 'none';
                     let isMobileDropdownToggleItself = false;
                     
-                    if (isMobileView && this.parentElement && this.parentElement.classList.contains('dropdown') && this.closest('.nav-list') && this.querySelector('.dropdown-arrow')) {
-                        const submenu = this.parentElement.querySelector('.dropdown-menu');
-                        if (submenu) { 
+                    if (isMobileView && this.parentElement && this.parentElement.classList.contains('dropdown') && this.closest('.nav-list')) {
+                         const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
+                         if(hasArrow) {
                             isMobileDropdownToggleItself = true;
-                        }
+                         }
                     }
 
-                    if (href.startsWith('#') && href.length > 1) {
-                        const targetElement = document.querySelector(href);
-                        if (targetElement) { 
-                            e.preventDefault();
-                            let headerOffset = siteHeader ? siteHeader.offsetHeight : 0;
-                            const elementPosition = targetElement.getBoundingClientRect().top;
-                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    if (hrefAttribute.startsWith('#') && hrefAttribute.length > 1) {
+                        if (document.getElementById(hrefAttribute.substring(1))) { // Check if anchor exists on current page
+                            const targetElement = document.querySelector(hrefAttribute);
+                            if (targetElement) { 
+                                e.preventDefault();
+                                let headerOffset = siteHeader ? siteHeader.offsetHeight : 0;
+                                const elementPosition = targetElement.getBoundingClientRect().top;
+                                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                            }
                         }
-                    } else if (href === '#') { 
+                    } else if (hrefAttribute === '#') { 
                          e.preventDefault();
                          window.scrollTo({ top: 0, behavior: 'smooth' });
                     }
 
                     if (isMobileView && navList && navList.classList.contains('open') && !isMobileDropdownToggleItself) {
-                         if (!href.startsWith('#') || (href.startsWith('#') && document.querySelector(href))) { 
+                         if (!hrefAttribute.startsWith('#') || (hrefAttribute.startsWith('#') && document.querySelector(hrefAttribute))) { 
                             navList.classList.remove('open');
                             if (navToggle) {
                                 navToggle.setAttribute('aria-expanded', 'false');
