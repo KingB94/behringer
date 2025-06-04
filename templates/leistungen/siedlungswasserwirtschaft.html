@@ -280,7 +280,7 @@
             }
             .nav-list.open {
                 display: flex;
-                max-height: calc(100vh - 70px); 
+                max-height: calc(100vh - 82px); /* Adjusted for actual mobile header height */
                 overflow-y: auto;
                 -webkit-overflow-scrolling: touch;
             }
@@ -388,6 +388,18 @@
         .section.bg-alternate {
             background: var(--clr-bg-alt);
         }
+         /* Alternating background for sections on service detail pages */
+        .page-header-section + .section { /* First section after header */
+            /* Default background (white or as set by body) */
+        }
+        .page-header-section + .section + .section { /* Second section after header */
+             background: var(--clr-bg-alt);
+        }
+        .page-header-section + .section + .section + .section { /* Third section */
+            background: var(--clr-bg); /* white again */
+        }
+
+
         .section-title {
             font-family: var(--font-heading);
             font-size: clamp(1.75rem, 4vw, 2.25rem);
@@ -405,28 +417,37 @@
             margin-right: auto;
         }
       
-        /* STILE FÜR SIEDLUNGSWASSERWIRTSCHAFT-SEITE */
-        .service-hero { 
-            min-height: 35vh; 
-            padding: var(--space-lg) var(--space-sm);
-            background: linear-gradient(to bottom right, var(--clr-primary), var(--clr-gradient-end));
-            color: var(--clr-white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+        /* STYLES FOR SERVICE DETAIL PAGES */
+        .page-header-section { /* Replaces .service-hero for a more general page header */
+            padding-top: var(--space-md);
+            padding-bottom: var(--space-md);
+            background-color: var(--clr-bg-alt); 
+            border-bottom: 1px solid var(--clr-border);
+            margin-bottom: 0; /* Reset margin from old .service-hero */
+        }
+        .page-title {
+            font-size: clamp(2rem, 5vw, 2.75rem); 
+            color: var(--clr-primary); 
+            margin-top: var(--space-sm);
             margin-bottom: 0; 
+            text-align: left; /* Align title to the left */
         }
-        .service-hero .hero-content h1 {
-            font-size: clamp(2rem, 4.5vw, 2.8rem); 
+        .breadcrumbs {
+            font-size: 0.9rem;
+            color: #555; 
             margin-bottom: var(--space-xs);
-            color: var(--clr-white);
+            text-align: left; /* Align breadcrumbs to the left */
         }
-        .service-hero .hero-content p {
-            font-size: clamp(1rem, 2vw, 1.15rem);
-            max-width: 800px; 
-            margin-bottom: 0;
-            color: var(--clr-text-light);
+        .breadcrumbs a {
+            color: var(--clr-primary);
+            text-decoration: none;
+        }
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+        .breadcrumbs .arrow {
+            margin: 0 0.4em;
+            color: #777; 
         }
 
         .leistungsumfang-list,
@@ -476,7 +497,6 @@
             gap: var(--space-md);
             margin-top: var(--space-lg);
         }
-
         .beitrag-card {
             background-color: var(--clr-white);
             border: 1px solid var(--clr-border);
@@ -487,12 +507,15 @@
             flex-direction: column; 
             overflow: hidden; 
         }
+        #beitraege.bg-alternate .beitrag-card { /* Ensure cards are white on alt bg */
+            background-color: var(--clr-white);
+        }
+
         @media (min-width: 768px) {
             .beitrag-card {
                 flex-direction: row; 
             }
         }
-
         .beitrag-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-md);
@@ -515,15 +538,12 @@
                 height: 100%; 
              }
         }
-
-
         .beitrag-card-content {
             padding: var(--space-md);
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
-
         .beitrag-card .beitrag-date {
             font-size: 0.8rem;
             color: #777;
@@ -543,7 +563,6 @@
          .beitrag-card h3 a:hover {
             color: var(--clr-gradient-start);
          }
-
         .beitrag-card p {
             font-size: 0.9rem;
             margin-bottom: var(--space-sm);
@@ -572,6 +591,25 @@
             font-weight: 600;
             color: var(--clr-secondary);
         }
+         .beitrag-card .beitrag-leistungen a {
+            color: var(--clr-secondary);
+            text-decoration: none;
+            margin-left: var(--space-xs);
+            padding: 0.1em 0.3em;
+            border-radius: var(--radius-sm);
+            background-color: var(--clr-bg); /* Default to white for tags */
+            border: 1px solid var(--clr-border);
+            transition: background-color 0.2s, color 0.2s;
+        }
+        #beitraege.bg-alternate .beitrag-card .beitrag-leistungen a {
+             background-color: #e9e9e9; /* Slightly darker than page bg-alt for contrast */
+        }
+        .beitrag-card .beitrag-leistungen a:hover {
+            color: var(--clr-primary);
+            text-decoration: none;
+            background-color: #e0e0e0;
+        }
+
         .beitrag-card.hidden-beitrag {
             display: none;
         }
@@ -649,11 +687,11 @@
                             <li><a href="{{ url_for('siedlungswasserwirtschaft') }}" class="active-service-link">Siedlungswasserwirtschaft</a></li>
                             <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
                             <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
-                            <li><a href="{{ url_for('index') }}#service-hydraulik">Hydraulische Nachweise</a></li>
-                            <li><a href="{{ url_for('index') }}#service-bauland">Baulanderschließung</a></li>
-                            <li><a href="{{ url_for('index') }}#service-gis">Kommunales GIS</a></li>
-                            <li><a href="{{ url_for('index') }}#service-sanierung">Sanierungen</a></li>
-                            <li><a href="{{ url_for('index') }}#service-wasserbau">Wasserbau</a></li>
+                            <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
+                            <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
+                            <li><a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a></li>
+                            <li><a href="{{ url_for('sanierungen') }}">Sanierungen</a></li>
+                            <li><a href="{{ url_for('wasserbau') }}">Wasserbau</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -672,10 +710,16 @@
         </div>
     </header>
 
-    <section class="service-hero">
-        <div class="hero-content">
-            <h1>Siedlungswasserwirtschaft</h1>
-            <p>Ihr Experte für Planung, Bau und Sanierung in allen Bereichen der Wasserver- und Abwasserentsorgung.</p>
+    <section class="page-header-section"> <!-- Replaced .service-hero -->
+        <div class="container">
+            <div id="breadcrumbs" class="breadcrumbs">
+                <a href="{{ url_for('index') }}#services" title="Leistungen">Leistungen</a>
+                <span class="arrow">></span>
+                <span>Siedlungswasserwirtschaft</span>
+            </div>
+            <h1 class="page-title">Siedlungswasserwirtschaft</h1>
+            <!-- Optional: Subtitle can go here if needed for this specific page -->
+            <p class="section-subtitle" style="text-align: left; max-width: none; margin-left:0; margin-bottom:0; color: var(--clr-secondary);">Ihr Experte für Planung, Bau und Sanierung in allen Bereichen der Wasserver- und Abwasserentsorgung.</p>
         </div>
     </section>
 
@@ -716,145 +760,164 @@
                 <div class="beitraege-grid">
                     <article class="beitrag-card">
                         <div class="beitrag-card-image">
-                            <a href="#"><img src="https://via.placeholder.com/270x180.png?text=Projektbild" alt="Erschließung Neubaugebiet Am Unterfeld"></a>
+                            <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-am-unterfeld/" target="_blank" rel="noopener"><img src="https://www.ib-behringer.de/wp/wp-content/uploads/2023/08/IMG_2469-270x150.jpg" alt="Erschließung Neubaugebiet Am Unterfeld" loading="lazy"></a>
                         </div>
                         <div class="beitrag-card-content">
                             <span class="beitrag-date">22. August 2023</span>
-                            <h3><a href="#">Erschließung Neubaugebiet Am Unterfeld</a></h3>
-                            <p>In der Gemeinde Obertaufkirchen enstehen im Ortsteil Oberornau 18 Bauparzellen für Wohnbebauung. Insgesamt werden für die Erschließung ca. 365 m Schmutzwasserkanal, 425 m Regenwasserkanal und 475 m Hauptwasserleitung hergestellt. Als Regenrückhaltebecken w... <a href="#" class="read-more">(mehr)</a></p>
+                            <h3><a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-am-unterfeld/" target="_blank" rel="noopener">Erschließung Neubaugebiet Am Unterfeld</a></h3>
+                            <p>In der Gemeinde Obertaufkirchen enstehen im Ortsteil Oberornau 18 Bauparzellen für Wohnbebauung. Insgesamt werden für die Erschließung ca. 365 m Schmutzwasserkanal, 425 m Regenwasserkanal und 475 m Hauptwasserleitung hergestellt. Als Regenrückhaltebecken w... <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-am-unterfeld/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
                             <div class="beitrag-leistungen">
-                                <strong>Leistungen:</strong> Baulanderschließung, Siedlungswasserwirtschaft, Straßenbau & Brückenbau
+                                <strong>Leistungen:</strong> 
+                                <a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a>, 
+                                <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>, 
+                                <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
                             </div>
                         </div>
                     </article>
 
                     <article class="beitrag-card">
                         <div class="beitrag-card-image">
-                             <a href="#"><img src="https://via.placeholder.com/270x180.png?text=Projektbild" alt="Regenüberlauf Hummel in Massing"></a>
+                             <a href="https://www.ib-behringer.de/projekt/regenueberlauf-hummel-in-massing/" target="_blank" rel="noopener"><img src="https://www.ib-behringer.de/wp/wp-content/uploads/2023/07/IMG_8339-270x150.jpg" alt="Regenüberlauf Hummel in Massing" loading="lazy"></a>
                         </div>
                         <div class="beitrag-card-content">
                             <span class="beitrag-date">20. August 2023</span>
-                            <h3><a href="#">Regenüberlauf Hummel in Massing</a></h3>
-                            <p>In der Vergangenheit haben sich im Kanalnetz des Marktes Massing bereits diverse hydraulische Überlastungen in Form von Überstau gezeigt. An Hand einer hydraulischen Überrechnung des Kanalnetzes wurden Lösungen aufgezeigt, um die Problemstellen in den Grif... <a href="#" class="read-more">(mehr)</a></p>
+                            <h3><a href="https://www.ib-behringer.de/projekt/regenueberlauf-hummel-in-massing/" target="_blank" rel="noopener">Regenüberlauf Hummel in Massing</a></h3>
+                            <p>In der Vergangenheit haben sich im Kanalnetz des Marktes Massing bereits diverse hydraulische Überlastungen in Form von Überstau gezeigt. An Hand einer hydraulischen Überrechnung des Kanalnetzes wurden Lösungen aufgezeigt, um die Problemstellen in den Grif... <a href="https://www.ib-behringer.de/projekt/regenueberlauf-hummel-in-massing/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
                             <div class="beitrag-leistungen">
-                                <strong>Leistungen:</strong> Hydraulische Nachweise, Siedlungswasserwirtschaft
+                                <strong>Leistungen:</strong> 
+                                <a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a>, 
+                                <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>
                             </div>
                         </div>
                     </article>
 
                     <article class="beitrag-card hidden-beitrag">
                         <div class="beitrag-card-image">
-                            <a href="#"><img src="https://via.placeholder.com/270x180.png?text=Projektbild" alt="Umbau der Kläranlagen Wittibreut und Ulbering"></a>
+                            <a href="https://www.ib-behringer.de/projekt/umbau-der-klaeranlagen-wittibreut-und-ulbering/" target="_blank" rel="noopener"><img src="https://www.ib-behringer.de/wp/wp-content/uploads/2021/07/Kl%C3%A4ranlage-Wittibreut-2-270x150.jpg" alt="Umbau der Kläranlagen Wittibreut und Ulbering" loading="lazy"></a>
                         </div>
                         <div class="beitrag-card-content">
                             <span class="beitrag-date">26. Juli 2021</span>
-                            <h3><a href="#">Umbau der Kläranlagen Wittibreut und Ulbering</a></h3>
-                            <p>Die Gemeinde entschied sich aus wirtschaftlichen Gründen die Kläranalage in Wittibreut aufzulassen und das Abwasser über eine 3,6 km lange Druckleitung an die Kläranlage des Ortsteils Ulbering einzuleiten. An der Kläranlage Wittibreut wird eine Pumpsta... <a href="#" class="read-more">(mehr)</a></p>
+                            <h3><a href="https://www.ib-behringer.de/projekt/umbau-der-klaeranlagen-wittibreut-und-ulbering/" target="_blank" rel="noopener">Umbau der Kläranlagen Wittibreut und Ulbering</a></h3>
+                            <p>Die Gemeinde entschied sich aus wirtschaftlichen Gründen die Kläranalage in Wittibreut aufzulassen und das Abwasser über eine 3,6 km lange Druckleitung an die Kläranlage des Ortsteils Ulbering einzuleiten. An der Kläranlage Wittibreut wird eine Pumpsta... <a href="https://www.ib-behringer.de/projekt/umbau-der-klaeranlagen-wittibreut-und-ulbering/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
                             <div class="beitrag-leistungen">
-                                <strong>Leistungen:</strong> Siedlungswasserwirtschaft
+                                <strong>Leistungen:</strong> <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>
                             </div>
                         </div>
                     </article>
 
                     <article class="beitrag-card hidden-beitrag">
                         <div class="beitrag-card-image">
-                            <a href="#"><img src="https://via.placeholder.com/270x180.png?text=Projektbild" alt="Wasserversorgung Unterzarnham"></a>
+                            <a href="https://www.ib-behringer.de/projekt/wasserversorgung-unterzarnham/" target="_blank" rel="noopener"><img src="https://www.ib-behringer.de/wp/wp-content/uploads/2021/01/Wasserversorgung-Unterreit_002-270x150.jpg" alt="Wasserversorgung Unterzarnham" loading="lazy"></a>
                         </div>
                         <div class="beitrag-card-content">
                             <span class="beitrag-date">22. Januar 2021</span>
-                            <h3><a href="#">Wasserversorgung Unterzarnham</a></h3>
-                            <p>In der Gemeinde Unterreit wird der Ort Unterzarnham an das öffentliche Wasserversorgungsnetz des Wasserzweckverbandes der Taufkirchner Gruppe angeschlossen. Die Wasserhauptleitung wird auf einer Länge von ca. 2,1 km vom Bestand an der Staatsstraße 2092 bis... <a href="#" class="read-more">(mehr)</a></p>
+                            <h3><a href="https://www.ib-behringer.de/projekt/wasserversorgung-unterzarnham/" target="_blank" rel="noopener">Wasserversorgung Unterzarnham</a></h3>
+                            <p>In der Gemeinde Unterreit wird der Ort Unterzarnham an das öffentliche Wasserversorgungsnetz des Wasserzweckverbandes der Taufkirchner Gruppe angeschlossen. Die Wasserhauptleitung wird auf einer Länge von ca. 2,1 km vom Bestand an der Staatsstraße 2092 bis... <a href="https://www.ib-behringer.de/projekt/wasserversorgung-unterzarnham/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
                             <div class="beitrag-leistungen">
-                                <strong>Leistungen:</strong> Siedlungswasserwirtschaft
+                                <strong>Leistungen:</strong> <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>
                             </div>
                         </div>
                     </article>
 
                     <article class="beitrag-card hidden-beitrag">
                         <div class="beitrag-card-image">
-                            <a href="#"><img src="https://via.placeholder.com/270x180.png?text=Projektbild" alt="Erschließung Neubaugebiet an der Eichkapelle"></a>
+                            <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-an-der-eichkapelle/" target="_blank" rel="noopener"><img src="https://www.ib-behringer.de/wp/wp-content/uploads/2020/12/IMG_9008-270x150.jpg" alt="Erschließung Neubaugebiet an der Eichkapelle" loading="lazy"></a>
                         </div>
                         <div class="beitrag-card-content">
                             <span class="beitrag-date">20. November 2020</span>
-                            <h3><a href="#">Erschließung Neubaugebiet an der Eichkapelle</a></h3>
-                            <p>In der Stadt Mühldorf enstehen im Rahmen dieses Projektes insgesamt 67 Bauparzellen für Einfamilienhäuser und diverse Parzellen für Reihen- und Mehrfamilienhäuser auf einer Gesamtfläche von ca. 9,7 Hektar. Für die Erschließung werden ca. 1.300 m Schmut... <a href="#" class="read-more">(mehr)</a></p>
+                            <h3><a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-an-der-eichkapelle/" target="_blank" rel="noopener">Erschließung Neubaugebiet an der Eichkapelle</a></h3>
+                            <p>In der Stadt Mühldorf enstehen im Rahmen dieses Projektes insgesamt 67 Bauparzellen für Einfamilienhäuser und diverse Parzellen für Reihen- und Mehrfamilienhäuser auf einer Gesamtfläche von ca. 9,7 Hektar. Für die Erschließung werden ca. 1.300 m Schmut... <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-an-der-eichkapelle/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
                             <div class="beitrag-leistungen">
-                                <strong>Leistungen:</strong> Baulanderschließung, Siedlungswasserwirtschaft, Straßenbau & Brückenbau
+                                <strong>Leistungen:</strong> 
+                                <a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a>, 
+                                <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>, 
+                                <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
                             </div>
                         </div>
                     </article>
                     
                     <article class="beitrag-card hidden-beitrag">
                         <div class="beitrag-card-image">
-                            <a href="#"><img src="https://via.placeholder.com/270x180.png?text=Projektbild" alt="Sanierung Ludwig-der-Bayer-Straße"></a>
+                            <a href="https://www.ib-behringer.de/projekt/sanierung-ludwig-der-bayer-strasse/" target="_blank" rel="noopener"><img src="https://www.ib-behringer.de/wp/wp-content/uploads/2019/12/IMG_0850-e1576223551978-270x150.jpg" alt="Sanierung Ludwig-der-Bayer-Straße" loading="lazy"></a>
                         </div>
                         <div class="beitrag-card-content">
                             <span class="beitrag-date">13. Dezember 2019</span>
-                            <h3><a href="#">Sanierung Ludwig-der-Bayer-Straße</a></h3>
-                            <p>In der Gemeinde Mettenheim erfolgt aktuell der erste Bauabschnitt für die Sanierung der Ludwig-der-Bayer-Straße in Metteheim-Hart. Neben der Sanierung der Kanalisation sowohl durch Innensanierung als auch durch Neubau, wird die komplette Wasserversorgung ern... <a href="#" class="read-more">(mehr)</a></p>
+                            <h3><a href="https://www.ib-behringer.de/projekt/sanierung-ludwig-der-bayer-strasse/" target="_blank" rel="noopener">Sanierung Ludwig-der-Bayer-Straße</a></h3>
+                            <p>In der Gemeinde Mettenheim erfolgt aktuell der erste Bauabschnitt für die Sanierung der Ludwig-der-Bayer-Straße in Metteheim-Hart. Neben der Sanierung der Kanalisation sowohl durch Innensanierung als auch durch Neubau, wird die komplette Wasserversorgung ern... <a href="https://www.ib-behringer.de/projekt/sanierung-ludwig-der-bayer-strasse/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
                             <div class="beitrag-leistungen">
-                                <strong>Leistungen:</strong> Sanierungen, Siedlungswasserwirtschaft, Straßenbau & Brückenbau
+                                <strong>Leistungen:</strong> 
+                                <a href="{{ url_for('sanierungen') }}">Sanierungen</a>, 
+                                <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>, 
+                                <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
                             </div>
                         </div>
                     </article>
 
                     <article class="beitrag-card hidden-beitrag">
                         <div class="beitrag-card-image">
-                             <a href="#"><img src="https://via.placeholder.com/270x180.png?text=Projektbild" alt="Erschließung Neubaugebiet Kumpfmühle"></a>
+                             <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-kumpfmuehle/" target="_blank" rel="noopener"><img src="https://www.ib-behringer.de/wp/wp-content/uploads/2019/12/DGTX9451-270x150.jpg" alt="Erschließung Neubaugebiet Kumpfmühle" loading="lazy"></a>
                         </div>
                         <div class="beitrag-card-content">
                             <span class="beitrag-date">13. Dezember 2019</span>
-                            <h3><a href="#">Erschließung Neubaugebiet Kumpfmühle</a></h3>
-                            <p>Im Markt Kraiburg enstehen im Rahmen dieses Projektes insgesamt 20 Bauparzellen. Insgesamt werden für die Erschließung ca. 370 m Schmutzwasserkanal, 320 m Regenwasserkanal und 520 m Hauptwasserleitung hergestellt. Als Regenrückhaltebecken wird ein unterirdi... <a href="#" class="read-more">(mehr)</a></p>
+                            <h3><a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-kumpfmuehle/" target="_blank" rel="noopener">Erschließung Neubaugebiet Kumpfmühle</a></h3>
+                            <p>Im Markt Kraiburg enstehen im Rahmen dieses Projektes insgesamt 20 Bauparzellen. Insgesamt werden für die Erschließung ca. 370 m Schmutzwasserkanal, 320 m Regenwasserkanal und 520 m Hauptwasserleitung hergestellt. Als Regenrückhaltebecken wird ein unterirdi... <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-kumpfmuehle/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
                             <div class="beitrag-leistungen">
-                                <strong>Leistungen:</strong> Baulanderschließung, Siedlungswasserwirtschaft, Straßenbau & Brückenbau
+                                <strong>Leistungen:</strong> 
+                                <a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a>, 
+                                <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>, 
+                                <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
                             </div>
                         </div>
                     </article>
 
                     <article class="beitrag-card hidden-beitrag">
                         <div class="beitrag-card-image">
-                            <a href="#"><img src="https://via.placeholder.com/270x180.png?text=Projektbild" alt="Fernwärme Erschließung Waldkraiburg West"></a>
+                            <a href="https://www.ib-behringer.de/projekt/fernwaerme-erschliessung-waldkraiburg-west/" target="_blank" rel="noopener"><img src="https://www.ib-behringer.de/wp/wp-content/uploads/2019/01/IMG_6654-270x150.jpg" alt="Fernwärme Erschließung Waldkraiburg West" loading="lazy"></a>
                         </div>
                         <div class="beitrag-card-content">
                             <span class="beitrag-date">08. Januar 2019</span>
-                            <h3><a href="#">Fernwärme Erschließung Waldkraiburg West</a></h3>
-                            <p>Nach Inbetriebnahme der Geothermiequelle ist es Ziel der Stadtwerke Waldkraiburg GmbH, die Stadt Waldkraiburg durch die Installation eines umfassenden Fernwärmenetzes wärmetechnisch zu erschließen. In diesem Abschnitt wurden im Jahr 2018 insgesamt ca. 2.200... <a href="#" class="read-more">(mehr)</a></p>
+                            <h3><a href="https://www.ib-behringer.de/projekt/fernwaerme-erschliessung-waldkraiburg-west/" target="_blank" rel="noopener">Fernwärme Erschließung Waldkraiburg West</a></h3>
+                            <p>Nach Inbetriebnahme der Geothermiequelle ist es Ziel der Stadtwerke Waldkraiburg GmbH, die Stadt Waldkraiburg durch die Installation eines umfassenden Fernwärmenetzes wärmetechnisch zu erschließen. In diesem Abschnitt wurden im Jahr 2018 insgesamt ca. 2.200... <a href="https://www.ib-behringer.de/projekt/fernwaerme-erschliessung-waldkraiburg-west/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
                             <div class="beitrag-leistungen">
-                                <strong>Leistungen:</strong> Siedlungswasserwirtschaft
+                                <strong>Leistungen:</strong> <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>
                             </div>
                         </div>
                     </article>
 
                     <article class="beitrag-card hidden-beitrag">
                         <div class="beitrag-card-image">
-                             <a href="#"><img src="https://via.placeholder.com/270x180.png?text=Projektbild" alt="Neubaugebiet Gründl West"></a>
+                             <a href="https://www.ib-behringer.de/projekt/neubaugebiet-gruendl-west/" target="_blank" rel="noopener"><img src="https://www.ib-behringer.de/wp/wp-content/uploads/2018/12/IMG_5517-270x150.jpg" alt="Neubaugebiet Gründl West" loading="lazy"></a>
                         </div>
                         <div class="beitrag-card-content">
                             <span class="beitrag-date">18. Dezember 2018</span>
-                            <h3><a href="#">Neubaugebiet Gründl West</a></h3>
-                            <p>Die Gemeinde Polling hat auf einer Fläche von ca. 1,6 Hektar 15 Bauparzellen in Gründl, Gemeinde Polling erschlossen. Neben den Verkehrswegen auf Grundlage des Bebauungsplans wurde auch die Schmutz- und Regenwasserbeseitigung incl. Sickerbecken und die Wasse... <a href="#" class="read-more">(mehr)</a></p>
+                            <h3><a href="https://www.ib-behringer.de/projekt/neubaugebiet-gruendl-west/" target="_blank" rel="noopener">Neubaugebiet Gründl West</a></h3>
+                            <p>Die Gemeinde Polling hat auf einer Fläche von ca. 1,6 Hektar 15 Bauparzellen in Gründl, Gemeinde Polling erschlossen. Neben den Verkehrswegen auf Grundlage des Bebauungsplans wurde auch die Schmutz- und Regenwasserbeseitigung incl. Sickerbecken und die Wasse... <a href="https://www.ib-behringer.de/projekt/neubaugebiet-gruendl-west/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
                             <div class="beitrag-leistungen">
-                                <strong>Leistungen:</strong> Baulanderschließung, Siedlungswasserwirtschaft, Straßenbau & Brückenbau
+                                <strong>Leistungen:</strong> 
+                                <a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a>, 
+                                <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>, 
+                                <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
                             </div>
                         </div>
                     </article>
 
                     <article class="beitrag-card hidden-beitrag">
                         <div class="beitrag-card-image">
-                           <a href="#"><img src="https://via.placeholder.com/270x180.png?text=Projektbild" alt="Urbane Sturzfluten Markt Buchbach"></a>
+                           <a href="https://www.ib-behringer.de/projekt/urbane-sturzfluten-markt-buchbach/" target="_blank" rel="noopener"><img src="https://www.ib-behringer.de/wp/wp-content/uploads/2017/11/171006_W44EPUELP-270x150.jpg" alt="Urbane Sturzfluten Markt Buchbach" loading="lazy"></a>
                         </div>
                         <div class="beitrag-card-content">
                             <span class="beitrag-date">24. November 2017</span>
-                            <h3><a href="#">Urbane Sturzfluten Markt Buchbach</a></h3>
-                            <p>Ziel der Starkregensimulation ist es für den Ortsbereich des Marktes Buchbach aufzuzeigen, welche Gebiete und Anwesen bei einer urbanen Sturzflut aktuell betroffen sind. Zum einen dienen die Ergebnisse der Bürgerinformation. Zum anderen können auch Gefahren... <a href="#" class="read-more">(mehr)</a></p>
+                            <h3><a href="https://www.ib-behringer.de/projekt/urbane-sturzfluten-markt-buchbach/" target="_blank" rel="noopener">Urbane Sturzfluten Markt Buchbach</a></h3>
+                            <p>Ziel der Starkregensimulation ist es für den Ortsbereich des Marktes Buchbach aufzuzeigen, welche Gebiete und Anwesen bei einer urbanen Sturzflut aktuell betroffen sind. Zum einen dienen die Ergebnisse der Bürgerinformation. Zum anderen können auch Gefahren... <a href="https://www.ib-behringer.de/projekt/urbane-sturzfluten-markt-buchbach/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
                             <div class="beitrag-leistungen">
-                                <strong>Leistungen:</strong> Hydraulische Nachweise, Siedlungswasserwirtschaft
+                                <strong>Leistungen:</strong> 
+                                <a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a>, 
+                                <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>
                             </div>
                         </div>
                     </article>
                 </div>
-                <button id="loadMoreBeitraegeBtn" class="btn btn-primary">Weitere Projekte anzeigen</button>
+                <button id="loadMoreBeitraegeBtn" class="btn btn-primary" style="display: none;">Weitere Projekte anzeigen</button>
             </div>
         </section>
     </main>
@@ -877,11 +940,11 @@
                     <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
                     <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
                     <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
-                    <li><a href="{{ url_for('index') }}#service-hydraulik">Hydraulische Nachweise</a></li>
-                    <li><a href="{{ url_for('index') }}#service-bauland">Baulanderschließung</a></li>
-                    <li><a href="{{ url_for('index') }}#service-gis">Kommunales GIS</a></li>
-                    <li><a href="{{ url_for('index') }}#service-sanierung">Sanierungen</a></li>
-                    <li><a href="{{ url_for('index') }}#service-wasserbau">Wasserbau</a></li>
+                    <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
+                    <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
+                    <li><a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a></li>
+                    <li><a href="{{ url_for('sanierungen') }}">Sanierungen</a></li>
+                    <li><a href="{{ url_for('wasserbau') }}">Wasserbau</a></li>
                 </ul>
             </div>
             <div>
@@ -911,7 +974,7 @@
                     <a href="{{ url_for('maedchenschule_chato') }}">Mädchenschule Chato, Tansania</a>
                  </p>
                  <a href="{{ url_for('maedchenschule_chato') }}">
-                    <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2022/12/Suedansicht-2-150x150.jpg" alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
+                    <img src="{{ url_for('static', filename='images/chato_schule_thumb.jpg') }}" alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
                 </a>
             </div>
         </div>
@@ -945,12 +1008,11 @@
             dropdownToggles.forEach(toggle => {
                 toggle.addEventListener('click', function(event) {
                     if (navToggle && window.getComputedStyle(navToggle).display !== 'none') { 
-                        const href = this.getAttribute('href');
-                        const submenu = this.parentElement.querySelector('.dropdown-menu');
-
-                        if (submenu) { 
+                        const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
+                        if (hasArrow) { 
                             event.preventDefault(); 
-                            submenu.classList.toggle('submenu-open');
+                            const submenu = this.parentElement.querySelector('.dropdown-menu');
+                            if (submenu) submenu.classList.toggle('submenu-open');
                             this.classList.toggle('active'); 
                         }
                     }
@@ -961,33 +1023,35 @@
             // 3. Smooth Scroll for on-page anchors & Close mobile nav
              document.querySelectorAll('a[href]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
+                    const hrefAttribute = this.getAttribute('href');
                     const isMobileView = navToggle && window.getComputedStyle(navToggle).display !== 'none';
                     let isMobileDropdownToggleItself = false;
                     
-                    if (isMobileView && this.parentElement && this.parentElement.classList.contains('dropdown') && this.closest('.nav-list') && this.querySelector('.dropdown-arrow')) {
-                        const submenu = this.parentElement.querySelector('.dropdown-menu');
-                        if (submenu) { 
+                    if (isMobileView && this.parentElement && this.parentElement.classList.contains('dropdown') && this.closest('.nav-list')) {
+                         const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
+                         if(hasArrow) {
                             isMobileDropdownToggleItself = true;
-                        }
+                         }
                     }
 
-                    if (href.startsWith('#') && href.length > 1) {
-                        const targetElement = document.querySelector(href);
-                        if (targetElement) { 
-                            e.preventDefault();
-                            let headerOffset = siteHeader ? siteHeader.offsetHeight : 0;
-                            const elementPosition = targetElement.getBoundingClientRect().top;
-                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    if (hrefAttribute.startsWith('#') && hrefAttribute.length > 1) {
+                        if (document.getElementById(hrefAttribute.substring(1))) { // Check if anchor exists on current page
+                            const targetElement = document.querySelector(hrefAttribute);
+                            if (targetElement) { 
+                                e.preventDefault();
+                                let headerOffset = siteHeader ? siteHeader.offsetHeight : 0;
+                                const elementPosition = targetElement.getBoundingClientRect().top;
+                                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                            }
                         }
-                    } else if (href === '#') { 
+                    } else if (hrefAttribute === '#') { 
                          e.preventDefault();
                          window.scrollTo({ top: 0, behavior: 'smooth' });
                     }
 
                     if (isMobileView && navList && navList.classList.contains('open') && !isMobileDropdownToggleItself) {
-                         if (!href.startsWith('#') || (href.startsWith('#') && document.querySelector(href))) { 
+                         if (!hrefAttribute.startsWith('#') || (hrefAttribute.startsWith('#') && document.querySelector(hrefAttribute))) { 
                             navList.classList.remove('open');
                             if (navToggle) {
                                 navToggle.setAttribute('aria-expanded', 'false');
@@ -1003,13 +1067,15 @@
             // "Weitere Projekte anzeigen" Button
             const loadMoreBtn = document.getElementById('loadMoreBeitraegeBtn');
             if (loadMoreBtn) {
-                const hiddenBeitraege = document.querySelectorAll('.beitrag-card.hidden-beitrag');
+                const hiddenBeitraege = Array.from(document.querySelectorAll('.beitrag-card.hidden-beitrag'));
                 if (hiddenBeitraege.length === 0) {
                     loadMoreBtn.style.display = 'none'; 
                 } else {
+                    loadMoreBtn.style.display = 'block'; // Ensure button is visible if there are hidden items
                     loadMoreBtn.addEventListener('click', () => {
                         hiddenBeitraege.forEach(beitrag => {
                             beitrag.classList.remove('hidden-beitrag');
+                            // beitrag.style.display = ''; // Or flex, depending on original display
                         });
                         loadMoreBtn.style.display = 'none'; 
                     });
