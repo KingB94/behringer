@@ -280,7 +280,7 @@
             }
             .nav-list.open {
                 display: flex;
-                max-height: calc(100vh - 85px); 
+                max-height: calc(100vh - 70px); 
                 overflow-y: auto;
                 -webkit-overflow-scrolling: touch;
             }
@@ -432,19 +432,19 @@
 
         .entry-content figure {
             margin: 0 0 var(--space-lg) 0;
-            text-align: center; /* Zentriert das figure-Element selbst, wenn es inline-block wäre */
+            text-align: center; 
         }
         .entry-content figure.wp-block-video video,
         .entry-content figure.wp-block-embed iframe {
-            display: block; /* Stellt sicher, dass es block-level ist */
+            display: block; 
             margin-left: auto;
             margin-right: auto;
-            max-width: 100%; /* Stellt sicher, dass es nicht überläuft */
-            border: 1px solid var(--clr-border); /* Optional: Rahmen für Video/iFrame */
+            max-width: 100%; 
+            border: 1px solid var(--clr-border); 
             border-radius: var(--radius-sm);
         }
         .entry-content figure.wp-block-video video {
-             background-color: #000; /* Schwarzer Hintergrund für Video Player */
+             background-color: #000; 
         }
         .entry-content figure.wp-block-embed .wp-block-embed__wrapper {
             position: relative;
@@ -452,7 +452,7 @@
             height: 0;
             overflow: hidden;
             max-width: 100%;
-            background: #f0f0f0; /* Platzhalter-Hintergrund */
+            background: #f0f0f0; 
             border-radius: var(--radius-sm);
         }
         .entry-content figure.wp-block-embed iframe {
@@ -481,13 +481,13 @@
             border-collapse: collapse;
         }
         .entry-content .wp-block-table.alignleft {
-            margin-right: auto; /* Zentriert, wenn es die einzige Tabelle ist oder links mit float */
+            margin-right: auto; 
             margin-left: 0;
-             max-width: 600px; /* Begrenzt die Breite der linksbündigen Tabelle */
+             max-width: 600px; 
         }
          @media (min-width: 768px) {
             .entry-content .wp-block-table.alignleft {
-                 margin-left: 0; /* Bleibt links auf größeren Schirmen */
+                 margin-left: 0; 
             }
         }
 
@@ -502,7 +502,6 @@
             background-color: var(--clr-bg-alt);
             font-weight: 600;
         }
-        /* Stripe-Stil für Tabellen (Beispiel) */
         .entry-content .wp-block-table.is-style-stripes tbody tr:nth-child(odd) {
             background-color: var(--clr-bg-alt);
         }
@@ -581,35 +580,36 @@
 <body>
     <header class="site-header">
         <div class="container header-inner">
-            <a href="index.html" class="logo">
-                <img src="/IBB/static/images/logo.png" alt="Behringer & Partner Logo" loading="lazy">
+            <a href="{{ url_for('index') }}" class="logo">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Behringer & Partner Logo" loading="lazy">
             </a>
             <nav class="main-nav">
                 <ul class="nav-list">
-                    <li><a href="index.html#about">Über uns</a></li>
-                    <li><a href="index.html#news">Neuigkeiten</a></li>
+                    <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
+                    <li><a href="{{ url_for('index') }}#news">Neuigkeiten</a></li>
                     <li class="nav-item dropdown">
-                        <a href="index.html#services">Leistungen <span class="dropdown-arrow">▼</span></a>
+                        <a href="{{ url_for('index') }}#services">Leistungen <span class="dropdown-arrow">▼</span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="siedlungswasserwirtschaft.html">Siedlungswasserwirtschaft</a></li>
-                            <li><a href="index.html#service-strassen">Straßenbau & Brückenbau</a></li>
-                            <li><a href="index.html#service-fernwaerme">Fernwärme</a></li>
-                            <li><a href="index.html#service-hydraulik">Hydraulische Nachweise</a></li>
-                            <li><a href="index.html#service-bauland">Baulanderschließung</a></li>
-                            <li><a href="index.html#service-gis">Kommunales GIS</a></li>
-                            <li><a href="index.html#service-sanierung">Sanierungen</a></li>
-                            <li><a href="index.html#service-wasserbau">Wasserbau</a></li>
+                            <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
+                            <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
+                            <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
+                            <li><a href="{{ url_for('index') }}#service-hydraulik">Hydraulische Nachweise</a></li>
+                            <li><a href="{{ url_for('index') }}#service-bauland">Baulanderschließung</a></li>
+                            <li><a href="{{ url_for('index') }}#service-gis">Kommunales GIS</a></li>
+                            <li><a href="{{ url_for('index') }}#service-sanierung">Sanierungen</a></li>
+                            <li><a href="{{ url_for('index') }}#service-wasserbau">Wasserbau</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="index.html#company">Unternehmen <span class="dropdown-arrow">▼</span></a>
+                        <a href="{{ url_for('index') }}#company">Unternehmen <span class="dropdown-arrow">▼</span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="index.html#company-team">Team</a></li>
-                            <li><a href="index.html#company-history">Firmengeschichte</a></li>
-                            <li><a href="index.html#company-jobs">Stellenangebote</a></li>
+                            <li><a href="{{ url_for('unternehmen_team') }}">Team</a></li>
+                            <li><a href="{{ url_for('firmengeschichte') }}">Firmengeschichte</a></li>
+                            <li><a href="{{ url_for('unternehmen_netzwerk') }}">Netzwerk</a></li>
+                            <li><a href="{{ url_for('unternehmen_stellenangebote') }}">Stellenangebote</a></li>
                         </ul>
                     </li>
-                    <li><a href="index.html#contact" class="btn btn-primary">Kontakt</a></li>
+                    <li><a href="{{ url_for('index') }}#contact" class="btn btn-primary">Kontakt</a></li>
                 </ul>
             </nav>
             <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
@@ -741,24 +741,24 @@
             <div>
                 <h4>Navigation</h4>
                 <ul>
-                    <li><a href="index.html#about">Über uns</a></li>
-                    <li><a href="index.html#news">Neuigkeiten</a></li>
-                    <li><a href="index.html#services">Leistungen</a></li>
-                    <li><a href="index.html#company">Unternehmen</a></li>
-                    <li><a href="index.html#contact">Kontakt</a></li>
+                    <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
+                    <li><a href="{{ url_for('index') }}#news">Neuigkeiten</a></li>
+                    <li><a href="{{ url_for('index') }}#services">Leistungen</a></li>
+                    <li><a href="{{ url_for('index') }}#company">Unternehmen</a></li>
+                    <li><a href="{{ url_for('index') }}#contact">Kontakt</a></li>
                 </ul>
             </div>
             <div>
                 <h4>Leistungen</h4>
                 <ul>
-                    <li><a href="siedlungswasserwirtschaft.html">Siedlungswasserwirtschaft</a></li>
-                    <li><a href="index.html#service-strassen">Straßenbau & Brückenbau</a></li>
-                    <li><a href="index.html#service-fernwaerme">Fernwärme</a></li>
-                    <li><a href="index.html#service-hydraulik">Hydraulische Nachweise</a></li>
-                    <li><a href="index.html#service-bauland">Baulanderschließung</a></li>
-                    <li><a href="index.html#service-gis">Kommunales GIS</a></li>
-                    <li><a href="index.html#service-sanierung">Sanierungen</a></li>
-                    <li><a href="index.html#service-wasserbau">Wasserbau</a></li>
+                    <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
+                    <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
+                    <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
+                    <li><a href="{{ url_for('index') }}#service-hydraulik">Hydraulische Nachweise</a></li>
+                    <li><a href="{{ url_for('index') }}#service-bauland">Baulanderschließung</a></li>
+                    <li><a href="{{ url_for('index') }}#service-gis">Kommunales GIS</a></li>
+                    <li><a href="{{ url_for('index') }}#service-sanierung">Sanierungen</a></li>
+                    <li><a href="{{ url_for('index') }}#service-wasserbau">Wasserbau</a></li>
                 </ul>
             </div>
             <div>
@@ -774,8 +774,8 @@
             <div>
                 <h4>Rechtliches</h4>
                 <ul>
-                    <li><a href="impressum.html">Impressum</a></li> 
-                    <li><a href="datenschutz.html">Datenschutz</a></li>
+                    <li><a href="{{ url_for('impressum') }}">Impressum</a></li> 
+                    <li><a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></li>
                 </ul>
             </div>
             <div>
@@ -785,16 +785,16 @@
                 </div>
                  <h4 style="margin-top: 1.5rem;">Wir unterstützen</h4>
                  <p style="margin-bottom: var(--space-xs); line-height: 1.4;">
-                    <a href="maedchenschule-chato.html">Mädchenschule Chato, Tansania</a>
+                    <a href="{{ url_for('maedchenschule_chato') }}">Mädchenschule Chato, Tansania</a>
                  </p>
-                 <a href="maedchenschule-chato.html">
+                 <a href="{{ url_for('maedchenschule_chato') }}">
                     <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2022/12/Suedansicht-2-150x150.jpg" alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
                 </a>
             </div>
         </div>
         <div class="footer-bottom">
             <p>© <span id="current-year">2024</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
-            <p><a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
+            <p><a href="{{ url_for('impressum') }}">Impressum</a> | <a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></p>
         </div>
     </footer>
 
@@ -835,28 +835,43 @@
 
 
             // 3. Smooth Scroll for on-page anchors & Close mobile nav
-             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+             document.querySelectorAll('a[href]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
-                    if (href.length > 1 && href.startsWith('#')) {
+                    const isMobileView = navToggle && window.getComputedStyle(navToggle).display !== 'none';
+                    let isMobileDropdownToggleItself = false;
+                    
+                    if (isMobileView && this.parentElement && this.parentElement.classList.contains('dropdown') && this.closest('.nav-list') && this.querySelector('.dropdown-arrow')) {
+                        const submenu = this.parentElement.querySelector('.dropdown-menu');
+                        if (submenu) { 
+                            isMobileDropdownToggleItself = true;
+                        }
+                    }
+
+                    if (href.startsWith('#') && href.length > 1) {
                         const targetElement = document.querySelector(href);
-                        if (targetElement) {
+                        if (targetElement) { 
                             e.preventDefault();
                             let headerOffset = siteHeader ? siteHeader.offsetHeight : 0;
                             const elementPosition = targetElement.getBoundingClientRect().top;
                             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                             window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                        }
+                    } else if (href === '#') { 
+                         e.preventDefault();
+                         window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
 
-                            if (navList && navList.classList.contains('open') && this.closest('.nav-list')) {
-                                navList.classList.remove('open');
+                    if (isMobileView && navList && navList.classList.contains('open') && !isMobileDropdownToggleItself) {
+                         if (!href.startsWith('#') || (href.startsWith('#') && document.querySelector(href))) { 
+                            navList.classList.remove('open');
+                            if (navToggle) {
                                 navToggle.setAttribute('aria-expanded', 'false');
                                 navToggle.innerHTML = '☰';
-                                navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
-                                navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
                             }
+                            navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
+                            navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
                         }
-                    } else if (href === '#' && this.closest('.nav-list.open')) { 
-                        e.preventDefault(); 
                     }
                 });
             });
@@ -869,17 +884,28 @@
 
             // Script for WordPress Embeds (basic version for iframe resizing)
             // This might not fully replicate all WordPress embed functionalities.
+            // It's also worth noting that modern browsers might block cross-origin iframe message passing
+            // if not configured correctly on the source (ib-behringer.de).
             function _wpEmbedListener(event) {
-                if (event.data.secret || event.data.message || event.data.value) {
+                // Basic check for expected data structure
+                if (typeof event.data === 'object' && event.data !== null && (event.data.secret || event.data.message || event.data.value)) {
+                    // Check if the origin is the expected WordPress site for security
+                    if (event.origin !== "https://www.ib-behringer.de") {
+                        // console.warn("Message received from unexpected origin:", event.origin);
+                        return;
+                    }
+
                     var iframes = document.querySelectorAll('iframe[data-secret="' + event.data.secret + '"]');
                     for (var i = 0; i < iframes.length; i++) {
                         var iframe = iframes[i];
-                        if (event.data.message === ' ανταποκρίνεται') { // Greek "responds"
-                            iframe.height = event.data.value;
+                        if (event.data.message === 'height') { // Common message for height adjustment
+                            var height = parseInt(event.data.value, 10);
+                            if (height > 200 && height < 10000) { // Basic sanity check for height
+                                iframe.height = height;
+                            }
                         }
-                        if (event.data.message === ' κάνει κύλιση') { // Greek "scrolls"
-                            // This part is tricky without more context on WP's scrolling logic
-                        }
+                        // WordPress also sends 'DOMContentLoaded' and 'ทั้งนี้ขนาดของไอเฟรมจะน้อยกว่านี้ไม่ได้' (Thai) or similar messages.
+                        // Handling them specifically might be needed if simple height adjustment isn't enough.
                     }
                 }
             }
