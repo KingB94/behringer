@@ -136,7 +136,7 @@
             padding: var(--space-sm) 0;
         }
 
-        .logo img { /* Consistent with main page */
+        .logo img { 
             display: block;
             max-height: 80px;
             width: auto;
@@ -302,7 +302,7 @@
 
             .nav-list.open {
                 display: flex;
-                max-height: calc(100vh - 70px); 
+                max-height: calc(100vh - 82px); /* Adjusted for actual mobile header height */
                 overflow-y: auto;
                 -webkit-overflow-scrolling: touch; 
             }
@@ -420,14 +420,21 @@
                 padding: var(--space-xl) 0;
             }
         }
-
+        
         .section.bg-alternate {
             background: var(--clr-bg-alt);
         }
-        
-        .service-hero + .section + .section {
+        /* Alternating background for sections on service detail pages */
+        .page-header-section + .section { /* First section after header */
+            /* Default background (white or as set by body) */
+        }
+        .page-header-section + .section + .section { /* Second section after header */
              background: var(--clr-bg-alt);
         }
+        .page-header-section + .section + .section + .section { /* Third section */
+            background: var(--clr-bg); /* white again */
+        }
+        /* And so on if more sections */
 
 
         .section-title {
@@ -488,27 +495,36 @@
         .footer-bottom a { color: #ccc; }
         .footer-bottom a:hover { color: var(--clr-white); }
 
-        /* STILE FÜR UNTERSEITEN (aus siedlungswasserwirtschaft.html übernommen) */
-        .service-hero { 
-            min-height: 35vh; 
-            padding: var(--space-lg) var(--space-sm);
-            background: linear-gradient(to bottom right, var(--clr-primary), var(--clr-gradient-end));
-            color: var(--clr-white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            margin-bottom: var(--space-lg); 
+        /* STYLES FÜR Leistungs-Detailseiten (z.B. Straßenbau) */
+        .page-header-section {
+            padding-top: var(--space-md);
+            padding-bottom: var(--space-md);
+            background-color: var(--clr-bg-alt); 
+            border-bottom: 1px solid var(--clr-border);
         }
-        .service-hero .hero-content h1 {
-            font-size: clamp(2rem, 4.5vw, 2.8rem); 
-            color: var(--clr-white);
+        .page-title {
+            font-size: clamp(2rem, 5vw, 2.75rem); 
+            color: var(--clr-primary); 
+            margin-top: var(--space-sm);
+            margin-bottom: 0; 
+            text-align: left;
+        }
+        .breadcrumbs {
+            font-size: 0.9rem;
+            color: #555; 
             margin-bottom: var(--space-xs);
+            text-align: left;
         }
-        .service-hero .hero-content p {
-            font-size: clamp(1rem, 2vw, 1.15rem);
-            max-width: 800px; 
-            margin-bottom: 0;
+        .breadcrumbs a {
+            color: var(--clr-primary);
+            text-decoration: none;
+        }
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+        .breadcrumbs .arrow {
+            margin: 0 0.4em;
+            color: #777; 
         }
 
         .leistungsumfang-list {
@@ -546,42 +562,81 @@
             top: -0.1em;
         }
 
+
         .beitraege-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: 1fr; 
             gap: var(--space-md);
             margin-top: var(--space-lg);
         }
-
         .beitrag-card {
             background-color: var(--clr-white);
             border: 1px solid var(--clr-border);
             border-radius: var(--radius-md);
-            padding: var(--space-md);
             box-shadow: var(--shadow-sm);
             transition: var(--transition-default);
-            display: flex;
-            flex-direction: column;
+            display: flex; 
+            flex-direction: column; 
+            overflow: hidden; 
+        }
+        #beitraege.bg-alternate .beitrag-card { /* Ensure cards are white on alt bg */
+            background-color: var(--clr-white);
+        }
+
+        @media (min-width: 768px) {
+            .beitrag-card {
+                flex-direction: row; 
+            }
         }
         .beitrag-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-md);
         }
+        .beitrag-card-image {
+            flex-shrink: 0;
+            width: 100%; 
+        }
+        .beitrag-card-image img {
+            width: 100%;
+            height: 200px; 
+            object-fit: cover;
+        }
+        @media (min-width: 768px) {
+            .beitrag-card-image {
+                width: 250px; 
+                height: auto; 
+            }
+             .beitrag-card-image img {
+                height: 100%; 
+             }
+        }
+        .beitrag-card-content {
+            padding: var(--space-md);
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
         .beitrag-card .beitrag-date {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #777;
             margin-bottom: var(--space-xs);
             display: block;
         }
         .beitrag-card h3 {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: var(--clr-primary);
             margin-top: 0;
-            margin-bottom: var(--space-sm);
+            margin-bottom: var(--space-xs);
             line-height: 1.4;
         }
+         .beitrag-card h3 a {
+            color: var(--clr-primary);
+         }
+         .beitrag-card h3 a:hover {
+            color: var(--clr-gradient-start);
+         }
         .beitrag-card p {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             margin-bottom: var(--space-sm);
             flex-grow: 1;
             line-height: 1.6;
@@ -589,14 +644,16 @@
         .beitrag-card .read-more {
             color: var(--clr-primary);
             font-weight: 600;
-            text-decoration: underline;
+            text-decoration: none; 
+            display: inline-block;
+            margin-top: var(--space-xs);
         }
-         .beitrag-card .read-more:hover {
-            text-decoration: none;
-         }
+        .beitrag-card .read-more:hover {
+            text-decoration: underline; 
+        }
         .beitrag-card .beitrag-leistungen {
-            font-size: 0.85rem;
-            color: var(--clr-secondary);
+            font-size: 0.8rem;
+            color: #555;
             margin-top: auto; 
             padding-top: var(--space-sm);
             border-top: 1px solid var(--clr-border);
@@ -606,17 +663,32 @@
             font-weight: 600;
             color: var(--clr-secondary);
         }
-
-        .beitrags-navigation {
-            text-align: center;
-            margin-top: var(--space-lg);
-            padding-top: var(--space-md);
-            border-top: 1px solid var(--clr-border);
+         .beitrag-card .beitrag-leistungen a {
+            color: var(--clr-secondary);
+            text-decoration: none;
+            margin-left: var(--space-xs);
+            padding: 0.1em 0.3em;
+            border-radius: var(--radius-sm);
+            background-color: var(--clr-bg); /* Default to white for tags */
+            border: 1px solid var(--clr-border);
+            transition: background-color 0.2s, color 0.2s;
         }
-        .beitrags-navigation .btn {
-             margin: 0 var(--space-xs);
+        #beitraege.bg-alternate .beitrag-card .beitrag-leistungen a {
+             background-color: #e9e9e9; /* Slightly darker than page bg-alt for contrast */
+        }
+        .beitrag-card .beitrag-leistungen a:hover {
+            color: var(--clr-primary);
+            text-decoration: none;
+            background-color: #e0e0e0;
         }
 
+        .beitrag-card.hidden-beitrag {
+            display: none;
+        }
+        #loadMoreBeitraegeBtn {
+            display: block;
+            margin: var(--space-lg) auto 0;
+        }
     </style>
 </head>
 
@@ -636,11 +708,11 @@
                             <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
                             <li><a href="{{ url_for('strassenbau_brueckenbau') }}" class="active-service-link">Straßenbau & Brückenbau</a></li> 
                             <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
-                            <li><a href="{{ url_for('index') }}#service-hydraulik">Hydraulische Nachweise</a></li>
-                            <li><a href="{{ url_for('index') }}#service-bauland">Baulanderschließung</a></li>
-                            <li><a href="{{ url_for('index') }}#service-gis">Kommunales GIS</a></li>
-                            <li><a href="{{ url_for('index') }}#service-sanierung">Sanierungen</a></li>
-                            <li><a href="{{ url_for('index') }}#service-wasserbau">Wasserbau</a></li>
+                            <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
+                            <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
+                            <li><a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a></li>
+                            <li><a href="{{ url_for('sanierungen') }}">Sanierungen</a></li>
+                            <li><a href="{{ url_for('wasserbau') }}">Wasserbau</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -659,10 +731,15 @@
         </div>
     </header>
 
-    <section class="service-hero">
-        <div class="hero-content">
-            <h1>Straßenbau & Brückenbau</h1>
-            <p>Planung, Bau und Sanierung von Verkehrsinfrastruktur – von der Gemeindestraße bis zum Ingenieurbauwerk.</p>
+    <section class="page-header-section"> <!-- Using generic page header -->
+        <div class="container">
+            <div id="breadcrumbs" class="breadcrumbs">
+                <a href="{{ url_for('index') }}#services" title="Leistungen">Leistungen</a>
+                <span class="arrow">></span>
+                <span>Straßenbau & Brückenbau</span>
+            </div>
+            <h1 class="page-title">Straßenbau & Brückenbau</h1>
+            <p class="section-subtitle" style="text-align: left; max-width: none; margin-left:0; margin-bottom:0; color: var(--clr-secondary);">Planung, Bau und Sanierung von Verkehrsinfrastruktur – von der Gemeindestraße bis zum Ingenieurbauwerk.</p>
         </div>
     </section>
 
@@ -670,7 +747,7 @@
         <section id="leistungsumfang" class="section">
             <div class="container">
                 <h2 class="section-title">Leistungsumfang</h2>
-                <ul class="leistungsumfang-list cols-lg-3"> {/* Added cols-lg-3 for potentially better layout */}
+                <ul class="leistungsumfang-list cols-lg-3"> 
                     <li>Staatsstraßen, Gemeindeverbindungsstraßen, Stadtstraßen, Erschließungsstraßen, ländlicher Wegebau</li>
                     <li>Ingenieurbauwerke</li>
                     <li>Kreuzungen, Kreisverkehre, Abbiegespuren</li>
@@ -680,106 +757,191 @@
             </div>
         </section>
 
-        <section id="beitraege" class="section"> 
+        <section id="beitraege" class="section bg-alternate"> 
             <div class="container">
                 <h2 class="section-title">Referenzprojekte Straßenbau & Brückenbau</h2>
                 <p class="section-subtitle">Ausgewählte Projekte und Beiträge aus dem Bereich Straßen- und Brückenbau.</p>
                 
                 <div class="beitraege-grid">
                     <article class="beitrag-card">
-                        <span class="beitrag-date">25. Oktober 2024</span>
-                        <h3>Bahnunterführung Klugham</h3>
-                        <p>In Zusammenarbeit mit der Südostbayern Bahn konnte die Gemeinde Aschau a. Inn mit der Erneuerung der Bahnunterführung in Klugham eine zeitgemäße Straßenführung verwirklicht werden. Bereits Ende 2022 war das Ingenieurbauwerk der Bahn fertiggestellt. Im Fr... <a href="#" class="read-more">(mehr)</a></p>
-                        <div class="beitrag-leistungen">
-                            <strong>Leistungen:</strong> Straßenbau & Brückenbau
+                        <div class="beitrag-card-image">
+                            <a href="https://www.ib-behringer.de/projekt/bahnunterfuehrung-klugham/" target="_blank" rel="noopener">
+                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2024/10/003-270x150.jpg" alt="Bahnunterführung Klugham" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="beitrag-card-content">
+                            <span class="beitrag-date">25. Oktober 2024</span>
+                            <h3><a href="https://www.ib-behringer.de/projekt/bahnunterfuehrung-klugham/" target="_blank" rel="noopener">Bahnunterführung Klugham</a></h3>
+                            <p>In Zusammenarbeit mit der Südostbayern Bahn konnte die Gemeinde Aschau a. Inn mit der Erneuerung der Bahnunterführung in Klugham eine zeitgemäße Straßenführung verwirklicht werden. Bereits Ende 2022 war das Ingenieurbauwerk der Bahn fertiggestellt. Im Fr... <a href="https://www.ib-behringer.de/projekt/bahnunterfuehrung-klugham/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
+                            <div class="beitrag-leistungen">
+                                <strong>Leistungen:</strong> <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
+                            </div>
                         </div>
                     </article>
 
                     <article class="beitrag-card">
-                        <span class="beitrag-date">22. August 2023</span>
-                        <h3>Erschließung Neubaugebiet Am Unterfeld</h3>
-                        <p>In der Gemeinde Obertaufkirchen enstehen im Ortsteil Oberornau 18 Bauparzellen für Wohnbebauung. Insgesamt werden für die Erschließung ca. 365 m Schmutzwasserkanal, 425 m Regenwasserkanal und 475 m Hauptwasserleitung hergestellt. Als Regenrückhaltebecken w... <a href="#" class="read-more">(mehr)</a></p>
-                        <div class="beitrag-leistungen">
-                            <strong>Leistungen:</strong> Baulanderschließung, Siedlungswasserwirtschaft, Straßenbau & Brückenbau
+                         <div class="beitrag-card-image">
+                            <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-am-unterfeld/" target="_blank" rel="noopener">
+                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2023/08/IMG_2469-270x150.jpg" alt="Erschließung Neubaugebiet Am Unterfeld" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="beitrag-card-content">
+                            <span class="beitrag-date">22. August 2023</span>
+                            <h3><a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-am-unterfeld/" target="_blank" rel="noopener">Erschließung Neubaugebiet Am Unterfeld</a></h3>
+                            <p>In der Gemeinde Obertaufkirchen enstehen im Ortsteil Oberornau 18 Bauparzellen für Wohnbebauung. Insgesamt werden für die Erschließung ca. 365 m Schmutzwasserkanal, 425 m Regenwasserkanal und 475 m Hauptwasserleitung hergestellt. Als Regenrückhaltebecken w... <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-am-unterfeld/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
+                            <div class="beitrag-leistungen">
+                                <strong>Leistungen:</strong> 
+                                <a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a>, 
+                                <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>, 
+                                <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
+                            </div>
                         </div>
                     </article>
 
-                    <article class="beitrag-card">
-                        <span class="beitrag-date">20. November 2020</span>
-                        <h3>Erschließung Neubaugebiet an der Eichkapelle</h3>
-                        <p>In der Stadt Mühldorf enstehen im Rahmen dieses Projektes insgesamt 67 Bauparzellen für Einfamilienhäuser und diverse Parzellen für Reihen- und Mehrfamilienhäuser auf einer Gesamtfläche von ca. 9,7 Hektar. Für die Erschließung werden ca. 1.300 m Schmut... <a href="#" class="read-more">(mehr)</a></p>
-                        <div class="beitrag-leistungen">
-                            <strong>Leistungen:</strong> Baulanderschließung, Siedlungswasserwirtschaft, Straßenbau & Brückenbau
+                    <article class="beitrag-card hidden-beitrag">
+                        <div class="beitrag-card-image">
+                            <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-an-der-eichkapelle/" target="_blank" rel="noopener">
+                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2020/12/IMG_9008-270x150.jpg" alt="Erschließung Neubaugebiet an der Eichkapelle" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="beitrag-card-content">
+                            <span class="beitrag-date">20. November 2020</span>
+                            <h3><a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-an-der-eichkapelle/" target="_blank" rel="noopener">Erschließung Neubaugebiet an der Eichkapelle</a></h3>
+                            <p>In der Stadt Mühldorf enstehen im Rahmen dieses Projektes insgesamt 67 Bauparzellen für Einfamilienhäuser und diverse Parzellen für Reihen- und Mehrfamilienhäuser auf einer Gesamtfläche von ca. 9,7 Hektar. Für die Erschließung werden ca. 1.300 m Schmut... <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-an-der-eichkapelle/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
+                            <div class="beitrag-leistungen">
+                                <strong>Leistungen:</strong> 
+                                <a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a>, 
+                                <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>, 
+                                <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
+                            </div>
                         </div>
                     </article>
 
-                    <article class="beitrag-card">
-                        <span class="beitrag-date">13. Dezember 2019</span>
-                        <h3>Sanierung Ludwig-der-Bayer-Straße</h3>
-                        <p>In der Gemeinde Mettenheim erfolgt aktuell der erste Bauabschnitt für die Sanierung der Ludwig-der-Bayer-Straße in Metteheim-Hart. Neben der Sanierung der Kanalisation sowohl durch Innensanierung als auch durch Neubau, wird die komplette Wasserversorgung ern... <a href="#" class="read-more">(mehr)</a></p>
-                        <div class="beitrag-leistungen">
-                            <strong>Leistungen:</strong> Sanierungen, Siedlungswasserwirtschaft, Straßenbau & Brückenbau
+                    <article class="beitrag-card hidden-beitrag">
+                        <div class="beitrag-card-image">
+                            <a href="https://www.ib-behringer.de/projekt/sanierung-ludwig-der-bayer-strasse/" target="_blank" rel="noopener">
+                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2019/12/IMG_0850-e1576223551978-270x150.jpg" alt="Sanierung Ludwig-der-Bayer-Straße" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="beitrag-card-content">
+                            <span class="beitrag-date">13. Dezember 2019</span>
+                            <h3><a href="https://www.ib-behringer.de/projekt/sanierung-ludwig-der-bayer-strasse/" target="_blank" rel="noopener">Sanierung Ludwig-der-Bayer-Straße</a></h3>
+                            <p>In der Gemeinde Mettenheim erfolgt aktuell der erste Bauabschnitt für die Sanierung der Ludwig-der-Bayer-Straße in Metteheim-Hart. Neben der Sanierung der Kanalisation sowohl durch Innensanierung als auch durch Neubau, wird die komplette Wasserversorgung ern... <a href="https://www.ib-behringer.de/projekt/sanierung-ludwig-der-bayer-strasse/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
+                            <div class="beitrag-leistungen">
+                                <strong>Leistungen:</strong> 
+                                <a href="{{ url_for('sanierungen') }}">Sanierungen</a>, 
+                                <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>, 
+                                <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
+                            </div>
                         </div>
                     </article>
                     
-                    <article class="beitrag-card">
-                        <span class="beitrag-date">13. Dezember 2019</span>
-                        <h3>Erschließung Neubaugebiet Kumpfmühle</h3>
-                        <p>Im Markt Kraiburg enstehen im Rahmen dieses Projektes insgesamt 20 Bauparzellen. Insgesamt werden für die Erschließung ca. 370 m Schmutzwasserkanal, 320 m Regenwasserkanal und 520 m Hauptwasserleitung hergestellt. Als Regenrückhaltebecken wird ein unterirdi... <a href="#" class="read-more">(mehr)</a></p>
-                        <div class="beitrag-leistungen">
-                            <strong>Leistungen:</strong> Baulanderschließung, Siedlungswasserwirtschaft, Straßenbau & Brückenbau
+                    <article class="beitrag-card hidden-beitrag">
+                        <div class="beitrag-card-image">
+                            <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-kumpfmuehle/" target="_blank" rel="noopener">
+                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2019/12/DGTX9451-270x150.jpg" alt="Erschließung Neubaugebiet Kumpfmühle" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="beitrag-card-content">
+                            <span class="beitrag-date">13. Dezember 2019</span>
+                            <h3><a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-kumpfmuehle/" target="_blank" rel="noopener">Erschließung Neubaugebiet Kumpfmühle</a></h3>
+                            <p>Im Markt Kraiburg enstehen im Rahmen dieses Projektes insgesamt 20 Bauparzellen. Insgesamt werden für die Erschließung ca. 370 m Schmutzwasserkanal, 320 m Regenwasserkanal und 520 m Hauptwasserleitung hergestellt. Als Regenrückhaltebecken wird ein unterirdi... <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-kumpfmuehle/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
+                            <div class="beitrag-leistungen">
+                                <strong>Leistungen:</strong> 
+                                <a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a>, 
+                                <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>, 
+                                <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
+                            </div>
                         </div>
                     </article>
 
-                    <article class="beitrag-card">
-                        <span class="beitrag-date">24. September 2019</span>
-                        <h3>Neubau Straßenüberführung Mühlthal</h3>
-                        <p>Die bestehenden Bahnübergänge Hörgen und Mühlthal in der Gemeinde Soyen werden nach der Errichtung des Straßenüberführung Mühlthal geschlossen. Auf einer Länge von insgesamt 1.200 m Länge wird die neue Straße von der Kreisstraße RO 40 über die Bah... <a href="#" class="read-more">(mehr)</a></p>
-                        <div class="beitrag-leistungen">
-                            <strong>Leistungen:</strong> Straßenbau & Brückenbau
+                    <article class="beitrag-card hidden-beitrag">
+                         <div class="beitrag-card-image">
+                            <a href="https://www.ib-behringer.de/projekt/neubau-strassenueberfuehrung-muehlthal/" target="_blank" rel="noopener">
+                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2019/09/02-270x150.jpg" alt="Neubau Straßenüberführung Mühlthal" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="beitrag-card-content">
+                            <span class="beitrag-date">24. September 2019</span>
+                            <h3><a href="https://www.ib-behringer.de/projekt/neubau-strassenueberfuehrung-muehlthal/" target="_blank" rel="noopener">Neubau Straßenüberführung Mühlthal</a></h3>
+                            <p>Die bestehenden Bahnübergänge Hörgen und Mühlthal in der Gemeinde Soyen werden nach der Errichtung des Straßenüberführung Mühlthal geschlossen. Auf einer Länge von insgesamt 1.200 m Länge wird die neue Straße von der Kreisstraße RO 40 über die Bah... <a href="https://www.ib-behringer.de/projekt/neubau-strassenueberfuehrung-muehlthal/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
+                            <div class="beitrag-leistungen">
+                                <strong>Leistungen:</strong> <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
+                            </div>
                         </div>
                     </article>
 
-                    <article class="beitrag-card">
-                        <span class="beitrag-date">18. Dezember 2018</span>
-                        <h3>Neubaugebiet Gründl West</h3>
-                        <p>Die Gemeinde Polling hat auf einer Fläche von ca. 1,6 Hektar 15 Bauparzellen in Gründl, Gemeinde Polling erschlossen. Neben den Verkehrswegen auf Grundlage des Bebauungsplans wurde auch die Schmutz- und Regenwasserbeseitigung incl. Sickerbecken und die Wasse... <a href="#" class="read-more">(mehr)</a></p>
-                        <div class="beitrag-leistungen">
-                            <strong>Leistungen:</strong> Baulanderschließung, Siedlungswasserwirtschaft, Straßenbau & Brückenbau
+                     <article class="beitrag-card hidden-beitrag">
+                        <div class="beitrag-card-image">
+                             <a href="https://www.ib-behringer.de/projekt/neubaugebiet-gruendl-west/" target="_blank" rel="noopener">
+                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2018/12/IMG_5517-270x150.jpg" alt="Neubaugebiet Gründl West" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="beitrag-card-content">
+                            <span class="beitrag-date">18. Dezember 2018</span>
+                            <h3><a href="https://www.ib-behringer.de/projekt/neubaugebiet-gruendl-west/" target="_blank" rel="noopener">Neubaugebiet Gründl West</a></h3>
+                            <p>Die Gemeinde Polling hat auf einer Fläche von ca. 1,6 Hektar 15 Bauparzellen in Gründl, Gemeinde Polling erschlossen. Neben den Verkehrswegen auf Grundlage des Bebauungsplans wurde auch die Schmutz- und Regenwasserbeseitigung incl. Sickerbecken und die Wasse... <a href="https://www.ib-behringer.de/projekt/neubaugebiet-gruendl-west/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
+                            <div class="beitrag-leistungen">
+                                <strong>Leistungen:</strong> 
+                                <a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a>, 
+                                <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>, 
+                                <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
+                            </div>
                         </div>
                     </article>
 
-                    <article class="beitrag-card">
-                        <span class="beitrag-date">28. Juni 2018</span>
-                        <h3>Geh- und Radweg Lohkirchen – Brodfurth</h3>
-                        <p>Auf einer Länge von ca. 1.300 m wurde entlang der Staatsstraße 2091 ein Geh- und Radweg verwirklicht. Von Lohkirchen führt der Geh- und Radweg bis zum Kreisverkehr Brodfurth. Im Zuge der Maßnahme wurden auch zwei Querungsinseln in der Staatsstraße erricht... <a href="#" class="read-more">(mehr)</a></p>
-                        <div class="beitrag-leistungen">
-                            <strong>Leistungen:</strong> Straßenbau & Brückenbau
+                    <article class="beitrag-card hidden-beitrag">
+                        <div class="beitrag-card-image">
+                            <a href="https://www.ib-behringer.de/projekt/geh-und-radweg-lohkirchen-brodfurth/" target="_blank" rel="noopener">
+                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2018/06/IMG_3139-270x150.jpg" alt="Geh- und Radweg Lohkirchen – Brodfurth" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="beitrag-card-content">
+                            <span class="beitrag-date">28. Juni 2018</span>
+                            <h3><a href="https://www.ib-behringer.de/projekt/geh-und-radweg-lohkirchen-brodfurth/" target="_blank" rel="noopener">Geh- und Radweg Lohkirchen – Brodfurth</a></h3>
+                            <p>Auf einer Länge von ca. 1.300 m wurde entlang der Staatsstraße 2091 ein Geh- und Radweg verwirklicht. Von Lohkirchen führt der Geh- und Radweg bis zum Kreisverkehr Brodfurth. Im Zuge der Maßnahme wurden auch zwei Querungsinseln in der Staatsstraße erricht... <a href="https://www.ib-behringer.de/projekt/geh-und-radweg-lohkirchen-brodfurth/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
+                            <div class="beitrag-leistungen">
+                                <strong>Leistungen:</strong> <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
+                            </div>
                         </div>
                     </article>
 
-                    <article class="beitrag-card">
-                        <span class="beitrag-date">20. Juni 2018</span>
-                        <h3>Kreisverkehr Kreisstraße Mü4 – Mü36</h3>
-                        <p>Der Lankreis Mühldorf als Straßenbaulastträger hat an der Kreuzung der Kreisstraße Mü 4 und Mü 36 einen Kreisverkehr errichten lassen. Der Knotenpunkt galt seit längerem als Unfallschwerpunkt. Die Maßnhame liegt im Gemeindegebiet Niedertaufkirchen. Der... <a href="#" class="read-more">(mehr)</a></p>
-                        <div class="beitrag-leistungen">
-                            <strong>Leistungen:</strong> Straßenbau & Brückenbau
+                    <article class="beitrag-card hidden-beitrag">
+                        <div class="beitrag-card-image">
+                            <a href="https://www.ib-behringer.de/projekt/kreisverkehr-kreisstrasse-mue4-mue36/" target="_blank" rel="noopener">
+                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2018/06/IMG_3709-270x150.jpg" alt="Kreisverkehr Kreisstraße Mü4 – Mü36" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="beitrag-card-content">
+                            <span class="beitrag-date">20. Juni 2018</span>
+                            <h3><a href="https://www.ib-behringer.de/projekt/kreisverkehr-kreisstrasse-mue4-mue36/" target="_blank" rel="noopener">Kreisverkehr Kreisstraße Mü4 – Mü36</a></h3>
+                            <p>Der Lankreis Mühldorf als Straßenbaulastträger hat an der Kreuzung der Kreisstraße Mü 4 und Mü 36 einen Kreisverkehr errichten lassen. Der Knotenpunkt galt seit längerem als Unfallschwerpunkt. Die Maßnhame liegt im Gemeindegebiet Niedertaufkirchen. Der... <a href="https://www.ib-behringer.de/projekt/kreisverkehr-kreisstrasse-mue4-mue36/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
+                            <div class="beitrag-leistungen">
+                                <strong>Leistungen:</strong> <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
+                            </div>
                         </div>
                     </article>
 
-                    <article class="beitrag-card">
-                        <span class="beitrag-date">20. Mai 2018</span>
-                        <h3>Erneuerung GVS Oberhofen</h3>
-                        <p>Die Gemeindeverbindungsstraße Oberhofen in der Gemeinde Mettenheim wurde auf einer Länge von ca. 1.500 m erneuert. Auf einer Länge von ca. 1.300 m erfolgt die Erneuerung im Hocheinbau. Auf der restlichen Länge wird auf Grund diverser Höhenzwangspunkte ein ... <a href="#" class="read-more">(mehr)</a></p>
-                        <div class="beitrag-leistungen">
-                            <strong>Leistungen:</strong> Sanierungen, Straßenbau & Brückenbau
+                    <article class="beitrag-card hidden-beitrag">
+                        <div class="beitrag-card-image">
+                            <a href="https://www.ib-behringer.de/projekt/erneuerung-gvs-oberhofen/" target="_blank" rel="noopener">
+                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2018/05/CIMG2346-270x150.jpg" alt="Erneuerung GVS Oberhofen" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="beitrag-card-content">
+                            <span class="beitrag-date">20. Mai 2018</span>
+                            <h3><a href="https://www.ib-behringer.de/projekt/erneuerung-gvs-oberhofen/" target="_blank" rel="noopener">Erneuerung GVS Oberhofen</a></h3>
+                            <p>Die Gemeindeverbindungsstraße Oberhofen in der Gemeinde Mettenheim wurde auf einer Länge von ca. 1.500 m erneuert. Auf einer Länge von ca. 1.300 m erfolgt die Erneuerung im Hocheinbau. Auf der restlichen Länge wird auf Grund diverser Höhenzwangspunkte ein ... <a href="https://www.ib-behringer.de/projekt/erneuerung-gvs-oberhofen/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
+                            <div class="beitrag-leistungen">
+                                <strong>Leistungen:</strong> 
+                                <a href="{{ url_for('sanierungen') }}">Sanierungen</a>, 
+                                <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
+                            </div>
                         </div>
                     </article>
                 </div>
 
-                <nav class="beitrags-navigation" aria-label="Beitragsnavigation">
-                    <a href="#" class="btn btn-secondary">« Ältere Beiträge</a>
-                </nav>
+                <button id="loadMoreBeitraegeBtn" class="btn btn-primary" style="display: none;">Weitere Projekte anzeigen</button>
             </div>
         </section>
     </main>
@@ -802,11 +964,11 @@
                     <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
                     <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
                     <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
-                    <li><a href="{{ url_for('index') }}#service-hydraulik">Hydraulische Nachweise</a></li>
-                    <li><a href="{{ url_for('index') }}#service-bauland">Baulanderschließung</a></li>
-                    <li><a href="{{ url_for('index') }}#service-gis">Kommunales GIS</a></li>
-                    <li><a href="{{ url_for('index') }}#service-sanierung">Sanierungen</a></li>
-                    <li><a href="{{ url_for('index') }}#service-wasserbau">Wasserbau</a></li>
+                    <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
+                    <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
+                    <li><a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a></li>
+                    <li><a href="{{ url_for('sanierungen') }}">Sanierungen</a></li>
+                    <li><a href="{{ url_for('wasserbau') }}">Wasserbau</a></li>
                 </ul>
             </div>
             <div>
@@ -836,7 +998,7 @@
                     <a href="{{ url_for('maedchenschule_chato') }}">Mädchenschule Chato, Tansania</a>
                  </p>
                  <a href="{{ url_for('maedchenschule_chato') }}">
-                    <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2022/12/Suedansicht-2-150x150.jpg" alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
+                    <img src="{{ url_for('static', filename='images/chato_schule_thumb.jpg') }}" alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
                 </a>
             </div>
         </div>
@@ -870,12 +1032,11 @@
             dropdownToggles.forEach(toggle => {
                 toggle.addEventListener('click', function(event) {
                     if (navToggle && window.getComputedStyle(navToggle).display !== 'none') { 
-                        const href = this.getAttribute('href');
-                        const submenu = this.parentElement.querySelector('.dropdown-menu');
-
-                        if (submenu) { 
+                        const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
+                        if (hasArrow) { 
                             event.preventDefault(); 
-                            submenu.classList.toggle('submenu-open');
+                            const submenu = this.parentElement.querySelector('.dropdown-menu');
+                            if (submenu) submenu.classList.toggle('submenu-open');
                             this.classList.toggle('active'); 
                         }
                     }
@@ -886,33 +1047,35 @@
             // 3. Smooth Scroll for on-page anchors & Close mobile nav
              document.querySelectorAll('a[href]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
+                    const hrefAttribute = this.getAttribute('href');
                     const isMobileView = navToggle && window.getComputedStyle(navToggle).display !== 'none';
                     let isMobileDropdownToggleItself = false;
                     
-                    if (isMobileView && this.parentElement && this.parentElement.classList.contains('dropdown') && this.closest('.nav-list') && this.querySelector('.dropdown-arrow')) {
-                        const submenu = this.parentElement.querySelector('.dropdown-menu');
-                        if (submenu) { 
+                    if (isMobileView && this.parentElement && this.parentElement.classList.contains('dropdown') && this.closest('.nav-list')) {
+                         const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
+                         if(hasArrow) {
                             isMobileDropdownToggleItself = true;
-                        }
+                         }
                     }
 
-                    if (href.startsWith('#') && href.length > 1) {
-                        const targetElement = document.querySelector(href);
-                        if (targetElement) { 
-                            e.preventDefault();
-                            let headerOffset = siteHeader ? siteHeader.offsetHeight : 0;
-                            const elementPosition = targetElement.getBoundingClientRect().top;
-                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    if (hrefAttribute.startsWith('#') && hrefAttribute.length > 1) {
+                        if (document.getElementById(hrefAttribute.substring(1))) { // Check if anchor exists on current page
+                            const targetElement = document.querySelector(hrefAttribute);
+                            if (targetElement) { 
+                                e.preventDefault();
+                                let headerOffset = siteHeader ? siteHeader.offsetHeight : 0;
+                                const elementPosition = targetElement.getBoundingClientRect().top;
+                                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                            }
                         }
-                    } else if (href === '#') { 
+                    } else if (hrefAttribute === '#') { 
                          e.preventDefault();
                          window.scrollTo({ top: 0, behavior: 'smooth' });
                     }
 
                     if (isMobileView && navList && navList.classList.contains('open') && !isMobileDropdownToggleItself) {
-                         if (!href.startsWith('#') || (href.startsWith('#') && document.querySelector(href))) { 
+                         if (!hrefAttribute.startsWith('#') || (hrefAttribute.startsWith('#') && document.querySelector(hrefAttribute))) { 
                             navList.classList.remove('open');
                             if (navToggle) {
                                 navToggle.setAttribute('aria-expanded', 'false');
@@ -924,6 +1087,23 @@
                     }
                 });
             });
+            
+            // "Weitere Projekte anzeigen" Button
+            const loadMoreBtn = document.getElementById('loadMoreBeitraegeBtn');
+            if (loadMoreBtn) {
+                const hiddenBeitraege = Array.from(document.querySelectorAll('.beitrag-card.hidden-beitrag'));
+                if (hiddenBeitraege.length === 0) {
+                    loadMoreBtn.style.display = 'none'; 
+                } else {
+                    loadMoreBtn.style.display = 'block'; // Ensure button is visible if there are hidden items
+                    loadMoreBtn.addEventListener('click', () => {
+                        hiddenBeitraege.forEach(beitrag => {
+                            beitrag.classList.remove('hidden-beitrag');
+                        });
+                        loadMoreBtn.style.display = 'none'; 
+                    });
+                }
+            }
             
             // Update current year in footer
             const yearSpan = document.getElementById('current-year');
