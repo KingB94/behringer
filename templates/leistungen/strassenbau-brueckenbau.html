@@ -9,6 +9,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         /* css/styles.css */
         /* 1. Basis & Variablen */
@@ -135,9 +136,9 @@
             padding: var(--space-sm) 0;
         }
 
-        .logo img {
+        .logo img { /* Consistent with main page */
             display: block;
-            max-height: 60px;
+            max-height: 80px;
             width: auto;
         }
 
@@ -225,6 +226,10 @@
         .nav-item.dropdown:hover .dropdown-arrow {
             transform: rotate(180deg);
         }
+        .nav-item.dropdown > a.active .dropdown-arrow,
+        .nav-item.dropdown > span.active .dropdown-arrow {
+            transform: rotate(180deg);
+        }
 
         .dropdown-menu {
             list-style: none;
@@ -264,6 +269,12 @@
             background-color: var(--clr-bg-alt);
             color: var(--clr-primary);
         }
+        .dropdown-menu li a.active-service-link { /* Style for active service page in dropdown */
+            background-color: var(--clr-bg-alt);
+            color: var(--clr-primary);
+            font-weight: 700;
+        }
+
 
         @media (max-width: 992px) {
             .header-inner {
@@ -277,7 +288,7 @@
             .nav-list {
                 display: none;
                 position: absolute;
-                top: 100%;
+                top: 100%; 
                 left: 0;
                 right: 0;
                 width: 100%;
@@ -285,12 +296,15 @@
                 background: var(--clr-white);
                 padding: var(--space);
                 box-shadow: var(--shadow-lg);
-                gap: 0;
-                align-items: flex-start;
+                gap: 0; 
+                align-items: flex-start; 
             }
 
             .nav-list.open {
                 display: flex;
+                max-height: calc(100vh - 70px); 
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch; 
             }
 
             .nav-toggle {
@@ -298,28 +312,46 @@
             }
 
             .nav-item.dropdown .dropdown-menu {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
+                position: static; 
+                opacity: 0; 
+                visibility: visible; 
+                transform: none; 
                 box-shadow: none;
                 border: none;
-                padding-left: var(--space);
-                padding-top: var(--space-xs);
-                padding-bottom: var(--space-xs);
+                padding-left: var(--space); 
+                padding-top: 0; 
+                padding-bottom: 0;
                 min-width: auto;
                 background-color: transparent;
+                max-height: 0; 
+                overflow: hidden;
+                transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out,
+                            margin-top 0.3s ease-in-out, margin-bottom 0.3s ease-in-out;
+            }
+            .nav-item.dropdown .dropdown-menu.submenu-open {
+                opacity: 1;
+                max-height: 500px; 
+                margin-top: var(--space-xs); 
+                margin-bottom: var(--space-xs); 
             }
 
             .nav-item.dropdown .dropdown-menu li a {
-                padding: var(--space-xs) 0;
+                padding: var(--space-xs) 0; 
                 font-weight: normal;
             }
+            .nav-item.dropdown .dropdown-menu li a:hover {
+                background-color: transparent; 
+                color: var(--clr-primary); 
+            }
+
 
             .nav-list>li>a,
             .nav-list>li>span {
-                padding: var(--space-sm) 0;
+                padding: var(--space-sm) 0; 
                 width: 100%;
+                display: flex; 
+                justify-content: space-between; 
+                align-items: center; 
             }
 
             .nav-list>li:not(:last-child)>a,
@@ -328,15 +360,15 @@
             }
 
             .nav-list>li>a.btn {
-                display: inline-block;
+                display: inline-block; 
                 width: auto;
                 margin-top: var(--space-sm);
-                padding: .75rem 1.5rem !important;
+                padding: .75rem 1.5rem !important; 
             }
 
             .nav-list>li>a:not(.btn)::after,
             .nav-list>li>span::after {
-                display: none;
+                display: none; 
             }
         }
 
@@ -393,7 +425,6 @@
             background: var(--clr-bg-alt);
         }
         
-        /* Greift, wenn eine .section die zweite .section nach einem .service-hero ist */
         .service-hero + .section + .section {
              background: var(--clr-bg-alt);
         }
@@ -417,21 +448,19 @@
             margin-right: auto;
         }
         
-        /* Footer (aus Hauptseite) */
+        /* Footer */
         .site-footer {
-            background: var(--clr-secondary);
-            color: var(--clr-text-light);
+            background: var(--clr-secondary); color: var(--clr-text-light);
             padding: var(--space-xl) 0 var(--space-lg);
         }
         .footer-grid { display: grid; gap: var(--space-md); }
         @media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } }
-        @media (min-width: 1024px) { .footer-grid { grid-template-columns: repeat(4, 1fr); } }
+        @media (min-width: 1024px) { .footer-grid { grid-template-columns: repeat(5, 1fr); } }
+        @media (min-width: 1200px) { .footer-grid { grid-template-columns: repeat(5, 1fr); } }
+
         .site-footer h4 {
-            font-family: var(--font-heading);
-            font-weight: 600;
-            color: var(--clr-white);
-            margin-bottom: var(--space-sm);
-            font-size: 1.1rem;
+            font-family: var(--font-heading); font-weight: 600; color: var(--clr-white);
+            margin-bottom: var(--space-sm); font-size: 1.1rem;
         }
         .site-footer ul { list-style: none; padding-left: 0; margin: 0; }
         .site-footer ul li { margin-bottom: var(--space-xs); }
@@ -440,6 +469,13 @@
         .site-footer address { font-style: normal; line-height: 1.7; color: #ccc; }
         .site-footer address a { color: inherit; }
         .site-footer address a:hover { color: var(--clr-white); }
+        .footer-socials a {
+            display: inline-block; margin-right: var(--space-sm); font-size: 1.6rem;
+            color: #ccc; text-decoration: none;
+        }
+        .footer-socials a:last-child { margin-right: 0; }
+        .footer-socials a:hover { color: var(--clr-white); text-decoration: none; }
+
         .footer-bottom {
             text-align: center;
             font-size: .9rem;
@@ -488,8 +524,7 @@
             }
         }
         @media (min-width: 992px) {
-            /* Für längere Listen ggf. 3 Spalten, ansonsten sind 2 oft besser lesbar */
-            .leistungsumfang-list.cols-lg-3 { /* Spezifische Klasse für 3 Spalten auf LG */
+            .leistungsumfang-list.cols-lg-3 { 
                  column-count: 3;
             }
         }
@@ -497,9 +532,9 @@
             padding-left: 2em;
             position: relative;
             margin-bottom: var(--space-sm);
-            -webkit-column-break-inside: avoid; /* Chrome, Safari, Opera */
-            page-break-inside: avoid; /* Firefox */
-            break-inside: avoid; /* IE 10+ */
+            -webkit-column-break-inside: avoid; 
+            page-break-inside: avoid; 
+            break-inside: avoid; 
         }
         .leistungsumfang-list li::before {
             content: '✓';
@@ -562,7 +597,7 @@
         .beitrag-card .beitrag-leistungen {
             font-size: 0.85rem;
             color: var(--clr-secondary);
-            margin-top: auto; /* Push to bottom */
+            margin-top: auto; 
             padding-top: var(--space-sm);
             border-top: 1px solid var(--clr-border);
             line-height: 1.5;
@@ -588,40 +623,39 @@
 <body>
     <header class="site-header">
         <div class="container header-inner">
-            <a href="index.html" class="logo"> <!-- Link zur Hauptseite -->
-                <img src="/IBB/static/images/logo.png" alt="Behringer & Partner Logo" loading="lazy">
+            <a href="{{ url_for('index') }}" class="logo"> 
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Behringer & Partner Logo" loading="lazy">
             </a>
-            <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
             <nav class="main-nav">
                 <ul class="nav-list">
-                    <li><a href="index.html#about">Über uns</a></li>
+                    <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
+                    <li><a href="{{ url_for('index') }}#news">Neuigkeiten</a></li>
                     <li class="nav-item dropdown">
-                        <a href="index.html#services">Leistungen <span class="dropdown-arrow">▼</span></a>
+                        <a href="{{ url_for('index') }}#services">Leistungen <span class="dropdown-arrow">▼</span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="siedlungswasserwirtschaft.html">Siedlungswasserwirtschaft</a></li>
-                            <li><a href="strassenbau-brueckenbau.html">Straßenbau & Brückenbau</a></li> <!-- Aktive Seite -->
-                            <li><a href="index.html#service-fernwaerme">Fernwärme</a></li>
-                            <li><a href="index.html#service-hydraulik">Hydraulische Nachweise</a></li>
-                            <li><a href="index.html#service-bauland">Baulanderschließung</a></li>
-                            <li><a href="index.html#service-gis">Kommunales GIS</a></li>
-                            <li><a href="index.html#service-sanierung">Sanierungen</a></li>
-                            <li><a href="index.html#service-wasserbau">Wasserbau</a></li>
+                            <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
+                            <li><a href="{{ url_for('strassenbau_brueckenbau') }}" class="active-service-link">Straßenbau & Brückenbau</a></li> 
+                            <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
+                            <li><a href="{{ url_for('index') }}#service-hydraulik">Hydraulische Nachweise</a></li>
+                            <li><a href="{{ url_for('index') }}#service-bauland">Baulanderschließung</a></li>
+                            <li><a href="{{ url_for('index') }}#service-gis">Kommunales GIS</a></li>
+                            <li><a href="{{ url_for('index') }}#service-sanierung">Sanierungen</a></li>
+                            <li><a href="{{ url_for('index') }}#service-wasserbau">Wasserbau</a></li>
                         </ul>
                     </li>
-                    <li><a href="index.html#projects">Projekte</a></li>
                     <li class="nav-item dropdown">
-                        <a href="index.html#company">Unternehmen <span class="dropdown-arrow">▼</span></a>
+                        <a href="{{ url_for('index') }}#company">Unternehmen <span class="dropdown-arrow">▼</span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="index.html#company-news">Neuigkeiten</a></li>
-                            <li><a href="index.html#company-team">Team</a></li>
-                            <li><a href="index.html#company-history">Firmengeschichte</a></li>
-                            <li><a href="index.html#company-jobs">Stellenangebote</a></li>
+                            <li><a href="{{ url_for('unternehmen_team') }}">Team</a></li>
+                            <li><a href="{{ url_for('firmengeschichte') }}">Firmengeschichte</a></li>
+                            <li><a href="{{ url_for('unternehmen_netzwerk') }}">Netzwerk</a></li>
+                            <li><a href="{{ url_for('unternehmen_stellenangebote') }}">Stellenangebote</a></li>
                         </ul>
                     </li>
-                    <li><a href="index.html#downloads">Downloads</a></li>
-                    <li><a href="index.html#contact" class="btn btn-primary">Kontakt</a></li>
+                    <li><a href="{{ url_for('index') }}#contact" class="btn btn-primary">Kontakt</a></li>
                 </ul>
             </nav>
+            <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
         </div>
     </header>
 
@@ -636,7 +670,7 @@
         <section id="leistungsumfang" class="section">
             <div class="container">
                 <h2 class="section-title">Leistungsumfang</h2>
-                <ul class="leistungsumfang-list">
+                <ul class="leistungsumfang-list cols-lg-3"> {/* Added cols-lg-3 for potentially better layout */}
                     <li>Staatsstraßen, Gemeindeverbindungsstraßen, Stadtstraßen, Erschließungsstraßen, ländlicher Wegebau</li>
                     <li>Ingenieurbauwerke</li>
                     <li>Kreuzungen, Kreisverkehre, Abbiegespuren</li>
@@ -646,7 +680,7 @@
             </div>
         </section>
 
-        <section id="beitraege" class="section"> <!-- Die Klasse bg-alternate wird hier automatisch durch die nth-of-type Regel greifen -->
+        <section id="beitraege" class="section"> 
             <div class="container">
                 <h2 class="section-title">Referenzprojekte Straßenbau & Brückenbau</h2>
                 <p class="section-subtitle">Ausgewählte Projekte und Beiträge aus dem Bereich Straßen- und Brückenbau.</p>
@@ -745,7 +779,6 @@
 
                 <nav class="beitrags-navigation" aria-label="Beitragsnavigation">
                     <a href="#" class="btn btn-secondary">« Ältere Beiträge</a>
-                    <!-- <a href="#" class="btn btn-secondary">Neuere Beiträge »</a> -->
                 </nav>
             </div>
         </section>
@@ -756,22 +789,24 @@
             <div>
                 <h4>Navigation</h4>
                 <ul>
-                    <li><a href="index.html#about">Über uns</a></li>
-                    <li><a href="index.html#services">Leistungen</a></li>
-                    <li><a href="index.html#projects">Projekte</a></li>
-                    <li><a href="index.html#company">Unternehmen</a></li>
-                    <li><a href="index.html#downloads">Downloads</a></li>
-                    <li><a href="index.html#contact">Kontakt</a></li>
+                    <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
+                    <li><a href="{{ url_for('index') }}#news">Neuigkeiten</a></li>
+                    <li><a href="{{ url_for('index') }}#services">Leistungen</a></li>
+                    <li><a href="{{ url_for('index') }}#company">Unternehmen</a></li>
+                    <li><a href="{{ url_for('index') }}#contact">Kontakt</a></li>
                 </ul>
             </div>
             <div>
-                <h4>Top Leistungen</h4>
+                <h4>Leistungen</h4>
                 <ul>
-                    <li><a href="siedlungswasserwirtschaft.html">Siedlungswasserwirtschaft</a></li>
-                    <li><a href="strassenbau-brueckenbau.html">Straßenbau & Brückenbau</a></li>
-                    <li><a href="index.html#service-fernwaerme">Fernwärme</a></li>
-                    <li><a href="index.html#service-wasserbau">Wasserbau</a></li>
-                    <li><a href="index.html#services">Alle Leistungen...</a></li>
+                    <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
+                    <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
+                    <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
+                    <li><a href="{{ url_for('index') }}#service-hydraulik">Hydraulische Nachweise</a></li>
+                    <li><a href="{{ url_for('index') }}#service-bauland">Baulanderschließung</a></li>
+                    <li><a href="{{ url_for('index') }}#service-gis">Kommunales GIS</a></li>
+                    <li><a href="{{ url_for('index') }}#service-sanierung">Sanierungen</a></li>
+                    <li><a href="{{ url_for('index') }}#service-wasserbau">Wasserbau</a></li>
                 </ul>
             </div>
             <div>
@@ -787,51 +822,104 @@
             <div>
                 <h4>Rechtliches</h4>
                 <ul>
-                    <li><a href="index.html#impressum">Impressum</a></li> 
-                    <li><a href="index.html#datenschutz">Datenschutz</a></li>
+                    <li><a href="{{ url_for('impressum') }}">Impressum</a></li> 
+                    <li><a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></li>
                 </ul>
+            </div>
+            <div>
+                <h4>Folgen Sie uns</h4>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/ibb_mue/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+                 <h4 style="margin-top: 1.5rem;">Wir unterstützen</h4>
+                 <p style="margin-bottom: var(--space-xs); line-height: 1.4;">
+                    <a href="{{ url_for('maedchenschule_chato') }}">Mädchenschule Chato, Tansania</a>
+                 </p>
+                 <a href="{{ url_for('maedchenschule_chato') }}">
+                    <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2022/12/Suedansicht-2-150x150.jpg" alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
+                </a>
             </div>
         </div>
         <div class="footer-bottom">
             <p>© <span id="current-year">2024</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
-            <p><a href="index.html#impressum">Impressum</a> | <a href="index.html#datenschutz">Datenschutz</a></p>
+            <p><a href="{{ url_for('impressum') }}">Impressum</a> | <a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></p>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Navigation Toggle
-            const toggle = document.querySelector('.nav-toggle');
-            const navList = document.querySelector('.nav-list');
-            if (toggle && navList) {
-                toggle.addEventListener('click', () => {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navList = document.querySelector('.main-nav .nav-list');
+            const siteHeader = document.querySelector('.site-header');
+
+            // 1. Main Navigation Toggle (Hamburger)
+            if (navToggle && navList) {
+                navToggle.addEventListener('click', () => {
                     const isOpen = navList.classList.toggle('open');
-                    toggle.setAttribute('aria-expanded', isOpen);
-                    toggle.innerHTML = isOpen ? '×' : '☰';
+                    navToggle.setAttribute('aria-expanded', isOpen);
+                    navToggle.innerHTML = isOpen ? '×' : '☰';
+                     if (!isOpen) { 
+                        navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
+                        navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
+                    }
                 });
             }
+            
+            // 2. Mobile Dropdown Submenu Toggle
+            const dropdownToggles = navList ? navList.querySelectorAll('.nav-item.dropdown > a, .nav-item.dropdown > span') : [];
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', function(event) {
+                    if (navToggle && window.getComputedStyle(navToggle).display !== 'none') { 
+                        const href = this.getAttribute('href');
+                        const submenu = this.parentElement.querySelector('.dropdown-menu');
 
-            // Smooth scroll for anchor links
-            document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
+                        if (submenu) { 
+                            event.preventDefault(); 
+                            submenu.classList.toggle('submenu-open');
+                            this.classList.toggle('active'); 
+                        }
+                    }
+                });
+            });
+
+
+            // 3. Smooth Scroll for on-page anchors & Close mobile nav
+             document.querySelectorAll('a[href]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
-                    if (href.startsWith('#') && document.querySelector(href)) {
-                        e.preventDefault();
+                    const isMobileView = navToggle && window.getComputedStyle(navToggle).display !== 'none';
+                    let isMobileDropdownToggleItself = false;
+                    
+                    if (isMobileView && this.parentElement && this.parentElement.classList.contains('dropdown') && this.closest('.nav-list') && this.querySelector('.dropdown-arrow')) {
+                        const submenu = this.parentElement.querySelector('.dropdown-menu');
+                        if (submenu) { 
+                            isMobileDropdownToggleItself = true;
+                        }
+                    }
+
+                    if (href.startsWith('#') && href.length > 1) {
                         const targetElement = document.querySelector(href);
-                        if (targetElement) {
-                            const headerOffset = document.querySelector('.site-header') ? document.querySelector('.site-header').offsetHeight : 0;
+                        if (targetElement) { 
+                            e.preventDefault();
+                            let headerOffset = siteHeader ? siteHeader.offsetHeight : 0;
                             const elementPosition = targetElement.getBoundingClientRect().top;
                             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                            window.scrollTo({
-                                top: offsetPosition,
-                                behavior: 'smooth'
-                            });
+                            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
                         }
-                         if (navList && navList.classList.contains('open') && this.closest('.nav-list')) {
+                    } else if (href === '#') { 
+                         e.preventDefault();
+                         window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+
+                    if (isMobileView && navList && navList.classList.contains('open') && !isMobileDropdownToggleItself) {
+                         if (!href.startsWith('#') || (href.startsWith('#') && document.querySelector(href))) { 
                             navList.classList.remove('open');
-                            toggle.setAttribute('aria-expanded', 'false');
-                            toggle.innerHTML = '☰';
+                            if (navToggle) {
+                                navToggle.setAttribute('aria-expanded', 'false');
+                                navToggle.innerHTML = '☰';
+                            }
+                            navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
+                            navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
                         }
                     }
                 });
