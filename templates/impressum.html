@@ -280,7 +280,7 @@
             }
             .nav-list.open {
                 display: flex;
-                max-height: calc(100vh - 70px); /* Adjusted based on smaller logo height */
+                max-height: calc(100vh - 82px); /* Adjusted for actual mobile header height */
                 overflow-y: auto;
                 -webkit-overflow-scrolling: touch;
             }
@@ -416,6 +416,9 @@
              font-size: clamp(2rem, 4.5vw, 2.8rem);
              margin-bottom: var(--space-lg);
         }
+        .legal-content-section h2#datenschutz { /* Specific styling for the Datenschutz heading */
+            scroll-margin-top: 100px; /* Adjust this value based on your sticky header height */
+        }
         .legal-content-section p,
         .legal-content-section ul {
             margin-bottom: var(--space-sm);
@@ -433,10 +436,10 @@
             font-weight: 600;
         }
         .legal-content-section a {
-            text-decoration: underline;
+            /* text-decoration: underline; Let browser default handle it or be more specific */
         }
         .legal-content-section a:hover {
-            text-decoration: none;
+            text-decoration: underline; /* Keep underline on hover for legal links */
         }
 
 
@@ -508,11 +511,11 @@
                             <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
                             <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
                             <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
-                            <li><a href="{{ url_for('index') }}#service-hydraulik">Hydraulische Nachweise</a></li>
-                            <li><a href="{{ url_for('index') }}#service-bauland">Baulanderschließung</a></li>
-                            <li><a href="{{ url_for('index') }}#service-gis">Kommunales GIS</a></li>
-                            <li><a href="{{ url_for('index') }}#service-sanierung">Sanierungen</a></li>
-                            <li><a href="{{ url_for('index') }}#service-wasserbau">Wasserbau</a></li>
+                            <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
+                            <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
+                            <li><a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a></li>
+                            <li><a href="{{ url_for('sanierungen') }}">Sanierungen</a></li>
+                            <li><a href="{{ url_for('wasserbau') }}">Wasserbau</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -535,7 +538,7 @@
         <section class="legal-content-section">
             <div class="container">
                 <div class="entry-content">
-                    <h1 class="entry-title">Impressum</h1> {/* Changed from "Impressum & Datenschutz" as Datenschutz is a subsection */}
+                    <h1 class="entry-title">Impressum</h1> 
                     
                     <p><strong>Ingenieurbüro Behringer & Partner mbB<br>
                     </strong>Beratender Ingenieur, Bauingenieure und staatlich geprüfter Bautechniker<strong><br>
@@ -564,7 +567,7 @@
                     <p><strong>Berufshaftplicht</strong><br>
                     VHV Hannover / Geltungsbereich: Deutschland</p>
                     <p><strong>Die maßgeblichen berufsrechtlichen Regelungen finden Sie hier<br>
-                    </strong><a href="http://www.bayika.de/" target="_blank" rel="noopener">Bayerische Ingenieurkammer Bau</a><strong><br> {/* External link, no url_for */}
+                    </strong><a href="http://www.bayika.de/" target="_blank" rel="noopener">Bayerische Ingenieurkammer Bau</a><strong><br>
                     </strong>Mitglied: Dipl.-Ing. (FH) Robert Behringer, Beratender Ingenieur<strong><br>
                     </strong></p>
                     <p><strong>Haftung für Links</strong><br>
@@ -574,7 +577,7 @@
                     Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.<br>
                     Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
                     
-                    <h2 id="datenschutz">Datenschutzerklärung</h2> {/* Added id="datenschutz" here */}
+                    <h2 id="datenschutz">Datenschutzerklärung</h2>
                     <p>Verantwortliche Stelle im Sinne der Datenschutzgesetze, insbesondere der EU-Datenschutzgrundverordnung (DSGVO), ist:</p>
                     <p><strong>Ingenieurbüro Behringer & Partner mbB<br>
                     </strong>Beratender Ingenieur, Bauingenieure und staatlich geprüfter Bautechniker<br>
@@ -660,11 +663,11 @@
                     <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
                     <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
                     <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
-                    <li><a href="{{ url_for('index') }}#service-hydraulik">Hydraulische Nachweise</a></li>
-                    <li><a href="{{ url_for('index') }}#service-bauland">Baulanderschließung</a></li>
-                    <li><a href="{{ url_for('index') }}#service-gis">Kommunales GIS</a></li>
-                    <li><a href="{{ url_for('index') }}#service-sanierung">Sanierungen</a></li>
-                    <li><a href="{{ url_for('index') }}#service-wasserbau">Wasserbau</a></li>
+                    <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
+                    <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
+                    <li><a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a></li>
+                    <li><a href="{{ url_for('sanierungen') }}">Sanierungen</a></li>
+                    <li><a href="{{ url_for('wasserbau') }}">Wasserbau</a></li>
                 </ul>
             </div>
             <div>
@@ -681,7 +684,7 @@
                 <h4>Rechtliches</h4>
                 <ul>
                     <li><a href="{{ url_for('impressum') }}">Impressum</a></li> 
-                    <li><a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></li> {/* Points to anchor on this page */}
+                    <li><a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></li>
                 </ul>
             </div>
             <div>
@@ -694,19 +697,20 @@
                     <a href="{{ url_for('maedchenschule_chato') }}">Mädchenschule Chato, Tansania</a>
                  </p>
                  <a href="{{ url_for('maedchenschule_chato') }}">
-                    <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2022/12/Suedansicht-2-150x150.jpg" alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
-                </a>
+                    <img src="{{ url_for('static', filename='images/chato_schule_thumb.jpg') }}" alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
+                </a> <!-- Assuming you have a chato_schule_thumb.jpg in static/images -->
             </div>
         </div>
         <div class="footer-bottom">
             <p>© <span id="current-year">2024</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
-            <p><a href="{{ url_for('impressum') }}">Impressum</a> | <a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></p> {/* Points to anchor on this page */}
+            <p><a href="{{ url_for('impressum') }}">Impressum</a> | <a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></p>
         </div>
     </footer>
 
     <script>
         // GA Opt-out function (if you intend to use it like this)
-        var gaProperty = 'UA-XXXXXXXX-X'; // Replace with your GA Property ID if needed, or handle dynamically
+        // Ensure this GA Property ID is correct or managed dynamically if you have multiple properties.
+        var gaProperty = 'UA-XXXXXXXX-X'; // REPLACE WITH YOUR ACTUAL GOOGLE ANALYTICS PROPERTY ID
         var disableStr = 'ga-disable-' + gaProperty;
         function gaOptout() {
             document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
@@ -736,15 +740,15 @@
             const dropdownToggles = navList ? navList.querySelectorAll('.nav-item.dropdown > a, .nav-item.dropdown > span') : [];
             dropdownToggles.forEach(toggle => {
                 toggle.addEventListener('click', function(event) {
-                    if (navToggle && window.getComputedStyle(navToggle).display !== 'none') {
-                        const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN'; // SPAN for dropdowns that are not links
-                        if (hasArrow) { // It's a dropdown toggle
+                    if (navToggle && window.getComputedStyle(navToggle).display !== 'none') { // Only for mobile view
+                        const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN'; // Check if it's a span or has an arrow
+                        if (hasArrow) { // Only act if it's a dropdown toggle
                             event.preventDefault(); 
                             const submenu = this.parentElement.querySelector('.dropdown-menu');
                             if (submenu) submenu.classList.toggle('submenu-open');
                             this.classList.toggle('active'); 
                         }
-                        // Else, it's a normal link within a dropdown or a top-level link, let it navigate
+                        // If it's a direct link within the dropdown (no arrow, not a span), it will navigate normally.
                     }
                 });
             });
@@ -757,34 +761,48 @@
                     const isMobileView = navToggle && window.getComputedStyle(navToggle).display !== 'none';
                     let isMobileDropdownToggleItself = false;
                     
-                    if (isMobileView && this.parentElement && this.parentElement.classList.contains('dropdown') && this.closest('.nav-list') && this.querySelector('.dropdown-arrow')) {
-                        const submenu = this.parentElement.querySelector('.dropdown-menu');
-                        if (submenu) { 
+                    // Check if the clicked item is a mobile dropdown toggle itself
+                    if (isMobileView && this.parentElement && this.parentElement.classList.contains('dropdown') && this.closest('.nav-list')) {
+                         const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
+                         if(hasArrow) {
                             isMobileDropdownToggleItself = true;
-                        }
+                         }
                     }
 
                     if (href.startsWith('#') && href.length > 1) {
-                        const targetElement = document.querySelector(href);
-                        if (targetElement) { 
-                            e.preventDefault();
-                            let headerOffset = siteHeader ? siteHeader.offsetHeight : 0;
-                            const elementPosition = targetElement.getBoundingClientRect().top;
-                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                        }
+                        // Check if the link is on the current page or to impressum#datenschutz from another page
+                        const currentPath = window.location.pathname;
+                        const targetPath = this.pathname; // Path of the link's href
+                        
+                        // If the link is for an anchor on the *current* page
+                        if (currentPath === targetPath || (targetPath === '' && href.startsWith('#'))) {
+                            const targetElement = document.querySelector(href);
+                            if (targetElement) { 
+                                e.preventDefault();
+                                let headerOffset = siteHeader ? siteHeader.offsetHeight : 0;
+                                const elementPosition = targetElement.getBoundingClientRect().top;
+                                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                            }
+                        } 
+                        // If the link is to an anchor on another page (e.g., impressum#datenschutz from index.html),
+                        // the browser will handle the navigation to the page and then jump to the anchor.
+                        // Smooth scrolling for cross-page anchors requires more complex JS or server-side handling.
                     } else if (href === '#') { 
                          e.preventDefault();
                          window.scrollTo({ top: 0, behavior: 'smooth' });
                     }
 
+                    // Close mobile nav if it's open and the click was not on a dropdown toggle itself
                     if (isMobileView && navList && navList.classList.contains('open') && !isMobileDropdownToggleItself) {
+                         // Ensure we close only if it's a real navigation (not just an unhandled hash) or an external link
                          if (!href.startsWith('#') || (href.startsWith('#') && document.querySelector(href))) { 
                             navList.classList.remove('open');
                             if (navToggle) {
                                 navToggle.setAttribute('aria-expanded', 'false');
                                 navToggle.innerHTML = '☰';
                             }
+                            // Close any open submenus
                             navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
                             navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
                         }
