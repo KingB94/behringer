@@ -305,7 +305,7 @@
 
             .nav-list.open {
                 display: flex;
-                max-height: calc(100vh - 85px); /* Adjust 85px to actual mobile header height if needed */
+                max-height: calc(100vh - 70px); /* Adjusted from 85px */
                 overflow-y: auto;
                 -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
             }
@@ -314,20 +314,19 @@
                 display: block;
             }
 
-            /* Styles for mobile dropdown menus (collapsible) */
             .nav-item.dropdown .dropdown-menu {
-                position: static; /* Overrides absolute positioning */
-                opacity: 0; /* Initially hidden for transition */
-                visibility: visible; /* Keep visible for layout purposes, opacity controls view */
-                transform: none; /* No transform needed */
+                position: static; 
+                opacity: 0; 
+                visibility: visible; 
+                transform: none; 
                 box-shadow: none;
                 border: none;
-                padding-left: var(--space); /* Indent submenu items */
-                padding-top: 0; /* Will be added when open */
-                padding-bottom: 0; /* Will be added when open */
+                padding-left: var(--space); 
+                padding-top: 0; 
+                padding-bottom: 0; 
                 min-width: auto;
                 background-color: transparent;
-                max-height: 0; /* Core of collapse mechanism */
+                max-height: 0; 
                 overflow: hidden;
                 transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out,
                             margin-top 0.3s ease-in-out, margin-bottom 0.3s ease-in-out;
@@ -335,28 +334,28 @@
 
             .nav-item.dropdown .dropdown-menu.submenu-open {
                 opacity: 1;
-                max-height: 500px; /* Adjust if more items are expected */
-                margin-top: var(--space-xs); /* Space between toggle and submenu items */
-                margin-bottom: var(--space-xs); /* Space after submenu items */
+                max-height: 500px; 
+                margin-top: var(--space-xs); 
+                margin-bottom: var(--space-xs); 
             }
 
             .nav-item.dropdown .dropdown-menu li a {
-                padding: var(--space-xs) 0; /* Vertical padding for submenu items */
+                padding: var(--space-xs) 0; 
                 font-weight: normal;
             }
             .nav-item.dropdown .dropdown-menu li a:hover {
-                background-color: transparent; /* No special background on hover for mobile submenu items */
-                color: var(--clr-primary); /* Keep text color change on hover */
+                background-color: transparent; 
+                color: var(--clr-primary); 
             }
 
 
             .nav-list>li>a,
             .nav-list>li>span {
-                padding: var(--space-sm) 0; /* Vertical padding on main nav items */
+                padding: var(--space-sm) 0; 
                 width: 100%;
-                display: flex; /* Added for aligning text and arrow */
-                justify-content: space-between; /* Pushes arrow to the right */
-                align-items: center; /* Vertically aligns text and arrow */
+                display: flex; 
+                justify-content: space-between; 
+                align-items: center; 
             }
 
             .nav-list>li:not(:last-child)>a,
@@ -365,15 +364,15 @@
             }
 
             .nav-list>li>a.btn {
-                display: inline-block; /* Allow button to not take full width */
+                display: inline-block; 
                 width: auto;
                 margin-top: var(--space-sm);
-                padding: .75rem 1.5rem !important; /* Ensure padding overrides */
+                padding: .75rem 1.5rem !important; 
             }
 
             .nav-list>li>a:not(.btn)::after,
             .nav-list>li>span::after {
-                display: none; /* Remove desktop hover underlines */
+                display: none; 
             }
         }
 
@@ -786,12 +785,10 @@
 
         /* Styles for dots when #news has .bg-alternate */
         #news.bg-alternate .news-dot {
-            /* Inactive dots on the light gray .bg-alternate */
             background-color: #b0b0b0; /* A medium gray for better contrast on #f7f7f7 */
         }
 
         #news.bg-alternate .news-dot.active {
-            /* Active dots on the light gray .bg-alternate - ensure primary color */
             background-color: var(--clr-primary);
         }
 
@@ -855,7 +852,7 @@
         }
 
         .info-card {
-            background-color: var(--clr-white); /* Ensures cards are white on bg-alternate */
+            background-color: var(--clr-white); 
             border-radius: var(--radius-md);
             padding: var(--space-md);
             box-shadow: var(--shadow-md);
@@ -863,7 +860,7 @@
             display: flex;
             flex-direction: column;
         }
-        #company.bg-alternate .info-card { /* Explicitly set if needed, but above should cover */
+        #company.bg-alternate .info-card { 
              background-color: var(--clr-white);
         }
 
@@ -923,16 +920,8 @@
             font-family: var(--font-sans);
             font-size: 1rem;
             transition: border-color 0.2s, box-shadow 0.2s;
-            background-color: var(--clr-white); /* Ensures white input on any bg */
-        }
-
-        /* Removed specific styling for #contact.bg-alternate as contact is now white by default
-        #contact.bg-alternate .contact-form input,
-        #contact.bg-alternate .contact-form textarea {
             background-color: var(--clr-white); 
-            border-color: #ddd; 
-        } */
-
+        }
 
         .contact-form input:focus,
         .contact-form textarea:focus {
@@ -952,26 +941,13 @@
         .contact-info address p {
             margin-bottom: var(--space-sm);
             line-height: 1.8;
-            color: var(--clr-secondary); /* Ensures text is dark on white bg */
-        }
-        /* Removed specific styling for #contact.bg-alternate
-        #contact.bg-alternate .contact-info address p,
-        #contact.bg-alternate .contact-info address strong {
             color: var(--clr-secondary); 
         }
-        #contact.bg-alternate .contact-info address a {
-             color: var(--clr-primary);
-        }
-         #contact.bg-alternate .contact-info address a:hover {
-             color: var(--clr-gradient-start);
-        } */
-
-
         .contact-info address strong {
             font-weight: 600;
-            color: var(--clr-secondary); /* Ensures text is dark on white bg */
+            color: var(--clr-secondary); 
         }
-         .contact-info address a { /* Ensures links are primary color on white bg */
+         .contact-info address a { 
              color: var(--clr-primary);
         }
          .contact-info address a:hover {
@@ -1107,23 +1083,23 @@
         </a>
         <nav class="main-nav">
             <ul class="nav-list">
-                <li><a href="#about">Über uns</a></li>
-                <li><a href="#news">Neuigkeiten</a></li>
+                <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
+                <li><a href="{{ url_for('index') }}#news">Neuigkeiten</a></li>
                 <li class="nav-item dropdown">
-                    <a href="#services">Leistungen <span class="dropdown-arrow">▼</span></a>
+                    <a href="{{ url_for('index') }}#services">Leistungen <span class="dropdown-arrow">▼</span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
                         <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
                         <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
-                        <li><a href="#service-hydraulik">Hydraulische Nachweise</a></li>
-                        <li><a href="#service-bauland">Baulanderschließung</a></li>
-                        <li><a href="#service-gis">Kommunales GIS</a></li>
-                        <li><a href="#service-sanierung">Sanierungen</a></li>
-                        <li><a href="#service-wasserbau">Wasserbau</a></li>
+                        <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
+                        <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
+                        <li><a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a></li>
+                        <li><a href="{{ url_for('sanierungen') }}">Sanierungen</a></li>
+                        <li><a href="{{ url_for('wasserbau') }}">Wasserbau</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a href="#company">Unternehmen <span class="dropdown-arrow">▼</span></a>
+                    <a href="{{ url_for('index') }}#company">Unternehmen <span class="dropdown-arrow">▼</span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ url_for('unternehmen_team') }}">Team</a></li>
                         <li><a href="{{ url_for('firmengeschichte') }}">Firmengeschichte</a></li>
@@ -1131,7 +1107,7 @@
                         <li><a href="{{ url_for('unternehmen_stellenangebote') }}">Stellenangebote</a></li>
                     </ul>
                 </li>
-                <li><a href="#contact" class="btn btn-primary">Kontakt</a></li>
+                <li><a href="{{ url_for('index') }}#contact" class="btn btn-primary">Kontakt</a></li>
             </ul>
         </nav>
         <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
@@ -1152,7 +1128,7 @@
     </section>
 
     <main>
-        <section id="about" class="section"> <!-- 1. Weiß -->
+        <section id="about" class="section"> 
             <div class="container mx-auto px-4-custom">
                 <h2 id="about-headline">Wer wir sind und was uns antreibt</h2>
                 <div class="about-reveal-content">
@@ -1190,7 +1166,7 @@
             </div>
         </section>
 
-        <section id="news" class="section bg-alternate"> <!-- 2. Hellgrau -->
+        <section id="news" class="section bg-alternate"> 
             <div class="container">
                 <h2 class="section-title">Aktuelle Neuigkeiten</h2>
                 <p class="section-subtitle">Bleiben Sie auf dem Laufenden über unsere Projekte und Entwicklungen.</p>
@@ -1217,55 +1193,70 @@
                             <p>Seit September 2024 ist der Kreisverkehr in Marktl, der die Kreisstraßen AÖ22 und AÖ24 verbindet, freigegeben. In ca. 10 Monaten wurde ein moderner Knotenpunkt geschaffen...</p>
                             <a href="https://www.ib-behringer.de/2024/09/27/kreisverkehr-in-martkl-fertig/" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Mehr lesen</a>
                         </div>
-                        <!-- Hier könnten bei Bedarf weitere News-Items hinzugefügt werden -->
                     </div>
                 </div>
                 <div class="news-dots"></div>
             </div>
         </section>
 
-        <section id="services" class="section services"> <!-- 3. Weiß -->
+        <section id="services" class="section services"> 
             <div class="container">
                 <h2 class="section-title">Leistungen</h2>
                 <p class="section-subtitle">Entdecken Sie unser breites Spektrum an Ingenieurdienstleistungen.</p>
                 <div class="services-grid">
                     <div class="service-card" id="service-siedlung">
-                        <img src="{{ url_for('static', filename='images/ingenieur.jpg') }}" alt="Siedlungswasserwirtschaft" loading="lazy">
-                        <h3>Siedlungswasserwirtschaft</h3>
+                        <a href="{{ url_for('siedlungswasserwirtschaft') }}" class="service-link-wrapper">
+                            <img src="{{ url_for('static', filename='images/ingenieur.jpg') }}" alt="Siedlungswasserwirtschaft" loading="lazy">
+                            <h3>Siedlungswasserwirtschaft</h3>
+                        </a>
                     </div>
                     <div class="service-card" id="service-strassen">
-                        <img src="{{ url_for('static', filename='images/hero.jpg') }}" alt="Straßenbau & Brückenbau" loading="lazy">
-                        <h3>Straßenbau & Brückenbau</h3>
+                        <a href="{{ url_for('strassenbau_brueckenbau') }}" class="service-link-wrapper">
+                            <img src="{{ url_for('static', filename='images/hero.jpg') }}" alt="Straßenbau & Brückenbau" loading="lazy">
+                            <h3>Straßenbau & Brückenbau</h3>
+                        </a>
                     </div>
                     <div class="service-card" id="service-fernwaerme">
-                        <img src="{{ url_for('static', filename='images/working (2).jpg') }}" alt="Fernwärme" loading="lazy">
-                        <h3>Fernwärme</h3>
+                         <a href="{{ url_for('fernwaerme') }}" class="service-link-wrapper">
+                            <img src="{{ url_for('static', filename='images/working (2).jpg') }}" alt="Fernwärme" loading="lazy">
+                            <h3>Fernwärme</h3>
+                        </a>
                     </div>
                     <div class="service-card" id="service-hydraulik">
-                        <img src="{{ url_for('static', filename='images/working.jpg') }}" alt="Hydraulische Nachweise" loading="lazy">
-                        <h3>Hydraulische Nachweise</h3>
+                         <a href="{{ url_for('hydraulische_nachweise') }}" class="service-link-wrapper">
+                            <img src="{{ url_for('static', filename='images/working.jpg') }}" alt="Hydraulische Nachweise" loading="lazy">
+                            <h3>Hydraulische Nachweise</h3>
+                        </a>
                     </div>
                     <div class="service-card" id="service-bauland">
-                        <img src="{{ url_for('static', filename='images/excavator.jpg') }}" alt="Baulanderschließung" loading="lazy">
-                        <h3>Baulanderschließung</h3>
+                        <a href="{{ url_for('baulanderschliessung') }}" class="service-link-wrapper">
+                            <img src="{{ url_for('static', filename='images/excavator.jpg') }}" alt="Baulanderschließung" loading="lazy">
+                            <h3>Baulanderschließung</h3>
+                        </a>
                     </div>
                     <div class="service-card" id="service-gis">
-                        <img src="{{ url_for('static', filename='images/bohrmaschine_zeichner.jpg') }}" alt="Kommunales GIS" loading="lazy">
-                        <h3>Kommunales GIS</h3>
+                        <a href="{{ url_for('kommunales_gis') }}" class="service-link-wrapper">
+                            <img src="{{ url_for('static', filename='images/bohrmaschine_zeichner.jpg') }}" alt="Kommunales GIS" loading="lazy">
+                            <h3>Kommunales GIS</h3>
+                        </a>
                     </div>
                     <div class="service-card" id="service-sanierung">
-                        <img src="{{ url_for('static', filename='images/roundabout.jpg') }}" alt="Sanierungen" loading="lazy">
-                        <h3>Sanierungen</h3>
+                        <a href="{{ url_for('sanierungen') }}" class="service-link-wrapper">
+                            <img src="{{ url_for('static', filename='images/roundabout.jpg') }}" alt="Sanierungen" loading="lazy">
+                            <h3>Sanierungen</h3>
+                        </a>
                     </div>
                     <div class="service-card" id="service-wasserbau">
-                        <img src="{{ url_for('static', filename='images/bridge.jpg') }}" alt="Wasserbau" loading="lazy">
-                        <h3>Wasserbau</h3>
+                        <a href="{{ url_for('wasserbau') }}" class="service-link-wrapper">
+                            <img src="{{ url_for('static', filename='images/bridge.jpg') }}" alt="Wasserbau" loading="lazy">
+                            <h3>Wasserbau</h3>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="company" class="section bg-alternate"> <!-- 4. Hellgrau -->
+        <section id="company" class="section bg-alternate"> 
             <div class="container">
                 <h2 class="section-title">Das Unternehmen</h2>
                 <p class="section-subtitle">Erfahren Sie mehr über uns, unsere Werte und was uns auszeichnet.</p>
@@ -1292,7 +1283,7 @@
             </div>
         </section>
 
-        <section id="contact" class="section contact"> <!-- 5. Weiß -->
+        <section id="contact" class="section contact"> 
             <div class="container">
                 <h2 class="section-title">Kontakt</h2>
                 <p class="section-subtitle">Wir freuen uns auf Ihre Nachricht, Ihren Anruf oder Ihren Besuch.</p>
@@ -1339,11 +1330,11 @@
                     <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
                     <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
                     <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
-                    <li><a href="{{ url_for('index') }}#service-hydraulik">Hydraulische Nachweise</a></li>
-                    <li><a href="{{ url_for('index') }}#service-bauland">Baulanderschließung</a></li>
-                    <li><a href="{{ url_for('index') }}#service-gis">Kommunales GIS</a></li>
-                    <li><a href="{{ url_for('index') }}#service-sanierung">Sanierungen</a></li>
-                    <li><a href="{{ url_for('index') }}#service-wasserbau">Wasserbau</a></li>
+                    <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
+                    <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
+                    <li><a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a></li>
+                    <li><a href="{{ url_for('sanierungen') }}">Sanierungen</a></li>
+                    <li><a href="{{ url_for('wasserbau') }}">Wasserbau</a></li>
                 </ul>
             </div>
             <div>
@@ -1360,7 +1351,7 @@
                 <h4>Rechtliches</h4>
                 <ul>
                     <li><a href="{{ url_for('impressum') }}">Impressum</a></li>
-                    <li><a href="{{ url_for('index') }}#datenschutz">Datenschutz</a></li> <!-- Assuming Datenschutz is an anchor on index -->
+                    <li><a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></li> 
                 </ul>
             </div>
             <div>
@@ -1378,8 +1369,8 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© <span id="current-year">2025</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
-            <p><a href="{{ url_for('impressum') }}">Impressum</a> | <a href="{{ url_for('index') }}#datenschutz">Datenschutz</a></p>  <!-- Assuming Datenschutz is an anchor on index -->
+            <p>© <span id="current-year">2024</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
+            <p><a href="{{ url_for('impressum') }}">Impressum</a> | <a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></p>
         </div>
     </footer>
 
@@ -1411,13 +1402,10 @@
                         const submenu = this.parentElement.querySelector('.dropdown-menu');
 
                         if (submenu) { // If it's a dropdown toggle (has a submenu)
-                            event.preventDefault(); // Prevent default action (navigation or scrolling)
+                            event.preventDefault(); 
                             submenu.classList.toggle('submenu-open');
                             this.classList.toggle('active');
                         }
-                        // If it's a link within a dropdown menu that leads to another page (and not a toggle itself),
-                        // or a top-level link that is not a dropdown toggle, let the default action proceed.
-                        // The logic in section 3 handles closing the menu for actual navigation.
                     }
                 });
             });
@@ -1429,17 +1417,13 @@
                     const isMobileView = navToggle && window.getComputedStyle(navToggle).display !== 'none';
                     let isMobileDropdownToggleItself = false;
                     
-                    // Check if the clicked element is a main dropdown toggle in mobile view
                     if (isMobileView && this.parentElement && this.parentElement.classList.contains('dropdown') && this.closest('.nav-list') && this.querySelector('.dropdown-arrow')) {
                         const submenu = this.parentElement.querySelector('.dropdown-menu');
-                        if (submenu) { // It's a main toggle for a submenu
+                        if (submenu) { 
                             isMobileDropdownToggleItself = true;
-                            // The click is handled by logic in section 2 (Mobile Dropdown Submenu Toggle)
-                            // No further action needed here for this specific case for scrolling/closing main nav.
                         }
                     }
 
-                    // Handle smooth scrolling for internal anchor links
                     if (href.startsWith('#') && href.length > 1) {
                         const targetElement = document.querySelector(href);
                         if (targetElement) {
@@ -1449,22 +1433,18 @@
                             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                             window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
                         }
-                    } else if (href === '#') { // Link to top of page
+                    } else if (href === '#') { 
                          e.preventDefault();
                          window.scrollTo({ top: 0, behavior: 'smooth' });
                     }
 
-                    // Close mobile nav if an item is clicked that should navigate or scroll,
-                    // but not if it's the dropdown toggle itself being clicked to open/close its submenu.
                     if (isMobileView && navList && navList.classList.contains('open') && !isMobileDropdownToggleItself) {
-                        // This will close the nav if a link inside a submenu is clicked, or a top-level non-dropdown link
-                         if (!href.startsWith('#') || (href.startsWith('#') && document.querySelector(href))) { // if it's a page link or a valid anchor
+                         if (!href.startsWith('#') || (href.startsWith('#') && document.querySelector(href))) { 
                             navList.classList.remove('open');
                             if (navToggle) {
                                 navToggle.setAttribute('aria-expanded', 'false');
                                 navToggle.innerHTML = '☰';
                             }
-                            // Close all submenus when main mobile nav closes
                             navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
                             navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
                         }
@@ -1476,13 +1456,13 @@
             const slides = document.querySelectorAll('.hero-slideshow .hero-img');
             if (slides.length > 1) {
                 let currentHeroSlide = 0;
-                slides[currentHeroSlide].classList.add('active');
+                if (slides[currentHeroSlide]) slides[currentHeroSlide].classList.add('active'); // Check if slide exists
                 setInterval(() => {
-                    slides[currentHeroSlide].classList.remove('active');
+                    if (slides[currentHeroSlide]) slides[currentHeroSlide].classList.remove('active');
                     currentHeroSlide = (currentHeroSlide + 1) % slides.length;
-                    slides[currentHeroSlide].classList.add('active');
+                    if (slides[currentHeroSlide]) slides[currentHeroSlide].classList.add('active');
                 }, 5000);
-            } else if (slides.length === 1) {
+            } else if (slides.length === 1 && slides[0]) {
                 slides[0].classList.add('active');
             }
             
@@ -1506,9 +1486,9 @@
 
                 function showNewsItem(index) {
                     newsItems.forEach(item => item.classList.remove('active'));
-                    newsItems[index].classList.add('active');
+                    if(newsItems[index]) newsItems[index].classList.add('active');
                     newsDots.forEach(dot => dot.classList.remove('active'));
-                    newsDots[index].classList.add('active');
+                    if(newsDots[index]) newsDots[index].classList.add('active');
                     currentNewsIndex = index;
                 }
 
@@ -1552,6 +1532,43 @@
                 const aboutObserver = new IntersectionObserver(revealAboutContent, aboutObserverOptions);
                 aboutObserver.observe(aboutSection); 
             }
+
+            // Click handler for service cards
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach(card => {
+                const linkElement = card.querySelector('a.service-link-wrapper');
+                if (linkElement) {
+                    // Option 1: Make the whole card clickable
+                    card.style.cursor = 'pointer';
+                    card.addEventListener('click', () => {
+                        window.location.href = linkElement.href;
+                    });
+                    // Option 2: If you prefer only the link inside to be clickable, no JS needed for that part
+                } else { // If no <a> wrapper, fallback to original ID-based logic or specific page links
+                    const serviceId = card.id; // e.g., "service-siedlung"
+                    let targetUrl = '';
+
+                    switch (serviceId) {
+                        case 'service-siedlung': targetUrl = "{{ url_for('siedlungswasserwirtschaft') }}"; break;
+                        case 'service-strassen': targetUrl = "{{ url_for('strassenbau_brueckenbau') }}"; break;
+                        case 'service-fernwaerme': targetUrl = "{{ url_for('fernwaerme') }}"; break;
+                        case 'service-hydraulik': targetUrl = "{{ url_for('hydraulische_nachweise') }}"; break;
+                        case 'service-bauland': targetUrl = "{{ url_for('baulanderschliessung') }}"; break;
+                        case 'service-gis': targetUrl = "{{ url_for('kommunales_gis') }}"; break;
+                        case 'service-sanierung': targetUrl = "{{ url_for('sanierungen') }}"; break;
+                        case 'service-wasserbau': targetUrl = "{{ url_for('wasserbau') }}"; break;
+                    }
+
+                    if (targetUrl) {
+                        card.style.cursor = 'pointer';
+                        card.addEventListener('click', () => {
+                            window.location.href = targetUrl;
+                        });
+                    }
+                }
+            });
+
+
         });
     </script>
 </body>
