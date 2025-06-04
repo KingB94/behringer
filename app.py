@@ -31,7 +31,7 @@ def baulanderschliessung():
 
 @app.route('/kommunales-gis')
 def kommunales_gis():
-    return render_template('leistungen/kommunales-gis.html')
+    return render_template('leistungen/kommunales_gis.html')
 
 @app.route('/sanierungen')
 def sanierungen():
