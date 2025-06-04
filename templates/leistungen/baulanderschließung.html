@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Baulanderschließung - Behringer & Partner</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* css/styles.css */
+        /* 1. Basis & Variablen */
+        :root {
+            --clr-primary: #005a9c;
+            --clr-secondary: #333;
+            --clr-accent: #007bff;
+            /* Eine Akzentfarbe, falls benötigt */
+            --clr-bg: #fff;
+            --clr-bg-alt: #f7f7f7;
+            --clr-gradient-start: #004a80;
+            --clr-gradient-end: #006bb3;
+            --clr-white: #fff;
+            --clr-text-light: #f1f1f1;
+            /* Für hellen Text auf dunklem Hintergrund */
+            --clr-border: #e0e0e0;
+            /* Für allgemeine Ränder */
+
+            --font-sans: 'Open Sans', sans-serif;
+            --font-heading: 'Montserrat', sans-serif;
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space: 1.5rem;
+            --space-md: 2rem;
+            --space-lg: 3rem;
+            --space-xl: 4rem;
+
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            /* Für größere Elemente ggf. */
+
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 5px 10px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.15);
+            /* Stärkerer Schatten für Hervorhebungen */
+
+            --transition-default: all 0.3s ease-in-out;
+            /* Einheitlicher Übergang */
+
+            /* Projektsektion Variablen (bereits vorhanden, überprüft) */
+            --clr-medium-blue: #0077cc;
+            --clr-light-blue: #3399e6;
+            --clr-project-bg: var(--clr-bg-alt);
+            --radius-card: var(--radius-md);
+            /* Konsolidiert mit globalen Radien */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            /* Smooth scroll für Ankerlinks */
+            font-size: 100%;
+            /* Basis für rem-Einheiten */
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--clr-secondary);
+            line-height: 1.7;
+            /* Etwas mehr Zeilenhöhe für bessere Lesbarkeit */
+            background: var(--clr-bg);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--clr-primary);
+            transition: var(--transition-default);
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: var(--clr-gradient-start);
+            /* Dunklerer Primärton beim Hover */
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-heading);
+            color: var(--clr-secondary);
+            margin-bottom: var(--space-sm);
+            line-height: 1.3;
+        }
+
+        /* 2. Container */
+        .container {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--space);
+            padding-right: var(--space);
+        }
+
+        /* 3. Header */
+        .site-header {
+            background: var(--clr-white);
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-sm) 0;
+            /* This is 1rem top/bottom padding */
+        }
+
+        .logo {
+            /* This is the <a> tag wrapping the image */
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo img {
+            display: block;
+            max-height: 80px;
+            /* Actual height of the Behringer logo */
+            width: auto;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: var(--space-md);
+            align-items: center;
+        }
+
+        .nav-list>li>a,
+        .nav-list>li>span {
+            font-weight: 600;
+            color: var(--clr-secondary);
+            padding: var(--space-xs) 0;
+            transition: color .2s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav-list>li>a:not(.btn)::after,
+        .nav-list>li>span::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--clr-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-list>li>a:hover::after,
+        .nav-list>li>span:hover::after {
+            width: 100%;
+        }
+
+
+        .nav-list>li>a:hover,
+        .nav-list>li>span:hover {
+            color: var(--clr-primary);
+        }
+
+        .nav-list>li>a.btn {
+            color: var(--clr-white);
+            padding: 10px;
+            /* Consider adjusting if vertical alignment with transformed logo looks off */
+        }
+
+        .nav-list>li>a.btn:hover {
+            color: var(--clr-white);
+            background: var(--clr-gradient-start);
+        }
+
+        .nav-list>li>a.btn::after {
+            display: none;
+        }
+
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--clr-secondary);
+            cursor: pointer;
+            padding: var(--space-xs);
+        }
+
+        .nav-item.dropdown {
+            position: relative;
+        }
+
+        .dropdown-arrow {
+            font-size: 0.7em;
+            margin-left: 0.4em;
+            transition: transform 0.25s ease-in-out;
+        }
+
+        .nav-item.dropdown:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* For mobile, JS will toggle 'active' class on parent <a> or <span> */
+        .nav-item.dropdown>a.active .dropdown-arrow,
+        .nav-item.dropdown>span.active .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+
+        .dropdown-menu {
+            list-style: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--clr-white);
+            border: 1px solid var(--clr-border);
+            box-shadow: var(--shadow-md);
+            border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+            padding: var(--space-xs) 0;
+            min-width: 240px;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+        }
+
+        .nav-item.dropdown:hover>.dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 0.75rem var(--space-sm);
+            font-weight: 500;
+            color: var(--clr-secondary);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: var(--clr-bg-alt);
+            color: var(--clr-primary);
+        }
+        .dropdown-menu li a.active-service-link { /* Style for active service page in dropdown */
+            background-color: var(--clr-bg-alt);
+            color: var(--clr-primary);
+            font-weight: 700;
+        }
+
+        @media (max-width: 992px) {
+            .header-inner {
+                padding: var(--space-sm) var(--space);
+            }
+
+            .logo img {
+                max-height: 50px;
+            }
+
+            .nav-list {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                width: 100%;
+                flex-direction: column;
+                background: var(--clr-white);
+                padding: var(--space);
+                box-shadow: var(--shadow-lg);
+                gap: 0;
+                align-items: flex-start;
+            }
+
+            .nav-list.open {
+                display: flex;
+                max-height: calc(100vh - 70px); /* Adjusted based on smaller logo height */
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-item.dropdown .dropdown-menu {
+                position: static;
+                opacity: 0;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                padding-left: var(--space);
+                padding-top: 0;
+                padding-bottom: 0;
+                min-width: auto;
+                background-color: transparent;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out,
+                    margin-top 0.3s ease-in-out, margin-bottom 0.3s ease-in-out;
+            }
+
+            .nav-item.dropdown .dropdown-menu.submenu-open {
+                opacity: 1;
+                max-height: 500px;
+                margin-top: var(--space-xs);
+                margin-bottom: var(--space-xs);
+            }
+
+            .nav-item.dropdown .dropdown-menu li a {
+                padding: var(--space-xs) 0;
+                font-weight: normal;
+            }
+
+            .nav-item.dropdown .dropdown-menu li a:hover {
+                background-color: transparent;
+                color: var(--clr-primary);
+            }
+
+
+            .nav-list>li>a,
+            .nav-list>li>span {
+                padding: var(--space-sm) 0;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .nav-list>li:not(:last-child)>a,
+            .nav-list>li:not(:last-child)>span {
+                border-bottom: 1px solid var(--clr-border);
+            }
+
+            .nav-list>li>a.btn {
+                display: inline-block;
+                width: auto;
+                margin-top: var(--space-sm);
+                padding: .75rem 1.5rem !important;
+            }
+
+            .nav-list>li>a:not(.btn)::after,
+            .nav-list>li>span::after {
+                display: none;
+            }
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.85rem var(--space-md);
+            border-radius: var(--radius-sm);
+            transition: var(--transition-default);
+            border: 1px solid transparent;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--clr-primary);
+            color: var(--clr-white);
+        }
+
+        .btn-primary:hover {
+            background: var(--clr-gradient-start);
+            color: var(--clr-white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-secondary {
+            background: var(--clr-white);
+            color: var(--clr-primary);
+            border-color: var(--clr-border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--clr-bg-alt);
+            color: var(--clr-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-sm {
+            padding: 0.6rem var(--space-sm);
+            font-size: 0.9rem;
+        }
+
+        /* 5. Sektionen Basis */
+        .section {
+            padding: var(--space-lg) 0;
+        }
+
+        @media (min-width: 768px) {
+            .section {
+                padding: var(--space-xl) 0;
+            }
+        }
+
+        .section.bg-alternate {
+            background: var(--clr-bg-alt);
+        }
+        .service-hero + .section + .section { /* For alternating bg on service pages */
+             background: var(--clr-bg-alt);
+        }
+        .service-hero + .section.bg-alternate + .section {
+            background: var(--clr-bg);
+        }
+
+
+        .section-title,
+        .section h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            text-align: center;
+            margin-bottom: var(--space-sm);
+            color: var(--clr-secondary);
+        }
+        .section-title.text-left,
+        .section h2.text-left {
+            text-align: left;
+        }
+
+
+        .section-subtitle {
+            font-size: clamp(1rem, 2vw, 1.125rem);
+            text-align: center;
+            color: #666;
+            margin-bottom: var(--space-lg);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* STYLES for Subpages */
+        .page-header-section {
+            padding-top: var(--space-md);
+            padding-bottom: var(--space-md);
+            background-color: var(--clr-bg-alt); 
+            border-bottom: 1px solid var(--clr-border);
+        }
+        .page-title {
+            font-size: clamp(2rem, 5vw, 2.75rem); 
+            color: var(--clr-primary); 
+            margin-top: var(--space-sm);
+            margin-bottom: 0; 
+        }
+        .breadcrumbs {
+            font-size: 0.9rem;
+            color: #555; 
+            margin-bottom: var(--space-xs);
+        }
+        .breadcrumbs a {
+            color: var(--clr-primary);
+            text-decoration: none;
+        }
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+        .breadcrumbs .arrow {
+            margin: 0 0.4em;
+            color: #777; 
+        }
+
+        .leistung-detail-content {
+            padding-top: var(--space-lg); 
+        }
+        .leistung-detail-content h3 { 
+            font-size: 1.5rem;
+            color: var(--clr-secondary);
+            margin-top: var(--space-md);
+            margin-bottom: var(--space-sm);
+            padding-bottom: var(--space-xs);
+            border-bottom: 2px solid var(--clr-primary);
+            display: inline-block; 
+        }
+        .leistung-detail-content ul {
+            list-style: none; 
+            padding-left: 0;
+            margin-bottom: var(--space-md);
+        }
+        .leistung-detail-content ul li {
+            padding-left: 1.5em; 
+            position: relative;
+            margin-bottom: var(--space-xs);
+            line-height: 1.6;
+        }
+        .leistung-detail-content ul li::before {
+            content: "\f0da"; 
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900; 
+            color: var(--clr-primary);
+            position: absolute;
+            left: 0;
+            top: 1px; 
+        }
+        
+        .projekte-section {
+            padding-top: var(--space-lg);
+        }
+        .projekte-section .section-title { 
+            margin-bottom: var(--space-lg); 
+        }
+
+        .project-article {
+            background-color: var(--clr-white);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            margin-bottom: var(--space-md);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-default);
+        }
+        .project-article:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+        }
+        .project-article .entry-content-wrapper {
+            display: flex;
+            flex-direction: column; 
+            gap: var(--space-md);
+        }
+        .project-article .project-image-link {
+            display: block;
+            width: 100%; 
+            max-width: 270px; 
+            align-self: center; 
+        }
+        .project-article .project-image-link img {
+            width: 100%;
+            height: 150px; 
+            object-fit: cover;
+            border-radius: var(--radius-sm);
+            display: block;
+        }
+        .project-article .project-text-content {
+            flex-grow: 1; 
+        }
+
+        @media (min-width: 768px) { 
+            .project-article .entry-content-wrapper {
+                flex-direction: row; 
+                align-items: flex-start;
+            }
+            .project-article .project-image-link {
+                order: 2; 
+                margin-left: var(--space-md);
+                margin-bottom: 0;
+                flex-shrink: 0; 
+                width: 270px; 
+                align-self: flex-start; 
+            }
+            .project-article .project-text-content {
+                order: 1; 
+            }
+        }
+
+        .project-article .entry-header {
+            margin-bottom: var(--space-xs);
+        }
+        .project-article .time {
+            font-size: 0.8rem;
+            color: #777;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        .project-article .entry-title {
+            font-size: 1.4rem; 
+            margin-bottom: var(--space-sm);
+            font-family: var(--font-heading);
+            line-height: 1.3;
+        }
+        .project-article .entry-title a {
+            color: var(--clr-primary);
+            text-decoration: none;
+        }
+        .project-article .entry-title a:hover {
+            color: var(--clr-gradient-start);
+            text-decoration: underline;
+        }
+        .project-article .excerpt-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: var(--space-sm);
+        }
+        .project-article .excerpt-text .more-link { 
+            color: var(--clr-accent);
+            font-weight: 600;
+            text-decoration: none;
+            margin-left: var(--space-xs);
+        }
+        .project-article .excerpt-text .more-link:hover {
+            text-decoration: underline;
+        }
+        .project-article .leistungen-sub {
+            font-size: 0.85rem;
+            color: #555;
+            margin-top: var(--space-sm);
+            padding-top: var(--space-sm);
+            border-top: 1px solid var(--clr-border);
+        }
+        .project-article .leistungen-sub strong {
+            font-weight: 600;
+        }
+        .project-article .leistungen-sub a {
+            color: var(--clr-secondary);
+            text-decoration: none;
+            margin-left: var(--space-xs);
+            padding: 0.1em 0.3em;
+            border-radius: var(--radius-sm);
+            background-color: var(--clr-bg-alt);
+            border: 1px solid var(--clr-border);
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .project-article .leistungen-sub a:hover {
+            color: var(--clr-primary);
+            text-decoration: none;
+            background-color: #e9ecef;
+        }
+        
+        #load-more-projects {
+            margin: var(--space-md) auto; 
+            display: block; 
+        }
+        .hidden-project {
+            display: none !important; 
+        }
+
+
+        /* Footer */
+        .site-footer {
+            background: var(--clr-secondary);
+            color: var(--clr-text-light);
+            padding: var(--space-xl) 0 var(--space-lg);
+        }
+
+        .footer-grid {
+            display: grid;
+            gap: var(--space-md);
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .footer-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+
+        .site-footer h4 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--clr-white);
+            margin-bottom: var(--space-sm);
+            font-size: 1.1rem;
+        }
+
+        .site-footer ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .site-footer ul li {
+            margin-bottom: var(--space-xs);
+        }
+
+        .site-footer a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .site-footer a:hover {
+            color: var(--clr-white);
+            text-decoration: underline;
+        }
+
+        .site-footer address {
+            font-style: normal;
+            line-height: 1.7;
+            color: #ccc;
+        }
+
+        .site-footer address a {
+            color: inherit;
+        }
+
+        .site-footer address a:hover {
+            color: var(--clr-white);
+        }
+
+        .footer-socials a {
+            display: inline-block;
+            margin-right: var(--space-sm);
+            font-size: 1.6rem;
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .footer-socials a:last-child {
+            margin-right: 0;
+        }
+
+        .footer-socials a:hover {
+            color: var(--clr-white);
+            text-decoration: none;
+        }
+
+
+        .footer-bottom {
+            text-align: center;
+            font-size: .9rem;
+            border-top: 1px solid rgba(255, 255, 255, .1);
+            margin-top: var(--space-lg);
+            padding-top: var(--space-lg);
+            color: #aaa;
+        }
+
+        .footer-bottom p {
+            margin-bottom: var(--space-xs);
+        }
+
+        .footer-bottom a {
+            color: #ccc;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--clr-white);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <img src="/IBB/static/images/logo.png" alt="Behringer & Partner Logo" loading="lazy">
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html#about">Über uns</a></li>
+                    <li><a href="index.html#news">Neuigkeiten</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="index.html#services">Leistungen <span class="dropdown-arrow">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html#service-siedlung">Siedlungswasserwirtschaft</a></li>
+                            <li><a href="index.html#service-strassen">Straßenbau & Brückenbau</a></li>
+                            <li><a href="index.html#service-fernwaerme">Fernwärme</a></li>
+                            <li><a href="hydraulische-nachweise.html">Hydraulische Nachweise</a></li>
+                            <li><a href="baulanderschliessung.html">Baulanderschließung</a></li> <!-- Link to this page -->
+                            <li><a href="index.html#service-gis">Kommunales GIS</a></li>
+                            <li><a href="index.html#service-sanierung">Sanierungen</a></li>
+                            <li><a href="index.html#service-wasserbau">Wasserbau</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="index.html#company">Unternehmen <span class="dropdown-arrow">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.html#company-team">Team</a></li>
+                            <li><a href="index.html#company-history">Firmengeschichte</a></li>
+                            <li><a href="index.html#company-jobs">Stellenangebote</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="index.html#contact" class="btn btn-primary">Kontakt</a></li>
+                </ul>
+            </nav>
+            <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header-section">
+            <div class="container">
+                <div id="breadcrumbs" class="breadcrumbs">
+                    <a href="index.html#services" title="Leistungen">Leistungen</a>
+                    <span class="arrow">-></span>
+                    <span>Baulanderschließung</span>
+                </div>
+                <h1 class="page-title">Baulanderschließung</h1>
+            </div>
+        </section>
+
+        <section class="section leistung-detail-content">
+            <div class="container">
+                <h3>LEISTUNGSUMFANG</h3>
+                <ul>
+                    <li>Schmutzwasserentsorgung</li>
+                    <li>Regenwasserentsorung</li>
+                    <li>Straßenbau</li>
+                    <li>Wasserversorgung</li>
+                    <li>Fernwärme</li>
+                    <li>Koordination mit weiteren Versorgern</li>
+                    <li>Unterstützung bei der Erstellung von Bebauungsplänen</li>
+                    <li>Wasserrechtliche Genehmigung</li>
+                    <li>Unterstützung in der Bauleitplanung</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section projekte-section bg-alternate">
+            <div class="container">
+                <h2 class="section-title text-left">Projekte & Referenzen zu Baulanderschließung</h2>
+                
+                <div class="project-list">
+                    <article id="post-2748" class="project-article">
+                        <div class="entry-content-wrapper">
+                            <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-am-unterfeld/" class="project-image-link" target="_blank" rel="noopener">
+                                <img width="270" height="150" src="https://www.ib-behringer.de/wp/wp-content/uploads/2023/08/IMG_2469-270x150.jpg" alt="Erschließung Neubaugebiet Am Unterfeld" loading="lazy">
+                            </a>
+                            <div class="project-text-content">
+                                <header class="entry-header">
+                                    <div class="time">22.8.2023</div>
+                                    <h3 class="entry-title"><a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-am-unterfeld/" rel="bookmark" target="_blank" rel="noopener">Erschließung Neubaugebiet Am Unterfeld</a></h3>
+                                </header>
+                                <p class="excerpt-text">
+                                    In der Gemeinde Obertaufkirchen enstehen im Ortsteil Oberornau 18 Bauparzellen für Wohnbebauung. Insgesamt werden für die Erschließung ca. 365 m Schmutzwasserkanal, 425 m Regenwasserkanal und 475 m Hauptwasserleitung hergestellt. Als Regenrückhaltebecken w...
+                                    <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-am-unterfeld/" class="more-link" target="_blank" rel="noopener">(mehr)</a>
+                                </p>
+                                <div class="leistungen-sub">
+                                    <strong>Leistungen:</strong> 
+                                    <a href="#">Baulanderschließung</a> 
+                                    <a href="#">Siedlungswasserwirtschaft</a>
+                                    <a href="#">Straßenbau & Brückenbau</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article id="post-2283" class="project-article">
+                        <div class="entry-content-wrapper">
+                            <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-an-der-eichkapelle/" class="project-image-link" target="_blank" rel="noopener">
+                                <img width="270" height="150" src="https://www.ib-behringer.de/wp/wp-content/uploads/2020/12/IMG_9008-270x150.jpg" alt="Erschließung Neubaugebiet an der Eichkapelle" loading="lazy">
+                            </a>
+                            <div class="project-text-content">
+                                <header class="entry-header">
+                                    <div class="time">20.11.2020</div>
+                                    <h3 class="entry-title"><a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-an-der-eichkapelle/" rel="bookmark" target="_blank" rel="noopener">Erschließung Neubaugebiet an der Eichkapelle</a></h3>
+                                </header>
+                                <p class="excerpt-text">
+                                    In der Stadt Mühldorf enstehen im Rahmen dieses Projektes insgesamt 67 Bauparzellen für Einfamilienhäuser und diverse Parzellen für Reihen- und Mehrfamilienhäuser auf einer Gesamtfläche von ca. 9,7 Hektar. Für die Erschließung werden ca. 1.300 m Schmutz...
+                                    <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-an-der-eichkapelle/" class="more-link" target="_blank" rel="noopener">(mehr)</a>
+                                </p>
+                                <div class="leistungen-sub">
+                                    <strong>Leistungen:</strong>
+                                    <a href="#">Baulanderschließung</a>
+                                    <a href="#">Siedlungswasserwirtschaft</a>
+                                    <a href="#">Straßenbau & Brückenbau</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article id="post-2188" class="project-article hidden-project">
+                        <div class="entry-content-wrapper">
+                            <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-kumpfmuehle/" class="project-image-link" target="_blank" rel="noopener">
+                                <img width="270" height="150" src="https://www.ib-behringer.de/wp/wp-content/uploads/2019/12/DGTX9451-270x150.jpg" alt="Erschließung Neubaugebiet Kumpfmühle" loading="lazy">
+                            </a>
+                            <div class="project-text-content">
+                                <header class="entry-header">
+                                    <div class="time">13.12.2019</div>
+                                    <h3 class="entry-title"><a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-kumpfmuehle/" rel="bookmark" target="_blank" rel="noopener">Erschließung Neubaugebiet Kumpfmühle</a></h3>
+                                </header>
+                                <p class="excerpt-text">
+                                    Im Markt Kraiburg enstehen im Rahmen dieses Projektes insgesamt 20 Bauparzellen. Insgesamt werden für die Erschließung ca. 370 m Schmutzwasserkanal, 320 m Regenwasserkanal und 520 m Hauptwasserleitung hergestellt. Als Regenrückhaltebecken wird ein unterirdi...
+                                    <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-kumpfmuehle/" class="more-link" target="_blank" rel="noopener">(mehr)</a>
+                                </p>
+                                <div class="leistungen-sub">
+                                    <strong>Leistungen:</strong>
+                                    <a href="#">Baulanderschließung</a>
+                                    <a href="#">Siedlungswasserwirtschaft</a>
+                                    <a href="#">Straßenbau & Brückenbau</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article id="post-1979" class="project-article hidden-project">
+                        <div class="entry-content-wrapper">
+                           <a href="https://www.ib-behringer.de/projekt/neubaugebiet-gruendl-west/" class="project-image-link" target="_blank" rel="noopener">
+                                <img width="270" height="150" src="https://www.ib-behringer.de/wp/wp-content/uploads/2018/12/IMG_5517-270x150.jpg" alt="Neubaugebiet Gründl West" loading="lazy">
+                            </a>
+                            <div class="project-text-content">
+                                <header class="entry-header">
+                                    <div class="time">18.12.2018</div>
+                                    <h3 class="entry-title"><a href="https://www.ib-behringer.de/projekt/neubaugebiet-gruendl-west/" rel="bookmark" target="_blank" rel="noopener">Neubaugebiet Gründl West</a></h3>
+                                </header>
+                                <p class="excerpt-text">
+                                    Die Gemeinde Polling hat auf einer Fläche von ca. 1,6 Hektar 15 Bauparzellen in Gründl, Gemeinde Polling erschlossen. Neben den Verkehrswegen auf Grundlage des Bebauungsplans wurde auch die Schmutz- und Regenwasserbeseitigung incl. Sickerbecken und die Wasse...
+                                    <a href="https://www.ib-behringer.de/projekt/neubaugebiet-gruendl-west/" class="more-link" target="_blank" rel="noopener">(mehr)</a>
+                                </p>
+                                <div class="leistungen-sub">
+                                    <strong>Leistungen:</strong>
+                                    <a href="#">Baulanderschließung</a>
+                                    <a href="#">Siedlungswasserwirtschaft</a>
+                                    <a href="#">Straßenbau & Brückenbau</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article id="post-1151" class="project-article hidden-project">
+                        <div class="entry-content-wrapper">
+                            <a href="https://www.ib-behringer.de/projekt/neubaugebiet-am-kirchweg/" class="project-image-link" target="_blank" rel="noopener">
+                                <img width="270" height="150" src="https://www.ib-behringer.de/wp/wp-content/uploads/2016/12/IMG_7132-270x150.jpg" alt="Neubaugebiet Am Kirchweg" loading="lazy">
+                            </a>
+                            <div class="project-text-content">
+                                <header class="entry-header">
+                                    <div class="time">20.12.2016</div>
+                                    <h3 class="entry-title"><a href="https://www.ib-behringer.de/projekt/neubaugebiet-am-kirchweg/" rel="bookmark" target="_blank" rel="noopener">Neubaugebiet Am Kirchweg</a></h3>
+                                </header>
+                                <p class="excerpt-text">
+                                    Die Gemeinde Niederbergkirchen erschließt auf einer Fläche von ca. 4,2 Hektar in einem ersten Bauabschnitt 35 Bauparzellen im nördlichen Gemeindegebiet. Neben den Verkehrswegen auf Grundlage des Bebauungsplans wurde auch die Schmutz- und Regenwasserbeseitig...
+                                    <a href="https://www.ib-behringer.de/projekt/neubaugebiet-am-kirchweg/" class="more-link" target="_blank" rel="noopener">(mehr)</a>
+                                </p>
+                                <div class="leistungen-sub">
+                                    <strong>Leistungen:</strong>
+                                    <a href="#">Baulanderschließung</a>
+                                    <a href="#">Siedlungswasserwirtschaft</a>
+                                    <a href="#">Straßenbau & Brückenbau</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article id="post-1141" class="project-article hidden-project">
+                        <div class="entry-content-wrapper">
+                            <a href="https://www.ib-behringer.de/projekt/diverse-baulanderschliessungen-2016/" class="project-image-link" target="_blank" rel="noopener">
+                                <img width="270" height="150" src="https://www.ib-behringer.de/wp/wp-content/uploads/2016/12/IMG_4700-270x150.jpg" alt="Baulanderschließungen 2016" loading="lazy">
+                            </a>
+                            <div class="project-text-content">
+                                <header class="entry-header">
+                                    <div class="time">12.12.2016</div>
+                                    <h3 class="entry-title"><a href="https://www.ib-behringer.de/projekt/diverse-baulanderschliessungen-2016/" rel="bookmark" target="_blank" rel="noopener">Baulanderschließungen 2016</a></h3>
+                                </header>
+                                <p class="excerpt-text">
+                                    Folgende Neubaugebiete durften wir im Jahr 2016 zum Abschluss bringen: Baugebiet Am Hang Gemeinde Oberbergkirchen Fläche ca. 3,6 Hektar / 25 Bauparzellen Details siehe hier Standort siehe hier Baugebiet Westlich der Lohmühlstraße Stadt Mühldorf ...
+                                    <a href="https://www.ib-behringer.de/projekt/diverse-baulanderschliessungen-2016/" class="more-link" target="_blank" rel="noopener">(mehr)</a>
+                                </p>
+                                <div class="leistungen-sub">
+                                    <strong>Leistungen:</strong>
+                                    <a href="#">Baulanderschließung</a>
+                                    <a href="#">Siedlungswasserwirtschaft</a>
+                                    <a href="#">Straßenbau & Brückenbau</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article id="post-732" class="project-article hidden-project">
+                        <div class="entry-content-wrapper">
+                            <a href="https://www.ib-behringer.de/projekt/neubaugebiet-ehring/" class="project-image-link" target="_blank" rel="noopener">
+                                <img width="270" height="150" src="https://www.ib-behringer.de/wp/wp-content/uploads/2016/08/CIMG0309-270x150.jpg" alt="Neubaugebiet Ehring" loading="lazy">
+                            </a>
+                            <div class="project-text-content">
+                                <header class="entry-header">
+                                    <div class="time">15.8.2016</div>
+                                    <h3 class="entry-title"><a href="https://www.ib-behringer.de/projekt/neubaugebiet-ehring/" rel="bookmark" target="_blank" rel="noopener">Neubaugebiet Ehring</a></h3>
+                                </header>
+                                <p class="excerpt-text">
+                                    Nördlich der Staatsstraße 2550 entsteht im Ortsteil Ehring der Gemeinde Polling ein Baugebiet mit insgesamt 15 Bauparzellen. Für die verkehrstechnische Erschließung des Baugebietes wird die bestehende Staatsstraße auf einer Länge von ca. 200 m umgebaut u...
+                                    <a href="https://www.ib-behringer.de/projekt/neubaugebiet-ehring/" class="more-link" target="_blank" rel="noopener">(mehr)</a>
+                                </p>
+                                <div class="leistungen-sub">
+                                    <strong>Leistungen:</strong>
+                                    <a href="#">Baulanderschließung</a>
+                                    <a href="#">Siedlungswasserwirtschaft</a>
+                                    <a href="#">Straßenbau & Brückenbau</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article id="post-443" class="project-article hidden-project">
+                        <div class="entry-content-wrapper">
+                            <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-am-hang/" class="project-image-link" target="_blank" rel="noopener">
+                                <img width="270" height="150" src="https://www.ib-behringer.de/wp/wp-content/uploads/2016/02/IMG_0816-270x150.jpg" alt="Neubaugebiet am Hang" loading="lazy">
+                            </a>
+                            <div class="project-text-content">
+                                <header class="entry-header">
+                                    <div class="time">09.8.2016</div>
+                                    <h3 class="entry-title"><a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-am-hang/" rel="bookmark" target="_blank" rel="noopener">Neubaugebiet am Hang</a></h3>
+                                </header>
+                                <p class="excerpt-text">
+                                    Die Gemeinde Oberbergkirchen erschließt im südlichen Gemeindbereich 25 Bauparzellen. Neben einem Regenwasserkanal mit Regenrückhaltebecken, wurden auch die Schmutzwasserbeseitigung, die Wasserversorgung und der Straßenbau planerisch bearbeitet. Die Fertigs...
+                                    <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-am-hang/" class="more-link" target="_blank" rel="noopener">(mehr)</a>
+                                </p>
+                                <div class="leistungen-sub">
+                                    <strong>Leistungen:</strong>
+                                    <a href="#">Baulanderschließung</a>
+                                    <a href="#">Siedlungswasserwirtschaft</a>
+                                    <a href="#">SiGeKo</a>
+                                    <a href="#">Straßenbau & Brückenbau</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article id="post-715" class="project-article hidden-project">
+                        <div class="entry-content-wrapper">
+                            <a href="https://www.ib-behringer.de/projekt/neubaugebiet-alte-bahn/" class="project-image-link" target="_blank" rel="noopener">
+                                <img width="270" height="150" src="https://www.ib-behringer.de/wp/wp-content/uploads/2016/04/IMG_0756-270x150.jpg" alt="Neubaugebiet Alte Bahn" loading="lazy">
+                            </a>
+                            <div class="project-text-content">
+                                <header class="entry-header">
+                                    <div class="time">30.7.2016</div>
+                                    <h3 class="entry-title"><a href="https://www.ib-behringer.de/projekt/neubaugebiet-alte-bahn/" rel="bookmark" target="_blank" rel="noopener">Neubaugebiet Alte Bahn</a></h3>
+                                </header>
+                                <p class="excerpt-text">
+                                   Der Markt Tüßling lässt östlich der Teisinger Straße insgesamt 16 Bauparzellen erschließen. Neben der Straßenplanung auf Grundlage des Bebauungsplans wurde auch die Wasserversorgung und die Schmutzwasserbeseitigung planerisch abgewickelt. Die Schmutzwas...
+                                    <a href="https://www.ib-behringer.de/projekt/neubaugebiet-alte-bahn/" class="more-link" target="_blank" rel="noopener">(mehr)</a>
+                                </p>
+                                <div class="leistungen-sub">
+                                    <strong>Leistungen:</strong>
+                                    <a href="#">Baulanderschließung</a>
+                                    <a href="#">Siedlungswasserwirtschaft</a>
+                                    <a href="#">Straßenbau & Brückenbau</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article id="post-902" class="project-article hidden-project">
+                        <div class="entry-content-wrapper">
+                            <a href="https://www.ib-behringer.de/projekt/innere-erschliessung-stadtquartier-nord/" class="project-image-link" target="_blank" rel="noopener">
+                                <img width="270" height="150" src="https://www.ib-behringer.de/wp/wp-content/uploads/2016/05/SQN-270x150.jpg" alt="Innere Erschließung Stadtquartier Nord" loading="lazy">
+                            </a>
+                            <div class="project-text-content">
+                                <header class="entry-header">
+                                    <div class="time">20.5.2016</div>
+                                    <h3 class="entry-title"><a href="https://www.ib-behringer.de/projekt/innere-erschliessung-stadtquartier-nord/" rel="bookmark" target="_blank" rel="noopener">Innere Erschließung Stadtquartier Nord</a></h3>
+                                </header>
+                                <p class="excerpt-text">
+                                    Im Mühldorfer Norden enstehen auf einer Fläche von ca. 22.000 m2 bis ins Jahr 2018 insgesamt 13 Mehrfamilienhäuser. Planerisch wird von uns dabei die Schmutzwasserbeseitigung über Freispiegelkanäle, die Regenwasserbeseitigung über Sickeranlagen und die V...
+                                    <a href="https://www.ib-behringer.de/projekt/innere-erschliessung-stadtquartier-nord/" class="more-link" target="_blank" rel="noopener">(mehr)</a>
+                                </p>
+                                <div class="leistungen-sub">
+                                    <strong>Leistungen:</strong>
+                                    <a href="#">Baulanderschließung</a>
+                                    <a href="#">Siedlungswasserwirtschaft</a>
+                                    <a href="#">Straßenbau & Brückenbau</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <button id="load-more-projects" class="btn btn-secondary">Mehr anzeigen</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
+                    <li><a href="{{ url_for('index') }}#news">Neuigkeiten</a></li>
+                    <li><a href="{{ url_for('index') }}#services">Leistungen</a></li>
+                    <li><a href="{{ url_for('index') }}#company">Unternehmen</a></li>
+                    <li><a href="{{ url_for('index') }}#contact">Kontakt</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Leistungen</h4>
+                <ul>
+                    <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
+                    <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
+                    <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
+                    <li><a href="{{ url_for('index') }}#service-hydraulik">Hydraulische Nachweise</a></li>
+                    <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
+                    <li><a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a></li>
+                    <li><a href="{{ url_for('index') }}#service-sanierung">Sanierungen</a></li>
+                    <li><a href="{{ url_for('index') }}#service-wasserbau">Wasserbau</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Kontakt</h4>
+                <address>
+                    Behringer & Partner mbB<br>
+                    Luitpoldallee 32<br>
+                    D-84453 Mühldorf a. Inn<br>
+                    <a href="tel:+4986319867900">Tel: +49 8631 98679-00</a><br>
+                    <a href="mailto:info@ib-behringer.de">E-Mail: info@ib-behringer.de</a>
+                </address>
+            </div>
+            <div>
+                <h4>Rechtliches</h4>
+                <ul>
+                    <li><a href="{{ url_for('impressum') }}">Impressum</a></li> 
+                    <li><a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Folgen Sie uns</h4>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/ibb_mue/" target="_blank" rel="noopener" aria-label="Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                </div>
+                <h4 style="margin-top: 1.5rem;">Wir unterstützen</h4>
+                <p style="margin-bottom: var(--space-xs); line-height: 1.4;">
+                    <a href="{{ url_for('maedchenschule_chato') }}">Mädchenschule Chato, Tansania</a>
+                </p>
+                <a href="{{ url_for('maedchenschule_chato') }}">
+                    <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2022/12/Suedansicht-2-150x150.jpg"
+                        alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© <span id="current-year">2024</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
+            <p><a href="{{ url_for('impressum') }}">Impressum</a> | <a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navList = document.querySelector('.main-nav .nav-list');
+            const siteHeader = document.querySelector('.site-header');
+
+            // 1. Main Navigation Toggle (Hamburger)
+            if (navToggle && navList) {
+                navToggle.addEventListener('click', () => {
+                    const isOpen = navList.classList.toggle('open');
+                    navToggle.setAttribute('aria-expanded', isOpen);
+                    navToggle.innerHTML = isOpen ? '×' : '☰';
+                    if (!isOpen) {
+                        navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
+                        navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
+                    }
+                });
+            }
+
+            // 2. Mobile Dropdown Submenu Toggle
+            const dropdownToggles = navList ? navList.querySelectorAll('.nav-item.dropdown > a, .nav-item.dropdown > span') : [];
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', function (event) {
+                    if (navToggle && window.getComputedStyle(navToggle).display !== 'none') {
+                        const hasSubmenu = this.parentElement.querySelector('.dropdown-menu');
+                        if (hasSubmenu) { 
+                            event.preventDefault();
+                            const submenu = this.parentElement.querySelector('.dropdown-menu');
+                            if (submenu) submenu.classList.toggle('submenu-open');
+                            this.classList.toggle('active');
+                        }
+                    }
+                });
+            });
+            
+            // 3. Smooth Scroll & Close Mobile Nav
+            document.querySelectorAll('a[href]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const hrefAttribute = this.getAttribute('href');
+                    const isMobileView = navToggle && window.getComputedStyle(navToggle).display !== 'none';
+                    let isMobileDropdownToggleItself = false;
+                    
+                    if (isMobileView && this.parentElement && this.parentElement.classList.contains('dropdown') && this.closest('.nav-list') && this.querySelector('.dropdown-arrow')) {
+                        const submenu = this.parentElement.querySelector('.dropdown-menu');
+                        if (submenu) { 
+                            isMobileDropdownToggleItself = true;
+                        }
+                    }
+
+                    if (hrefAttribute.startsWith('#') && hrefAttribute.length > 1) {
+                        const targetElement = document.querySelector(hrefAttribute);
+                        if (targetElement) {
+                            e.preventDefault();
+                            let headerOffset = siteHeader ? siteHeader.offsetHeight : 0;
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                        }
+                    } else if (hrefAttribute === '#') { 
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+
+                    if (isMobileView && navList && navList.classList.contains('open') && !isMobileDropdownToggleItself) {
+                        if (!hrefAttribute.startsWith('#') || (hrefAttribute.startsWith('#') && document.querySelector(hrefAttribute))) { 
+                            navList.classList.remove('open');
+                            if (navToggle) {
+                                navToggle.setAttribute('aria-expanded', 'false');
+                                navToggle.innerHTML = '☰';
+                            }
+                            navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
+                            navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
+                        }
+                    }
+                });
+            });
+
+
+            // Update current year in footer
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+
+            // "Mehr anzeigen" for Projekte
+            const loadMoreButton = document.getElementById('load-more-projects');
+            const projectListContainer = document.querySelector('.project-list');
+
+            if (loadMoreButton && projectListContainer) {
+                const hiddenProjects = projectListContainer.querySelectorAll('.project-article.hidden-project');
+                if (hiddenProjects.length > 0) {
+                    loadMoreButton.style.display = 'block'; 
+                    loadMoreButton.addEventListener('click', () => {
+                        hiddenProjects.forEach(project => {
+                            project.classList.remove('hidden-project');
+                        });
+                        loadMoreButton.style.display = 'none'; 
+                    });
+                } else {
+                     loadMoreButton.style.display = 'none'; 
+                }
+            }
+        });
+    </script>
+</body>
+</html>
