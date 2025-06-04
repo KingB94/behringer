@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mädchenschule Chato, Tansania - Behringer & Partner</title>
+    <title>Impressum & Datenschutz - Behringer & Partner</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap"
@@ -76,7 +76,7 @@
             color: var(--clr-gradient-start);
         }
 
-        img, video, iframe {
+        img {
             max-width: 100%;
             height: auto;
             display: block;
@@ -392,136 +392,54 @@
             font-family: var(--font-heading);
             font-size: clamp(1.75rem, 4vw, 2.25rem);
             text-align: center;
-            margin-bottom: var(--space-md);
+            margin-bottom: var(--space-md); 
             color: var(--clr-secondary);
         }
       
-        /* STILE FÜR MÄDCHENSCHULE-SEITE */
-        .page-content-section {
+        /* STILE FÜR IMPRESSUM/DATENSCHUTZ-SEITE */
+        .legal-content-section {
             padding-top: var(--space-xl);
             padding-bottom: var(--space-xl);
         }
-        .page-content-section .container {
-            max-width: 900px; /* Für bessere Lesbarkeit von Text und Embeds */
+        .legal-content-section .container {
+            max-width: 900px; 
         }
-        .entry-content h1,
-        .entry-content h2.wp-block-heading {
-            font-size: clamp(1.7rem, 4vw, 2.3rem);
-            text-align: center;
+        .legal-content-section h1, 
+        .legal-content-section h2 {
             margin-top: var(--space-lg);
-            margin-bottom: var(--space-md);
+            margin-bottom: var(--space-sm);
+            font-size: clamp(1.5rem, 3.5vw, 2rem);
         }
-        .entry-content h1:first-child,
-        .entry-content h2.wp-block-heading:first-child {
-            margin-top: 0;
+        .legal-content-section h1:first-child {
+             margin-top: 0; 
+             text-align: center;
+             font-size: clamp(2rem, 4.5vw, 2.8rem);
+             margin-bottom: var(--space-lg);
         }
-        .entry-content p {
+        .legal-content-section h2#datenschutz { /* Specific styling for the Datenschutz heading */
+            scroll-margin-top: 100px; /* Adjust this value based on your sticky header height */
+        }
+        .legal-content-section p,
+        .legal-content-section ul {
             margin-bottom: var(--space-sm);
             font-size: 1rem;
             line-height: 1.7;
         }
-        .entry-content hr.wp-block-separator {
-            border: none;
-            border-top: 1px solid var(--clr-border);
-            margin: var(--space-lg) auto;
-            width: 80%;
+        .legal-content-section ul {
+            list-style: disc;
+            padding-left: var(--space-md);
         }
-        .entry-content hr.wp-block-separator.has-css-opacity {
-            opacity: 0.5;
+        .legal-content-section ul li {
+            margin-bottom: var(--space-xs);
         }
-
-        .entry-content figure {
-            margin: 0 0 var(--space-lg) 0;
-            text-align: center; 
-        }
-        .entry-content figure.wp-block-video video,
-        .entry-content figure.wp-block-embed iframe {
-            display: block; 
-            margin-left: auto;
-            margin-right: auto;
-            max-width: 100%; 
-            border: 1px solid var(--clr-border); 
-            border-radius: var(--radius-sm);
-        }
-        .entry-content figure.wp-block-video video {
-             background-color: #000; 
-        }
-        .entry-content figure.wp-block-embed .wp-block-embed__wrapper {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-            max-width: 100%;
-            background: #f0f0f0; 
-            border-radius: var(--radius-sm);
-        }
-        .entry-content figure.wp-block-embed iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-        .entry-content figcaption,
-        .entry-content .wp-element-caption {
-            font-size: 0.9rem;
-            color: #555;
-            margin-top: var(--space-xs);
-            text-align: center;
-        }
-        .entry-content figcaption sup,
-        .entry-content .wp-element-caption sup {
-            font-size: 0.8em;
-        }
-
-        .entry-content .wp-block-table {
-            margin: var(--space-md) 0;
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .entry-content .wp-block-table.alignleft {
-            margin-right: auto; 
-            margin-left: 0;
-             max-width: 600px; 
-        }
-         @media (min-width: 768px) {
-            .entry-content .wp-block-table.alignleft {
-                 margin-left: 0; 
-            }
-        }
-
-        .entry-content .wp-block-table th,
-        .entry-content .wp-block-table td {
-            border: 1px solid var(--clr-border);
-            padding: var(--space-sm);
-            text-align: left;
-            vertical-align: top;
-        }
-        .entry-content .wp-block-table thead th {
-            background-color: var(--clr-bg-alt);
+        .legal-content-section strong {
             font-weight: 600;
         }
-        .entry-content .wp-block-table.is-style-stripes tbody tr:nth-child(odd) {
-            background-color: var(--clr-bg-alt);
+        .legal-content-section a {
+            /* text-decoration: underline; Let browser default handle it or be more specific */
         }
-        .entry-content .wp-block-table .has-text-align-left {
-            text-align: left;
-        }
-        .entry-content .wp-block-image {
-            margin-top: var(--space-sm);
-            margin-bottom: var(--space-md);
-        }
-        .entry-content .wp-block-image.aligncenter,
-        .entry-content figure.aligncenter {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        .entry-content .wp-block-image img {
-            border-radius: var(--radius-sm);
-            box-shadow: var(--shadow-sm);
+        .legal-content-section a:hover {
+            text-decoration: underline; /* Keep underline on hover for legal links */
         }
 
 
@@ -617,120 +535,111 @@
     </header>
 
     <main>
-        <section class="page-content-section">
+        <section class="legal-content-section">
             <div class="container">
                 <div class="entry-content">
-                    <h2 class="wp-block-heading">Alle Beiträge zur Mädchenschule Chato, Tansania</h2>
-                    <hr class="wp-block-separator has-css-opacity">
-                
-                    <figure class="wp-block-video">
-                        <video controls poster="https://www.ib-behringer.de/wp/wp-content/uploads/2019/12/Tansania5.jpg" src="https://www.ib-behringer.de/wp/wp-content/uploads/2019/12/Ingenieurbüro-Behringer-Hilfsprojekt-Tansania.mp4"></video>
-                        <figcaption class="wp-element-caption"><sup>Video vom ersten Besuch vor Ort – September 2019</sup></figcaption>
-                    </figure>
-                
-                    <hr class="wp-block-separator has-css-opacity">
-                
-                    <figure class="wp-block-embed is-type-wp-embed is-provider-ingenieurb-ro-behringer-amp-partner wp-block-embed-ingenieurb-ro-behringer-amp-partner">
-                        <div class="wp-block-embed__wrapper">
-                            <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts" security="restricted" title="„Mädchenschule Chato – Update“ — " src="https://www.ib-behringer.de/2024/03/22/maedchenschule-chato-update/embed/#?secret=cmYAbEG484#?secret=kKMYujiABG" data-secret="kKMYujiABG" width="500" height="410" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-                        </div>
-                        <figcaption class="wp-element-caption"><sup>22.03.24</sup></figcaption>
-                    </figure>
-                
-                    <figure class="wp-block-embed is-type-wp-embed is-provider-ingenieurb-ro-behringer-amp-partner wp-block-embed-ingenieurb-ro-behringer-amp-partner">
-                        <div class="wp-block-embed__wrapper">
-                            <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts" security="restricted" title="„Mädchenschule Chato, Schulbetrieb ab 2025?“ — " src="https://www.ib-behringer.de/2023/12/08/maedchenschule-chato-schulbetrieb-ab-2025/embed/#?secret=7YewIoAMWt#?secret=PvHleyVlFw" data-secret="PvHleyVlFw" width="500" height="439" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-                        </div>
-                        <figcaption class="wp-element-caption"><sup>08.12.23</sup></figcaption>
-                    </figure>
-                
-                    <figure class="wp-block-embed is-type-wp-embed is-provider-ingenieurb-ro-behringer-amp-partner wp-block-embed-ingenieurb-ro-behringer-amp-partner">
-                        <div class="wp-block-embed__wrapper">
-                            <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts" security="restricted" title="„Mädchenschule Chato wächst weiter“ — " src="https://www.ib-behringer.de/2023/07/27/maedchenschule-chato-waechst-weiter/embed/#?secret=DOruhFV3Ii#?secret=p58NJqPahq" data-secret="p58NJqPahq" width="500" height="498" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-                        </div>
-                        <figcaption class="wp-element-caption"><sup>27.07.2023</sup></figcaption>
-                    </figure>
-                
-                    <figure class="wp-block-embed is-type-wp-embed is-provider-ingenieurb-ro-behringer-amp-partner wp-block-embed-ingenieurb-ro-behringer-amp-partner">
-                        <div class="wp-block-embed__wrapper">
-                           <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts" security="restricted" title="„Helfen Sie Weiter – Mädchenschule Chato“ — " src="https://www.ib-behringer.de/2022/12/20/helfen-sie-weiter-maedchenschule-chato/embed/#?secret=o5YFdkwbnc#?secret=nBdaSzdpv9" data-secret="nBdaSzdpv9" width="500" height="410" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-                        </div>
-                        <figcaption class="wp-element-caption"><sup>20.12.2022</sup></figcaption>
-                    </figure>
-                
-                    <figure class="wp-block-embed is-type-wp-embed is-provider-ingenieurb-ro-behringer-amp-partner wp-block-embed-ingenieurb-ro-behringer-amp-partner">
-                        <div class="wp-block-embed__wrapper">
-                            <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts" security="restricted" title="„Mädchenschule Chato – aktueller Stand“ — " src="https://www.ib-behringer.de/2022/07/29/maedchenschule-chato-aktueller-stand/embed/#?secret=H4kY6I2sNj#?secret=oqITVPWTpY" data-secret="oqITVPWTpY" width="500" height="423" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-                        </div>
-                        <figcaption class="wp-element-caption"><sup>29.07.2022</sup></figcaption>
-                    </figure>
-                
-                    <figure class="wp-block-embed is-type-wp-embed is-provider-ingenieurb-ro-behringer-amp-partner wp-block-embed-ingenieurb-ro-behringer-amp-partner">
-                        <div class="wp-block-embed__wrapper">
-                            <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts" security="restricted" title="„Mädchenschule Tansania – aktueller Stand“ — " src="https://www.ib-behringer.de/2021/08/09/maedchenschule-tansania-aktueller-stand/embed/#?secret=2tlqtnHLNE#?secret=C0iqqUbWUJ" data-secret="C0iqqUbWUJ" width="500" height="457" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-                        </div>
-                        <figcaption class="wp-element-caption"><sup>09.08.2021</sup></figcaption>
-                    </figure>
-                
-                    <figure class="wp-block-embed is-type-wp-embed is-provider-ingenieurb-ro-behringer-amp-partner wp-block-embed-ingenieurb-ro-behringer-amp-partner">
-                        <div class="wp-block-embed__wrapper">
-                            <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts" security="restricted" title="„Update zur Mädchenschule in Tansania“ — " src="https://www.ib-behringer.de/2020/12/14/update-zur-maedchenschule-in-tansania/embed/#?secret=Wr4Hr5L69B#?secret=2SI6y5eVaw" data-secret="2SI6y5eVaw" width="500" height="439" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-                        </div>
-                        <figcaption class="wp-element-caption"><sup>14.12.2020</sup></figcaption>
-                    </figure>
-                
-                    <figure class="wp-block-embed is-type-wp-embed is-provider-ingenieurb-ro-behringer-amp-partner wp-block-embed-ingenieurb-ro-behringer-amp-partner">
-                        <div class="wp-block-embed__wrapper">
-                            <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts" security="restricted" title="„Unterstützer gesucht – Mädchenschule Tansania“ — " src="https://www.ib-behringer.de/2019/12/12/unterstuetzer-gesucht-maedchenschule-tansania/embed/#?secret=NATeBG7RVu#?secret=cybitFQOai" data-secret="cybitFQOai" width="500" height="471" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-                        </div>
-                        <figcaption class="wp-element-caption"><sup>12.12.2019</sup></figcaption>
-                    </figure>
-                
-                    <hr class="wp-block-separator has-css-opacity">
-                
-                    <h2 class="wp-block-heading">Spendenkonto</h2>
-                
-                    <figure class="wp-block-table alignleft is-style-stripes">
-                        <table class="has-fixed-layout">
-                            <thead>
-                                <tr>
-                                    <th class="has-text-align-left" data-align="left"></th>
-                                    <th class="has-text-align-left" data-align="left"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="has-text-align-left" data-align="left">Empfänger</td>
-                                    <td class="has-text-align-left" data-align="left">Missionsbenediktiner Münsterschwarzach</td>
-                                </tr>
-                                <tr>
-                                    <td class="has-text-align-left" data-align="left">Bank  </td>
-                                    <td class="has-text-align-left" data-align="left">Liga Bank Regensburg</td>
-                                </tr>
-                                <tr>
-                                    <td class="has-text-align-left" data-align="left">IBAN  </td>
-                                    <td class="has-text-align-left" data-align="left">DE51 7509 0300 0003 0150 33</td>
-                                </tr>
-                                <tr>
-                                    <td class="has-text-align-left" data-align="left">BIC     </td>
-                                    <td class="has-text-align-left" data-align="left">GENODEF1MOS</td>
-                                </tr>
-                                <tr>
-                                    <td class="has-text-align-left" data-align="left">Verwendungszweck </td>
-                                    <td class="has-text-align-left" data-align="left">Mädchenschule Chato</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <figcaption class="wp-element-caption"><sup>Für eine Spendenquittung geben Sie bitte im Vewendungszweck ihre genau Anschrift an</sup></figcaption>
-                    </figure>
-                
-                    <p class="has-text-align-left" style="clear:both;">Sie tätigen ihre Überweisung per Smartphone, oder Tablet? Scannen sie in ihrer Banking-App einfach diesen QR-Code und sie müssen nur noch den Spendenbetrag eingeben und ggf. ihre Adresse im Verwendungszweck ergänzen für eine Spendenquittung</p>
-                
-                    <div class="wp-block-image">
-                        <figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="203" height="186" src="https://www.ib-behringer.de/wp/wp-content/uploads/2022/12/QR-Spende.jpg" alt="QR Code für Spende Mädchenschule Chato" class="wp-image-2530"></figure>
-                    </div>
-                
-                    <hr class="wp-block-separator has-css-opacity">
+                    <h1 class="entry-title">Impressum</h1> 
+                    
+                    <p><strong>Ingenieurbüro Behringer & Partner mbB<br>
+                    </strong>Beratender Ingenieur, Bauingenieure und staatlich geprüfter Bautechniker<strong><br>
+                    </strong></p>
+                    <p><strong>Hauptsitz<br>
+                    </strong>Luitpoldallee 32<br>
+                    D-84453 Mühldorf a. Inn<br>
+                    Tel      +49 (0) 8631  98679-00<br>
+                    Fax     +49 (0) 8631  98679-99<br>
+                    Mail    info@ib-behringer.de<br>
+                    url       www.ib-behringer.de</p>
+                    <p><strong>Zweigstellen<br>
+                    </strong>Haselbach 6<br>
+                    D-94439 Roßbach<br>
+                    Bahnhofplatz 4<br>
+                    D-84359 Simbach a. Inn</p>
+                    <p><strong>Partner</strong><br>
+                    Dipl. Ing.(FH) Hermann Behringer<br>
+                    Dipl. Ing.(FH) Robert Behringer<br>
+                    Dip. Ing. (FH) Alexander Reindl<br>
+                    Robert Sagstetter, Staatlich geprüfter Bautechniker</p>
+                    <p><strong>Registereintrag</strong><br>
+                    Amtsgericht Traunstein PR-Nr. 102</p>
+                    <p><strong>USt.-Id.Nr gemäß §27a </strong><br>
+                    DE 275992529</p>
+                    <p><strong>Berufshaftplicht</strong><br>
+                    VHV Hannover / Geltungsbereich: Deutschland</p>
+                    <p><strong>Die maßgeblichen berufsrechtlichen Regelungen finden Sie hier<br>
+                    </strong><a href="http://www.bayika.de/" target="_blank" rel="noopener">Bayerische Ingenieurkammer Bau</a><strong><br>
+                    </strong>Mitglied: Dipl.-Ing. (FH) Robert Behringer, Beratender Ingenieur<strong><br>
+                    </strong></p>
+                    <p><strong>Haftung für Links</strong><br>
+                    Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.<br>
+                    Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.<br>
+                    <strong>Urheberrecht</strong><br>
+                    Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.<br>
+                    Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
+                    
+                    <h2 id="datenschutz">Datenschutzerklärung</h2>
+                    <p>Verantwortliche Stelle im Sinne der Datenschutzgesetze, insbesondere der EU-Datenschutzgrundverordnung (DSGVO), ist:</p>
+                    <p><strong>Ingenieurbüro Behringer & Partner mbB<br>
+                    </strong>Beratender Ingenieur, Bauingenieure und staatlich geprüfter Bautechniker<br>
+                    Luitpoldallee 32<br>
+                    D-84453 Mühldorf a. Inn<br>
+                    Tel      +49 (0) 8631  98679-00<br>
+                    Fax     +49 (0) 8631  98679-99<br>
+                    Mail    info@ib-behringer.de<br>
+                    url       www.ib-behringer.de</p>
+                    <h3>Ihre Betroffenenrechte</h3>
+                    <p>Unter den angegebenen Kontaktdaten unseres Datenschutzbeauftragten können Sie jederzeit folgende Rechte ausüben:</p>
+                    <ul>
+                    <li>Auskunft über Ihre bei uns gespeicherten Daten und deren Verarbeitung,</li>
+                    <li>Berichtigung unrichtiger personenbezogener Daten,</li>
+                    <li>Löschung Ihrer bei uns gespeicherten Daten,</li>
+                    <li>Einschränkung der Datenverarbeitung, sofern wir Ihre Daten aufgrund gesetzlicher Pflichten noch nicht löschen dürfen,</li>
+                    <li>Widerspruch gegen die Verarbeitung Ihrer Daten bei uns und</li>
+                    <li>Datenübertragbarkeit, sofern Sie in die Datenverarbeitung eingewilligt haben oder einen Vertrag mit uns abgeschlossen haben.</li>
+                    </ul>
+                    <p>Sofern Sie uns eine Einwilligung erteilt haben, können Sie diese jederzeit mit Wirkung für die Zukunft widerrufen.</p>
+                    <p>Sie können sich jederzeit mit einer Beschwerde an die für Sie zuständige Aufsichtsbehörde wenden. Ihre zuständige Aufsichtsbehörde richtet sich nach dem Bundesland Ihres Wohnsitzes, Ihrer Arbeit oder der mutmaßlichen Verletzung. Eine Liste der Aufsichtsbehörden (für den nichtöffentlichen Bereich) mit Anschrift finden Sie unter: <a href="https://www.bfdi.bund.de/DE/Infothek/Anschriften_Links/anschriften_links-node.html" target="_blank" rel="noopener noreferrer">https://www.bfdi.bund.de/DE/Infothek/Anschriften_Links/anschriften_links-node.html</a>.</p>
+                    <h3>Zwecke der Datenverarbeitung durch die verantwortliche Stelle und Dritte</h3>
+                    <p>Wir verarbeiten Ihre personenbezogenen Daten nur zu den in dieser Datenschutzerklärung genannten Zwecken. Eine Übermittlung Ihrer persönlichen Daten an Dritte zu anderen als den genannten Zwecken findet nicht statt. Wir geben Ihre persönlichen Daten nur an Dritte weiter, wenn:</p>
+                    <ul>
+                    <li>Sie Ihre ausdrückliche Einwilligung dazu erteilt haben,</li>
+                    <li>die Verarbeitung zur Abwicklung eines Vertrags mit Ihnen erforderlich ist,</li>
+                    <li>die Verarbeitung zur Erfüllung einer rechtlichen Verpflichtung erforderlich ist,</li>
+                    </ul>
+                    <p>die Verarbeitung zur Wahrung berechtigter Interessen erforderlich ist und kein Grund zur Annahme besteht, dass Sie ein überwiegendes schutzwürdiges Interesse an der Nichtweitergabe Ihrer Daten haben.</p>
+                    <h3>Löschung bzw. Sperrung der Daten</h3>
+                    <p>Wir halten uns an die Grundsätze der Datenvermeidung und Datensparsamkeit. Wir speichern Ihre personenbezogenen Daten daher nur so lange, wie dies zur Erreichung der hier genannten Zwecke erforderlich ist oder wie es die vom Gesetzgeber vorgesehenen vielfältigen Speicherfristen vorsehen. Nach Fortfall des jeweiligen Zweckes bzw. Ablauf dieser Fristen werden die entsprechenden Daten routinemäßig und entsprechend den gesetzlichen Vorschriften gesperrt oder gelöscht.</p>
+                    <h3>Erfassung allgemeiner Informationen beim Besuch unserer Website</h3>
+                    <p>Wenn Sie auf unsere Website zugreifen, werden automatisch mittels eines Cookies Informationen allgemeiner Natur erfasst. Diese Informationen (Server-Logfiles) beinhalten etwa die Art des Webbrowsers, das verwendete Betriebssystem, den Domainnamen Ihres Internet-Service-Providers und ähnliches. Hierbei handelt es sich ausschließlich um Informationen, welche keine Rückschlüsse auf Ihre Person zulassen.</p>
+                    <p>Diese Informationen sind technisch notwendig, um von Ihnen angeforderte Inhalte von Webseiten korrekt auszuliefern und fallen bei Nutzung des Internets zwingend an. Sie werden insbesondere zu folgenden Zwecken verarbeitet:</p>
+                    <ul>
+                    <li>Sicherstellung eines problemlosen Verbindungsaufbaus der Website,</li>
+                    <li>Sicherstellung einer reibungslosen Nutzung unserer Website,</li>
+                    <li>Auswertung der Systemsicherheit und -stabilität sowie</li>
+                    <li>zu weiteren administrativen Zwecken.</li>
+                    </ul>
+                    <p>Die Verarbeitung Ihrer personenbezogenen Daten basiert auf unserem berechtigten Interesse aus den vorgenannten Zwecken zur Datenerhebung. Wir verwenden Ihre Daten nicht, um Rückschlüsse auf Ihre Person zu ziehen. Empfänger der Daten sind nur die verantwortliche Stelle und ggf. Auftragsverarbeiter.</p>
+                    <p>Anonyme Informationen dieser Art werden von uns ggfs. statistisch ausgewertet, um unseren Internetauftritt und die dahinterstehende Technik zu optimieren.</p>
+                    <h3>Verwendung von Google Analytics</h3>
+                    <p>Diese Website benutzt Google Analytics, einen Webanalysedienst der Google Inc. (folgend: Google). Google Analytics verwendet sog. „Cookies“, also Textdateien, die auf Ihrem Computer gespeichert werden und die eine Analyse der Benutzung der Webseite durch Sie ermöglichen. Die durch das Cookie erzeugten Informationen über Ihre Benutzung dieser Webseite werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert. Aufgrund der Aktivierung der IP-Anonymisierung auf diesen Webseiten, wird Ihre IP-Adresse von Google jedoch innerhalb von Mitgliedstaaten der Europäischen Union oder in anderen Vertragsstaaten des Abkommens über den Europäischen Wirtschaftsraum zuvor gekürzt. Nur in Ausnahmefällen wird die volle IP-Adresse an einen Server von Google in den USA übertragen und dort gekürzt. Im Auftrag des Betreibers dieser Website wird Google diese Informationen benutzen, um Ihre Nutzung der Webseite auszuwerten, um Reports über die Webseitenaktivitäten zusammenzustellen und um weitere mit der Websitenutzung und der Internetnutzung verbundene Dienstleistungen gegenüber dem Webseitenbetreiber zu erbringen. Die im Rahmen von Google Analytics von Ihrem Browser übermittelte IP-Adresse wird nicht mit anderen Daten von Google zusammengeführt.</p>
+                    <p>Die Zwecke der Datenverarbeitung liegen in der Auswertung der Nutzung der Website und in der Zusammenstellung von Reports über Aktivitäten auf der Website. Auf Grundlage der Nutzung der Website und des Internets sollen dann weitere verbundene Dienstleistungen erbracht werden. Die Verarbeitung beruht auf dem berechtigten Interesse des Webseitenbetreibers.</p>
+                    <p>Sie können die Speicherung der Cookies durch eine entsprechende Einstellung Ihrer Browser-Software verhindern; wir weisen Sie jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht sämtliche Funktionen dieser Website vollumfänglich werden nutzen können. Sie können darüber hinaus die Erfassung der durch das Cookie erzeugten und auf Ihre Nutzung der Webseite bezogenen Daten (inkl. Ihrer IP-Adresse) an Google sowie die Verarbeitung dieser Daten durch Google verhindern, indem sie das unter dem folgenden Link verfügbare Browser-Plugin herunterladen und installieren: <a href="https://tools.google.com/dlpage/gaoptout?hl=de" target="_blank" rel="noopener noreferrer">Browser Add On zur Deaktivierung von Google Analytics</a>.</p>
+                    <p>Zusätzlich oder als Alternative zum Browser-Add-On können Sie das Tracking durch Google Analytics auf unseren Seiten unterbinden, indem Sie <a title="Google Analytics Opt-Out-Cookie setzen" href="javascript:gaOptout()">diesen Link anklicken</a>. Dabei wird ein Opt-Out-Cookie auf Ihrem Gerät installiert. Damit wird die Erfassung durch Google Analytics für diese Website und für diesen Browser zukünftig verhindert, so lange das Cookie in Ihrem Browser installiert bleibt.</p>
+                    <h3>Verwendung von Google Maps</h3>
+                    <p>Diese Webseite verwendet Google Maps API, um geographische Informationen visuell darzustellen. Bei der Nutzung von Google Maps werden von Google auch Daten über die Nutzung der Kartenfunktionen durch Besucher erhoben, verarbeitet und genutzt. Nähere Informationen über die Datenverarbeitung durch Google können Sie <a href="https://www.google.com/privacypolicy.html" target="_blank" rel="noopener noreferrer">den Google-Datenschutzhinweisen</a> entnehmen. Dort können Sie im Datenschutzcenter auch Ihre persönlichen Datenschutz-Einstellungen verändern.</p>
+                    <p>Ausführliche Anleitungen zur Verwaltung der eigenen Daten im Zusammenhang mit Google-Produkten<a href="https://www.dataliberation.org/" target="_blank" rel="noopener noreferrer"> finden Sie hier</a>.</p>
+                    <h3><strong>Änderung unserer Datenschutzbestimmungen</strong></h3>
+                    <p>Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer Leistungen in der Datenschutzerklärung umzusetzen, z.B. bei der Einführung neuer Services. Für Ihren erneuten Besuch gilt dann die neue Datenschutzerklärung.</p>
+                    <h3><strong>Fragen an den Datenschutzbeauftragten</strong></h3>
+                    <p>Wenn Sie Fragen zum Datenschutz haben, schreiben Sie uns bitte eine E-Mail oder wenden Sie sich direkt an die für den Datenschutz verantwortliche Person in unserer Organisation:</p>
+                    <p>Datenschutzbeauftragter<br>
+                    Andreas Fischer<br>
+                    <span class="function">Ingenieurbüro für Datenschutz<br>
+                    Minzestraße 4<br>
+                    84036 Kumhausen<br>
+                    Telefon: 0871 / 78 04 90 00<br>
+                    af@datenschutz24.bayern</span></p>
+                    <p><em>Die Datenschutzerklärung wurde mit dem </em><a href="https://www.activemind.de/datenschutz/datenschutzhinweis-generator/" target="_blank" rel="noopener noreferrer"><em>Datenschutzerklärungs-Generator der activeMind AG erstellt</em></a><em>.</em></p>
                 </div>
             </div>
         </section>
@@ -788,8 +697,8 @@
                     <a href="{{ url_for('maedchenschule_chato') }}">Mädchenschule Chato, Tansania</a>
                  </p>
                  <a href="{{ url_for('maedchenschule_chato') }}">
-                    <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2022/12/Suedansicht-2-150x150.jpg" alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
-                </a>
+                    <img src="{{ url_for('static', filename='images/chato_schule_thumb.jpg') }}" alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
+                </a> <!-- Assuming you have a chato_schule_thumb.jpg in static/images -->
             </div>
         </div>
         <div class="footer-bottom">
@@ -799,6 +708,16 @@
     </footer>
 
     <script>
+        // GA Opt-out function (if you intend to use it like this)
+        // Ensure this GA Property ID is correct or managed dynamically if you have multiple properties.
+        var gaProperty = 'UA-XXXXXXXX-X'; // REPLACE WITH YOUR ACTUAL GOOGLE ANALYTICS PROPERTY ID
+        var disableStr = 'ga-disable-' + gaProperty;
+        function gaOptout() {
+            document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+            window[disableStr] = true;
+            alert('Das Tracking durch Google Analytics wurde für diese Website in diesem Browser deaktiviert.');
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const navToggle = document.querySelector('.nav-toggle');
             const navList = document.querySelector('.main-nav .nav-list');
@@ -821,7 +740,7 @@
             const dropdownToggles = navList ? navList.querySelectorAll('.nav-item.dropdown > a, .nav-item.dropdown > span') : [];
             dropdownToggles.forEach(toggle => {
                 toggle.addEventListener('click', function(event) {
-                    if (navToggle && window.getComputedStyle(navToggle).display !== 'none') {
+                    if (navToggle && window.getComputedStyle(navToggle).display !== 'none') { // Only for mobile view
                         const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN'; // Check if it's a span or has an arrow
                         if (hasArrow) { // Only act if it's a dropdown toggle
                             event.preventDefault(); 
@@ -844,21 +763,31 @@
                     
                     // Check if the clicked item is a mobile dropdown toggle itself
                     if (isMobileView && this.parentElement && this.parentElement.classList.contains('dropdown') && this.closest('.nav-list')) {
-                        const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
-                        if (hasArrow) {
+                         const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
+                         if(hasArrow) {
                             isMobileDropdownToggleItself = true;
-                        }
+                         }
                     }
 
                     if (href.startsWith('#') && href.length > 1) {
-                        const targetElement = document.querySelector(href);
-                        if (targetElement) { 
-                            e.preventDefault();
-                            let headerOffset = siteHeader ? siteHeader.offsetHeight : 0;
-                            const elementPosition = targetElement.getBoundingClientRect().top;
-                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                        }
+                        // Check if the link is on the current page or to impressum#datenschutz from another page
+                        const currentPath = window.location.pathname;
+                        const targetPath = this.pathname; // Path of the link's href
+                        
+                        // If the link is for an anchor on the *current* page
+                        if (currentPath === targetPath || (targetPath === '' && href.startsWith('#'))) {
+                            const targetElement = document.querySelector(href);
+                            if (targetElement) { 
+                                e.preventDefault();
+                                let headerOffset = siteHeader ? siteHeader.offsetHeight : 0;
+                                const elementPosition = targetElement.getBoundingClientRect().top;
+                                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                            }
+                        } 
+                        // If the link is to an anchor on another page (e.g., impressum#datenschutz from index.html),
+                        // the browser will handle the navigation to the page and then jump to the anchor.
+                        // Smooth scrolling for cross-page anchors requires more complex JS or server-side handling.
                     } else if (href === '#') { 
                          e.preventDefault();
                          window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -885,32 +814,6 @@
             const yearSpan = document.getElementById('current-year');
             if (yearSpan) {
                 yearSpan.textContent = new Date().getFullYear();
-            }
-
-            // Script for WordPress Embeds (basic version for iframe resizing)
-            function _wpEmbedListener(event) {
-                if (typeof event.data === 'object' && event.data !== null && (event.data.secret || event.data.message || event.data.value)) {
-                    if (event.origin !== "https://www.ib-behringer.de") {
-                        // console.warn("Message received from unexpected origin:", event.origin);
-                        return;
-                    }
-
-                    var iframes = document.querySelectorAll('iframe[data-secret="' + event.data.secret + '"]');
-                    for (var i = 0; i < iframes.length; i++) {
-                        var iframe = iframes[i];
-                        if (event.data.message === 'height') { 
-                            var height = parseInt(event.data.value, 10);
-                            if (height > 200 && height < 10000) { 
-                                iframe.height = height;
-                            }
-                        }
-                    }
-                }
-            }
-            if (window.addEventListener) {
-                window.addEventListener('message', _wpEmbedListener, false);
-            } else if (window.attachEvent) { 
-                window.attachEvent('onmessage', _wpEmbedListener);
             }
         });
     </script>
