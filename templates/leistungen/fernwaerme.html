@@ -9,6 +9,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         /* css/styles.css */
         /* 1. Basis & Variablen */
@@ -140,9 +141,9 @@
             padding: var(--space-sm) 0;
         }
 
-        .logo img {
+        .logo img { /* Adjusted from 60px to 80px to match index.html */
             display: block;
-            max-height: 60px;
+            max-height: 80px; 
             width: auto;
         }
 
@@ -230,6 +231,10 @@
         .nav-item.dropdown:hover .dropdown-arrow {
             transform: rotate(180deg);
         }
+        .nav-item.dropdown > a.active .dropdown-arrow,
+        .nav-item.dropdown > span.active .dropdown-arrow {
+            transform: rotate(180deg);
+        }
 
         .dropdown-menu {
             list-style: none;
@@ -269,6 +274,12 @@
             background-color: var(--clr-bg-alt);
             color: var(--clr-primary);
         }
+        .dropdown-menu li a.active-subpage-link { /* Style for active subpage in dropdown */
+            background-color: var(--clr-bg-alt);
+            color: var(--clr-primary);
+            font-weight: 700; /* Or other distinctive style */
+        }
+
 
         @media (max-width: 992px) {
             .header-inner {
@@ -282,7 +293,7 @@
             .nav-list {
                 display: none;
                 position: absolute;
-                top: 100%;
+                top: 100%; /* Positioned relative to header-inner's bottom */
                 left: 0;
                 right: 0;
                 width: 100%;
@@ -290,12 +301,15 @@
                 background: var(--clr-white);
                 padding: var(--space);
                 box-shadow: var(--shadow-lg);
-                gap: 0;
-                align-items: flex-start;
+                gap: 0; /* Reset gap for vertical layout */
+                align-items: flex-start; /* Align items to the start */
             }
 
             .nav-list.open {
                 display: flex;
+                max-height: calc(100vh - 70px); /* Adjust 70px to actual mobile header height if needed */
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
             }
 
             .nav-toggle {
@@ -303,28 +317,46 @@
             }
 
             .nav-item.dropdown .dropdown-menu {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
+                position: static; /* Overrides absolute positioning */
+                opacity: 0; /* Initially hidden for transition */
+                visibility: visible; /* Keep visible for layout purposes, opacity controls view */
+                transform: none; /* No transform needed */
                 box-shadow: none;
                 border: none;
-                padding-left: var(--space);
-                padding-top: var(--space-xs);
-                padding-bottom: var(--space-xs);
+                padding-left: var(--space); /* Indent submenu items */
+                padding-top: 0; 
+                padding-bottom: 0;
                 min-width: auto;
                 background-color: transparent;
+                max-height: 0; /* Core of collapse mechanism */
+                overflow: hidden;
+                transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out,
+                            margin-top 0.3s ease-in-out, margin-bottom 0.3s ease-in-out;
+            }
+            .nav-item.dropdown .dropdown-menu.submenu-open {
+                opacity: 1;
+                max-height: 500px; /* Adjust if more items are expected */
+                margin-top: var(--space-xs); 
+                margin-bottom: var(--space-xs); 
             }
 
             .nav-item.dropdown .dropdown-menu li a {
-                padding: var(--space-xs) 0;
+                padding: var(--space-xs) 0; /* Vertical padding for submenu items */
                 font-weight: normal;
             }
+            .nav-item.dropdown .dropdown-menu li a:hover {
+                background-color: transparent; 
+                color: var(--clr-primary); 
+            }
+
 
             .nav-list>li>a,
             .nav-list>li>span {
-                padding: var(--space-sm) 0;
+                padding: var(--space-sm) 0; 
                 width: 100%;
+                display: flex; /* Added for aligning text and arrow */
+                justify-content: space-between; /* Pushes arrow to the right */
+                align-items: center; /* Vertically aligns text and arrow */
             }
 
             .nav-list>li:not(:last-child)>a,
@@ -333,15 +365,15 @@
             }
 
             .nav-list>li>a.btn {
-                display: inline-block;
+                display: inline-block; /* Allow button to not take full width */
                 width: auto;
                 margin-top: var(--space-sm);
-                padding: .75rem 1.5rem !important;
+                padding: .75rem 1.5rem !important; /* Ensure padding overrides */
             }
 
             .nav-list>li>a:not(.btn)::after,
             .nav-list>li>span::after {
-                display: none;
+                display: none; /* Remove desktop hover underlines */
             }
         }
 
@@ -394,6 +426,9 @@
             }
         }
         
+        .section.bg-alternate {
+            background: var(--clr-bg-alt);
+        }
         /* Greift, wenn eine .section die zweite .section nach einem .service-hero ist */
         .service-hero + .section + .section {
              background: var(--clr-bg-alt);
@@ -429,21 +464,19 @@
             margin-bottom: 0;
         }
         
-        /* Footer (aus Hauptseite) */
+        /* Footer */
         .site-footer {
-            background: var(--clr-secondary);
-            color: var(--clr-text-light);
+            background: var(--clr-secondary); color: var(--clr-text-light);
             padding: var(--space-xl) 0 var(--space-lg);
         }
         .footer-grid { display: grid; gap: var(--space-md); }
         @media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } }
-        @media (min-width: 1024px) { .footer-grid { grid-template-columns: repeat(4, 1fr); } }
+        @media (min-width: 1024px) { .footer-grid { grid-template-columns: repeat(5, 1fr); } }
+        @media (min-width: 1200px) { .footer-grid { grid-template-columns: repeat(5, 1fr); } }
+
         .site-footer h4 {
-            font-family: var(--font-heading);
-            font-weight: 600;
-            color: var(--clr-white);
-            margin-bottom: var(--space-sm);
-            font-size: 1.1rem;
+            font-family: var(--font-heading); font-weight: 600; color: var(--clr-white);
+            margin-bottom: var(--space-sm); font-size: 1.1rem;
         }
         .site-footer ul { list-style: none; padding-left: 0; margin: 0; }
         .site-footer ul li { margin-bottom: var(--space-xs); }
@@ -452,6 +485,13 @@
         .site-footer address { font-style: normal; line-height: 1.7; color: #ccc; }
         .site-footer address a { color: inherit; }
         .site-footer address a:hover { color: var(--clr-white); }
+        .footer-socials a {
+            display: inline-block; margin-right: var(--space-sm); font-size: 1.6rem;
+            color: #ccc; text-decoration: none;
+        }
+        .footer-socials a:last-child { margin-right: 0; }
+        .footer-socials a:hover { color: var(--clr-white); text-decoration: none; }
+
         .footer-bottom {
             text-align: center;
             font-size: .9rem;
@@ -464,7 +504,7 @@
         .footer-bottom a { color: #ccc; }
         .footer-bottom a:hover { color: var(--clr-white); }
 
-        /* STILE FÜR UNTERSEITEN (aus siedlungswasserwirtschaft.html übernommen) */
+        /* STILE FÜR UNTERSEITEN */
         .service-hero { 
             min-height: 35vh; 
             padding: var(--space-lg) var(--space-sm);
@@ -564,40 +604,39 @@
 <body>
     <header class="site-header">
         <div class="container header-inner">
-            <a href="index.html" class="logo"> <!-- Link zur Hauptseite -->
-                <img src="/IBB/static/images/logo.png" alt="Behringer & Partner Logo" loading="lazy">
+            <a href="{{ url_for('index') }}" class="logo">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Behringer & Partner Logo" loading="lazy">
             </a>
-            <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
             <nav class="main-nav">
                 <ul class="nav-list">
-                    <li><a href="index.html#about">Über uns</a></li>
+                    <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
+                    <li><a href="{{ url_for('index') }}#news">Neuigkeiten</a></li>
                     <li class="nav-item dropdown">
-                        <a href="index.html#services">Leistungen <span class="dropdown-arrow">▼</span></a>
+                        <a href="{{ url_for('index') }}#services">Leistungen <span class="dropdown-arrow">▼</span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="siedlungswasserwirtschaft.html">Siedlungswasserwirtschaft</a></li>
-                            <li><a href="strassenbau-brueckenbau.html">Straßenbau & Brückenbau</a></li>
-                            <li><a href="fernwaerme.html">Fernwärme</a></li> <!-- Aktive Seite -->
-                            <li><a href="index.html#service-hydraulik">Hydraulische Nachweise</a></li>
-                            <li><a href="index.html#service-bauland">Baulanderschließung</a></li>
-                            <li><a href="index.html#service-gis">Kommunales GIS</a></li>
-                            <li><a href="index.html#service-sanierung">Sanierungen</a></li>
-                            <li><a href="index.html#service-wasserbau">Wasserbau</a></li>
+                            <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
+                            <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
+                            <li><a href="{{ url_for('fernwaerme') }}" class="active-subpage-link">Fernwärme</a></li>
+                            <li><a href="{{ url_for('index') }}#service-hydraulik">Hydraulische Nachweise</a></li>
+                            <li><a href="{{ url_for('index') }}#service-bauland">Baulanderschließung</a></li>
+                            <li><a href="{{ url_for('index') }}#service-gis">Kommunales GIS</a></li>
+                            <li><a href="{{ url_for('index') }}#service-sanierung">Sanierungen</a></li>
+                            <li><a href="{{ url_for('index') }}#service-wasserbau">Wasserbau</a></li>
                         </ul>
                     </li>
-                    <li><a href="index.html#projects">Projekte</a></li>
                     <li class="nav-item dropdown">
-                        <a href="index.html#company">Unternehmen <span class="dropdown-arrow">▼</span></a>
+                        <a href="{{ url_for('index') }}#company">Unternehmen <span class="dropdown-arrow">▼</span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="index.html#company-news">Neuigkeiten</a></li>
-                            <li><a href="index.html#company-team">Team</a></li>
-                            <li><a href="index.html#company-history">Firmengeschichte</a></li>
-                            <li><a href="index.html#company-jobs">Stellenangebote</a></li>
+                            <li><a href="{{ url_for('unternehmen_team') }}">Team</a></li>
+                            <li><a href="{{ url_for('firmengeschichte') }}">Firmengeschichte</a></li>
+                            <li><a href="{{ url_for('unternehmen_netzwerk') }}">Netzwerk</a></li>
+                            <li><a href="{{ url_for('unternehmen_stellenangebote') }}">Stellenangebote</a></li>
                         </ul>
                     </li>
-                    <li><a href="index.html#downloads">Downloads</a></li>
-                    <li><a href="index.html#contact" class="btn btn-primary">Kontakt</a></li>
+                    <li><a href="{{ url_for('index') }}#contact" class="btn btn-primary">Kontakt</a></li>
                 </ul>
             </nav>
+            <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
         </div>
     </header>
 
@@ -610,7 +649,7 @@
 
     <main>
         <section id="fernwaerme-info" class="section">
-            <div class="container container-narrow text-content"> <!-- container-narrow für bessere Lesbarkeit des Textes -->
+            <div class="container container-narrow text-content"> 
                 <h2 class="section-title">Effiziente Wärme für die Zukunft</h2>
                 <p>
                     Fernwärme ist eine bewährte Technologie, die in vielen Ländern bereits deutlich mehr genutzt wird als in Deutschland. 
@@ -631,12 +670,12 @@
                 <p>
                     Überzeugen Sie sich von den Vorteilen der Fernwärme und lassen Sie uns gemeinsam eine nachhaltige und 
                     zukunftsfähige Energieversorgung für Ihre Kommune planen. 
-                    <a href="index.html#contact">Kontaktieren Sie uns gerne</a> für weitere Informationen oder ein unverbindliches Beratungsgespräch.
+                    <a href="{{ url_for('index') }}#contact">Kontaktieren Sie uns gerne</a> für weitere Informationen oder ein unverbindliches Beratungsgespräch.
                 </p>
             </div>
         </section>
 
-        <section id="beitraege" class="section"> <!-- bg-alternate wird hier automatisch durch CSS Regel angewendet -->
+        <section id="beitraege" class="section"> 
             <div class="container">
                 <h2 class="section-title">Referenzprojekte Fernwärme</h2>
                 <p class="section-subtitle">Ausgewählte Projekte und Beiträge aus dem Bereich Fernwärme.</p>
@@ -710,22 +749,24 @@
             <div>
                 <h4>Navigation</h4>
                 <ul>
-                    <li><a href="index.html#about">Über uns</a></li>
-                    <li><a href="index.html#services">Leistungen</a></li>
-                    <li><a href="index.html#projects">Projekte</a></li>
-                    <li><a href="index.html#company">Unternehmen</a></li>
-                    <li><a href="index.html#downloads">Downloads</a></li>
-                    <li><a href="index.html#contact">Kontakt</a></li>
+                    <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
+                    <li><a href="{{ url_for('index') }}#news">Neuigkeiten</a></li>
+                    <li><a href="{{ url_for('index') }}#services">Leistungen</a></li>
+                    <li><a href="{{ url_for('index') }}#company">Unternehmen</a></li>
+                    <li><a href="{{ url_for('index') }}#contact">Kontakt</a></li>
                 </ul>
             </div>
             <div>
-                <h4>Top Leistungen</h4>
-                <ul>
-                    <li><a href="siedlungswasserwirtschaft.html">Siedlungswasserwirtschaft</a></li>
-                    <li><a href="strassenbau-brueckenbau.html">Straßenbau & Brückenbau</a></li>
-                    <li><a href="fernwaerme.html">Fernwärme</a></li>
-                    <li><a href="index.html#service-wasserbau">Wasserbau</a></li>
-                    <li><a href="index.html#services">Alle Leistungen...</a></li>
+                <h4>Leistungen</h4>
+                 <ul>
+                    <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
+                    <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
+                    <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
+                    <li><a href="{{ url_for('index') }}#service-hydraulik">Hydraulische Nachweise</a></li>
+                    <li><a href="{{ url_for('index') }}#service-bauland">Baulanderschließung</a></li>
+                    <li><a href="{{ url_for('index') }}#service-gis">Kommunales GIS</a></li>
+                    <li><a href="{{ url_for('index') }}#service-sanierung">Sanierungen</a></li>
+                    <li><a href="{{ url_for('index') }}#service-wasserbau">Wasserbau</a></li>
                 </ul>
             </div>
             <div>
@@ -741,51 +782,105 @@
             <div>
                 <h4>Rechtliches</h4>
                 <ul>
-                    <li><a href="index.html#impressum">Impressum</a></li> 
-                    <li><a href="index.html#datenschutz">Datenschutz</a></li>
+                    <li><a href="{{ url_for('impressum') }}">Impressum</a></li> 
+                    <li><a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></li>
                 </ul>
+            </div>
+            <div>
+                <h4>Folgen Sie uns</h4>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/ibb_mue/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+                 <h4 style="margin-top: 1.5rem;">Wir unterstützen</h4>
+                 <p style="margin-bottom: var(--space-xs); line-height: 1.4;">
+                    <a href="{{ url_for('maedchenschule_chato') }}">Mädchenschule Chato, Tansania</a>
+                 </p>
+                 <a href="{{ url_for('maedchenschule_chato') }}">
+                    <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2022/12/Suedansicht-2-150x150.jpg" alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
+                </a>
             </div>
         </div>
         <div class="footer-bottom">
             <p>© <span id="current-year">2024</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
-            <p><a href="index.html#impressum">Impressum</a> | <a href="index.html#datenschutz">Datenschutz</a></p>
+            <p><a href="{{ url_for('impressum') }}">Impressum</a> | <a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></p>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Navigation Toggle
-            const toggle = document.querySelector('.nav-toggle');
-            const navList = document.querySelector('.nav-list');
-            if (toggle && navList) {
-                toggle.addEventListener('click', () => {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navList = document.querySelector('.main-nav .nav-list');
+            const siteHeader = document.querySelector('.site-header');
+
+            // 1. Main Navigation Toggle (Hamburger)
+            if (navToggle && navList) {
+                navToggle.addEventListener('click', () => {
                     const isOpen = navList.classList.toggle('open');
-                    toggle.setAttribute('aria-expanded', isOpen);
-                    toggle.innerHTML = isOpen ? '×' : '☰';
+                    navToggle.setAttribute('aria-expanded', isOpen);
+                    navToggle.innerHTML = isOpen ? '×' : '☰';
+                     if (!isOpen) { 
+                        navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
+                        navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
+                    }
                 });
             }
+            
+            // 2. Mobile Dropdown Submenu Toggle
+            const dropdownToggles = navList ? navList.querySelectorAll('.nav-item.dropdown > a, .nav-item.dropdown > span') : [];
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', function(event) {
+                    if (navToggle && window.getComputedStyle(navToggle).display !== 'none') { // Only for mobile view
+                        const href = this.getAttribute('href');
+                        const submenu = this.parentElement.querySelector('.dropdown-menu');
 
-            // Smooth scroll for anchor links
-            document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
+                        if (submenu) { // If it's a dropdown toggle (has a submenu)
+                            event.preventDefault(); 
+                            submenu.classList.toggle('submenu-open');
+                            this.classList.toggle('active'); 
+                        }
+                        // Else, it's a normal link within a dropdown or a top-level link, let it navigate
+                    }
+                });
+            });
+
+
+            // 3. Smooth Scroll for on-page anchors & Close mobile nav
+             document.querySelectorAll('a[href]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
-                    if (href.startsWith('#') && document.querySelector(href)) {
-                        e.preventDefault();
+                    const isMobileView = navToggle && window.getComputedStyle(navToggle).display !== 'none';
+                    let isMobileDropdownToggleItself = false;
+                    
+                    if (isMobileView && this.parentElement && this.parentElement.classList.contains('dropdown') && this.closest('.nav-list') && this.querySelector('.dropdown-arrow')) {
+                        const submenu = this.parentElement.querySelector('.dropdown-menu');
+                        if (submenu) { 
+                            isMobileDropdownToggleItself = true;
+                        }
+                    }
+
+                    if (href.startsWith('#') && href.length > 1) {
                         const targetElement = document.querySelector(href);
-                        if (targetElement) {
-                            const headerOffset = document.querySelector('.site-header') ? document.querySelector('.site-header').offsetHeight : 0;
+                        if (targetElement) { 
+                            e.preventDefault();
+                            let headerOffset = siteHeader ? siteHeader.offsetHeight : 0;
                             const elementPosition = targetElement.getBoundingClientRect().top;
                             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                            window.scrollTo({
-                                top: offsetPosition,
-                                behavior: 'smooth'
-                            });
+                            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
                         }
-                         if (navList && navList.classList.contains('open') && this.closest('.nav-list')) {
+                    } else if (href === '#') { 
+                         e.preventDefault();
+                         window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+
+                    if (isMobileView && navList && navList.classList.contains('open') && !isMobileDropdownToggleItself) {
+                         if (!href.startsWith('#') || (href.startsWith('#') && document.querySelector(href))) { 
                             navList.classList.remove('open');
-                            toggle.setAttribute('aria-expanded', 'false');
-                            toggle.innerHTML = '☰';
+                            if (navToggle) {
+                                navToggle.setAttribute('aria-expanded', 'false');
+                                navToggle.innerHTML = '☰';
+                            }
+                            navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
+                            navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
                         }
                     }
                 });
@@ -799,5 +894,4 @@
         });
     </script>
 </body>
-
 </html>
