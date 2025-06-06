@@ -17,16 +17,13 @@
             --clr-primary: #005a9c;
             --clr-secondary: #333;
             --clr-accent: #007bff;
-            /* Eine Akzentfarbe, falls benötigt */
             --clr-bg: #fff;
             --clr-bg-alt: #f7f7f7;
             --clr-gradient-start: #004a80;
             --clr-gradient-end: #006bb3;
             --clr-white: #fff;
             --clr-text-light: #f1f1f1;
-            /* Für hellen Text auf dunklem Hintergrund */
             --clr-border: #e0e0e0;
-            /* Für allgemeine Ränder */
 
             --font-sans: 'Open Sans', sans-serif;
             --font-heading: 'Montserrat', sans-serif;
@@ -41,16 +38,13 @@
             --radius-sm: 4px;
             --radius-md: 8px;
             --radius-lg: 12px;
-            /* Für größere Elemente ggf. */
 
             --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
             --shadow-md: 0 5px 10px rgba(0, 0, 0, 0.08);
             --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1);
             --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.15);
-            /* Stärkerer Schatten für Hervorhebungen */
 
             --transition-default: all 0.3s ease-in-out;
-            /* Einheitlicher Übergang */
         }
 
         * {
@@ -253,7 +247,7 @@
             white-space: nowrap;
             transition: background-color 0.2s, color 0.2s;
         }
-         .dropdown-menu li a.active-subpage-link { /* Style for active subpage in dropdown */
+         .dropdown-menu li a.active-subpage-link {
             background-color: var(--clr-bg-alt);
             color: var(--clr-primary);
             font-weight: 700;
@@ -272,7 +266,7 @@
                 flex-direction: column; background: var(--clr-white); padding: var(--space);
                 box-shadow: var(--shadow-lg); gap: 0; align-items: flex-start;
             }
-            .nav-list.open { display: flex; max-height: calc(100vh - 82px); overflow-y: auto; -webkit-overflow-scrolling: touch;} /* Adjusted for actual mobile header height */
+            .nav-list.open { display: flex; max-height: calc(100vh - 82px); overflow-y: auto; -webkit-overflow-scrolling: touch;}
             .nav-toggle { display: block; }
             .nav-item.dropdown .dropdown-menu {
                 position: static; opacity: 0; visibility: visible; transform: none; box-shadow: none;
@@ -304,43 +298,47 @@
         .btn-primary:hover { background: var(--clr-gradient-start); color: var(--clr-white); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
         .btn-secondary { background: var(--clr-white); color: var(--clr-primary); border-color: var(--clr-border); }
         .btn-secondary:hover { background: var(--clr-bg-alt); color: var(--clr-primary); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
-        .btn-sm { padding: 0.6rem var(--space-sm); font-size: 0.9rem; }
 
-        /* 5. Sektionen Basis */
+        /* Sektionen Basis */
         .section { padding: var(--space-lg) 0; }
         @media (min-width: 768px) { .section { padding: var(--space-xl) 0; } }
-        .section.bg-alternate { background: var(--clr-bg-alt); }
-        .section-title, .section h2 {
-            font-family: var(--font-heading); font-size: clamp(1.75rem, 4vw, 2.25rem);
-            text-align: center; margin-bottom: var(--space-sm); color: var(--clr-secondary);
-        }
-        .section-title.text-left, .section h2.text-left { text-align: left; }
         .section-subtitle {
             font-size: clamp(1rem, 2vw, 1.125rem); text-align: center; color: #666;
             margin-bottom: var(--space-lg); max-width: 700px; margin-left: auto; margin-right: auto;
         }
 
-        /* Subpage Header */
-        .page-header-section {
-            padding-top: var(--space-md); padding-bottom: var(--space-md);
-            background-color: var(--clr-bg-alt); border-bottom: 1px solid var(--clr-border);
+        /* HERO BEREICH */
+        .page-hero-section {
+            position: relative; padding: var(--space-xl) 0; background-size: cover; background-position: center;
+            color: var(--clr-white); text-align: center;
         }
-        .page-title {
-            font-size: clamp(2rem, 5vw, 2.75rem); color: var(--clr-primary);
-            margin-top: var(--space-sm); margin-bottom: 0; text-align: left;
+        @media (min-width: 768px) { .page-hero-section { padding: var(--space-xl) 0; } }
+        .page-hero-section::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0, 40, 70, 0.65); z-index: 1;
         }
-        .breadcrumbs {
-            font-size: 0.9rem; color: #555; margin-bottom: var(--space-xs); text-align: left;
+        .page-hero-section .container { position: relative; z-index: 2; }
+        .page-hero-section .page-title {
+            font-size: clamp(2.25rem, 6vw, 3.5rem); color: var(--clr-white); margin-top: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
-        .breadcrumbs a { color: var(--clr-primary); text-decoration: none; }
-        .breadcrumbs a:hover { text-decoration: underline; }
-        .breadcrumbs .arrow { margin: 0 0.4em; color: #777; }
+        .page-hero-section .breadcrumbs {
+            font-size: 1rem; color: var(--clr-white); margin-bottom: var(--space-sm);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); text-align: center;
+        }
+        .page-hero-section .breadcrumbs a { color: var(--clr-white); }
+        .page-hero-section .breadcrumbs a:hover { text-decoration: underline; }
+        .page-hero-section .breadcrumbs .arrow { margin: 0 0.5em; }
+
+        /* BACKGROUND IMAGE CLASS */
+        .hero-bg-stellenangebote {
+            background-image: url("{{ url_for('static', filename='images/hero1.png') }}");
+        }
 
         /* Stellenangebote Page Specific Styles */
         .stellenangebote-section .container {
-            max-width: 800px; /* Good width for single column content */
+            max-width: 800px;
         }
-
         .job-posting {
             background-color: var(--clr-white);
             border: 2px solid var(--clr-primary); 
@@ -355,7 +353,6 @@
             transform: translateY(-5px) scale(1.02);
             box-shadow: var(--shadow-lg);
         }
-
         .job-posting .availability {
             font-size: 1rem;
             font-weight: 500;
@@ -363,7 +360,6 @@
             margin-bottom: var(--space-xs);
             display: block;
         }
-
         .job-posting .job-title {
             font-size: 1.75rem; 
             font-weight: 700;
@@ -376,7 +372,6 @@
             color: var(--clr-gradient-start);
             text-decoration: underline; 
         }
-        
         .job-application-info {
             margin-top: var(--space-lg);
             text-align: center;
@@ -388,7 +383,6 @@
         .job-application-info strong {
             color: var(--clr-primary);
         }
-
 
         /* Footer */
         .site-footer {
@@ -422,7 +416,6 @@
         .footer-bottom p { margin-bottom: var(--space-xs); }
         .footer-bottom a { color: #ccc; }
         .footer-bottom a:hover { color: var(--clr-white); }
-
     </style>
 </head>
 
@@ -466,14 +459,17 @@
     </header>
 
     <main>
-        <section class="page-header-section">
+        <section class="page-hero-section hero-bg-stellenangebote">
             <div class="container">
                 <div id="breadcrumbs" class="breadcrumbs">
                     <a href="{{ url_for('index') }}#company" title="Unternehmen">Unternehmen</a>
-                    <span class="arrow">></span> <!-- Changed to > for better visual -->
+                    <span class="arrow">></span>
                     <span>Stellenangebote</span>
                 </div>
-                <h1 class="page-title">Aktuelle Stellenangebote</h1>
+                <h1 class="page-title">Werden Sie Teil unseres Teams</h1>
+                <p class="section-subtitle" style="text-align: center; color: var(--clr-white); text-shadow: 1px 1px 3px rgba(0,0,0,0.5); max-width: 800px; margin-bottom: 0;">
+                    Gestalten Sie mit uns die Infrastruktur von morgen. Wir freuen uns auf Ihre Bewerbung!
+                </p>
             </div>
         </section>
 
@@ -586,7 +582,6 @@
             const navList = document.querySelector('.main-nav .nav-list');
             const siteHeader = document.querySelector('.site-header');
 
-            // 1. Main Navigation Toggle (Hamburger)
             if (navToggle && navList) {
                 navToggle.addEventListener('click', () => {
                     const isOpen = navList.classList.toggle('open');
@@ -599,13 +594,12 @@
                 });
             }
 
-            // 2. Mobile Dropdown Submenu Toggle
             const dropdownToggles = navList ? navList.querySelectorAll('.nav-item.dropdown > a, .nav-item.dropdown > span') : [];
             dropdownToggles.forEach(toggle => {
                 toggle.addEventListener('click', function(event) {
-                    if (navToggle && window.getComputedStyle(navToggle).display !== 'none') { // Only for mobile view
+                    if (navToggle && window.getComputedStyle(navToggle).display !== 'none') {
                         const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
-                        if (hasArrow) { // Only act if it's a dropdown toggle
+                        if (hasArrow) {
                             event.preventDefault(); 
                             const submenu = this.parentElement.querySelector('.dropdown-menu');
                             if (submenu) submenu.classList.toggle('submenu-open');
@@ -615,7 +609,6 @@
                 });
             });
             
-            // 3. Smooth Scroll & Close Mobile Nav
             document.querySelectorAll('a[href]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const hrefAttribute = this.getAttribute('href');
@@ -630,7 +623,7 @@
                     }
 
                     if (hrefAttribute.startsWith('#') && hrefAttribute.length > 1) {
-                         if (document.getElementById(hrefAttribute.substring(1))) { // Check if anchor exists on current page
+                         if (document.getElementById(hrefAttribute.substring(1))) {
                             const targetElement = document.querySelector(hrefAttribute);
                             if (targetElement) { 
                                 e.preventDefault();
