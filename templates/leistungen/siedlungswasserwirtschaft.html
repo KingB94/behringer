@@ -405,6 +405,18 @@
         .beitrag-card h3 a { color: var(--clr-primary); }
         .beitrag-card h3 a:hover { color: var(--clr-gradient-start); }
         .beitrag-card p { font-size: 0.9rem; margin-bottom: var(--space-sm); flex-grow: 1; line-height: 1.6; }
+        
+        /* NEUE STILE FÜR AUSKLAPPBAREN TEXT */
+        .more-text { display: none; }
+        .read-more-toggle {
+            color: var(--clr-primary);
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-block;
+            margin-left: 4px;
+        }
+        .read-more-toggle:hover { text-decoration: underline; }
+
         .beitrag-card .read-more {
             color: var(--clr-primary); font-weight: 600; text-decoration: none;
             display: inline-block; margin-top: var(--space-xs);
@@ -549,7 +561,7 @@
                         <div class="beitrag-card-content">
                             <span class="beitrag-date">22. August 2023</span>
                             <h3><a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-am-unterfeld/" target="_blank" rel="noopener">Erschließung Neubaugebiet Am Unterfeld</a></h3>
-                            <p>In der Gemeinde Obertaufkirchen enstehen im Ortsteil Oberornau 18 Bauparzellen für Wohnbebauung. Insgesamt werden für die Erschließung ca. 365 m Schmutzwasserkanal, 425 m Regenwasserkanal und 475 m Hauptwasserleitung hergestellt. Als Regenrückhaltebecken w... <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-am-unterfeld/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
+                            <p>In der Gemeinde Obertaufkirchen enstehen im Ortsteil Oberornau 18 Bauparzellen für Wohnbebauung. Insgesamt werden für die Erschließung ca. 365 m Schmutzwasserkanal, 425 m Regenwasserkanal und 475 m Hauptwasserleitung hergestellt. Als Regenrückhaltebecken w<span class="dots">... </span><span class="more-text">ird ein unterirdisches Betonbecken mit einem Rückhaltevolumen von ca. 400 m³ errichtet. Da das Baugebiet am Unterfeld zukünftig noch mit zwei weiteren ähnlich großen Bauabschnitten erweitert werden soll, wurde Rohrhydraulik und Größe der Rückhaltung bereits so ausgelegt, dass die Einrichtungen für einen zweiten Bauabschnitt ausreichen. Weiter werden ca. 1.570 m2 Erschließungsstraßen hergestellt.</span><span class="read-more-toggle">(mehr)</span></p>
                             <div class="beitrag-leistungen">
                                 <strong>Leistungen:</strong> 
                                 <a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a>, 
@@ -566,7 +578,7 @@
                         <div class="beitrag-card-content">
                             <span class="beitrag-date">20. August 2023</span>
                             <h3><a href="https://www.ib-behringer.de/projekt/regenueberlauf-hummel-in-massing/" target="_blank" rel="noopener">Regenüberlauf Hummel in Massing</a></h3>
-                            <p>In der Vergangenheit haben sich im Kanalnetz des Marktes Massing bereits diverse hydraulische Überlastungen in Form von Überstau gezeigt. An Hand einer hydraulischen Überrechnung des Kanalnetzes wurden Lösungen aufgezeigt, um die Problemstellen in den Grif... <a href="https://www.ib-behringer.de/projekt/regenueberlauf-hummel-in-massing/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
+                            <p>In der Vergangenheit haben sich im Kanalnetz des Marktes Massing bereits diverse hydraulische Überlastungen in Form von Überstau gezeigt. An Hand einer hydraulischen Überrechnung des Kanalnetzes wurden Lösungen aufgezeigt, um die Problemstellen in den Grif<span class="dots">... </span><span class="more-text">f zu bekommen. So wird von der Bahnhofsstraße über die Eggenfeldener Straße bis zum bestehenden Regenüberlauf ein zusätzlicher Verbindungskanal in SB DN 1300 mit einer Länge von ca. 150 m hergestellt. Der bestehende Kanal DN 1100 von Norden Richtung Hochholdinger Straße wird umgeschlossen und an den neuen Schacht östlich an das RÜ Hummel angeschlossen. Ab dem RÜ Hummel wird auf Grund der geringen Überdeckung ein Kanal in PE DN 1800 bis zum neuen Bauwerk RÜ Süd gebaut. Das neu zu errichtende RÜ Süd erhält eine Schwellenlänge von 7 m. Es wird eine schwimmende Tauchwand zur Rückhaltung der Feststoffen eingebaut. Der Ableitungskanal DN 1500 führt auf eine Länge von ca. 15 m in die Rott. Die Maßnahme wird nach RZWas gefördert. Paralell mit den beschriebenen Kanälen wird auch eine neue Hauptwasserleitung mitverlegt. Voraussichtlich im Herbst 2023 wird die Baumaßnahme abgeschlossen sein.</span><span class="read-more-toggle">(mehr)</span></p>
                             <div class="beitrag-leistungen">
                                 <strong>Leistungen:</strong> 
                                 <a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a>, 
@@ -732,6 +744,25 @@
                 });
             });
             
+            /* NEUE FUNKTION: TEXT IN BEITRÄGEN AUSKLAPPEN */
+            document.querySelectorAll('.read-more-toggle').forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const p = this.closest('p');
+                    if (!p) return;
+
+                    const moreText = p.querySelector('.more-text');
+                    const dots = p.querySelector('.dots');
+
+                    if (moreText && dots) {
+                        const isHidden = moreText.style.display === 'none' || moreText.style.display === '';
+                        
+                        moreText.style.display = isHidden ? 'inline' : 'none';
+                        dots.style.display = isHidden ? 'none' : 'inline';
+                        this.textContent = isHidden ? '(weniger)' : '(mehr)';
+                    }
+                });
+            });
+
             const loadMoreBtn = document.getElementById('loadMoreBeitraegeBtn');
             if (loadMoreBtn) {
                 const hiddenBeitraege = Array.from(document.querySelectorAll('.beitrag-card.hidden-beitrag'));
