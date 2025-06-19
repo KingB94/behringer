@@ -360,60 +360,167 @@
             color: var(--clr-primary); position: absolute; left: 0; top: 1px; 
         }
 
-        .beitraege-grid {
-            display: grid; grid-template-columns: 1fr; gap: var(--space-md); margin-top: var(--space-lg);
+        #loadMoreBeitraegeBtn { display: block; margin: var(--space-lg) auto 0; }
+
+
+        /* --- NEUER STIL FÜR REFERENZPROJEKTE --- */
+
+        .beitraege-grid-neu {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-lg);
+            margin-top: var(--space-lg);
         }
-        .beitrag-card {
-            background-color: var(--clr-white); border: 1px solid var(--clr-border);
-            border-radius: var(--radius-md); box-shadow: var(--shadow-sm);
-            transition: var(--transition-default); display: flex; flex-direction: column; overflow: hidden; 
+
+        .ref-projekt {
+            background-color: var(--clr-white);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-default);
+            display: flex;
+            flex-direction: column; /* Mobile-first: Stapeln */
+            overflow: hidden;
         }
-        #beitraege.bg-alternate .beitrag-card { background-color: var(--clr-white); }
-        @media (min-width: 768px) { .beitrag-card { flex-direction: row; } }
-        .beitrag-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
-        .beitrag-card-image { flex-shrink: 0; width: 100%; }
-        .beitrag-card-image img { width: 100%; height: 200px; object-fit: cover; }
-        @media (min-width: 768px) {
-            .beitrag-card-image { width: 250px; height: auto; }
-            .beitrag-card-image img { height: 100%; }
+        #beitraege.bg-alternate .ref-projekt {
+            background-color: var(--clr-white);
         }
-        .beitrag-card-content {
-            padding: var(--space-md); display: flex; flex-direction: column; flex-grow: 1;
+
+        .ref-projekt:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
         }
-        .beitrag-card .beitrag-date {
-            font-size: 0.8rem; color: #777; margin-bottom: var(--space-xs); display: block;
+
+        /* Bildbereich */
+        .ref-projekt-image {
+            order: 1; /* Bild zuerst im visuellen Flow */
+            flex-shrink: 0;
+            position: relative;
+            background-color: #eee;
+            height: 250px;
         }
-        .beitrag-card h3 {
-            font-size: 1.15rem; color: var(--clr-primary); margin-top: 0;
-            margin-bottom: var(--space-xs); line-height: 1.4;
+        .ref-projekt-image a {
+            display: block;
+            width: 100%;
+            height: 100%;
         }
-        .beitrag-card h3 a { color: var(--clr-primary); }
-        .beitrag-card h3 a:hover { color: var(--clr-gradient-start); }
-        .beitrag-card p {
-            font-size: 0.9rem; margin-bottom: var(--space-sm); flex-grow: 1; line-height: 1.6;
+        .ref-projekt-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
         }
-        .beitrag-card .read-more {
-            color: var(--clr-primary); font-weight: 600; text-decoration: none; 
-            display: inline-block; margin-top: var(--space-xs);
+        .ref-projekt:hover .ref-projekt-image img {
+            transform: scale(1.05);
         }
-        .beitrag-card .read-more:hover { text-decoration: underline; }
-        .beitrag-card .beitrag-leistungen {
-            font-size: 0.8rem; color: #555; margin-top: auto; 
-            padding-top: var(--space-sm); border-top: 1px solid var(--clr-border); line-height: 1.5;
+
+        /* Inhaltsbereich */
+        .ref-projekt-content {
+            order: 2; /* Inhalt als zweites */
+            padding: var(--space-md);
+            display: flex;
+            flex-direction: column;
         }
-        .beitrag-card .beitrag-leistungen strong { font-weight: 600; color: var(--clr-secondary); }
-        .beitrag-card .beitrag-leistungen a {
-            color: var(--clr-secondary); text-decoration: none; margin-left: var(--space-xs);
-            padding: 0.1em 0.3em; border-radius: var(--radius-sm);
-            background-color: var(--clr-bg); border: 1px solid var(--clr-border);
+
+        .ref-projekt-title {
+            font-size: clamp(1.25rem, 4vw, 1.5rem);
+            color: var(--clr-primary);
+            margin-top: 0;
+            margin-bottom: var(--space-sm);
+        }
+
+        .ref-projekt-details {
+            margin-bottom: var(--space-sm);
+            padding-bottom: var(--space-sm);
+            border-bottom: 1px solid var(--clr-border);
+        }
+
+        .ref-projekt-details dl {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: var(--space-xs) var(--space-sm);
+            font-size: 0.9rem;
+        }
+
+        .ref-projekt-details dt {
+            font-weight: 600;
+            color: var(--clr-secondary);
+        }
+
+        .ref-projekt-details dd {
+            margin: 0;
+            color: #555;
+        }
+
+        .ref-projekt-content h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--clr-secondary);
+            margin-top: var(--space-sm);
+            margin-bottom: var(--space-xs);
+        }
+
+        .ref-projekt-content p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: var(--space);
+            flex-grow: 1;
+        }
+
+        .ref-projekt-leistungen {
+            margin-top: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+        }
+
+        .ref-projekt-leistungen a {
+            font-size: 0.8rem;
+            color: var(--clr-secondary);
+            text-decoration: none;
+            padding: 0.2em 0.6em;
+            border-radius: var(--radius-sm);
+            background-color: var(--clr-bg);
+            border: 1px solid var(--clr-border);
             transition: background-color 0.2s, color 0.2s;
         }
-        #beitraege.bg-alternate .beitrag-card .beitrag-leistungen a { background-color: #e9e9e9; }
-        .beitrag-card .beitrag-leistungen a:hover {
-            color: var(--clr-primary); text-decoration: none; background-color: #e0e0e0;
+        #beitraege.bg-alternate .ref-projekt-leistungen a {
+            background-color: #e9e9e9;
         }
-        .beitrag-card.hidden-beitrag { display: none; }
-        #loadMoreBeitraegeBtn { display: block; margin: var(--space-lg) auto 0; }
+        .ref-projekt-leistungen a:hover {
+            color: var(--clr-primary);
+            background-color: #e0e0e0;
+            text-decoration: none;
+        }
+
+        /* Die Logik für versteckte Beiträge bleibt gleich */
+        .ref-projekt.hidden-beitrag {
+            display: none;
+        }
+
+        /* Desktop-Layout (ab 992px) */
+        @media (min-width: 992px) {
+            .ref-projekt {
+                flex-direction: row; /* Nebeneinander auf Desktop */
+            }
+
+            /* Reihenfolge für Desktop umkehren, um dem Beispiel zu entsprechen (Text links, Bild rechts) */
+            .ref-projekt-content {
+                order: 1;
+                flex: 1 1 55%; /* Inhalt nimmt 55% der Breite ein */
+                padding: var(--space-lg);
+            }
+            .ref-projekt-image {
+                order: 2;
+                flex: 1 1 45%; /* Bild nimmt 45% ein */
+                height: auto; /* Höhe automatisch anpassen lassen */
+            }
+
+            /* Bei geraden Projekten die Reihenfolge tauschen für einen abwechslungsreichen Look */
+            .ref-projekt:nth-child(even) {
+                flex-direction: row-reverse;
+            }
+        }
 
         /* Footer */
         .site-footer {
@@ -524,119 +631,125 @@
                 <h2 class="section-title">Referenzprojekte Straßenbau & Brückenbau</h2>
                 <p class="section-subtitle">Ausgewählte Projekte und Beiträge aus dem Bereich Straßen- und Brückenbau.</p>
                 
-                <div class="beitraege-grid">
-                    <article class="beitrag-card">
-                        <div class="beitrag-card-image">
-                            <a href="https://www.ib-behringer.de/projekt/bahnunterfuehrung-klugham/" target="_blank" rel="noopener">
+                <div class="beitraege-grid-neu">
+                    
+                    <!-- PROJEKT 1 -->
+                    <article class="ref-projekt">
+                        <div class="ref-projekt-content">
+                            <h3 class="ref-projekt-title">Bahnunterführung Klugham</h3>
+                            <div class="ref-projekt-details">
+                                <dl>
+                                    <dt>Auftraggeber:</dt>
+                                    <dd>Gemeinde Aschau a. Inn</dd>
+                                    <dt>Datum:</dt>
+                                    <dd>25. Oktober 2024</dd>
+                                </dl>
+                            </div>
+                            <h4>Projektbeschreibung</h4>
+                            <p>In Zusammenarbeit mit der Südostbayern Bahn wurde mit der Erneuerung der Bahnunterführung eine zeitgemäße Straßenführung verwirklicht. Bereits Ende 2022 war das Ingenieurbauwerk der Bahn fertiggestellt, bevor im Frühjahr 2023 der finale Straßenbau erfolgte.</p>
+                            <h4>Leistungen</h4>
+                            <div class="ref-projekt-leistungen">
+                                <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
+                            </div>
+                        </div>
+                        <div class="ref-projekt-image">
+                            <a href="https://www.ib-behringer.de/wp/wp-content/uploads/2024/10/003-270x150.jpg" target="_blank" rel="noopener">
                                 <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2024/10/003-270x150.jpg" alt="Bahnunterführung Klugham" loading="lazy">
                             </a>
                         </div>
-                        <div class="beitrag-card-content">
-                            <span class="beitrag-date">25. Oktober 2024</span>
-                            <h3><a href="https://www.ib-behringer.de/projekt/bahnunterfuehrung-klugham/" target="_blank" rel="noopener">Bahnunterführung Klugham</a></h3>
-                            <p>In Zusammenarbeit mit der Südostbayern Bahn konnte die Gemeinde Aschau a. Inn mit der Erneuerung der Bahnunterführung in Klugham eine zeitgemäße Straßenführung verwirklicht werden. Bereits Ende 2022 war das Ingenieurbauwerk der Bahn fertiggestellt. Im Fr... <a href="https://www.ib-behringer.de/projekt/bahnunterfuehrung-klugham/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
-                            <div class="beitrag-leistungen">
-                                <strong>Leistungen:</strong> <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
+                    </article>
+        
+                    <!-- PROJEKT 2 -->
+                    <article class="ref-projekt">
+                        <div class="ref-projekt-content">
+                            <h3 class="ref-projekt-title">Erschließung Neubaugebiet Am Unterfeld</h3>
+                            <div class="ref-projekt-details">
+                                <dl>
+                                    <dt>Auftraggeber:</dt>
+                                    <dd>Gemeinde Obertaufkirchen</dd>
+                                    <dt>Ort:</dt>
+                                    <dd>Oberornau</dd>
+                                    <dt>Datum:</dt>
+                                    <dd>22. August 2023</dd>
+                                </dl>
+                            </div>
+                            <h4>Projektbeschreibung</h4>
+                            <p>In der Gemeinde Obertaufkirchen entstehen im Ortsteil Oberornau 18 Bauparzellen für Wohnbebauung. Für die Erschließung wurden ca. 365 m Schmutzwasserkanal, 425 m Regenwasserkanal und 475 m Hauptwasserleitung hergestellt.</p>
+                            <h4>Leistungen</h4>
+                            <div class="ref-projekt-leistungen">
+                                <a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a>
+                                <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>
+                                <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
                             </div>
                         </div>
-                    </article>
-
-                    <article class="beitrag-card">
-                         <div class="beitrag-card-image">
-                            <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-am-unterfeld/" target="_blank" rel="noopener">
+                        <div class="ref-projekt-image">
+                             <a href="https://www.ib-behringer.de/wp/wp-content/uploads/2023/08/IMG_2469-270x150.jpg" target="_blank" rel="noopener">
                                 <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2023/08/IMG_2469-270x150.jpg" alt="Erschließung Neubaugebiet Am Unterfeld" loading="lazy">
                             </a>
                         </div>
-                        <div class="beitrag-card-content">
-                            <span class="beitrag-date">22. August 2023</span>
-                            <h3><a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-am-unterfeld/" target="_blank" rel="noopener">Erschließung Neubaugebiet Am Unterfeld</a></h3>
-                            <p>In der Gemeinde Obertaufkirchen enstehen im Ortsteil Oberornau 18 Bauparzellen für Wohnbebauung. Insgesamt werden für die Erschließung ca. 365 m Schmutzwasserkanal, 425 m Regenwasserkanal und 475 m Hauptwasserleitung hergestellt. Als Regenrückhaltebecken w... <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-am-unterfeld/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
-                            <div class="beitrag-leistungen">
-                                <strong>Leistungen:</strong> 
-                                <a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a>, 
-                                <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>, 
-                                <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="beitrag-card hidden-beitrag">
-                        <div class="beitrag-card-image">
-                            <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-an-der-eichkapelle/" target="_blank" rel="noopener">
-                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2020/12/IMG_9008-270x150.jpg" alt="Erschließung Neubaugebiet an der Eichkapelle" loading="lazy">
-                            </a>
-                        </div>
-                        <div class="beitrag-card-content">
-                            <span class="beitrag-date">20. November 2020</span>
-                            <h3><a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-an-der-eichkapelle/" target="_blank" rel="noopener">Erschließung Neubaugebiet an der Eichkapelle</a></h3>
-                            <p>In der Stadt Mühldorf enstehen im Rahmen dieses Projektes insgesamt 67 Bauparzellen für Einfamilienhäuser und diverse Parzellen für Reihen- und Mehrfamilienhäuser auf einer Gesamtfläche von ca. 9,7 Hektar. Für die Erschließung werden ca. 1.300 m Schmut... <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-an-der-eichkapelle/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
-                            <div class="beitrag-leistungen">
-                                <strong>Leistungen:</strong> 
-                                <a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a>, 
-                                <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>, 
-                                <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="beitrag-card hidden-beitrag">
-                        <div class="beitrag-card-image">
-                            <a href="https://www.ib-behringer.de/projekt/sanierung-ludwig-der-bayer-strasse/" target="_blank" rel="noopener">
-                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2019/12/IMG_0850-e1576223551978-270x150.jpg" alt="Sanierung Ludwig-der-Bayer-Straße" loading="lazy">
-                            </a>
-                        </div>
-                        <div class="beitrag-card-content">
-                            <span class="beitrag-date">13. Dezember 2019</span>
-                            <h3><a href="https://www.ib-behringer.de/projekt/sanierung-ludwig-der-bayer-strasse/" target="_blank" rel="noopener">Sanierung Ludwig-der-Bayer-Straße</a></h3>
-                            <p>In der Gemeinde Mettenheim erfolgt aktuell der erste Bauabschnitt für die Sanierung der Ludwig-der-Bayer-Straße in Metteheim-Hart. Neben der Sanierung der Kanalisation sowohl durch Innensanierung als auch durch Neubau, wird die komplette Wasserversorgung ern... <a href="https://www.ib-behringer.de/projekt/sanierung-ludwig-der-bayer-strasse/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
-                            <div class="beitrag-leistungen">
-                                <strong>Leistungen:</strong> 
-                                <a href="{{ url_for('sanierungen') }}">Sanierungen</a>, 
-                                <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>, 
-                                <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
-                            </div>
-                        </div>
                     </article>
                     
-                    <article class="beitrag-card hidden-beitrag">
-                        <div class="beitrag-card-image">
-                            <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-kumpfmuehle/" target="_blank" rel="noopener">
-                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2019/12/DGTX9451-270x150.jpg" alt="Erschließung Neubaugebiet Kumpfmühle" loading="lazy">
-                            </a>
-                        </div>
-                        <div class="beitrag-card-content">
-                            <span class="beitrag-date">13. Dezember 2019</span>
-                            <h3><a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-kumpfmuehle/" target="_blank" rel="noopener">Erschließung Neubaugebiet Kumpfmühle</a></h3>
-                            <p>Im Markt Kraiburg enstehen im Rahmen dieses Projektes insgesamt 20 Bauparzellen. Insgesamt werden für die Erschließung ca. 370 m Schmutzwasserkanal, 320 m Regenwasserkanal und 520 m Hauptwasserleitung hergestellt. Als Regenrückhaltebecken wird ein unterirdi... <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-kumpfmuehle/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
-                            <div class="beitrag-leistungen">
-                                <strong>Leistungen:</strong> 
-                                <a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a>, 
-                                <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>, 
+                    <!-- PROJEKT 3 (ursprünglich versteckt) -->
+                    <article class="ref-projekt hidden-beitrag">
+                         <div class="ref-projekt-content">
+                            <h3 class="ref-projekt-title">Neubau Straßenüberführung Mühlthal</h3>
+                            <div class="ref-projekt-details">
+                                <dl>
+                                    <dt>Auftraggeber:</dt>
+                                    <dd>Gemeinde Soyen</dd>
+                                     <dt>Datum:</dt>
+                                    <dd>24. September 2019</dd>
+                                </dl>
+                            </div>
+                            <h4>Projektbeschreibung</h4>
+                            <p>Die bestehenden Bahnübergänge Hörgen und Mühlthal wurden nach Errichtung der Straßenüberführung geschlossen. Auf 1.200 m Länge wird die neue Straße von der Kreisstraße RO 40 über die Bahnstrecke geführt.</p>
+                            <h4>Leistungen</h4>
+                            <div class="ref-projekt-leistungen">
                                 <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
                             </div>
                         </div>
-                    </article>
-
-                    <article class="beitrag-card hidden-beitrag">
-                         <div class="beitrag-card-image">
-                            <a href="https://www.ib-behringer.de/projekt/neubau-strassenueberfuehrung-muehlthal/" target="_blank" rel="noopener">
+                        <div class="ref-projekt-image">
+                            <a href="https://www.ib-behringer.de/wp/wp-content/uploads/2019/09/02-270x150.jpg" target="_blank" rel="noopener">
                                 <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2019/09/02-270x150.jpg" alt="Neubau Straßenüberführung Mühlthal" loading="lazy">
                             </a>
                         </div>
-                        <div class="beitrag-card-content">
-                            <span class="beitrag-date">24. September 2019</span>
-                            <h3><a href="https://www.ib-behringer.de/projekt/neubau-strassenueberfuehrung-muehlthal/" target="_blank" rel="noopener">Neubau Straßenüberführung Mühlthal</a></h3>
-                            <p>Die bestehenden Bahnübergänge Hörgen und Mühlthal in der Gemeinde Soyen werden nach der Errichtung des Straßenüberführung Mühlthal geschlossen. Auf einer Länge von insgesamt 1.200 m Länge wird die neue Straße von der Kreisstraße RO 40 über die Bah... <a href="https://www.ib-behringer.de/projekt/neubau-strassenueberfuehrung-muehlthal/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
-                            <div class="beitrag-leistungen">
-                                <strong>Leistungen:</strong> <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
+                    </article>
+        
+                    <!-- PROJEKT 4 (ursprünglich versteckt) -->
+                    <article class="ref-projekt hidden-beitrag">
+                        <div class="ref-projekt-content">
+                            <h3 class="ref-projekt-title">Erschließung Neubaugebiet an der Eichkapelle</h3>
+                            <div class="ref-projekt-details">
+                                 <dl>
+                                    <dt>Auftraggeber:</dt>
+                                    <dd>Stadt Mühldorf</dd>
+                                    <dt>Datum:</dt>
+                                    <dd>20. November 2020</dd>
+                                </dl>
+                            </div>
+                             <h4>Projektbeschreibung</h4>
+                            <p>Hier entstehen 67 Bauparzellen für Einfamilienhäuser und diverse Parzellen für Reihen- und Mehrfamilienhäuser auf einer Gesamtfläche von ca. 9,7 Hektar.</p>
+                            <h4>Leistungen</h4>
+                            <div class="ref-projekt-leistungen">
+                                <a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a>
+                                <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>
+                                <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
                             </div>
                         </div>
+                         <div class="ref-projekt-image">
+                            <a href="https://www.ib-behringer.de/wp/wp-content/uploads/2020/12/IMG_9008-270x150.jpg" target="_blank" rel="noopener">
+                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2020/12/IMG_9008-270x150.jpg" alt="Erschließung Neubaugebiet an der Eichkapelle" loading="lazy">
+                            </a>
+                        </div>
                     </article>
+                    
                 </div>
-
+        
+                <!-- Der Button bleibt derselbe und funktioniert weiterhin mit dem JS -->
                 <button id="loadMoreBeitraegeBtn" class="btn btn-primary" style="display: none;"></button>
             </div>
         </section>
+
     </main>
 
     <footer class="site-footer">
@@ -779,7 +892,8 @@
             
             const loadMoreBtn = document.getElementById('loadMoreBeitraegeBtn');
             if (loadMoreBtn) {
-                const hiddenBeitraege = Array.from(document.querySelectorAll('.beitrag-card.hidden-beitrag'));
+                // Das Skript sucht jetzt nach .ref-projekt.hidden-beitrag
+                const hiddenBeitraege = Array.from(document.querySelectorAll('.ref-projekt.hidden-beitrag'));
                 if (hiddenBeitraege.length === 0) {
                     loadMoreBtn.style.display = 'none'; 
                 } else {
