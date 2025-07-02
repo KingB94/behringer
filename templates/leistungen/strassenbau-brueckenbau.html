@@ -119,7 +119,7 @@
             padding: var(--space-sm) 0;
         }
 
-        .logo img { 
+        .logo img {
             display: block;
             max-height: 80px;
             width: auto;
@@ -208,8 +208,9 @@
         .nav-item.dropdown:hover .dropdown-arrow {
             transform: rotate(180deg);
         }
-        .nav-item.dropdown > a.active .dropdown-arrow,
-        .nav-item.dropdown > span.active .dropdown-arrow {
+
+        .nav-item.dropdown>a.active .dropdown-arrow,
+        .nav-item.dropdown>span.active .dropdown-arrow {
             transform: rotate(180deg);
         }
 
@@ -251,6 +252,7 @@
             background-color: var(--clr-bg-alt);
             color: var(--clr-primary);
         }
+
         .dropdown-menu li a.active-service-link {
             background-color: var(--clr-bg-alt);
             color: var(--clr-primary);
@@ -258,312 +260,489 @@
         }
 
         @media (max-width: 992px) {
-            .header-inner { padding: var(--space-sm) var(--space); }
-            .logo img { max-height: 50px; }
+            .header-inner {
+                padding: var(--space-sm) var(--space);
+            }
+
+            .logo img {
+                max-height: 50px;
+            }
+
             .nav-list {
-                display: none; position: absolute; top: 100%; left: 0; right: 0; width: 100%;
-                flex-direction: column; background: var(--clr-white); padding: var(--space);
-                box-shadow: var(--shadow-lg); gap: 0; align-items: flex-start;
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                width: 100%;
+                flex-direction: column;
+                background: var(--clr-white);
+                padding: var(--space);
+                box-shadow: var(--shadow-lg);
+                gap: 0;
+                align-items: flex-start;
             }
+
             .nav-list.open {
-                display: flex; max-height: calc(100vh - 82px); overflow-y: auto; -webkit-overflow-scrolling: touch; 
+                display: flex;
+                max-height: calc(100vh - 82px);
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
             }
-            .nav-toggle { display: block; }
+
+            .nav-toggle {
+                display: block;
+            }
+
             .nav-item.dropdown .dropdown-menu {
-                position: static; opacity: 0; visibility: visible; transform: none; box-shadow: none;
-                border: none; padding-left: var(--space); padding-top: 0; padding-bottom: 0;
-                min-width: auto; background-color: transparent; max-height: 0; overflow: hidden;
+                position: static;
+                opacity: 0;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                padding-left: var(--space);
+                padding-top: 0;
+                padding-bottom: 0;
+                min-width: auto;
+                background-color: transparent;
+                max-height: 0;
+                overflow: hidden;
                 transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, margin-top 0.3s ease-in-out, margin-bottom 0.3s ease-in-out;
             }
+
             .nav-item.dropdown .dropdown-menu.submenu-open {
-                opacity: 1; max-height: 500px; margin-top: var(--space-xs); margin-bottom: var(--space-xs); 
+                opacity: 1;
+                max-height: 500px;
+                margin-top: var(--space-xs);
+                margin-bottom: var(--space-xs);
             }
-            .nav-item.dropdown .dropdown-menu li a { padding: var(--space-xs) 0; font-weight: normal; }
-            .nav-item.dropdown .dropdown-menu li a:hover { background-color: transparent; color: var(--clr-primary); }
-            .nav-list>li>a, .nav-list>li>span {
-                padding: var(--space-sm) 0; width: 100%; display: flex; justify-content: space-between; align-items: center; 
+
+            .nav-item.dropdown .dropdown-menu li a {
+                padding: var(--space-xs) 0;
+                font-weight: normal;
             }
-            .nav-list>li:not(:last-child)>a, .nav-list>li:not(:last-child)>span { border-bottom: 1px solid var(--clr-border); }
-            .nav-list>li>a.btn { display: inline-block; width: auto; margin-top: var(--space-sm); padding: .75rem 1.5rem !important; }
-            .nav-list>li>a:not(.btn)::after, .nav-list>li>span::after { display: none; }
+
+            .nav-item.dropdown .dropdown-menu li a:hover {
+                background-color: transparent;
+                color: var(--clr-primary);
+            }
+
+            .nav-list>li>a,
+            .nav-list>li>span {
+                padding: var(--space-sm) 0;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .nav-list>li:not(:last-child)>a,
+            .nav-list>li:not(:last-child)>span {
+                border-bottom: 1px solid var(--clr-border);
+            }
+
+            .nav-list>li>a.btn {
+                display: inline-block;
+                width: auto;
+                margin-top: var(--space-sm);
+                padding: .75rem 1.5rem !important;
+            }
+
+            .nav-list>li>a:not(.btn)::after,
+            .nav-list>li>span::after {
+                display: none;
+            }
         }
 
         /* Button Styles */
         .btn {
-            display: inline-block; text-decoration: none; font-weight: 600; padding: 0.85rem var(--space-md);
-            border-radius: var(--radius-sm); transition: var(--transition-default); border: 1px solid transparent;
-            cursor: pointer; text-align: center;
+            display: inline-block;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.85rem var(--space-md);
+            border-radius: var(--radius-sm);
+            transition: var(--transition-default);
+            border: 1px solid transparent;
+            cursor: pointer;
+            text-align: center;
         }
-        .btn-primary { background: var(--clr-primary); color: var(--clr-white); }
-        .btn-primary:hover { background: var(--clr-gradient-start); color: var(--clr-white); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
-        .btn-secondary { background: var(--clr-white); color: var(--clr-primary); border-color: var(--clr-border); }
-        .btn-secondary:hover { background: var(--clr-bg-alt); color: var(--clr-primary); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+
+        .btn-primary {
+            background: var(--clr-primary);
+            color: var(--clr-white);
+        }
+
+        .btn-primary:hover {
+            background: var(--clr-gradient-start);
+            color: var(--clr-white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-secondary {
+            background: var(--clr-white);
+            color: var(--clr-primary);
+            border-color: var(--clr-border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--clr-bg-alt);
+            color: var(--clr-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
 
         /* 5. Sektionen Basis */
-        .section { padding: var(--space-lg) 0; }
-        @media (min-width: 768px) { .section { padding: var(--space-xl) 0; } }
-        .section.bg-alternate { background: var(--clr-bg-alt); }
-        .page-hero-section + .section { background: var(--clr-bg); }
-        .page-hero-section + .section + .section { background: var(--clr-bg-alt); }
+        .section {
+            padding: var(--space-lg) 0;
+        }
 
-        .section-title, .section h2 {
-            font-family: var(--font-heading); font-size: clamp(1.75rem, 4vw, 2.25rem);
-            text-align: center; margin-bottom: var(--space-sm); color: var(--clr-secondary);
+        @media (min-width: 768px) {
+            .section {
+                padding: var(--space-xl) 0;
+            }
         }
+
+        .section.bg-alternate {
+            background: var(--clr-bg-alt);
+        }
+
+        .page-hero-section+.section {
+            background: var(--clr-bg);
+        }
+
+        .page-hero-section+.section+.section {
+            background: var(--clr-bg-alt);
+        }
+
+        .section-title,
+        .section h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            text-align: center;
+            margin-bottom: var(--space-sm);
+            color: var(--clr-secondary);
+        }
+
         .section-subtitle {
-            font-size: clamp(1rem, 2vw, 1.125rem); text-align: center; color: #666;
-            margin-bottom: var(--space-lg); max-width: 700px; margin-left: auto; margin-right: auto;
+            font-size: clamp(1rem, 2vw, 1.125rem);
+            text-align: center;
+            color: #666;
+            margin-bottom: var(--space-lg);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        
+
         /* HERO BEREICH */
         .page-hero-section {
-            position: relative; padding: var(--space-xl) 0; background-size: cover; background-position: center;
-            color: var(--clr-white); text-align: center;
+            position: relative;
+            padding: var(--space-xl) 0;
+            background-size: cover;
+            background-position: center;
+            color: var(--clr-white);
+            text-align: center;
         }
-        @media (min-width: 768px) { .page-hero-section { padding: var(--space-xl) 0; } }
+
+        @media (min-width: 768px) {
+            .page-hero-section {
+                padding: var(--space-xl) 0;
+            }
+        }
+
         .page-hero-section::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(0, 40, 70, 0.65); z-index: 1;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 40, 70, 0.65);
+            z-index: 1;
         }
-        .page-hero-section .container { position: relative; z-index: 2; }
+
+        .page-hero-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
         .page-hero-section .page-title {
-            font-size: clamp(2.25rem, 6vw, 3.5rem); color: var(--clr-white); margin-top: 0;
+            font-size: clamp(2.25rem, 6vw, 3.5rem);
+            color: var(--clr-white);
+            margin-top: 0;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
+
         .page-hero-section .breadcrumbs {
-            font-size: 1rem; color: var(--clr-white); margin-bottom: var(--space-sm);
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); text-align: center;
+            font-size: 1rem;
+            color: var(--clr-white);
+            margin-bottom: var(--space-sm);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            text-align: center;
         }
-        .page-hero-section .breadcrumbs a { color: var(--clr-white); }
-        .page-hero-section .breadcrumbs a:hover { text-decoration: underline; }
-        .page-hero-section .breadcrumbs .arrow { margin: 0 0.5em; }
-        
+
+        .page-hero-section .breadcrumbs a {
+            color: var(--clr-white);
+        }
+
+        .page-hero-section .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .page-hero-section .breadcrumbs .arrow {
+            margin: 0 0.5em;
+        }
+
         /* BACKGROUND IMAGE CLASS */
         .hero-bg-strassenbau {
             background-image: url("{{ url_for('static', filename='images/strassenbau.png') }}");
         }
 
         /* Content Styles */
-        .leistung-detail-content h3 { 
-            font-size: 1.5rem; color: var(--clr-secondary); margin-top: var(--space-md);
-            margin-bottom: var(--space-sm); padding-bottom: var(--space-xs);
-            border-bottom: 2px solid var(--clr-primary); display: inline-block; 
+        .leistung-detail-content h3 {
+            font-size: 1.5rem;
+            color: var(--clr-secondary);
+            margin-top: var(--space-md);
+            margin-bottom: var(--space-sm);
+            padding-bottom: var(--space-xs);
+            border-bottom: 2px solid var(--clr-primary);
+            display: inline-block;
         }
+
         .leistung-detail-content ul {
-            list-style: none; padding-left: 0; margin-bottom: var(--space-md);
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: var(--space-md);
         }
+
         .leistung-detail-content ul li {
-            padding-left: 1.5em; position: relative; margin-bottom: var(--space-xs); line-height: 1.6;
+            padding-left: 1.5em;
+            position: relative;
+            margin-bottom: var(--space-xs);
+            line-height: 1.6;
         }
+
         .leistung-detail-content ul li::before {
-            content: "\f0da"; font-family: "Font Awesome 5 Free"; font-weight: 900; 
-            color: var(--clr-primary); position: absolute; left: 0; top: 1px; 
+            content: "\f0da";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            color: var(--clr-primary);
+            position: absolute;
+            left: 0;
+            top: 1px;
         }
 
-        #loadMoreBeitraegeBtn { display: block; margin: var(--space-lg) auto 0; }
-
-
-        /* --- NEUER STIL FÜR REFERENZPROJEKTE --- */
-
-        .beitraege-grid-neu {
+        /* --- NEUES PORTFOLIO GRID LAYOUT --- */
+        .portfolio-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--space-lg);
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-md);
             margin-top: var(--space-lg);
         }
 
-        .ref-projekt {
+        .portfolio-card {
             background-color: var(--clr-white);
-            border: 1px solid var(--clr-border);
             border-radius: var(--radius-md);
             box-shadow: var(--shadow-sm);
-            transition: var(--transition-default);
-            display: flex;
-            flex-direction: column; /* Mobile-first: Stapeln */
             overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        #beitraege.bg-alternate .ref-projekt {
+
+        #beitraege.bg-alternate .portfolio-card {
             background-color: var(--clr-white);
         }
 
-        .ref-projekt:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
         }
 
-        /* Bildbereich */
-        .ref-projekt-image {
-            order: 1; /* Bild zuerst im visuellen Flow */
-            flex-shrink: 0;
-            position: relative;
-            background-color: #eee;
-            height: 250px;
-        }
-        .ref-projekt-image a {
+        .portfolio-card-link {
             display: block;
-            width: 100%;
-            height: 100%;
-        }
-        .ref-projekt-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        .ref-projekt:hover .ref-projekt-image img {
-            transform: scale(1.05);
+            text-decoration: none;
+            color: inherit;
         }
 
-        /* Inhaltsbereich */
-        .ref-projekt-content {
-            order: 2; /* Inhalt als zweites */
-            padding: var(--space-md);
+        .portfolio-card-inner {
             display: flex;
             flex-direction: column;
+            height: 100%;
         }
 
-        .ref-projekt-title {
-            font-size: clamp(1.25rem, 4vw, 1.5rem);
-            color: var(--clr-primary);
-            margin-top: 0;
-            margin-bottom: var(--space-sm);
+        .portfolio-thumbnail {
+            position: relative;
+            overflow: hidden;
         }
 
-        .ref-projekt-details {
-            margin-bottom: var(--space-sm);
-            padding-bottom: var(--space-sm);
-            border-bottom: 1px solid var(--clr-border);
+        .portfolio-thumbnail img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
         }
 
-        .ref-projekt-details dl {
+        .portfolio-card:hover .portfolio-thumbnail img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 90, 156, 0.7);
+            opacity: 0;
+            transition: opacity 0.3s ease;
             display: grid;
-            grid-template-columns: 120px 1fr;
-            gap: var(--space-xs) var(--space-sm);
-            font-size: 0.9rem;
+            place-items: center;
         }
 
-        .ref-projekt-details dt {
-            font-weight: 600;
-            color: var(--clr-secondary);
+        .portfolio-card:hover .portfolio-overlay {
+            opacity: 1;
         }
 
-        .ref-projekt-details dd {
-            margin: 0;
-            color: #555;
+        .portfolio-overlay-icon {
+            color: var(--clr-white);
+            font-size: 2.5rem;
+            font-weight: bold;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
         }
 
-        .ref-projekt-content h4 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--clr-secondary);
-            margin-top: var(--space-sm);
-            margin-bottom: var(--space-xs);
+        .portfolio-card:hover .portfolio-overlay-icon {
+            transform: scale(1);
         }
 
-        .ref-projekt-content p {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: var(--space);
+        .portfolio-content {
+            padding: var(--space-sm) var(--space);
+            border-top: 1px solid var(--clr-border);
             flex-grow: 1;
         }
 
-        .ref-projekt-leistungen {
-            margin-top: auto;
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--space-xs);
-        }
-
-        .ref-projekt-leistungen a {
-            font-size: 0.8rem;
+        .portfolio-title {
+            font-size: 1.15rem;
+            margin-top: 0;
+            margin-bottom: var(--space-xs);
             color: var(--clr-secondary);
-            text-decoration: none;
-            padding: 0.2em 0.6em;
-            border-radius: var(--radius-sm);
-            background-color: var(--clr-bg);
-            border: 1px solid var(--clr-border);
-            transition: background-color 0.2s, color 0.2s;
-        }
-        #beitraege.bg-alternate .ref-projekt-leistungen a {
-            background-color: #e9e9e9;
-        }
-        .ref-projekt-leistungen a:hover {
-            color: var(--clr-primary);
-            background-color: #e0e0e0;
-            text-decoration: none;
         }
 
-        /* Die Logik für versteckte Beiträge bleibt gleich */
-        .ref-projekt.hidden-beitrag {
-            display: none;
-        }
-
-        /* Desktop-Layout (ab 992px) */
-        @media (min-width: 992px) {
-            .ref-projekt {
-                flex-direction: row; /* Nebeneinander auf Desktop */
-            }
-
-            /* Reihenfolge für Desktop umkehren, um dem Beispiel zu entsprechen (Text links, Bild rechts) */
-            .ref-projekt-content {
-                order: 1;
-                flex: 1 1 55%; /* Inhalt nimmt 55% der Breite ein */
-                padding: var(--space-lg);
-            }
-            .ref-projekt-image {
-                order: 2;
-                flex: 1 1 45%; /* Bild nimmt 45% ein */
-                height: auto; /* Höhe automatisch anpassen lassen */
-            }
-
-            /* Bei geraden Projekten die Reihenfolge tauschen für einen abwechslungsreichen Look */
-            .ref-projekt:nth-child(even) {
-                flex-direction: row-reverse;
-            }
+        .portfolio-category {
+            font-size: 0.85rem;
+            color: #666;
+            margin: 0;
         }
 
         /* Footer */
         .site-footer {
-            background: var(--clr-secondary); color: var(--clr-text-light);
+            background: var(--clr-secondary);
+            color: var(--clr-text-light);
             padding: var(--space-xl) 0 var(--space-lg);
         }
-        .footer-grid { display: grid; gap: var(--space-md); }
-        @media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } }
-        @media (min-width: 1024px) { .footer-grid { grid-template-columns: repeat(5, 1fr); } }
-        
+
+        .footer-grid {
+            display: grid;
+            gap: var(--space-md);
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
         .site-footer h4 {
-            font-family: var(--font-heading); font-weight: 600; color: var(--clr-white);
-            margin-bottom: var(--space-sm); font-size: 1.1rem;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--clr-white);
+            margin-bottom: var(--space-sm);
+            font-size: 1.1rem;
         }
-        .site-footer ul { list-style: none; padding-left: 0; margin: 0; }
-        .site-footer ul li { margin-bottom: var(--space-xs); }
-        .site-footer a { color: #ccc; text-decoration: none; }
-        .site-footer a:hover { color: var(--clr-white); text-decoration: underline; }
-        .site-footer address { font-style: normal; line-height: 1.7; color: #ccc; }
-        .site-footer address a { color: inherit; }
-        .site-footer address a:hover { color: var(--clr-white); }
+
+        .site-footer ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .site-footer ul li {
+            margin-bottom: var(--space-xs);
+        }
+
+        .site-footer a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .site-footer a:hover {
+            color: var(--clr-white);
+            text-decoration: underline;
+        }
+
+        .site-footer address {
+            font-style: normal;
+            line-height: 1.7;
+            color: #ccc;
+        }
+
+        .site-footer address a {
+            color: inherit;
+        }
+
+        .site-footer address a:hover {
+            color: var(--clr-white);
+        }
+
         .footer-socials a {
-            display: inline-block; margin-right: var(--space-sm); font-size: 1.6rem;
-            color: #ccc; text-decoration: none;
+            display: inline-block;
+            margin-right: var(--space-sm);
+            font-size: 1.6rem;
+            color: #ccc;
+            text-decoration: none;
         }
-        .footer-socials a:last-child { margin-right: 0; }
-        .footer-socials a:hover { color: var(--clr-white); text-decoration: none; }
+
+        .footer-socials a:last-child {
+            margin-right: 0;
+        }
+
+        .footer-socials a:hover {
+            color: var(--clr-white);
+            text-decoration: none;
+        }
 
         .footer-bottom {
-            text-align: center; font-size: .9rem; border-top: 1px solid rgba(255, 255, 255, .1);
-            margin-top: var(--space-lg); padding-top: var(--space-lg); color: #aaa;
+            text-align: center;
+            font-size: .9rem;
+            border-top: 1px solid rgba(255, 255, 255, .1);
+            margin-top: var(--space-lg);
+            padding-top: var(--space-lg);
+            color: #aaa;
         }
-        .footer-bottom p { margin-bottom: var(--space-xs); }
-        .footer-bottom a { color: #ccc; }
-        .footer-bottom a:hover { color: var(--clr-white); }
+
+        .footer-bottom p {
+            margin-bottom: var(--space-xs);
+        }
+
+        .footer-bottom a {
+            color: #ccc;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--clr-white);
+        }
     </style>
 </head>
 
 <body>
     <header class="site-header">
         <div class="container header-inner">
-            <a href="{{ url_for('index') }}" class="logo"> 
-                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Behringer & Partner Logo" loading="lazy">
+            <a href="{{ url_for('index') }}" class="logo">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Behringer & Partner Logo"
+                    loading="lazy">
             </a>
             <nav class="main-nav">
                 <ul class="nav-list">
@@ -573,7 +752,8 @@
                         <a href="{{ url_for('index') }}#services">Leistungen <span class="dropdown-arrow">▼</span></a>
                         <ul class="dropdown-menu">
                             <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
-                            <li><a href="{{ url_for('strassenbau_brueckenbau') }}" class="active-service-link">Straßenbau & Brückenbau</a></li> 
+                            <li><a href="{{ url_for('strassenbau_brueckenbau') }}"
+                                    class="active-service-link">Straßenbau & Brückenbau</a></li>
                             <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
                             <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
                             <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
@@ -607,7 +787,8 @@
                     <span>Straßenbau & Brückenbau</span>
                 </div>
                 <h1 class="page-title">Straßenbau & Brückenbau</h1>
-                <p class="section-subtitle" style="text-align: center; color: var(--clr-white); text-shadow: 1px 1px 3px rgba(0,0,0,0.5); max-width: 800px; margin-bottom: 0;">
+                <p class="section-subtitle"
+                    style="text-align: center; color: var(--clr-white); text-shadow: 1px 1px 3px rgba(0,0,0,0.5); max-width: 800px; margin-bottom: 0;">
                     Wir schaffen Verbindungen – sicher, langlebig und zukunftsorientiert.
                 </p>
             </div>
@@ -616,8 +797,9 @@
         <section class="section leistung-detail-content">
             <div class="container">
                 <h3>LEISTUNGSUMFANG</h3>
-                <ul> 
-                    <li>Staatsstraßen, Gemeindeverbindungsstraßen, Stadtstraßen, Erschließungsstraßen, ländlicher Wegebau</li>
+                <ul>
+                    <li>Staatsstraßen, Gemeindeverbindungsstraßen, Stadtstraßen, Erschließungsstraßen, ländlicher
+                        Wegebau</li>
                     <li>Ingenieurbauwerke</li>
                     <li>Kreuzungen, Kreisverkehre, Abbiegespuren</li>
                     <li>Präsentation der Planungsergebnisse mit 3D Fahrsimulation</li>
@@ -626,127 +808,94 @@
             </div>
         </section>
 
-        <section id="beitraege" class="section bg-alternate"> 
+        <section id="beitraege" class="section bg-alternate">
             <div class="container">
                 <h2 class="section-title">Referenzprojekte Straßenbau & Brückenbau</h2>
-                <p class="section-subtitle">Ausgewählte Projekte und Beiträge aus dem Bereich Straßen- und Brückenbau.</p>
-                
-                <div class="beitraege-grid-neu">
-                    
-                    <!-- PROJEKT 1 -->
-                    <article class="ref-projekt">
-                        <div class="ref-projekt-content">
-                            <h3 class="ref-projekt-title">Bahnunterführung Klugham</h3>
-                            <div class="ref-projekt-details">
-                                <dl>
-                                    <dt>Auftraggeber:</dt>
-                                    <dd>Gemeinde Aschau a. Inn</dd>
-                                    <dt>Datum:</dt>
-                                    <dd>25. Oktober 2024</dd>
-                                </dl>
+                <p class="section-subtitle">Ausgewählte Projekte und Beiträge aus dem Bereich Straßen- und Brückenbau.
+                </p>
+
+                <!-- NEUES PORTFOLIO GRID -->
+                <div class="portfolio-grid">
+
+                    <!-- PROJEKT 1: Bahnunterführung Klugham -->
+                    <article class="portfolio-card">
+                        <a href="{{ url_for('projekt_klugham') }}" class="portfolio-card-link">
+                            <div class="portfolio-card-inner">
+                                <div class="portfolio-thumbnail">
+                                    <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2024/10/003-270x150.jpg"
+                                        alt="Bahnunterführung Klugham" loading="lazy">
+                                    <div class="portfolio-overlay">
+                                        <span class="portfolio-overlay-icon">➔</span>
+                                    </div>
+                                </div>
+                                <div class="portfolio-content">
+                                    <h3 class="portfolio-title">Bahnunterführung Klugham</h3>
+                                    <p class="portfolio-category">Straßenbau & Brückenbau</p>
+                                </div>
                             </div>
-                            <h4>Projektbeschreibung</h4>
-                            <p>In Zusammenarbeit mit der Südostbayern Bahn wurde mit der Erneuerung der Bahnunterführung eine zeitgemäße Straßenführung verwirklicht. Bereits Ende 2022 war das Ingenieurbauwerk der Bahn fertiggestellt, bevor im Frühjahr 2023 der finale Straßenbau erfolgte.</p>
-                            <h4>Leistungen</h4>
-                            <div class="ref-projekt-leistungen">
-                                <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
-                            </div>
-                        </div>
-                        <div class="ref-projekt-image">
-                            <a href="https://www.ib-behringer.de/wp/wp-content/uploads/2024/10/003-270x150.jpg" target="_blank" rel="noopener">
-                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2024/10/003-270x150.jpg" alt="Bahnunterführung Klugham" loading="lazy">
-                            </a>
-                        </div>
+                        </a>
                     </article>
-        
-                    <!-- PROJEKT 2 -->
-                    <article class="ref-projekt">
-                        <div class="ref-projekt-content">
-                            <h3 class="ref-projekt-title">Erschließung Neubaugebiet Am Unterfeld</h3>
-                            <div class="ref-projekt-details">
-                                <dl>
-                                    <dt>Auftraggeber:</dt>
-                                    <dd>Gemeinde Obertaufkirchen</dd>
-                                    <dt>Ort:</dt>
-                                    <dd>Oberornau</dd>
-                                    <dt>Datum:</dt>
-                                    <dd>22. August 2023</dd>
-                                </dl>
+
+                    <!-- PROJEKT 2: Erschließung Oberornau -->
+                    <article class="portfolio-card">
+                        <a href="{{ url_for('projekt_klugham') }}" class="portfolio-card-link">
+                            <div class="portfolio-card-inner">
+                                <div class="portfolio-thumbnail">
+                                    <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2023/08/IMG_2469-270x150.jpg"
+                                        alt="Erschließung Neubaugebiet Am Unterfeld" loading="lazy">
+                                    <div class="portfolio-overlay">
+                                        <span class="portfolio-overlay-icon">➔</span>
+                                    </div>
+                                </div>
+                                <div class="portfolio-content">
+                                    <h3 class="portfolio-title">Erschließung Oberornau</h3>
+                                    <p class="portfolio-category">Baulanderschließung, Siedlungswasserwirtschaft</p>
+                                </div>
                             </div>
-                            <h4>Projektbeschreibung</h4>
-                            <p>In der Gemeinde Obertaufkirchen entstehen im Ortsteil Oberornau 18 Bauparzellen für Wohnbebauung. Für die Erschließung wurden ca. 365 m Schmutzwasserkanal, 425 m Regenwasserkanal und 475 m Hauptwasserleitung hergestellt.</p>
-                            <h4>Leistungen</h4>
-                            <div class="ref-projekt-leistungen">
-                                <a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a>
-                                <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>
-                                <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
-                            </div>
-                        </div>
-                        <div class="ref-projekt-image">
-                             <a href="https://www.ib-behringer.de/wp/wp-content/uploads/2023/08/IMG_2469-270x150.jpg" target="_blank" rel="noopener">
-                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2023/08/IMG_2469-270x150.jpg" alt="Erschließung Neubaugebiet Am Unterfeld" loading="lazy">
-                            </a>
-                        </div>
+                        </a>
                     </article>
-                    
-                    <!-- PROJEKT 3 (ursprünglich versteckt) -->
-                    <article class="ref-projekt hidden-beitrag">
-                         <div class="ref-projekt-content">
-                            <h3 class="ref-projekt-title">Neubau Straßenüberführung Mühlthal</h3>
-                            <div class="ref-projekt-details">
-                                <dl>
-                                    <dt>Auftraggeber:</dt>
-                                    <dd>Gemeinde Soyen</dd>
-                                     <dt>Datum:</dt>
-                                    <dd>24. September 2019</dd>
-                                </dl>
+
+                    <!-- PROJEKT 3: Überführung Mühlthal -->
+                    <article class="portfolio-card">
+                        <a href="{{ url_for('projekt_klugham') }}" class="portfolio-card-link">
+                            <div class="portfolio-card-inner">
+                                <div class="portfolio-thumbnail">
+                                    <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2019/09/02-270x150.jpg"
+                                        alt="Neubau Straßenüberführung Mühlthal" loading="lazy">
+                                    <div class="portfolio-overlay">
+                                        <span class="portfolio-overlay-icon">➔</span>
+                                    </div>
+                                </div>
+                                <div class="portfolio-content">
+                                    <h3 class="portfolio-title">Straßenüberführung Mühlthal</h3>
+                                    <p class="portfolio-category">Straßenbau & Brückenbau</p>
+                                </div>
                             </div>
-                            <h4>Projektbeschreibung</h4>
-                            <p>Die bestehenden Bahnübergänge Hörgen und Mühlthal wurden nach Errichtung der Straßenüberführung geschlossen. Auf 1.200 m Länge wird die neue Straße von der Kreisstraße RO 40 über die Bahnstrecke geführt.</p>
-                            <h4>Leistungen</h4>
-                            <div class="ref-projekt-leistungen">
-                                <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
-                            </div>
-                        </div>
-                        <div class="ref-projekt-image">
-                            <a href="https://www.ib-behringer.de/wp/wp-content/uploads/2019/09/02-270x150.jpg" target="_blank" rel="noopener">
-                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2019/09/02-270x150.jpg" alt="Neubau Straßenüberführung Mühlthal" loading="lazy">
-                            </a>
-                        </div>
+                        </a>
                     </article>
-        
-                    <!-- PROJEKT 4 (ursprünglich versteckt) -->
-                    <article class="ref-projekt hidden-beitrag">
-                        <div class="ref-projekt-content">
-                            <h3 class="ref-projekt-title">Erschließung Neubaugebiet an der Eichkapelle</h3>
-                            <div class="ref-projekt-details">
-                                 <dl>
-                                    <dt>Auftraggeber:</dt>
-                                    <dd>Stadt Mühldorf</dd>
-                                    <dt>Datum:</dt>
-                                    <dd>20. November 2020</dd>
-                                </dl>
+
+                    <!-- PROJEKT 4: Eichkapelle Mühldorf -->
+                    <article class="portfolio-card">
+                        <a href="{{ url_for('projekt_klugham') }}" class="portfolio-card-link">
+                            <div class="portfolio-card-inner">
+                                <div class="portfolio-thumbnail">
+                                    <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2020/12/IMG_9008-270x150.jpg"
+                                        alt="Erschließung Neubaugebiet an der Eichkapelle" loading="lazy">
+                                    <div class="portfolio-overlay">
+                                        <span class="portfolio-overlay-icon">➔</span>
+                                    </div>
+                                </div>
+                                <div class="portfolio-content">
+                                    <h3 class="portfolio-title">Erschließung Eichkapelle Mühldorf</h3>
+                                    <p class="portfolio-category">Baulanderschließung, Straßenbau</p>
+                                </div>
                             </div>
-                             <h4>Projektbeschreibung</h4>
-                            <p>Hier entstehen 67 Bauparzellen für Einfamilienhäuser und diverse Parzellen für Reihen- und Mehrfamilienhäuser auf einer Gesamtfläche von ca. 9,7 Hektar.</p>
-                            <h4>Leistungen</h4>
-                            <div class="ref-projekt-leistungen">
-                                <a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a>
-                                <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>
-                                <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
-                            </div>
-                        </div>
-                         <div class="ref-projekt-image">
-                            <a href="https://www.ib-behringer.de/wp/wp-content/uploads/2020/12/IMG_9008-270x150.jpg" target="_blank" rel="noopener">
-                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2020/12/IMG_9008-270x150.jpg" alt="Erschließung Neubaugebiet an der Eichkapelle" loading="lazy">
-                            </a>
-                        </div>
+                        </a>
                     </article>
-                    
+
+                    <!-- Hier können bei Bedarf weitere Projekte als <article class="portfolio-card"> eingefügt werden -->
+
                 </div>
-        
-                <!-- Der Button bleibt derselbe und funktioniert weiterhin mit dem JS -->
-                <button id="loadMoreBeitraegeBtn" class="btn btn-primary" style="display: none;"></button>
             </div>
         </section>
 
@@ -790,27 +939,30 @@
             <div>
                 <h4>Rechtliches</h4>
                 <ul>
-                    <li><a href="{{ url_for('impressum') }}">Impressum</a></li> 
+                    <li><a href="{{ url_for('impressum') }}">Impressum</a></li>
                     <li><a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></li>
                 </ul>
             </div>
             <div>
                 <h4>Folgen Sie uns</h4>
                 <div class="footer-socials">
-                    <a href="https://www.instagram.com/ibb_mue/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/ibb_mue/" target="_blank" rel="noopener"
+                        aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 </div>
-                 <h4 style="margin-top: 1.5rem;">Wir unterstützen</h4>
-                 <p style="margin-bottom: var(--space-xs); line-height: 1.4;">
+                <h4 style="margin-top: 1.5rem;">Wir unterstützen</h4>
+                <p style="margin-bottom: var(--space-xs); line-height: 1.4;">
                     <a href="{{ url_for('maedchenschule_chato') }}">Mädchenschule Chato, Tansania</a>
-                 </p>
-                 <a href="{{ url_for('maedchenschule_chato') }}">
-                    <img src="{{ url_for('static', filename='images/chato_schule_thumb.jpg') }}" alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
+                </p>
+                <a href="{{ url_for('maedchenschule_chato') }}">
+                    <img src="{{ url_for('static', filename='images/chato_schule_thumb.jpg') }}"
+                        alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
                 </a>
             </div>
         </div>
         <div class="footer-bottom">
             <p>© <span id="current-year">2024</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
-            <p><a href="{{ url_for('impressum') }}">Impressum</a> | <a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></p>
+            <p><a href="{{ url_for('impressum') }}">Impressum</a> | <a
+                    href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></p>
         </div>
     </footer>
 
@@ -825,45 +977,45 @@
                     const isOpen = navList.classList.toggle('open');
                     navToggle.setAttribute('aria-expanded', isOpen);
                     navToggle.innerHTML = isOpen ? '×' : '☰';
-                     if (!isOpen) { 
+                    if (!isOpen) {
                         navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
                         navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
                     }
                 });
             }
-            
+
             const dropdownToggles = navList ? navList.querySelectorAll('.nav-item.dropdown > a, .nav-item.dropdown > span') : [];
             dropdownToggles.forEach(toggle => {
-                toggle.addEventListener('click', function(event) {
-                    if (navToggle && window.getComputedStyle(navToggle).display !== 'none') { 
+                toggle.addEventListener('click', function (event) {
+                    if (navToggle && window.getComputedStyle(navToggle).display !== 'none') {
                         const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
-                        if (hasArrow) { 
-                            event.preventDefault(); 
+                        if (hasArrow) {
+                            event.preventDefault();
                             const submenu = this.parentElement.querySelector('.dropdown-menu');
                             if (submenu) submenu.classList.toggle('submenu-open');
-                            this.classList.toggle('active'); 
+                            this.classList.toggle('active');
                         }
                     }
                 });
             });
 
-             document.querySelectorAll('a[href]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
+            document.querySelectorAll('a[href]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
                     const hrefAttribute = this.getAttribute('href');
                     const isMobileView = navToggle && window.getComputedStyle(navToggle).display !== 'none';
                     let isMobileDropdownToggleItself = false;
-                    
+
                     if (isMobileView && this.parentElement && this.parentElement.classList.contains('dropdown') && this.closest('.nav-list')) {
-                         const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
-                         if(hasArrow) {
+                        const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
+                        if (hasArrow) {
                             isMobileDropdownToggleItself = true;
-                         }
+                        }
                     }
 
                     if (hrefAttribute.startsWith('#') && hrefAttribute.length > 1) {
                         if (document.getElementById(hrefAttribute.substring(1))) {
                             const targetElement = document.querySelector(hrefAttribute);
-                            if (targetElement) { 
+                            if (targetElement) {
                                 e.preventDefault();
                                 let headerOffset = siteHeader ? siteHeader.offsetHeight : 0;
                                 const elementPosition = targetElement.getBoundingClientRect().top;
@@ -871,13 +1023,13 @@
                                 window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
                             }
                         }
-                    } else if (hrefAttribute === '#') { 
-                         e.preventDefault();
-                         window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else if (hrefAttribute === '#') {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
                     }
 
                     if (isMobileView && navList && navList.classList.contains('open') && !isMobileDropdownToggleItself) {
-                         if (!hrefAttribute.startsWith('#') || (hrefAttribute.startsWith('#') && document.querySelector(hrefAttribute))) { 
+                        if (!hrefAttribute.startsWith('#') || (hrefAttribute.startsWith('#') && document.querySelector(hrefAttribute))) {
                             navList.classList.remove('open');
                             if (navToggle) {
                                 navToggle.setAttribute('aria-expanded', 'false');
@@ -889,25 +1041,7 @@
                     }
                 });
             });
-            
-            const loadMoreBtn = document.getElementById('loadMoreBeitraegeBtn');
-            if (loadMoreBtn) {
-                // Das Skript sucht jetzt nach .ref-projekt.hidden-beitrag
-                const hiddenBeitraege = Array.from(document.querySelectorAll('.ref-projekt.hidden-beitrag'));
-                if (hiddenBeitraege.length === 0) {
-                    loadMoreBtn.style.display = 'none'; 
-                } else {
-                    loadMoreBtn.style.display = 'block';
-                    loadMoreBtn.textContent = `Weitere ${hiddenBeitraege.length} Projekte anzeigen`;
-                    loadMoreBtn.addEventListener('click', () => {
-                        hiddenBeitraege.forEach(beitrag => {
-                            beitrag.classList.remove('hidden-beitrag');
-                        });
-                        loadMoreBtn.style.display = 'none'; 
-                    });
-                }
-            }
-            
+
             const yearSpan = document.getElementById('current-year');
             if (yearSpan) {
                 yearSpan.textContent = new Date().getFullYear();

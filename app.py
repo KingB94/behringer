@@ -72,5 +72,12 @@ def maedchenschule_chato():
     return render_template('maedchenschule-chato.html') # Assuming it's in templates/
 
 
+# ─── Statische Routen für Projekte ───────────────────────────────────
+
+@app.route('/projekt/bahnunterfuehrung-klugham')
+def projekt_klugham():
+    return render_template('projekte/projekt_klugham.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)

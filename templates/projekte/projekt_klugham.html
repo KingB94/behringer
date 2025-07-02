@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Projekt: Bahnunterführung Klugham - Behringer & Partner</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* 1. Basis & Variablen */
+        :root {
+            --clr-primary: #005a9c;
+            --clr-secondary: #333;
+            --clr-bg: #fff;
+            --clr-bg-alt: #f7f7f7;
+            --clr-gradient-start: #004a80;
+            --clr-white: #fff;
+            --clr-text-light: #f1f1f1;
+            --clr-border: #e0e0e0;
+
+            --font-sans: 'Open Sans', sans-serif;
+            --font-heading: 'Montserrat', sans-serif;
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space: 1.5rem;
+            --space-md: 2rem;
+            --space-lg: 3rem;
+            --space-xl: 4rem;
+
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 5px 10px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 100%; }
+        body { font-family: var(--font-sans); color: var(--clr-secondary); line-height: 1.7; background: var(--clr-bg); }
+        a { text-decoration: none; color: var(--clr-primary); transition: all 0.3s ease; }
+        a:hover { color: var(--clr-gradient-start); }
+        img { max-width: 100%; height: auto; display: block; }
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); color: var(--clr-secondary); margin-bottom: var(--space-sm); line-height: 1.3; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-md); }
+        .btn { display: inline-block; text-decoration: none; font-weight: 600; padding: 0.85rem var(--space-md); border-radius: var(--radius-sm); transition: all 0.3s ease; border: 1px solid transparent; cursor: pointer; text-align: center; }
+        .btn-primary { background: var(--clr-primary); color: var(--clr-white); }
+        .btn-primary:hover { background: var(--clr-gradient-start); color: var(--clr-white); }
+        
+        /* Header & Footer (vereinfacht) */
+        .site-header { background: var(--clr-white); box-shadow: var(--shadow-md); position: sticky; top: 0; z-index: 1000; }
+        .header-inner { display: flex; align-items: center; justify-content: space-between; padding: var(--space-sm) var(--space); }
+        .logo img { display: block; max-height: 80px; width: auto; }
+        .main-nav { display: flex; }
+        .nav-list { list-style: none; display: flex; gap: var(--space-md); align-items: center; }
+        .nav-list>li>a { font-weight: 600; color: var(--clr-secondary); text-decoration: none; }
+        .nav-toggle { display: none; } /* Vereinfacht für dieses Beispiel */
+        .site-footer { background: var(--clr-secondary); color: #f1f1f1; padding: var(--space-xl) 0 var(--space-lg); }
+        .footer-grid { display: grid; gap: var(--space-md); grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+        .site-footer h4 { color: var(--clr-white); }
+        .site-footer ul { list-style: none; }
+        .site-footer a { color: #ccc; }
+        .site-footer a:hover { color: var(--clr-white); }
+        .footer-bottom { text-align: center; font-size: .9rem; border-top: 1px solid rgba(255,255,255,.1); margin-top: var(--space-lg); padding-top: var(--space-lg); color: #aaa; }
+        
+        /* PROJEKT-DETAIL-LAYOUT */
+        .project-detail-wrapper {
+            padding: var(--space-xl) 0;
+        }
+
+        .project-detail-layout {
+            display: grid;
+            grid-template-columns: 1fr; /* Mobile: eine Spalte */
+            gap: var(--space-lg);
+            align-items: stretch; /* Wichtig: Sorgt dafür, dass beide Spalten gleich hoch sind */
+        }
+
+        @media(min-width: 992px) {
+            .project-detail-layout {
+                grid-template-columns: 1.2fr 1fr; /* Desktop: Bild etwas breiter als Text */
+                gap: var(--space-xl);
+            }
+        }
+        
+        .project-main-image {
+            border-radius: var(--radius-lg);
+            overflow: hidden; /* Stellt sicher, dass das Bild innerhalb der runden Ecken bleibt */
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-main-image img {
+            width: 100%;
+            height: 100%; /* NEU: Bild füllt die volle Höhe seines Containers */
+            object-fit: cover; /* NEU: Bild wird zugeschnitten, nicht verzerrt */
+        }
+
+        .project-main-details {
+            display: flex; /* NEU: Macht die Box zu einem Flex-Container */
+            flex-direction: column; /* NEU: Ordnet die Elemente vertikal an */
+            justify-content: center; /* NEU: Zentriert den Inhalt vertikal, falls Platz übrig ist */
+            padding: var(--space-md); /* Optional: Etwas Innenabstand */
+            border: 1px solid var(--clr-border); /* Optional: Dezenter Rahmen */
+            border-radius: var(--radius-lg);
+        }
+
+        .project-main-details h1 {
+            font-size: clamp(1.75rem, 4vw, 2.25rem); /* GEÄNDERT: Etwas kleiner für bessere Balance */
+            color: var(--clr-primary);
+            line-height: 1.2;
+            margin-bottom: var(--space-md);
+        }
+        
+        .project-detail-item {
+            margin-bottom: var(--space-md); /* GEÄNDERT: Etwas weniger Abstand */
+        }
+
+        .project-detail-item h3 {
+            font-size: 0.9rem; /* GEÄNDERT: Etwas kleiner */
+            font-weight: 700;
+            color: var(--clr-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: var(--space-xs);
+            padding-bottom: var(--space-xs);
+            border-bottom: 1px solid var(--clr-border);
+        }
+
+        .project-detail-item p,
+        .project-detail-item ul {
+            font-size: 0.95rem; /* GEÄNDERT: Etwas kleiner */
+            color: #555;
+            margin: 0;
+            padding: 0;
+        }
+
+        .project-detail-item ul {
+            list-style: none;
+        }
+        .project-detail-item ul li {
+            padding-left: 1.2em;
+            position: relative;
+            margin-bottom: 0.3rem;
+        }
+        .project-detail-item ul li::before {
+            content: '■';
+            position: absolute;
+            left: 0;
+            color: var(--clr-primary);
+            font-size: 0.8em;
+            top: 5px; /* Angepasst für bessere vertikale Ausrichtung */
+        }
+
+        /* Galerie Sektion */
+        .project-gallery-wrapper {
+            padding-top: var(--space-xl);
+            margin-top: var(--space-xl);
+            border-top: 1px solid var(--clr-border);
+        }
+        .project-gallery-title {
+            text-align: center;
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            margin-bottom: var(--space-lg);
+        }
+        .project-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-md);
+        }
+        .gallery-image-placeholder {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            background-color: var(--clr-bg-alt);
+            border: 1px dashed var(--clr-border);
+            border-radius: var(--radius-md);
+            display: grid;
+            place-items: center;
+            color: #999;
+            font-family: var(--font-sans);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="{{ url_for('index') }}" class="logo"> 
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Behringer & Partner Logo" loading="lazy">
+            </a>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="{{ url_for('index') }}">Startseite</a></li>
+                    <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Zurück zu den Referenzen</a></li>
+                </ul>
+            </nav>
+            <button class="nav-toggle" aria-label="Menü öffnen">☰</button>
+        </div>
+    </header>
+    
+    <main>
+        <div class="container project-detail-wrapper">
+            <div class="project-detail-layout">
+                <div class="project-main-image">
+                    <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2024/10/003-270x150.jpg" alt="Hauptbild der Bahnunterführung Klugham">
+                </div>
+                <div class="project-main-details">
+                    <h1>Bahnunterführung Klugham</h1>
+
+                    <div class="project-detail-item">
+                        <h3>Auftraggeber</h3>
+                        <p>Gemeinde Aschau a. Inn</p>
+                    </div>
+
+                    <div class="project-detail-item">
+                        <h3>Stichpunkte zum Projekt</h3>
+                        <ul>
+                            <li>Erneuerung der bestehenden Bahnunterführung</li>
+                            <li>Realisierung einer zeitgemäßen und sicheren Straßenführung</li>
+                            <li>Neubau des Ingenieurbauwerks der Bahn</li>
+                            <li>Verbesserung des Verkehrsflusses</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="project-detail-item">
+                        <h3>Ausführungszeitraum</h3>
+                        <p>2022 - 2023</p>
+                    </div>
+
+                    <div class="project-detail-item">
+                        <h3>Leistungsbereich</h3>
+                        <p>Straßenbau & Brückenbau, Ingenieurbauwerke</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-gallery-wrapper">
+                <h2 class="project-gallery-title">Weitere Bilder</h2>
+                <div class="project-gallery-grid">
+                    <div class="gallery-image-placeholder">Bild-Platzhalter 1</div>
+                    <div class="gallery-image-placeholder">Bild-Platzhalter 2</div>
+                    <div class="gallery-image-placeholder">Bild-Platzhalter 3</div>
+                    <div class="gallery-image-placeholder">Bild-Platzhalter 4</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Startseite</a></li>
+                    <li><a href="{{ url_for('impressum') }}">Impressum</a></li>
+                    <li><a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Kontakt</h4>
+                <address>
+                    Behringer & Partner mbB<br>
+                    Luitpoldallee 32<br>
+                    D-84453 Mühldorf a. Inn
+                </address>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© <span id="current-year"></span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>
