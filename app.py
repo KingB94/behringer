@@ -72,6 +72,11 @@ def maedchenschule_chato():
     return render_template('maedchenschule-chato.html') # Assuming it's in templates/
 
 
+@app.route('/neuigkeiten')
+def news():
+    return render_template('news.html')
+
+
 # ─── Statische Routen für Projekte ───────────────────────────────────
 
 @app.route('/projekt/bahnunterfuehrung-klugham')
