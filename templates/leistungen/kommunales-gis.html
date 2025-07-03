@@ -314,7 +314,7 @@
         .section-title.text-left, .section h2.text-left { text-align: left; }
         .section-subtitle {
             font-size: clamp(1rem, 2vw, 1.125rem); text-align: center; color: #666;
-            margin-bottom: var(--space-lg); max-width: 700px; margin-left: auto; margin-right: auto;
+            margin-bottom: var(--space-lg); max-width: 800px; margin-left: auto; margin-right: auto;
         }
 
         /* HERO BEREICH */
@@ -344,32 +344,96 @@
         .hero-bg-kommunales-gis {
             background-image: url("{{ url_for('static', filename='images/kommunalesgis.png') }}");
         }
+        
+        /* === NEUE STILE FÜR GIS-LEISTUNGSSEITE === */
+        .leistung-detail-content .intro-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--space-lg) auto;
+            font-size: 1.1rem;
+            color: #555;
+        }
 
-        /* Content Styles */
-        .leistung-detail-content > .container > p:first-of-type {
-            font-size: 1.1rem; margin-bottom: var(--space-md);
-            color: var(--clr-secondary); line-height: 1.8;
-        }
-        .leistung-detail-content h3 { 
-            font-size: 1.5rem; color: var(--clr-secondary); margin-top: var(--space-md);
-            margin-bottom: var(--space-sm); padding-bottom: var(--space-xs);
-            border-bottom: 2px solid var(--clr-primary); display: inline-block; 
-        }
-        .leistung-detail-content ul {
-            list-style: none; padding-left: 0; margin-bottom: var(--space-md);
-        }
-        .leistung-detail-content ul li {
-            padding-left: 1.5em; position: relative; margin-bottom: var(--space-xs); line-height: 1.6;
-        }
-        .leistung-detail-content ul li::before {
-            content: "\f0da"; font-family: "Font Awesome 5 Free"; font-weight: 900; 
-            color: var(--clr-primary); position: absolute; left: 0; top: 1px; 
-        }
-        .leistung-detail-content .zertifizierung-hinweis strong { font-weight: 600; }
-        .leistung-detail-content .zertifizierung-hinweis .akademischer-geoinformatiker {
-            color: #005a9c; font-style: italic;
+        .service-list-grid {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: var(--space-md);
         }
         
+        @media (min-width: 768px) {
+            .service-list-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .service-list-grid li {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--clr-white);
+            padding: var(--space-sm);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            transition: var(--transition-default);
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+        
+        #leistungen .bg-alternate .service-list-grid li {
+             background: var(--clr-white);
+        }
+        
+        .leistung-detail-content .bg-alternate .service-list-grid li {
+             background: var(--clr-white);
+        }
+
+        .service-list-grid li:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm);
+            border-color: var(--clr-primary);
+        }
+
+        .service-list-grid li i {
+            color: var(--clr-primary);
+            font-size: 1.5rem;
+            width: 30px;
+            text-align: center;
+        }
+        
+        .zertifizierung-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space);
+            background: #eef7ff;
+            border: 1px solid #bde0ff;
+            border-radius: var(--radius-md);
+            padding: var(--space);
+            max-width: 800px;
+            margin: var(--space-lg) auto 0 auto;
+        }
+
+        .zertifizierung-item .icon {
+            font-size: 2.5rem;
+            color: var(--clr-primary);
+            flex-shrink: 0;
+        }
+        
+        .zertifizierung-item h4 {
+            font-size: 1.2rem;
+            margin-top: 0;
+            margin-bottom: var(--space-xs);
+        }
+
+        .zertifizierung-item p {
+            margin: 0;
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.5;
+        }
+        /* === ENDE NEUE STILE === */
+
         .project-article {
             background-color: var(--clr-white); border: 1px solid var(--clr-border);
             border-radius: var(--radius-md); padding: var(--space-md);
@@ -501,34 +565,36 @@
             </div>
         </section>
 
-        <section class="section leistung-detail-content">
+        <section id="leistungen" class="section leistung-detail-content bg-alternate">
             <div class="container">
-                <p>
-                    Ein geografisches Informationssystem (GIS) ist ein computergestütztes System, das zur Erfassung, Speicherung, 
-                    Verwaltung, Analyse und Visualisierung von raumbezogenen Daten verwendet wird. Für Kommunen bietet ein GIS 
-                    vielfältige Anwendungsmöglichkeiten und ist ein unverzichtbares Werkzeug für eine effiziente Verwaltung und Planung.
+                <h2 class="section-title">Unsere GIS-Kompetenzen</h2>
+                <p class="section-subtitle">
+                    Ein Geoinformationssystem ist ein unverzichtbares Werkzeug für eine effiziente kommunale Verwaltung und Planung. Wir unterstützen Sie bei der Erfassung, Analyse und Visualisierung Ihrer raumbezogenen Daten.
                 </p>
-                <h3>LEISTUNGSUMFANG</h3>
-                <p>Analyse räumlicher Daten in geografischen Informationssystemen:</p>
-                <ul>
-                    <li>Aufbau von Leitungskatastern (z.B. Abwasser, Trinkwasser)</li>
-                    <li>Abwasserkanal-TV-Befahrung: Projektabwicklung, Datenmanagement, Zustandsbewertung</li>
-                    <li>Aufbereitung der digitalen Flurkarte aus SQD-Daten der Vermessungsämter</li>
-                    <li>Straßenraumkataster</li>
-                    <li>Baumkataster</li>
-                    <li>Berechnung und Zuordnung von Kanaleinzugsgebieten im Rahmen der generellen Enwässerungsplanung</li>
-                    <li>Feststellung versiegelter Flächen im Rahmen des Abwassergebührensplittings</li>
-                    <li>Aufbereitung von Karten und Plänen</li>
+                
+                <ul class="service-list-grid">
+                    <li><i class="fas fa-sitemap"></i>Aufbau von Leitungskatastern</li>
+                    <li><i class="fas fa-video"></i>Kanal-TV-Befahrung & Datenmanagement</li>
+                    <li><i class="fas fa-layer-group"></i>Aufbereitung der digitalen Flurkarte</li>
+                    <li><i class="fas fa-road"></i>Straßenraumkataster</li>
+                    <li><i class="fas fa-tree"></i>Baumkataster</li>
+                    <li><i class="fas fa-chart-area"></i>Berechnung von Kanaleinzugsgebieten</li>
+                    <li><i class="fas fa-draw-polygon"></i>Feststellung versiegelter Flächen</li>
+                    <li><i class="fas fa-print"></i>Aufbereitung von Karten und Plänen</li>
                 </ul>
 
-                <h3>ZERTIFIZIERUNGEN</h3>
-                <ul class="zertifizierung-hinweis">
-                    <li><span class="akademischer-geoinformatiker"><strong>Akademischer Geoinformatiker</strong></span></li>
-                </ul>
+                <div class="zertifizierung-item">
+                    <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="text-content">
+                        <h4>Unsere Qualifikation</h4>
+                        <p>Fundiertes Fachwissen durch unseren <strong>Akademischen Geoinformatiker</strong> im Team.</p>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <section class="section projekte-section bg-alternate">
+        <section class="section projekte-section">
             <div class="container">
                 <h2 class="section-title text-left">Projekte & Referenzen zu Kommunales GIS</h2>
                 
@@ -540,7 +606,7 @@
                             </a>
                             <div class="project-text-content">
                                 <header class="entry-header">
-                                    <div class="time">01.2.2016</div>
+                                    <div class="time">01.02.2016</div>
                                     <h3 class="entry-title"><a href="https://www.ib-behringer.de/projekt/kommunales-gis/" rel="bookmark" target="_blank" rel="noopener">Kommunales GIS</a></h3>
                                 </header>
                                 <p class="excerpt-text">
