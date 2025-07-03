@@ -639,6 +639,11 @@
         #about .h-80 { 
             height: 20rem; 
         }
+        
+        /* HINZUGEFÜGT: Cursor für klickbares Bild */
+        #team-photo-container {
+            cursor: pointer;
+        }
 
         #about .overflow-hidden {
             overflow: hidden;
@@ -1072,6 +1077,52 @@
         .footer-bottom a:hover {
             color: var(--clr-white);
         }
+        
+        /* HINZUGEFÜGT: Lightbox Styles */
+        .lightbox {
+            display: none; /* Standardmäßig ausgeblendet */
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .lightbox.visible {
+            display: flex;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-lightbox:hover {
+            color: #bbb;
+        }
+
     </style>
 </head>
 
@@ -1142,19 +1193,11 @@
                             <p class="text-lg mb-6">
                                 Wir entwickeln maßgeschneiderte, wirtschaftliche Lösungen nach höchsten technischen Standards und begleiten Sie von der Idee bis zur erfolgreichen Realisierung Ihres Projekts.
                             </p>
-                            <div class="flex flex-wrap gap-4">
-                                <a href="{{ url_for('firmengeschichte') }}"
-                                    class="btn bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded">
-                                    Unsere Geschichte
-                                </a>
-                                <a href="{{ url_for('unternehmen_team') }}"
-                                    class="btn border border-primary text-primary hover:bg-primary hover:text-white px-4 py-2 rounded">
-                                    Unser Team kennenlernen
-                                </a>
-                            </div>
+                            <!-- HINZUGEFÜGT: Der Container für die Buttons wurde komplett entfernt -->
                         </div>
                         <div class="order-1 lg:order-2">
-                            <div class="relative h-80 overflow-hidden rounded-lg shadow-xl">
+                            <!-- HINZUGEFÜGT: ID, damit das Element per JS ansprechbar ist -->
+                            <div id="team-photo-container" class="relative h-80 overflow-hidden rounded-lg shadow-xl">
                                 <img src="{{ url_for('static', filename='images/team/1 - buero_2025-25.jpg') }}"
                                     alt="Team des Ingenieurbüros Behringer bei der Planung"
                                     class="object-cover w-full h-full" loading="lazy" />
@@ -1376,6 +1419,12 @@
         </div>
     </footer>
 
+    <!-- HINZUGEFÜGT: Lightbox HTML-Struktur -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox">×</span>
+        <img class="lightbox-content" id="lightbox-image">
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const navToggle = document.querySelector('.nav-toggle');
@@ -1511,7 +1560,6 @@
                 newsInterval = setInterval(nextNewsItem, 7000); 
             }
 
-
             // Update current year in footer
             const yearSpan = document.getElementById('current-year');
             if (yearSpan) {
@@ -1540,16 +1588,13 @@
             serviceCards.forEach(card => {
                 const linkElement = card.querySelector('a.service-link-wrapper');
                 if (linkElement) {
-                    // Option 1: Make the whole card clickable
                     card.style.cursor = 'pointer';
                     card.addEventListener('click', () => {
                         window.location.href = linkElement.href;
                     });
-                    // Option 2: If you prefer only the link inside to be clickable, no JS needed for that part
-                } else { // If no <a> wrapper, fallback to original ID-based logic or specific page links
-                    const serviceId = card.id; // e.g., "service-siedlung"
+                } else { 
+                    const serviceId = card.id;
                     let targetUrl = '';
-
                     switch (serviceId) {
                         case 'service-siedlung': targetUrl = "{{ url_for('siedlungswasserwirtschaft') }}"; break;
                         case 'service-strassen': targetUrl = "{{ url_for('strassenbau_brueckenbau') }}"; break;
@@ -1560,16 +1605,41 @@
                         case 'service-sanierung': targetUrl = "{{ url_for('sanierungen') }}"; break;
                         case 'service-wasserbau': targetUrl = "{{ url_for('wasserbau') }}"; break;
                     }
-
                     if (targetUrl) {
                         card.style.cursor = 'pointer';
-                        card.addEventListener('click', () => {
-                            window.location.href = targetUrl;
-                        });
+                        card.addEventListener('click', () => { window.location.href = targetUrl; });
                     }
                 }
             });
+            
+            // HINZUGEFÜGT: Lightbox Funktionalität für das Teamfoto
+            const teamPhotoContainer = document.getElementById('team-photo-container');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const closeLightboxBtn = document.querySelector('.close-lightbox');
 
+            if (teamPhotoContainer && lightbox && lightboxImage && closeLightboxBtn) {
+                teamPhotoContainer.addEventListener('click', () => {
+                    const originalImage = teamPhotoContainer.querySelector('img');
+                    if(originalImage) {
+                        lightboxImage.src = originalImage.src;
+                        lightbox.classList.add('visible');
+                    }
+                });
+
+                const closeLightbox = () => {
+                    lightbox.classList.remove('visible');
+                };
+
+                closeLightboxBtn.addEventListener('click', closeLightbox);
+                
+                lightbox.addEventListener('click', (e) => {
+                    // Schließt die Lightbox nur, wenn auf den dunklen Hintergrund geklickt wird, nicht auf das Bild selbst
+                    if (e.target === lightbox) {
+                        closeLightbox();
+                    }
+                });
+            }
 
         });
     </script>

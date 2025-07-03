@@ -395,13 +395,11 @@
             height: 100%;
             object-fit: cover; 
             object-position: center top; 
-            filter: grayscale(100%);
-            transition: filter 0.3s ease-in-out;
+            /* filter: grayscale(100%); <-- ENTFERNT */
+            /* transition: filter 0.3s ease-in-out; <-- ENTFERNT */
         }
 
-        .team-member:hover img {
-            filter: grayscale(0%);
-        }
+        /* .team-member:hover img { ... } <-- GANZE REGEL ENTFERNT */
 
         .team-member-info h3 {
             font-size: 1.15rem;
@@ -648,17 +646,6 @@
                             <p><a href="mailto:a.hoelzlhammer@ib-behringer.de">a.hoelzlhammer@ib-behringer.de</a></p>
                         </div>
                     </div>
-                    
-                    <div class="team-member">
-                        <div class="team-member-image-wrapper">
-                           <img loading="lazy" src="{{ url_for('static', filename='images/team/marxbauer.jpg') }}" alt="Maximilian Marxbauer">
-                        </div>
-                        <div class="team-member-info">
-                           <h3>Maximilian Marxbauer</h3>
-                            <p>Staatlich geprüfter Bautechniker</p>
-                            <p><a href="mailto:m.marxbauer@ib-behringer.de">m.marxbauer@ib-behringer.de</a></p>
-                        </div>
-                    </div>
 
                     <div class="team-member">
                         <div class="team-member-image-wrapper">
@@ -668,6 +655,17 @@
                            <h3>Christina Urgibl – B.Sc.</h3>
                             <p>Bauingenieurin<br>Projektabwicklung</p>
                             <p><a href="mailto:c.urgibl@ib-behringer.de">c.urgibl@ib-behringer.de</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="team-member-image-wrapper">
+                           <img loading="lazy" src="{{ url_for('static', filename='images/team/marxbauer.jpg') }}" alt="Maximilian Marxbauer">
+                        </div>
+                        <div class="team-member-info">
+                           <h3>Maximilian Marxbauer</h3>
+                            <p>Staatlich geprüfter Bautechniker</p>
+                            <p><a href="mailto:m.marxbauer@ib-behringer.de">m.marxbauer@ib-behringer.de</a></p>
                         </div>
                     </div>
                     
@@ -721,7 +719,7 @@
                         </div>
                         <div class="team-member-info">
                            <h3>Mohammad Mohammad</h3>
-                            <p>Bauzeichner<br>Ausbildung zum staatlich geprüften Bautechniker<br>Unterstützung Projektabwicklung<br>GPS Vermessung</p>
+                            <p>Bauzeichner<br>Unterstützung Projektabwicklung<br>GPS Vermessung</p>
                             <p><a href="mailto:m.mohammad@ib-behringer.de">m.mohammad@ib-behringer.de</a></p>
                         </div>
                     </div>
