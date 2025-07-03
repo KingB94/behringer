@@ -315,7 +315,7 @@
         }
         .section-subtitle {
             font-size: clamp(1rem, 2vw, 1.125rem); text-align: center; color: #666;
-            margin-bottom: var(--space-lg); max-width: 700px; margin-left: auto; margin-right: auto;
+            margin-bottom: var(--space-lg); max-width: 800px; margin-left: auto; margin-right: auto;
         }
       
         /* HERO BEREICH */
@@ -346,34 +346,86 @@
             background-image: url("{{ url_for('static', filename='images/siedlungswasserwirtschaft.png') }}");
         }
         
-        /* UPDATED LEISTUNGSDETAILSEITEN CONTENT */
-        .leistung-detail-content h3 {
-            font-size: 1.5rem; color: var(--clr-secondary);
-            margin-top: var(--space-md); margin-bottom: var(--space-sm);
-            padding-bottom: var(--space-xs);
-            border-bottom: 2px solid var(--clr-primary);
-            display: inline-block;
-        }
-        .leistung-detail-content .container > h3:first-of-type {
-            margin-top: 0;
+        /* === NEUE STILE FÜR 2-SPALTEN-LISTE & ZERTIFIZIERUNG === */
+        .leistung-detail-content .intro-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--space-lg) auto;
+            font-size: 1.1rem;
+            color: #555;
         }
 
-        .leistung-detail-content ul {
-            list-style: none; padding-left: 0; margin-bottom: var(--space-md);
+        .service-list-grid {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 var(--space-lg) 0;
+            display: grid;
+            gap: var(--space-md);
         }
-        .leistung-detail-content ul li {
-            padding-left: 1.5em; position: relative;
-            margin-bottom: var(--space-xs); line-height: 1.6;
+        
+        @media (min-width: 768px) {
+            .service-list-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
-        .leistung-detail-content ul li::before {
-            content: "\f0da";
-            font-family: "Font Awesome 5 Free";
-            font-weight: 900;
+
+        .service-list-grid li {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--clr-white);
+            padding: var(--space-sm);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            transition: var(--transition-default);
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        .service-list-grid li:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm);
+            border-color: var(--clr-primary);
+        }
+
+        .service-list-grid li i {
             color: var(--clr-primary);
-            position: absolute;
-            left: 0;
-            top: 3px;
+            font-size: 1.5rem;
+            width: 30px;
+            text-align: center;
         }
+        
+        .zertifizierung-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space);
+            background: #eef7ff;
+            border: 1px solid #bde0ff;
+            border-radius: var(--radius-md);
+            padding: var(--space);
+            max-width: 800px;
+            margin: var(--space-lg) auto 0 auto;
+        }
+
+        .zertifizierung-item .icon {
+            font-size: 2.5rem;
+            color: var(--clr-primary);
+            flex-shrink: 0;
+        }
+        
+        .zertifizierung-item h4 {
+            font-size: 1.2rem;
+            margin-top: 0;
+            margin-bottom: var(--space-xs);
+        }
+
+        .zertifizierung-item p {
+            margin: 0;
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.5;
+        }
+        /* === ENDE NEUE STILE === */
 
         .beitraege-grid {
             display: grid; grid-template-columns: 1fr; gap: var(--space-md); margin-top: var(--space-lg);
@@ -406,7 +458,6 @@
         .beitrag-card h3 a:hover { color: var(--clr-gradient-start); }
         .beitrag-card p { font-size: 0.9rem; margin-bottom: var(--space-sm); flex-grow: 1; line-height: 1.6; }
         
-        /* NEUE STILE FÜR AUSKLAPPBAREN TEXT */
         .more-text { display: none; }
         .read-more-toggle {
             color: var(--clr-primary);
@@ -526,29 +577,39 @@
     </section>
 
     <main>
-        <section class="section leistung-detail-content"> 
+        <section class="section leistung-detail-content bg-alternate"> 
             <div class="container">
-                <h3>LEISTUNGSUMFANG</h3>
-                <ul>
-                    <li>Brunnenbau</li>
-                    <li>Hochbehälter</li>
-                    <li>Wasserversorgungsnetze</li>
-                    <li>Trinkwasseraufbereitung</li>
-                    <li>Kläranlagen</li>
-                    <li>Abwasserentsorgungsnetze</li>
-                    <li>Regenwasserbewirtschaftung</li>
-                    <li>Hydraulische Berechnungen</li>
-                    <li>Schmutzfrachtberechnungen</li>
-                    <li>Sanierungen</li>
+                <h2 class="section-title">Unser Leistungsumfang</h2>
+                <p class="intro-text">
+                    Wir decken das gesamte Spektrum der Siedlungswasserwirtschaft ab – von der Trinkwassergewinnung bis zur Abwasserreinigung. Unsere Planungen basieren auf Nachhaltigkeit, Effizienz und den neuesten technischen Standards.
+                </p>
+
+                <ul class="service-list-grid">
+                    <li><i class="fas fa-water"></i>Brunnenbau</li>
+                    <li><i class="fas fa-database"></i>Hochbehälter</li>
+                    <li><i class="fas fa-network-wired"></i>Wasserversorgungsnetze</li>
+                    <li><i class="fas fa-filter"></i>Trinkwasseraufbereitung</li>
+                    <li><i class="fas fa-cogs"></i>Kläranlagen</li>
+                    <li><i class="fas fa-road"></i>Abwasserentsorgungsnetze</li>
+                    <li><i class="fas fa-cloud-rain"></i>Regenwasserbewirtschaftung</li>
+                    <li><i class="fas fa-calculator"></i>Hydraulische Berechnungen</li>
+                    <li><i class="fas fa-chart-line"></i>Schmutzfrachtberechnungen</li>
+                    <li><i class="fas fa-wrench"></i>Sanierungen</li>
                 </ul>
-                <h3>ZERTIFIZIERUNGEN</h3>
-                <ul style="column-count: 1;">
-                    <li>DWA geprüfter Fachplaner Starkregenvorsorge</li>
-                </ul>
+
+                <div class="zertifizierung-item">
+                    <div class="icon"><i class="fas fa-award"></i></div>
+                    <div class="text-content">
+                        <h4>Geprüfte Kompetenz</h4>
+                        <p>Unsere Expertise wird durch offizielle Qualifikationen bestätigt:
+                           <strong>DWA geprüfter Fachplaner Starkregenvorsorge</strong>
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="beitraege" class="section bg-alternate"> 
+        <section id="beitraege" class="section"> 
             <div class="container">
                 <h2 class="section-title">Referenzprojekte Siedlungswasserwirtschaft</h2>
                 <p class="section-subtitle">Ausgewählte Projekte und Beiträge aus dem Bereich Siedlungswasserwirtschaft.</p>
