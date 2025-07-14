@@ -409,15 +409,14 @@
         }
 
         .page-hero-section+.section {
-            background: var(--clr-bg);
+            background: var(--clr-bg-alt); /* Angepasst für diese Seite */
         }
 
         .page-hero-section+.section+.section {
-            background: var(--clr-bg-alt);
+            background: var(--clr-bg);
         }
 
-        .section-title,
-        .section h2 {
+        .section-title {
             font-family: var(--font-heading);
             font-size: clamp(1.75rem, 4vw, 2.25rem);
             text-align: center;
@@ -430,7 +429,7 @@
             text-align: center;
             color: #666;
             margin-bottom: var(--space-lg);
-            max-width: 700px;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -499,41 +498,57 @@
             background-image: url("{{ url_for('static', filename='images/strassenbau.png') }}");
         }
 
-        /* Content Styles */
-        .leistung-detail-content h3 {
-            font-size: 1.5rem;
-            color: var(--clr-secondary);
-            margin-top: var(--space-md);
-            margin-bottom: var(--space-sm);
-            padding-bottom: var(--space-xs);
-            border-bottom: 2px solid var(--clr-primary);
-            display: inline-block;
+        /* === NEUE STILE FÜR 2-SPALTEN-LISTE (aus Siedlungswasserwirtschaft übernommen) === */
+        .leistung-detail-content .intro-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--space-lg) auto;
+            font-size: 1.1rem;
+            color: #555;
         }
 
-        .leistung-detail-content ul {
+        .service-list-grid {
             list-style: none;
-            padding-left: 0;
-            margin-bottom: var(--space-md);
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: var(--space-md);
+        }
+        
+        @media (min-width: 768px) {
+            .service-list-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
-        .leistung-detail-content ul li {
-            padding-left: 1.5em;
-            position: relative;
-            margin-bottom: var(--space-xs);
-            line-height: 1.6;
+        .service-list-grid li {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--clr-white);
+            padding: var(--space-sm);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            transition: var(--transition-default);
+            font-size: 1.05rem;
+            font-weight: 500;
         }
 
-        .leistung-detail-content ul li::before {
-            content: "\f0da";
-            font-family: "Font Awesome 5 Free";
-            font-weight: 900;
+        .service-list-grid li:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm);
+            border-color: var(--clr-primary);
+        }
+
+        .service-list-grid li i {
             color: var(--clr-primary);
-            position: absolute;
-            left: 0;
-            top: 1px;
+            font-size: 1.5rem;
+            width: 30px;
+            text-align: center;
         }
+        /* === ENDE NEUE STILE === */
 
-        /* --- NEUES PORTFOLIO GRID LAYOUT --- */
+        /* --- PORTFOLIO GRID LAYOUT --- */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -550,9 +565,9 @@
         }
 
         #beitraege.bg-alternate .portfolio-card {
-            background-color: var(--clr-white);
+            background-color: #fff; /* Sicherstellen, dass die Karte auf alt. Hintergrund weiß ist */
         }
-
+        
         .portfolio-card:hover {
             transform: translateY(-8px);
             box-shadow: var(--shadow-lg);
@@ -794,30 +809,31 @@
             </div>
         </section>
 
-        <section class="section leistung-detail-content">
+        <section class="section leistung-detail-content bg-alternate">
             <div class="container">
-                <h3>LEISTUNGSUMFANG</h3>
-                <ul>
-                    <li>Staatsstraßen, Gemeindeverbindungsstraßen, Stadtstraßen, Erschließungsstraßen, ländlicher
-                        Wegebau</li>
-                    <li>Ingenieurbauwerke</li>
-                    <li>Kreuzungen, Kreisverkehre, Abbiegespuren</li>
-                    <li>Präsentation der Planungsergebnisse mit 3D Fahrsimulation</li>
-                    <li>Sanierungen</li>
+                <h2 class="section-title">Unser Leistungsumfang</h2>
+                <p class="intro-text">
+                    Von der Neuplanung von Verkehrswegen bis zur Sanierung bestehender Infrastruktur – wir realisieren Straßen- und Brückenbauprojekte für öffentliche sowie private Auftraggeber.
+                </p>
+
+                <ul class="service-list-grid">
+                    <li><i class="fas fa-road"></i>Verkehrsanlagen & Straßen</li>
+                    <li><i class="fas fa-archway"></i>Ingenieurbauwerke</li>
+                    <li><i class="fas fa-tractor"></i>Ländlicher Wegebau</li>
+                    <li><i class="fas fa-draw-polygon"></i>Knotenpunktplanung</li>
+                    <li><i class="fas fa-wrench"></i>Sanierungen</li>
+                    <li><i class="fas fa-cube"></i>3D-Visualisierung & Simulation</li>
                 </ul>
             </div>
         </section>
-
-        <section id="beitraege" class="section bg-alternate">
+        <section id="beitraege" class="section">
             <div class="container">
                 <h2 class="section-title">Referenzprojekte Straßenbau & Brückenbau</h2>
                 <p class="section-subtitle">Ausgewählte Projekte und Beiträge aus dem Bereich Straßen- und Brückenbau.
                 </p>
 
-                <!-- NEUES PORTFOLIO GRID -->
                 <div class="portfolio-grid">
 
-                    <!-- PROJEKT 1: Bahnunterführung Klugham -->
                     <article class="portfolio-card">
                         <a href="{{ url_for('projekt_klugham') }}" class="portfolio-card-link">
                             <div class="portfolio-card-inner">
@@ -836,7 +852,6 @@
                         </a>
                     </article>
 
-                    <!-- PROJEKT 2: Erschließung Oberornau -->
                     <article class="portfolio-card">
                         <a href="{{ url_for('projekt_klugham') }}" class="portfolio-card-link">
                             <div class="portfolio-card-inner">
@@ -855,7 +870,6 @@
                         </a>
                     </article>
 
-                    <!-- PROJEKT 3: Überführung Mühlthal -->
                     <article class="portfolio-card">
                         <a href="{{ url_for('projekt_klugham') }}" class="portfolio-card-link">
                             <div class="portfolio-card-inner">
@@ -874,7 +888,6 @@
                         </a>
                     </article>
 
-                    <!-- PROJEKT 4: Eichkapelle Mühldorf -->
                     <article class="portfolio-card">
                         <a href="{{ url_for('projekt_klugham') }}" class="portfolio-card-link">
                             <div class="portfolio-card-inner">
@@ -893,9 +906,7 @@
                         </a>
                     </article>
 
-                    <!-- Hier können bei Bedarf weitere Projekte als <article class="portfolio-card"> eingefügt werden -->
-
-                </div>
+                    </div>
             </div>
         </section>
 
