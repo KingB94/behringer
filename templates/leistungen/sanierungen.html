@@ -252,196 +252,603 @@
             background-color: var(--clr-bg-alt);
             color: var(--clr-primary);
         }
-        .dropdown-menu li a.active-service-link { 
+
+        .dropdown-menu li a.active-service-link {
             background-color: var(--clr-bg-alt);
             color: var(--clr-primary);
             font-weight: 700;
         }
 
         @media (max-width: 992px) {
-            .header-inner { padding: var(--space-sm) var(--space); }
-            .logo img { max-height: 50px; }
+            .header-inner {
+                padding: var(--space-sm) var(--space);
+            }
+
+            .logo img {
+                max-height: 50px;
+            }
+
             .nav-list {
-                display: none; position: absolute; top: 100%; left: 0; right: 0; width: 100%;
-                flex-direction: column; background: var(--clr-white); padding: var(--space);
-                box-shadow: var(--shadow-lg); gap: 0; align-items: flex-start;
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                width: 100%;
+                flex-direction: column;
+                background: var(--clr-white);
+                padding: var(--space);
+                box-shadow: var(--shadow-lg);
+                gap: 0;
+                align-items: flex-start;
             }
+
             .nav-list.open {
-                display: flex; max-height: calc(100vh - 82px); overflow-y: auto; -webkit-overflow-scrolling: touch;
+                display: flex;
+                max-height: calc(100vh - 82px);
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
             }
-            .nav-toggle { display: block; }
+
+            .nav-toggle {
+                display: block;
+            }
+
             .nav-item.dropdown .dropdown-menu {
-                position: static; opacity: 0; visibility: visible; transform: none; box-shadow: none;
-                border: none; padding-left: var(--space); padding-top: 0; padding-bottom: 0;
-                min-width: auto; background-color: transparent; max-height: 0; overflow: hidden;
+                position: static;
+                opacity: 0;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                padding-left: var(--space);
+                padding-top: 0;
+                padding-bottom: 0;
+                min-width: auto;
+                background-color: transparent;
+                max-height: 0;
+                overflow: hidden;
                 transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, margin-top 0.3s ease-in-out, margin-bottom 0.3s ease-in-out;
             }
+
             .nav-item.dropdown .dropdown-menu.submenu-open {
-                opacity: 1; max-height: 500px; margin-top: var(--space-xs); margin-bottom: var(--space-xs);
+                opacity: 1;
+                max-height: 500px;
+                margin-top: var(--space-xs);
+                margin-bottom: var(--space-xs);
             }
-            .nav-item.dropdown .dropdown-menu li a { padding: var(--space-xs) 0; font-weight: normal; }
-            .nav-item.dropdown .dropdown-menu li a:hover { background-color: transparent; color: var(--clr-primary); }
-            .nav-list>li>a, .nav-list>li>span {
-                padding: var(--space-sm) 0; width: 100%; display: flex; justify-content: space-between; align-items: center;
+
+            .nav-item.dropdown .dropdown-menu li a {
+                padding: var(--space-xs) 0;
+                font-weight: normal;
             }
-            .nav-list>li:not(:last-child)>a, .nav-list>li:not(:last-child)>span { border-bottom: 1px solid var(--clr-border); }
-            .nav-list>li>a.btn { display: inline-block; width: auto; margin-top: var(--space-sm); padding: .75rem 1.5rem !important; }
-            .nav-list>li>a:not(.btn)::after, .nav-list>li>span::after { display: none; }
+
+            .nav-item.dropdown .dropdown-menu li a:hover {
+                background-color: transparent;
+                color: var(--clr-primary);
+            }
+
+            .nav-list>li>a,
+            .nav-list>li>span {
+                padding: var(--space-sm) 0;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .nav-list>li:not(:last-child)>a,
+            .nav-list>li:not(:last-child)>span {
+                border-bottom: 1px solid var(--clr-border);
+            }
+
+            .nav-list>li>a.btn {
+                display: inline-block;
+                width: auto;
+                margin-top: var(--space-sm);
+                padding: .75rem 1.5rem !important;
+            }
+
+            .nav-list>li>a:not(.btn)::after,
+            .nav-list>li>span::after {
+                display: none;
+            }
         }
 
         /* Button Styles */
         .btn {
-            display: inline-block; text-decoration: none; font-weight: 600; padding: 0.85rem var(--space-md);
-            border-radius: var(--radius-sm); transition: var(--transition-default); border: 1px solid transparent;
-            cursor: pointer; text-align: center;
+            display: inline-block;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.85rem var(--space-md);
+            border-radius: var(--radius-sm);
+            transition: var(--transition-default);
+            border: 1px solid transparent;
+            cursor: pointer;
+            text-align: center;
         }
-        .btn-primary { background: var(--clr-primary); color: var(--clr-white); }
-        .btn-primary:hover { background: var(--clr-gradient-start); color: var(--clr-white); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
-        .btn-secondary { background: var(--clr-white); color: var(--clr-primary); border-color: var(--clr-border); }
-        .btn-secondary:hover { background: var(--clr-bg-alt); color: var(--clr-primary); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+
+        .btn-primary {
+            background: var(--clr-primary);
+            color: var(--clr-white);
+        }
+
+        .btn-primary:hover {
+            background: var(--clr-gradient-start);
+            color: var(--clr-white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-secondary {
+            background: var(--clr-white);
+            color: var(--clr-primary);
+            border-color: var(--clr-border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--clr-bg-alt);
+            color: var(--clr-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
 
         /* 5. Sektionen Basis */
-        .section { padding: var(--space-lg) 0; }
-        @media (min-width: 768px) { .section { padding: var(--space-xl) 0; } }
-        .section.bg-alternate { background: var(--clr-bg-alt); }
-        .page-hero-section + .section { background: var(--clr-bg); }
-        .page-hero-section + .section + .section { background: var(--clr-bg-alt); }
-
-        .section-title, .section h2 {
-            font-family: var(--font-heading); font-size: clamp(1.75rem, 4vw, 2.25rem);
-            text-align: center; margin-bottom: var(--space-sm); color: var(--clr-secondary);
+        .section {
+            padding: var(--space-lg) 0;
         }
-        .section-title.text-left, .section h2.text-left { text-align: left; }
+
+        @media (min-width: 768px) {
+            .section {
+                padding: var(--space-xl) 0;
+            }
+        }
+
+        .section.bg-alternate {
+            background: var(--clr-bg-alt);
+        }
+
+        .page-hero-section+.section {
+            background: var(--clr-bg-alt);
+        }
+
+        .page-hero-section+.section+.section {
+            background: var(--clr-bg);
+        }
+
+        .section-title,
+        .section h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            text-align: center;
+            margin-bottom: var(--space-sm);
+            color: var(--clr-secondary);
+        }
+
+        .section-title.text-left,
+        .section h2.text-left {
+            text-align: left;
+        }
+
         .section-subtitle {
-            font-size: clamp(1rem, 2vw, 1.125rem); text-align: center; color: #666;
-            margin-bottom: var(--space-lg); max-width: 700px; margin-left: auto; margin-right: auto;
+            font-size: clamp(1rem, 2vw, 1.125rem);
+            text-align: center;
+            color: #666;
+            margin-bottom: var(--space-lg);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* HERO BEREICH */
         .page-hero-section {
-            position: relative; padding: var(--space-xl) 0; background-size: cover; background-position: center;
-            color: var(--clr-white); text-align: center;
+            position: relative;
+            padding: var(--space-xl) 0;
+            background-size: cover;
+            background-position: center;
+            color: var(--clr-white);
+            text-align: center;
         }
-        @media (min-width: 768px) { .page-hero-section { padding: var(--space-xl) 0; } }
+
+        @media (min-width: 768px) {
+            .page-hero-section {
+                padding: var(--space-xl) 0;
+            }
+        }
+
         .page-hero-section::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(0, 40, 70, 0.65); z-index: 1;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 40, 70, 0.65);
+            z-index: 1;
         }
-        .page-hero-section .container { position: relative; z-index: 2; }
+
+        .page-hero-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
         .page-hero-section .page-title {
-            font-size: clamp(2.25rem, 6vw, 3.5rem); color: var(--clr-white); margin-top: 0;
+            font-size: clamp(2.25rem, 6vw, 3.5rem);
+            color: var(--clr-white);
+            margin-top: 0;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
+
         .page-hero-section .breadcrumbs {
-            font-size: 1rem; color: var(--clr-white); margin-bottom: var(--space-sm);
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); text-align: center;
+            font-size: 1rem;
+            color: var(--clr-white);
+            margin-bottom: var(--space-sm);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            text-align: center;
         }
-        .page-hero-section .breadcrumbs a { color: var(--clr-white); }
-        .page-hero-section .breadcrumbs a:hover { text-decoration: underline; }
-        .page-hero-section .breadcrumbs .arrow { margin: 0 0.5em; }
-        
+
+        .page-hero-section .breadcrumbs a {
+            color: var(--clr-white);
+        }
+
+        .page-hero-section .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .page-hero-section .breadcrumbs .arrow {
+            margin: 0 0.5em;
+        }
+
         /* BACKGROUND IMAGE CLASS */
         .hero-bg-sanierungen {
             background-image: url("{{ url_for('static', filename='images/sanierungen.png') }}");
         }
 
-        /* Content Styles */
-        .leistung-detail-content h3 { 
-            font-size: 1.5rem; color: var(--clr-secondary); margin-top: var(--space-md);
-            margin-bottom: var(--space-sm); padding-bottom: var(--space-xs);
-            border-bottom: 2px solid var(--clr-primary); display: inline-block; 
+        /* === NEUE STILE FÜR 2-SPALTEN-LISTE (HINZUGEFÜGT) === */
+        .leistung-detail-content .intro-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--space-lg) auto;
+            font-size: 1.1rem;
+            color: #555;
         }
-        .leistung-detail-content ul {
-            list-style: none; padding-left: 0; margin-bottom: var(--space-md);
+
+        .service-list-grid {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 var(--space-lg) 0;
+            display: grid;
+            gap: var(--space-md);
         }
-        .leistung-detail-content ul li {
-            padding-left: 1.5em; position: relative; margin-bottom: var(--space-xs); line-height: 1.6;
+
+        @media (min-width: 768px) {
+            .service-list-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
-        .leistung-detail-content ul li::before {
-            content: "\f0da"; font-family: "Font Awesome 5 Free"; font-weight: 900; 
-            color: var(--clr-primary); position: absolute; left: 0; top: 1px; 
+
+        .service-list-grid li {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--clr-white);
+            padding: var(--space-sm);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            transition: var(--transition-default);
+            font-size: 1.05rem;
+            font-weight: 500;
         }
-        .leistung-detail-content .zertifizierung-hinweis li a {
-            color: var(--clr-primary); text-decoration: underline;
+
+        .service-list-grid li:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm);
+            border-color: var(--clr-primary);
         }
-        .leistung-detail-content .zertifizierung-hinweis li a:hover {
-            color: var(--clr-gradient-start); text-decoration: none;
+
+        .service-list-grid li i {
+            color: var(--clr-primary);
+            font-size: 1.5rem;
+            width: 30px;
+            text-align: center;
         }
-        
+
+        .zertifizierung-item {
+            display: flex;
+            align-items: flex-start; /* Angepasst für mehrzeiligen Text */
+            gap: var(--space);
+            background: #eef7ff;
+            border: 1px solid #bde0ff;
+            border-radius: var(--radius-md);
+            padding: var(--space);
+            max-width: 800px;
+            margin: var(--space-lg) auto 0 auto;
+        }
+
+        .zertifizierung-item .icon {
+            font-size: 2.5rem;
+            color: var(--clr-primary);
+            flex-shrink: 0;
+            margin-top: 5px; /* Leichte Anpassung für bessere Ausrichtung */
+        }
+
+        .zertifizierung-item h4 {
+            font-size: 1.2rem;
+            margin-top: 0;
+            margin-bottom: var(--space-xs);
+        }
+
+        .zertifizierung-item p {
+            margin: 0;
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .zertifizierung-item a {
+            font-weight: 600;
+            text-decoration: underline;
+        }
+        .zertifizierung-item a:hover {
+            text-decoration: none;
+        }
+
+        /* === ENDE NEUE STILE === */
+
         .project-article {
-            background-color: var(--clr-white); border: 1px solid var(--clr-border);
-            border-radius: var(--radius-md); padding: var(--space-md);
-            margin-bottom: var(--space-md); box-shadow: var(--shadow-sm);
+            background-color: var(--clr-white);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            margin-bottom: var(--space-md);
+            box-shadow: var(--shadow-sm);
             transition: var(--transition-default);
         }
-        .projekte-section.bg-alternate .project-article { background-color: var(--clr-white); }
-        .project-article:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
-        .project-article .entry-content-wrapper { display: flex; flex-direction: column; gap: var(--space-md); }
-        .project-article .project-image-link { display: block; width: 100%; max-width: 270px; align-self: center; }
+
+        .projekte-section.bg-alternate .project-article {
+            background-color: var(--clr-bg);
+        }
+
+        .project-article:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+        }
+
+        .project-article .entry-content-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .project-article .project-image-link {
+            display: block;
+            width: 100%;
+            max-width: 270px;
+            align-self: center;
+        }
+
         .project-article .project-image-link img {
-            width: 100%; height: 150px; object-fit: cover; border-radius: var(--radius-sm); display: block;
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: var(--radius-sm);
+            display: block;
         }
-        .project-article .project-text-content { flex-grow: 1; }
-        @media (min-width: 768px) { 
-            .project-article .entry-content-wrapper { flex-direction: row; align-items: flex-start; }
-            .project-article .project-image-link { order: 2; margin-left: var(--space-md); margin-bottom: 0; flex-shrink: 0; width: 270px; align-self: flex-start; }
-            .project-article .project-text-content { order: 1; }
+
+        .project-article .project-text-content {
+            flex-grow: 1;
         }
-        .project-article .entry-header { margin-bottom: var(--space-xs); }
-        .project-article .time { font-size: 0.8rem; color: #777; display: block; margin-bottom: 0.25rem; }
-        .project-article .entry-title { font-size: 1.4rem; margin-bottom: var(--space-sm); font-family: var(--font-heading); line-height: 1.3; }
-        .project-article .entry-title a { color: var(--clr-primary); text-decoration: none; }
-        .project-article .entry-title a:hover { color: var(--clr-gradient-start); text-decoration: underline; }
-        .project-article .excerpt-text { font-size: 0.95rem; line-height: 1.6; margin-bottom: var(--space-sm); }
-        .project-article .excerpt-text .more-link { color: var(--clr-accent); font-weight: 600; text-decoration: none; margin-left: var(--space-xs); }
-        .project-article .excerpt-text .more-link:hover { text-decoration: underline; }
+
+        @media (min-width: 768px) {
+            .project-article .entry-content-wrapper {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+
+            .project-article .project-image-link {
+                order: 2;
+                margin-left: var(--space-md);
+                margin-bottom: 0;
+                flex-shrink: 0;
+                width: 270px;
+                align-self: flex-start;
+            }
+
+            .project-article .project-text-content {
+                order: 1;
+            }
+        }
+
+        .project-article .entry-header {
+            margin-bottom: var(--space-xs);
+        }
+
+        .project-article .time {
+            font-size: 0.8rem;
+            color: #777;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .project-article .entry-title {
+            font-size: 1.4rem;
+            margin-bottom: var(--space-sm);
+            font-family: var(--font-heading);
+            line-height: 1.3;
+        }
+
+        .project-article .entry-title a {
+            color: var(--clr-primary);
+            text-decoration: none;
+        }
+
+        .project-article .entry-title a:hover {
+            color: var(--clr-gradient-start);
+            text-decoration: underline;
+        }
+
+        .project-article .excerpt-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: var(--space-sm);
+        }
+
+        .project-article .excerpt-text .more-link {
+            color: var(--clr-accent);
+            font-weight: 600;
+            text-decoration: none;
+            margin-left: var(--space-xs);
+        }
+
+        .project-article .excerpt-text .more-link:hover {
+            text-decoration: underline;
+        }
+
         .project-article .leistungen-sub {
-            font-size: 0.85rem; color: #555; margin-top: var(--space-sm);
-            padding-top: var(--space-sm); border-top: 1px solid var(--clr-border);
+            font-size: 0.85rem;
+            color: #555;
+            margin-top: var(--space-sm);
+            padding-top: var(--space-sm);
+            border-top: 1px solid var(--clr-border);
         }
-        .project-article .leistungen-sub strong { font-weight: 600; }
+
+        .project-article .leistungen-sub strong {
+            font-weight: 600;
+        }
+
         .project-article .leistungen-sub a {
-            color: var(--clr-secondary); text-decoration: none; margin-left: var(--space-xs);
-            padding: 0.1em 0.3em; border-radius: var(--radius-sm);
-            background-color: var(--clr-bg); border: 1px solid var(--clr-border);
+            color: var(--clr-secondary);
+            text-decoration: none;
+            margin-left: var(--space-xs);
+            padding: 0.1em 0.3em;
+            border-radius: var(--radius-sm);
+            background-color: var(--clr-bg-alt);
+            border: 1px solid var(--clr-border);
             transition: background-color 0.2s, color 0.2s;
         }
-        .projekte-section.bg-alternate .project-article .leistungen-sub a { background-color: #e9e9e9; }
-        .projekte-section .project-article .leistungen-sub a:hover { color: var(--clr-primary); text-decoration: none; background-color: #e0e0e0; }
-        #load-more-projects { margin: var(--space-md) auto; display: block; }
-        .hidden-project { display: none !important; }
+
+        .projekte-section.bg-alternate .project-article .leistungen-sub a {
+            background-color: var(--clr-white);
+        }
+
+        .projekte-section .project-article .leistungen-sub a:hover {
+            color: var(--clr-primary);
+            text-decoration: none;
+            background-color: #e0e0e0;
+        }
+
+        #load-more-projects {
+            margin: var(--space-md) auto;
+            display: block;
+        }
+
+        .hidden-project {
+            display: none !important;
+        }
 
         /* Footer */
         .site-footer {
-            background: var(--clr-secondary); color: var(--clr-text-light); padding: var(--space-xl) 0 var(--space-lg);
+            background: var(--clr-secondary);
+            color: var(--clr-text-light);
+            padding: var(--space-xl) 0 var(--space-lg);
         }
-        .footer-grid { display: grid; gap: var(--space-md); }
-        @media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } }
-        @media (min-width: 1024px) { .footer-grid { grid-template-columns: repeat(5, 1fr); } } 
+
+        .footer-grid {
+            display: grid;
+            gap: var(--space-md);
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
         .site-footer h4 {
-            font-family: var(--font-heading); font-weight: 600; color: var(--clr-white);
-            margin-bottom: var(--space-sm); font-size: 1.1rem;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--clr-white);
+            margin-bottom: var(--space-sm);
+            font-size: 1.1rem;
         }
-        .site-footer ul { list-style: none; padding-left: 0; margin: 0; }
-        .site-footer ul li { margin-bottom: var(--space-xs); }
-        .site-footer a { color: #ccc; text-decoration: none; }
-        .site-footer a:hover { color: var(--clr-white); text-decoration: underline; }
-        .site-footer address { font-style: normal; line-height: 1.7; color: #ccc; }
-        .site-footer address a { color: inherit; }
-        .site-footer address a:hover { color: var(--clr-white); }
+
+        .site-footer ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .site-footer ul li {
+            margin-bottom: var(--space-xs);
+        }
+
+        .site-footer a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .site-footer a:hover {
+            color: var(--clr-white);
+            text-decoration: underline;
+        }
+
+        .site-footer address {
+            font-style: normal;
+            line-height: 1.7;
+            color: #ccc;
+        }
+
+        .site-footer address a {
+            color: inherit;
+        }
+
+        .site-footer address a:hover {
+            color: var(--clr-white);
+        }
+
         .footer-socials a {
-            display: inline-block; margin-right: var(--space-sm); font-size: 1.6rem;
-            color: #ccc; text-decoration: none;
+            display: inline-block;
+            margin-right: var(--space-sm);
+            font-size: 1.6rem;
+            color: #ccc;
+            text-decoration: none;
         }
-        .footer-socials a:last-child { margin-right: 0; }
-        .footer-socials a:hover { color: var(--clr-white); text-decoration: none; }
+
+        .footer-socials a:last-child {
+            margin-right: 0;
+        }
+
+        .footer-socials a:hover {
+            color: var(--clr-white);
+            text-decoration: none;
+        }
+
         .footer-bottom {
-            text-align: center; font-size: .9rem; border-top: 1px solid rgba(255, 255, 255, .1);
-            margin-top: var(--space-lg); padding-top: var(--space-lg); color: #aaa;
+            text-align: center;
+            font-size: .9rem;
+            border-top: 1px solid rgba(255, 255, 255, .1);
+            margin-top: var(--space-lg);
+            padding-top: var(--space-lg);
+            color: #aaa;
         }
-        .footer-bottom p { margin-bottom: var(--space-xs); }
-        .footer-bottom a { color: #ccc; }
-        .footer-bottom a:hover { color: var(--clr-white); }
+
+        .footer-bottom p {
+            margin-bottom: var(--space-xs);
+        }
+
+        .footer-bottom a {
+            color: #ccc;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--clr-white);
+        }
     </style>
 </head>
 
@@ -449,7 +856,8 @@
     <header class="site-header">
         <div class="container header-inner">
             <a href="{{ url_for('index') }}" class="logo">
-                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Behringer & Partner Logo" loading="lazy">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Behringer & Partner Logo"
+                    loading="lazy">
             </a>
             <nav class="main-nav">
                 <ul class="nav-list">
@@ -493,53 +901,72 @@
                     <span>Sanierungen</span>
                 </div>
                 <h1 class="page-title">Sanierungen</h1>
-                <p class="section-subtitle" style="text-align: center; color: var(--clr-white); text-shadow: 1px 1px 3px rgba(0,0,0,0.5); max-width: 800px; margin-bottom: 0;">
-                    Wir erhalten Werte und schaffen Neues – nachhaltig und zukunftssicher.
+                <p class="section-subtitle"
+                    style="text-align: center; color: var(--clr-white); text-shadow: 1px 1px 3px rgba(0,0,0,0.5); max-width: 800px; margin-bottom: 0;">
+                    Wir erhalten Werte und sichern die Zukunft Ihrer Infrastruktur.
                 </p>
             </div>
         </section>
 
-        <section class="section leistung-detail-content">
+        <section class="section leistung-detail-content bg-alternate">
             <div class="container">
-                <h3>LEISTUNGSUMFANG</h3>
-                <ul>
-                    <li>Kanal-, Wasserleitungs- und Straßenbausanierungskonzepte (baulicher und betrieblicher Zustand, hydraulische Leistungsfähigkeit, Zustandserfassung)</li>
-                    <li>Kanalsanierung</li>
-                    <li>Straßensanierung</li>
-                    <li>Sanierung von Trinkwasserhochbehältern</li>
-                    <li>Sanierung von Ingenieurbauwerken</li>
+                <h2 class="section-title">Unser Leistungsumfang</h2>
+                <p class="intro-text">
+                    Basierend auf detaillierten Zustandserfassungen und hydraulischen Analysen entwickeln wir maßgeschneiderte Konzepte zur Sanierung Ihrer Infrastruktur – von Kanälen über Wasserleitungen bis hin zu kompletten Ingenieurbauwerken.
+                </p>
+
+                <ul class="service-list-grid">
+                    <li><i class="fas fa-tasks"></i>Sanierungskonzepte</li>
+                    <li><i class="fas fa-industry"></i>Kanalsanierung</li>
+                    <li><i class="fas fa-road"></i>Straßensanierung</li>
+                    <li><i class="fas fa-database"></i>Sanierung von Hochbehältern</li>
+                    <li><i class="fas fa-archway"></i>Sanierung von Ingenieurbauwerken</li>
+                    <li><i class="fas fa-shield-alt"></i>Betonschutz & -instandsetzung</li>
                 </ul>
 
-                <h3>ZERTIFIZIERUNGEN</h3>
-                <ul class="zertifizierung-hinweis">
-                    <li><a href="http://zks-berater.de/pruefungsordnung.html" target="_blank" rel="noopener">Zertifizierter Kanalsanierungsberater</a></li>
-                    <li><a href="http://www.abz-augsburg.de/index.php?id=179" target="_blank" rel="noopener">S.I.V.V.-Schein des Deutschen Beton- und Bautechnik-Verein E.V. Berlin</a></li>
-                </ul>
+                <div class="zertifizierung-item">
+                    <div class="icon"><i class="fas fa-award"></i></div>
+                    <div class="text-content">
+                        <h4>Geprüfte Kompetenz</h4>
+                        <p>
+                            Unsere Expertise wird durch offizielle Qualifikationen wie den <strong>Zertifizierten Kanalsanierungsberater</strong> und den <strong>S.I.V.V.-Schein</strong> für Betonschutz und -instandsetzung untermauert.
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
-
-        <section class="section projekte-section bg-alternate">
+        <section class="section projekte-section">
             <div class="container">
                 <h2 class="section-title text-left">Projekte & Referenzen zu Sanierungen</h2>
-                
+
                 <div class="project-list">
                     <article id="post-2195" class="project-article">
                         <div class="entry-content-wrapper">
-                            <a href="https://www.ib-behringer.de/projekt/sanierung-ludwig-der-bayer-strasse/" class="project-image-link" target="_blank" rel="noopener">
-                                <img width="270" height="150" src="https://www.ib-behringer.de/wp/wp-content/uploads/2019/12/IMG_0850-e1576223551978-270x150.jpg" alt="Sanierung Ludwig-der-Bayer-Straße" loading="lazy">
+                            <a href="https://www.ib-behringer.de/projekt/sanierung-ludwig-der-bayer-strasse/"
+                                class="project-image-link" target="_blank" rel="noopener">
+                                <img width="270" height="150"
+                                    src="https://www.ib-behringer.de/wp/wp-content/uploads/2019/12/IMG_0850-e1576223551978-270x150.jpg"
+                                    alt="Sanierung Ludwig-der-Bayer-Straße" loading="lazy">
                             </a>
                             <div class="project-text-content">
                                 <header class="entry-header">
                                     <div class="time">13.12.2019</div>
-                                    <h3 class="entry-title"><a href="https://www.ib-behringer.de/projekt/sanierung-ludwig-der-bayer-strasse/" rel="bookmark" target="_blank" rel="noopener">Sanierung Ludwig-der-Bayer-Straße</a></h3>
+                                    <h3 class="entry-title"><a
+                                            href="https://www.ib-behringer.de/projekt/sanierung-ludwig-der-bayer-strasse/"
+                                            rel="bookmark" target="_blank" rel="noopener">Sanierung
+                                            Ludwig-der-Bayer-Straße</a></h3>
                                 </header>
                                 <p class="excerpt-text">
-                                    In der Gemeinde Mettenheim erfolgt aktuell der erste Bauabschnitt für die Sanierung der Ludwig-der-Bayer-Straße in Metteheim-Hart. Neben der Sanierung der Kanalisation sowohl durch Innensanierung als auch durch Neubau, wird die komplette Wasserversorgung ern...
-                                    <a href="https://www.ib-behringer.de/projekt/sanierung-ludwig-der-bayer-strasse/" class="more-link" target="_blank" rel="noopener">(mehr)</a>
+                                    In der Gemeinde Mettenheim erfolgt aktuell der erste Bauabschnitt für die Sanierung
+                                    der Ludwig-der-Bayer-Straße in Metteheim-Hart. Neben der Sanierung der Kanalisation
+                                    sowohl durch Innensanierung als auch durch Neubau, wird die komplette
+                                    Wasserversorgung ern...
+                                    <a href="https://www.ib-behringer.de/projekt/sanierung-ludwig-der-bayer-strasse/"
+                                        class="more-link" target="_blank" rel="noopener">(mehr)</a>
                                 </p>
                                 <div class="leistungen-sub">
-                                    <strong>Leistungen:</strong> 
-                                    <a href="{{ url_for('sanierungen') }}">Sanierungen</a> 
+                                    <strong>Leistungen:</strong>
+                                    <a href="{{ url_for('sanierungen') }}">Sanierungen</a>
                                     <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>
                                     <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
                                 </div>
@@ -549,17 +976,27 @@
 
                     <article id="post-1709" class="project-article">
                         <div class="entry-content-wrapper">
-                            <a href="https://www.ib-behringer.de/projekt/erneuerung-gvs-oberhofen/" class="project-image-link" target="_blank" rel="noopener">
-                                <img width="270" height="150" src="https://www.ib-behringer.de/wp/wp-content/uploads/2018/05/CIMG2346-270x150.jpg" alt="Erneuerung GVS Oberhofen" loading="lazy">
+                            <a href="https://www.ib-behringer.de/projekt/erneuerung-gvs-oberhofen/"
+                                class="project-image-link" target="_blank" rel="noopener">
+                                <img width="270" height="150"
+                                    src="https://www.ib-behringer.de/wp/wp-content/uploads/2018/05/CIMG2346-270x150.jpg"
+                                    alt="Erneuerung GVS Oberhofen" loading="lazy">
                             </a>
                             <div class="project-text-content">
                                 <header class="entry-header">
                                     <div class="time">20.5.2018</div>
-                                    <h3 class="entry-title"><a href="https://www.ib-behringer.de/projekt/erneuerung-gvs-oberhofen/" rel="bookmark" target="_blank" rel="noopener">Erneuerung GVS Oberhofen</a></h3>
+                                    <h3 class="entry-title"><a
+                                            href="https://www.ib-behringer.de/projekt/erneuerung-gvs-oberhofen/"
+                                            rel="bookmark" target="_blank" rel="noopener">Erneuerung GVS Oberhofen</a>
+                                    </h3>
                                 </header>
                                 <p class="excerpt-text">
-                                    Die Gemeindeverbindungsstraße Oberhofen in der Gemeinde Mettenheim wurde auf einer Länge von ca. 1.500 m erneuert. Auf einer Länge von ca. 1.300 m erfolgt die Erneuerung im Hocheinbau. Auf der restlichen Länge wird auf Grund diverser Höhenzwangspunkte ein...
-                                    <a href="https://www.ib-behringer.de/projekt/erneuerung-gvs-oberhofen/" class="more-link" target="_blank" rel="noopener">(mehr)</a>
+                                    Die Gemeindeverbindungsstraße Oberhofen in der Gemeinde Mettenheim wurde auf einer
+                                    Länge von ca. 1.500 m erneuert. Auf einer Länge von ca. 1.300 m erfolgt die
+                                    Erneuerung im Hocheinbau. Auf der restlichen Länge wird auf Grund diverser
+                                    Höhenzwangspunkte ein...
+                                    <a href="https://www.ib-behringer.de/projekt/erneuerung-gvs-oberhofen/"
+                                        class="more-link" target="_blank" rel="noopener">(mehr)</a>
                                 </p>
                                 <div class="leistungen-sub">
                                     <strong>Leistungen:</strong>
@@ -570,169 +1007,6 @@
                         </div>
                     </article>
 
-                    <article id="post-1542" class="project-article hidden-project">
-                        <div class="entry-content-wrapper">
-                            <a href="https://www.ib-behringer.de/projekt/neugestaltung-dorfplatz-in-oberneukirchen/" class="project-image-link" target="_blank" rel="noopener">
-                                <img width="270" height="150" src="https://www.ib-behringer.de/wp/wp-content/uploads/2017/11/004-2-270x150.jpg" alt="Neugestaltung Dorfplatz in Oberneukirchen" loading="lazy">
-                            </a>
-                            <div class="project-text-content">
-                                <header class="entry-header">
-                                    <div class="time">24.11.2017</div>
-                                    <h3 class="entry-title"><a href="https://www.ib-behringer.de/projekt/neugestaltung-dorfplatz-in-oberneukirchen/" rel="bookmark" target="_blank" rel="noopener">Neugestaltung Dorfplatz in Oberneukirchen</a></h3>
-                                </header>
-                                <p class="excerpt-text">
-                                    Der zentrale Platz der Gemeinde Oberneukirchen welcher eingerahmt wird von der Staatsstraße 2355 und der Kreisstraße MÜ 14 wurde bisher lediglich als Parkplatz genutzt. Auf Grund des baulichen Zustand des vorhandenen Parkplatzes wurde ein Neubau von der Gem...
-                                    <a href="https://www.ib-behringer.de/projekt/neugestaltung-dorfplatz-in-oberneukirchen/" class="more-link" target="_blank" rel="noopener">(mehr)</a>
-                                </p>
-                                <div class="leistungen-sub">
-                                    <strong>Leistungen:</strong>
-                                    <a href="{{ url_for('sanierungen') }}">Sanierungen</a>
-                                    <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article id="post-730" class="project-article hidden-project">
-                        <div class="entry-content-wrapper">
-                           <a href="https://www.ib-behringer.de/projekt/ausbau-der-kreisstrasse-mue-6/" class="project-image-link" target="_blank" rel="noopener">
-                                <img width="270" height="150" src="https://www.ib-behringer.de/wp/wp-content/uploads/2016/08/IMG_0879-270x150.jpg" alt="Ausbau der Kreisstraße Mü 6" loading="lazy">
-                            </a>
-                            <div class="project-text-content">
-                                <header class="entry-header">
-                                    <div class="time">12.8.2016</div>
-                                    <h3 class="entry-title"><a href="https://www.ib-behringer.de/projekt/ausbau-der-kreisstrasse-mue-6/" rel="bookmark" target="_blank" rel="noopener">Ausbau der Kreisstraße Mü 6</a></h3>
-                                </header>
-                                <p class="excerpt-text">
-                                    Der Landkreis Mühldorf erneuert die Kreisstraße Mü 6 im Bereich der Schandelbachbrücke bis zur Abzweigung der GVS Lohkirchen auf einer Gesamtlänge von ca. 1.000 m im Vollausbau. Dabei wird ein Straßenquerschnitt mit 6,50 m Asphalt und beidseitig angeordn...
-                                    <a href="https://www.ib-behringer.de/projekt/ausbau-der-kreisstrasse-mue-6/" class="more-link" target="_blank" rel="noopener">(mehr)</a>
-                                </p>
-                                <div class="leistungen-sub">
-                                    <strong>Leistungen:</strong>
-                                    <a href="{{ url_for('sanierungen') }}">Sanierungen</a>
-                                    <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                    
-                    <article id="post-704" class="project-article hidden-project">
-                        <div class="entry-content-wrapper">
-                            <a href="https://www.ib-behringer.de/projekt/sanierung-ledererstrasse-muehldorf/" class="project-image-link" target="_blank" rel="noopener">
-                                <img width="270" height="150" src="https://www.ib-behringer.de/wp/wp-content/uploads/2016/07/IMG_3101-270x150.jpg" alt="Sanierung Ledererstraße Mühldorf a. Inn" loading="lazy">
-                            </a>
-                            <div class="project-text-content">
-                                <header class="entry-header">
-                                    <div class="time">28.7.2016</div>
-                                    <h3 class="entry-title"><a href="https://www.ib-behringer.de/projekt/sanierung-ledererstrasse-muehldorf/" rel="bookmark" target="_blank" rel="noopener">Sanierung Ledererstraße Mühldorf a. Inn</a></h3>
-                                </header>
-                                <p class="excerpt-text">
-                                    Die Seitenstraße zum Stadtplatz Mühldorf weißt eine Gesamtlänge von ca. 160 m auf. Im Zuge der Sanierungen steht vorallem die städtebauliche Gestaltung im Vordergrund. Weiter wurde großer Augenmerk auf die Barierefreiheit gelegt. Im Jahr 2015 wurde ein e...
-                                    <a href="https://www.ib-behringer.de/projekt/sanierung-ledererstrasse-muehldorf/" class="more-link" target="_blank" rel="noopener">(mehr)</a>
-                                </p>
-                                <div class="leistungen-sub">
-                                    <strong>Leistungen:</strong>
-                                    <a href="{{ url_for('sanierungen') }}">Sanierungen</a>
-                                    <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>
-                                    <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article id="post-769" class="project-article hidden-project">
-                        <div class="entry-content-wrapper">
-                            <a href="https://www.ib-behringer.de/projekt/erneuerung-schmutz-und-regenwasserbeseitigung-reichertsheim/" class="project-image-link" target="_blank" rel="noopener">
-                                <img width="270" height="150" src="https://www.ib-behringer.de/wp/wp-content/uploads/2016/05/CIMG0650-270x150.jpg" alt="Erneuerung Schmutz- und Regenwasserbeseitigung Reichertsheim" loading="lazy">
-                            </a>
-                            <div class="project-text-content">
-                                <header class="entry-header">
-                                    <div class="time">20.5.2016</div>
-                                    <h3 class="entry-title"><a href="https://www.ib-behringer.de/projekt/erneuerung-schmutz-und-regenwasserbeseitigung-reichertsheim/" rel="bookmark" target="_blank" rel="noopener">Erneuerung Schmutz- und Regenwasserbeseitigung Reichertsheim</a></h3>
-                                </header>
-                                <p class="excerpt-text">
-                                   Im Rahmen der Planungen wurde der komplette Bestand der Regenwasserkanalisation im Rahmen einer hydraulischen Berechnung überprüft und die notwendigen Maßnahmen, welche langfristig zu treffen sind ermittelt. Weiter wurde ein komplettes Sanierungskonzept der...
-                                    <a href="https://www.ib-behringer.de/projekt/erneuerung-schmutz-und-regenwasserbeseitigung-reichertsheim/" class="more-link" target="_blank" rel="noopener">(mehr)</a>
-                                </p>
-                                <div class="leistungen-sub">
-                                    <strong>Leistungen:</strong>
-                                    <a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a>
-                                    <a href="{{ url_for('sanierungen') }}">Sanierungen</a>
-                                    <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article id="post-450" class="project-article hidden-project">
-                        <div class="entry-content-wrapper">
-                            <a href="https://www.ib-behringer.de/projekt/kanalnetzberechnung-des-wasserburger-innenstadtbereichs/" class="project-image-link" target="_blank" rel="noopener">
-                                <img width="270" height="150" src="https://www.ib-behringer.de/wp/wp-content/uploads/2016/02/B1_AW325_EZG_web-270x150.jpg" alt="Kanalnetzberechnung des Wasserburger Innenstadtbereichs" loading="lazy">
-                            </a>
-                            <div class="project-text-content">
-                                <header class="entry-header">
-                                    <div class="time">02.2.2016</div>
-                                    <h3 class="entry-title"><a href="https://www.ib-behringer.de/projekt/kanalnetzberechnung-des-wasserburger-innenstadtbereichs/" rel="bookmark" target="_blank" rel="noopener">Kanalnetzberechnung des Wasserburger Innenstadtbereichs</a></h3>
-                                </header>
-                                <p class="excerpt-text">
-                                    Ziel der im Jahr 2015 durchgeführten hydrodynamischen Kanalnetzberechnung war die Überprüfung der hydraulischen Leistungsfähigkeit der Mischwasserkanalisation im Innenstadtbereich der Stadt Wasserburg a. Inn. In einem weiteren Schritt wurden die in der Zuk...
-                                    <a href="https://www.ib-behringer.de/projekt/kanalnetzberechnung-des-wasserburger-innenstadtbereichs/" class="more-link" target="_blank" rel="noopener">(mehr)</a>
-                                </p>
-                                <div class="leistungen-sub">
-                                    <strong>Leistungen:</strong>
-                                    <a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a>
-                                    <a href="{{ url_for('sanierungen') }}">Sanierungen</a>
-                                    <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article id="post-436" class="project-article hidden-project">
-                        <div class="entry-content-wrapper">
-                            <a href="https://www.ib-behringer.de/projekt/innensanierung-von-wellstahldurchlaessen-mit-dem-wickelrohrsystem/" class="project-image-link" target="_blank" rel="noopener">
-                                <img width="270" height="150" src="https://www.ib-behringer.de/wp/wp-content/uploads/2016/02/IMG_0042_web-270x150.jpg" alt="Innensanierung von Wellstahldurchlässen" loading="lazy">
-                            </a>
-                            <div class="project-text-content">
-                                <header class="entry-header">
-                                    <div class="time">01.2.2016</div>
-                                    <h3 class="entry-title"><a href="https://www.ib-behringer.de/projekt/innensanierung-von-wellstahldurchlaessen-mit-dem-wickelrohrsystem/" rel="bookmark" target="_blank" rel="noopener">Innensanierung von Wellstahldurchlässen mit dem Wickelrohrsystem</a></h3>
-                                </header>
-                                <p class="excerpt-text">
-                                    Im Auftrag des Landratsamtes Altötting wurden an der AÖ2 und AÖ 15 insgesamt 2 Wellstahldurchlässe mit dem Wickelrohrsystem saniert. Dabei wird das Wickelrohr aus PVC-HI in das Altrohr eingebaut und dann der Ringraum verdämmt. Vorteil dieser Sanierung ist...
-                                    <a href="https://www.ib-behringer.de/projekt/innensanierung-von-wellstahldurchlaessen-mit-dem-wickelrohrsystem/" class="more-link" target="_blank" rel="noopener">(mehr)</a>
-                                </p>
-                                <div class="leistungen-sub">
-                                    <strong>Leistungen:</strong>
-                                    <a href="{{ url_for('sanierungen') }}">Sanierungen</a>
-                                    <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                    
-                    <article id="post-394" class="project-article hidden-project">
-                        <div class="entry-content-wrapper">
-                            <a href="https://www.ib-behringer.de/projekt/innensanierung-des-trinkwasserhochbehaelters-waldkraiburg/" class="project-image-link" target="_blank" rel="noopener">
-                                <img width="270" height="150" src="https://www.ib-behringer.de/wp/wp-content/uploads/2016/02/WV1-I_p_01_web-270x150.jpg" alt="Innensanierung des Trinkwasserhochbehälters Waldkraiburg" loading="lazy">
-                            </a>
-                            <div class="project-text-content">
-                                <header class="entry-header">
-                                    <div class="time">01.2.2016</div>
-                                    <h3 class="entry-title"><a href="https://www.ib-behringer.de/projekt/innensanierung-des-trinkwasserhochbehaelters-waldkraiburg/" rel="bookmark" target="_blank" rel="noopener">Innensanierung des Trinkwasserhochbehälters Waldkraiburg</a></h3>
-                                </header>
-                                <p class="excerpt-text">
-                                   Der in den Jahren 1965 und 1975 erbaute Trinkwasserhochbehälter mit insgesamt 4 Kammern und einem Gesamtspeichervolumen von ca. 8.000 m³ wurde in den Jahren 2013 bis 2014 komplett innensaniert. Die Sanierung umfasste die komplette Erneuerung des Rohrsystems,...
-                                    <a href="https://www.ib-behringer.de/projekt/innensanierung-des-trinkwasserhochbehaelters-waldkraiburg/" class="more-link" target="_blank" rel="noopener">(mehr)</a>
-                                </p>
-                                <div class="leistungen-sub">
-                                    <strong>Leistungen:</strong>
-                                    <a href="{{ url_for('sanierungen') }}">Sanierungen</a>
-                                    <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
                 </div>
                 <button id="load-more-projects" class="btn btn-secondary" style="display: none;"></button>
             </div>
@@ -777,15 +1051,15 @@
             <div>
                 <h4>Rechtliches</h4>
                 <ul>
-                    <li><a href="{{ url_for('impressum') }}">Impressum</a></li> 
+                    <li><a href="{{ url_for('impressum') }}">Impressum</a></li>
                     <li><a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></li>
                 </ul>
             </div>
             <div>
                 <h4>Folgen Sie uns</h4>
                 <div class="footer-socials">
-                    <a href="https://www.instagram.com/ibb_mue/" target="_blank" rel="noopener" aria-label="Instagram"><i
-                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/ibb_mue/" target="_blank" rel="noopener"
+                        aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 </div>
                 <h4 style="margin-top: 1.5rem;">Wir unterstützen</h4>
                 <p style="margin-bottom: var(--space-xs); line-height: 1.4;">
@@ -798,8 +1072,9 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© <span id="current-year">2024</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
-            <p><a href="{{ url_for('impressum') }}">Impressum</a> | <a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></p>
+            <p>© <span id="current-year">2025</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
+            <p><a href="{{ url_for('impressum') }}">Impressum</a> | <a
+                    href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></p>
         </div>
     </footer>
 
@@ -824,9 +1099,9 @@
             const dropdownToggles = navList ? navList.querySelectorAll('.nav-item.dropdown > a, .nav-item.dropdown > span') : [];
             dropdownToggles.forEach(toggle => {
                 toggle.addEventListener('click', function (event) {
-                    if (navToggle && window.getComputedStyle(navToggle).display !== 'none') { 
+                    if (navToggle && window.getComputedStyle(navToggle).display !== 'none') {
                         const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
-                        if (hasArrow) { 
+                        if (hasArrow) {
                             event.preventDefault();
                             const submenu = this.parentElement.querySelector('.dropdown-menu');
                             if (submenu) submenu.classList.toggle('submenu-open');
@@ -835,18 +1110,18 @@
                     }
                 });
             });
-            
+
             document.querySelectorAll('a[href]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     const hrefAttribute = this.getAttribute('href');
                     const isMobileView = navToggle && window.getComputedStyle(navToggle).display !== 'none';
                     let isMobileDropdownToggleItself = false;
-                    
+
                     if (isMobileView && this.parentElement && this.parentElement.classList.contains('dropdown') && this.closest('.nav-list')) {
-                         const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
-                         if(hasArrow) {
+                        const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
+                        if (hasArrow) {
                             isMobileDropdownToggleItself = true;
-                         }
+                        }
                     }
 
                     if (hrefAttribute.startsWith('#') && hrefAttribute.length > 1) {
@@ -860,13 +1135,13 @@
                                 window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
                             }
                         }
-                    } else if (hrefAttribute === '#') { 
+                    } else if (hrefAttribute === '#') {
                         e.preventDefault();
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                     }
 
                     if (isMobileView && navList && navList.classList.contains('open') && !isMobileDropdownToggleItself) {
-                        if (!hrefAttribute.startsWith('#') || (hrefAttribute.startsWith('#') && document.querySelector(hrefAttribute))) { 
+                        if (!hrefAttribute.startsWith('#') || (hrefAttribute.startsWith('#') && document.querySelector(hrefAttribute))) {
                             navList.classList.remove('open');
                             if (navToggle) {
                                 navToggle.setAttribute('aria-expanded', 'false');
@@ -889,9 +1164,9 @@
 
             if (loadMoreButton && projectListContainer) {
                 const hiddenProjects = Array.from(projectListContainer.querySelectorAll('.project-article.hidden-project'));
-                
+
                 if (hiddenProjects.length > 0) {
-                    loadMoreButton.style.display = 'block'; 
+                    loadMoreButton.style.display = 'block';
                     loadMoreButton.textContent = `Weitere ${hiddenProjects.length} Projekte anzeigen`;
                     loadMoreButton.addEventListener('click', () => {
                         hiddenProjects.forEach(project => {
@@ -900,10 +1175,11 @@
                         loadMoreButton.style.display = 'none';
                     });
                 } else {
-                     loadMoreButton.style.display = 'none';
+                    loadMoreButton.style.display = 'none';
                 }
             }
         });
     </script>
 </body>
+
 </html>
