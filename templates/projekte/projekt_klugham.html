@@ -53,7 +53,7 @@
         .btn-primary { background: var(--clr-primary); color: var(--clr-white); }
         .btn-primary:hover { background: var(--clr-gradient-start); color: var(--clr-white); }
         
-        /* Header & Footer (vereinfacht) */
+        /* Header (vereinfacht) */
         .site-header { background: var(--clr-white); box-shadow: var(--shadow-md); position: sticky; top: 0; z-index: 1000; }
         .header-inner { display: flex; align-items: center; justify-content: space-between; padding: var(--space-sm) var(--space); }
         .logo img { display: block; max-height: 80px; width: auto; }
@@ -61,14 +61,7 @@
         .nav-list { list-style: none; display: flex; gap: var(--space-md); align-items: center; }
         .nav-list>li>a { font-weight: 600; color: var(--clr-secondary); text-decoration: none; }
         .nav-toggle { display: none; } /* Vereinfacht für dieses Beispiel */
-        .site-footer { background: var(--clr-secondary); color: #f1f1f1; padding: var(--space-xl) 0 var(--space-lg); }
-        .footer-grid { display: grid; gap: var(--space-md); grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
-        .site-footer h4 { color: var(--clr-white); }
-        .site-footer ul { list-style: none; }
-        .site-footer a { color: #ccc; }
-        .site-footer a:hover { color: var(--clr-white); }
-        .footer-bottom { text-align: center; font-size: .9rem; border-top: 1px solid rgba(255,255,255,.1); margin-top: var(--space-lg); padding-top: var(--space-lg); color: #aaa; }
-        
+
         /* PROJEKT-DETAIL-LAYOUT */
         .project-detail-wrapper {
             padding: var(--space-xl) 0;
@@ -76,52 +69,52 @@
 
         .project-detail-layout {
             display: grid;
-            grid-template-columns: 1fr; /* Mobile: eine Spalte */
+            grid-template-columns: 1fr;
             gap: var(--space-lg);
-            align-items: stretch; /* Wichtig: Sorgt dafür, dass beide Spalten gleich hoch sind */
+            align-items: stretch;
         }
 
         @media(min-width: 992px) {
             .project-detail-layout {
-                grid-template-columns: 1.2fr 1fr; /* Desktop: Bild etwas breiter als Text */
+                grid-template-columns: 1.2fr 1fr;
                 gap: var(--space-xl);
             }
         }
         
         .project-main-image {
             border-radius: var(--radius-lg);
-            overflow: hidden; /* Stellt sicher, dass das Bild innerhalb der runden Ecken bleibt */
+            overflow: hidden;
             box-shadow: var(--shadow-lg);
         }
 
         .project-main-image img {
             width: 100%;
-            height: 100%; /* NEU: Bild füllt die volle Höhe seines Containers */
-            object-fit: cover; /* NEU: Bild wird zugeschnitten, nicht verzerrt */
+            height: 100%;
+            object-fit: cover;
         }
 
         .project-main-details {
-            display: flex; /* NEU: Macht die Box zu einem Flex-Container */
-            flex-direction: column; /* NEU: Ordnet die Elemente vertikal an */
-            justify-content: center; /* NEU: Zentriert den Inhalt vertikal, falls Platz übrig ist */
-            padding: var(--space-md); /* Optional: Etwas Innenabstand */
-            border: 1px solid var(--clr-border); /* Optional: Dezenter Rahmen */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: var(--space-md);
+            border: 1px solid var(--clr-border);
             border-radius: var(--radius-lg);
         }
 
         .project-main-details h1 {
-            font-size: clamp(1.75rem, 4vw, 2.25rem); /* GEÄNDERT: Etwas kleiner für bessere Balance */
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
             color: var(--clr-primary);
             line-height: 1.2;
             margin-bottom: var(--space-md);
         }
         
         .project-detail-item {
-            margin-bottom: var(--space-md); /* GEÄNDERT: Etwas weniger Abstand */
+            margin-bottom: var(--space-md);
         }
 
         .project-detail-item h3 {
-            font-size: 0.9rem; /* GEÄNDERT: Etwas kleiner */
+            font-size: 0.9rem;
             font-weight: 700;
             color: var(--clr-secondary);
             text-transform: uppercase;
@@ -133,30 +126,17 @@
 
         .project-detail-item p,
         .project-detail-item ul {
-            font-size: 0.95rem; /* GEÄNDERT: Etwas kleiner */
+            font-size: 0.95rem;
             color: #555;
             margin: 0;
             padding: 0;
         }
 
-        .project-detail-item ul {
-            list-style: none;
-        }
-        .project-detail-item ul li {
-            padding-left: 1.2em;
-            position: relative;
-            margin-bottom: 0.3rem;
-        }
-        .project-detail-item ul li::before {
-            content: '■';
-            position: absolute;
-            left: 0;
-            color: var(--clr-primary);
-            font-size: 0.8em;
-            top: 5px; /* Angepasst für bessere vertikale Ausrichtung */
-        }
+        .project-detail-item ul { list-style: none; }
+        .project-detail-item ul li { padding-left: 1.2em; position: relative; margin-bottom: 0.3rem; }
+        .project-detail-item ul li::before { content: '■'; position: absolute; left: 0; color: var(--clr-primary); font-size: 0.8em; top: 5px; }
 
-        /* Galerie Sektion */
+        /* Slideshow Sektion */
         .project-gallery-wrapper {
             padding-top: var(--space-xl);
             margin-top: var(--space-xl);
@@ -167,22 +147,106 @@
             font-size: clamp(1.5rem, 4vw, 2.25rem);
             margin-bottom: var(--space-lg);
         }
-        .project-gallery-grid {
+
+        .slideshow-container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+        }
+
+        .mySlides {
+            display: none;
+            border-radius: var(--radius-md);
+            overflow:hidden;
+        }
+        .mySlides img {
+            vertical-align: middle;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .next { right: 0; border-radius: 3px 0 0 3px; }
+        .prev:hover, .next:hover { background-color: rgba(0,0,0,0.8); }
+
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+            background-color: rgba(0,0,0,0.5);
+            border-radius: 0 0 var(--radius-sm) 0;
+        }
+
+        .thumbnail-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .thumbnail {
+            cursor: pointer;
+            height: 80px;
+            width: auto;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+            border-radius: var(--radius-sm);
+        }
+        .active-thumbnail, .thumbnail:hover {
+            opacity: 1;
+        }
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+        @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
+        
+        /* Vollständiger Footer */
+        .site-footer {
+            background: var(--clr-secondary);
+            color: var(--clr-text-light);
+            padding: var(--space-xl) 0 var(--space-lg);
+        }
+        .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: var(--space-md);
         }
-        .gallery-image-placeholder {
-            width: 100%;
-            aspect-ratio: 4 / 3;
-            background-color: var(--clr-bg-alt);
-            border: 1px dashed var(--clr-border);
-            border-radius: var(--radius-md);
-            display: grid;
-            place-items: center;
-            color: #999;
-            font-family: var(--font-sans);
-        }
+        @media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } }
+        @media (min-width: 1024px) { .footer-grid { grid-template-columns: repeat(5, 1fr); } }
+        .site-footer h4 { font-family: var(--font-heading); font-weight: 600; color: var(--clr-white); margin-bottom: var(--space-sm); font-size: 1.1rem; }
+        .site-footer ul { list-style: none; padding-left: 0; margin: 0; }
+        .site-footer ul li { margin-bottom: var(--space-xs); }
+        .site-footer a { color: #ccc; text-decoration: none; }
+        .site-footer a:hover { color: var(--clr-white); text-decoration: underline; }
+        .site-footer address { font-style: normal; line-height: 1.7; color: #ccc; }
+        .site-footer address a { color: inherit; }
+        .site-footer address a:hover { color: var(--clr-white); }
+        .footer-socials a { display: inline-block; margin-right: var(--space-sm); font-size: 1.6rem; color: #ccc; text-decoration: none; }
+        .footer-socials a:last-child { margin-right: 0; }
+        .footer-socials a:hover { color: var(--clr-white); text-decoration: none; }
+        .footer-bottom { text-align: center; font-size: .9rem; border-top: 1px solid rgba(255, 255, 255, .1); margin-top: var(--space-lg); padding-top: var(--space-lg); color: #aaa; }
+        .footer-bottom p { margin-bottom: var(--space-xs); }
+        .footer-bottom a { color: #ccc; }
+        .footer-bottom a:hover { color: var(--clr-white); }
     </style>
 </head>
 
@@ -207,16 +271,14 @@
         <div class="container project-detail-wrapper">
             <div class="project-detail-layout">
                 <div class="project-main-image">
-                    <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2024/10/003-270x150.jpg" alt="Hauptbild der Bahnunterführung Klugham">
+                    <img src="{{ url_for('static', filename='images/referenzen/klugham/klugham1.jpg') }}" alt="Hauptbild der Bahnunterführung Klugham">
                 </div>
                 <div class="project-main-details">
                     <h1>Bahnunterführung Klugham</h1>
-
                     <div class="project-detail-item">
                         <h3>Auftraggeber</h3>
                         <p>Gemeinde Aschau a. Inn</p>
                     </div>
-
                     <div class="project-detail-item">
                         <h3>Stichpunkte zum Projekt</h3>
                         <ul>
@@ -226,12 +288,10 @@
                             <li>Verbesserung des Verkehrsflusses</li>
                         </ul>
                     </div>
-                    
                     <div class="project-detail-item">
                         <h3>Ausführungszeitraum</h3>
                         <p>2022 - 2023</p>
                     </div>
-
                     <div class="project-detail-item">
                         <h3>Leistungsbereich</h3>
                         <p>Straßenbau & Brückenbau, Ingenieurbauwerke</p>
@@ -241,25 +301,73 @@
 
             <div class="project-gallery-wrapper">
                 <h2 class="project-gallery-title">Weitere Bilder</h2>
-                <div class="project-gallery-grid">
-                    <div class="gallery-image-placeholder">Bild-Platzhalter 1</div>
-                    <div class="gallery-image-placeholder">Bild-Platzhalter 2</div>
-                    <div class="gallery-image-placeholder">Bild-Platzhalter 3</div>
-                    <div class="gallery-image-placeholder">Bild-Platzhalter 4</div>
+                
+                <div class="slideshow-container">
+                    <div class="mySlides fade">
+                        <div class="numbertext">1 / 6</div>
+                        <img src="{{ url_for('static', filename='images/referenzen/klugham/klugham1.jpg') }}" alt="Bahnunterführung Klugham Bild 1">
+                    </div>
+                    <div class="mySlides fade">
+                        <div class="numbertext">2 / 6</div>
+                        <img src="{{ url_for('static', filename='images/referenzen/klugham/klugham2.jpg') }}" alt="Bahnunterführung Klugham Bild 2">
+                    </div>
+                    <div class="mySlides fade">
+                        <div class="numbertext">3 / 6</div>
+                        <img src="{{ url_for('static', filename='images/referenzen/klugham/klugham3.jpg') }}" alt="Bahnunterführung Klugham Bild 3">
+                    </div>
+                    <div class="mySlides fade">
+                        <div class="numbertext">4 / 6</div>
+                        <img src="{{ url_for('static', filename='images/referenzen/klugham/klugham4.jpg') }}" alt="Bahnunterführung Klugham Bild 4">
+                    </div>
+                    <div class="mySlides fade">
+                        <div class="numbertext">5 / 6</div>
+                        <img src="{{ url_for('static', filename='images/referenzen/klugham/klugham5.jpg') }}" alt="Bahnunterführung Klugham Bild 5">
+                    </div>
+                    <div class="mySlides fade">
+                        <div class="numbertext">6 / 6</div>
+                        <img src="{{ url_for('static', filename='images/referenzen/klugham/klugham6.jpg') }}" alt="Bahnunterführung Klugham Bild 6">
+                    </div>
+
+                    <a class="prev" onclick="plusSlides(-1)">❮</a>
+                    <a class="next" onclick="plusSlides(1)">❯</a>
+                </div>
+                
+                <div class="thumbnail-row">
+                    <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/klugham/klugham1.jpg') }}" onclick="currentSlide(1)" alt="Vorschaubild 1">
+                    <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/klugham/klugham2.jpg') }}" onclick="currentSlide(2)" alt="Vorschaubild 2">
+                    <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/klugham/klugham3.jpg') }}" onclick="currentSlide(3)" alt="Vorschaubild 3">
+                    <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/klugham/klugham4.jpg') }}" onclick="currentSlide(4)" alt="Vorschaubild 4">
+                    <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/klugham/klugham5.jpg') }}" onclick="currentSlide(5)" alt="Vorschaubild 5">
+                    <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/klugham/klugham6.jpg') }}" onclick="currentSlide(6)" alt="Vorschaubild 6">
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
+    <!-- Vollständiger Footer -->
     <footer class="site-footer">
         <div class="container footer-grid">
             <div>
                 <h4>Navigation</h4>
                 <ul>
-                    <li><a href="{{ url_for('index') }}">Startseite</a></li>
-                    <li><a href="{{ url_for('impressum') }}">Impressum</a></li>
-                    <li><a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></li>
+                    <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
+                    <li><a href="{{ url_for('index') }}#news">Neuigkeiten</a></li>
+                    <li><a href="{{ url_for('index') }}#services">Leistungen</a></li>
+                    <li><a href="{{ url_for('index') }}#company">Unternehmen</a></li>
+                    <li><a href="{{ url_for('index') }}#contact">Kontakt</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Leistungen</h4>
+                <ul>
+                    <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
+                    <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
+                    <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
+                    <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
+                    <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
+                    <li><a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a></li>
+                    <li><a href="{{ url_for('sanierungen') }}">Sanierungen</a></li>
+                    <li><a href="{{ url_for('wasserbau') }}">Wasserbau</a></li>
                 </ul>
             </div>
             <div>
@@ -267,14 +375,41 @@
                 <address>
                     Behringer & Partner mbB<br>
                     Luitpoldallee 32<br>
-                    D-84453 Mühldorf a. Inn
+                    D-84453 Mühldorf a. Inn<br>
+                    <a href="tel:+4986319867900">Tel: +49 8631 98679-00</a><br>
+                    <a href="mailto:info@ib-behringer.de">E-Mail: info@ib-behringer.de</a>
                 </address>
+            </div>
+            <div>
+                <h4>Rechtliches</h4>
+                <ul>
+                    <li><a href="{{ url_for('impressum') }}">Impressum</a></li>
+                    <li><a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Folgen Sie uns</h4>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/ibb_mue/" target="_blank" rel="noopener"
+                        aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+                <h4 style="margin-top: 1.5rem;">Wir unterstützen</h4>
+                <p style="margin-bottom: var(--space-xs); line-height: 1.4;">
+                    <a href="{{ url_for('maedchenschule_chato') }}">Mädchenschule Chato, Tansania</a>
+                </p>
+                <a href="{{ url_for('maedchenschule_chato') }}">
+                    <img src="{{ url_for('static', filename='images/chato_schule_thumb.jpg') }}"
+                        alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
+                </a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© <span id="current-year"></span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
+            <p>© <span id="current-year">2024</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
+            <p><a href="{{ url_for('impressum') }}">Impressum</a> | <a
+                    href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></p>
         </div>
     </footer>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -283,6 +418,36 @@
                 yearSpan.textContent = new Date().getFullYear();
             }
         });
+
+        // Slideshow JavaScript
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        // Nächstes/Vorheriges Bild
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        // Thumbnail-Steuerung
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let thumbnails = document.getElementsByClassName("thumbnail");
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            for (i = 0; i < thumbnails.length; i++) {
+                thumbnails[i].className = thumbnails[i].className.replace(" active-thumbnail", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            thumbnails[slideIndex-1].className += " active-thumbnail";
+        }
     </script>
 </body>
 </html>

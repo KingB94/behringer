@@ -305,9 +305,11 @@
         .section { padding: var(--space-lg) 0; }
         @media (min-width: 768px) { .section { padding: var(--space-xl) 0; } }
         .section.bg-alternate { background: var(--clr-bg-alt); }
-        .page-hero-section+.section { background: var(--clr-bg); }
-        .page-hero-section+.section+.section { background: var(--clr-bg-alt); }
-        .page-hero-section+.section+.section+.section { background: var(--clr-bg); }
+        
+        /* Sequenzielle Hintergrundfarben für Unterseiten */
+        .page-hero-section+.section { background: var(--clr-bg-alt); }
+        .page-hero-section+.section+.section { background: var(--clr-bg); }
+        .page-hero-section+.section+.section+.section { background: var(--clr-bg-alt); }
 
         .section-title {
             font-family: var(--font-heading); font-size: clamp(1.75rem, 4vw, 2.25rem);
@@ -346,7 +348,7 @@
             background-image: url("{{ url_for('static', filename='images/siedlungswasserwirtschaft.png') }}");
         }
         
-        /* === NEUE STILE FÜR 2-SPALTEN-LISTE & ZERTIFIZIERUNG === */
+        /* === STILE FÜR 2-SPALTEN-LISTE & ZERTIFIZIERUNG === */
         .leistung-detail-content .intro-text {
             text-align: center;
             max-width: 800px;
@@ -425,72 +427,102 @@
             color: #555;
             line-height: 1.5;
         }
-        /* === ENDE NEUE STILE === */
 
-        .beitraege-grid {
-            display: grid; grid-template-columns: 1fr; gap: var(--space-md); margin-top: var(--space-lg);
+        /* --- NEU: PORTFOLIO GRID LAYOUT (aus strassenbau-brueckenbau.html übernommen) --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
         }
-        .beitrag-card {
-            background-color: var(--clr-white); border: 1px solid var(--clr-border);
-            border-radius: var(--radius-md); box-shadow: var(--shadow-sm);
-            transition: var(--transition-default); display: flex; flex-direction: column; overflow: hidden;
+
+        .portfolio-card {
+            background-color: var(--clr-white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        #beitraege.bg-alternate .beitrag-card { background-color: var(--clr-white); }
-        @media (min-width: 768px) { .beitrag-card { flex-direction: row; } }
-        .beitrag-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
-        .beitrag-card-image { flex-shrink: 0; width: 100%; }
-        .beitrag-card-image img { width: 100%; height: 200px; object-fit: cover; }
-        @media (min-width: 768px) {
-            .beitrag-card-image { width: 250px; height: auto; }
-            .beitrag-card-image img { height: 100%; }
-        }
-        .beitrag-card-content {
-            padding: var(--space-md); display: flex; flex-direction: column; flex-grow: 1;
-        }
-        .beitrag-card .beitrag-date {
-            font-size: 0.8rem; color: #777; margin-bottom: var(--space-xs); display: block;
-        }
-        .beitrag-card h3 {
-            font-size: 1.15rem; color: var(--clr-primary); margin-top: 0;
-            margin-bottom: var(--space-xs); line-height: 1.4;
-        }
-        .beitrag-card h3 a { color: var(--clr-primary); }
-        .beitrag-card h3 a:hover { color: var(--clr-gradient-start); }
-        .beitrag-card p { font-size: 0.9rem; margin-bottom: var(--space-sm); flex-grow: 1; line-height: 1.6; }
         
-        .more-text { display: none; }
-        .read-more-toggle {
-            color: var(--clr-primary);
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-block;
-            margin-left: 4px;
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
         }
-        .read-more-toggle:hover { text-decoration: underline; }
 
-        .beitrag-card .read-more {
-            color: var(--clr-primary); font-weight: 600; text-decoration: none;
-            display: inline-block; margin-top: var(--space-xs);
+        .portfolio-card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
         }
-        .beitrag-card .read-more:hover { text-decoration: underline; }
-        .beitrag-card .beitrag-leistungen {
-            font-size: 0.8rem; color: #555; margin-top: auto; padding-top: var(--space-sm);
-            border-top: 1px solid var(--clr-border); line-height: 1.5;
-        }
-        .beitrag-card .beitrag-leistungen strong { font-weight: 600; color: var(--clr-secondary); }
-        .beitrag-card .beitrag-leistungen a {
-            color: var(--clr-secondary); text-decoration: none; margin-left: var(--space-xs);
-            padding: 0.1em 0.3em; border-radius: var(--radius-sm);
-            background-color: var(--clr-bg); border: 1px solid var(--clr-border);
-            transition: background-color 0.2s, color 0.2s;
-        }
-        #beitraege.bg-alternate .beitrag-card .beitrag-leistungen a { background-color: #e9e9e9; }
-        .beitrag-card .beitrag-leistungen a:hover {
-            color: var(--clr-primary); text-decoration: none; background-color: #e0e0e0;
-        }
-        .beitrag-card.hidden-beitrag { display: none; }
-        #loadMoreBeitraegeBtn { display: block; margin: var(--space-lg) auto 0; }
 
+        .portfolio-card-inner {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .portfolio-thumbnail {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-thumbnail img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .portfolio-card:hover .portfolio-thumbnail img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 90, 156, 0.7);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: grid;
+            place-items: center;
+        }
+
+        .portfolio-card:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay-icon {
+            color: var(--clr-white);
+            font-size: 2.5rem;
+            font-weight: bold;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-card:hover .portfolio-overlay-icon {
+            transform: scale(1);
+        }
+
+        .portfolio-content {
+            padding: var(--space-sm) var(--space);
+            border-top: 1px solid var(--clr-border);
+            flex-grow: 1;
+        }
+
+        .portfolio-title {
+            font-size: 1.15rem;
+            margin-top: 0;
+            margin-bottom: var(--space-xs);
+            color: var(--clr-secondary);
+        }
+
+        .portfolio-category {
+            font-size: 0.85rem;
+            color: #666;
+            margin: 0;
+        }
+        /* --- ENDE PORTFOLIO GRID --- */
+        
         /* Footer */
         .site-footer {
             background: var(--clr-secondary); color: var(--clr-text-light); padding: var(--space-xl) 0 var(--space-lg);
@@ -614,55 +646,61 @@
                 <h2 class="section-title">Referenzprojekte Siedlungswasserwirtschaft</h2>
                 <p class="section-subtitle">Ausgewählte Projekte und Beiträge aus dem Bereich Siedlungswasserwirtschaft.</p>
                 
-                <div class="beitraege-grid">
-                    <article class="beitrag-card">
-                        <div class="beitrag-card-image">
-                            <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-am-unterfeld/" target="_blank" rel="noopener"><img src="https://www.ib-behringer.de/wp/wp-content/uploads/2023/08/IMG_2469-270x150.jpg" alt="Erschließung Neubaugebiet Am Unterfeld" loading="lazy"></a>
-                        </div>
-                        <div class="beitrag-card-content">
-                            <span class="beitrag-date">22. August 2023</span>
-                            <h3><a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-am-unterfeld/" target="_blank" rel="noopener">Erschließung Neubaugebiet Am Unterfeld</a></h3>
-                            <p>In der Gemeinde Obertaufkirchen enstehen im Ortsteil Oberornau 18 Bauparzellen für Wohnbebauung. Insgesamt werden für die Erschließung ca. 365 m Schmutzwasserkanal, 425 m Regenwasserkanal und 475 m Hauptwasserleitung hergestellt. Als Regenrückhaltebecken w<span class="dots">... </span><span class="more-text">ird ein unterirdisches Betonbecken mit einem Rückhaltevolumen von ca. 400 m³ errichtet. Da das Baugebiet am Unterfeld zukünftig noch mit zwei weiteren ähnlich großen Bauabschnitten erweitert werden soll, wurde Rohrhydraulik und Größe der Rückhaltung bereits so ausgelegt, dass die Einrichtungen für einen zweiten Bauabschnitt ausreichen. Weiter werden ca. 1.570 m2 Erschließungsstraßen hergestellt.</span><span class="read-more-toggle">(mehr)</span></p>
-                            <div class="beitrag-leistungen">
-                                <strong>Leistungen:</strong> 
-                                <a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a>, 
-                                <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>, 
-                                <a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a>
+                <!-- ANGEPASST: Die Grid-Klasse und die Struktur der Karten wurden geändert -->
+                <div class="portfolio-grid">
+
+                    <article class="portfolio-card">
+                        <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-am-unterfeld/" class="portfolio-card-link" target="_blank" rel="noopener">
+                            <div class="portfolio-card-inner">
+                                <div class="portfolio-thumbnail">
+                                    <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2023/08/IMG_2469-270x150.jpg" alt="Erschließung Neubaugebiet Am Unterfeld" loading="lazy">
+                                    <div class="portfolio-overlay">
+                                        <span class="portfolio-overlay-icon">➔</span>
+                                    </div>
+                                </div>
+                                <div class="portfolio-content">
+                                    <h3 class="portfolio-title">Erschließung Neubaugebiet Am Unterfeld</h3>
+                                    <p class="portfolio-category">Baulanderschließung, Siedlungswasserwirtschaft, Straßenbau</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </article>
 
-                    <article class="beitrag-card">
-                        <div class="beitrag-card-image">
-                             <a href="https://www.ib-behringer.de/projekt/regenueberlauf-hummel-in-massing/" target="_blank" rel="noopener"><img src="https://www.ib-behringer.de/wp/wp-content/uploads/2023/07/IMG_8339-270x150.jpg" alt="Regenüberlauf Hummel in Massing" loading="lazy"></a>
-                        </div>
-                        <div class="beitrag-card-content">
-                            <span class="beitrag-date">20. August 2023</span>
-                            <h3><a href="https://www.ib-behringer.de/projekt/regenueberlauf-hummel-in-massing/" target="_blank" rel="noopener">Regenüberlauf Hummel in Massing</a></h3>
-                            <p>In der Vergangenheit haben sich im Kanalnetz des Marktes Massing bereits diverse hydraulische Überlastungen in Form von Überstau gezeigt. An Hand einer hydraulischen Überrechnung des Kanalnetzes wurden Lösungen aufgezeigt, um die Problemstellen in den Grif<span class="dots">... </span><span class="more-text">f zu bekommen. So wird von der Bahnhofsstraße über die Eggenfeldener Straße bis zum bestehenden Regenüberlauf ein zusätzlicher Verbindungskanal in SB DN 1300 mit einer Länge von ca. 150 m hergestellt. Der bestehende Kanal DN 1100 von Norden Richtung Hochholdinger Straße wird umgeschlossen und an den neuen Schacht östlich an das RÜ Hummel angeschlossen. Ab dem RÜ Hummel wird auf Grund der geringen Überdeckung ein Kanal in PE DN 1800 bis zum neuen Bauwerk RÜ Süd gebaut. Das neu zu errichtende RÜ Süd erhält eine Schwellenlänge von 7 m. Es wird eine schwimmende Tauchwand zur Rückhaltung der Feststoffen eingebaut. Der Ableitungskanal DN 1500 führt auf eine Länge von ca. 15 m in die Rott. Die Maßnahme wird nach RZWas gefördert. Paralell mit den beschriebenen Kanälen wird auch eine neue Hauptwasserleitung mitverlegt. Voraussichtlich im Herbst 2023 wird die Baumaßnahme abgeschlossen sein.</span><span class="read-more-toggle">(mehr)</span></p>
-                            <div class="beitrag-leistungen">
-                                <strong>Leistungen:</strong> 
-                                <a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a>, 
-                                <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>
+                    <article class="portfolio-card">
+                        <a href="https://www.ib-behringer.de/projekt/regenueberlauf-hummel-in-massing/" class="portfolio-card-link" target="_blank" rel="noopener">
+                            <div class="portfolio-card-inner">
+                                <div class="portfolio-thumbnail">
+                                    <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2023/07/IMG_8339-270x150.jpg" alt="Regenüberlauf Hummel in Massing" loading="lazy">
+                                    <div class="portfolio-overlay">
+                                        <span class="portfolio-overlay-icon">➔</span>
+                                    </div>
+                                </div>
+                                <div class="portfolio-content">
+                                    <h3 class="portfolio-title">Regenüberlauf Hummel in Massing</h3>
+                                    <p class="portfolio-category">Hydraulische Nachweise, Siedlungswasserwirtschaft</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </article>
 
-                    <article class="beitrag-card hidden-beitrag">
-                        <div class="beitrag-card-image">
-                            <a href="https://www.ib-behringer.de/projekt/umbau-der-klaeranlagen-wittibreut-und-ulbering/" target="_blank" rel="noopener"><img src="https://www.ib-behringer.de/wp/wp-content/uploads/2021/07/Kl%C3%A4ranlage-Wittibreut-2-270x150.jpg" alt="Umbau der Kläranlagen Wittibreut und Ulbering" loading="lazy"></a>
-                        </div>
-                        <div class="beitrag-card-content">
-                            <span class="beitrag-date">26. Juli 2021</span>
-                            <h3><a href="https://www.ib-behringer.de/projekt/umbau-der-klaeranlagen-wittibreut-und-ulbering/" target="_blank" rel="noopener">Umbau der Kläranlagen Wittibreut und Ulbering</a></h3>
-                            <p>Die Gemeinde entschied sich aus wirtschaftlichen Gründen die Kläranalage in Wittibreut aufzulassen und das Abwasser über eine 3,6 km lange Druckleitung an die Kläranlage des Ortsteils Ulbering einzuleiten. An der Kläranlage Wittibreut wird eine Pumpsta... <a href="https://www.ib-behringer.de/projekt/umbau-der-klaeranlagen-wittibreut-und-ulbering/" class="read-more" target="_blank" rel="noopener">(mehr)</a></p>
-                            <div class="beitrag-leistungen">
-                                <strong>Leistungen:</strong> <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>
+                    <article class="portfolio-card">
+                        <a href="https://www.ib-behringer.de/projekt/umbau-der-klaeranlagen-wittibreut-und-ulbering/" class="portfolio-card-link" target="_blank" rel="noopener">
+                            <div class="portfolio-card-inner">
+                                <div class="portfolio-thumbnail">
+                                    <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2021/07/Kl%C3%A4ranlage-Wittibreut-2-270x150.jpg" alt="Umbau der Kläranlagen Wittibreut und Ulbering" loading="lazy">
+                                    <div class="portfolio-overlay">
+                                        <span class="portfolio-overlay-icon">➔</span>
+                                    </div>
+                                </div>
+                                <div class="portfolio-content">
+                                    <h3 class="portfolio-title">Umbau der Kläranlagen Wittibreut und Ulbering</h3>
+                                    <p class="portfolio-category">Siedlungswasserwirtschaft</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </article>
+
                 </div>
-                <button id="loadMoreBeitraegeBtn" class="btn btn-primary" style="display: none;"></button>
             </div>
         </section>
     </main>
@@ -805,41 +843,8 @@
                 });
             });
             
-            /* NEUE FUNKTION: TEXT IN BEITRÄGEN AUSKLAPPEN */
-            document.querySelectorAll('.read-more-toggle').forEach(toggle => {
-                toggle.addEventListener('click', function() {
-                    const p = this.closest('p');
-                    if (!p) return;
-
-                    const moreText = p.querySelector('.more-text');
-                    const dots = p.querySelector('.dots');
-
-                    if (moreText && dots) {
-                        const isHidden = moreText.style.display === 'none' || moreText.style.display === '';
-                        
-                        moreText.style.display = isHidden ? 'inline' : 'none';
-                        dots.style.display = isHidden ? 'none' : 'inline';
-                        this.textContent = isHidden ? '(weniger)' : '(mehr)';
-                    }
-                });
-            });
-
-            const loadMoreBtn = document.getElementById('loadMoreBeitraegeBtn');
-            if (loadMoreBtn) {
-                const hiddenBeitraege = Array.from(document.querySelectorAll('.beitrag-card.hidden-beitrag'));
-                if (hiddenBeitraege.length === 0) {
-                    loadMoreBtn.style.display = 'none'; 
-                } else {
-                    loadMoreBtn.style.display = 'block';
-                    loadMoreBtn.textContent = `Weitere ${hiddenBeitraege.length} Projekte anzeigen`;
-                    loadMoreBtn.addEventListener('click', () => {
-                        hiddenBeitraege.forEach(beitrag => {
-                            beitrag.classList.remove('hidden-beitrag');
-                        });
-                        loadMoreBtn.style.display = 'none'; 
-                    });
-                }
-            }
+            // GELÖSCHT: Die Skripte für "mehr lesen" und "weitere laden" wurden entfernt,
+            // da sie im neuen Kachel-Layout nicht mehr benötigt werden.
             
             const yearSpan = document.getElementById('current-year');
             if (yearSpan) {

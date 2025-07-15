@@ -381,19 +381,6 @@
             box-shadow: var(--shadow-sm);
         }
 
-        .btn-secondary {
-            background: var(--clr-white);
-            color: var(--clr-primary);
-            border-color: var(--clr-border);
-        }
-
-        .btn-secondary:hover {
-            background: var(--clr-bg-alt);
-            color: var(--clr-primary);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-sm);
-        }
-
         /* Sektionen Basis */
         .section {
             padding: var(--space-lg) 0;
@@ -408,7 +395,8 @@
         .section.bg-alternate {
             background: var(--clr-bg-alt);
         }
-
+        
+        /* Sequenzielle Hintergrundfarben für Unterseiten */
         .page-hero-section+.section {
             background: var(--clr-bg-alt);
         }
@@ -443,12 +431,6 @@
             background-position: center;
             color: var(--clr-white);
             text-align: center;
-        }
-
-        @media (min-width: 768px) {
-            .page-hero-section {
-                padding: var(--space-xl) 0;
-            }
         }
 
         .page-hero-section::before {
@@ -494,12 +476,12 @@
             margin: 0 0.5em;
         }
 
-        /* ADDED CLASS FOR FERNWAERME BACKGROUND */
+        /* Hintergrundbild für Fernwärme-Hero */
         .hero-bg-fernwaerme {
             background-image: url("{{ url_for('static', filename='images/fernwaerme.png') }}");
         }
 
-        /* === NEUE STILE FÜR 2-SPALTEN-LISTE === */
+        /* Stile für 2-Spalten-Liste */
         .leistung-detail-content .intro-text {
             text-align: center;
             max-width: 800px;
@@ -548,238 +530,204 @@
             text-align: center;
         }
 
-        /* === ENDE NEUE STILE === */
-
-        /* Beiträge (Referenzprojekte) */
-        .beitraege-grid {
+        /* --- NEU: PORTFOLIO GRID LAYOUT --- */
+        .portfolio-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: var(--space-md);
+            margin-top: var(--space-lg);
         }
-        @media (min-width: 768px) {
-            .beitraege-grid {
-                 grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (min-width: 1024px) {
-            .beitraege-grid {
-                 grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        
 
-        .beitrag-card {
+        .portfolio-card {
             background-color: var(--clr-white);
-            border: 1px solid var(--clr-border);
             border-radius: var(--radius-md);
             box-shadow: var(--shadow-sm);
-            transition: var(--transition-default);
-            display: flex;
-            flex-direction: column;
             overflow: hidden;
-        }
-
-        .beitrag-card-content {
-            padding: var(--space);
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        #beitraege.bg-alternate .beitrag-card {
-            background-color: var(--clr-white);
-        }
-
-        .beitrag-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .beitrag-card .beitrag-date {
-            font-size: 0.85rem;
-            color: #777;
-            margin-bottom: var(--space-xs);
-            display: block;
-        }
-
-        .beitrag-card h3 {
-            font-size: 1.2rem;
-            color: var(--clr-primary);
-            margin-top: 0;
-            margin-bottom: var(--space-sm);
-            line-height: 1.4;
-        }
-        .beitrag-card h3 a { color: var(--clr-primary); }
-        .beitrag-card h3 a:hover { color: var(--clr-gradient-start); }
-
-        .beitrag-card p {
-            font-size: 0.95rem;
-            margin-bottom: var(--space-sm);
-            flex-grow: 1;
-            line-height: 1.6;
-            color: var(--clr-secondary);
-        }
-
-        .more-text {
-            display: none;
-        }
-
-        .read-more-toggle {
-            color: var(--clr-primary);
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-block;
-            margin-left: 4px;
-        }
-
-        .read-more-toggle:hover {
-            text-decoration: underline;
-        }
-
-        .beitrag-card .beitrag-leistungen {
-            font-size: 0.85rem;
-            color: var(--clr-secondary);
-            margin-top: auto;
-            padding-top: var(--space-sm);
-            border-top: 1px solid var(--clr-border);
-            line-height: 1.5;
-        }
-
-        .beitrag-card .beitrag-leistungen strong {
-            font-weight: 600;
-            color: var(--clr-secondary);
-        }
-
-        .beitrag-card .beitrag-leistungen a {
-            color: var(--clr-secondary);
-            text-decoration: none;
-            margin-left: var(--space-xs);
-            padding: 0.1em 0.3em;
-            border-radius: var(--radius-sm);
-            background-color: #f0f0f0;
-            border: 1px solid var(--clr-border);
-            transition: background-color 0.2s, color 0.2s;
-        }
-
-        .beitrag-card .beitrag-leistungen a:hover {
-            color: var(--clr-primary);
-            text-decoration: none;
-            background-color: #e0e0e0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
-        .beitrag-card.hidden-beitrag {
-            display: none;
+        .portfolio-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
         }
 
-        #loadMoreBeitraegeBtn {
+        .portfolio-card-link {
             display: block;
-            margin: var(--space-lg) auto 0;
-        }
-
-
-        /* Footer */
-        .site-footer {
-            background: var(--clr-secondary);
-            color: var(--clr-text-light);
-            padding: var(--space-xl) 0 var(--space-lg);
-        }
-
-        .footer-grid {
-            display: grid;
-            gap: var(--space-md);
-        }
-
-        @media (min-width: 768px) {
-            .footer-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .footer-grid {
-                grid-template-columns: repeat(5, 1fr);
-            }
-        }
-
-        .site-footer h4 {
-            font-family: var(--font-heading);
-            font-weight: 600;
-            color: var(--clr-white);
-            margin-bottom: var(--space-sm);
-            font-size: 1.1rem;
-        }
-
-        .site-footer ul {
-            list-style: none;
-            padding-left: 0;
-            margin: 0;
-        }
-
-        .site-footer ul li {
-            margin-bottom: var(--space-xs);
-        }
-
-        .site-footer a {
-            color: #ccc;
             text-decoration: none;
-        }
-
-        .site-footer a:hover {
-            color: var(--clr-white);
-            text-decoration: underline;
-        }
-
-        .site-footer address {
-            font-style: normal;
-            line-height: 1.7;
-            color: #ccc;
-        }
-
-        .site-footer address a {
             color: inherit;
         }
 
-        .site-footer address a:hover {
+        .portfolio-card-inner {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .portfolio-thumbnail {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-thumbnail img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .portfolio-card:hover .portfolio-thumbnail img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 90, 156, 0.7);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: grid;
+            place-items: center;
+        }
+
+        .portfolio-card:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay-icon {
             color: var(--clr-white);
+            font-size: 2.5rem;
+            font-weight: bold;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
         }
 
-        .footer-socials a {
-            display: inline-block;
-            margin-right: var(--space-sm);
-            font-size: 1.6rem;
-            color: #ccc;
-            text-decoration: none;
+        .portfolio-card:hover .portfolio-overlay-icon {
+            transform: scale(1);
         }
 
-        .footer-socials a:last-child {
-            margin-right: 0;
+        .portfolio-content {
+            padding: var(--space-sm) var(--space);
+            border-top: 1px solid var(--clr-border);
+            flex-grow: 1;
         }
 
-        .footer-socials a:hover {
-            color: var(--clr-white);
-            text-decoration: none;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            font-size: .9rem;
-            border-top: 1px solid rgba(255, 255, 255, .1);
-            margin-top: var(--space-lg);
-            padding-top: var(--space-lg);
-            color: #aaa;
-        }
-
-        .footer-bottom p {
+        .portfolio-title {
+            font-size: 1.15rem;
+            margin-top: 0;
             margin-bottom: var(--space-xs);
+            color: var(--clr-secondary);
         }
 
-        .footer-bottom a {
-            color: #ccc;
+        .portfolio-category {
+            font-size: 0.85rem;
+            color: #666;
+            margin: 0;
         }
+        /* --- ENDE PORTFOLIO GRID --- */
+        
+/* Footer */
+.site-footer {
+    background: var(--clr-secondary);
+    color: var(--clr-text-light);
+    padding: var(--space-xl) 0 var(--space-lg);
+}
 
-        .footer-bottom a:hover {
-            color: var(--clr-white);
-        }
+.footer-grid {
+    display: grid;
+    gap: var(--space-md);
+}
+
+@media (min-width: 768px) {
+    .footer-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .footer-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+.site-footer h4 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--clr-white);
+    margin-bottom: var(--space-sm);
+    font-size: 1.1rem;
+}
+
+.site-footer ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.site-footer ul li {
+    margin-bottom: var(--space-xs);
+}
+
+.site-footer a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    color: var(--clr-white);
+    text-decoration: underline;
+}
+
+.site-footer address {
+    font-style: normal;
+    line-height: 1.7;
+    color: #ccc;
+}
+
+.site-footer address a {
+    color: inherit;
+}
+
+.site-footer address a:hover {
+    color: var(--clr-white);
+}
+
+.footer-socials a {
+    display: inline-block;
+    margin-right: var(--space-sm);
+    font-size: 1.6rem;
+    color: #ccc;
+    text-decoration: none;
+}
+
+.footer-socials a:last-child {
+    margin-right: 0;
+}
+
+.footer-socials a:hover {
+    color: var(--clr-white);
+    text-decoration: none;
+}
+
+.footer-bottom {
+    text-align: center;
+    font-size: .9rem;
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+    color: #aaa;
+}
+
+.footer-bottom p {
+    margin-bottom: var(--space-xs);
+}
+
+.footer-bottom a {
+    color: #ccc;
+}
+
+.footer-bottom a:hover {
+    color: var(--clr-white);
+}
     </style>
 </head>
 
@@ -864,101 +812,112 @@
                 <h2 class="section-title">Referenzprojekte Fernwärme</h2>
                 <p class="section-subtitle">Ausgewählte Projekte und Beiträge aus dem Bereich Fernwärme.</p>
 
-                <div class="beitraege-grid">
-                    <article class="beitrag-card">
-                        <div class="beitrag-card-content">
-                            <span class="beitrag-date">17. August 2023</span>
-                            <h3><a href="#">Fernwärmeversorgung Waldkraiburg 2023</a></h3>
-                            <p>Aktuell läuft das Projekt der Fernwärmeversorgung der Rosenstraße, Kopernikusstraße,
-                                Metzner Straße und des Altvaterwegs. Von der Planung bis zur Umsetzung dürfen wir das
-                                Projekt im Namen der Stadtwerke Waldkraiburg betreuen.<span class="dots">... </span><span
-                                    class="more-text"> Die Fernwärmeversorgung wird über das bestehende Netz erweitert
-                                    und sichert so die Wärme für weitere Haushalte.</span><span
-                                    class="read-more-toggle">(mehr)</span></p>
-                            <div class="beitrag-leistungen">
-                                <strong>Leistungen:</strong> <a href="{{ url_for('fernwaerme') }}">Fernwärme</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="beitrag-card">
-                        <div class="beitrag-card-content">
-                            <span class="beitrag-date">17. April 2023</span>
-                            <h3><a href="#">Fernwärmeversorgung Reichertsheim</a></h3>
-                            <p>Die Gemeinde Reichertsheim plant für das Jahr 2024 die Umsetzung eines
-                                Fernwärmeprojektes. Das Ziel des Projektes ist es, eine nachhaltige und
-                                umweltfreundliche Energieversorgung für die Bewohner und Unternehmen der Gemeinde zu
-                                schaffen.<span class="dots">... </span><span class="more-text"> Um das Projekt zu
-                                    realisieren, wird eine zentrale Heizanlage mit Biomasse errichtet und ein neues
-                                    Leitungsnetz aufgebaut.</span><span class="read-more-toggle">(mehr)</span></p>
-                            <div class="beitrag-leistungen">
-                                <strong>Leistungen:</strong> <a href="{{ url_for('fernwaerme') }}">Fernwärme</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="beitrag-card">
-                        <div class="beitrag-card-content">
-                            <span class="beitrag-date">17. April 2022</span>
-                            <h3><a href="#">Fernwärmeversorgung Waldkraiburg 2022</a></h3>
-                            <p>Das Projekt der Fernwärmeversorgung der Aussiger, Reichenberger, Birken, Tropauer Straße
-                                und des Olmützer Wegs in Waldkraiburg wurde im Jahr 2022 erfolgreich umgesetzt.<span
-                                    class="dots">... </span><span class="more-text"> Von der Planung bis zur Umsetzung
-                                    durften wir das Projekt im Namen der Stadtwerke Waldkraiburg betreuen.</span><span
-                                    class="read-more-toggle">(mehr)</span></p>
-                            <div class="beitrag-leistungen">
-                                <strong>Leistungen:</strong> <a href="{{ url_for('fernwaerme') }}">Fernwärme</a>
-                            </div>
-                        </div>
-                    </article>
+                <!-- UMGEBAUT: Die Grid-Klasse und die Kartenstruktur wurden geändert -->
+                <div class="portfolio-grid">
                     
-                    <article class="beitrag-card hidden-beitrag">
-                        <div class="beitrag-card-content">
-                            <span class="beitrag-date">17. April 2021</span>
-                            <h3><a href="#">Fernwärmeversorgung Waldkraiburg 2021</a></h3>
-                            <p>Das Projekt der Fernwärmeversorgung der Siemens, Brünner, Siebenbürgen, Riesengebirgs und
-                                Adlergebirgsstraße in Waldkraiburg wurde im Jahr 2021 erfolgreich umgesetzt.<span
-                                    class="dots">... </span><span class="more-text"> Von der Planung bis zur Umsetzung
-                                    durften wir das Projekt im Namen der Stadtwerke Waldkraiburg betreuen.</span><span
-                                    class="read-more-toggle">(mehr)</span></p>
-                            <div class="beitrag-leistungen">
-                                <strong>Leistungen:</strong> <a href="{{ url_for('fernwaerme') }}">Fernwärme</a>
+                    <article class="portfolio-card">
+                        <a href="#" class="portfolio-card-link">
+                            <div class="portfolio-card-inner">
+                                <div class="portfolio-thumbnail">
+                                    <img src="{{ url_for('static', filename='images/fernwaerme.png') }}" alt="Fernwärmeversorgung Waldkraiburg 2023" loading="lazy">
+                                    <div class="portfolio-overlay">
+                                        <span class="portfolio-overlay-icon">➔</span>
+                                    </div>
+                                </div>
+                                <div class="portfolio-content">
+                                    <h3 class="portfolio-title">Fernwärmeversorgung Waldkraiburg 2023</h3>
+                                    <p class="portfolio-category">Fernwärme</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </article>
 
-                    <article class="beitrag-card hidden-beitrag">
-                        <div class="beitrag-card-content">
-                            <span class="beitrag-date">17. April 2020</span>
-                            <h3><a href="#">Fernwärmeversorgung Waldkraiburg 2020</a></h3>
-                            <p>Das Projekt der Fernwärmeversorgung der Böhmerwald, Braunauer, Fanz-List-Straße in
-                                Waldkraiburg wurde im Jahr 2020 erfolgreich umgesetzt.<span class="dots">... </span><span
-                                    class="more-text"> Von der Planung bis zur Umsetzung durften wir das Projekt im Namen
-                                    der Stadtwerke Waldkraiburg betreuen.</span><span
-                                    class="read-more-toggle">(mehr)</span></p>
-                            <div class="beitrag-leistungen">
-                                <strong>Leistungen:</strong> <a href="{{ url_for('fernwaerme') }}">Fernwärme</a>
+                    <article class="portfolio-card">
+                        <a href="#" class="portfolio-card-link">
+                            <div class="portfolio-card-inner">
+                                <div class="portfolio-thumbnail">
+                                    <img src="{{ url_for('static', filename='images/fernwaerme.png') }}" alt="Fernwärmeversorgung Reichertsheim" loading="lazy">
+                                    <div class="portfolio-overlay">
+                                        <span class="portfolio-overlay-icon">➔</span>
+                                    </div>
+                                </div>
+                                <div class="portfolio-content">
+                                    <h3 class="portfolio-title">Fernwärmeversorgung Reichertsheim</h3>
+                                    <p class="portfolio-category">Fernwärme</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </article>
-                    
-                    <article class="beitrag-card hidden-beitrag">
-                        <div class="beitrag-card-content">
-                            <span class="beitrag-date">13. April 2018</span>
-                            <h3><a href="#">Fernwärmeversorgung Waldkraiburg 2018</a></h3>
-                            <p>Das Projekt der Fernwärmeversorgung der Aussiger, Reichenberger und Erzgebirgestraße in
-                                Waldkraiburg wurde im Jahr 2018 erfolgreich umgesetzt.<span class="dots">... </span><span
-                                    class="more-text"> Von der Planung bis zur Umsetzung durften wir das Projekt im Namen
-                                    der Stadtwerke Waldkraiburg betreuen.</span><span
-                                    class="read-more-toggle">(mehr)</span></p>
-                            <div class="beitrag-leistungen">
-                                <strong>Leistungen:</strong> <a href="{{ url_for('fernwaerme') }}">Fernwärme</a>
+
+                    <article class="portfolio-card">
+                        <a href="#" class="portfolio-card-link">
+                            <div class="portfolio-card-inner">
+                                <div class="portfolio-thumbnail">
+                                    <img src="{{ url_for('static', filename='images/fernwaerme.png') }}" alt="Fernwärmeversorgung Waldkraiburg 2022" loading="lazy">
+                                    <div class="portfolio-overlay">
+                                        <span class="portfolio-overlay-icon">➔</span>
+                                    </div>
+                                </div>
+                                <div class="portfolio-content">
+                                    <h3 class="portfolio-title">Fernwärmeversorgung Waldkraiburg 2022</h3>
+                                    <p class="portfolio-category">Fernwärme</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
+                    </article>
+
+                    <article class="portfolio-card">
+                        <a href="#" class="portfolio-card-link">
+                            <div class="portfolio-card-inner">
+                                <div class="portfolio-thumbnail">
+                                    <img src="{{ url_for('static', filename='images/fernwaerme.png') }}" alt="Fernwärmeversorgung Waldkraiburg 2021" loading="lazy">
+                                    <div class="portfolio-overlay">
+                                        <span class="portfolio-overlay-icon">➔</span>
+                                    </div>
+                                </div>
+                                <div class="portfolio-content">
+                                    <h3 class="portfolio-title">Fernwärmeversorgung Waldkraiburg 2021</h3>
+                                    <p class="portfolio-category">Fernwärme</p>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="portfolio-card">
+                        <a href="#" class="portfolio-card-link">
+                            <div class="portfolio-card-inner">
+                                <div class="portfolio-thumbnail">
+                                    <img src="{{ url_for('static', filename='images/fernwaerme.png') }}" alt="Fernwärmeversorgung Waldkraiburg 2020" loading="lazy">
+                                    <div class="portfolio-overlay">
+                                        <span class="portfolio-overlay-icon">➔</span>
+                                    </div>
+                                </div>
+                                <div class="portfolio-content">
+                                    <h3 class="portfolio-title">Fernwärmeversorgung Waldkraiburg 2020</h3>
+                                    <p class="portfolio-category">Fernwärme</p>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="portfolio-card">
+                        <a href="#" class="portfolio-card-link">
+                            <div class="portfolio-card-inner">
+                                <div class="portfolio-thumbnail">
+                                    <img src="{{ url_for('static', filename='images/fernwaerme.png') }}" alt="Fernwärmeversorgung Waldkraiburg 2018" loading="lazy">
+                                    <div class="portfolio-overlay">
+                                        <span class="portfolio-overlay-icon">➔</span>
+                                    </div>
+                                </div>
+                                <div class="portfolio-content">
+                                    <h3 class="portfolio-title">Fernwärmeversorgung Waldkraiburg 2018</h3>
+                                    <p class="portfolio-category">Fernwärme</p>
+                                </div>
+                            </div>
+                        </a>
                     </article>
 
                 </div>
-                <button id="loadMoreBeitraegeBtn" class="btn btn-primary" style="display: none;"></button>
             </div>
         </section>
     </main>
@@ -1104,44 +1063,7 @@
                 });
             });
 
-            /* TEXT IN BEITRÄGEN AUSKLAPPEN */
-            document.querySelectorAll('.read-more-toggle').forEach(toggle => {
-                toggle.addEventListener('click', function (event) {
-                    event.preventDefault(); 
-                    const p = this.closest('p');
-                    if (!p) return;
-
-                    const moreText = p.querySelector('.more-text');
-                    const dots = p.querySelector('.dots');
-
-                    if (moreText && dots) {
-                        const isHidden = moreText.style.display === 'none' || moreText.style.display === '';
-
-                        moreText.style.display = isHidden ? 'inline' : 'none';
-                        dots.style.display = isHidden ? 'none' : 'inline';
-                        this.textContent = isHidden ? '(weniger)' : '(mehr)';
-                    }
-                });
-            });
-            
-            /* "MEHR LADEN" FUNKTION FÜR BEITRÄGE */
-            const loadMoreBtn = document.getElementById('loadMoreBeitraegeBtn');
-            if (loadMoreBtn) {
-                const hiddenBeitraege = Array.from(document.querySelectorAll('.beitrag-card.hidden-beitrag'));
-                if (hiddenBeitraege.length === 0) {
-                    loadMoreBtn.style.display = 'none';
-                } else {
-                    loadMoreBtn.style.display = 'block';
-                    loadMoreBtn.textContent = `Weitere ${hiddenBeitraege.length} Projekte anzeigen`;
-                    loadMoreBtn.addEventListener('click', () => {
-                        hiddenBeitraege.forEach(beitrag => {
-                            beitrag.classList.remove('hidden-beitrag');
-                            beitrag.style.display = 'flex';
-                        });
-                        loadMoreBtn.style.display = 'none';
-                    });
-                }
-            }
+            // GELÖSCHT: Die Skripte für "mehr lesen" und "weitere laden" wurden entfernt.
 
             const yearSpan = document.getElementById('current-year');
             if (yearSpan) {
