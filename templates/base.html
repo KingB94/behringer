@@ -27,7 +27,8 @@
                     <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
                     <li><a href="{{ url_for('news') }}">Neuigkeiten</a></li>
                     <li class="nav-item dropdown">
-                        <a href="{{ url_for('index') }}#services">Leistungen <span class="dropdown-arrow">▼</span></a>
+                        <a href="{{ url_for('index') }}#services"><span>Leistungen <span
+                                    class="dropdown-arrow">▼</span></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
                             <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
@@ -40,8 +41,7 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="{{ url_for('index') }}#company">Unternehmen <span class="dropdown-arrow">▼</span></a>
-                        <ul class="dropdown-menu">
+                        <a href="{{ url_for('index') }}#company"><span>Unternehmen <span class="dropdown-arrow">▼</span></span></a>                        <ul class="dropdown-menu">
                             <li><a href="{{ url_for('unternehmen_team') }}">Team</a></li>
                             <li><a href="{{ url_for('firmengeschichte') }}">Firmengeschichte</a></li>
                             <li><a href="{{ url_for('unternehmen_netzwerk') }}">Netzwerk</a></li>

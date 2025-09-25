@@ -73,8 +73,15 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); color: var(--clr-seco
     .nav-item.dropdown .dropdown-menu { position: static; opacity: 0; visibility: visible; transform: none; box-shadow: none; border: none; padding-left: var(--space); padding-top: 0; padding-bottom: 0; min-width: auto; background-color: transparent; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, margin-top 0.3s ease-in-out, margin-bottom 0.3s ease-in-out; }
     .nav-item.dropdown .dropdown-menu.submenu-open { opacity: 1; max-height: 500px; margin-top: var(--space-xs); margin-bottom: var(--space-xs); }
     .nav-item.dropdown .dropdown-menu li a { padding: var(--space-xs) 0; font-weight: normal; }
-    .nav-list>li>a, .nav-list>li>span { padding: var(--space-sm) 0; width: 100%; display: flex; justify-content: space-between; align-items: center; }
-    .nav-list>li:not(:last-child)>a, .nav-list>li:not(:last-child)>span { border-bottom: 1px solid var(--clr-border); }
+    .nav-list>li>a, .nav-list>li>span {
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .nav-list>li:not(:last-child)>a>span {
+        border-bottom: 1px solid var(--clr-border);
+        padding-bottom: var(--space-sm);
+    }
     .nav-list>li>a.btn { display: inline-block; width: auto; margin-top: var(--space-sm); padding: .75rem 1.5rem !important; }
     .nav-list>li>a:not(.btn)::after, .nav-list>li>span::after { display: none; }
 }
