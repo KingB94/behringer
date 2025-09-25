@@ -1,298 +1,96 @@
-<!DOCTYPE html>
-<html lang="de">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Netzwerk - Behringer & Partner</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% block title %}Netzwerk - Behringer & Partner{% endblock %}
 
-</head>
-
-<body>
-    <header class="site-header">
-        <div class="container header-inner">
-            <a href="{{ url_for('index') }}" class="logo">
-                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Behringer & Partner Logo" loading="lazy">
-            </a>
-            <nav class="main-nav">
-                <ul class="nav-list">
-                    <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
-                    <li><a href="{{ url_for('index') }}#news">Neuigkeiten</a></li>
-                    <li class="nav-item dropdown">
-                        <a href="{{ url_for('index') }}#services">Leistungen <span class="dropdown-arrow">▼</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
-                            <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
-                            <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
-                            <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
-                            <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
-                            <li><a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a></li>
-                            <li><a href="{{ url_for('sanierungen') }}">Sanierungen</a></li>
-                            <li><a href="{{ url_for('wasserbau') }}">Wasserbau</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a href="{{ url_for('index') }}#company">Unternehmen <span class="dropdown-arrow">▼</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{ url_for('unternehmen_team') }}">Team</a></li>
-                            <li><a href="{{ url_for('firmengeschichte') }}">Firmengeschichte</a></li>
-                            <li><a href="{{ url_for('unternehmen_netzwerk') }}" class="active-subpage-link">Netzwerk</a></li>
-                            <li><a href="{{ url_for('unternehmen_stellenangebote') }}">Stellenangebote</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="{{ url_for('index') }}#contact" class="btn btn-primary">Kontakt</a></li>
-                </ul>
-            </nav>
-            <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+{% block content %}
+<main>
+    <section class="page-header-section">
+        <div class="container">
+            <div id="breadcrumbs" class="breadcrumbs">
+                <a href="{{ url_for('index') }}#company" title="Unternehmen">Unternehmen</a>
+                <span class="arrow">></span>
+                <span>Netzwerk & Partnerschaften</span>
+            </div>
+            <h1 class="page-title">Unser Netzwerk & Partnerschaften</h1>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <section class="page-header-section">
-            <div class="container">
-                <div id="breadcrumbs" class="breadcrumbs">
-                    <a href="{{ url_for('index') }}#company" title="Unternehmen">Unternehmen</a>
-                    <span class="arrow">></span> <!-- Changed to > for better visual -->
-                    <span>Netzwerk & Partnerschaften</span>
+    <section class="section netzwerk-section">
+        <div class="container">
+
+            <div class="netzwerk-item">
+                <div class="netzwerk-logo-wrapper">
+                    <a href="http://www.bayika.de/" target="_blank" rel="noopener noreferrer">
+                        <img loading="lazy" src="https://www.ib-behringer.de/wp/wp-content/uploads/2016/01/logo_bayerische_ingenieurkammer-bau-300x87.jpg" alt="Bayerische Ingenieurekammer-Bau Logo">
+                    </a>
                 </div>
-                <h1 class="page-title">Unser Netzwerk & Partnerschaften</h1>
+                <div class="netzwerk-text">
+                    <h3>Mitglied bei der <a href="http://www.bayika.de/" target="_blank" rel="noopener noreferrer">Bayerischen Ingenieurekammer-Bau</a></h3>
+                    <p>Zu den wesentlichen Aufgaben der Kammer gehören die Beratung der Mitglieder, der Schutz ihrer beruflichen Belange, die Überwachung der Erfüllung beruflicher Pflichten, die Förderung der Baukultur, Wissenschaft und Technik sowie die Stärkung der Eigenverantwortung, Unabhängigkeit und Fachkompetenz.</p>
+                </div>
             </div>
-        </section>
 
-        <section class="section netzwerk-section">
-            <div class="container">
-
-                <div class="netzwerk-item">
-                    <div class="netzwerk-logo-wrapper">
-                        <a href="http://www.bayika.de/" target="_blank" rel="noopener noreferrer">
-                            <img loading="lazy" src="https://www.ib-behringer.de/wp/wp-content/uploads/2016/01/logo_bayerische_ingenieurkammer-bau-300x87.jpg" alt="Bayerische Ingenieurekammer-Bau Logo">
-                        </a>
-                    </div>
-                    <div class="netzwerk-text">
-                        <h3>Mitglied bei der <a href="http://www.bayika.de/" target="_blank" rel="noopener noreferrer">Bayerischen Ingenieurekammer-Bau</a></h3>
-                        <p>Zu den wesentlichen Aufgaben der Kammer gehören die Beratung der Mitglieder, der Schutz ihrer beruflichen Belange, die Überwachung der Erfüllung beruflicher Pflichten, die Förderung der Baukultur, Wissenschaft und Technik sowie die Stärkung der Eigenverantwortung, Unabhängigkeit und Fachkompetenz.</p>
-                    </div>
+            <div class="netzwerk-item">
+                <div class="netzwerk-logo-wrapper">
+                     <a href="http://www.vbi.de/landesverbaende/bayern/" target="_blank" rel="noopener noreferrer">
+                        <img loading="lazy" src="https://www.ib-behringer.de/wp/wp-content/uploads/2016/01/verband-beratender-ingenieure-294x300.jpg" alt="Verband beratender Ingenieure Logo">
+                    </a>
                 </div>
-
-                <div class="netzwerk-item">
-                    <div class="netzwerk-logo-wrapper">
-                         <a href="http://www.vbi.de/landesverbaende/bayern/" target="_blank" rel="noopener noreferrer">
-                            <img loading="lazy" src="https://www.ib-behringer.de/wp/wp-content/uploads/2016/01/verband-beratender-ingenieure-294x300.jpg" alt="Verband beratender Ingenieure Logo">
-                        </a>
-                    </div>
-                    <div class="netzwerk-text">
-                        <h3>Mitglied beim <a href="http://www.vbi.de/landesverbaende/bayern/" target="_blank" rel="noopener noreferrer">Verband beratender Ingenieure (VBI)</a></h3>
-                        <p>Der VBI ist die berufspolitische und wirtschaftliche Interessenvertretung der planenden und beratenden Ingenieure in Deutschland.</p>
-                    </div>
+                <div class="netzwerk-text">
+                    <h3>Mitglied beim <a href="http://www.vbi.de/landesverbaende/bayern/" target="_blank" rel="noopener noreferrer">Verband beratender Ingenieure (VBI)</a></h3>
+                    <p>Der VBI ist die berufspolitische und wirtschaftliche Interessenvertretung der planenden und beratenden Ingenieure in Deutschland.</p>
                 </div>
-
-                <div class="netzwerk-item">
-                    <div class="netzwerk-logo-wrapper">
-                        <a href="http://www.dwa-bayern.de/" target="_blank" rel="noopener noreferrer">
-                            <img loading="lazy" src="https://www.ib-behringer.de/wp/wp-content/uploads/2016/01/dwa-mitglied.jpg" alt="DWA Logo">
-                        </a>
-                    </div>
-                    <div class="netzwerk-text">
-                        <h3>Mitglied bei der <a href="http://www.dwa-bayern.de/" target="_blank" rel="noopener noreferrer">Deutschen Vereinigung für Wasserwirtschaft, Abwasser und Abfall e.V. (DWA)</a></h3>
-                        <p>Die DWA ist das führende Netzwerk der Wasser- und Abfallwirtschaft.</p>
-                    </div>
-                </div>
-                
-                <div class="netzwerk-item">
-                    <div class="netzwerk-logo-wrapper">
-                        <a href="https://www.kanalbau.com/de/startseite.html" target="_blank" rel="noopener noreferrer">
-                            <img loading="lazy" src="https://www.ib-behringer.de/wp/wp-content/uploads/2016/01/behringer-ral-guetegemeinschaft-kanalbau-300x226.jpg" alt="Güteschutz Kanalbau Logo">
-                        </a>
-                    </div>
-                    <div class="netzwerk-text">
-                        <h3>Mitglied beim <a href="https://www.kanalbau.com/de/startseite.html" target="_blank" rel="noopener noreferrer">Güteschutz Kanalbau</a></h3>
-                        <p>Der Güteschutz Kanalbau verfolgt den Zweck die Umweltverträglichkeit von Abwasserleitungen und -kanälen zu verbessern und damit den Verunreinigungen von Grundwasser und Boden durch undichte Kanäle entgegenzuwirken.</p>
-                    </div>
-                </div>
-
-                <div class="netzwerk-item partner-item">
-                    <div class="netzwerk-logo-wrapper">
-                         <a href="https://www.ipp-landshut.de/" target="_blank" rel="noopener noreferrer">
-                            <img loading="lazy" src="https://www.ib-behringer.de/wp/wp-content/uploads/2016/02/Logo-IPP-1-300x143.jpg" alt="Logo IPP Ingenieure">
-                        </a>
-                    </div>
-                    <div class="netzwerk-text">
-                        <h3>Unser Partner im Brückenbau: <a href="https://www.ipp-landshut.de/" target="_blank" rel="noopener noreferrer">IPP Igl, Putz + Partner</a></h3>
-                        <p><a href="https://www.ipp-landshut.de/index.html" target="_blank" rel="noopener noreferrer">Planungsgesellschaft für den konstruktiven Ingenieurbau</a><br>
-                        Neustadt 517 – 84028 Landshut</p>
-                        <p>Das Büro Igl, Putz + Partner aus Landshut ist unser kompetenter Partner im Bereich Brückenbau. Dabei wird die Erfahrung aus der Objekt- und Tragwerksplanung von über 1000 Brückenbauwerken miteingebracht. Durch diese Zusammenarbeit können wir ihnen auch bei aufwändigen Bauwerken eine fachgerechte und wirtschaftliche Planung und Umsetzung ihres Bauwerks zusichern. Die Aufgabenteilung zwischen den Büros wird projektspezifisch festgelegt.</p>
-                    </div>
-                </div>
-                
-                <div class="netzwerk-item partner-item">
-                    <div class="netzwerk-logo-wrapper">
-                        <!-- Assuming no direct website for this specific GmbH, or link to a section on your site if available -->
-                        <img loading="lazy" src="https://www.ib-behringer.de/wp/wp-content/uploads/2016/01/bge_logo-300x213.jpg" alt="Behringer Grundstückserschließungs GmbH Logo">
-                    </div>
-                    <div class="netzwerk-text">
-                        <h3>Behringer Grundstückserschließungs GmbH</h3>
-                        <p>Die Behringer Grundstückserschließungs GmbH ist Ihr Partner für die Finanzierung, Planung und Durchführung aller öffentlichen Erschließungsmaßnahmen. Einen Überblick über bereits erfolgreich abgeschlossene Projekte entnehmen Sie der <a href="https://www.ib-behringer.de/wp/wp-content/uploads/2016/02/150414_BGE_Referenzen.pdf" target="_blank" rel="noopener noreferrer">Referenzliste</a>. Weitere Informationen erhalten Sie gerne <a href="https://www.ib-behringer.de/wp/wp-content/uploads/2016/12/160607_BüropresentationGmbH.pdf" target="_blank" rel="noopener noreferrer">hier</a> zum Download oder im persönlichen Gespräch unter <a href="tel:+4986319867900">08631 98679-00</a>.</p>
-                    </div>
-                </div>
-
             </div>
-        </section>
-    </main>
 
-    <footer class="site-footer">
-        <div class="container footer-grid">
-            <div>
-                <h4>Navigation</h4>
-                <ul>
-                    <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
-                    <li><a href="{{ url_for('index') }}#news">Neuigkeiten</a></li>
-                    <li><a href="{{ url_for('index') }}#services">Leistungen</a></li>
-                    <li><a href="{{ url_for('index') }}#company">Unternehmen</a></li>
-                    <li><a href="{{ url_for('index') }}#contact">Kontakt</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Leistungen</h4>
-                <ul>
-                    <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
-                    <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
-                    <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
-                    <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
-                    <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
-                    <li><a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a></li>
-                    <li><a href="{{ url_for('sanierungen') }}">Sanierungen</a></li>
-                    <li><a href="{{ url_for('wasserbau') }}">Wasserbau</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Kontakt</h4>
-                <address>
-                    Behringer & Partner mbB<br>
-                    Luitpoldallee 32<br>
-                    D-84453 Mühldorf a. Inn<br>
-                    <a href="tel:+4986319867900">Tel: +49 8631 98679-00</a><br>
-                    <a href="mailto:info@ib-behringer.de">E-Mail: info@ib-behringer.de</a>
-                </address>
-            </div>
-            <div>
-                <h4>Rechtliches</h4>
-                <ul>
-                    <li><a href="{{ url_for('impressum') }}">Impressum</a></li> 
-                    <li><a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Folgen Sie uns</h4>
-                <div class="footer-socials">
-                    <a href="https://www.instagram.com/ibb_mue/" target="_blank" rel="noopener" aria-label="Instagram"><i
-                            class="fab fa-instagram"></i></a>
+            <div class="netzwerk-item">
+                <div class="netzwerk-logo-wrapper">
+                    <a href="http://www.dwa-bayern.de/" target="_blank" rel="noopener noreferrer">
+                        <img loading="lazy" src="https://www.ib-behringer.de/wp/wp-content/uploads/2016/01/dwa-mitglied.jpg" alt="DWA Logo">
+                    </a>
                 </div>
-                <h4 style="margin-top: 1.5rem;">Wir unterstützen</h4>
-                <p style="margin-bottom: var(--space-xs); line-height: 1.4;">
-                    <a href="{{ url_for('maedchenschule_chato') }}">Mädchenschule Chato, Tansania</a>
-                </p>
-                <a href="{{ url_for('maedchenschule_chato') }}">
-                    <img src="{{ url_for('static', filename='images/chato_schule_thumb.jpg') }}" 
-                        alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
-                </a>
+                <div class="netzwerk-text">
+                    <h3>Mitglied bei der <a href="http://www.dwa-bayern.de/" target="_blank" rel="noopener noreferrer">Deutschen Vereinigung für Wasserwirtschaft, Abwasser und Abfall e.V. (DWA)</a></h3>
+                    <p>Die DWA ist das führende Netzwerk der Wasser- und Abfallwirtschaft.</p>
+                </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© <span id="current-year">2024</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
-            <p><a href="{{ url_for('impressum') }}">Impressum</a> | <a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></p> 
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const navToggle = document.querySelector('.nav-toggle');
-            const navList = document.querySelector('.main-nav .nav-list');
-            const siteHeader = document.querySelector('.site-header');
-
-            // 1. Main Navigation Toggle (Hamburger)
-            if (navToggle && navList) {
-                navToggle.addEventListener('click', () => {
-                    const isOpen = navList.classList.toggle('open');
-                    navToggle.setAttribute('aria-expanded', isOpen);
-                    navToggle.innerHTML = isOpen ? '×' : '☰';
-                    if (!isOpen) {
-                        navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
-                        navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
-                    }
-                });
-            }
-
-            // 2. Mobile Dropdown Submenu Toggle
-            const dropdownToggles = navList ? navList.querySelectorAll('.nav-item.dropdown > a, .nav-item.dropdown > span') : [];
-            dropdownToggles.forEach(toggle => {
-                toggle.addEventListener('click', function(event) {
-                    if (navToggle && window.getComputedStyle(navToggle).display !== 'none') { // Only for mobile view
-                        const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
-                        if (hasArrow) { // Only act if it's a dropdown toggle
-                            event.preventDefault(); 
-                            const submenu = this.parentElement.querySelector('.dropdown-menu');
-                            if (submenu) submenu.classList.toggle('submenu-open');
-                            this.classList.toggle('active'); 
-                        }
-                    }
-                });
-            });
             
-            // 3. Smooth Scroll & Close Mobile Nav
-            document.querySelectorAll('a[href]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const hrefAttribute = this.getAttribute('href');
-                    const isMobileView = navToggle && window.getComputedStyle(navToggle).display !== 'none';
-                    let isMobileDropdownToggleItself = false;
-                    
-                    if (isMobileView && this.parentElement && this.parentElement.classList.contains('dropdown') && this.closest('.nav-list')) {
-                         const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
-                         if(hasArrow) {
-                            isMobileDropdownToggleItself = true;
-                         }
-                    }
+            <div class="netzwerk-item">
+                <div class="netzwerk-logo-wrapper">
+                    <a href="https://www.kanalbau.com/de/startseite.html" target="_blank" rel="noopener noreferrer">
+                        <img loading="lazy" src="https://www.ib-behringer.de/wp/wp-content/uploads/2016/01/behringer-ral-guetegemeinschaft-kanalbau-300x226.jpg" alt="Güteschutz Kanalbau Logo">
+                    </a>
+                </div>
+                <div class="netzwerk-text">
+                    <h3>Mitglied beim <a href="https://www.kanalbau.com/de/startseite.html" target="_blank" rel="noopener noreferrer">Güteschutz Kanalbau</a></h3>
+                    <p>Der Güteschutz Kanalbau verfolgt den Zweck die Umweltverträglichkeit von Abwasserleitungen und -kanälen zu verbessern und damit den Verunreinigungen von Grundwasser und Boden durch undichte Kanäle entgegenzuwirken.</p>
+                </div>
+            </div>
 
-                    if (hrefAttribute.startsWith('#') && hrefAttribute.length > 1) {
-                         if (document.getElementById(hrefAttribute.substring(1))) { // Check if anchor exists on current page
-                            const targetElement = document.querySelector(hrefAttribute);
-                            if (targetElement) { 
-                                e.preventDefault();
-                                let headerOffset = siteHeader ? siteHeader.offsetHeight : 0;
-                                const elementPosition = targetElement.getBoundingClientRect().top;
-                                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                            }
-                        }
-                    } else if (hrefAttribute === '#') { 
-                         e.preventDefault();
-                         window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
+            <div class="netzwerk-item partner-item">
+                <div class="netzwerk-logo-wrapper">
+                     <a href="https://www.ipp-landshut.de/" target="_blank" rel="noopener noreferrer">
+                        <img loading="lazy" src="https://www.ib-behringer.de/wp/wp-content/uploads/2016/02/Logo-IPP-1-300x143.jpg" alt="Logo IPP Ingenieure">
+                    </a>
+                </div>
+                <div class="netzwerk-text">
+                    <h3>Unser Partner im Brückenbau: <a href="https://www.ipp-landshut.de/" target="_blank" rel="noopener noreferrer">IPP Igl, Putz + Partner</a></h3>
+                    <p><a href="https://www.ipp-landshut.de/index.html" target="_blank" rel="noopener noreferrer">Planungsgesellschaft für den konstruktiven Ingenieurbau</a><br>
+                    Neustadt 517 – 84028 Landshut</p>
+                    <p>Das Büro Igl, Putz + Partner aus Landshut ist unser kompetenter Partner im Bereich Brückenbau. Dabei wird die Erfahrung aus der Objekt- und Tragwerksplanung von über 1000 Brückenbauwerken miteingebracht. Durch diese Zusammenarbeit können wir ihnen auch bei aufwändigen Bauwerken eine fachgerechte und wirtschaftliche Planung und Umsetzung ihres Bauwerks zusichern. Die Aufgabenteilung zwischen den Büros wird projektspezifisch festgelegt.</p>
+                </div>
+            </div>
+            
+            <div class="netzwerk-item partner-item">
+                <div class="netzwerk-logo-wrapper">
+                    <img loading="lazy" src="https://www.ib-behringer.de/wp/wp-content/uploads/2016/01/bge_logo-300x213.jpg" alt="Behringer Grundstückserschließungs GmbH Logo">
+                </div>
+                <div class="netzwerk-text">
+                    <h3>Behringer Grundstückserschließungs GmbH</h3>
+                    <p>Die Behringer Grundstückserschließungs GmbH ist Ihr Partner für die Finanzierung, Planung und Durchführung aller öffentlichen Erschließungsmaßnahmen. Einen Überblick über bereits erfolgreich abgeschlossene Projekte entnehmen Sie der <a href="https://www.ib-behringer.de/wp/wp-content/uploads/2016/02/150414_BGE_Referenzen.pdf" target="_blank" rel="noopener noreferrer">Referenzliste</a>. Weitere Informationen erhalten Sie gerne <a href="https://www.ib-behringer.de/wp/wp-content/uploads/2016/12/160607_BüropresentationGmbH.pdf" target="_blank" rel="noopener noreferrer">hier</a> zum Download oder im persönlichen Gespräch unter <a href="tel:+4986319867900">08631 98679-00</a>.</p>
+                </div>
+            </div>
 
-                    if (isMobileView && navList && navList.classList.contains('open') && !isMobileDropdownToggleItself) {
-                         if (!hrefAttribute.startsWith('#') || (hrefAttribute.startsWith('#') && document.querySelector(hrefAttribute))) { 
-                            navList.classList.remove('open');
-                            if (navToggle) {
-                                navToggle.setAttribute('aria-expanded', 'false');
-                                navToggle.innerHTML = '☰';
-                            }
-                            navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
-                            navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
-                        }
-                    }
-                });
-            });
-
-            const yearSpan = document.getElementById('current-year');
-            if (yearSpan) {
-                yearSpan.textContent = new Date().getFullYear();
-            }
-        });
-    </script>
-</body>
-</html>
+        </div>
+    </section>
+</main>
+{% endblock %}

@@ -1,534 +1,192 @@
-<!DOCTYPE html>
-<html lang="de">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Behringer & Partner</title>
-    <!-- Der <head> Inhalt bleibt identisch, inklusive dem <style> Block -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% block title %}Behringer & Partner{% endblock %}
 
-</head>
-
-<body>
-<header class="site-header">
-    <div class="container header-inner">
-        <a href="{{ url_for('index') }}" class="logo">
-            <img src='{{ url_for("static", filename="images/logo.png") }}' alt="Behringer & Partner Logo" loading="lazy">
-        </a>
-        <nav class="main-nav">
-            <ul class="nav-list">
-                <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
-                <li><a href="{{ url_for('news') }}">Neuigkeiten</a></li>
-                <li class="nav-item dropdown">
-                    <a href="{{ url_for('index') }}#services">Leistungen <span class="dropdown-arrow">▼</span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
-                        <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
-                        <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
-                        <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
-                        <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
-                        <li><a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a></li>
-                        <li><a href="{{ url_for('sanierungen') }}">Sanierungen</a></li>
-                        <li><a href="{{ url_for('wasserbau') }}">Wasserbau</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="{{ url_for('index') }}#company">Unternehmen <span class="dropdown-arrow">▼</span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{ url_for('unternehmen_team') }}">Team</a></li>
-                        <li><a href="{{ url_for('firmengeschichte') }}">Firmengeschichte</a></li>
-                        <li><a href="{{ url_for('unternehmen_netzwerk') }}">Netzwerk</a></li>
-                        <li><a href="{{ url_for('unternehmen_stellenangebote') }}">Stellenangebote</a></li>
-                    </ul>
-                </li>
-                <li><a href="{{ url_for('index') }}#contact" class="btn btn-primary">Kontakt</a></li>
-            </ul>
-        </nav>
-        <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+{% block content %}
+<section class="hero">
+    <div class="hero-slideshow">
+        <img src="{{ url_for('static', filename='images/hero.png') }}" alt="Hero Bildbeschreibung 1" class="hero-img active" loading="lazy">
+        <img src="{{ url_for('static', filename='images/hero1.png') }}" alt="Hero Bildbeschreibung 2" class="hero-img" loading="lazy">
+        <img src="{{ url_for('static', filename='images/hero2.png') }}" alt="Hero Bildbeschreibung 3" class="hero-img" loading="lazy">
+        <img src="{{ url_for('static', filename='images/working (2).jpg') }}" alt="Team in Aktion" class="hero-img" loading="lazy">
+        <img src="{{ url_for('static', filename='images/hero3.png') }}" alt="Hero Bildbeschreibung 4" class="hero-img" loading="lazy">
+        <img src="{{ url_for('static', filename='images/working.jpg') }}" alt="Arbeiter auf der Baustelle" class="hero-img" loading="lazy">
     </div>
-</header>
+    <div class="hero-content">
+        <h1>Ihr Partner im Tiefbau seit 1968</h1>
+        <p>Wirtschaftliche und nachhaltige Lösungen mit modernster Technik.</p>
+    </div>
+</section>
 
-    <section class="hero">
-        <div class="hero-slideshow">
-            <img src="{{ url_for('static', filename='images/hero.png') }}" alt="Hero Bildbeschreibung 1" class="hero-img active" loading="lazy">
-            <img src="{{ url_for('static', filename='images/hero1.png') }}" alt="Hero Bildbeschreibung 2" class="hero-img" loading="lazy">
-            <img src="{{ url_for('static', filename='images/hero2.png') }}" alt="Hero Bildbeschreibung 3" class="hero-img" loading="lazy">
-            <img src="{{ url_for('static', filename='images/working (2).jpg') }}" alt="Team in Aktion" class="hero-img" loading="lazy">
-            <img src="{{ url_for('static', filename='images/hero3.png') }}" alt="Hero Bildbeschreibung 4" class="hero-img" loading="lazy">
-            <img src="{{ url_for('static', filename='images/working.jpg') }}" alt="Arbeiter auf der Baustelle" class="hero-img" loading="lazy">
-        </div>
-        <div class="hero-content">
-            <h1>Ihr Partner im Tiefbau seit 1968</h1>
-            <p>Wirtschaftliche und nachhaltige Lösungen mit modernster Technik.</p>
-        </div>
-    </section>
-
-    <main>
-        <section id="about" class="section"> 
-            <div class="container mx-auto px-4-custom">
-                <h2 id="about-headline">Wer wir sind und was uns antreibt</h2>
-                <div class="about-reveal-content">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div class="order-2 lg:order-1">
-                            <p class="text-lg mb-4">
-                                Seit über 25 Jahren ist das Ingenieurbüro Behringer Ihr verlässlicher Partner für anspruchsvolle Projekte im Bauingenieurwesen. Unser erfahrenes Team steht für Innovation, Präzision und nachhaltige Qualität.
-                            </p>
-                            <p class="text-lg mb-6">
-                                Wir entwickeln maßgeschneiderte, wirtschaftliche Lösungen nach höchsten technischen Standards und begleiten Sie von der Idee bis zur erfolgreichen Realisierung Ihres Projekts.
-                            </p>
-                        </div>
-                        <div class="order-1 lg:order-2">
-                            <!-- GEÄNDERT: Die Klasse für die Höhe wurde angepasst -->
-                            <div id="team-photo-container" class="relative h-96 overflow-hidden rounded-lg shadow-xl">
-                                <img src="{{ url_for('static', filename='images/team/1 - buero_2025-25.jpg') }}"
-                                    alt="Team des Ingenieurbüros Behringer bei der Planung"
-                                    class="object-cover w-full h-full" loading="lazy" />
-                                <div
-                                    class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                                </div>
+<main>
+    <section id="about" class="section">
+        <div class="container mx-auto px-4-custom">
+            <h2 id="about-headline">Wer wir sind und was uns antreibt</h2>
+            <div class="about-reveal-content">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 lg:order-1">
+                        <p class="text-lg mb-4">
+                            Seit über 25 Jahren ist das Ingenieurbüro Behringer Ihr verlässlicher Partner für anspruchsvolle Projekte im Bauingenieurwesen. Unser erfahrenes Team steht für Innovation, Präzision und nachhaltige Qualität.
+                        </p>
+                        <p class="text-lg mb-6">
+                            Wir entwickeln maßgeschneiderte, wirtschaftliche Lösungen nach höchsten technischen Standards und begleiten Sie von der Idee bis zur erfolgreichen Realisierung Ihres Projekts.
+                        </p>
+                    </div>
+                    <div class="order-1 lg:order-2">
+                        <div id="team-photo-container" class="relative h-96 overflow-hidden rounded-lg shadow-xl">
+                            <img src="{{ url_for('static', filename='images/team/1 - buero_2025-25.jpg') }}" alt="Team des Ingenieurbüros Behringer bei der Planung" class="object-cover w-full h-full" loading="lazy" />
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
                             </div>
                         </div>
                     </div>
-                </div> 
-            </div>
-        </section>
-
-        <section id="news" class="section bg-alternate"> 
-            <div class="container">
-                <h2 class="section-title">Aktuelle Neuigkeiten</h2>
-                <p class="section-subtitle">Bleiben Sie auf dem Laufenden über unsere Projekte und Entwicklungen.</p>
-                <div class="news-slider-wrapper">
-                    <div class="news-slider">
-                        <div class="news-item">
-                            <img src="{{ url_for('static', filename='images/news1.jpg') }}" alt="Spatenstich Neubaugebiet Allersheim">
-                            <small class="news-date">31.10.2024</small>
-                            <h3>Spatenstich Neubaugebiet Allersheim, Schwindegg</h3>
-                            <p>Am 30.10.24 wurde feierlich der Spatenstich für das Neubaugebiet Allersheim in Schwindegg durchgeführt. Bereits im November beginnen die Tiefbauarbeiten, Mitte 2025 wird ein erster Abschnitt fertig...</p>
-                            <a href="https://www.ib-behringer.de/2024/10/31/spatenstich-neubaugebiet-allersheim-schwindegg/" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Mehr lesen</a>
-                        </div>
-                        <div class="news-item">
-                            <img src="{{ url_for('static', filename='images/news2.jpg') }}" alt="Bahnunterführung Klugham">
-                            <small class="news-date">25.10.2024</small>
-                            <h3>Bahnunterführung Klugham</h3>
-                            <p>In Zusammenarbeit mit der Südostbayern Bahn konnte die Gemeinde Aschau a. Inn mit der Erneuerung der Bahnunterführung in Klugham eine zeitgemäße Straßenführung verwirklichen. Im Frühjahr...</p>
-                            <a href="https://www.ib-behringer.de/projekt/bahnunterfuehrung-klugham/" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Mehr lesen</a>
-                        </div>
-                        <div class="news-item">
-                            <img src="{{ url_for('static', filename='images/news3.jpg') }}" alt="Kreisverkehr Marktl">
-                            <small class="news-date">27.09.2024</small>
-                            <h3>Kreisverkehr in Marktl fertig</h3>
-                            <p>Seit September 2024 ist der Kreisverkehr in Marktl, der die Kreisstraßen AÖ22 und AÖ24 verbindet, freigegeben. In ca. 10 Monaten wurde ein moderner Knotenpunkt geschaffen...</p>
-                            <a href="https://www.ib-behringer.de/2024/09/27/kreisverkehr-in-martkl-fertig/" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Mehr lesen</a>
-                        </div>
-                    </div>
                 </div>
-                <div class="news-dots"></div>
-                <div style="text-align: center; margin-top: var(--space-lg);">
-                    <a href="{{ url_for('news') }}" class="btn btn-primary">Alle Neuigkeiten ansehen</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="services" class="section services"> 
-            <div class="container">
-                <h2 class="section-title">Leistungen</h2>
-                <p class="section-subtitle">Entdecken Sie unser breites Spektrum an Ingenieurdienstleistungen.</p>
-                <div class="services-grid">
-                    <div class="service-card" id="service-siedlung">
-                        <a href="{{ url_for('siedlungswasserwirtschaft') }}" class="service-link-wrapper">
-                            <img src="{{ url_for('static', filename='images/siedlungswasserwirtschaft.png') }}" alt="Siedlungswasserwirtschaft" loading="lazy">
-                            <h3>Siedlungswasserwirtschaft</h3>
-                        </a>
-                    </div>
-                    <div class="service-card" id="service-strassen">
-                        <a href="{{ url_for('strassenbau_brueckenbau') }}" class="service-link-wrapper">
-                            <img src="{{ url_for('static', filename='images/strassenbau.png') }}" alt="Straßenbau & Brückenbau" loading="lazy">
-                            <h3>Straßenbau & Brückenbau</h3>
-                        </a>
-                    </div>
-                    <div class="service-card" id="service-fernwaerme">
-                         <a href="{{ url_for('fernwaerme') }}" class="service-link-wrapper">
-                            <img src="{{ url_for('static', filename='images/fernwaerme.png') }}" alt="Fernwärme" loading="lazy">
-                            <h3>Fernwärme</h3>
-                        </a>
-                    </div>
-                    <div class="service-card" id="service-hydraulik">
-                         <a href="{{ url_for('hydraulische_nachweise') }}" class="service-link-wrapper">
-                            <img src="{{ url_for('static', filename='images/hydraulischenachweise.png') }}" alt="Hydraulische Nachweise" loading="lazy">
-                            <h3>Hydraulische Nachweise</h3>
-                        </a>
-                    </div>
-                    <div class="service-card" id="service-bauland">
-                        <a href="{{ url_for('baulanderschliessung') }}" class="service-link-wrapper">
-                            <img src="{{ url_for('static', filename='images/baulanderschließung.png') }}" alt="Baulanderschließung" loading="lazy">
-                            <h3>Baulanderschließung</h3>
-                        </a>
-                    </div>
-                    <div class="service-card" id="service-gis">
-                        <a href="{{ url_for('kommunales_gis') }}" class="service-link-wrapper">
-                            <img src="{{ url_for('static', filename='images/kommunalesgis.png') }}" alt="Kommunales GIS" loading="lazy">
-                            <h3>Kommunales GIS</h3>
-                        </a>
-                    </div>
-                    <div class="service-card" id="service-sanierung">
-                        <a href="{{ url_for('sanierungen') }}" class="service-link-wrapper">
-                            <img src="{{ url_for('static', filename='images/sanierungen.png') }}" alt="Sanierungen" loading="lazy">
-                            <h3>Sanierungen</h3>
-                        </a>
-                    </div>
-                    <div class="service-card" id="service-wasserbau">
-                        <a href="{{ url_for('wasserbau') }}" class="service-link-wrapper">
-                            <img src="{{ url_for('static', filename='images/wasserbau.png') }}" alt="Wasserbau" loading="lazy">
-                            <h3>Wasserbau</h3>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="company" class="section bg-alternate"> 
-            <div class="container">
-                <h2 class="section-title">Das Unternehmen</h2>
-                <p class="section-subtitle">Erfahren Sie mehr über uns, unsere Werte und was uns auszeichnet.</p>
-                <div class="info-card-grid">
-                    <div class="info-card" id="company-team">
-                        <h3>Unser Team</h3>
-                        <p>Lernen Sie die engagierten Köpfe hinter Behringer & Partner kennen. Erfahrung und Expertise
-                            vereint.</p>
-                        <a href="{{ url_for('unternehmen_team') }}" class="btn btn-primary btn-sm">Team kennenlernen</a>
-                    </div>
-                    <div class="info-card" id="company-history">
-                        <h3>Firmengeschichte</h3>
-                        <p>Seit 1968 gestalten wir Infrastruktur. Erfahren Sie mehr über unsere Meilensteine und
-                            Entwicklung.</p>
-                        <a href="{{ url_for('firmengeschichte') }}" class="btn btn-primary btn-sm">Unsere Historie</a>
-                    </div>
-                    <div class="info-card" id="company-jobs">
-                        <h3>Karriere & Stellenangebote</h3>
-                        <p>Werden Sie Teil unseres Teams! Entdecken Sie aktuelle Jobangebote und Karrieremöglichkeiten.
-                        </p>
-                        <a href="{{ url_for('unternehmen_stellenangebote') }}" class="btn btn-primary btn-sm">Zu den Stellen</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="contact" class="section contact"> 
-            <div class="container">
-                <h2 class="section-title">Kontakt</h2>
-                <p class="section-subtitle">Wir freuen uns auf Ihre Nachricht, Ihren Anruf oder Ihren Besuch.</p>
-                <div class="contact-grid">
-                    <form class="contact-form">
-                        <input type="text" name="name" placeholder="Ihr Name" required>
-                        <input type="email" name="email" placeholder="Ihre E-Mail" required>
-                        <textarea name="message" placeholder="Ihre Nachricht" rows="6" required></textarea>
-                        <button type="submit" class="btn btn-primary">Nachricht senden</button>
-                    </form>
-                    <div class="contact-info">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10628.897101529734!2d12.524255!3d48.24081!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4775e9bce4a6f33b%3A0x34a400004c486cde!2sINGENIEURB%C3%9CRO%20BEHRINGER%20%26%20PARTNER!5e0!3m2!1sde!2sus!4v1747041657899!5m2!1sde!2sus"
-                            style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        <address>
-                            <p><strong>Behringer & Partner mbB</strong><br>
-                                Luitpoldallee 32<br>
-                                D-84453 Mühldorf a. Inn</p>
-                            <p>Tel: <a href="tel:+4986319867900">+49 8631 98679-00</a><br>
-                                E-Mail: <a href="mailto:info@ib-behringer.de">info@ib-behringer.de</a></p>
-                        </address>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container footer-grid">
-            <div>
-                <h4>Navigation</h4>
-                <ul>
-                    <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
-                    <li><a href="{{ url_for('news') }}">Neuigkeiten</a></li>
-                    <li><a href="{{ url_for('index') }}#services">Leistungen</a></li>
-                    <li><a href="{{ url_for('index') }}#company">Unternehmen</a></li>
-                    <li><a href="{{ url_for('index') }}#contact">Kontakt</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Leistungen</h4>
-                <ul>
-                    <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
-                    <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
-                    <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
-                    <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
-                    <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
-                    <li><a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a></li>
-                    <li><a href="{{ url_for('sanierungen') }}">Sanierungen</a></li>
-                    <li><a href="{{ url_for('wasserbau') }}">Wasserbau</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Kontakt</h4>
-                <address>
-                    Behringer & Partner mbB<br>
-                    Luitpoldallee 32<br>
-                    D-84453 Mühldorf a. Inn<br>
-                    <a href="tel:+4986319867900">Tel: +49 8631 98679-00</a><br>
-                    <a href="mailto:info@ib-behringer.de">E-Mail: info@ib-behringer.de</a>
-                </address>
-            </div>
-            <div>
-                <h4>Rechtliches</h4>
-                <ul>
-                    <li><a href="{{ url_for('impressum') }}">Impressum</a></li>
-                    <li><a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></li> 
-                </ul>
-            </div>
-            <div>
-                <h4>Folgen Sie uns</h4>
-                <div class="footer-socials">
-                    <a href="https://www.instagram.com/ibb_mue/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                </div>
-                 <h4 style="margin-top: 1.5rem;">Wir unterstützen</h4>
-                 <p style="margin-bottom: var(--space-xs); line-height: 1.4;">
-                    <a href="{{ url_for('maedchenschule_chato') }}">Mädchenschule Chato, Tansania</a>
-                 </p>
-                 <a href="{{ url_for('maedchenschule_chato') }}">
-                    <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2022/12/Suedansicht-2-150x150.jpg" alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
-                </a>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>© <span id="current-year">2024</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
-            <p><a href="{{ url_for('impressum') }}">Impressum</a> | <a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></p>
+    </section>
+
+    <section id="news" class="section bg-alternate">
+        <div class="container">
+            <h2 class="section-title">Aktuelle Neuigkeiten</h2>
+            <p class="section-subtitle">Bleiben Sie auf dem Laufenden über unsere Projekte und Entwicklungen.</p>
+            <div class="news-slider-wrapper">
+                <div class="news-slider">
+                    <div class="news-item">
+                        <img src="{{ url_for('static', filename='images/news1.jpg') }}" alt="Spatenstich Neubaugebiet Allersheim">
+                        <small class="news-date">31.10.2024</small>
+                        <h3>Spatenstich Neubaugebiet Allersheim, Schwindegg</h3>
+                        <p>Am 30.10.24 wurde feierlich der Spatenstich für das Neubaugebiet Allersheim in Schwindegg durchgeführt. Bereits im November beginnen die Tiefbauarbeiten, Mitte 2025 wird ein erster Abschnitt fertig...</p>
+                        <a href="https://www.ib-behringer.de/2024/10/31/spatenstich-neubaugebiet-allersheim-schwindegg/" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Mehr lesen</a>
+                    </div>
+                    <div class="news-item">
+                        <img src="{{ url_for('static', filename='images/news2.jpg') }}" alt="Bahnunterführung Klugham">
+                        <small class="news-date">25.10.2024</small>
+                        <h3>Bahnunterführung Klugham</h3>
+                        <p>In Zusammenarbeit mit der Südostbayern Bahn konnte die Gemeinde Aschau a. Inn mit der Erneuerung der Bahnunterführung in Klugham eine zeitgemäße Straßenführung verwirklichen. Im Frühjahr...</p>
+                        <a href="https://www.ib-behringer.de/projekt/bahnunterfuehrung-klugham/" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Mehr lesen</a>
+                    </div>
+                    <div class="news-item">
+                        <img src="{{ url_for('static', filename='images/news3.jpg') }}" alt="Kreisverkehr Marktl">
+                        <small class="news-date">27.09.2024</small>
+                        <h3>Kreisverkehr in Marktl fertig</h3>
+                        <p>Seit September 2024 ist der Kreisverkehr in Marktl, der die Kreisstraßen AÖ22 und AÖ24 verbindet, freigegeben. In ca. 10 Monaten wurde ein moderner Knotenpunkt geschaffen...</p>
+                        <a href="https://www.ib-behringer.de/2024/09/27/kreisverkehr-in-martkl-fertig/" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Mehr lesen</a>
+                    </div>
+                </div>
+            </div>
+            <div class="news-dots"></div>
+            <div style="text-align: center; margin-top: var(--space-lg);">
+                <a href="{{ url_for('news') }}" class="btn btn-primary">Alle Neuigkeiten ansehen</a>
+            </div>
         </div>
-    </footer>
+    </section>
 
-    <div id="lightbox" class="lightbox">
-        <span class="close-lightbox">×</span>
-        <img class="lightbox-content" id="lightbox-image">
-    </div>
+    <section id="services" class="section services">
+        <div class="container">
+            <h2 class="section-title">Leistungen</h2>
+            <p class="section-subtitle">Entdecken Sie unser breites Spektrum an Ingenieurdienstleistungen.</p>
+            <div class="services-grid">
+                <div class="service-card" id="service-siedlung">
+                    <a href="{{ url_for('siedlungswasserwirtschaft') }}" class="service-link-wrapper">
+                        <img src="{{ url_for('static', filename='images/siedlungswasserwirtschaft.png') }}" alt="Siedlungswasserwirtschaft" loading="lazy">
+                        <h3>Siedlungswasserwirtschaft</h3>
+                    </a>
+                </div>
+                <div class="service-card" id="service-strassen">
+                    <a href="{{ url_for('strassenbau_brueckenbau') }}" class="service-link-wrapper">
+                        <img src="{{ url_for('static', filename='images/strassenbau.png') }}" alt="Straßenbau & Brückenbau" loading="lazy">
+                        <h3>Straßenbau & Brückenbau</h3>
+                    </a>
+                </div>
+                <div class="service-card" id="service-fernwaerme">
+                     <a href="{{ url_for('fernwaerme') }}" class="service-link-wrapper">
+                        <img src="{{ url_for('static', filename='images/fernwaerme.png') }}" alt="Fernwärme" loading="lazy">
+                        <h3>Fernwärme</h3>
+                    </a>
+                </div>
+                <div class="service-card" id="service-hydraulik">
+                     <a href="{{ url_for('hydraulische_nachweise') }}" class="service-link-wrapper">
+                        <img src="{{ url_for('static', filename='images/hydraulischenachweise.png') }}" alt="Hydraulische Nachweise" loading="lazy">
+                        <h3>Hydraulische Nachweise</h3>
+                    </a>
+                </div>
+                <div class="service-card" id="service-bauland">
+                    <a href="{{ url_for('baulanderschliessung') }}" class="service-link-wrapper">
+                        <img src="{{ url_for('static', filename='images/baulanderschließung.png') }}" alt="Baulanderschließung" loading="lazy">
+                        <h3>Baulanderschließung</h3>
+                    </a>
+                </div>
+                <div class="service-card" id="service-gis">
+                    <a href="{{ url_for('kommunales_gis') }}" class="service-link-wrapper">
+                        <img src="{{ url_for('static', filename='images/kommunalesgis.png') }}" alt="Kommunales GIS" loading="lazy">
+                        <h3>Kommunales GIS</h3>
+                    </a>
+                </div>
+                <div class="service-card" id="service-sanierung">
+                    <a href="{{ url_for('sanierungen') }}" class="service-link-wrapper">
+                        <img src="{{ url_for('static', filename='images/sanierungen.png') }}" alt="Sanierungen" loading="lazy">
+                        <h3>Sanierungen</h3>
+                    </a>
+                </div>
+                <div class="service-card" id="service-wasserbau">
+                    <a href="{{ url_for('wasserbau') }}" class="service-link-wrapper">
+                        <img src="{{ url_for('static', filename='images/wasserbau.png') }}" alt="Wasserbau" loading="lazy">
+                        <h3>Wasserbau</h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="company" class="section bg-alternate">
+        <div class="container">
+            <h2 class="section-title">Das Unternehmen</h2>
+            <p class="section-subtitle">Erfahren Sie mehr über uns, unsere Werte und was uns auszeichnet.</p>
+            <div class="info-card-grid">
+                <div class="info-card" id="company-team">
+                    <h3>Unser Team</h3>
+                    <p>Lernen Sie die engagierten Köpfe hinter Behringer & Partner kennen. Erfahrung und Expertise
+                        vereint.</p>
+                    <a href="{{ url_for('unternehmen_team') }}" class="btn btn-primary btn-sm">Team kennenlernen</a>
+                </div>
+                <div class="info-card" id="company-history">
+                    <h3>Firmengeschichte</h3>
+                    <p>Seit 1968 gestalten wir Infrastruktur. Erfahren Sie mehr über unsere Meilensteine und
+                        Entwicklung.</p>
+                    <a href="{{ url_for('firmengeschichte') }}" class="btn btn-primary btn-sm">Unsere Historie</a>
+                </div>
+                <div class="info-card" id="company-jobs">
+                    <h3>Karriere & Stellenangebote</h3>
+                    <p>Werden Sie Teil unseres Teams! Entdecken Sie aktuelle Jobangebote und Karrieremöglichkeiten.
+                    </p>
+                    <a href="{{ url_for('unternehmen_stellenangebote') }}" class="btn btn-primary btn-sm">Zu den Stellen</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const navToggle = document.querySelector('.nav-toggle');
-            const navList = document.querySelector('.main-nav .nav-list');
-            const siteHeader = document.querySelector('.site-header');
-
-            // 1. Main Navigation Toggle (Hamburger)
-            if (navToggle && navList) {
-                navToggle.addEventListener('click', () => {
-                    const isOpen = navList.classList.toggle('open');
-                    navToggle.setAttribute('aria-expanded', isOpen);
-                    navToggle.innerHTML = isOpen ? '×' : '☰';
-                    if (!isOpen) {
-                        navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
-                        navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
-                    }
-                });
-            }
-
-            // 2. Mobile Dropdown Submenu Toggle
-            const dropdownToggles = navList ? navList.querySelectorAll('.nav-item.dropdown > a, .nav-item.dropdown > span') : [];
-            dropdownToggles.forEach(toggle => {
-                toggle.addEventListener('click', function(event) {
-                    if (navToggle && window.getComputedStyle(navToggle).display !== 'none') { // Only for mobile view
-                        const href = this.getAttribute('href');
-                        const submenu = this.parentElement.querySelector('.dropdown-menu');
-
-                        if (submenu) { // If it's a dropdown toggle (has a submenu)
-                            event.preventDefault(); 
-                            submenu.classList.toggle('submenu-open');
-                            this.classList.toggle('active');
-                        }
-                    }
-                });
-            });
-
-            // 3. Smooth Scroll & Close Mobile Nav
-            document.querySelectorAll('a[href]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    const isMobileView = navToggle && window.getComputedStyle(navToggle).display !== 'none';
-                    let isMobileDropdownToggleItself = false;
-                    
-                    if (isMobileView && this.parentElement && this.parentElement.classList.contains('dropdown') && this.closest('.nav-list') && this.querySelector('.dropdown-arrow')) {
-                        const submenu = this.parentElement.querySelector('.dropdown-menu');
-                        if (submenu) { 
-                            isMobileDropdownToggleItself = true;
-                        }
-                    }
-
-                    if (href.startsWith('#') && href.length > 1) {
-                        const targetElement = document.querySelector(href);
-                        if (targetElement) {
-                            e.preventDefault();
-                            let headerOffset = siteHeader ? siteHeader.offsetHeight : 0;
-                            const elementPosition = targetElement.getBoundingClientRect().top;
-                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                        }
-                    } else if (href === '#') { 
-                         e.preventDefault();
-                         window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
-
-                    if (isMobileView && navList && navList.classList.contains('open') && !isMobileDropdownToggleItself) {
-                         if (!href.startsWith('#') || (href.startsWith('#') && document.querySelector(href))) { 
-                            navList.classList.remove('open');
-                            if (navToggle) {
-                                navToggle.setAttribute('aria-expanded', 'false');
-                                navToggle.innerHTML = '☰';
-                            }
-                            navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
-                            navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
-                        }
-                    }
-                });
-            });
-
-            // Hero-Slideshow
-            const slides = document.querySelectorAll('.hero-slideshow .hero-img');
-            if (slides.length > 1) {
-                let currentHeroSlide = 0;
-                if (slides[currentHeroSlide]) slides[currentHeroSlide].classList.add('active'); // Check if slide exists
-                setInterval(() => {
-                    if (slides[currentHeroSlide]) slides[currentHeroSlide].classList.remove('active');
-                    currentHeroSlide = (currentHeroSlide + 1) % slides.length;
-                    if (slides[currentHeroSlide]) slides[currentHeroSlide].classList.add('active');
-                }, 5000);
-            } else if (slides.length === 1 && slides[0]) {
-                slides[0].classList.add('active');
-            }
-            
-            // News Slider
-            const newsSlider = document.querySelector('#news .news-slider');
-            const newsItems = newsSlider ? newsSlider.querySelectorAll('.news-item') : [];
-            const newsDotsContainer = document.querySelector('#news .news-dots');
-            let currentNewsIndex = 0;
-            let newsInterval;
-
-            if (newsItems.length > 0 && newsDotsContainer) {
-                newsItems.forEach((item, index) => {
-                    const dot = document.createElement('span');
-                    dot.classList.add('news-dot');
-                    dot.dataset.index = index;
-                    if (index === 0) dot.classList.add('active');
-                    newsDotsContainer.appendChild(dot);
-                });
-
-                const newsDots = newsDotsContainer.querySelectorAll('.news-dot');
-
-                function showNewsItem(index) {
-                    newsItems.forEach(item => item.classList.remove('active'));
-                    if(newsItems[index]) newsItems[index].classList.add('active');
-                    newsDots.forEach(dot => dot.classList.remove('active'));
-                    if(newsDots[index]) newsDots[index].classList.add('active');
-                    currentNewsIndex = index;
-                }
-
-                function nextNewsItem() {
-                    let nextIndex = (currentNewsIndex + 1) % newsItems.length;
-                    showNewsItem(nextIndex);
-                }
-
-                newsDots.forEach(dot => {
-                    dot.addEventListener('click', () => {
-                        showNewsItem(parseInt(dot.dataset.index));
-                        clearInterval(newsInterval); 
-                        newsInterval = setInterval(nextNewsItem, 7000); 
-                    });
-                });
-
-                showNewsItem(0);
-                newsInterval = setInterval(nextNewsItem, 7000); 
-            }
-
-            // Update current year in footer
-            const yearSpan = document.getElementById('current-year');
-            if (yearSpan) {
-                yearSpan.textContent = new Date().getFullYear();
-            }
-
-            // IntersectionObserver für die "Über uns"-Sektion
-            const aboutSection = document.getElementById('about');
-            const aboutContentToReveal = aboutSection ? aboutSection.querySelector('.about-reveal-content') : null;
-            if (aboutSection && aboutContentToReveal) {
-                const revealAboutContent = (entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            aboutContentToReveal.classList.add('is-visible');
-                            observer.unobserve(entry.target); 
-                        }
-                    });
-                };
-                const aboutObserverOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-                const aboutObserver = new IntersectionObserver(revealAboutContent, aboutObserverOptions);
-                aboutObserver.observe(aboutSection); 
-            }
-
-            // Click handler for service cards
-            const serviceCards = document.querySelectorAll('.service-card');
-            serviceCards.forEach(card => {
-                const linkElement = card.querySelector('a.service-link-wrapper');
-                if (linkElement) {
-                    card.style.cursor = 'pointer';
-                    card.addEventListener('click', () => {
-                        window.location.href = linkElement.href;
-                    });
-                } else { 
-                    const serviceId = card.id;
-                    let targetUrl = '';
-                    switch (serviceId) {
-                        case 'service-siedlung': targetUrl = "{{ url_for('siedlungswasserwirtschaft') }}"; break;
-                        case 'service-strassen': targetUrl = "{{ url_for('strassenbau_brueckenbau') }}"; break;
-                        case 'service-fernwaerme': targetUrl = "{{ url_for('fernwaerme') }}"; break;
-                        case 'service-hydraulik': targetUrl = "{{ url_for('hydraulische_nachweise') }}"; break;
-                        case 'service-bauland': targetUrl = "{{ url_for('baulanderschliessung') }}"; break;
-                        case 'service-gis': targetUrl = "{{ url_for('kommunales_gis') }}"; break;
-                        case 'service-sanierung': targetUrl = "{{ url_for('sanierungen') }}"; break;
-                        case 'service-wasserbau': targetUrl = "{{ url_for('wasserbau') }}"; break;
-                    }
-                    if (targetUrl) {
-                        card.style.cursor = 'pointer';
-                        card.addEventListener('click', () => { window.location.href = targetUrl; });
-                    }
-                }
-            });
-            
-            // Lightbox Funktionalität für das Teamfoto
-            const teamPhotoContainer = document.getElementById('team-photo-container');
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImage = document.getElementById('lightbox-image');
-            const closeLightboxBtn = document.querySelector('.close-lightbox');
-
-            if (teamPhotoContainer && lightbox && lightboxImage && closeLightboxBtn) {
-                teamPhotoContainer.addEventListener('click', () => {
-                    const originalImage = teamPhotoContainer.querySelector('img');
-                    if(originalImage) {
-                        lightboxImage.src = originalImage.src;
-                        lightbox.classList.add('visible');
-                    }
-                });
-
-                const closeLightbox = () => {
-                    lightbox.classList.remove('visible');
-                };
-
-                closeLightboxBtn.addEventListener('click', closeLightbox);
-                
-                lightbox.addEventListener('click', (e) => {
-                    if (e.target === lightbox) {
-                        closeLightbox();
-                    }
-                });
-            }
-
-        });
-    </script>
-</body>
-</html>
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title">Kontakt</h2>
+            <p class="section-subtitle">Wir freuen uns auf Ihre Nachricht, Ihren Anruf oder Ihren Besuch.</p>
+            <div class="contact-grid">
+                <form class="contact-form">
+                    <input type="text" name="name" placeholder="Ihr Name" required>
+                    <input type="email" name="email" placeholder="Ihre E-Mail" required>
+                    <textarea name="message" placeholder="Ihre Nachricht" rows="6" required></textarea>
+                    <button type="submit" class="btn btn-primary">Nachricht senden</button>
+                </form>
+                <div class="contact-info">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10628.897101529734!2d12.524255!3d48.24081!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4775e9bce4a6f33b%3A0x34a400004c486cde!2sINGENIEURB%C3%9CRO%20BEHRINGER%20%26%20PARTNER!5e0!3m2!1sde!2sus!4v1747041657899!5m2!1sde!2sus" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <address>
+                        <p><strong>Behringer & Partner mbB</strong><br>
+                            Luitpoldallee 32<br>
+                            D-84453 Mühldorf a. Inn</p>
+                        <p>Tel: <a href="tel:+4986319867900">+49 8631 98679-00</a><br>
+                            E-Mail: <a href="mailto:info@ib-behringer.de">info@ib-behringer.de</a></p>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

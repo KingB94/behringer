@@ -1,470 +1,269 @@
-<!DOCTYPE html>
-<html lang="de">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Unser Team - Behringer & Partner</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% block title %}Unser Team - Behringer & Partner{% endblock %}
 
-</head>
-
-<body>
-    <header class="site-header">
-        <div class="container header-inner">
-            <a href="{{ url_for('index') }}" class="logo">
-                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Behringer & Partner Logo" loading="lazy">
-            </a>
-            <nav class="main-nav">
-                <ul class="nav-list">
-                    <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
-                    <li><a href="{{ url_for('index') }}#news">Neuigkeiten</a></li>
-                    <li class="nav-item dropdown">
-                        <a href="{{ url_for('index') }}#services">Leistungen <span class="dropdown-arrow">▼</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
-                            <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
-                            <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
-                            <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
-                            <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
-                            <li><a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a></li>
-                            <li><a href="{{ url_for('sanierungen') }}">Sanierungen</a></li>
-                            <li><a href="{{ url_for('wasserbau') }}">Wasserbau</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a href="{{ url_for('index') }}#company">Unternehmen <span class="dropdown-arrow">▼</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{ url_for('unternehmen_team') }}" class="active-subpage-link">Team</a></li>
-                            <li><a href="{{ url_for('firmengeschichte') }}">Firmengeschichte</a></li>
-                            <li><a href="{{ url_for('unternehmen_netzwerk') }}">Netzwerk</a></li>
-                            <li><a href="{{ url_for('unternehmen_stellenangebote') }}">Stellenangebote</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="{{ url_for('index') }}#contact" class="btn btn-primary">Kontakt</a></li>
-                </ul>
-            </nav>
-            <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+{% block content %}
+<main>
+    <section class="page-header-section">
+        <div class="container">
+            <div id="breadcrumbs" class="breadcrumbs">
+                <a href="{{ url_for('index') }}#company" title="Unternehmen">Unternehmen</a>
+                <span class="arrow">></span>
+                <span>Unser Team</span>
+            </div>
+            <h1 class="page-title">Unser Team</h1>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <section class="page-header-section">
-            <div class="container">
-                <div id="breadcrumbs" class="breadcrumbs">
-                    <a href="{{ url_for('index') }}#company" title="Unternehmen">Unternehmen</a>
-                    <span class="arrow">></span> <!-- Changed to > for better visual -->
-                    <span>Unser Team</span>
+    <section class="section team-section">
+        <div class="container">
+            <p class="team-intro-text">IHRE ANSPRECHPARTNER</p>
+            <div class="team-grid">
+                
+                <div class="team-member">
+                    <div class="team-member-image-wrapper">
+                        <img loading="lazy" src="{{ url_for('static', filename='images/team/hermann.jpg') }}" alt="Hermann Behringer">
+                    </div>
+                    <div class="team-member-info">
+                        <h3>Hermann Behringer – Dipl.-Ing. (FH)</h3>
+                        <p>Beratender Ingenieur<br>Bauingenieur<br>Gesellschafter</p>
+                        <p><a href="mailto:h.behringer@ib-behringer.de">h.behringer@ib-behringer.de</a></p>
+                    </div>
                 </div>
-                <h1 class="page-title">Unser Team</h1>
-            </div>
-        </section>
 
-        <section class="section team-section">
-            <div class="container">
-                <p class="team-intro-text">IHRE ANSPRECHPARTNER</p>
-                <div class="team-grid">
-                    
-                    <div class="team-member">
-                        <div class="team-member-image-wrapper">
-                            <img loading="lazy" src="{{ url_for('static', filename='images/team/hermann.jpg') }}" alt="Hermann Behringer">
-                        </div>
-                        <div class="team-member-info">
-                            <h3>Hermann Behringer – Dipl.-Ing. (FH)</h3>
-                            <p>Beratender Ingenieur<br>Bauingenieur<br>Gesellschafter</p>
-                            <p><a href="mailto:h.behringer@ib-behringer.de">h.behringer@ib-behringer.de</a></p>
-                        </div>
+                <div class="team-member">
+                    <div class="team-member-image-wrapper">
+                        <img loading="lazy" src="{{ url_for('static', filename='images/team/robert.jpg') }}" alt="Robert Behringer">
                     </div>
-
-                    <div class="team-member">
-                        <div class="team-member-image-wrapper">
-                            <img loading="lazy" src="{{ url_for('static', filename='images/team/robert.jpg') }}" alt="Robert Behringer">
-                        </div>
-                        <div class="team-member-info">
-                            <h3>Robert Behringer – Dipl.-Ing. (FH)</h3>
-                            <p>Bauingenieur<br>Gesellschafter / Projektabwicklung</p>
-                            <p><a href="mailto:r.behringer@ib-behringer.de">r.behringer@ib-behringer.de</a></p>
-                        </div>
+                    <div class="team-member-info">
+                        <h3>Robert Behringer – Dipl.-Ing. (FH)</h3>
+                        <p>Bauingenieur<br>Gesellschafter / Projektabwicklung</p>
+                        <p><a href="mailto:r.behringer@ib-behringer.de">r.behringer@ib-behringer.de</a></p>
                     </div>
-
-                    <div class="team-member">
-                        <div class="team-member-image-wrapper">
-                             <img loading="lazy" src="{{ url_for('static', filename='images/team/reindl.jpg') }}" alt="Alexander Reindl">
-                        </div>
-                        <div class="team-member-info">
-                            <h3>Alexander Reindl – Dipl.-Ing. (FH)</h3>
-                            <p>Bauingenieur<br>Gesellschafter / Projektabwicklung</p>
-                            <p><a href="mailto:reindl@ib-behringer.de">reindl@ib-behringer.de</a></p>
-                        </div>
-                    </div>
-
-                    <div class="team-member">
-                        <div class="team-member-image-wrapper">
-                            <img loading="lazy" src="{{ url_for('static', filename='images/team/sagstetter.jpg') }}" alt="Robert Sagstetter">
-                        </div>
-                        <div class="team-member-info">
-                            <h3>Robert Sagstetter</h3>
-                            <p>Staatlich geprüfter Bautechniker<br>Gesellschafter / Projektabwicklung</p>
-                            <p><a href="mailto:sagstetter@ib-behringer.de">sagstetter@ib-behringer.de</a></p>
-                        </div>
-                    </div>
-
-                    <div class="team-member">
-                        <div class="team-member-image-wrapper">
-                            <img loading="lazy" src="{{ url_for('static', filename='images/team/brueckner.jpg') }}" alt="Andreas Brückner-Bardroff">
-                        </div>
-                        <div class="team-member-info">
-                            <h3>Andreas Brückner-Bardroff – Dipl.-Ing. (FH)</h3>
-                            <p>Vermessungsingenieur<br>Vermessung</p>
-                            <p><a href="mailto:a.brueckner@ib-behringer.de">a.brueckner@ib-behringer.de</a></p>
-                        </div>
-                    </div>
-
-                    <div class="team-member">
-                        <div class="team-member-image-wrapper">
-                           <img loading="lazy" src="{{ url_for('static', filename='images/team/hinkofer.jpg') }}" alt="Marina Hinkofer">
-                        </div>
-                        <div class="team-member-info">
-                            <h3>Marina Hinkofer – M.Eng.</h3>
-                            <p>Bauingenieurin<br>Projektabwicklung</p>
-                            <p><a href="mailto:m.hinkofer@ib-behringer.de">m.hinkofer@ib-behringer.de</a></p>
-                        </div>
-                    </div>
-
-                    <div class="team-member">
-                        <div class="team-member-image-wrapper">
-                           <img loading="lazy" src="{{ url_for('static', filename='images/team/ortler.jpg') }}" alt="Stephanie Ortler">
-                        </div>
-                        <div class="team-member-info">
-                            <h3>Stephanie Ortler – B.Eng.</h3>
-                            <p>Bauingenieurin<br>Projektabwicklung</p>
-                            <p><a href="mailto:s.ortler@ib-behringer.de">s.ortler@ib-behringer.de</a></p>
-                        </div>
-                    </div>
-
-                    <div class="team-member">
-                        <div class="team-member-image-wrapper">
-                            <img loading="lazy" src="{{ url_for('static', filename='images/team/gebler.jpg') }}" alt="Martin Gebler">
-                        </div>
-                        <div class="team-member-info">
-                           <h3>Martin Gebler – B.Eng.</h3>
-                            <p>Bauingenieur<br>Projektabwicklung</p>
-                            <p><a href="mailto:martin.gebler@ib-behringer.de">martin.gebler@ib-behringer.de</a></p>
-                        </div>
-                    </div>
-                    
-                    <div class="team-member">
-                        <div class="team-member-image-wrapper">
-                            <img loading="lazy" src="{{ url_for('static', filename='images/team/matthes.jpg') }}" alt="Frank Matthes">
-                        </div>
-                        <div class="team-member-info">
-                           <h3>Frank Matthes – Dipl. Ing.</h3>
-                            <p>Bauingenieur<br>Projektabwicklung</p>
-                            <p><a href="mailto:f.matthes@ib-behringer.de">f.matthes@ib-behringer.de</a></p>
-                        </div>
-                    </div>
-
-                    <div class="team-member">
-                        <div class="team-member-image-wrapper">
-                            <img loading="lazy" src="{{ url_for('static', filename='images/team/dobler.jpg') }}" alt="Karl Dobler">
-                        </div>
-                        <div class="team-member-info">
-                           <h3>Karl Dobler</h3>
-                            <p>Straßenbaupolier<br>Bauleitung</p>
-                            <p><a href="mailto:k.dobler@ib-behringer.de">k.dobler@ib-behringer.de</a></p>
-                        </div>
-                    </div>
-
-                    <div class="team-member">
-                        <div class="team-member-image-wrapper">
-                            <img loading="lazy" src="{{ url_for('static', filename='images/team/gamperer.jpg') }}" alt="Stefan Gamperer">
-                        </div>
-                        <div class="team-member-info">
-                           <h3>Stefan Gamperer – Dipl. Ing.</h3>
-                            <p>Landschaftsplaner, Akad. Geoinformatiker<br>GIS, TV-Befahrungen, hydraulische Berechnungen</p>
-                            <p><a href="mailto:stefan.gamperer@ib-behringer.de">stefan.gamperer@ib-behringer.de</a></p>
-                        </div>
-                    </div>
-
-                    <div class="team-member">
-                        <div class="team-member-image-wrapper">
-                            <img loading="lazy" src="{{ url_for('static', filename='images/team/hoelzlhammer.jpg') }}" alt="Andreas Hölzlhammer">
-                        </div>
-                        <div class="team-member-info">
-                           <h3>Andreas Hölzlhammer – B.Eng.</h3>
-                            <p>Bauingenieur<br>Projektabwicklung Siedlungswasserwirtschaft, Sanierungsplanung, TV-Befahrungen</p>
-                            <p><a href="mailto:a.hoelzlhammer@ib-behringer.de">a.hoelzlhammer@ib-behringer.de</a></p>
-                        </div>
-                    </div>
-
-                    <div class="team-member">
-                        <div class="team-member-image-wrapper">
-                            <img loading="lazy" src="{{ url_for('static', filename='images/team/urgibl.jpg') }}" alt="Christina Urgibl">
-                        </div>
-                        <div class="team-member-info">
-                           <h3>Christina Urgibl – M.Sc.</h3>
-                            <p>Bauingenieurin<br>Projektabwicklung</p>
-                            <p><a href="mailto:c.urgibl@ib-behringer.de">c.urgibl@ib-behringer.de</a></p>
-                        </div>
-                    </div>
-                    
-                    <div class="team-member">
-                        <div class="team-member-image-wrapper">
-                           <img loading="lazy" src="{{ url_for('static', filename='images/team/marxbauer.jpg') }}" alt="Maximilian Marxbauer">
-                        </div>
-                        <div class="team-member-info">
-                           <h3>Maximilian Marxbauer</h3>
-                            <p>Staatlich geprüfter Bautechniker</p>
-                            <p><a href="mailto:m.marxbauer@ib-behringer.de">m.marxbauer@ib-behringer.de</a></p>
-                        </div>
-                    </div>
-                    
-                    <div class="team-member">
-                        <div class="team-member-image-wrapper">
-                            <img loading="lazy" src="{{ url_for('static', filename='images/team/gisela.jpg') }}" alt="Gisela Huber">
-                        </div>
-                        <div class="team-member-info">
-                           <h3>Gisela Huber</h3>
-                            <p>Sachbearbeiterin<br>Sekretariat, Ausschreibungen</p>
-                            <p><a href="mailto:huber@ib-behringer.de">huber@ib-behringer.de</a></p>
-                        </div>
-                    </div>
-
-                    <div class="team-member">
-                        <div class="team-member-image-wrapper">
-                            <img loading="lazy" src="{{ url_for('static', filename='images/team/maria.jpg') }}" alt="Maria Holzner">
-                        </div>
-                        <div class="team-member-info">
-                           <h3>Maria Holzner</h3>
-                            <p>Rechtsanwaltsgehilfin<br>Buchhaltung, Sekretariat</p>
-                            <p><a href="mailto:m.holzner@ib-behringer.de">m.holzner@ib-behringer.de</a></p>
-                        </div>
-                    </div>
-                    
-                    <div class="team-member">
-                        <div class="team-member-image-wrapper">
-                            <img loading="lazy" src="{{ url_for('static', filename='images/team/anita.jpg') }}" alt="Anita Pfaffinger">
-                        </div>
-                        <div class="team-member-info">
-                           <h3>Anita Pfaffinger</h3>
-                            <p>Managementassistentin (IHK)<br>Sekretariat, Ausschreibungen</p>
-                            <p><a href="mailto:a.pfaffinger@ib-behringer.de">a.pfaffinger@ib-behringer.de</a></p>
-                        </div>
-                    </div>
-
-                    <div class="team-member">
-                        <div class="team-member-image-wrapper">
-                            <img loading="lazy" src="{{ url_for('static', filename='images/team/feuchtgruber.jpg') }}" alt="Agnes Feuchtgruber">
-                        </div>
-                        <div class="team-member-info">
-                           <h3>Agnes Feuchtgruber – B.A.</h3>
-                            <p>Bauzeichnerin<br>Bachelor of Arts im Studiengang Bildungswissenschaft<br>CAD Konstruktion, GIS</p>
-                            <p><a href="mailto:feuchtgruber@ib-behringer.de">feuchtgruber@ib-behringer.de</a></p>
-                        </div>
-                    </div>
-
-                    <div class="team-member">
-                        <div class="team-member-image-wrapper">
-                            <img loading="lazy" src="{{ url_for('static', filename='images/team/mohammad.jpg') }}" alt="Mohammad Mohammad">
-                        </div>
-                        <div class="team-member-info">
-                           <h3>Mohammad Mohammad</h3>
-                            <p>Bauzeichner<br>Unterstützung Projektabwicklung<br>GPS Vermessung</p>
-                            <p><a href="mailto:m.mohammad@ib-behringer.de">m.mohammad@ib-behringer.de</a></p>
-                        </div>
-                    </div>
-
-                    <div class="team-member">
-                        <div class="team-member-image-wrapper">
-                            <img loading="lazy" src="{{ url_for('static', filename='images/team/huber.jpg') }}" alt="Viktoria Huber">
-                        </div>
-                        <div class="team-member-info">
-                           <h3>Viktoria Huber</h3>
-                            <p>Bauzeichnerin<br>CAD Konstruktion</p>
-                            <p><a href="mailto:v.huber@ib-behringer.de">v.huber@ib-behringer.de</a></p>
-                        </div>
-                    </div>
-
-                    <div class="team-member">
-                        <div class="team-member-image-wrapper">
-                            <img loading="lazy" src="{{ url_for('static', filename='images/team/guggenberger.jpg') }}" alt="Stefan Guggenberger">
-                        </div>
-                        <div class="team-member-info">
-                           <h3>Stefan Guggenberger</h3>
-                            <p>Duales Studium Bauingenieurwesen<br>Ausbildung Bauzeichner abgeschlossen<br>Unterstützung Projektabwicklung</p>
-                            <p><a href="mailto:s.guggenberger@ib-behringer.de">s.guggenberger@ib-behringer.de</a></p>
-                        </div>
-                    </div>
-
-                    <div class="team-member">
-                        <div class="team-member-image-wrapper">
-                             <img loading="lazy" src="{{ url_for('static', filename='images/team/didkovska.jpg') }}" alt="Katheryna Dikovska">
-                        </div>
-                        <div class="team-member-info">
-                           <h3>Kateryna Didkovska</h3>
-                            <p>Duales Studium Bauingenieurwesen<br>Unterstützung CAD Konstruktion</p>
-                            <p><a href="mailto:k.didkovska@ib-behringer.de">k.didkovska@ib-behringer.de</a></p>
-                        </div>
-                    </div>
-
                 </div>
-            </div>
-        </section>
-    </main>
 
-    <footer class="site-footer">
-        <div class="container footer-grid">
-            <div>
-                <h4>Navigation</h4>
-                <ul>
-                    <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
-                    <li><a href="{{ url_for('index') }}#news">Neuigkeiten</a></li>
-                    <li><a href="{{ url_for('index') }}#services">Leistungen</a></li>
-                    <li><a href="{{ url_for('index') }}#company">Unternehmen</a></li>
-                    <li><a href="{{ url_for('index') }}#contact">Kontakt</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Leistungen</h4>
-                <ul>
-                    <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
-                    <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
-                    <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
-                    <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
-                    <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
-                    <li><a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a></li>
-                    <li><a href="{{ url_for('sanierungen') }}">Sanierungen</a></li>
-                    <li><a href="{{ url_for('wasserbau') }}">Wasserbau</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Kontakt</h4>
-                <address>
-                    Behringer & Partner mbB<br>
-                    Luitpoldallee 32<br>
-                    D-84453 Mühldorf a. Inn<br>
-                    <a href="tel:+4986319867900">Tel: +49 8631 98679-00</a><br>
-                    <a href="mailto:info@ib-behringer.de">E-Mail: info@ib-behringer.de</a>
-                </address>
-            </div>
-            <div>
-                <h4>Rechtliches</h4>
-                <ul>
-                    <li><a href="{{ url_for('impressum') }}">Impressum</a></li> 
-                    <li><a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Folgen Sie uns</h4>
-                <div class="footer-socials">
-                    <a href="https://www.instagram.com/ibb_mue/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i
-                            class="fab fa-instagram"></i></a>
+                <div class="team-member">
+                    <div class="team-member-image-wrapper">
+                         <img loading="lazy" src="{{ url_for('static', filename='images/team/reindl.jpg') }}" alt="Alexander Reindl">
+                    </div>
+                    <div class="team-member-info">
+                        <h3>Alexander Reindl – Dipl.-Ing. (FH)</h3>
+                        <p>Bauingenieur<br>Gesellschafter / Projektabwicklung</p>
+                        <p><a href="mailto:reindl@ib-behringer.de">reindl@ib-behringer.de</a></p>
+                    </div>
                 </div>
-                <h4 style="margin-top: 1.5rem;">Wir unterstützen</h4>
-                <p style="margin-bottom: var(--space-xs); line-height: 1.4;">
-                    <a href="{{ url_for('maedchenschule_chato') }}">Mädchenschule Chato, Tansania</a>
-                </p>
-                <a href="{{ url_for('maedchenschule_chato') }}">
-                    <img src="{{ url_for('static', filename='images/chato_schule_thumb.jpg') }}" 
-                        alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
-                </a>
+
+                <div class="team-member">
+                    <div class="team-member-image-wrapper">
+                        <img loading="lazy" src="{{ url_for('static', filename='images/team/sagstetter.jpg') }}" alt="Robert Sagstetter">
+                    </div>
+                    <div class="team-member-info">
+                        <h3>Robert Sagstetter</h3>
+                        <p>Staatlich geprüfter Bautechniker<br>Gesellschafter / Projektabwicklung</p>
+                        <p><a href="mailto:sagstetter@ib-behringer.de">sagstetter@ib-behringer.de</a></p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-member-image-wrapper">
+                        <img loading="lazy" src="{{ url_for('static', filename='images/team/brueckner.jpg') }}" alt="Andreas Brückner-Bardroff">
+                    </div>
+                    <div class="team-member-info">
+                        <h3>Andreas Brückner-Bardroff – Dipl.-Ing. (FH)</h3>
+                        <p>Vermessungsingenieur<br>Vermessung</p>
+                        <p><a href="mailto:a.brueckner@ib-behringer.de">a.brueckner@ib-behringer.de</a></p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-member-image-wrapper">
+                       <img loading="lazy" src="{{ url_for('static', filename='images/team/hinkofer.jpg') }}" alt="Marina Hinkofer">
+                    </div>
+                    <div class="team-member-info">
+                        <h3>Marina Hinkofer – M.Eng.</h3>
+                        <p>Bauingenieurin<br>Projektabwicklung</p>
+                        <p><a href="mailto:m.hinkofer@ib-behringer.de">m.hinkofer@ib-behringer.de</a></p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-member-image-wrapper">
+                       <img loading="lazy" src="{{ url_for('static', filename='images/team/ortler.jpg') }}" alt="Stephanie Ortler">
+                    </div>
+                    <div class="team-member-info">
+                        <h3>Stephanie Ortler – B.Eng.</h3>
+                        <p>Bauingenieurin<br>Projektabwicklung</p>
+                        <p><a href="mailto:s.ortler@ib-behringer.de">s.ortler@ib-behringer.de</a></p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-member-image-wrapper">
+                        <img loading="lazy" src="{{ url_for('static', filename='images/team/gebler.jpg') }}" alt="Martin Gebler">
+                    </div>
+                    <div class="team-member-info">
+                       <h3>Martin Gebler – B.Eng.</h3>
+                        <p>Bauingenieur<br>Projektabwicklung</p>
+                        <p><a href="mailto:martin.gebler@ib-behringer.de">martin.gebler@ib-behringer.de</a></p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-member-image-wrapper">
+                        <img loading="lazy" src="{{ url_for('static', filename='images/team/matthes.jpg') }}" alt="Frank Matthes">
+                    </div>
+                    <div class="team-member-info">
+                       <h3>Frank Matthes – Dipl. Ing.</h3>
+                        <p>Bauingenieur<br>Projektabwicklung</p>
+                        <p><a href="mailto:f.matthes@ib-behringer.de">f.matthes@ib-behringer.de</a></p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-member-image-wrapper">
+                        <img loading="lazy" src="{{ url_for('static', filename='images/team/dobler.jpg') }}" alt="Karl Dobler">
+                    </div>
+                    <div class="team-member-info">
+                       <h3>Karl Dobler</h3>
+                        <p>Straßenbaupolier<br>Bauleitung</p>
+                        <p><a href="mailto:k.dobler@ib-behringer.de">k.dobler@ib-behringer.de</a></p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-member-image-wrapper">
+                        <img loading="lazy" src="{{ url_for('static', filename='images/team/gamperer.jpg') }}" alt="Stefan Gamperer">
+                    </div>
+                    <div class="team-member-info">
+                       <h3>Stefan Gamperer – Dipl. Ing.</h3>
+                        <p>Landschaftsplaner, Akad. Geoinformatiker<br>GIS, TV-Befahrungen, hydraulische Berechnungen</p>
+                        <p><a href="mailto:stefan.gamperer@ib-behringer.de">stefan.gamperer@ib-behringer.de</a></p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-member-image-wrapper">
+                        <img loading="lazy" src="{{ url_for('static', filename='images/team/hoelzlhammer.jpg') }}" alt="Andreas Hölzlhammer">
+                    </div>
+                    <div class="team-member-info">
+                       <h3>Andreas Hölzlhammer – B.Eng.</h3>
+                        <p>Bauingenieur<br>Projektabwicklung Siedlungswasserwirtschaft, Sanierungsplanung, TV-Befahrungen</p>
+                        <p><a href="mailto:a.hoelzlhammer@ib-behringer.de">a.hoelzlhammer@ib-behringer.de</a></p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-member-image-wrapper">
+                        <img loading="lazy" src="{{ url_for('static', filename='images/team/urgibl.jpg') }}" alt="Christina Urgibl">
+                    </div>
+                    <div class="team-member-info">
+                       <h3>Christina Urgibl – M.Sc.</h3>
+                        <p>Bauingenieurin<br>Projektabwicklung</p>
+                        <p><a href="mailto:c.urgibl@ib-behringer.de">c.urgibl@ib-behringer.de</a></p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-member-image-wrapper">
+                       <img loading="lazy" src="{{ url_for('static', filename='images/team/marxbauer.jpg') }}" alt="Maximilian Marxbauer">
+                    </div>
+                    <div class="team-member-info">
+                       <h3>Maximilian Marxbauer</h3>
+                        <p>Staatlich geprüfter Bautechniker</p>
+                        <p><a href="mailto:m.marxbauer@ib-behringer.de">m.marxbauer@ib-behringer.de</a></p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-member-image-wrapper">
+                        <img loading="lazy" src="{{ url_for('static', filename='images/team/gisela.jpg') }}" alt="Gisela Huber">
+                    </div>
+                    <div class="team-member-info">
+                       <h3>Gisela Huber</h3>
+                        <p>Sachbearbeiterin<br>Sekretariat, Ausschreibungen</p>
+                        <p><a href="mailto:huber@ib-behringer.de">huber@ib-behringer.de</a></p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-member-image-wrapper">
+                        <img loading="lazy" src="{{ url_for('static', filename='images/team/maria.jpg') }}" alt="Maria Holzner">
+                    </div>
+                    <div class="team-member-info">
+                       <h3>Maria Holzner</h3>
+                        <p>Rechtsanwaltsgehilfin<br>Buchhaltung, Sekretariat</p>
+                        <p><a href="mailto:m.holzner@ib-behringer.de">m.holzner@ib-behringer.de</a></p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-member-image-wrapper">
+                        <img loading="lazy" src="{{ url_for('static', filename='images/team/anita.jpg') }}" alt="Anita Pfaffinger">
+                    </div>
+                    <div class="team-member-info">
+                       <h3>Anita Pfaffinger</h3>
+                        <p>Managementassistentin (IHK)<br>Sekretariat, Ausschreibungen</p>
+                        <p><a href="mailto:a.pfaffinger@ib-behringer.de">a.pfaffinger@ib-behringer.de</a></p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-member-image-wrapper">
+                        <img loading="lazy" src="{{ url_for('static', filename='images/team/feuchtgruber.jpg') }}" alt="Agnes Feuchtgruber">
+                    </div>
+                    <div class="team-member-info">
+                       <h3>Agnes Feuchtgruber – B.A.</h3>
+                        <p>Bauzeichnerin<br>Bachelor of Arts im Studiengang Bildungswissenschaft<br>CAD Konstruktion, GIS</p>
+                        <p><a href="mailto:feuchtgruber@ib-behringer.de">feuchtgruber@ib-behringer.de</a></p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-member-image-wrapper">
+                        <img loading="lazy" src="{{ url_for('static', filename='images/team/mohammad.jpg') }}" alt="Mohammad Mohammad">
+                    </div>
+                    <div class="team-member-info">
+                       <h3>Mohammad Mohammad</h3>
+                        <p>Bauzeichner<br>Unterstützung Projektabwicklung<br>GPS Vermessung</p>
+                        <p><a href="mailto:m.mohammad@ib-behringer.de">m.mohammad@ib-behringer.de</a></p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-member-image-wrapper">
+                        <img loading="lazy" src="{{ url_for('static', filename='images/team/huber.jpg') }}" alt="Viktoria Huber">
+                    </div>
+                    <div class="team-member-info">
+                       <h3>Viktoria Huber</h3>
+                        <p>Bauzeichnerin<br>CAD Konstruktion</p>
+                        <p><a href="mailto:v.huber@ib-behringer.de">v.huber@ib-behringer.de</a></p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-member-image-wrapper">
+                        <img loading="lazy" src="{{ url_for('static', filename='images/team/guggenberger.jpg') }}" alt="Stefan Guggenberger">
+                    </div>
+                    <div class="team-member-info">
+                       <h3>Stefan Guggenberger</h3>
+                        <p>Duales Studium Bauingenieurwesen<br>Ausbildung Bauzeichner abgeschlossen<br>Unterstützung Projektabwicklung</p>
+                        <p><a href="mailto:s.guggenberger@ib-behringer.de">s.guggenberger@ib-behringer.de</a></p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-member-image-wrapper">
+                         <img loading="lazy" src="{{ url_for('static', filename='images/team/didkovska.jpg') }}" alt="Katheryna Dikovska">
+                    </div>
+                    <div class="team-member-info">
+                       <h3>Kateryna Didkovska</h3>
+                        <p>Duales Studium Bauingenieurwesen<br>Unterstützung CAD Konstruktion</p>
+                        <p><a href="mailto:k.didkovska@ib-behringer.de">k.didkovska@ib-behringer.de</a></p>
+                    </div>
+                </div>
+
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>© <span id="current-year">2024</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
-            <p><a href="{{ url_for('impressum') }}">Impressum</a> | <a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></p> 
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const navToggle = document.querySelector('.nav-toggle');
-            const navList = document.querySelector('.main-nav .nav-list');
-            const siteHeader = document.querySelector('.site-header');
-
-            // 1. Main Navigation Toggle (Hamburger)
-            if (navToggle && navList) {
-                navToggle.addEventListener('click', () => {
-                    const isOpen = navList.classList.toggle('open');
-                    navToggle.setAttribute('aria-expanded', isOpen);
-                    navToggle.innerHTML = isOpen ? '×' : '☰';
-                    if (!isOpen) {
-                        navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
-                        navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
-                    }
-                });
-            }
-
-            // 2. Mobile Dropdown Submenu Toggle
-            const dropdownToggles = navList ? navList.querySelectorAll('.nav-item.dropdown > a, .nav-item.dropdown > span') : [];
-            dropdownToggles.forEach(toggle => {
-                toggle.addEventListener('click', function(event) {
-                    if (navToggle && window.getComputedStyle(navToggle).display !== 'none') { // Only for mobile view
-                        const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
-                        if (hasArrow) { // Only act if it's a dropdown toggle
-                            event.preventDefault(); 
-                            const submenu = this.parentElement.querySelector('.dropdown-menu');
-                            if (submenu) submenu.classList.toggle('submenu-open');
-                            this.classList.toggle('active'); 
-                        }
-                    }
-                });
-            });
-            
-            // 3. Smooth Scroll & Close Mobile Nav
-            document.querySelectorAll('a[href]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const hrefAttribute = this.getAttribute('href');
-                    const isMobileView = navToggle && window.getComputedStyle(navToggle).display !== 'none';
-                    let isMobileDropdownToggleItself = false;
-                    
-                    if (isMobileView && this.parentElement && this.parentElement.classList.contains('dropdown') && this.closest('.nav-list')) {
-                         const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
-                         if(hasArrow) {
-                            isMobileDropdownToggleItself = true;
-                         }
-                    }
-
-                    if (hrefAttribute.startsWith('#') && hrefAttribute.length > 1) {
-                         if (document.getElementById(hrefAttribute.substring(1))) { // Check if anchor exists on current page
-                            const targetElement = document.querySelector(hrefAttribute);
-                            if (targetElement) { 
-                                e.preventDefault();
-                                let headerOffset = siteHeader ? siteHeader.offsetHeight : 0;
-                                const elementPosition = targetElement.getBoundingClientRect().top;
-                                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                            }
-                        }
-                    } else if (hrefAttribute === '#') { 
-                         e.preventDefault();
-                         window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
-
-                    if (isMobileView && navList && navList.classList.contains('open') && !isMobileDropdownToggleItself) {
-                         if (!hrefAttribute.startsWith('#') || (hrefAttribute.startsWith('#') && document.querySelector(hrefAttribute))) { 
-                            navList.classList.remove('open');
-                            if (navToggle) {
-                                navToggle.setAttribute('aria-expanded', 'false');
-                                navToggle.innerHTML = '☰';
-                            }
-                            navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
-                            navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
-                        }
-                    }
-                });
-            });
-
-            const yearSpan = document.getElementById('current-year');
-            if (yearSpan) {
-                yearSpan.textContent = new Date().getFullYear();
-            }
-        });
-    </script>
-</body>
-</html>
+    </section>
+</main>
+{% endblock %}

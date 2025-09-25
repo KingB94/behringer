@@ -1,299 +1,109 @@
-<!DOCTYPE html>
-<html lang="de">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Kommunales GIS - Behringer & Partner</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
+{% block title %}Kommunales GIS - Behringer & Partner{% endblock %}
 
-<body>
-    <header class="site-header">
-        <div class="container header-inner">
-            <a href="{{ url_for('index') }}" class="logo">
-                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Behringer & Partner Logo" loading="lazy">
-            </a>
-            <nav class="main-nav">
-                <ul class="nav-list">
-                    <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
-                    <li><a href="{{ url_for('index') }}#news">Neuigkeiten</a></li>
-                    <li class="nav-item dropdown">
-                        <a href="{{ url_for('index') }}#services">Leistungen <span class="dropdown-arrow">▼</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
-                            <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
-                            <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
-                            <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
-                            <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
-                            <li><a href="{{ url_for('kommunales_gis') }}" class="active-service-link">Kommunales GIS</a></li>
-                            <li><a href="{{ url_for('sanierungen') }}">Sanierungen</a></li>
-                            <li><a href="{{ url_for('wasserbau') }}">Wasserbau</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a href="{{ url_for('index') }}#company">Unternehmen <span class="dropdown-arrow">▼</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{ url_for('unternehmen_team') }}">Team</a></li>
-                            <li><a href="{{ url_for('firmengeschichte') }}">Firmengeschichte</a></li>
-                            <li><a href="{{ url_for('unternehmen_netzwerk') }}">Netzwerk</a></li>
-                            <li><a href="{{ url_for('unternehmen_stellenangebote') }}">Stellenangebote</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="{{ url_for('index') }}#contact" class="btn btn-primary">Kontakt</a></li>
-                </ul>
-            </nav>
-            <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+{% block content %}
+<main>
+    <section class="page-hero-section hero-bg-kommunales-gis">
+        <div class="container">
+            <div id="breadcrumbs" class="breadcrumbs">
+                <a href="{{ url_for('index') }}#services" title="Leistungen">Leistungen</a>
+                <span class="arrow">></span>
+                <span>Kommunales GIS</span>
+            </div>
+            <h1 class="page-title">Kommunales GIS</h1>
+            <p class="section-subtitle" style="text-align: center; color: var(--clr-white); text-shadow: 1px 1px 3px rgba(0,0,0,0.5); max-width: 800px; margin-bottom: 0;">
+                Digitale Daten für eine smarte Verwaltung und fundierte Entscheidungen.
+            </p>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <section class="page-hero-section hero-bg-kommunales-gis">
-            <div class="container">
-                <div id="breadcrumbs" class="breadcrumbs">
-                    <a href="{{ url_for('index') }}#services" title="Leistungen">Leistungen</a>
-                    <span class="arrow">></span>
-                    <span>Kommunales GIS</span>
+    <section id="leistungen" class="section leistung-detail-content bg-alternate">
+        <div class="container">
+            <h2 class="section-title">Unsere GIS-Kompetenzen</h2>
+            <p class="section-subtitle">
+                Ein Geoinformationssystem ist ein unverzichtbares Werkzeug für eine effiziente kommunale Verwaltung und Planung. Wir unterstützen Sie bei der Erfassung, Analyse und Visualisierung Ihrer raumbezogenen Daten.
+            </p>
+            
+            <ul class="service-list-grid">
+                <li><i class="fas fa-sitemap"></i>Aufbau von Leitungskatastern</li>
+                <li><i class="fas fa-video"></i>Kanal-TV-Befahrung & Datenmanagement</li>
+                <li><i class="fas fa-layer-group"></i>Aufbereitung der digitalen Flurkarte</li>
+                <li><i class="fas fa-road"></i>Straßenraumkataster</li>
+                <li><i class="fas fa-tree"></i>Baumkataster</li>
+                <li><i class="fas fa-chart-area"></i>Berechnung von Kanaleinzugsgebieten</li>
+                <li><i class="fas fa-draw-polygon"></i>Feststellung versiegelter Flächen</li>
+                <li><i class="fas fa-print"></i>Aufbereitung von Karten und Plänen</li>
+            </ul>
+
+            <div class="zertifizierung-item">
+                <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+                <div class="text-content">
+                    <h4>Unsere Qualifikation</h4>
+                    <p>Fundiertes Fachwissen durch unseren <strong>Akademischen Geoinformatiker</strong> im Team.</p>
                 </div>
-                <h1 class="page-title">Kommunales GIS</h1>
-                <p class="section-subtitle" style="text-align: center; color: var(--clr-white); text-shadow: 1px 1px 3px rgba(0,0,0,0.5); max-width: 800px; margin-bottom: 0;">
-                    Digitale Daten für eine smarte Verwaltung und fundierte Entscheidungen.
-                </p>
             </div>
-        </section>
 
-        <section id="leistungen" class="section leistung-detail-content bg-alternate">
-            <div class="container">
-                <h2 class="section-title">Unsere GIS-Kompetenzen</h2>
-                <p class="section-subtitle">
-                    Ein Geoinformationssystem ist ein unverzichtbares Werkzeug für eine effiziente kommunale Verwaltung und Planung. Wir unterstützen Sie bei der Erfassung, Analyse und Visualisierung Ihrer raumbezogenen Daten.
-                </p>
-                
-                <ul class="service-list-grid">
-                    <li><i class="fas fa-sitemap"></i>Aufbau von Leitungskatastern</li>
-                    <li><i class="fas fa-video"></i>Kanal-TV-Befahrung & Datenmanagement</li>
-                    <li><i class="fas fa-layer-group"></i>Aufbereitung der digitalen Flurkarte</li>
-                    <li><i class="fas fa-road"></i>Straßenraumkataster</li>
-                    <li><i class="fas fa-tree"></i>Baumkataster</li>
-                    <li><i class="fas fa-chart-area"></i>Berechnung von Kanaleinzugsgebieten</li>
-                    <li><i class="fas fa-draw-polygon"></i>Feststellung versiegelter Flächen</li>
-                    <li><i class="fas fa-print"></i>Aufbereitung von Karten und Plänen</li>
-                </ul>
+        </div>
+    </section>
 
-                <div class="zertifizierung-item">
-                    <div class="icon"><i class="fas fa-graduation-cap"></i></div>
-                    <div class="text-content">
-                        <h4>Unsere Qualifikation</h4>
-                        <p>Fundiertes Fachwissen durch unseren <strong>Akademischen Geoinformatiker</strong> im Team.</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <section class="section projekte-section">
-            <div class="container">
-                <h2 class="section-title text-left">Projekte & Referenzen zu Kommunales GIS</h2>
-                
-                <div class="project-list">
-                    <article id="post-429" class="project-article">
-                        <div class="entry-content-wrapper">
-                            <a href="https://www.ib-behringer.de/projekt/kommunales-gis/" class="project-image-link" target="_blank" rel="noopener">
-                                <img width="270" height="150" src="https://www.ib-behringer.de/wp/wp-content/uploads/2016/02/Kankat_haltungskl_web-270x150.jpg" alt="Kommunales GIS" loading="lazy">
-                            </a>
-                            <div class="project-text-content">
-                                <header class="entry-header">
-                                    <div class="time">01.02.2016</div>
-                                    <h3 class="entry-title"><a href="https://www.ib-behringer.de/projekt/kommunales-gis/" rel="bookmark" target="_blank" rel="noopener">Kommunales GIS</a></h3>
-                                </header>
-                                <p class="excerpt-text">
-                                    Insgesamt verwalten wir für unsere Auftraggeber 530 km Kanal- und 580 km Wasserleitungen. Fachschale Abwasser: Kanal-Stammdaten (Schächte und Haltungen) TV-Untersuchungsdaten (Abzweige, Stutzen und Schäden) Graphische Darstellung der Schächte, Haltu...
-                                    <a href="https://www.ib-behringer.de/projekt/kommunales-gis/" class="more-link" target="_blank" rel="noopener">(mehr)</a>
-                                </p>
-                                <div class="leistungen-sub">
-                                    <strong>Leistungen:</strong> 
-                                    <a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a> 
-                                    <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>
-                                </div>
+    <section class="section projekte-section">
+        <div class="container">
+            <h2 class="section-title text-left">Projekte & Referenzen zu Kommunales GIS</h2>
+            
+            <div class="project-list">
+                <article id="post-429" class="project-article">
+                    <div class="entry-content-wrapper">
+                        <a href="https://www.ib-behringer.de/projekt/kommunales-gis/" class="project-image-link" target="_blank" rel="noopener">
+                            <img width="270" height="150" src="https://www.ib-behringer.de/wp/wp-content/uploads/2016/02/Kankat_haltungskl_web-270x150.jpg" alt="Kommunales GIS" loading="lazy">
+                        </a>
+                        <div class="project-text-content">
+                            <header class="entry-header">
+                                <div class="time">01.02.2016</div>
+                                <h3 class="entry-title"><a href="https://www.ib-behringer.de/projekt/kommunales-gis/" rel="bookmark" target="_blank" rel="noopener">Kommunales GIS</a></h3>
+                            </header>
+                            <p class="excerpt-text">
+                                Insgesamt verwalten wir für unsere Auftraggeber 530 km Kanal- und 580 km Wasserleitungen. Fachschale Abwasser: Kanal-Stammdaten (Schächte und Haltungen) TV-Untersuchungsdaten (Abzweige, Stutzen und Schäden) Graphische Darstellung der Schächte, Haltu...
+                                <a href="https://www.ib-behringer.de/projekt/kommunales-gis/" class="more-link" target="_blank" rel="noopener">(mehr)</a>
+                            </p>
+                            <div class="leistungen-sub">
+                                <strong>Leistungen:</strong> 
+                                <a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a> 
+                                <a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a>
                             </div>
                         </div>
-                    </article>
-                </div>
-                <button id="load-more-projects" class="btn btn-secondary" style="display: none;"></button>
+                    </div>
+                </article>
             </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container footer-grid">
-            <div>
-                <h4>Navigation</h4>
-                <ul>
-                    <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
-                    <li><a href="{{ url_for('index') }}#news">Neuigkeiten</a></li>
-                    <li><a href="{{ url_for('index') }}#services">Leistungen</a></li>
-                    <li><a href="{{ url_for('index') }}#company">Unternehmen</a></li>
-                    <li><a href="{{ url_for('index') }}#contact">Kontakt</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Leistungen</h4>
-                <ul>
-                    <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
-                    <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
-                    <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
-                    <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
-                    <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
-                    <li><a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a></li>
-                    <li><a href="{{ url_for('sanierungen') }}">Sanierungen</a></li>
-                    <li><a href="{{ url_for('wasserbau') }}">Wasserbau</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Kontakt</h4>
-                <address>
-                    Behringer & Partner mbB<br>
-                    Luitpoldallee 32<br>
-                    D-84453 Mühldorf a. Inn<br>
-                    <a href="tel:+4986319867900">Tel: +49 8631 98679-00</a><br>
-                    <a href="mailto:info@ib-behringer.de">E-Mail: info@ib-behringer.de</a>
-                </address>
-            </div>
-            <div>
-                <h4>Rechtliches</h4>
-                <ul>
-                    <li><a href="{{ url_for('impressum') }}">Impressum</a></li> 
-                    <li><a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Folgen Sie uns</h4>
-                <div class="footer-socials">
-                    <a href="https://www.instagram.com/ibb_mue/" target="_blank" rel="noopener" aria-label="Instagram"><i
-                            class="fab fa-instagram"></i></a>
-                </div>
-                <h4 style="margin-top: 1.5rem;">Wir unterstützen</h4>
-                <p style="margin-bottom: var(--space-xs); line-height: 1.4;">
-                    <a href="{{ url_for('maedchenschule_chato') }}">Mädchenschule Chato, Tansania</a>
-                </p>
-                <a href="{{ url_for('maedchenschule_chato') }}">
-                    <img src="{{ url_for('static', filename='images/chato_schule_thumb.jpg') }}"
-                        alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
-                </a>
-            </div>
+            <button id="load-more-projects" class="btn btn-secondary" style="display: none;"></button>
         </div>
-        <div class="footer-bottom">
-            <p>© <span id="current-year">2024</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
-            <p><a href="{{ url_for('impressum') }}">Impressum</a> | <a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></p>
-        </div>
-    </footer>
+    </section>
+</main>
+{% endblock %}
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const navToggle = document.querySelector('.nav-toggle');
-            const navList = document.querySelector('.main-nav .nav-list');
-            const siteHeader = document.querySelector('.site-header');
+{% block scripts %}
+<script>
+    // Spezifisches Skript für die "Weitere Projekte laden"-Funktionalität
+    document.addEventListener('DOMContentLoaded', () => {
+        const loadMoreButton = document.getElementById('load-more-projects');
+        const projectListContainer = document.querySelector('.project-list');
 
-            if (navToggle && navList) {
-                navToggle.addEventListener('click', () => {
-                    const isOpen = navList.classList.toggle('open');
-                    navToggle.setAttribute('aria-expanded', isOpen);
-                    navToggle.innerHTML = isOpen ? '×' : '☰';
-                    if (!isOpen) {
-                        navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
-                        navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
-                    }
-                });
-            }
-
-            const dropdownToggles = navList ? navList.querySelectorAll('.nav-item.dropdown > a, .nav-item.dropdown > span') : [];
-            dropdownToggles.forEach(toggle => {
-                toggle.addEventListener('click', function (event) {
-                    if (navToggle && window.getComputedStyle(navToggle).display !== 'none') { 
-                        const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
-                        if (hasArrow) { 
-                            event.preventDefault();
-                            const submenu = this.parentElement.querySelector('.dropdown-menu');
-                            if (submenu) submenu.classList.toggle('submenu-open');
-                            this.classList.toggle('active');
-                        }
-                    }
-                });
-            });
+        if (loadMoreButton && projectListContainer) {
+            const hiddenProjects = Array.from(projectListContainer.querySelectorAll('.project-article.hidden-project'));
             
-            document.querySelectorAll('a[href]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    const hrefAttribute = this.getAttribute('href');
-                    const isMobileView = navToggle && window.getComputedStyle(navToggle).display !== 'none';
-                    let isMobileDropdownToggleItself = false;
-                    
-                    if (isMobileView && this.parentElement && this.parentElement.classList.contains('dropdown') && this.closest('.nav-list')) {
-                         const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
-                         if(hasArrow) {
-                            isMobileDropdownToggleItself = true;
-                         }
-                    }
-
-                    if (hrefAttribute.startsWith('#') && hrefAttribute.length > 1) {
-                        if (document.getElementById(hrefAttribute.substring(1))) {
-                            const targetElement = document.querySelector(hrefAttribute);
-                            if (targetElement) {
-                                e.preventDefault();
-                                let headerOffset = siteHeader ? siteHeader.offsetHeight : 0;
-                                const elementPosition = targetElement.getBoundingClientRect().top;
-                                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                            }
-                        }
-                    } else if (hrefAttribute === '#') { 
-                        e.preventDefault();
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
-
-                    if (isMobileView && navList && navList.classList.contains('open') && !isMobileDropdownToggleItself) {
-                        if (!hrefAttribute.startsWith('#') || (hrefAttribute.startsWith('#') && document.querySelector(hrefAttribute))) { 
-                            navList.classList.remove('open');
-                            if (navToggle) {
-                                navToggle.setAttribute('aria-expanded', 'false');
-                                navToggle.innerHTML = '☰';
-                            }
-                            navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
-                            navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
-                        }
-                    }
-                });
-            });
-
-            const yearSpan = document.getElementById('current-year');
-            if (yearSpan) {
-                yearSpan.textContent = new Date().getFullYear();
-            }
-
-            const loadMoreButton = document.getElementById('load-more-projects');
-            const projectListContainer = document.querySelector('.project-list');
-
-            if (loadMoreButton && projectListContainer) {
-                const hiddenProjects = Array.from(projectListContainer.querySelectorAll('.project-article.hidden-project'));
-                
-                if (hiddenProjects.length > 0) {
-                    loadMoreButton.style.display = 'block'; 
-                    loadMoreButton.textContent = `Weitere ${hiddenProjects.length} Projekte anzeigen`;
-                    loadMoreButton.addEventListener('click', () => {
-                        hiddenProjects.forEach(project => {
-                            project.classList.remove('hidden-project');
-                        });
-                        loadMoreButton.style.display = 'none';
+            if (hiddenProjects.length > 0) {
+                loadMoreButton.style.display = 'block'; 
+                loadMoreButton.textContent = `Weitere ${hiddenProjects.length} Projekte anzeigen`;
+                loadMoreButton.addEventListener('click', () => {
+                    hiddenProjects.forEach(project => {
+                        project.classList.remove('hidden-project');
                     });
-                } else {
-                     loadMoreButton.style.display = 'none';
-                }
+                    loadMoreButton.style.display = 'none';
+                });
+            } else {
+                 loadMoreButton.style.display = 'none';
             }
-        });
-    </script>
-</body>
-</html>
+        }
+    });
+</script>
+{% endblock %}

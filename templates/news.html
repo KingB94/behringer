@@ -1,198 +1,70 @@
-<!DOCTYPE html>
-<html lang="de">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Neuigkeiten - Behringer & Partner</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% block title %}Neuigkeiten - Behringer & Partner{% endblock %}
 
-</head>
-
-<body>
-    <header class="site-header">
-        <div class="container header-inner">
-            <a href="{{ url_for('index') }}" class="logo">
-                <img src='{{ url_for("static", filename="images/logo.png") }}' alt="Behringer & Partner Logo" loading="lazy">
-            </a>
-            <nav class="main-nav">
-                <ul class="nav-list">
-                    <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
-                    <!-- Link zur aktiven Seite wird hervorgehoben -->
-                    <li><a href="{{ url_for('news') }}" class="active-page-link">Neuigkeiten</a></li>
-                    <li class="nav-item dropdown">
-                        <a href="{{ url_for('index') }}#services">Leistungen <span class="dropdown-arrow">▼</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
-                            <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
-                            <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
-                            <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
-                            <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
-                            <li><a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a></li>
-                            <li><a href="{{ url_for('sanierungen') }}">Sanierungen</a></li>
-                            <li><a href="{{ url_for('wasserbau') }}">Wasserbau</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a href="{{ url_for('index') }}#company">Unternehmen <span class="dropdown-arrow">▼</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{ url_for('unternehmen_team') }}">Team</a></li>
-                            <li><a href="{{ url_for('firmengeschichte') }}">Firmengeschichte</a></li>
-                            <li><a href="{{ url_for('unternehmen_netzwerk') }}">Netzwerk</a></li>
-                            <li><a href="{{ url_for('unternehmen_stellenangebote') }}">Stellenangebote</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="{{ url_for('index') }}#contact" class="btn btn-primary">Kontakt</a></li>
-                </ul>
-            </nav>
-            <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
-        </div>
-    </header>
-
-    <main>
-        <section class="page-header-section">
-            <div class="container">
-                <div class="breadcrumbs">
-                    <a href="{{ url_for('index') }}">Startseite</a>
-                    <span class="arrow">></span>
-                    <span>Neuigkeiten</span>
-                </div>
-                <h1 class="page-title">Aktuelle Neuigkeiten</h1>
+{% block content %}
+<main>
+    <section class="page-header-section">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="{{ url_for('index') }}">Startseite</a>
+                <span class="arrow">></span>
+                <span>Neuigkeiten</span>
             </div>
-        </section>
+            <h1 class="page-title">Aktuelle Neuigkeiten</h1>
+        </div>
+    </section>
 
-        <section class="section">
-            <div class="container">
-                <div class="news-grid">
-                    <!-- Artikel 1 -->
-                    <div class="news-card">
-                        <img src="{{ url_for('static', filename='images/news1.jpg') }}" alt="Spatenstich Neubaugebiet Allersheim">
-                        <div class="news-card-content">
-                            <small class="news-date">31.10.2024</small>
-                            <h3>Spatenstich Neubaugebiet Allersheim, Schwindegg</h3>
-                            <p>Am 30.10.24 wurde feierlich der Spatenstich für das Neubaugebiet Allersheim in Schwindegg durchgeführt. Bereits im November beginnen die Tiefbauarbeiten, Mitte 2025 wird ein erster Abschnitt fertig...</p>
-                            <a href="https://www.ib-behringer.de/2024/10/31/spatenstich-neubaugebiet-allersheim-schwindegg/" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Mehr lesen</a>
-                        </div>
+    <section class="section">
+        <div class="container">
+            <div class="news-grid">
+                <div class="news-card">
+                    <img src="{{ url_for('static', filename='images/news1.jpg') }}" alt="Spatenstich Neubaugebiet Allersheim">
+                    <div class="news-card-content">
+                        <small class="news-date">31.10.2024</small>
+                        <h3>Spatenstich Neubaugebiet Allersheim, Schwindegg</h3>
+                        <p>Am 30.10.24 wurde feierlich der Spatenstich für das Neubaugebiet Allersheim in Schwindegg durchgeführt. Bereits im November beginnen die Tiefbauarbeiten, Mitte 2025 wird ein erster Abschnitt fertig...</p>
+                        <a href="https://www.ib-behringer.de/2024/10/31/spatenstich-neubaugebiet-allersheim-schwindegg/" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Mehr lesen</a>
                     </div>
-                    <!-- Artikel 2 -->
-                    <div class="news-card">
-                        <img src="{{ url_for('static', filename='images/news2.jpg') }}" alt="Bahnunterführung Klugham">
-                        <div class="news-card-content">
-                            <small class="news-date">25.10.2024</small>
-                            <h3>Bahnunterführung Klugham</h3>
-                            <p>In Zusammenarbeit mit der Südostbayern Bahn konnte die Gemeinde Aschau a. Inn mit der Erneuerung der Bahnunterführung in Klugham eine zeitgemäße Straßenführung verwirklichen. Im Frühjahr...</p>
-                            <a href="https://www.ib-behringer.de/projekt/bahnunterfuehrung-klugham/" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Mehr lesen</a>
-                        </div>
+                </div>
+                <div class="news-card">
+                    <img src="{{ url_for('static', filename='images/news2.jpg') }}" alt="Bahnunterführung Klugham">
+                    <div class="news-card-content">
+                        <small class="news-date">25.10.2024</small>
+                        <h3>Bahnunterführung Klugham</h3>
+                        <p>In Zusammenarbeit mit der Südostbayern Bahn konnte die Gemeinde Aschau a. Inn mit der Erneuerung der Bahnunterführung in Klugham eine zeitgemäße Straßenführung verwirklichen. Im Frühjahr...</p>
+                        <a href="https://www.ib-behringer.de/projekt/bahnunterfuehrung-klugham/" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Mehr lesen</a>
                     </div>
-                    <!-- Artikel 3 -->
-                    <div class="news-card">
-                        <img src="{{ url_for('static', filename='images/news3.jpg') }}" alt="Kreisverkehr Marktl">
-                        <div class="news-card-content">
-                            <small class="news-date">27.09.2024</small>
-                            <h3>Kreisverkehr in Marktl fertig</h3>
-                            <p>Seit September 2024 ist der Kreisverkehr in Marktl, der die Kreisstraßen AÖ22 und AÖ24 verbindet, freigegeben. In ca. 10 Monaten wurde ein moderner Knotenpunkt geschaffen...</p>
-                            <a href="https://www.ib-behringer.de/2024/09/27/kreisverkehr-in-martkl-fertig/" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Mehr lesen</a>
-                        </div>
+                </div>
+                <div class="news-card">
+                    <img src="{{ url_for('static', filename='images/news3.jpg') }}" alt="Kreisverkehr Marktl">
+                    <div class="news-card-content">
+                        <small class="news-date">27.09.2024</small>
+                        <h3>Kreisverkehr in Marktl fertig</h3>
+                        <p>Seit September 2024 ist der Kreisverkehr in Marktl, der die Kreisstraßen AÖ22 und AÖ24 verbindet, freigegeben. In ca. 10 Monaten wurde ein moderner Knotenpunkt geschaffen...</p>
+                        <a href="https://www.ib-behringer.de/2024/09/27/kreisverkehr-in-martkl-fertig/" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Mehr lesen</a>
                     </div>
-                    <!-- Beispielartikel 4 -->
-                    <div class="news-card">
-                        <img src="{{ url_for('static', filename='images/hero1.png') }}" alt="Planungsteam">
-                        <div class="news-card-content">
-                            <small class="news-date">15.08.2024</small>
-                            <h3>Digitalisierung im Fokus: Neue 3D-Planungssoftware</h3>
-                            <p>Wir investieren in die Zukunft und haben unsere Planungsprozesse durch die Einführung einer neuen 3D-Software optimiert. Dies ermöglicht noch präzisere und effizientere Ergebnisse für unsere Kunden.</p>
-                            <a href="#" class="btn btn-primary btn-sm">Mehr lesen</a>
-                        </div>
+                </div>
+                <div class="news-card">
+                    <img src="{{ url_for('static', filename='images/hero1.png') }}" alt="Planungsteam">
+                    <div class="news-card-content">
+                        <small class="news-date">15.08.2024</small>
+                        <h3>Digitalisierung im Fokus: Neue 3D-Planungssoftware</h3>
+                        <p>Wir investieren in die Zukunft und haben unsere Planungsprozesse durch die Einführung einer neuen 3D-Software optimiert. Dies ermöglicht noch präzisere und effizientere Ergebnisse für unsere Kunden.</p>
+                        <a href="#" class="btn btn-primary btn-sm">Mehr lesen</a>
                     </div>
-                    <!-- Beispielartikel 5 -->
-                    <div class="news-card">
-                        <img src="{{ url_for('static', filename='images/working (2).jpg') }}" alt="Team auf Baustelle">
-                         <div class="news-card-content">
-                            <small class="news-date">02.07.2024</small>
-                            <h3>Erfolgreicher Abschluss: Kanalsanierung in Musterstadt</h3>
-                            <p>Nach 18 Monaten Bauzeit wurde das Großprojekt zur Sanierung des Hauptkanals in Musterstadt erfolgreich abgeschlossen. Wir danken allen Beteiligten für die hervorragende Zusammenarbeit.</p>
-                            <a href="#" class="btn btn-primary btn-sm">Mehr lesen</a>
-                        </div>
+                </div>
+                <div class="news-card">
+                    <img src="{{ url_for('static', filename='images/working (2).jpg') }}" alt="Team auf Baustelle">
+                     <div class="news-card-content">
+                        <small class="news-date">02.07.2024</small>
+                        <h3>Erfolgreicher Abschluss: Kanalsanierung in Musterstadt</h3>
+                        <p>Nach 18 Monaten Bauzeit wurde das Großprojekt zur Sanierung des Hauptkanals in Musterstadt erfolgreich abgeschlossen. Wir danken allen Beteiligten für die hervorragende Zusammenarbeit.</p>
+                        <a href="#" class="btn btn-primary btn-sm">Mehr lesen</a>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <!-- Der Footer ist identisch zur index.html, hier gekürzt -->
-        <div class="container footer-grid">
-            <div>
-                <h4>Navigation</h4>
-                <ul>
-                    <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
-                    <li><a href="{{ url_for('news') }}">Neuigkeiten</a></li>
-                    <li><a href="{{ url_for('index') }}#services">Leistungen</a></li>
-                    <li><a href="{{ url_for('index') }}#company">Unternehmen</a></li>
-                    <li><a href="{{ url_for('index') }}#contact">Kontakt</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Leistungen</h4>
-                <ul>
-                    <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
-                    <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
-                    <!-- weitere Links -->
-                </ul>
-            </div>
-            <div>
-                <h4>Kontakt</h4>
-                <address>
-                    Behringer & Partner mbB<br>
-                    Luitpoldallee 32<br>
-                    D-84453 Mühldorf a. Inn<br>
-                    <a href="tel:+4986319867900">Tel: +49 8631 98679-00</a><br>
-                    <a href="mailto:info@ib-behringer.de">E-Mail: info@ib-behringer.de</a>
-                </address>
-            </div>
-            <div>
-                <h4>Rechtliches</h4>
-                <ul>
-                    <li><a href="{{ url_for('impressum') }}">Impressum</a></li>
-                    <li><a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></li> 
-                </ul>
-            </div>
-            <div>
-                <h4>Folgen Sie uns</h4>
-                <div class="footer-socials">
-                    <a href="https://www.instagram.com/ibb_mue/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
         </div>
-        <div class="footer-bottom">
-            <p>© <span id="current-year">2024</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
-            <p><a href="{{ url_for('impressum') }}">Impressum</a> | <a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></p>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const navToggle = document.querySelector('.nav-toggle');
-            const navList = document.querySelector('.main-nav .nav-list');
-            // Der JS-Code ist größtenteils identisch, daher hier gekürzt.
-            // Er sorgt für das mobile Menü.
-            if (navToggle && navList) {
-                navToggle.addEventListener('click', () => {
-                    navList.classList.toggle('open');
-                    navToggle.setAttribute('aria-expanded', String(navList.classList.contains('open')));
-                });
-            }
-            // Update current year
-            const yearSpan = document.getElementById('current-year');
-            if (yearSpan) {
-                yearSpan.textContent = new Date().getFullYear();
-            }
-        });
-    </script>
-</body>
-</html>
+    </section>
+</main>
+{% endblock %}

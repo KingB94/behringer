@@ -1,355 +1,155 @@
-<!DOCTYPE html>
-<html lang="de">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mädchenschule Chato, Tansania - Behringer & Partner</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% block title %}Mädchenschule Chato, Tansania - Behringer & Partner{% endblock %}
 
-</head>
-
-<body>
-    <header class="site-header">
-        <div class="container header-inner">
-            <a href="{{ url_for('index') }}" class="logo">
-                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Behringer & Partner Logo" loading="lazy">
-            </a>
-            <nav class="main-nav">
-                <ul class="nav-list">
-                    <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
-                    <li><a href="{{ url_for('index') }}#news">Neuigkeiten</a></li>
-                    <li class="nav-item dropdown">
-                        <a href="{{ url_for('index') }}#services">Leistungen <span class="dropdown-arrow">▼</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
-                            <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
-                            <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
-                            <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
-                            <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
-                            <li><a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a></li>
-                            <li><a href="{{ url_for('sanierungen') }}">Sanierungen</a></li>
-                            <li><a href="{{ url_for('wasserbau') }}">Wasserbau</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a href="{{ url_for('index') }}#company">Unternehmen <span class="dropdown-arrow">▼</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{ url_for('unternehmen_team') }}">Team</a></li>
-                            <li><a href="{{ url_for('firmengeschichte') }}">Firmengeschichte</a></li>
-                            <li><a href="{{ url_for('unternehmen_netzwerk') }}">Netzwerk</a></li>
-                            <li><a href="{{ url_for('unternehmen_stellenangebote') }}">Stellenangebote</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="{{ url_for('index') }}#contact" class="btn btn-primary">Kontakt</a></li>
-                </ul>
-            </nav>
-            <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
-        </div>
-    </header>
-
-    <main>
-        <section class="page-content-section">
-            <div class="container">
-                <div class="entry-content">
-                    <h2 class="wp-block-heading">Alle Beiträge zur Mädchenschule Chato, Tansania</h2>
-                    <hr class="wp-block-separator has-css-opacity">
-                
-                    <figure class="wp-block-video">
-                        <video controls poster="https://www.ib-behringer.de/wp/wp-content/uploads/2019/12/Tansania5.jpg" src="https://www.ib-behringer.de/wp/wp-content/uploads/2019/12/Ingenieurbüro-Behringer-Hilfsprojekt-Tansania.mp4"></video>
-                        <figcaption class="wp-element-caption"><sup>Video vom ersten Besuch vor Ort – September 2019</sup></figcaption>
-                    </figure>
-                
-                    <hr class="wp-block-separator has-css-opacity">
-                
-                    <figure class="wp-block-embed is-type-wp-embed is-provider-ingenieurb-ro-behringer-amp-partner wp-block-embed-ingenieurb-ro-behringer-amp-partner">
-                        <div class="wp-block-embed__wrapper">
-                            <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts" security="restricted" title="„Mädchenschule Chato – Update“ — " src="https://www.ib-behringer.de/2024/03/22/maedchenschule-chato-update/embed/#?secret=cmYAbEG484#?secret=kKMYujiABG" data-secret="kKMYujiABG" width="500" height="410" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-                        </div>
-                        <figcaption class="wp-element-caption"><sup>22.03.24</sup></figcaption>
-                    </figure>
-                
-                    <figure class="wp-block-embed is-type-wp-embed is-provider-ingenieurb-ro-behringer-amp-partner wp-block-embed-ingenieurb-ro-behringer-amp-partner">
-                        <div class="wp-block-embed__wrapper">
-                            <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts" security="restricted" title="„Mädchenschule Chato, Schulbetrieb ab 2025?“ — " src="https://www.ib-behringer.de/2023/12/08/maedchenschule-chato-schulbetrieb-ab-2025/embed/#?secret=7YewIoAMWt#?secret=PvHleyVlFw" data-secret="PvHleyVlFw" width="500" height="439" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-                        </div>
-                        <figcaption class="wp-element-caption"><sup>08.12.23</sup></figcaption>
-                    </figure>
-                
-                    <figure class="wp-block-embed is-type-wp-embed is-provider-ingenieurb-ro-behringer-amp-partner wp-block-embed-ingenieurb-ro-behringer-amp-partner">
-                        <div class="wp-block-embed__wrapper">
-                            <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts" security="restricted" title="„Mädchenschule Chato wächst weiter“ — " src="https://www.ib-behringer.de/2023/07/27/maedchenschule-chato-waechst-weiter/embed/#?secret=DOruhFV3Ii#?secret=p58NJqPahq" data-secret="p58NJqPahq" width="500" height="498" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-                        </div>
-                        <figcaption class="wp-element-caption"><sup>27.07.2023</sup></figcaption>
-                    </figure>
-                
-                    <figure class="wp-block-embed is-type-wp-embed is-provider-ingenieurb-ro-behringer-amp-partner wp-block-embed-ingenieurb-ro-behringer-amp-partner">
-                        <div class="wp-block-embed__wrapper">
-                           <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts" security="restricted" title="„Helfen Sie Weiter – Mädchenschule Chato“ — " src="https://www.ib-behringer.de/2022/12/20/helfen-sie-weiter-maedchenschule-chato/embed/#?secret=o5YFdkwbnc#?secret=nBdaSzdpv9" data-secret="nBdaSzdpv9" width="500" height="410" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-                        </div>
-                        <figcaption class="wp-element-caption"><sup>20.12.2022</sup></figcaption>
-                    </figure>
-                
-                    <figure class="wp-block-embed is-type-wp-embed is-provider-ingenieurb-ro-behringer-amp-partner wp-block-embed-ingenieurb-ro-behringer-amp-partner">
-                        <div class="wp-block-embed__wrapper">
-                            <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts" security="restricted" title="„Mädchenschule Chato – aktueller Stand“ — " src="https://www.ib-behringer.de/2022/07/29/maedchenschule-chato-aktueller-stand/embed/#?secret=H4kY6I2sNj#?secret=oqITVPWTpY" data-secret="oqITVPWTpY" width="500" height="423" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-                        </div>
-                        <figcaption class="wp-element-caption"><sup>29.07.2022</sup></figcaption>
-                    </figure>
-                
-                    <figure class="wp-block-embed is-type-wp-embed is-provider-ingenieurb-ro-behringer-amp-partner wp-block-embed-ingenieurb-ro-behringer-amp-partner">
-                        <div class="wp-block-embed__wrapper">
-                            <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts" security="restricted" title="„Mädchenschule Tansania – aktueller Stand“ — " src="https://www.ib-behringer.de/2021/08/09/maedchenschule-tansania-aktueller-stand/embed/#?secret=2tlqtnHLNE#?secret=C0iqqUbWUJ" data-secret="C0iqqUbWUJ" width="500" height="457" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-                        </div>
-                        <figcaption class="wp-element-caption"><sup>09.08.2021</sup></figcaption>
-                    </figure>
-                
-                    <figure class="wp-block-embed is-type-wp-embed is-provider-ingenieurb-ro-behringer-amp-partner wp-block-embed-ingenieurb-ro-behringer-amp-partner">
-                        <div class="wp-block-embed__wrapper">
-                            <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts" security="restricted" title="„Update zur Mädchenschule in Tansania“ — " src="https://www.ib-behringer.de/2020/12/14/update-zur-maedchenschule-in-tansania/embed/#?secret=Wr4Hr5L69B#?secret=2SI6y5eVaw" data-secret="2SI6y5eVaw" width="500" height="439" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-                        </div>
-                        <figcaption class="wp-element-caption"><sup>14.12.2020</sup></figcaption>
-                    </figure>
-                
-                    <figure class="wp-block-embed is-type-wp-embed is-provider-ingenieurb-ro-behringer-amp-partner wp-block-embed-ingenieurb-ro-behringer-amp-partner">
-                        <div class="wp-block-embed__wrapper">
-                            <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts" security="restricted" title="„Unterstützer gesucht – Mädchenschule Tansania“ — " src="https://www.ib-behringer.de/2019/12/12/unterstuetzer-gesucht-maedchenschule-tansania/embed/#?secret=NATeBG7RVu#?secret=cybitFQOai" data-secret="cybitFQOai" width="500" height="471" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-                        </div>
-                        <figcaption class="wp-element-caption"><sup>12.12.2019</sup></figcaption>
-                    </figure>
-                
-                    <hr class="wp-block-separator has-css-opacity">
-                
-                    <h2 class="wp-block-heading">Spendenkonto</h2>
-                
-                    <figure class="wp-block-table alignleft is-style-stripes">
-                        <table class="has-fixed-layout">
-                            <thead>
-                                <tr>
-                                    <th class="has-text-align-left" data-align="left"></th>
-                                    <th class="has-text-align-left" data-align="left"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="has-text-align-left" data-align="left">Empfänger</td>
-                                    <td class="has-text-align-left" data-align="left">Missionsbenediktiner Münsterschwarzach</td>
-                                </tr>
-                                <tr>
-                                    <td class="has-text-align-left" data-align="left">Bank  </td>
-                                    <td class="has-text-align-left" data-align="left">Liga Bank Regensburg</td>
-                                </tr>
-                                <tr>
-                                    <td class="has-text-align-left" data-align="left">IBAN  </td>
-                                    <td class="has-text-align-left" data-align="left">DE51 7509 0300 0003 0150 33</td>
-                                </tr>
-                                <tr>
-                                    <td class="has-text-align-left" data-align="left">BIC     </td>
-                                    <td class="has-text-align-left" data-align="left">GENODEF1MOS</td>
-                                </tr>
-                                <tr>
-                                    <td class="has-text-align-left" data-align="left">Verwendungszweck </td>
-                                    <td class="has-text-align-left" data-align="left">Mädchenschule Chato</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <figcaption class="wp-element-caption"><sup>Für eine Spendenquittung geben Sie bitte im Vewendungszweck ihre genau Anschrift an</sup></figcaption>
-                    </figure>
-                
-                    <p class="has-text-align-left" style="clear:both;">Sie tätigen ihre Überweisung per Smartphone, oder Tablet? Scannen sie in ihrer Banking-App einfach diesen QR-Code und sie müssen nur noch den Spendenbetrag eingeben und ggf. ihre Adresse im Verwendungszweck ergänzen für eine Spendenquittung</p>
-                
-                    <div class="wp-block-image">
-                        <figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="203" height="186" src="https://www.ib-behringer.de/wp/wp-content/uploads/2022/12/QR-Spende.jpg" alt="QR Code für Spende Mädchenschule Chato" class="wp-image-2530"></figure>
+{% block content %}
+<main>
+    <section class="page-content-section">
+        <div class="container">
+            <div class="entry-content">
+                <h2 class="wp-block-heading">Alle Beiträge zur Mädchenschule Chato, Tansania</h2>
+                <hr class="wp-block-separator has-css-opacity">
+            
+                <figure class="wp-block-video">
+                    <video controls poster="https://www.ib-behringer.de/wp/wp-content/uploads/2019/12/Tansania5.jpg" src="https://www.ib-behringer.de/wp/wp-content/uploads/2019/12/Ingenieurbüro-Behringer-Hilfsprojekt-Tansania.mp4"></video>
+                    <figcaption class="wp-element-caption"><sup>Video vom ersten Besuch vor Ort – September 2019</sup></figcaption>
+                </figure>
+            
+                <hr class="wp-block-separator has-css-opacity">
+            
+                <figure class="wp-block-embed is-type-wp-embed is-provider-ingenieurb-ro-behringer-amp-partner wp-block-embed-ingenieurb-ro-behringer-amp-partner">
+                    <div class="wp-block-embed__wrapper">
+                        <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts" security="restricted" title="„Mädchenschule Chato – Update“ — " src="https://www.ib-behringer.de/2024/03/22/maedchenschule-chato-update/embed/#?secret=cmYAbEG484#?secret=kKMYujiABG" data-secret="kKMYujiABG" width="500" height="410" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
                     </div>
-                
-                    <hr class="wp-block-separator has-css-opacity">
+                    <figcaption class="wp-element-caption"><sup>22.03.24</sup></figcaption>
+                </figure>
+            
+                <figure class="wp-block-embed is-type-wp-embed is-provider-ingenieurb-ro-behringer-amp-partner wp-block-embed-ingenieurb-ro-behringer-amp-partner">
+                    <div class="wp-block-embed__wrapper">
+                        <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts" security="restricted" title="„Mädchenschule Chato, Schulbetrieb ab 2025?“ — " src="https://www.ib-behringer.de/2023/12/08/maedchenschule-chato-schulbetrieb-ab-2025/embed/#?secret=7YewIoAMWt#?secret=PvHleyVlFw" data-secret="PvHleyVlFw" width="500" height="439" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+                    </div>
+                    <figcaption class="wp-element-caption"><sup>08.12.23</sup></figcaption>
+                </figure>
+            
+                <figure class="wp-block-embed is-type-wp-embed is-provider-ingenieurb-ro-behringer-amp-partner wp-block-embed-ingenieurb-ro-behringer-amp-partner">
+                    <div class="wp-block-embed__wrapper">
+                        <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts" security="restricted" title="„Mädchenschule Chato wächst weiter“ — " src="https://www.ib-behringer.de/2023/07/27/maedchenschule-chato-waechst-weiter/embed/#?secret=DOruhFV3Ii#?secret=p58NJqPahq" data-secret="p58NJqPahq" width="500" height="498" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+                    </div>
+                    <figcaption class="wp-element-caption"><sup>27.07.2023</sup></figcaption>
+                </figure>
+            
+                <figure class="wp-block-embed is-type-wp-embed is-provider-ingenieurb-ro-behringer-amp-partner wp-block-embed-ingenieurb-ro-behringer-amp-partner">
+                    <div class="wp-block-embed__wrapper">
+                       <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts" security="restricted" title="„Helfen Sie Weiter – Mädchenschule Chato“ — " src="https://www.ib-behringer.de/2022/12/20/helfen-sie-weiter-maedchenschule-chato/embed/#?secret=o5YFdkwbnc#?secret=nBdaSzdpv9" data-secret="nBdaSzdpv9" width="500" height="410" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+                    </div>
+                    <figcaption class="wp-element-caption"><sup>20.12.2022</sup></figcaption>
+                </figure>
+            
+                <figure class="wp-block-embed is-type-wp-embed is-provider-ingenieurb-ro-behringer-amp-partner wp-block-embed-ingenieurb-ro-behringer-amp-partner">
+                    <div class="wp-block-embed__wrapper">
+                        <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts" security="restricted" title="„Mädchenschule Chato – aktueller Stand“ — " src="https://www.ib-behringer.de/2022/07/29/maedchenschule-chato-aktueller-stand/embed/#?secret=H4kY6I2sNj#?secret=oqITVPWTpY" data-secret="oqITVPWTpY" width="500" height="423" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+                    </div>
+                    <figcaption class="wp-element-caption"><sup>29.07.2022</sup></figcaption>
+                </figure>
+            
+                <figure class="wp-block-embed is-type-wp-embed is-provider-ingenieurb-ro-behringer-amp-partner wp-block-embed-ingenieurb-ro-behringer-amp-partner">
+                    <div class="wp-block-embed__wrapper">
+                        <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts" security="restricted" title="„Mädchenschule Tansania – aktueller Stand“ — " src="https://www.ib-behringer.de/2021/08/09/maedchenschule-tansania-aktueller-stand/embed/#?secret=2tlqtnHLNE#?secret=C0iqqUbWUJ" data-secret="C0iqqUbWUJ" width="500" height="457" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+                    </div>
+                    <figcaption class="wp-element-caption"><sup>09.08.2021</sup></figcaption>
+                </figure>
+            
+                <figure class="wp-block-embed is-type-wp-embed is-provider-ingenieurb-ro-behringer-amp-partner wp-block-embed-ingenieurb-ro-behringer-amp-partner">
+                    <div class="wp-block-embed__wrapper">
+                        <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts" security="restricted" title="„Update zur Mädchenschule in Tansania“ — " src="https://www.ib-behringer.de/2020/12/14/update-zur-maedchenschule-in-tansania/embed/#?secret=Wr4Hr5L69B#?secret=2SI6y5eVaw" data-secret="2SI6y5eVaw" width="500" height="439" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+                    </div>
+                    <figcaption class="wp-element-caption"><sup>14.12.2020</sup></figcaption>
+                </figure>
+            
+                <figure class="wp-block-embed is-type-wp-embed is-provider-ingenieurb-ro-behringer-amp-partner wp-block-embed-ingenieurb-ro-behringer-amp-partner">
+                    <div class="wp-block-embed__wrapper">
+                        <iframe loading="lazy" class="wp-embedded-content" sandbox="allow-scripts" security="restricted" title="„Unterstützer gesucht – Mädchenschule Tansania“ — " src="https://www.ib-behringer.de/2019/12/12/unterstuetzer-gesucht-maedchenschule-tansania/embed/#?secret=NATeBG7RVu#?secret=cybitFQOai" data-secret="cybitFQOai" width="500" height="471" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+                    </div>
+                    <figcaption class="wp-element-caption"><sup>12.12.2019</sup></figcaption>
+                </figure>
+            
+                <hr class="wp-block-separator has-css-opacity">
+            
+                <h2 class="wp-block-heading">Spendenkonto</h2>
+            
+                <figure class="wp-block-table alignleft is-style-stripes">
+                    <table class="has-fixed-layout">
+                        <thead>
+                            <tr>
+                                <th class="has-text-align-left" data-align="left"></th>
+                                <th class="has-text-align-left" data-align="left"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="has-text-align-left" data-align="left">Empfänger</td>
+                                <td class="has-text-align-left" data-align="left">Missionsbenediktiner Münsterschwarzach</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-align-left" data-align="left">Bank</td>
+                                <td class="has-text-align-left" data-align="left">Liga Bank Regensburg</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-align-left" data-align="left">IBAN</td>
+                                <td class="has-text-align-left" data-align="left">DE51 7509 0300 0003 0150 33</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-align-left" data-align="left">BIC</td>
+                                <td class="has-text-align-left" data-align="left">GENODEF1MOS</td>
+                            </tr>
+                            <tr>
+                                <td class="has-text-align-left" data-align="left">Verwendungszweck </td>
+                                <td class="has-text-align-left" data-align="left">Mädchenschule Chato</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <figcaption class="wp-element-caption"><sup>Für eine Spendenquittung geben Sie bitte im Vewendungszweck ihre genau Anschrift an</sup></figcaption>
+                </figure>
+            
+                <p class="has-text-align-left" style="clear:both;">Sie tätigen ihre Überweisung per Smartphone, oder Tablet? Scannen sie in ihrer Banking-App einfach diesen QR-Code und sie müssen nur noch den Spendenbetrag eingeben und ggf. ihre Adresse im Verwendungszweck ergänzen für eine Spendenquittung</p>
+            
+                <div class="wp-block-image">
+                    <figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="203" height="186" src="https://www.ib-behringer.de/wp/wp-content/uploads/2022/12/QR-Spende.jpg" alt="QR Code für Spende Mädchenschule Chato" class="wp-image-2530"></figure>
                 </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container footer-grid">
-            <div>
-                <h4>Navigation</h4>
-                <ul>
-                    <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
-                    <li><a href="{{ url_for('index') }}#news">Neuigkeiten</a></li>
-                    <li><a href="{{ url_for('index') }}#services">Leistungen</a></li>
-                    <li><a href="{{ url_for('index') }}#company">Unternehmen</a></li>
-                    <li><a href="{{ url_for('index') }}#contact">Kontakt</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Leistungen</h4>
-                <ul>
-                    <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
-                    <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
-                    <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
-                    <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
-                    <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
-                    <li><a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a></li>
-                    <li><a href="{{ url_for('sanierungen') }}">Sanierungen</a></li>
-                    <li><a href="{{ url_for('wasserbau') }}">Wasserbau</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Kontakt</h4>
-                <address>
-                    Behringer & Partner mbB<br>
-                    Luitpoldallee 32<br>
-                    D-84453 Mühldorf a. Inn<br>
-                    <a href="tel:+4986319867900">Tel: +49 8631 98679-00</a><br>
-                    <a href="mailto:info@ib-behringer.de">E-Mail: info@ib-behringer.de</a>
-                </address>
-            </div>
-            <div>
-                <h4>Rechtliches</h4>
-                <ul>
-                    <li><a href="{{ url_for('impressum') }}">Impressum</a></li> 
-                    <li><a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Folgen Sie uns</h4>
-                <div class="footer-socials">
-                    <a href="https://www.instagram.com/ibb_mue/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                </div>
-                 <h4 style="margin-top: 1.5rem;">Wir unterstützen</h4>
-                 <p style="margin-bottom: var(--space-xs); line-height: 1.4;">
-                    <a href="{{ url_for('maedchenschule_chato') }}">Mädchenschule Chato, Tansania</a>
-                 </p>
-                 <a href="{{ url_for('maedchenschule_chato') }}">
-                    <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2022/12/Suedansicht-2-150x150.jpg" alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
-                </a>
+            
+                <hr class="wp-block-separator has-css-opacity">
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>© <span id="current-year">2024</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
-            <p><a href="{{ url_for('impressum') }}">Impressum</a> | <a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></p>
-        </div>
-    </footer>
+    </section>
+</main>
+{% endblock %}
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const navToggle = document.querySelector('.nav-toggle');
-            const navList = document.querySelector('.main-nav .nav-list');
-            const siteHeader = document.querySelector('.site-header');
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        function _wpEmbedListener(event) {
+            if (typeof event.data === 'object' && event.data !== null && (event.data.secret || event.data.message || event.data.value)) {
+                if (event.origin !== "https://www.ib-behringer.de") {
+                    return;
+                }
 
-            // 1. Main Navigation Toggle (Hamburger)
-            if (navToggle && navList) {
-                navToggle.addEventListener('click', () => {
-                    const isOpen = navList.classList.toggle('open');
-                    navToggle.setAttribute('aria-expanded', isOpen);
-                    navToggle.innerHTML = isOpen ? '×' : '☰';
-                     if (!isOpen) { 
-                        navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
-                        navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
-                    }
-                });
-            }
-            
-            // 2. Mobile Dropdown Submenu Toggle
-            const dropdownToggles = navList ? navList.querySelectorAll('.nav-item.dropdown > a, .nav-item.dropdown > span') : [];
-            dropdownToggles.forEach(toggle => {
-                toggle.addEventListener('click', function(event) {
-                    if (navToggle && window.getComputedStyle(navToggle).display !== 'none') {
-                        const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN'; // Check if it's a span or has an arrow
-                        if (hasArrow) { // Only act if it's a dropdown toggle
-                            event.preventDefault(); 
-                            const submenu = this.parentElement.querySelector('.dropdown-menu');
-                            if (submenu) submenu.classList.toggle('submenu-open');
-                            this.classList.toggle('active'); 
-                        }
-                        // If it's a direct link within the dropdown (no arrow, not a span), it will navigate normally.
-                    }
-                });
-            });
-
-
-            // 3. Smooth Scroll for on-page anchors & Close mobile nav
-             document.querySelectorAll('a[href]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    const isMobileView = navToggle && window.getComputedStyle(navToggle).display !== 'none';
-                    let isMobileDropdownToggleItself = false;
-                    
-                    // Check if the clicked item is a mobile dropdown toggle itself
-                    if (isMobileView && this.parentElement && this.parentElement.classList.contains('dropdown') && this.closest('.nav-list')) {
-                        const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
-                        if (hasArrow) {
-                            isMobileDropdownToggleItself = true;
-                        }
-                    }
-
-                    if (href.startsWith('#') && href.length > 1) {
-                        const targetElement = document.querySelector(href);
-                        if (targetElement) { 
-                            e.preventDefault();
-                            let headerOffset = siteHeader ? siteHeader.offsetHeight : 0;
-                            const elementPosition = targetElement.getBoundingClientRect().top;
-                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                        }
-                    } else if (href === '#') { 
-                         e.preventDefault();
-                         window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
-
-                    // Close mobile nav if it's open and the click was not on a dropdown toggle itself
-                    if (isMobileView && navList && navList.classList.contains('open') && !isMobileDropdownToggleItself) {
-                         // Ensure we close only if it's a real navigation (not just an unhandled hash) or an external link
-                         if (!href.startsWith('#') || (href.startsWith('#') && document.querySelector(href))) { 
-                            navList.classList.remove('open');
-                            if (navToggle) {
-                                navToggle.setAttribute('aria-expanded', 'false');
-                                navToggle.innerHTML = '☰';
-                            }
-                            // Close any open submenus
-                            navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
-                            navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
-                        }
-                    }
-                });
-            });
-            
-            // Update current year in footer
-            const yearSpan = document.getElementById('current-year');
-            if (yearSpan) {
-                yearSpan.textContent = new Date().getFullYear();
-            }
-
-            // Script for WordPress Embeds (basic version for iframe resizing)
-            function _wpEmbedListener(event) {
-                if (typeof event.data === 'object' && event.data !== null && (event.data.secret || event.data.message || event.data.value)) {
-                    if (event.origin !== "https://www.ib-behringer.de") {
-                        // console.warn("Message received from unexpected origin:", event.origin);
-                        return;
-                    }
-
-                    var iframes = document.querySelectorAll('iframe[data-secret="' + event.data.secret + '"]');
-                    for (var i = 0; i < iframes.length; i++) {
-                        var iframe = iframes[i];
-                        if (event.data.message === 'height') { 
-                            var height = parseInt(event.data.value, 10);
-                            if (height > 200 && height < 10000) { 
-                                iframe.height = height;
-                            }
+                var iframes = document.querySelectorAll('iframe[data-secret="' + event.data.secret + '"]');
+                for (var i = 0; i < iframes.length; i++) {
+                    var iframe = iframes[i];
+                    if (event.data.message === 'height') { 
+                        var height = parseInt(event.data.value, 10);
+                        if (height > 200 && height < 10000) { 
+                            iframe.height = height;
                         }
                     }
                 }
             }
-            if (window.addEventListener) {
-                window.addEventListener('message', _wpEmbedListener, false);
-            } else if (window.attachEvent) { 
-                window.attachEvent('onmessage', _wpEmbedListener);
-            }
-        });
-    </script>
-</body>
-</html>
+        }
+        if (window.addEventListener) {
+            window.addEventListener('message', _wpEmbedListener, false);
+        } else if (window.attachEvent) { 
+            window.attachEvent('onmessage', _wpEmbedListener);
+        }
+    });
+</script>
+{% endblock %}

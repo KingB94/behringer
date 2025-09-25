@@ -1,257 +1,59 @@
-<!DOCTYPE html>
-<html lang="de">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Stellenangebote - Behringer & Partner</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% block title %}Stellenangebote - Behringer & Partner{% endblock %}
 
-</head>
-
-<body>
-    <header class="site-header">
-        <div class="container header-inner">
-            <a href="{{ url_for('index') }}" class="logo">
-                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Behringer & Partner Logo" loading="lazy">
-            </a>
-            <nav class="main-nav">
-                <ul class="nav-list">
-                    <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
-                    <li><a href="{{ url_for('index') }}#news">Neuigkeiten</a></li>
-                    <li class="nav-item dropdown">
-                        <a href="{{ url_for('index') }}#services">Leistungen <span class="dropdown-arrow">▼</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
-                            <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
-                            <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
-                            <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
-                            <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
-                            <li><a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a></li>
-                            <li><a href="{{ url_for('sanierungen') }}">Sanierungen</a></li>
-                            <li><a href="{{ url_for('wasserbau') }}">Wasserbau</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a href="{{ url_for('index') }}#company">Unternehmen <span class="dropdown-arrow">▼</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{ url_for('unternehmen_team') }}">Team</a></li>
-                            <li><a href="{{ url_for('firmengeschichte') }}">Firmengeschichte</a></li>
-                            <li><a href="{{ url_for('unternehmen_netzwerk') }}">Netzwerk</a></li>
-                            <li><a href="{{ url_for('unternehmen_stellenangebote') }}" class="active-subpage-link">Stellenangebote</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="{{ url_for('index') }}#contact" class="btn btn-primary">Kontakt</a></li>
-                </ul>
-            </nav>
-            <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+{% block content %}
+<main>
+    <section class="page-hero-section hero-bg-stellenangebote">
+        <div class="container">
+            <div id="breadcrumbs" class="breadcrumbs">
+                <a href="{{ url_for('index') }}#company" title="Unternehmen">Unternehmen</a>
+                <span class="arrow">></span>
+                <span>Stellenangebote</span>
+            </div>
+            <h1 class="page-title">Werden Sie Teil unseres Teams</h1>
+            <p class="section-subtitle" style="text-align: center; color: var(--clr-white); text-shadow: 1px 1px 3px rgba(0,0,0,0.5); max-width: 800px; margin-bottom: 0;">
+                Gestalten Sie mit uns die Infrastruktur von morgen. Wir freuen uns auf Ihre Bewerbung!
+            </p>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <section class="page-hero-section hero-bg-stellenangebote">
-            <div class="container">
-                <div id="breadcrumbs" class="breadcrumbs">
-                    <a href="{{ url_for('index') }}#company" title="Unternehmen">Unternehmen</a>
-                    <span class="arrow">></span>
-                    <span>Stellenangebote</span>
-                </div>
-                <h1 class="page-title">Werden Sie Teil unseres Teams</h1>
-                <p class="section-subtitle" style="text-align: center; color: var(--clr-white); text-shadow: 1px 1px 3px rgba(0,0,0,0.5); max-width: 800px; margin-bottom: 0;">
-                    Gestalten Sie mit uns die Infrastruktur von morgen. Wir freuen uns auf Ihre Bewerbung!
-                </p>
-            </div>
-        </section>
-
-        <section class="section stellenangebote-section">
-            <div class="container">
-                
-                <div class="job-posting">
-                    <span class="availability">Ab sofort</span>
-                    <a href="https://www.ib-behringer.de/bauzeichner-m-w-d/" class="job-title" target="_blank" rel="noopener noreferrer">Bauzeichner m/w/d</a>
-                </div>
-
-                <div class="job-posting">
-                    <span class="availability">Ab Oktober 2025</span>
-                    <a href="https://www.ib-behringer.de/duales-studium-bauingenieurwesen/" class="job-title" target="_blank" rel="noopener noreferrer">Duales Studium Bauingenieurwesen</a>
-                </div>
-
-                <div class="job-posting">
-                    <span class="availability">Ab August / September 2025</span>
-                    <a href="https://www.ib-behringer.de/azubi-cad/" class="job-title" target="_blank" rel="noopener noreferrer">AZUBI CAD m/w/d</a>
-                </div>
-                
-                <div class="job-posting">
-                    <span class="availability">Ab März 2025</span>
-                    <a href="https://www.ib-behringer.de/buerokraft-m-w-d/" class="job-title" target="_blank" rel="noopener noreferrer">Bürokraft m/w/d</a>
-                </div>
-
-                <div class="job-application-info">
-                    <p>Interessiert? Wir freuen uns auf Ihre aussagekräftige Bewerbung!</p>
-                    <p>Senden Sie Ihre Unterlagen bitte per E-Mail an:<br>
-                        <a href="mailto:info@ib-behringer.de"><strong>info@ib-behringer.de</strong></a>
-                    </p>
-                    <p>oder per Post an:<br>
-                        <strong>Ingenieurbüro Behringer & Partner mbB</strong><br>
-                        Luitpoldallee 32<br>
-                        D-84453 Mühldorf a. Inn
-                    </p>
-                </div>
-
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container footer-grid">
-            <div>
-                <h4>Navigation</h4>
-                <ul>
-                    <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
-                    <li><a href="{{ url_for('index') }}#news">Neuigkeiten</a></li>
-                    <li><a href="{{ url_for('index') }}#services">Leistungen</a></li>
-                    <li><a href="{{ url_for('index') }}#company">Unternehmen</a></li>
-                    <li><a href="{{ url_for('index') }}#contact">Kontakt</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Leistungen</h4>
-                <ul>
-                    <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
-                    <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straßenbau & Brückenbau</a></li>
-                    <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
-                    <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
-                    <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
-                    <li><a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a></li>
-                    <li><a href="{{ url_for('sanierungen') }}">Sanierungen</a></li>
-                    <li><a href="{{ url_for('wasserbau') }}">Wasserbau</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Kontakt</h4>
-                <address>
-                    Behringer & Partner mbB<br>
-                    Luitpoldallee 32<br>
-                    D-84453 Mühldorf a. Inn<br>
-                    <a href="tel:+4986319867900">Tel: +49 8631 98679-00</a><br>
-                    <a href="mailto:info@ib-behringer.de">E-Mail: info@ib-behringer.de</a>
-                </address>
-            </div>
-            <div>
-                <h4>Rechtliches</h4>
-                <ul>
-                    <li><a href="{{ url_for('impressum') }}">Impressum</a></li> 
-                    <li><a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Folgen Sie uns</h4>
-                <div class="footer-socials">
-                    <a href="https://www.instagram.com/ibb_mue/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i
-                            class="fab fa-instagram"></i></a>
-                </div>
-                <h4 style="margin-top: 1.5rem;">Wir unterstützen</h4>
-                <p style="margin-bottom: var(--space-xs); line-height: 1.4;">
-                    <a href="{{ url_for('maedchenschule_chato') }}">Mädchenschule Chato, Tansania</a>
-                </p>
-                <a href="{{ url_for('maedchenschule_chato') }}">
-                    <img src="{{ url_for('static', filename='images/chato_schule_thumb.jpg') }}" 
-                        alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
-                </a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© <span id="current-year">2024</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
-            <p><a href="{{ url_for('impressum') }}">Impressum</a> | <a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></p> 
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const navToggle = document.querySelector('.nav-toggle');
-            const navList = document.querySelector('.main-nav .nav-list');
-            const siteHeader = document.querySelector('.site-header');
-
-            if (navToggle && navList) {
-                navToggle.addEventListener('click', () => {
-                    const isOpen = navList.classList.toggle('open');
-                    navToggle.setAttribute('aria-expanded', isOpen);
-                    navToggle.innerHTML = isOpen ? '×' : '☰';
-                    if (!isOpen) {
-                        navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
-                        navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
-                    }
-                });
-            }
-
-            const dropdownToggles = navList ? navList.querySelectorAll('.nav-item.dropdown > a, .nav-item.dropdown > span') : [];
-            dropdownToggles.forEach(toggle => {
-                toggle.addEventListener('click', function(event) {
-                    if (navToggle && window.getComputedStyle(navToggle).display !== 'none') {
-                        const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
-                        if (hasArrow) {
-                            event.preventDefault(); 
-                            const submenu = this.parentElement.querySelector('.dropdown-menu');
-                            if (submenu) submenu.classList.toggle('submenu-open');
-                            this.classList.toggle('active'); 
-                        }
-                    }
-                });
-            });
+    <section class="section stellenangebote-section">
+        <div class="container">
             
-            document.querySelectorAll('a[href]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const hrefAttribute = this.getAttribute('href');
-                    const isMobileView = navToggle && window.getComputedStyle(navToggle).display !== 'none';
-                    let isMobileDropdownToggleItself = false;
-                    
-                    if (isMobileView && this.parentElement && this.parentElement.classList.contains('dropdown') && this.closest('.nav-list')) {
-                         const hasArrow = this.querySelector('.dropdown-arrow') || this.tagName === 'SPAN';
-                         if(hasArrow) {
-                            isMobileDropdownToggleItself = true;
-                         }
-                    }
+            <div class="job-posting">
+                <span class="availability">Ab sofort</span>
+                <a href="https://www.ib-behringer.de/bauzeichner-m-w-d/" class="job-title" target="_blank" rel="noopener noreferrer">Bauzeichner m/w/d</a>
+            </div>
 
-                    if (hrefAttribute.startsWith('#') && hrefAttribute.length > 1) {
-                         if (document.getElementById(hrefAttribute.substring(1))) {
-                            const targetElement = document.querySelector(hrefAttribute);
-                            if (targetElement) { 
-                                e.preventDefault();
-                                let headerOffset = siteHeader ? siteHeader.offsetHeight : 0;
-                                const elementPosition = targetElement.getBoundingClientRect().top;
-                                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                            }
-                        }
-                    } else if (hrefAttribute === '#') { 
-                         e.preventDefault();
-                         window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
+            <div class="job-posting">
+                <span class="availability">Ab Oktober 2025</span>
+                <a href="https://www.ib-behringer.de/duales-studium-bauingenieurwesen/" class="job-title" target="_blank" rel="noopener noreferrer">Duales Studium Bauingenieurwesen</a>
+            </div>
 
-                    if (isMobileView && navList && navList.classList.contains('open') && !isMobileDropdownToggleItself) {
-                         if (!hrefAttribute.startsWith('#') || (hrefAttribute.startsWith('#') && document.querySelector(hrefAttribute))) { 
-                            navList.classList.remove('open');
-                            if (navToggle) {
-                                navToggle.setAttribute('aria-expanded', 'false');
-                                navToggle.innerHTML = '☰';
-                            }
-                            navList.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => submenu.classList.remove('submenu-open'));
-                            navList.querySelectorAll('.nav-item.dropdown > a.active, .nav-item.dropdown > span.active').forEach(toggle => toggle.classList.remove('active'));
-                        }
-                    }
-                });
-            });
+            <div class="job-posting">
+                <span class="availability">Ab August / September 2025</span>
+                <a href="https://www.ib-behringer.de/azubi-cad/" class="job-title" target="_blank" rel="noopener noreferrer">AZUBI CAD m/w/d</a>
+            </div>
+            
+            <div class="job-posting">
+                <span class="availability">Ab März 2025</span>
+                <a href="https://www.ib-behringer.de/buerokraft-m-w-d/" class="job-title" target="_blank" rel="noopener noreferrer">Bürokraft m/w/d</a>
+            </div>
 
-            const yearSpan = document.getElementById('current-year');
-            if (yearSpan) {
-                yearSpan.textContent = new Date().getFullYear();
-            }
-        });
-    </script>
-</body>
-</html>
+            <div class="job-application-info">
+                <p>Interessiert? Wir freuen uns auf Ihre aussagekräftige Bewerbung!</p>
+                <p>Senden Sie Ihre Unterlagen bitte per E-Mail an:<br>
+                    <a href="mailto:info@ib-behringer.de"><strong>info@ib-behringer.de</strong></a>
+                </p>
+                <p>oder per Post an:<br>
+                    <strong>Ingenieurbüro Behringer & Partner mbB</strong><br>
+                    Luitpoldallee 32<br>
+                    D-84453 Mühldorf a. Inn
+                </p>
+            </div>
+
+        </div>
+    </section>
+</main>
+{% endblock %}
