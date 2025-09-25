@@ -169,7 +169,7 @@
             <h2 class="section-title">Kontakt</h2>
             <p class="section-subtitle">Wir freuen uns auf Ihre Nachricht, Ihren Anruf oder Ihren Besuch.</p>
             <div class="contact-grid">
-                <form class="contact-form">
+                <form class="contact-form" method="POST" action="{{ url_for('kontakt') }}">
                     <input type="text" name="name" placeholder="Ihr Name" required>
                     <input type="email" name="email" placeholder="Ihre E-Mail" required>
                     <textarea name="message" placeholder="Ihre Nachricht" rows="6" required></textarea>

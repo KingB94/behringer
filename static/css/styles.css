@@ -44,7 +44,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); color: var(--clr-seco
    ========================================================================== */
 .site-header { background: var(--clr-white); box-shadow: var(--shadow-md); position: sticky; top: 0; z-index: 1000; }
 .header-inner { display: flex; align-items: center; justify-content: space-between; padding: var(--space-sm) 0; }
-.logo img { display: block; max-height: 80px; width: auto; }
+.logo img { display: block; max-height: 50px; width: auto; }
 .main-nav { display: flex; align-items: center; }
 .nav-list { list-style: none; display: flex; gap: var(--space-md); align-items: center; }
 .nav-list>li>a, .nav-list>li>span { font-weight: 600; color: var(--clr-secondary); padding: var(--space-xs) 0; transition: color .2s; text-decoration: none; display: flex; align-items: center; position: relative; }

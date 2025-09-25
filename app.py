@@ -1,6 +1,20 @@
-from flask import Flask, render_template
+from dotenv import load_dotenv
+import os
+from flask_mail import Mail, Message
+from flask import Flask, render_template, request, redirect, url_for
+
+load_dotenv() 
 
 app = Flask(__name__)
+
+# --- Konfiguration für Flask-Mail ---
+app.config['MAIL_SERVER'] = os.environ.get('MAIL_SERVER')
+app.config['MAIL_PORT'] = int(os.environ.get('MAIL_PORT'))
+app.config['MAIL_USE_TLS'] = os.environ.get('MAIL_USE_TLS').lower() in ['true', 'on', '1']
+app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+
+mail = Mail(app)
 
 @app.route('/')
 def index():
@@ -83,6 +97,43 @@ def news():
 def projekt_klugham():
     return render_template('projekte/projekt_klugham.html')
 
+# ─── Routen für Kontaktformular ───────────────────────────────────
+@app.route('/kontakt', methods=['POST'])
+def kontakt():
+    """Nimmt die Formulardaten entgegen und sendet die E-Mail."""
+    name = request.form.get('name')
+    email = request.form.get('email')
+    nachricht = request.form.get('message')
+
+    # Erstellt die E-Mail-Nachricht
+    msg = Message(
+        subject=f"Neue Kontaktanfrage von {name}",
+        # Der Absender ist die Adresse aus deiner .env Datei
+        sender=("Kontaktformular", app.config['MAIL_USERNAME']),
+        # HIER legst du fest, wo die E-Mail ankommen soll!
+        recipients=['info@ib-behringer.de'] 
+    )
+    
+    msg.body = f"""
+    Du hast eine neue Nachricht über das Kontaktformular erhalten:
+
+    Name: {name}
+    E-Mail: {email}
+
+    Nachricht:
+    {nachricht}
+    """
+    
+    try:
+        mail.send(msg)
+    except Exception as e:
+        # Im Fehlerfall (z.B. falsches Passwort) passiert erstmal nichts.
+        # Für eine Live-Seite könntest du hier einen Fehler loggen.
+        print(f"Fehler beim Senden der E-Mail: {e}")
+        pass
+
+    # Leitet den Benutzer immer zurück zur Startseite zum Kontaktbereich
+    return redirect(url_for('index') + '#contact')
 
 if __name__ == '__main__':
     app.run(debug=True)
