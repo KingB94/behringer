@@ -276,7 +276,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); color: var(--clr-seco
 
 /* --- 4.2 Unterseiten-Layouts (Header, Hero, etc.) --- */
 .page-header-section { padding: var(--space-md) 0; background-color: var(--clr-bg-alt); border-bottom: 1px solid var(--clr-border); }
-.page-title { font-size: clamp(2rem, 5vw, 2.75rem); color: var(--clr-primary); margin: var(--space-sm) 0 0; text-align: left; }
+.page-title { font-size: clamp(2rem, 5vw, 2.75rem); color: var(--clr-primary); margin: var(--space-sm) 0 0; text-align: center; }
 .breadcrumbs { font-size: 0.9rem; color: #555; margin-bottom: var(--space-xs); text-align: left; }
 .breadcrumbs a { color: var(--clr-primary); text-decoration: none; }
 .breadcrumbs a:hover { text-decoration: underline; }
