@@ -148,7 +148,7 @@
             const navToggle = document.querySelector('.nav-toggle');
             const navList = document.querySelector('.main-nav .nav-list');
             const siteHeader = document.querySelector('.site-header');
-
+    
             // 1. Main Navigation Toggle (Hamburger)
             if (navToggle && navList) {
                 navToggle.addEventListener('click', () => {
@@ -161,43 +161,68 @@
                     }
                 });
             }
-
+    
             // 2. Mobile Dropdown Submenu Toggle
             const dropdownToggles = navList ? navList.querySelectorAll('.nav-item.dropdown > a[aria-haspopup="true"]') : [];
-
+    
             dropdownToggles.forEach(clickedToggle => {
                 clickedToggle.addEventListener('click', function (event) {
                     event.preventDefault(); // Verhindert immer den Sprung zum Anker
-
+    
                     const submenu = this.parentElement.querySelector('.dropdown-menu');
                     if (!submenu) return;
-
+    
                     // Prüfen, ob das geklickte Menü bereits offen war
                     const wasOpen = submenu.classList.contains('submenu-open');
-
+    
+                    // Zuerst alle anderen Menüs schließen
                     dropdownToggles.forEach(toggle => {
-                        toggle.classList.remove('active');
-                        toggle.setAttribute('aria-expanded', 'false');
-                        const otherSubmenu = toggle.parentElement.querySelector('.dropdown-menu');
-                        if (otherSubmenu) {
-                            otherSubmenu.classList.remove('submenu-open');
+                        if (toggle !== this) { // Schliesse nicht das gerade geklickte
+                            toggle.classList.remove('active');
+                            toggle.setAttribute('aria-expanded', 'false');
+                            const otherSubmenu = toggle.parentElement.querySelector('.dropdown-menu');
+                            if (otherSubmenu) {
+                                otherSubmenu.classList.remove('submenu-open');
+                            }
                         }
                     });
-
+    
+                    // Wenn das geklickte Menü nicht offen war, öffne es. Sonst schliesse es.
                     if (!wasOpen) {
                         this.classList.add('active');
                         submenu.classList.add('submenu-open');
                         this.setAttribute('aria-expanded', 'true');
+                    } else {
+                        this.classList.remove('active');
+                        submenu.classList.remove('submenu-open');
+                        this.setAttribute('aria-expanded', 'false');
                     }
                 });
             });
-
+    
+            // NEU: Bei Klick ausserhalb des Menüs schliessen (für Desktop-Ansicht)
+            document.addEventListener('click', function(event) {
+                // Prüft, ob der Klick ausserhalb des Navigations-Containers (.main-nav) stattgefunden hat
+                const mainNav = document.querySelector('.main-nav');
+                if (mainNav && !mainNav.contains(event.target)) {
+                    // Finde alle offenen Submenüs und schliesse sie
+                    document.querySelectorAll('.dropdown-menu.submenu-open').forEach(submenu => {
+                        submenu.classList.remove('submenu-open');
+                    });
+                    // Entferne auch den 'active' Status vom Toggle-Button
+                    document.querySelectorAll('.nav-item.dropdown > a.active').forEach(toggle => {
+                        toggle.classList.remove('active');
+                        toggle.setAttribute('aria-expanded', 'false');
+                    });
+                }
+            });
+    
             document.addEventListener('keydown', (event) => {
                 if (event.key === 'Escape') {
                     const openSubmenu = navList.querySelector('.dropdown-menu.submenu-open');
                     if (openSubmenu) {
                         const associatedToggle = openSubmenu.parentElement.querySelector('a[aria-haspopup="true"]');
-
+    
                         // Alle Menüs schließen
                         dropdownToggles.forEach(toggle => {
                             toggle.classList.remove('active');
@@ -207,7 +232,7 @@
                                 otherSubmenu.classList.remove('submenu-open');
                             }
                         });
-
+    
                         // Fokus zurück auf den Button setzen, der das Menü geöffnet hat
                         if (associatedToggle) {
                             associatedToggle.focus();
@@ -215,20 +240,21 @@
                     }
                 }
             });
+    
             // 3. Smooth Scroll & Close Mobile Nav
             document.querySelectorAll('a[href]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     const href = this.getAttribute('href');
                     const isMobileView = navToggle && window.getComputedStyle(navToggle).display !== 'none';
                     let isMobileDropdownToggleItself = false;
-
+    
                     if (isMobileView && this.parentElement && this.parentElement.classList.contains('dropdown') && this.closest('.nav-list') && this.querySelector('.dropdown-arrow')) {
                         const submenu = this.parentElement.querySelector('.dropdown-menu');
                         if (submenu) {
                             isMobileDropdownToggleItself = true;
                         }
                     }
-
+    
                     if (href.startsWith('#') && href.length > 1) {
                         const targetElement = document.querySelector(href);
                         if (targetElement) {
@@ -242,7 +268,7 @@
                         e.preventDefault();
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                     }
-
+    
                     if (isMobileView && navList && navList.classList.contains('open') && !isMobileDropdownToggleItself) {
                         if (!href.startsWith('#') || (href.startsWith('#') && document.querySelector(href))) {
                             navList.classList.remove('open');
@@ -256,7 +282,7 @@
                     }
                 });
             });
-
+    
             // Hero-Slideshow
             const slides = document.querySelectorAll('.hero-slideshow .hero-img');
             if (slides.length > 1) {
@@ -270,14 +296,14 @@
             } else if (slides.length === 1 && slides[0]) {
                 slides[0].classList.add('active');
             }
-
+    
             // News Slider
             const newsSlider = document.querySelector('#news .news-slider');
             const newsItems = newsSlider ? newsSlider.querySelectorAll('.news-item') : [];
             const newsDotsContainer = document.querySelector('#news .news-dots');
             let currentNewsIndex = 0;
             let newsInterval;
-
+    
             if (newsItems.length > 0 && newsDotsContainer) {
                 newsItems.forEach((item, index) => {
                     const dot = document.createElement('span');
@@ -286,9 +312,9 @@
                     if (index === 0) dot.classList.add('active');
                     newsDotsContainer.appendChild(dot);
                 });
-
+    
                 const newsDots = newsDotsContainer.querySelectorAll('.news-dot');
-
+    
                 function showNewsItem(index) {
                     newsItems.forEach(item => item.classList.remove('active'));
                     if (newsItems[index]) newsItems[index].classList.add('active');
@@ -296,12 +322,12 @@
                     if (newsDots[index]) newsDots[index].classList.add('active');
                     currentNewsIndex = index;
                 }
-
+    
                 function nextNewsItem() {
                     let nextIndex = (currentNewsIndex + 1) % newsItems.length;
                     showNewsItem(nextIndex);
                 }
-
+    
                 newsDots.forEach(dot => {
                     dot.addEventListener('click', () => {
                         showNewsItem(parseInt(dot.dataset.index));
@@ -309,17 +335,17 @@
                         newsInterval = setInterval(nextNewsItem, 7000);
                     });
                 });
-
+    
                 showNewsItem(0);
                 newsInterval = setInterval(nextNewsItem, 7000);
             }
-
+    
             // Update current year in footer
             const yearSpan = document.getElementById('current-year');
             if (yearSpan) {
                 yearSpan.textContent = new Date().getFullYear();
             }
-
+    
             // IntersectionObserver für die "Über uns"-Sektion
             const aboutSection = document.getElementById('about');
             const aboutContentToReveal = aboutSection ? aboutSection.querySelector('.about-reveal-content') : null;
@@ -336,7 +362,7 @@
                 const aboutObserver = new IntersectionObserver(revealAboutContent, aboutObserverOptions);
                 aboutObserver.observe(aboutSection);
             }
-
+    
             // Click handler for service cards
             const serviceCards = document.querySelectorAll('.service-card');
             serviceCards.forEach(card => {
@@ -348,13 +374,13 @@
                     });
                 }
             });
-
+    
             // Lightbox Funktionalität für das Teamfoto
             const teamPhotoContainer = document.getElementById('team-photo-container');
             const lightbox = document.getElementById('lightbox');
             const lightboxImage = document.getElementById('lightbox-image');
             const closeLightboxBtn = document.querySelector('.close-lightbox');
-
+    
             if (teamPhotoContainer && lightbox && lightboxImage && closeLightboxBtn) {
                 teamPhotoContainer.addEventListener('click', () => {
                     const originalImage = teamPhotoContainer.querySelector('img');
@@ -363,13 +389,13 @@
                         lightbox.classList.add('visible');
                     }
                 });
-
+    
                 const closeLightbox = () => {
                     lightbox.classList.remove('visible');
                 };
-
+    
                 closeLightboxBtn.addEventListener('click', closeLightbox);
-
+    
                 lightbox.addEventListener('click', (e) => {
                     if (e.target === lightbox) {
                         closeLightbox();
