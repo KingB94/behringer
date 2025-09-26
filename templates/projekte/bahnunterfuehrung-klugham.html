@@ -2,23 +2,6 @@
 
 {% block title %}Projekt: Bahnunterführung Klugham - Behringer & Partner{% endblock %}
 
-{% block header %}
-<header class="site-header">
-    <div class="container header-inner">
-        <a href="{{ url_for('index') }}" class="logo"> 
-            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Behringer & Partner Logo" loading="lazy">
-        </a>
-        <nav class="main-nav">
-            <ul class="nav-list">
-                <li><a href="{{ url_for('index') }}">Startseite</a></li>
-                <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Zurück zu den Referenzen</a></li>
-            </ul>
-        </nav>
-        <button class="nav-toggle" aria-label="Menü öffnen">☰</button>
-    </div>
-</header>
-{% endblock header %}
-
 {% block content %}
 <main>
     <div class="container project-detail-wrapper">

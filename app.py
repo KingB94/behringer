@@ -90,12 +90,21 @@ def maedchenschule_chato():
 def news():
     return render_template('news.html')
 
+# ─── Back Routen für Projekte ───────────────────────────────────
+@app.route('/projekt/<project_slug>')
+def projekt(project_slug):
+    """ Diese eine Route verarbeitet alle deine Projektseiten. """
+    back_path = request.args.get('back')
+    back_text = request.args.get('back_text')
 
-# ─── Statische Routen für Projekte ───────────────────────────────────
+    # Erstellt den Dateipfad zur HTML-Datei dynamisch
+    template_name = f"projekte/{project_slug}.html"
 
-@app.route('/projekt/bahnunterfuehrung-klugham')
-def projekt_klugham():
-    return render_template('projekte/projekt_klugham.html')
+    return render_template(
+        template_name,
+        back_url=back_path,
+        back_text=back_text
+    )
 
 # ─── Routen für Kontaktformular ───────────────────────────────────
 @app.route('/kontakt', methods=['POST'])

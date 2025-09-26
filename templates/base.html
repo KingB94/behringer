@@ -22,7 +22,19 @@
                 <img src='{{ url_for("static", filename="images/logo.png") }}' alt="Behringer & Partner Logo"
                     loading="lazy">
             </a>
+            
             <nav class="main-nav">
+                {% if back_url and back_text %}
+                
+                <ul class="nav-list">
+                    <li>
+                        <a href="{{ back_url }}" class="btn btn-secondary btn-sm">❮ Zurück zu {{ back_text }}</a>
+                    </li>
+                    <li><a href="{{ url_for('index') }}#contact" class="btn btn-primary btn-sm">Kontakt</a></li>
+                </ul>
+    
+                {% else %}
+    
                 <ul class="nav-list">
                     <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
                     <li><a href="{{ url_for('news') }}">Neuigkeiten</a></li>
@@ -52,6 +64,8 @@
                     </li>
                     <li><a href="{{ url_for('index') }}#contact" class="btn btn-primary">Kontakt</a></li>
                 </ul>
+    
+                {% endif %}
             </nav>
             <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
         </div>
@@ -149,9 +163,6 @@
             }
 
             // 2. Mobile Dropdown Submenu Toggle
-            // base.html -> <script>
-
-            // NEU: Dropdown Submenu Toggle (funktioniert für mobil & desktop)
             const dropdownToggles = navList ? navList.querySelectorAll('.nav-item.dropdown > a[aria-haspopup="true"]') : [];
 
             dropdownToggles.forEach(clickedToggle => {
@@ -164,7 +175,6 @@
                     // Prüfen, ob das geklickte Menü bereits offen war
                     const wasOpen = submenu.classList.contains('submenu-open');
 
-                    // --- SCHRITT 1: Zuerst IMMER alle Menüs schließen ---
                     dropdownToggles.forEach(toggle => {
                         toggle.classList.remove('active');
                         toggle.setAttribute('aria-expanded', 'false');
@@ -174,7 +184,6 @@
                         }
                     });
 
-                    // --- SCHRITT 2: Wenn das geklickte Menü NICHT offen war, öffnen wir es jetzt ---
                     if (!wasOpen) {
                         this.classList.add('active');
                         submenu.classList.add('submenu-open');
@@ -183,6 +192,29 @@
                 });
             });
 
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    const openSubmenu = navList.querySelector('.dropdown-menu.submenu-open');
+                    if (openSubmenu) {
+                        const associatedToggle = openSubmenu.parentElement.querySelector('a[aria-haspopup="true"]');
+
+                        // Alle Menüs schließen
+                        dropdownToggles.forEach(toggle => {
+                            toggle.classList.remove('active');
+                            toggle.setAttribute('aria-expanded', 'false');
+                            const otherSubmenu = toggle.parentElement.querySelector('.dropdown-menu');
+                            if (otherSubmenu) {
+                                otherSubmenu.classList.remove('submenu-open');
+                            }
+                        });
+
+                        // Fokus zurück auf den Button setzen, der das Menü geöffnet hat
+                        if (associatedToggle) {
+                            associatedToggle.focus();
+                        }
+                    }
+                }
+            });
             // 3. Smooth Scroll & Close Mobile Nav
             document.querySelectorAll('a[href]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -340,6 +372,12 @@
 
                 lightbox.addEventListener('click', (e) => {
                     if (e.target === lightbox) {
+                        closeLightbox();
+                    }
+                });
+                document.addEventListener('keydown', (e) => {
+                    // Prüft, ob die gedrückte Taste "Escape" ist UND die Lightbox sichtbar ist
+                    if (e.key === 'Escape' && lightbox.classList.contains('visible')) {
                         closeLightbox();
                     }
                 });
