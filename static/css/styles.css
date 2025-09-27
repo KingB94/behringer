@@ -105,7 +105,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); color: var(--clr-seco
 .section { padding: var(--space-lg) 0; }
 @media (min-width: 768px) { .section { padding: var(--space-xl) 0; } }
 .section.bg-alternate { background: var(--clr-bg-alt); }
-.section-title, .section h2:not(#about-headline) { font-family: var(--font-heading); font-size: clamp(1.75rem, 4vw, 2.25rem); text-align: center; margin-bottom: var(--space-sm); color: var(--clr-secondary); }
+.section-title, .section h2:not(#about-headline) { font-family: var(--font-heading); font-size: clamp(1.5rem, 5vw, 2.25rem); text-align: center; margin-bottom: var(--space-sm); color: var(--clr-secondary); }
 .section-subtitle { font-size: clamp(1rem, 2vw, 1.125rem); text-align: center; color: #666; margin-bottom: var(--space-lg); max-width: 800px; margin-left: auto; margin-right: auto; }
 .site-footer { background: var(--clr-secondary); color: var(--clr-text-light); padding: var(--space-xl) 0 var(--space-lg); }
 .footer-grid { display: grid; gap: var(--space-md); }
@@ -307,7 +307,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); color: var(--clr-seco
 .page-hero-section { position: relative; padding: var(--space-xl) 0; background-size: cover; background-position: center; color: var(--clr-white); text-align: center; }
 .page-hero-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 40, 70, 0.65); z-index: 1; }
 .page-hero-section .container { position: relative; z-index: 2; }
-.page-hero-section .page-title { font-size: clamp(2.25rem, 6vw, 3.5rem); color: var(--clr-white); margin-top: 0; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); }
+.page-hero-section .page-title { font-size: clamp(0.75rem, 6vw, 3.5rem); color: var(--clr-white); margin-top: 0; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); }
 .page-hero-section .breadcrumbs { font-size: 1rem; color: var(--clr-white); margin-bottom: var(--space-sm); text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); text-align: center; }
 .page-hero-section .breadcrumbs a { color: var(--clr-white); }
 /* Hero Hintergrundbilder */
