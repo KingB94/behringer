@@ -473,3 +473,65 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); color: var(--clr-seco
 .active-thumbnail, .thumbnail:hover { opacity: 1; }
 .fade { animation-name: fade; animation-duration: 1.5s; }
 @keyframes fade { from {opacity: .4} to {opacity: 1} }
+
+/* ==========================================================================
+   Flash Messages (Benachrichtigungen)
+   ========================================================================== */
+   .flash-messages-container {
+    position: fixed; /* Bleibt beim Scrollen sichtbar */
+    top: 90px;       /* Abstand vom oberen Rand (nach dem Header) */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000; /* Stellt sicher, dass es über allem liegt */
+    width: 90%;
+    max-width: 500px;
+}
+
+.alert {
+    padding: var(--space-sm) var(--space-md);
+    margin-bottom: var(--space-sm);
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    color: var(--clr-white);
+    font-weight: 600;
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInSlideDown 0.5s ease-out forwards;
+}
+
+/* Animation für das Einblenden */
+@keyframes fadeInSlideDown {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert-success {
+    background-color: #28a745; /* Ein schönes Grün */
+    border-color: #28a745;
+}
+
+.alert-error {
+    background-color: #dc3545; /* Ein warnendes Rot */
+    border-color: #dc3545;
+}
+
+.close-flash {
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1;
+    color: var(--clr-white);
+    opacity: 0.8;
+    cursor: pointer;
+    margin-left: var(--space);
+    transition: opacity 0.2s;
+}
+
+.close-flash:hover {
+    opacity: 1;
+}

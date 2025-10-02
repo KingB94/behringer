@@ -1,13 +1,14 @@
 from dotenv import load_dotenv
 import os
 from flask_mail import Mail, Message
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 
 load_dotenv() 
 
 app = Flask(__name__)
 
 # --- Konfiguration für Flask-Mail ---
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 app.config['MAIL_SERVER'] = os.environ.get('MAIL_SERVER')
 app.config['MAIL_PORT'] = int(os.environ.get('MAIL_PORT'))
 app.config['MAIL_USE_TLS'] = os.environ.get('MAIL_USE_TLS').lower() in ['true', 'on', '1']
@@ -107,6 +108,7 @@ def projekt(project_slug):
     )
 
 # ─── Routen für Kontaktformular ───────────────────────────────────
+# ─── Routen für Kontaktformular ───────────────────────────────────
 @app.route('/kontakt', methods=['POST'])
 def kontakt():
     """Nimmt die Formulardaten entgegen und sendet die E-Mail."""
@@ -118,28 +120,111 @@ def kontakt():
     msg = Message(
         subject=f"Neue Kontaktanfrage von {name}",
         # Der Absender ist die Adresse aus deiner .env Datei
-        sender=("Kontaktformular", app.config['MAIL_USERNAME']),
+        sender=("Kontaktformular Webseite", app.config['MAIL_USERNAME']),
         # HIER legst du fest, wo die E-Mail ankommen soll!
-        recipients=['info@ib-behringer.de'] 
+        recipients=['info@ib-behringer.de']
     )
-    
+
+    # 1. Plain-Text-Version für E-Mail-Clients, die kein HTML unterstützen
     msg.body = f"""
     Du hast eine neue Nachricht über das Kontaktformular erhalten:
-
+    -----------------------------------
     Name: {name}
     E-Mail: {email}
-
+    -----------------------------------
     Nachricht:
     {nachricht}
+    -----------------------------------
+    """
+
+    # 2. Schön formatierte HTML-Version der E-Mail
+    msg.html = f"""
+    <!DOCTYPE html>
+    <html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            body {{
+                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                background-color: #f9f9f9;
+                margin: 0;
+                padding: 20px;
+            }}
+            .container {{
+                background-color: #ffffff;
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 30px;
+                border: 1px solid #e0e0e0;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            }}
+            h2 {{
+                color: #005a9c; /* Hauptfarbe Ihrer Webseite */
+                margin-top: 0;
+                border-bottom: 2px solid #e0e0e0;
+                padding-bottom: 10px;
+            }}
+            .info-grid {{
+                display: grid;
+                grid-template-columns: 100px 1fr;
+                gap: 10px;
+                margin-bottom: 20px;
+            }}
+            .info-grid strong {{
+                color: #333;
+            }}
+            blockquote {{
+                background-color: #f4f4f4;
+                border-left: 4px solid #005a9c;
+                margin: 20px 0;
+                padding: 15px;
+                font-style: italic;
+                color: #555;
+            }}
+            a {{
+                color: #007bff;
+                text-decoration: none;
+            }}
+            .footer {{
+                text-align: center;
+                font-size: 12px;
+                color: #999;
+                margin-top: 30px;
+            }}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Neue Kontaktanfrage</h2>
+            <div class="info-grid">
+                <strong>Von:</strong>
+                <span>{name}</span>
+                
+                <strong>E-Mail:</strong>
+                <span><a href="mailto:{email}">{email}</a></span>
+            </div>
+            
+            <h3>Nachricht:</h3>
+            <blockquote>
+                <p>{nachricht.replace(chr(10), '<br>')}</p>
+            </blockquote>
+        </div>
+        <div class="footer">
+            <p>Diese E-Mail wurde automatisch vom Kontaktformular der Webseite gesendet.</p>
+        </div>
+    </body>
+    </html>
     """
     
     try:
         mail.send(msg)
+        # Erfolgsnachricht für den Benutzer setzen
+        flash('Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.', 'success')
     except Exception as e:
-        # Im Fehlerfall (z.B. falsches Passwort) passiert erstmal nichts.
-        # Für eine Live-Seite könntest du hier einen Fehler loggen.
         print(f"Fehler beim Senden der E-Mail: {e}")
-        pass
+        # Fehlernachricht für den Benutzer setzen
+        flash('Leider ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.', 'error')
 
     # Leitet den Benutzer immer zurück zur Startseite zum Kontaktbereich
     return redirect(url_for('index') + '#contact')
