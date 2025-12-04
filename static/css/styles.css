@@ -255,10 +255,13 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); color: var(--clr-seco
 #about .p-6 {
     padding: 1.5rem;
 }
-.news-slider-wrapper { position: relative; max-width: 700px; margin: 0 auto; overflow: hidden; }
-.news-slider { display: flex; transition: transform 0.5s ease-in-out; }
-.news-item { min-width: 100%; background-color: var(--clr-white); border-radius: var(--radius-md); padding: var(--space-md); box-shadow: var(--shadow-md); transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; opacity: 0; visibility: hidden; position: absolute; top: 0; left: 0; width: 100%; display: flex; flex-direction: column; }
-.news-item.active { opacity: 1; visibility: visible; position: relative; }
+.news-slider-wrapper { position: relative; max-width: 700px; margin: 0 auto; }
+.news-slider { display: grid; grid-template-columns: 1fr; }
+.news-item {
+    grid-column: 1; grid-row: 1; width: 100%; position: relative; display: flex;
+    flex-direction: column; background-color: var(--clr-white); border-radius: var(--radius-md); padding: var(--space-md);
+    box-shadow: var(--shadow-md); opacity: 0; z-index: 0; pointer-events: none; visibility: visible; transition: opacity 0.5s ease-in-out; }
+.news-item.active {opacity: 1; z-index: 1; pointer-events: auto; position: relative; }
 .news-item .news-date { display: block; font-size: 0.8rem; color: #777; margin-bottom: var(--space-xs); }
 .news-item img { width: 100%; height: 200px; object-fit: cover; border-radius: var(--radius-sm) var(--radius-sm) 0 0; margin-bottom: var(--space-sm); }
 .news-item p { font-size: 0.95rem; margin-bottom: var(--space-sm); flex-grow: 1; }
@@ -311,14 +314,14 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); color: var(--clr-seco
 .page-hero-section .breadcrumbs { font-size: 1rem; color: var(--clr-white); margin-bottom: var(--space-sm); text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); text-align: center; }
 .page-hero-section .breadcrumbs a { color: var(--clr-white); }
 /* Hero Hintergrundbilder */
-.hero-bg-siedlungswasserwirtschaft { background-image: url("../images/siedlungswasserwirtschaft.png"); }
-.hero-bg-strassenbau { background-image: url("../images/strassenbau.png"); }
-.hero-bg-fernwaerme { background-image: url("../images/fernwaerme.png"); }
-.hero-bg-hydraulische-nachweise { background-image: url("../images/hydraulischenachweise.png"); }
-.hero-bg-baulanderschliessung { background-image: url("../images/baulanderschliessung.png"); }
-.hero-bg-kommunales-gis { background-image: url("../images/kommunalesgis.png"); }
-.hero-bg-sanierungen { background-image: url("../images/sanierungen.png"); }
-.hero-bg-wasserbau { background-image: url("../images/wasserbau.png"); }
+.hero-bg-siedlungswasserwirtschaft { background-image: url("../images/leistungen/icons/siedlungswasserwirtschaft.png"); }
+.hero-bg-strassenbau { background-image: url("../images/leistungen/icons/strassenbau.png"); }
+.hero-bg-fernwaerme { background-image: url("../images/leistungen/icons/fernwaerme.png"); }
+.hero-bg-hydraulische-nachweise { background-image: url("../images/leistungen/icons/hydraulischenachweise.png"); }
+.hero-bg-baulanderschliessung { background-image: url("../images/leistungen/icons/baulanderschliessung.png"); }
+.hero-bg-kommunales-gis { background-image: url("../images/leistungen/icons/kommunalesgis.png"); }
+.hero-bg-sanierungen { background-image: url("../images/leistungen/icons/sanierungen.png"); }
+.hero-bg-wasserbau { background-image: url("../images/leistungen/icons/wasserbau.png"); }
 .hero-bg-firmengeschichte { background-image: url("../images/hero.png"); }
 .hero-bg-stellenangebote { background-image: url("../images/hero1.png"); }
 

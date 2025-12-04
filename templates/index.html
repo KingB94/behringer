@@ -5,12 +5,11 @@
 {% block content %}
 <section class="hero">
     <div class="hero-slideshow">
-        <img src="{{ url_for('static', filename='images/hero.png') }}" alt="Hero Bildbeschreibung 1" class="hero-img active" loading="lazy">
-        <img src="{{ url_for('static', filename='images/hero1.png') }}" alt="Hero Bildbeschreibung 2" class="hero-img" loading="lazy">
-        <img src="{{ url_for('static', filename='images/hero2.png') }}" alt="Hero Bildbeschreibung 3" class="hero-img" loading="lazy">
-        <img src="{{ url_for('static', filename='images/working (2).jpg') }}" alt="Team in Aktion" class="hero-img" loading="lazy">
-        <img src="{{ url_for('static', filename='images/hero3.png') }}" alt="Hero Bildbeschreibung 4" class="hero-img" loading="lazy">
-        <img src="{{ url_for('static', filename='images/working.jpg') }}" alt="Arbeiter auf der Baustelle" class="hero-img" loading="lazy">
+        <img src="{{ url_for('static', filename='images/home/hero/slide1.JPG') }}" alt="Hero Bildbeschreibung 1" class="hero-img active" loading="lazy">
+        <img src="{{ url_for('static', filename='images/home/hero/slide2.JPG') }}" alt="Hero Bildbeschreibung 2" class="hero-img" loading="lazy">
+        <img src="{{ url_for('static', filename='images/home/hero/slide3.JPG') }}"alt="Hero Bildbeschreibung 3" class="hero-img" loading="lazy">
+        <img src="{{ url_for('static', filename='images/home/hero/slide4.JPG') }}"alt="Team in Aktion" class="hero-img" loading="lazy">
+        <img src="{{ url_for('static', filename='images/home/hero/slide5.JPG') }}" alt="Hero Bildbeschreibung 4" class="hero-img" loading="lazy">
     </div>
     <div class="hero-content">
         <h1>Ihr Partner im Tiefbau seit 1968</h1>
@@ -51,21 +50,21 @@
             <div class="news-slider-wrapper">
                 <div class="news-slider">
                     <div class="news-item">
-                        <img src="{{ url_for('static', filename='images/news1.jpg') }}" alt="Spatenstich Neubaugebiet Allersheim">
+                        <img src="{{ url_for('static', filename='images/news/news1.jpg') }}" alt="Spatenstich Neubaugebiet Allersheim">
                         <small class="news-date">31.10.2024</small>
                         <h3>Spatenstich Neubaugebiet Allersheim, Schwindegg</h3>
                         <p>Am 30.10.24 wurde feierlich der Spatenstich für das Neubaugebiet Allersheim in Schwindegg durchgeführt. Bereits im November beginnen die Tiefbauarbeiten, Mitte 2025 wird ein erster Abschnitt fertig...</p>
                         <a href="https://www.ib-behringer.de/2024/10/31/spatenstich-neubaugebiet-allersheim-schwindegg/" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Mehr lesen</a>
                     </div>
                     <div class="news-item">
-                        <img src="{{ url_for('static', filename='images/news2.jpg') }}" alt="Bahnunterführung Klugham">
+                        <img src="{{ url_for('static', filename='images/news/news2.jpg') }}" alt="Bahnunterführung Klugham">
                         <small class="news-date">25.10.2024</small>
                         <h3>Bahnunterführung Klugham</h3>
                         <p>In Zusammenarbeit mit der Südostbayern Bahn konnte die Gemeinde Aschau a. Inn mit der Erneuerung der Bahnunterführung in Klugham eine zeitgemäße Straßenführung verwirklichen. Im Frühjahr...</p>
                         <a href="https://www.ib-behringer.de/projekt/bahnunterfuehrung-klugham/" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Mehr lesen</a>
                     </div>
                     <div class="news-item">
-                        <img src="{{ url_for('static', filename='images/news3.jpg') }}" alt="Kreisverkehr Marktl">
+                        <img src="{{ url_for('static', filename='images/news/news3.jpg') }}" alt="Kreisverkehr Marktl">
                         <small class="news-date">27.09.2024</small>
                         <h3>Kreisverkehr in Marktl fertig</h3>
                         <p>Seit September 2024 ist der Kreisverkehr in Marktl, der die Kreisstraßen AÖ22 und AÖ24 verbindet, freigegeben. In ca. 10 Monaten wurde ein moderner Knotenpunkt geschaffen...</p>
@@ -87,49 +86,49 @@
             <div class="services-grid">
                 <div class="service-card" id="service-siedlung">
                     <a href="{{ url_for('siedlungswasserwirtschaft') }}" class="service-link-wrapper">
-                        <img src="{{ url_for('static', filename='images/siedlungswasserwirtschaft.png') }}" alt="Siedlungswasserwirtschaft" loading="lazy">
+                        <img src="{{ url_for('static', filename='images/leistungen/icons/siedlungswasserwirtschaft.png') }}" alt="Siedlungswasserwirtschaft" loading="lazy">
                         <h3>Siedlungswasserwirtschaft</h3>
                     </a>
                 </div>
                 <div class="service-card" id="service-strassen">
                     <a href="{{ url_for('strassenbau_brueckenbau') }}" class="service-link-wrapper">
-                        <img src="{{ url_for('static', filename='images/strassenbau.png') }}" alt="Straßenbau & Brückenbau" loading="lazy">
+                        <img src="{{ url_for('static', filename='images/leistungen/icons/strassenbau.png') }}" alt="Straßenbau & Brückenbau" loading="lazy">
                         <h3>Straßenbau & Brückenbau</h3>
                     </a>
                 </div>
                 <div class="service-card" id="service-fernwaerme">
                      <a href="{{ url_for('fernwaerme') }}" class="service-link-wrapper">
-                        <img src="{{ url_for('static', filename='images/fernwaerme.png') }}" alt="Fernwärme" loading="lazy">
+                        <img src="{{ url_for('static', filename='images/leistungen/icons/fernwaerme.png') }}" alt="Fernwärme" loading="lazy">
                         <h3>Fernwärme</h3>
                     </a>
                 </div>
                 <div class="service-card" id="service-hydraulik">
                      <a href="{{ url_for('hydraulische_nachweise') }}" class="service-link-wrapper">
-                        <img src="{{ url_for('static', filename='images/hydraulischenachweise.png') }}" alt="Hydraulische Nachweise" loading="lazy">
+                        <img src="{{ url_for('static', filename='images/leistungen/icons/hydraulischenachweise.png') }}" alt="Hydraulische Nachweise" loading="lazy">
                         <h3>Hydraulische Nachweise</h3>
                     </a>
                 </div>
                 <div class="service-card" id="service-bauland">
                     <a href="{{ url_for('baulanderschliessung') }}" class="service-link-wrapper">
-                        <img src="{{ url_for('static', filename='images/baulanderschließung.png') }}" alt="Baulanderschließung" loading="lazy">
+                        <img src="{{ url_for('static', filename='images/leistungen/icons/baulanderschließung.png') }}" alt="Baulanderschließung" loading="lazy">
                         <h3>Baulanderschließung</h3>
                     </a>
                 </div>
                 <div class="service-card" id="service-gis">
                     <a href="{{ url_for('kommunales_gis') }}" class="service-link-wrapper">
-                        <img src="{{ url_for('static', filename='images/kommunalesgis.png') }}" alt="Kommunales GIS" loading="lazy">
+                        <img src="{{ url_for('static', filename='images/leistungen/icons/kommunalesgis.png') }}" alt="Kommunales GIS" loading="lazy">
                         <h3>Kommunales GIS</h3>
                     </a>
                 </div>
                 <div class="service-card" id="service-sanierung">
                     <a href="{{ url_for('sanierungen') }}" class="service-link-wrapper">
-                        <img src="{{ url_for('static', filename='images/sanierungen.png') }}" alt="Sanierungen" loading="lazy">
+                        <img src="{{ url_for('static', filename='images/leistungen/icons/sanierungen.png') }}" alt="Sanierungen" loading="lazy">
                         <h3>Sanierungen</h3>
                     </a>
                 </div>
                 <div class="service-card" id="service-wasserbau">
                     <a href="{{ url_for('wasserbau') }}" class="service-link-wrapper">
-                        <img src="{{ url_for('static', filename='images/wasserbau.png') }}" alt="Wasserbau" loading="lazy">
+                        <img src="{{ url_for('static', filename='images/leistungen/icons/wasserbau.png') }}" alt="Wasserbau" loading="lazy">
                         <h3>Wasserbau</h3>
                     </a>
                 </div>
