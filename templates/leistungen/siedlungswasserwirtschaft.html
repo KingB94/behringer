@@ -11,16 +11,20 @@
             <span>Siedlungswasserwirtschaft</span>
         </div>
         <h1 class="page-title">Siedlungswasserwirtschaft</h1>
-        <p class="section-subtitle" style="text-align: center; color: var(--clr-white); text-shadow: 1px 1px 3px rgba(0,0,0,0.5); max-width: 800px; margin-bottom: 0;">Ihr Experte für Planung, Bau und Sanierung in allen Bereichen der Wasserver- und Abwasserentsorgung.</p>
+        <p class="section-subtitle"
+            style="text-align: center; color: var(--clr-white); text-shadow: 1px 1px 3px rgba(0,0,0,0.5); max-width: 800px; margin-bottom: 0;">
+            Ihr Experte für Planung, Bau und Sanierung in allen Bereichen der Wasserver- und Abwasserentsorgung.</p>
     </div>
 </section>
 
 <main>
-    <section class="section leistung-detail-content bg-alternate"> 
+    <section class="section leistung-detail-content bg-alternate">
         <div class="container">
             <h2 class="section-title">Unser Leistungsumfang</h2>
             <p class="intro-text">
-                Wir decken das gesamte Spektrum der Siedlungswasserwirtschaft ab – von der Trinkwassergewinnung bis zur Abwasserreinigung. Unsere Planungen basieren auf Nachhaltigkeit, Effizienz und den neuesten technischen Standards.
+                Wir decken das gesamte Spektrum der Siedlungswasserwirtschaft ab – von der Trinkwassergewinnung bis zur
+                Abwasserreinigung. Unsere Planungen basieren auf Nachhaltigkeit, Effizienz und den neuesten technischen
+                Standards.
             </p>
 
             <ul class="service-list-grid">
@@ -41,66 +45,127 @@
                 <div class="text-content">
                     <h4>Geprüfte Kompetenz</h4>
                     <p>Unsere Expertise wird durch offizielle Qualifikationen bestätigt:
-                       <strong>DWA geprüfter Fachplaner Starkregenvorsorge</strong>
+                        <strong>DWA geprüfter Fachplaner Starkregenvorsorge</strong>
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="beitraege" class="section"> 
+    <section id="beitraege" class="section">
         <div class="container">
             <h2 class="section-title">Referenzprojekte Siedlungswasserwirtschaft</h2>
             <p class="section-subtitle">Ausgewählte Projekte und Beiträge aus dem Bereich Siedlungswasserwirtschaft.</p>
-            
+
             <div class="portfolio-grid">
 
                 <article class="portfolio-card">
-                    <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-am-unterfeld/" class="portfolio-card-link" target="_blank" rel="noopener">
+                    <a href="{{ url_for('projekt', project_slug='siedlungswasserwirtschaft/klaeranlage-schwindegg') }}"
+                        class="portfolio-card-link">
                         <div class="portfolio-card-inner">
                             <div class="portfolio-thumbnail">
-                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2023/08/IMG_2469-270x150.jpg" alt="Erschließung Neubaugebiet Am Unterfeld" loading="lazy">
+                                <img src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/AW520_Klaeranlage_Schwindegg/1.jpg') }}"
+                                    alt="Kläranlage Schwindegg" loading="lazy">
                                 <div class="portfolio-overlay">
                                     <span class="portfolio-overlay-icon">➔</span>
                                 </div>
                             </div>
                             <div class="portfolio-content">
-                                <h3 class="portfolio-title">Erschließung Neubaugebiet Am Unterfeld</h3>
-                                <p class="portfolio-category">Baulanderschließung, Siedlungswasserwirtschaft, Straßenbau</p>
+                                <h3 class="portfolio-title">Kläranlage Schwindegg</h3>
+                                <p class="portfolio-category">Kläranlagenbau, Abwasserreinigung</p>
                             </div>
                         </div>
                     </a>
                 </article>
 
                 <article class="portfolio-card">
-                    <a href="https://www.ib-behringer.de/projekt/regenueberlauf-hummel-in-massing/" class="portfolio-card-link" target="_blank" rel="noopener">
+                    <a href="https://www.ib-behringer.de/projekt/regenueberlauf-hummel-in-massing/"
+                        class="portfolio-card-link" target="_blank" rel="noopener">
                         <div class="portfolio-card-inner">
                             <div class="portfolio-thumbnail">
-                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2023/07/IMG_8339-270x150.jpg" alt="Regenüberlauf Hummel in Massing" loading="lazy">
+                                <img src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/AW416_RUE_HUMMEL/1.jpg') }}"
+                                    alt="Kläranlage Schwindegg" loading="lazy">
+                                <div class="portfolio-overlay">
+                                    <div class="portfolio-overlay">
+                                        <span class="portfolio-overlay-icon">➔</span>
+                                    </div>
+                                </div>
+                                <div class="portfolio-content">
+                                    <h3 class="portfolio-title">Regenüberlauf Hummel in Massing</h3>
+                                    <p class="portfolio-category">Hydraulische Nachweise, Siedlungswasserwirtschaft</p>
+                                </div>
+                            </div>
+                    </a>
+                </article>
+
+                <article class="portfolio-card">
+                    <a href="#" class="portfolio-card-link">
+                        <div class="portfolio-card-inner">
+                            <div class="portfolio-thumbnail">
+                                <img src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/WV240_Massing/1.jpg') }}"
+                                    alt="Kläranlage Schwindegg" loading="lazy">
+                                <div class="portfolio-overlay">
+                                    <div class="portfolio-overlay">
+                                        <span class="portfolio-overlay-icon">➔</span>
+                                    </div>
+                                </div>
+                                <div class="portfolio-content">
+                                    <h3 class="portfolio-title">Massing</h3>
+                                    <p class="portfolio-category">Siedlungswasserwirtschaft, Erschließung</p>
+                                </div>
+                            </div>
+                    </a>
+                </article>
+
+                <article class="portfolio-card">
+                    <a href="#" class="portfolio-card-link">
+                        <div class="portfolio-card-inner">
+                            <div class="portfolio-thumbnail">
+                                <img src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/WV235_STWKWKBG/1.jpg') }}"
+                                    alt="Stadtwerke Waldkraiburg" loading="lazy">
                                 <div class="portfolio-overlay">
                                     <span class="portfolio-overlay-icon">➔</span>
                                 </div>
                             </div>
                             <div class="portfolio-content">
-                                <h3 class="portfolio-title">Regenüberlauf Hummel in Massing</h3>
-                                <p class="portfolio-category">Hydraulische Nachweise, Siedlungswasserwirtschaft</p>
+                                <h3 class="portfolio-title">Stadtwerke Waldkraiburg</h3>
+                                <p class="portfolio-category">Versorgungsnetze, Wasserwirtschaft</p>
                             </div>
                         </div>
                     </a>
                 </article>
 
                 <article class="portfolio-card">
-                    <a href="https://www.ib-behringer.de/projekt/umbau-der-klaeranlagen-wittibreut-und-ulbering/" class="portfolio-card-link" target="_blank" rel="noopener">
+                    <a href="#" class="portfolio-card-link">
                         <div class="portfolio-card-inner">
                             <div class="portfolio-thumbnail">
-                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2021/07/Kl%C3%A4ranlage-Wittibreut-2-270x150.jpg" alt="Umbau der Kläranlagen Wittibreut und Ulbering" loading="lazy">
+                                <img src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/WV240_Massing/1.jpg') }}"
+                                    alt="Mühldorf TV Befahrung" loading="lazy">
                                 <div class="portfolio-overlay">
                                     <span class="portfolio-overlay-icon">➔</span>
                                 </div>
                             </div>
                             <div class="portfolio-content">
-                                <h3 class="portfolio-title">Umbau der Kläranlagen Wittibreut und Ulbering</h3>
-                                <p class="portfolio-category">Siedlungswasserwirtschaft</p>
+                                <h3 class="portfolio-title">Mühldorf TV Befahrung</h3>
+                                <p class="portfolio-category">Kanalinspektion, Sanierung</p>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="portfolio-card">
+                    <a href="#" class="portfolio-card-link">
+                        <div class="portfolio-card-inner">
+                            <div class="portfolio-thumbnail">
+                                <img src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/G186_STWKWKBG_Puertner_Kreuzung/1.jpg') }}"
+                                    alt="Stadtwerke Waldkraiburg Pürtner Kreuzung" loading="lazy">
+                                <div class="portfolio-overlay">
+                                    <span class="portfolio-overlay-icon">➔</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-content">
+                                <h3 class="portfolio-title">Stadtwerke Waldkraiburg, Pürtner Kreuzung</h3>
+                                <p class="portfolio-category">Leitungsbau, Infrastruktur</p>
                             </div>
                         </div>
                     </a>

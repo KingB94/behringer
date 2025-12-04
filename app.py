@@ -92,7 +92,7 @@ def news():
     return render_template('news.html')
 
 # ─── Back Routen für Projekte ───────────────────────────────────
-@app.route('/projekt/<project_slug>')
+@app.route('/projekt/<path:project_slug>')
 def projekt(project_slug):
     """ Diese eine Route verarbeitet alle deine Projektseiten. """
     back_path = request.args.get('back')
@@ -107,7 +107,6 @@ def projekt(project_slug):
         back_text=back_text
     )
 
-# ─── Routen für Kontaktformular ───────────────────────────────────
 # ─── Routen für Kontaktformular ───────────────────────────────────
 @app.route('/kontakt', methods=['POST'])
 def kontakt():
