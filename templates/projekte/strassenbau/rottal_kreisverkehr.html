@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block title %}Projekt: Kreisverkehr Rottal - Behringer & Partner{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container project-detail-wrapper">
+        <div class="project-detail-layout">
+            <!-- Hauptbild (1.webp) -->
+            <div class="project-main-image">
+                <img src="{{ url_for('static', filename='images/referenzen/strassenbau/S408_Rottal_Kreisverkehr/1.webp') }}" alt="Hauptbild Kreisverkehr Rottal">
+            </div>
+            
+            <!-- Projektdetails -->
+            <div class="project-main-details">
+                <h1>Kreisverkehr Rottal</h1>
+                
+                <div class="project-detail-item">
+                    <h3>Auftraggeber</h3>
+                    <!-- PLATZHALTER -->
+                    <p>Hier Auftraggeber eintragen</p>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Stichpunkte zum Projekt</h3>
+                    <!-- PLATZHALTER -->
+                    <ul>
+                        <li>Neubau eines Kreisverkehrs</li>
+                        <li>Anpassung der Anschlussäste</li>
+                        <li>Erneuerung der Fahrbahndecke</li>
+                        <li>Verbesserung der Verkehrsführung</li>
+                    </ul>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Ausführungszeitraum</h3>
+                    <!-- PLATZHALTER -->
+                    <p>20XX</p>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Leistungsbereich</h3>
+                    <p>Straßenbau</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bildergalerie -->
+        <div class="project-gallery-wrapper">
+            <h2 class="project-gallery-title">Weitere Bilder</h2>
+            
+            <div class="slideshow-container">
+                <!-- Slide 1 (1.webp) -->
+                <div class="mySlides fade">
+                    <div class="numbertext">1 / 5</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/strassenbau/S408_Rottal_Kreisverkehr/1.webp') }}" alt="Kreisverkehr Rottal Bild 1">
+                </div>
+                <!-- Slide 2 (2.webp) -->
+                <div class="mySlides fade">
+                    <div class="numbertext">2 / 5</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/strassenbau/S408_Rottal_Kreisverkehr/2.webp') }}" alt="Kreisverkehr Rottal Bild 2">
+                </div>
+                <!-- Slide 3 (3.webp) -->
+                <div class="mySlides fade">
+                    <div class="numbertext">3 / 5</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/strassenbau/S408_Rottal_Kreisverkehr/3.webp') }}" alt="Kreisverkehr Rottal Bild 3">
+                </div>
+                <!-- Slide 4 (4.webp) -->
+                <div class="mySlides fade">
+                    <div class="numbertext">4 / 5</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/strassenbau/S408_Rottal_Kreisverkehr/4.webp') }}" alt="Kreisverkehr Rottal Bild 4">
+                </div>
+                <!-- Slide 5 (5.webp) -->
+                <div class="mySlides fade">
+                    <div class="numbertext">5 / 5</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/strassenbau/S408_Rottal_Kreisverkehr/5.webp') }}" alt="Kreisverkehr Rottal Bild 5">
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+            </div>
+            
+            <!-- Thumbnails -->
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/strassenbau/S408_Rottal_Kreisverkehr/1.webp') }}" onclick="currentSlide(1)" alt="Vorschaubild 1">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/strassenbau/S408_Rottal_Kreisverkehr/2.webp') }}" onclick="currentSlide(2)" alt="Vorschaubild 2">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/strassenbau/S408_Rottal_Kreisverkehr/3.webp') }}" onclick="currentSlide(3)" alt="Vorschaubild 3">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/strassenbau/S408_Rottal_Kreisverkehr/4.webp') }}" onclick="currentSlide(4)" alt="Vorschaubild 4">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/strassenbau/S408_Rottal_Kreisverkehr/5.webp') }}" onclick="currentSlide(5)" alt="Vorschaubild 5">
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let thumbnails = document.getElementsByClassName("thumbnail");
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < thumbnails.length; i++) {
+            thumbnails[i].className = thumbnails[i].className.replace(" active-thumbnail", "");
+        }
+        if (slides.length > 0) {
+            slides[slideIndex-1].style.display = "block";  
+            thumbnails[slideIndex-1].className += " active-thumbnail";
+        }
+    }
+</script>
+{% endblock %}

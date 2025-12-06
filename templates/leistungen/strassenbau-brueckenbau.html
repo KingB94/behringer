@@ -36,6 +36,7 @@
             </ul>
         </div>
     </section>
+    
     <section id="beitraege" class="section">
         <div class="container">
             <h2 class="section-title">Referenzprojekte Straßenbau & Brückenbau</h2>
@@ -44,6 +45,61 @@
 
             <div class="portfolio-grid">
 
+                <!-- Projekt 1: Hirschbachbrücke -->
+                <article class="portfolio-card">
+                    <a href="{{ url_for('projekt', project_slug='strassenbau/hirschbachbruecke', back=request.path, back_text='Straßenbau & Brückenbau') }}" class="portfolio-card-link">
+                        <div class="portfolio-card-inner">
+                            <div class="portfolio-thumbnail">
+                                <img src="{{ url_for('static', filename='images/referenzen/strassenbau/G105/1.webp') }}" alt="Hirschbachbrücke Polling" loading="lazy">
+                                <div class="portfolio-overlay">
+                                    <span class="portfolio-overlay-icon">➔</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-content">
+                                <h3 class="portfolio-title">Instandsetzung Hirschbachbrücke</h3>
+                                <p class="portfolio-category">Brückenbau</p>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Projekt 2: Kreisverkehr Rottal -->
+                <article class="portfolio-card">
+                    <a href="{{ url_for('projekt', project_slug='strassenbau/rottal_kreisverkehr', back=request.path, back_text='Straßenbau & Brückenbau') }}" class="portfolio-card-link">
+                        <div class="portfolio-card-inner">
+                            <div class="portfolio-thumbnail">
+                                <img src="{{ url_for('static', filename='images/referenzen/strassenbau/S408_Rottal_Kreisverkehr/1.webp') }}" alt="Kreisverkehr Rottal" loading="lazy">
+                                <div class="portfolio-overlay">
+                                    <span class="portfolio-overlay-icon">➔</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-content">
+                                <h3 class="portfolio-title">Kreisverkehr Rottal</h3>
+                                <p class="portfolio-category">Straßenbau</p>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Projekt 3: Kreisverkehr Altötting -->
+                <article class="portfolio-card">
+                    <a href="{{ url_for('projekt', project_slug='strassenbau/KV_LK_Altoetting', back=request.path, back_text='Straßenbau & Brückenbau') }}" class="portfolio-card-link">
+                        <div class="portfolio-card-inner">
+                            <div class="portfolio-thumbnail">
+                                <img src="{{ url_for('static', filename='images/referenzen/strassenbau/S477_KV_LK_Altoetting/1.webp') }}" alt="Kreisverkehr Landkreis Altötting" loading="lazy">
+                                <div class="portfolio-overlay">
+                                    <span class="portfolio-overlay-icon">➔</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-content">
+                                <h3 class="portfolio-title">Kreisverkehr Landkreis Altötting</h3>
+                                <p class="portfolio-category">Straßenbau</p>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Projekt 4: Bahnunterführung Klugham (Existierend) -->
                 <article class="portfolio-card">
                     <a href="{{ url_for('projekt', project_slug='bahnunterfuehrung-klugham', back=request.path, back_text='Straßenbau & Brückenbau') }}" class="portfolio-card-link">
                         <div class="portfolio-card-inner">
@@ -61,58 +117,7 @@
                     </a>
                 </article>
 
-                <article class="portfolio-card">
-                    <a href="{{ url_for('projekt', project_slug='bahnunterfuehrung-klugham', back=request.path, back_text='Straßenbau & Brückenbau') }}" class="portfolio-card-link">
-                        <div class="portfolio-card-inner">
-                            <div class="portfolio-thumbnail">
-                                <img src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/klugham/klugham1.jpg') }}" alt="Bahnunterführung Klugham" loading="lazy">
-                                <div class="portfolio-overlay">
-                                    <span class="portfolio-overlay-icon">➔</span>
-                                </div>
-                            </div>
-                            <div class="portfolio-content">
-                                <h3 class="portfolio-title">Bahnunterführung Klugham</h3>
-                                <p class="portfolio-category">Straßenbau & Brückenbau</p>
-                            </div>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="portfolio-card">
-                    <a href="{{ url_for('projekt', project_slug='bahnunterfuehrung-klugham', back=request.path, back_text='Straßenbau & Brückenbau') }}" class="portfolio-card-link">
-                        <div class="portfolio-card-inner">
-                            <div class="portfolio-thumbnail">
-                                <img src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/klugham/klugham1.jpg') }}" alt="Bahnunterführung Klugham" loading="lazy">
-                                <div class="portfolio-overlay">
-                                    <span class="portfolio-overlay-icon">➔</span>
-                                </div>
-                            </div>
-                            <div class="portfolio-content">
-                                <h3 class="portfolio-title">Bahnunterführung Klugham</h3>
-                                <p class="portfolio-category">Straßenbau & Brückenbau</p>
-                            </div>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="portfolio-card">
-                    <a href="{{ url_for('projekt', project_slug='bahnunterfuehrung-klugham', back=request.path, back_text='Straßenbau & Brückenbau') }}" class="portfolio-card-link">
-                        <div class="portfolio-card-inner">
-                            <div class="portfolio-thumbnail">
-                                <img src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/klugham/klugham1.jpg') }}" alt="Bahnunterführung Klugham" loading="lazy">
-                                <div class="portfolio-overlay">
-                                    <span class="portfolio-overlay-icon">➔</span>
-                                </div>
-                            </div>
-                            <div class="portfolio-content">
-                                <h3 class="portfolio-title">Bahnunterführung Klugham</h3>
-                                <p class="portfolio-category">Straßenbau & Brückenbau</p>
-                            </div>
-                        </div>
-                    </a>
-                </article>
-
-                </div>
+            </div>
         </div>
     </section>
 
