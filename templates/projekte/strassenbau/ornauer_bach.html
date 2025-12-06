@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Projekt: Umbau Kreuzung PAN46/PAN31 - Behringer & Partner{% endblock %}
+{% block title %}Projekt: Ersatzneubau Brücke über den Ornauer Bach - Behringer & Partner{% endblock %}
 
 {% block content %}
 <main>
@@ -8,36 +8,38 @@
         <div class="project-detail-layout">
             <!-- Hauptbild (1.webp) -->
             <div class="project-main-image">
-                <img src="{{ url_for('static', filename='images/referenzen/strassenbau/S408_Rottal_Kreisverkehr/1.webp') }}" alt="Hauptbild Kreisverkehr Rottal">
+                <img src="{{ url_for('static', filename='images/referenzen/strassenbau/G129/1.webp') }}" alt="Hauptbild Brücke Ornauer Bach">
             </div>
             
             <!-- Projektdetails -->
             <div class="project-main-details">
-                <h1>Umbau der Kreuzung PAN46/PAN31 zum Kreisverkehrsplatz</h1>
+                <h1>Ersatzneubau Brücke über den Ornauer Bach bei Neuhausen</h1>
                 
                 <div class="project-detail-item">
                     <h3>Auftraggeber</h3>
-                    <p>Landkreis Rottal-Inn / (Gemeinde Mitterskirchen)</p>
+                    <p>Gemeinde Obertaufkirchen</p>
                 </div>
                 
                 <div class="project-detail-item">
                     <h3>Stichpunkte zum Projekt</h3>
                     <ul>
-                        <li>Außendurchmesser Kreisverkehr: 35 m</li>
-                        <li>Anpassung der vier Äste von 60 bis 100 m</li>
-                        <li>Besondere Herausforderung bzgl. der neuen Höhenniveaus aufgrund der festgesetzten Überschwemmungsfläche südlich der PAN31</li>
-                        <li>Ca. 700 m Geh- und Radweg</li>
+                        <li>Einfeld-Rahmenbauwerk</li>
+                        <li>Gründung: Tiefgründung auf Bohrpfählen</li>
+                        <li>Lichte Weite zw. den Widerlagern: 8,0 m</li>
+                        <li>Querschnitt: 3,0 m Gehweg / 6,0 m Fahrbahn / 1,25 m Notgehweg</li>
+                        <li>Bauart Überbau: Stahlbeton</li>
+                        <li>Errichtung einer Behelfsumfahrung</li>
                     </ul>
                 </div>
                 
                 <div class="project-detail-item">
                     <h3>Ausführungszeitraum</h3>
-                    <p>Anfang März bis Mitte August 2025</p>
+                    <p>Mitte Mai bis Mitte Dezember 2023</p>
                 </div>
                 
                 <div class="project-detail-item">
                     <h3>Leistungsbereich</h3>
-                    <p>Straßenbau</p>
+                    <p>Brückenbauarbeiten</p>
                 </div>
             </div>
         </div>
@@ -50,27 +52,27 @@
                 <!-- Slide 1 (1.webp) -->
                 <div class="mySlides fade">
                     <div class="numbertext">1 / 5</div>
-                    <img src="{{ url_for('static', filename='images/referenzen/strassenbau/S408_Rottal_Kreisverkehr/1.webp') }}" alt="Kreisverkehr Rottal Bild 1">
+                    <img src="{{ url_for('static', filename='images/referenzen/strassenbau/G129/1.webp') }}" alt="Brücke Ornauer Bach Bild 1">
                 </div>
                 <!-- Slide 2 (2.webp) -->
                 <div class="mySlides fade">
                     <div class="numbertext">2 / 5</div>
-                    <img src="{{ url_for('static', filename='images/referenzen/strassenbau/S408_Rottal_Kreisverkehr/2.webp') }}" alt="Kreisverkehr Rottal Bild 2">
+                    <img src="{{ url_for('static', filename='images/referenzen/strassenbau/G129/2.webp') }}" alt="Brücke Ornauer Bach Bild 2">
                 </div>
                 <!-- Slide 3 (3.webp) -->
                 <div class="mySlides fade">
                     <div class="numbertext">3 / 5</div>
-                    <img src="{{ url_for('static', filename='images/referenzen/strassenbau/S408_Rottal_Kreisverkehr/3.webp') }}" alt="Kreisverkehr Rottal Bild 3">
+                    <img src="{{ url_for('static', filename='images/referenzen/strassenbau/G129/3.webp') }}" alt="Brücke Ornauer Bach Bild 3">
                 </div>
                 <!-- Slide 4 (4.webp) -->
                 <div class="mySlides fade">
                     <div class="numbertext">4 / 5</div>
-                    <img src="{{ url_for('static', filename='images/referenzen/strassenbau/S408_Rottal_Kreisverkehr/4.webp') }}" alt="Kreisverkehr Rottal Bild 4">
+                    <img src="{{ url_for('static', filename='images/referenzen/strassenbau/G129/4.webp') }}" alt="Brücke Ornauer Bach Bild 4">
                 </div>
                 <!-- Slide 5 (5.webp) -->
                 <div class="mySlides fade">
                     <div class="numbertext">5 / 5</div>
-                    <img src="{{ url_for('static', filename='images/referenzen/strassenbau/S408_Rottal_Kreisverkehr/5.webp') }}" alt="Kreisverkehr Rottal Bild 5">
+                    <img src="{{ url_for('static', filename='images/referenzen/strassenbau/G129/5.webp') }}" alt="Brücke Ornauer Bach Bild 5">
                 </div>
 
                 <a class="prev" onclick="plusSlides(-1)">❮</a>
@@ -79,11 +81,11 @@
             
             <!-- Thumbnails -->
             <div class="thumbnail-row">
-                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/strassenbau/S408_Rottal_Kreisverkehr/1.webp') }}" onclick="currentSlide(1)" alt="Vorschaubild 1">
-                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/strassenbau/S408_Rottal_Kreisverkehr/2.webp') }}" onclick="currentSlide(2)" alt="Vorschaubild 2">
-                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/strassenbau/S408_Rottal_Kreisverkehr/3.webp') }}" onclick="currentSlide(3)" alt="Vorschaubild 3">
-                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/strassenbau/S408_Rottal_Kreisverkehr/4.webp') }}" onclick="currentSlide(4)" alt="Vorschaubild 4">
-                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/strassenbau/S408_Rottal_Kreisverkehr/5.webp') }}" onclick="currentSlide(5)" alt="Vorschaubild 5">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/strassenbau/G129/1.webp') }}" onclick="currentSlide(1)" alt="Vorschaubild 1">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/strassenbau/G129/2.webp') }}" onclick="currentSlide(2)" alt="Vorschaubild 2">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/strassenbau/G129/3.webp') }}" onclick="currentSlide(3)" alt="Vorschaubild 3">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/strassenbau/G129/4.webp') }}" onclick="currentSlide(4)" alt="Vorschaubild 4">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/strassenbau/G129/5.webp') }}" onclick="currentSlide(5)" alt="Vorschaubild 5">
             </div>
         </div>
     </div>
