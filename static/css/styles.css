@@ -314,16 +314,16 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); color: var(--clr-seco
 .page-hero-section .breadcrumbs { font-size: 1rem; color: var(--clr-white); margin-bottom: var(--space-sm); text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); text-align: center; }
 .page-hero-section .breadcrumbs a { color: var(--clr-white); }
 /* Hero Hintergrundbilder */
-.hero-bg-siedlungswasserwirtschaft { background-image: url("../images/leistungen/icons/siedlungswasserwirtschaft.png"); }
-.hero-bg-strassenbau { background-image: url("../images/leistungen/icons/strassenbau.png"); }
-.hero-bg-fernwaerme { background-image: url("../images/leistungen/icons/fernwaerme.png"); }
-.hero-bg-hydraulische-nachweise { background-image: url("../images/leistungen/icons/hydraulischenachweise.png"); }
-.hero-bg-baulanderschliessung { background-image: url("../images/leistungen/icons/baulanderschliessung.png"); }
-.hero-bg-kommunales-gis { background-image: url("../images/leistungen/icons/kommunalesgis.png"); }
-.hero-bg-sanierungen { background-image: url("../images/leistungen/icons/sanierungen.png"); }
-.hero-bg-wasserbau { background-image: url("../images/leistungen/icons/wasserbau.png"); }
-.hero-bg-firmengeschichte { background-image: url("../images/hero.png"); }
-.hero-bg-stellenangebote { background-image: url("../images/hero1.png"); }
+.hero-bg-siedlungswasserwirtschaft { background-image: url("../images/leistungen/icons/siedlungswasserwirtschaft.webp"); }
+.hero-bg-strassenbau { background-image: url("../images/leistungen/icons/strassenbau.webp"); }
+.hero-bg-fernwaerme { background-image: url("../images/leistungen/icons/fernwaerme.webp"); }
+.hero-bg-hydraulische-nachweise { background-image: url("../images/leistungen/icons/hydraulischenachweise.webp"); }
+.hero-bg-baulanderschliessung { background-image: url("../images/leistungen/icons/baulanderschliessung.webp"); }
+.hero-bg-kommunales-gis { background-image: url("../images/leistungen/icons/kommunalesgis.webp"); }
+.hero-bg-sanierungen { background-image: url("../images/leistungen/icons/sanierungen.webp"); }
+.hero-bg-wasserbau { background-image: url("../images/leistungen/icons/wasserbau.webp"); }
+.hero-bg-firmengeschichte { background-image: url("../images/hero.webp"); }
+.hero-bg-stellenangebote { background-image: url("../images/hero1.webp"); }
 
 /* --- 4.3 Leistungs-Detailseiten --- */
 .leistung-detail-content .intro-text { text-align: center; max-width: 800px; margin: 0 auto var(--space-lg) auto; font-size: 1.1rem; color: #555; }
