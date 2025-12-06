@@ -2,12 +2,12 @@ from PIL import Image, ImageOps
 import os
 
 # Pfad zu deinem Ordner anpassen
-directory = '/Users/benediktholzner/Documents/GitHub/behringer/static/images/referenzen/siedlungswasserwirtschaft/WV240_Massing'
+directory = '/Users/benediktholzner/Documents/GitHub/behringer/static/images/team'
 
 print(f"Starte Konvertierung in: {directory}")
 
 for filename in os.listdir(directory):
-    if filename.lower().endswith((".jpg", ".jpeg", ".jpe", ".png")):
+    if filename.lower().endswith((".jpg", ".jpeg", ".jpe", ".png", ".heic")):
         try:
             # Bild öffnen
             img_path = os.path.join(directory, filename)
