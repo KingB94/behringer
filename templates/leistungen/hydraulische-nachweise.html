@@ -55,17 +55,17 @@
             <div class="portfolio-grid">
 
                 <article class="portfolio-card">
-                    <a href="https://www.ib-behringer.de/projekt/regenueberlauf-hummel-in-massing/" class="portfolio-card-link" target="_blank" rel="noopener">
+                    <a href="{{ url_for('projekt', project_slug='hydraulik/Hochwasserschutzkonzept_Oberornau', back=request.path, back_text='Hydraulische Nachweise') }}" class="portfolio-card-link">
                         <div class="portfolio-card-inner">
                             <div class="portfolio-thumbnail">
-                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2023/07/IMG_8339-270x150.jpg" alt="Regenüberlauf Hummel in Massing" loading="lazy">
+                                <img src="{{ url_for('static', filename='images/referenzen/hydraulik/w30/1.webp') }}" alt="Hochwasserschutzkonzept Oberornau" loading="lazy">
                                 <div class="portfolio-overlay">
                                     <span class="portfolio-overlay-icon">➔</span>
                                 </div>
                             </div>
                             <div class="portfolio-content">
-                                <h3 class="portfolio-title">Regenüberlauf Hummel in Massing</h3>
-                                <p class="portfolio-category">Hydraulische Nachweise, Siedlungswasserwirtschaft</p>
+                                <h3 class="portfolio-title">Integrales Hochwasserschutzkonzept Oberornau</h3>
+                                <p class="portfolio-category">Hydraulische Berechnungen</p>
                             </div>
                         </div>
                     </a>
