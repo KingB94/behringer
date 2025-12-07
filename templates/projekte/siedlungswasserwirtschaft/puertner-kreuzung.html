@@ -1,79 +1,70 @@
 {% extends "base.html" %}
 
-{% block title %}Projekt: Pürtner Kreuzung - Behringer & Partner{% endblock %}
+{% block title %}Projekt: Wasser- und Stromversorgung Pürtner Kreuzung - Behringer & Partner{% endblock %}
 
 {% block content %}
 <main>
     <div class="container project-detail-wrapper">
         <div class="project-detail-layout">
-            <!-- Hauptbild (1.webp) -->
             <div class="project-main-image">
                 <img src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/G186_STWKWKBG_Puertner_Kreuzung/1.webp') }}" alt="Hauptbild Pürtner Kreuzung">
             </div>
             
-            <!-- Projektdetails -->
             <div class="project-main-details">
-                <h1>Stadtwerke Waldkraiburg, Pürtner Kreuzung</h1>
+                <h1>Wasser- und Stromversorgung Pürtner Kreuzung</h1>
                 
                 <div class="project-detail-item">
                     <h3>Auftraggeber</h3>
-                    <p>Stadtwerke Waldkraiburg GmbH</p>
+                    <p>Stadtwerke Waldkraiburg</p>
                 </div>
                 
                 <div class="project-detail-item">
                     <h3>Stichpunkte zum Projekt</h3>
                     <ul>
-                        <li>Erneuerung der Infrastruktur im Kreuzungsbereich</li>
-                        <li>Verlegung und Erneuerung von Versorgungsleitungen</li>
-                        <li>Koordinierung verschiedener Sparten</li>
-                        <li>Wiederherstellung der Oberflächen</li>
+                        <li>Verlegung der Wasser-, Strom-, LWL- und Straßenbeleuchtungsleitungen im Zuge der Umplanung der Pürtner Kreuzung in Waldkraiburg</li>
+                        <li>Wasserleitung ca. 1,7 km</li>
+                        <li>Strom- und Straßenbeleuchtungskabel ca. 5,9 km sowie 13 Kabelzugschächte</li>
+                        <li>LWL-Verbände ca. 4,3 km</li>
+                        <li>Pressung unter Staatsstraße</li>
                     </ul>
                 </div>
                 
                 <div class="project-detail-item">
                     <h3>Ausführungszeitraum</h3>
-                    <!-- Bitte hier das korrekte Jahr eintragen -->
-                    <p>20XX</p>
+                    <p>August 2024 bis Dezember 2025</p>
                 </div>
                 
                 <div class="project-detail-item">
                     <h3>Leistungsbereich</h3>
-                    <p>Siedlungswasserwirtschaft, Leitungsbau, Infrastruktur</p>
+                    <p>Wasser- u. Stromversorgungsarbeiten, Straßenbeleuchtung</p>
                 </div>
             </div>
         </div>
 
-        <!-- Bildergalerie -->
         <div class="project-gallery-wrapper">
             <h2 class="project-gallery-title">Weitere Bilder</h2>
             
             <div class="slideshow-container">
-                <!-- Slide 1 (1.webp) -->
                 <div class="mySlides fade">
                     <div class="numbertext">1 / 6</div>
                     <img src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/G186_STWKWKBG_Puertner_Kreuzung/1.webp') }}" alt="Pürtner Kreuzung Bild 1">
                 </div>
-                <!-- Slide 2 (2.webp) -->
                 <div class="mySlides fade">
                     <div class="numbertext">2 / 6</div>
                     <img src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/G186_STWKWKBG_Puertner_Kreuzung/2.webp') }}" alt="Pürtner Kreuzung Bild 2">
                 </div>
-                <!-- Slide 3 (3.webp - Großgeschrieben!) -->
                 <div class="mySlides fade">
                     <div class="numbertext">3 / 6</div>
                     <img src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/G186_STWKWKBG_Puertner_Kreuzung/3.webp') }}" alt="Pürtner Kreuzung Bild 3">
                 </div>
-                <!-- Slide 4 (4.webp) -->
                 <div class="mySlides fade">
                     <div class="numbertext">4 / 6</div>
                     <img src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/G186_STWKWKBG_Puertner_Kreuzung/4.webp') }}" alt="Pürtner Kreuzung Bild 4">
                 </div>
-                <!-- Slide 5 (5.webp) -->
                 <div class="mySlides fade">
                     <div class="numbertext">5 / 6</div>
                     <img src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/G186_STWKWKBG_Puertner_Kreuzung/5.webp') }}" alt="Pürtner Kreuzung Bild 5">
                 </div>
-                <!-- Slide 6 (6.webp) -->
                 <div class="mySlides fade">
                     <div class="numbertext">6 / 6</div>
                     <img src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/G186_STWKWKBG_Puertner_Kreuzung/6.webp') }}" alt="Pürtner Kreuzung Bild 6">
@@ -83,7 +74,6 @@
                 <a class="next" onclick="plusSlides(1)">❯</a>
             </div>
             
-            <!-- Thumbnails -->
             <div class="thumbnail-row">
                 <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/G186_STWKWKBG_Puertner_Kreuzung/1.webp') }}" onclick="currentSlide(1)" alt="Vorschaubild 1">
                 <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/G186_STWKWKBG_Puertner_Kreuzung/2.webp') }}" onclick="currentSlide(2)" alt="Vorschaubild 2">

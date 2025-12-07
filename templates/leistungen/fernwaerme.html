@@ -47,16 +47,16 @@
             <div class="portfolio-grid">
                 
                 <article class="portfolio-card">
-                    <a href="#" class="portfolio-card-link">
+                    <a href="{{ url_for('projekt', project_slug='fernwaerme/wolfratshausen', back=request.path, back_text='Fernwärme') }}" class="portfolio-card-link">
                         <div class="portfolio-card-inner">
                             <div class="portfolio-thumbnail">
-                                <img src="{{ url_for('static', filename='images/fernwaerme.png') }}" alt="Fernwärmeversorgung Waldkraiburg 2023" loading="lazy">
+                                <img src="{{ url_for('static', filename='images/referenzen/fernwaerme/G203_Wolfratshausen/1.webp') }}" alt="Fernwärme Wolfratshausen" loading="lazy">
                                 <div class="portfolio-overlay">
                                     <span class="portfolio-overlay-icon">➔</span>
                                 </div>
                             </div>
                             <div class="portfolio-content">
-                                <h3 class="portfolio-title">Fernwärmeversorgung Waldkraiburg 2023</h3>
+                                <h3 class="portfolio-title">Fernwärme Wolfratshausen</h3>
                                 <p class="portfolio-category">Fernwärme</p>
                             </div>
                         </div>
@@ -97,56 +97,6 @@
                     </a>
                 </article>
 
-                <article class="portfolio-card">
-                    <a href="#" class="portfolio-card-link">
-                        <div class="portfolio-card-inner">
-                            <div class="portfolio-thumbnail">
-                                <img src="{{ url_for('static', filename='images/fernwaerme.png') }}" alt="Fernwärmeversorgung Waldkraiburg 2021" loading="lazy">
-                                <div class="portfolio-overlay">
-                                    <span class="portfolio-overlay-icon">➔</span>
-                                </div>
-                            </div>
-                            <div class="portfolio-content">
-                                <h3 class="portfolio-title">Fernwärmeversorgung Waldkraiburg 2021</h3>
-                                <p class="portfolio-category">Fernwärme</p>
-                            </div>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="portfolio-card">
-                    <a href="#" class="portfolio-card-link">
-                        <div class="portfolio-card-inner">
-                            <div class="portfolio-thumbnail">
-                                <img src="{{ url_for('static', filename='images/fernwaerme.png') }}" alt="Fernwärmeversorgung Waldkraiburg 2020" loading="lazy">
-                                <div class="portfolio-overlay">
-                                    <span class="portfolio-overlay-icon">➔</span>
-                                </div>
-                            </div>
-                            <div class="portfolio-content">
-                                <h3 class="portfolio-title">Fernwärmeversorgung Waldkraiburg 2020</h3>
-                                <p class="portfolio-category">Fernwärme</p>
-                            </div>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="portfolio-card">
-                    <a href="#" class="portfolio-card-link">
-                        <div class="portfolio-card-inner">
-                            <div class="portfolio-thumbnail">
-                                <img src="{{ url_for('static', filename='images/fernwaerme.png') }}" alt="Fernwärmeversorgung Waldkraiburg 2018" loading="lazy">
-                                <div class="portfolio-overlay">
-                                    <span class="portfolio-overlay-icon">➔</span>
-                                </div>
-                            </div>
-                            <div class="portfolio-content">
-                                <h3 class="portfolio-title">Fernwärmeversorgung Waldkraiburg 2018</h3>
-                                <p class="portfolio-category">Fernwärme</p>
-                            </div>
-                        </div>
-                    </a>
-                </article>
 
             </div>
         </div>

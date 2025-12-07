@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Projekt: Fernwärme Wolfratshausen - Behringer & Partner{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container project-detail-wrapper">
+        <div class="project-detail-layout">
+            <div class="project-main-image">
+                <img src="{{ url_for('static', filename='images/referenzen/fernwaerme/G203_Wolfratshausen/1.webp') }}" alt="Fernwärme Wolfratshausen Hauptansicht">
+            </div>
+            
+            <div class="project-main-details">
+                <h1>Fernwärme Wolfratshausen</h1>
+                
+                <div class="project-detail-item">
+                    <h3>Auftraggeber</h3>
+                    <p>Stadtwerke Wolfratshausen</p>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Stichpunkte zum Projekt</h3>
+                    <ul>
+                        <li>Planung des Fernwärmenetzes für die Stadt Wolfratshausen (Leistungsphase 2 bis 4)</li>
+                        <li>Länge Hauptleitung ca. 23 km</li>
+                        <li>ca. 430 Anschlussleitungen</li>
+                        <li>Einzelrohr Stahl DN 25/125 – 300/560</li>
+                        <li>Querung Fluss Loisach mittels Mikrotunneling<br>
+                            <small>(Länge ca. 70 m; Tiefe Baugruben ca. 10 m)</small>
+                        </li>
+                        <li>2 x Querung Loisach-Isar-Kanal mittels Rohrbrücke<br>
+                            <small>(Spannweite ca. 35 m)</small>
+                        </li>
+                        <li>3 x Bahnpressung</li>
+                    </ul>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Ausführungszeitraum</h3>
+                    <p>-</p>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Leistungsbereich</h3>
+                    <p>Fernwärme</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-gallery-wrapper">
+            <h2 class="project-gallery-title">Weitere Ansichten</h2>
+            
+            <div class="slideshow-container">
+                <div class="mySlides fade" style="display: block;">
+                    <div class="numbertext">1 / 1</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/fernwaerme/G203_Wolfratshausen/1.webp') }}" alt="Fernwärme Wolfratshausen Detail">
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
