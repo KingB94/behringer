@@ -47,34 +47,17 @@
             <div class="portfolio-grid">
 
                 <article class="portfolio-card">
-                    <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-am-unterfeld/" class="portfolio-card-link" target="_blank" rel="noopener">
+                    <a href="{{ url_for('projekt', project_slug='baulanderschliessungen/nbg-stocket', back=request.path, back_text='Baulanderschließung') }}" class="portfolio-card-link">
                         <div class="portfolio-card-inner">
                             <div class="portfolio-thumbnail">
-                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2023/08/IMG_2469-270x150.jpg" alt="Erschließung Neubaugebiet Am Unterfeld" loading="lazy">
+                                <img src="{{ url_for('static', filename='images/referenzen/baulanderschliessung/nbg_stocket/1.webp') }}" alt="Erschließung NBG Stocket" loading="lazy">
                                 <div class="portfolio-overlay">
                                     <span class="portfolio-overlay-icon">➔</span>
                                 </div>
                             </div>
                             <div class="portfolio-content">
-                                <h3 class="portfolio-title">Erschließung Neubaugebiet Am Unterfeld</h3>
-                                <p class="portfolio-category">Baulanderschließung, Siedlungswasserwirtschaft, Straßenbau</p>
-                            </div>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="portfolio-card">
-                    <a href="https://www.ib-behringer.de/projekt/erschliessung-neubaugebiet-an-der-eichkapelle/" class="portfolio-card-link" target="_blank" rel="noopener">
-                        <div class="portfolio-card-inner">
-                            <div class="portfolio-thumbnail">
-                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2020/12/IMG_9008-270x150.jpg" alt="Erschließung Neubaugebiet an der Eichkapelle" loading="lazy">
-                                <div class="portfolio-overlay">
-                                    <span class="portfolio-overlay-icon">➔</span>
-                                </div>
-                            </div>
-                            <div class="portfolio-content">
-                                <h3 class="portfolio-title">Erschließung Neubaugebiet an der Eichkapelle</h3>
-                                <p class="portfolio-category">Baulanderschließung, Siedlungswasserwirtschaft, Straßenbau</p>
+                                <h3 class="portfolio-title">Erschließung NBG Stocket</h3>
+                                <p class="portfolio-category">Erschließungsarbeiten</p>
                             </div>
                         </div>
                     </a>

@@ -23,7 +23,9 @@
         <div class="container">
             <h2 class="section-title">Unser Leistungsumfang</h2>
             <p class="intro-text">
-                Basierend auf detaillierten Zustandserfassungen und hydraulischen Analysen entwickeln wir maßgeschneiderte Konzepte zur Sanierung Ihrer Infrastruktur – von Kanälen über Wasserleitungen bis hin zu kompletten Ingenieurbauwerken.
+                Basierend auf detaillierten Zustandserfassungen und hydraulischen Analysen entwickeln wir
+                maßgeschneiderte Konzepte zur Sanierung Ihrer Infrastruktur – von Kanälen über Wasserleitungen bis hin
+                zu kompletten Ingenieurbauwerken.
             </p>
 
             <ul class="service-list-grid">
@@ -40,7 +42,9 @@
                 <div class="text-content">
                     <h4>Geprüfte Kompetenz</h4>
                     <p>
-                        Unsere Expertise wird durch offizielle Qualifikationen wie den <strong>Zertifizierten Kanalsanierungsberater</strong> und den <strong>S.I.V.V.-Schein</strong> für Betonschutz und -instandsetzung untermauert.
+                        Unsere Expertise wird durch offizielle Qualifikationen wie den <strong>Zertifizierten
+                            Kanalsanierungsberater</strong> und den <strong>S.I.V.V.-Schein</strong> für Betonschutz und
+                        -instandsetzung untermauert.
                     </p>
                 </div>
             </div>
@@ -55,34 +59,87 @@
             <div class="portfolio-grid">
 
                 <article class="portfolio-card">
-                    <a href="https://www.ib-behringer.de/projekt/sanierung-ludwig-der-bayer-strasse/" class="portfolio-card-link" target="_blank" rel="noopener">
+                    <a href="{{ url_for('projekt', project_slug='sanierungen/kanalsanierung_mdf', back=request.path, back_text='Sanierungen') }}"
+                        class="portfolio-card-link">
                         <div class="portfolio-card-inner">
                             <div class="portfolio-thumbnail">
-                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2019/12/IMG_0850-e1576223551978-270x150.jpg" alt="Sanierung Ludwig-der-Bayer-Straße" loading="lazy">
+                                <img src="{{ url_for('static', filename='images/referenzen/sanierungen/muehldorf/1.webp') }}"
+                                    alt="Kanalsanierung Mühldorf" loading="lazy">
                                 <div class="portfolio-overlay">
                                     <span class="portfolio-overlay-icon">➔</span>
                                 </div>
                             </div>
                             <div class="portfolio-content">
-                                <h3 class="portfolio-title">Sanierung Ludwig-der-Bayer-Straße</h3>
-                                <p class="portfolio-category">Sanierungen, Siedlungswasserwirtschaft, Straßenbau</p>
+                                <h3 class="portfolio-title">AW 480 Kanalsanierung Mühldorf a. Inn</h3>
+                                <p class="portfolio-category">Geschlossene Kanalsanierung</p>
                             </div>
                         </div>
                     </a>
                 </article>
 
                 <article class="portfolio-card">
-                    <a href="https://www.ib-behringer.de/projekt/erneuerung-gvs-oberhofen/" class="portfolio-card-link" target="_blank" rel="noopener">
+                    <a href="{{ url_for('projekt', project_slug='sanierungen/ebersberg', back=request.path, back_text='Sanierungen') }}" class="portfolio-card-link">
                         <div class="portfolio-card-inner">
                             <div class="portfolio-thumbnail">
-                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2018/05/CIMG2346-270x150.jpg" alt="Erneuerung GVS Oberhofen" loading="lazy">
+                                <img src="{{ url_for('static', filename='images/referenzen/sanierungen/ebersberg/1.webp') }}" alt="Kanalsanierung Ebersberg" loading="lazy">
                                 <div class="portfolio-overlay">
                                     <span class="portfolio-overlay-icon">➔</span>
                                 </div>
                             </div>
                             <div class="portfolio-content">
-                                <h3 class="portfolio-title">Erneuerung GVS Oberhofen</h3>
-                                <p class="portfolio-category">Sanierungen, Straßenbau & Brückenbau</p>
+                                <h3 class="portfolio-title">AW 564 Kanalsanierung Ebersberg</h3>
+                                <p class="portfolio-category">Geschlossene Kanalsanierung</p>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="portfolio-card">
+                    <a href="{{ url_for('projekt', project_slug='sanierungen/toeging', back=request.path, back_text='Sanierungen') }}" class="portfolio-card-link">
+                        <div class="portfolio-card-inner">
+                            <div class="portfolio-thumbnail">
+                                <img src="{{ url_for('static', filename='images/referenzen/sanierungen/teoging/1.webp') }}" alt="Sanierung Töging" loading="lazy">
+                                <div class="portfolio-overlay">
+                                    <span class="portfolio-overlay-icon">➔</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-content">
+                                <h3 class="portfolio-title">Sanierung Ohm-, Haydn- und Röntgenstraße</h3>
+                                <p class="portfolio-category">Abwasser-, Wasser- und Straßenbau</p>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="portfolio-card">
+                    <a href="{{ url_for('projekt', project_slug='sanierungen/ausbau_mue_22', back=request.path, back_text='Sanierungen') }}" class="portfolio-card-link">
+                        <div class="portfolio-card-inner">
+                            <div class="portfolio-thumbnail">
+                                <img src="{{ url_for('static', filename='images/referenzen/sanierungen/ausbau_mue_22/1.webp') }}" alt="Ausbau Kreisstraße Mü 22" loading="lazy">
+                                <div class="portfolio-overlay">
+                                    <span class="portfolio-overlay-icon">➔</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-content">
+                                <h3 class="portfolio-title">Ausbau der Kreisstraße Mü 22 BA 2, 3 und 4</h3>
+                                <p class="portfolio-category">Straßenbauarbeiten</p>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="portfolio-card">
+                    <a href="{{ url_for('projekt', project_slug='sanierungen/lichtenfels', back=request.path, back_text='Sanierungen') }}" class="portfolio-card-link">
+                        <div class="portfolio-card-inner">
+                            <div class="portfolio-thumbnail">
+                                <img src="{{ url_for('static', filename='images/referenzen/sanierungen/lichtenfels/1.webp') }}" alt="Durchlassanierung Lichtenfels" loading="lazy">
+                                <div class="portfolio-overlay">
+                                    <span class="portfolio-overlay-icon">➔</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-content">
+                                <h3 class="portfolio-title">G 173 Durchlassanierung Lichtenfels</h3>
+                                <p class="portfolio-category">GFK-Einzelrohrlining</p>
                             </div>
                         </div>
                     </a>

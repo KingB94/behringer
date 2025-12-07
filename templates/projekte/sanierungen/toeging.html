@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block title %}Projekt: Sanierung Töging a. Inn - Behringer & Partner{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container project-detail-wrapper">
+        <div class="project-detail-layout">
+            <div class="project-main-image">
+                <img src="{{ url_for('static', filename='images/referenzen/sanierungen/teoging/1.webp') }}" alt="Sanierung Töging Hauptansicht">
+            </div>
+            
+            <div class="project-main-details">
+                <h1>Sanierung Ohmstraße, Haydnstraße und Röntgenstraße</h1>
+                
+                <div class="project-detail-item">
+                    <h3>Auftraggeber</h3>
+                    <p>Stadt Töging a. Inn</p>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Stichpunkte zum Projekt</h3>
+                    <ul>
+                        <li>Erneuerung Schmutzwasserkanal (Länge: ca. 500 m) und Wasserleitung (Länge: ca. 500 m)</li>
+                        <li>Herstellung Sickeranlagen</li>
+                        <li>Sanierung der Straßenoberfläche inkl. Änderung der Gehwegführung</li>
+                    </ul>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Ausführungszeitraum</h3>
+                    <p>August 2024 bis Ende 2025</p>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Leistungsbereich</h3>
+                    <p>Abwasserbeseitigungs-, Wasserversorgungs- und Straßenbauarbeiten</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-gallery-wrapper">
+            <h2 class="project-gallery-title">Weitere Bilder</h2>
+            
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                    <div class="numbertext">1 / 5</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/sanierungen/teoging/1.webp') }}" alt="Töging Bild 1">
+                </div>
+                <div class="mySlides fade">
+                    <div class="numbertext">2 / 5</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/sanierungen/teoging/2.webp') }}" alt="Töging Bild 2">
+                </div>
+                <div class="mySlides fade">
+                    <div class="numbertext">3 / 5</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/sanierungen/teoging/3.webp') }}" alt="Töging Bild 3">
+                </div>
+                <div class="mySlides fade">
+                    <div class="numbertext">4 / 5</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/sanierungen/teoging/4.webp') }}" alt="Töging Bild 4">
+                </div>
+                <div class="mySlides fade">
+                    <div class="numbertext">5 / 5</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/sanierungen/teoging/5.webp') }}" alt="Töging Bild 5">
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+            </div>
+            
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/sanierungen/teoging/1.webp') }}" onclick="currentSlide(1)" alt="Vorschau 1">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/sanierungen/teoging/2.webp') }}" onclick="currentSlide(2)" alt="Vorschau 2">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/sanierungen/teoging/3.webp') }}" onclick="currentSlide(3)" alt="Vorschau 3">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/sanierungen/teoging/4.webp') }}" onclick="currentSlide(4)" alt="Vorschau 4">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/sanierungen/teoging/5.webp') }}" onclick="currentSlide(5)" alt="Vorschau 5">
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let thumbnails = document.getElementsByClassName("thumbnail");
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < thumbnails.length; i++) {
+            thumbnails[i].className = thumbnails[i].className.replace(" active-thumbnail", "");
+        }
+        if (slides.length > 0) {
+            slides[slideIndex-1].style.display = "block";  
+            thumbnails[slideIndex-1].className += " active-thumbnail";
+        }
+    }
+</script>
+{% endblock %}

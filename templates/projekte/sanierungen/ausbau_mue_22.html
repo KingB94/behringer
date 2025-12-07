@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{% block title %}Projekt: Ausbau Kreisstraße Mü 22 - Behringer & Partner{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container project-detail-wrapper">
+        <div class="project-detail-layout">
+            <div class="project-main-image">
+                <img src="{{ url_for('static', filename='images/referenzen/sanierungen/ausbau_mue_22/1.webp') }}" alt="Ausbau Mü 22 Hauptansicht">
+            </div>
+            
+            <div class="project-main-details">
+                <h1>Ausbau der Kreisstraße Mü 22 BA 2, 3 und 4</h1>
+                
+                <div class="project-detail-item">
+                    <h3>Auftraggeber</h3>
+                    <p>Landkreis Mühldorf a. Inn</p>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Stichpunkte zum Projekt</h3>
+                    <ul>
+                        <li>Ausbau der Kreisstraße Mü 22 von der Bundesstraße B12 bis zur Autobahn BAB A94 Anschluss Obertaufkirchen in 3 Bauabschnitte</li>
+                        <li>Baulänge: 6.920 m</li>
+                        <li>Straßenbreiten: von 5,60 bis 6,30 m</li>
+                    </ul>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Ausführungszeitraum</h3>
+                    <p>16.05.2022 bis 04.11.2025</p>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Leistungsbereich</h3>
+                    <p>Straßenbauarbeiten</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-gallery-wrapper">
+            <h2 class="project-gallery-title">Weitere Bilder</h2>
+            
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                    <div class="numbertext">1 / 11</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/sanierungen/ausbau_mue_22/1.webp') }}" alt="Mü 22 Bild 1">
+                </div>
+                <div class="mySlides fade">
+                    <div class="numbertext">2 / 11</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/sanierungen/ausbau_mue_22/2.webp') }}" alt="Mü 22 Bild 2">
+                </div>
+                <div class="mySlides fade">
+                    <div class="numbertext">3 / 11</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/sanierungen/ausbau_mue_22/3.webp') }}" alt="Mü 22 Bild 3">
+                </div>
+                <div class="mySlides fade">
+                    <div class="numbertext">4 / 11</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/sanierungen/ausbau_mue_22/4.webp') }}" alt="Mü 22 Bild 4">
+                </div>
+                <div class="mySlides fade">
+                    <div class="numbertext">5 / 11</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/sanierungen/ausbau_mue_22/5.webp') }}" alt="Mü 22 Bild 5">
+                </div>
+                <div class="mySlides fade">
+                    <div class="numbertext">6 / 11</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/sanierungen/ausbau_mue_22/6.webp') }}" alt="Mü 22 Bild 6">
+                </div>
+                <div class="mySlides fade">
+                    <div class="numbertext">7 / 11</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/sanierungen/ausbau_mue_22/7.webp') }}" alt="Mü 22 Bild 7">
+                </div>
+                <div class="mySlides fade">
+                    <div class="numbertext">8 / 11</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/sanierungen/ausbau_mue_22/8.webp') }}" alt="Mü 22 Bild 8">
+                </div>
+                <div class="mySlides fade">
+                    <div class="numbertext">9 / 11</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/sanierungen/ausbau_mue_22/9.webp') }}" alt="Mü 22 Bild 9">
+                </div>
+                <div class="mySlides fade">
+                    <div class="numbertext">10 / 11</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/sanierungen/ausbau_mue_22/10.webp') }}" alt="Mü 22 Bild 10">
+                </div>
+                <div class="mySlides fade">
+                    <div class="numbertext">11 / 11</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/sanierungen/ausbau_mue_22/11.webp') }}" alt="Mü 22 Bild 11">
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+            </div>
+            
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/sanierungen/ausbau_mue_22/1.webp') }}" onclick="currentSlide(1)" alt="Vorschau 1">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/sanierungen/ausbau_mue_22/2.webp') }}" onclick="currentSlide(2)" alt="Vorschau 2">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/sanierungen/ausbau_mue_22/3.webp') }}" onclick="currentSlide(3)" alt="Vorschau 3">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/sanierungen/ausbau_mue_22/4.webp') }}" onclick="currentSlide(4)" alt="Vorschau 4">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/sanierungen/ausbau_mue_22/5.webp') }}" onclick="currentSlide(5)" alt="Vorschau 5">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/sanierungen/ausbau_mue_22/6.webp') }}" onclick="currentSlide(6)" alt="Vorschau 6">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/sanierungen/ausbau_mue_22/7.webp') }}" onclick="currentSlide(7)" alt="Vorschau 7">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/sanierungen/ausbau_mue_22/8.webp') }}" onclick="currentSlide(8)" alt="Vorschau 8">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/sanierungen/ausbau_mue_22/9.webp') }}" onclick="currentSlide(9)" alt="Vorschau 9">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/sanierungen/ausbau_mue_22/10.webp') }}" onclick="currentSlide(10)" alt="Vorschau 10">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/sanierungen/ausbau_mue_22/11.webp') }}" onclick="currentSlide(11)" alt="Vorschau 11">
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let thumbnails = document.getElementsByClassName("thumbnail");
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < thumbnails.length; i++) {
+            thumbnails[i].className = thumbnails[i].className.replace(" active-thumbnail", "");
+        }
+        if (slides.length > 0) {
+            slides[slideIndex-1].style.display = "block";  
+            thumbnails[slideIndex-1].className += " active-thumbnail";
+        }
+    }
+</script>
+{% endblock %}

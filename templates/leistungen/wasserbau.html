@@ -45,34 +45,17 @@
             <div class="portfolio-grid">
 
                 <article class="portfolio-card">
-                    <a href="https://www.ib-behringer.de/projekt/integrales-hochwasserschutzkonzept-watzinger-bach/" class="portfolio-card-link" target="_blank" rel="noopener">
+                    <a href="{{ url_for('projekt', project_slug='wasserbau/salzach', back=request.path, back_text='Wasserbau') }}" class="portfolio-card-link">
                         <div class="portfolio-card-inner">
                             <div class="portfolio-thumbnail">
-                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2019/12/WH-Ist100-270x150.jpg" alt="Integrales Hochwasserschutzkonzept Watzinger Bach" loading="lazy">
+                                <img src="{{ url_for('static', filename='images/referenzen/wasserbau/salzach/1.webp') }}" alt="No Regret Maßnahme Salzach" loading="lazy">
                                 <div class="portfolio-overlay">
                                     <span class="portfolio-overlay-icon">➔</span>
                                 </div>
                             </div>
                             <div class="portfolio-content">
-                                <h3 class="portfolio-title">Integrales Hochwasserschutzkonzept Watzinger Bach</h3>
-                                <p class="portfolio-category">Hydraulische Nachweise, Wasserbau</p>
-                            </div>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="portfolio-card">
-                    <a href="https://www.ib-behringer.de/projekt/erneuerung-druchlass-steinbach-und-westerndorf/" class="portfolio-card-link" target="_blank" rel="noopener">
-                        <div class="portfolio-card-inner">
-                            <div class="portfolio-thumbnail">
-                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2017/11/IMG_4004-270x150.jpg" alt="Erneuerung Durchlass Steinbach und Westerndorf" loading="lazy">
-                                <div class="portfolio-overlay">
-                                    <span class="portfolio-overlay-icon">➔</span>
-                                </div>
-                            </div>
-                            <div class="portfolio-content">
-                                <h3 class="portfolio-title">Erneuerung Durchlass Steinbach und Westerndorf</h3>
-                                <p class="portfolio-category">Straßenbau & Brückenbau, Wasserbau</p>
+                                <h3 class="portfolio-title">No Regret Maßnahme Salzach bei Tittmoning</h3>
+                                <p class="portfolio-category">Wasserbau, Hochwasserschutz</p>
                             </div>
                         </div>
                     </a>
