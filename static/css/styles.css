@@ -477,6 +477,17 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); color: var(--clr-seco
 .fade { animation-name: fade; animation-duration: 1.5s; }
 @keyframes fade { from {opacity: .4} to {opacity: 1} }
 
+/* --- 4.7 Article Detail Styles --- */
+.article-body { font-size: 1.05rem; line-height: 1.8; color: #333; }
+.article-body p { margin-bottom: 1.5rem; }
+.article-body h2, .article-body h3 { color: var(--clr-primary); margin-top: 2.5rem; margin-bottom: 1rem; }
+.article-body a { text-decoration: underline; }
+.article-body img { max-width: 100%; height: auto; border-radius: var(--radius-sm); margin: 1.5rem 0; }
+.article-body video { width: 100%; height: auto; border-radius: var(--radius-sm); }
+.article-body .aligncenter { display: block; margin-left: auto; margin-right: auto; }
+.article-body .alignleft { float: left; margin-right: 1.5rem; margin-bottom: 1rem; }
+.article-body .alignright { float: right; margin-left: 1.5rem; margin-bottom: 1rem; }
+
 /* ==========================================================================
    Flash Messages (Benachrichtigungen)
    ========================================================================== */

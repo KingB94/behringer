@@ -1,7 +1,8 @@
 from dotenv import load_dotenv
 import os
 from flask_mail import Mail, Message
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, abort
+import json
 
 load_dotenv() 
 
@@ -20,6 +21,21 @@ mail = Mail(app)
 @app.route('/')
 def index():
     return render_template('index.html')
+
+# ─── HILFSFUNKTION ZUM LADEN DER DATEN ─────────────────────────────
+def load_news_data():
+    """Lädt die News-Artikel aus der JSON-Datei."""
+    try:
+        # Pfad zur JSON Datei bauen
+        file_path = os.path.join(app.root_path, 'data', 'news.json')
+        with open(file_path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        print("Fehler: news.json nicht gefunden.")
+        return {}
+    except json.JSONDecodeError:
+        print("Fehler: news.json ist kein gültiges JSON.")
+        return {}
 
 # ─── Routes for “Leistungen” (Services) ───────────────────────────────────
 # Assuming these HTML files are in templates/leistungen/
@@ -84,12 +100,44 @@ def impressum():
 
 @app.route('/maedchenschule-chato')
 def maedchenschule_chato():
-    return render_template('maedchenschule-chato.html') # Assuming it's in templates/
+    # 1. Alle Daten laden
+    news_data = load_news_data()
+    
+    # 2. Filtern: Wir wollen hier nur Artikel mit der Kategorie 'chato'
+    # Wir erstellen ein neues Dictionary nur mit diesen Einträgen
+    chato_news = {slug: data for slug, data in news_data.items() if data.get('category') == 'chato'}
+    
+    # 3. WICHTIG: 'news=chato_news' übergibt die Daten an das HTML
+    return render_template('maedchenschule-chato.html', news=chato_news)
 
 
+# Auch diese Route muss angepasst werden, damit sie funktioniert:
 @app.route('/neuigkeiten')
 def news():
-    return render_template('news.html')
+    # 1. Alle Daten laden
+    news_data = load_news_data()
+    
+    # 2. Alle Daten an das Template übergeben
+    return render_template('news.html', news=news_data)
+
+
+# UND du hast die Detail-Route vergessen! Ohne diese funktionieren die Links "Mehr lesen" nicht:
+@app.route('/neuigkeiten/<slug>')
+def news_detail(slug):
+    news_data = load_news_data()
+    post = news_data.get(slug)
+    
+    if not post:
+        abort(404)
+    
+    # Back-Link Logik (damit der "Zurück"-Button weiß, woher man kam)
+    back_target = 'news'
+    back_text = 'Neuigkeiten'
+    if post.get('category') == 'chato':
+        back_target = 'maedchenschule_chato'
+        back_text = 'Mädchenschule Chato'
+
+    return render_template('news_detail.html', post=post, back_url=url_for(back_target), back_text=back_text)
 
 # ─── Back Routen für Projekte ───────────────────────────────────
 @app.route('/projekt/<path:project_slug>')
