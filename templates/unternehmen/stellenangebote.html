@@ -20,25 +20,30 @@
 
     <section class="section stellenangebote-section">
         <div class="container">
-            
+           <!-- 
             <div class="job-posting">
                 <span class="availability">Ab sofort</span>
-                <a href="https://www.ib-behringer.de/bauzeichner-m-w-d/" class="job-title" target="_blank" rel="noopener noreferrer">Bauzeichner m/w/d</a>
+                <a href="{{ url_for('karriere_detail', job_slug='bauzeichner') }}" class="job-title">Bauzeichner m/w/d</a>
             </div>
 
             <div class="job-posting">
                 <span class="availability">Ab Oktober 2025</span>
-                <a href="https://www.ib-behringer.de/duales-studium-bauingenieurwesen/" class="job-title" target="_blank" rel="noopener noreferrer">Duales Studium Bauingenieurwesen</a>
+                <a href="{{ url_for('karriere_detail', job_slug='duales-studium-bauingenieurwesen') }}" class="job-title">Duales Studium Bauingenieurwesen</a>
             </div>
 
             <div class="job-posting">
                 <span class="availability">Ab August / September 2025</span>
-                <a href="https://www.ib-behringer.de/azubi-cad/" class="job-title" target="_blank" rel="noopener noreferrer">AZUBI CAD m/w/d</a>
+                <a href="{{ url_for('karriere_detail', job_slug='azubi-cad') }}" class="job-title">AZUBI CAD m/w/d</a>
             </div>
             
             <div class="job-posting">
                 <span class="availability">Ab März 2025</span>
-                <a href="https://www.ib-behringer.de/buerokraft-m-w-d/" class="job-title" target="_blank" rel="noopener noreferrer">Bürokraft m/w/d</a>
+                <a href="{{ url_for('karriere_detail', job_slug='buerokraft') }}" class="job-title">Bürokraft m/w/d</a>
+            </div>
+--> 
+            <div class="job-posting">
+                <span class="availability">Laufend</span>
+                <a href="{{ url_for('karriere_detail', job_slug='praktikant') }}" class="job-title">Praktikant m/w/d</a>
             </div>
 
             <div class="job-application-info">

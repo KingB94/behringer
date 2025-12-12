@@ -322,8 +322,8 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); color: var(--clr-seco
 .hero-bg-kommunales-gis { background-image: url("../images/leistungen/icons/kommunalesgis.webp"); }
 .hero-bg-sanierungen { background-image: url("../images/leistungen/icons/sanierungen.webp"); }
 .hero-bg-wasserbau { background-image: url("../images/leistungen/icons/wasserbau.webp"); }
-.hero-bg-firmengeschichte { background-image: url("../images/hero.webp"); }
-.hero-bg-stellenangebote { background-image: url("../images/hero1.webp"); }
+.hero-bg-firmengeschichte { background-image: url("../images/home/hero/slide4.webp"); }
+.hero-bg-stellenangebote { background-image: url("../images/team/team-header2.webp"); }
 
 /* --- 4.3 Leistungs-Detailseiten --- */
 .leistung-detail-content .intro-text { text-align: center; max-width: 800px; margin: 0 auto var(--space-lg) auto; font-size: 1.1rem; color: #555; }

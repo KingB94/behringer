@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}Praktikum für Studenten (m/w/d) - Behringer & Partner{% endblock %}
+
+{% block content %}
+<main>
+    <section class="page-header-section">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="{{ url_for('unternehmen_stellenangebote') }}">Stellenangebote</a> 
+                <span class="arrow">></span>
+                <span>Praktikum</span>
+            </div>
+            <h1 class="page-title" style="text-align: left;">Praktikum für Studenten (m/w/d)</h1>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container" style="max-width: 800px;">
+            <div class="entry-content article-body">
+                
+                <p class="intro-text">
+                    In unserem Hauptsitz Mühldorf freuen wir uns auf Studenten (m/w/d) aus dem Fachbereich 
+                    <strong>Bauingenieurwesen</strong>, die im Rahmen ihres Praktikumssemesters erste praktische 
+                    Erfahrungen bei uns sammeln wollen.
+                </p>
+
+                <h3>Aufgabenbereich</h3>
+                <p>Mitwirkung bei der Abwicklung von Projekten im Rahmen unseres Leistungsspektrums (Leistungsphasen 1 bis 9 nach HOAI).</p>
+
+                <h3>Wir bieten Ihnen</h3>
+                <ul>
+                    <li>Ein kollegiales Team</li>
+                    <li>Eine moderne Bürostruktur</li>
+                    <li>Interessante Projekte</li>
+                    <li>Selbständiges Arbeiten</li>
+                    <li>Faire Vergütung</li>
+                </ul>
+
+                <h3>Von Ihnen erwarten wir</h3>
+                <ul>
+                    <li>Engagement und Flexibilität</li>
+                    <li>Laufendes Studium im Bereich Bauingenieurwesen oder vergleichbaren Studiengängen</li>
+                </ul>
+
+                <hr class="wp-block-separator" style="margin: 3rem 0;">
+
+                <div class="job-application-info" style="background-color: var(--clr-bg-alt); padding: 2rem; border-radius: var(--radius-md); border-left: 5px solid var(--clr-primary);">
+                    <h3 style="margin-top: 0;">Jetzt bewerben</h3>
+                    <p>Senden Sie Ihre aussagekräftige Bewerbung bitte per E-Mail an:<br>
+                        <a href="mailto:reindl@ib-behringer.de" style="font-weight: bold; font-size: 1.1rem;">reindl@ib-behringer.de</a>
+                    </p>
+                    
+                    <p style="margin-top: 1rem; font-size: 0.9rem;">
+                        <strong>Wichtiger Hinweis:</strong><br>
+                        Bitte senden Sie uns zusätzlich den <a href="https://www.ib-behringer.de/wp/wp-content/uploads/2018/07/Rückantwortbogen_Bewerbungen.docx" style="text-decoration: underline;">Rückantwortbogen für Bewerbungen (DOCX)</a> ausgefüllt und unterschrieben mit Ihren Unterlagen zu.
+                    </p>
+                    
+                    <p style="font-size: 0.9rem;">
+                        Aus Sicherheitsgründen bitten wir Sie, im Betreff Folgendes anzugeben:<br>
+                        <code style="background: #fff; padding: 2px 5px; border: 1px solid #ccc;">IB-B_MÜ_BEW_{{ now().strftime('%d.%m.%Y') if now is defined else 'HEUTIGES DATUM' }}</code>
+                        <br><em>(Mails, die diesen Betreff nicht enthalten, werden vom Spam-Filter u.U. aussortiert.)</em>
+                    </p>
+                </div>
+                
+                <p style="color: #999; font-size: 0.8rem; margin-top: 2rem;">aktualisiert am 11.01.2024</p>
+
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

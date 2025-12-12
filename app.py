@@ -91,6 +91,21 @@ def unternehmen_netzwerk():
 def unternehmen_stellenangebote():
     return render_template('unternehmen/stellenangebote.html')
 
+# ─── Routes für Job-Detailseiten ───────────────────────────────────
+@app.route('/karriere/<path:job_slug>')
+def karriere_detail(job_slug):
+    """
+    Lädt dynamisch die HTML-Datei aus templates/jobs/
+    Beispiel: /karriere/bauzeichner lädt templates/jobs/bauzeichner.html
+    """
+    try:
+        # Wir bauen den Pfad: templates/jobs/slug.html
+        template_name = f"jobs/{job_slug}.html"
+        return render_template(template_name)
+    except Exception:
+        # Falls die Datei nicht existiert, 404 zurückgeben
+        return abort(404)
+
 # ─── Routes for other pages (e.g., Impressum, Special Projects) ───────────
 # Assuming these HTML files are directly in templates/
 
