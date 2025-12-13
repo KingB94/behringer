@@ -1,43 +1,42 @@
 {% extends "base.html" %}
 
-{% block title %}Projekt: WV 235 Hans-Watzlik-Weg - Behringer & Partner{% endblock %}
+{% block title %}Projekt: Fernwärme Reichertsheim - Behringer & Partner{% endblock %}
 
 {% block content %}
 <main>
     <div class="container project-detail-wrapper">
         <div class="project-detail-layout">
-            <!-- Hauptbild (2.webp) -->
+            <!-- Hauptbild (1.webp) -->
             <div class="project-main-image">
-                <img src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/WV235_STWKWKBG/2.webp') }}" alt="Hauptbild WV 235 Hans-Watzlik-Weg">
+                <img src="{{ url_for('static', filename='images/referenzen/fernwaerme/G158/1.webp') }}" alt="Hauptbild Fernwärme Reichertsheim">
             </div>
             
             <!-- Projektdetails -->
             <div class="project-main-details">
-                <h1>WV 235 Wasser- und Stromversorgung Hans-Watzlik-Weg</h1>
+                <h1>Fernwärme- und Wasserversorgung Reichertsheim</h1>
                 
                 <div class="project-detail-item">
                     <h3>Auftraggeber</h3>
-                    <p>Stadtwerke Waldkraiburg</p>
+                    <p>Gemeinde Reichertsheim sowie Wasserzweckverband Schlicht Gruppe</p>
                 </div>
                 
                 <div class="project-detail-item">
                     <h3>Stichpunkte zum Projekt</h3>
                     <ul>
-                        <li>Erneuerung der Stromleitungen, Länge ca. 400 m</li>
-                        <li>Erneuerung der Trinkwasserleitung: ca. 420 m Hauptleitung sowie 35 Hausanschlüsse</li>
-                        <li>Fahrbahnerneuerung im Zuge der Spartenverlegung</li>
-                        <li>Kleinere Kanalsanierungen</li>
+                        <li>Ca. 340 m Wasserhauptleitung inkl. Hausanschlüsse (in Zusammenarbeit mit dem Wasserzweckverband)</li>
+                        <li>Bau einer knapp 370 m langen Fernwärmehauptleitung mit 10 Hausanschlüssen</li>
+                        <li>Asphaltierung der Lexenbergstraße</li>
                     </ul>
                 </div>
                 
                 <div class="project-detail-item">
                     <h3>Ausführungszeitraum</h3>
-                    <p>März 2025 – Dezember 2025</p>
+                    <p>Juni 2025 – November 2025,<br>Asphaltfeinschicht im Frühjahr 2026</p>
                 </div>
                 
                 <div class="project-detail-item">
                     <h3>Leistungsbereich</h3>
-                    <p>Wasser, Kanal- u. Stromversorgungsarbeiten</p>
+                    <p>Erschließung und Straßenbau</p>
                 </div>
             </div>
         </div>
@@ -47,43 +46,43 @@
             <h2 class="project-gallery-title">Weitere Bilder</h2>
             
             <div class="slideshow-container">
-                <!-- Slide 1 (2.webp - Hauptbild) -->
+                <!-- Slide 1 (1.webp) -->
                 <div class="mySlides fade">
                     <div class="numbertext">1 / 5</div>
-                    <img src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/WV235_STWKWKBG/2.webp') }}" alt="Hans-Watzlik-Weg Bild 1">
+                    <img src="{{ url_for('static', filename='images/referenzen/fernwaerme/G158/1.webp') }}" alt="Reichertsheim Bild 1">
                 </div>
-                <!-- Slide 2 (1.webp) -->
+                <!-- Slide 2 (2.webp) -->
                 <div class="mySlides fade">
                     <div class="numbertext">2 / 5</div>
-                    <img src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/WV235_STWKWKBG/1.webp') }}" alt="Hans-Watzlik-Weg Bild 2">
+                    <img src="{{ url_for('static', filename='images/referenzen/fernwaerme/G158/2.webp') }}" alt="Reichertsheim Bild 2">
                 </div>
                 <!-- Slide 3 (3.webp) -->
                 <div class="mySlides fade">
                     <div class="numbertext">3 / 5</div>
-                    <img src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/WV235_STWKWKBG/3.webp') }}" alt="Hans-Watzlik-Weg Bild 3">
+                    <img src="{{ url_for('static', filename='images/referenzen/fernwaerme/G158/3.webp') }}" alt="Reichertsheim Bild 3">
                 </div>
                 <!-- Slide 4 (4.webp) -->
                 <div class="mySlides fade">
                     <div class="numbertext">4 / 5</div>
-                    <img src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/WV235_STWKWKBG/4.webp') }}" alt="Hans-Watzlik-Weg Bild 4">
+                    <img src="{{ url_for('static', filename='images/referenzen/fernwaerme/G158/4.webp') }}" alt="Reichertsheim Bild 4">
                 </div>
                 <!-- Slide 5 (5.webp) -->
                 <div class="mySlides fade">
                     <div class="numbertext">5 / 5</div>
-                    <img src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/WV235_STWKWKBG/5.webp') }}" alt="Hans-Watzlik-Weg Bild 5">
+                    <img src="{{ url_for('static', filename='images/referenzen/fernwaerme/G158/5.webp') }}" alt="Reichertsheim Bild 5">
                 </div>
 
                 <a class="prev" onclick="plusSlides(-1)">❮</a>
                 <a class="next" onclick="plusSlides(1)">❯</a>
             </div>
             
-            <!-- Thumbnails (Reihenfolge passend zu Slides) -->
+            <!-- Thumbnails -->
             <div class="thumbnail-row">
-                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/WV235_STWKWKBG/2.webp') }}" onclick="currentSlide(1)" alt="Vorschaubild 1">
-                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/WV235_STWKWKBG/1.webp') }}" onclick="currentSlide(2)" alt="Vorschaubild 2">
-                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/WV235_STWKWKBG/3.webp') }}" onclick="currentSlide(3)" alt="Vorschaubild 3">
-                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/WV235_STWKWKBG/4.webp') }}" onclick="currentSlide(4)" alt="Vorschaubild 4">
-                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/WV235_STWKWKBG/5.webp') }}" onclick="currentSlide(5)" alt="Vorschaubild 5">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/fernwaerme/G158/1.webp') }}" onclick="currentSlide(1)" alt="Vorschaubild 1">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/fernwaerme/G158/2.webp') }}" onclick="currentSlide(2)" alt="Vorschaubild 2">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/fernwaerme/G158/3.webp') }}" onclick="currentSlide(3)" alt="Vorschaubild 3">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/fernwaerme/G158/4.webp') }}" onclick="currentSlide(4)" alt="Vorschaubild 4">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/fernwaerme/G158/5.webp') }}" onclick="currentSlide(5)" alt="Vorschaubild 5">
             </div>
         </div>
     </div>

@@ -46,6 +46,7 @@
 
             <div class="portfolio-grid">
                 
+                <!-- Projekt 1: Wolfratshausen -->
                 <article class="portfolio-card">
                     <a href="{{ url_for('projekt', project_slug='fernwaerme/wolfratshausen', back=request.path, back_text='Fernwärme') }}" class="portfolio-card-link">
                         <div class="portfolio-card-inner">
@@ -63,23 +64,26 @@
                     </a>
                 </article>
 
+                <!-- Projekt 2: Reichertsheim (AKTUALISIERT) -->
                 <article class="portfolio-card">
-                    <a href="#" class="portfolio-card-link">
+                    <a href="{{ url_for('projekt', project_slug='fernwaerme/reichertsheim', back=request.path, back_text='Fernwärme') }}" class="portfolio-card-link">
                         <div class="portfolio-card-inner">
                             <div class="portfolio-thumbnail">
-                                <img src="{{ url_for('static', filename='images/fernwaerme.png') }}" alt="Fernwärmeversorgung Reichertsheim" loading="lazy">
+                                <!-- Hier das korrekte Bild G158/1.webp eingefügt -->
+                                <img src="{{ url_for('static', filename='images/referenzen/fernwaerme/G158/1.webp') }}" alt="Fernwärmeversorgung Reichertsheim" loading="lazy">
                                 <div class="portfolio-overlay">
                                     <span class="portfolio-overlay-icon">➔</span>
                                 </div>
                             </div>
                             <div class="portfolio-content">
-                                <h3 class="portfolio-title">Fernwärmeversorgung Reichertsheim</h3>
+                                <h3 class="portfolio-title">Fernwärme- und Wasserversorgung Reichertsheim</h3>
                                 <p class="portfolio-category">Fernwärme</p>
                             </div>
                         </div>
                     </a>
                 </article>
 
+                <!-- Projekt 3: Waldkraiburg -->
                 <article class="portfolio-card">
                     <a href="#" class="portfolio-card-link">
                         <div class="portfolio-card-inner">
@@ -96,7 +100,6 @@
                         </div>
                     </a>
                 </article>
-
 
             </div>
         </div>
