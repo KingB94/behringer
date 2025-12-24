@@ -2,7 +2,7 @@ from PIL import Image, ImageOps
 import os
 
 # Pfad zu deinem Ordner anpassen
-directory = '/Users/benediktholzner/Documents/GitHub/behringer/static/images/maedchenschule-chato'
+directory = '/Users/benediktholzner/Documents/GitHub/behringer/static/images'
 
 print(f"Starte Konvertierung in: {directory}")
 

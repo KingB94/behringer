@@ -7,3 +7,6 @@ MarkupSafe==3.0.2
 gunicorn==23.0.0
 python-dotenv
 Flask-Mail
+Flask-WTF
+Flask-Limiter
+email-validator

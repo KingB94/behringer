@@ -417,6 +417,26 @@
                 });
             }
         });
+
+        // Google Maps 2-Klick-Lösung
+        const loadMapBtn = document.getElementById('load-map-btn');
+        if (loadMapBtn) {
+            loadMapBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const iframe = document.getElementById('google-map-iframe');
+                const placeholder = document.getElementById('map-placeholder');
+
+                // 1. Die echte URL aus data-src in src kopieren
+                iframe.src = iframe.getAttribute('data-src');
+
+                // 2. Iframe sichtbar machen
+                iframe.style.display = 'block';
+
+                // 3. Platzhalter ausblenden
+                placeholder.style.display = 'none';
+            });
+        }
     </script>
 
     {% block scripts %}{% endblock %}
