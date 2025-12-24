@@ -4,11 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="description" content="{% block meta_description %}Ingenieurbüro Behringer & Partner - Ihr Experte für Tiefbau, Wasserwirtschaft und Straßenbau seit 1968.{% endblock %}">
     <title>{% block title %}Behringer & Partner{% endblock %}</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <meta property="og:title" content="{% block og_title %}Behringer & Partner mbB{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Ihr Partner im Tiefbau seit 1968.{% endblock %}">
+    <meta property="og:image" content="{{ url_for('static', filename='images/layout/logo.png', _external=True) }}">
+    <meta property="og:url" content="{{ request.url }}">
+    <meta property="og:type" content="website">
 </head>
 
 <body>
@@ -135,7 +141,7 @@
                 </p>
                 <a href="{{ url_for('maedchenschule_chato') }}">
                     <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2022/12/Suedansicht-2-150x150.jpg"
-                        alt="Mädchenschule Chato, Tansania" style="width:80px; border-radius:var(--radius-sm);">
+                        alt="Mädchenschule Chato in Tansania" style="width:80px; border-radius:var(--radius-sm);">
                 </a>
             </div>
         </div>
