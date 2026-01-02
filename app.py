@@ -119,6 +119,10 @@ def unternehmen_netzwerk():
 def unternehmen_stellenangebote():
     return render_template('unternehmen/stellenangebote.html')
 
+@app.route('/standorte')
+def standorte():
+    return render_template('unternehmen/standorte.html')
+
 # ─── Routes für Job-Detailseiten ───────────────────────────────────
 @app.route('/karriere/<path:job_slug>')
 def karriere_detail(job_slug):

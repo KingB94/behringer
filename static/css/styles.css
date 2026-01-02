@@ -106,8 +106,8 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); color: var(--clr-seco
 .btn { display: inline-block; text-decoration: none; font-weight: 600; padding: 0.85rem var(--space-md); border-radius: var(--radius-sm); transition: var(--transition-default); border: 1px solid transparent; cursor: pointer; text-align: center; }
 .btn-primary { background: var(--clr-primary); color: var(--clr-white); }
 .btn-primary:hover { background: var(--clr-gradient-start); color: var(--clr-white); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
-.btn-secondary { background: var(--clr-primary); color: var(--clr-primary); border-color: var(--clr-border); }
-.btn-secondary:hover { background: var(--clr-bg-alt); color: var(--clr-primary); border-color: var(--clr-primary); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+.btn-secondary {  background: var(--clr-white);color: var(--clr-primary); border: 1px solid var(--clr-primary); }
+.btn-secondary:hover {  background: var(--clr-primary);  color: var(--clr-white);  border-color: var(--clr-primary); transform: translateY(-2px);  box-shadow: var(--shadow-sm); }
 .btn-sm { padding: 0.6rem var(--space-sm); font-size: 0.9rem; }
 .section { padding: var(--space-lg) 0; }
 @media (min-width: 768px) { .section { padding: var(--space-xl) 0; } }
@@ -448,6 +448,116 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); color: var(--clr-seco
 .article-body .alignleft { float: left; margin-right: 1.5rem; margin-bottom: 1rem; }
 .article-body .alignright { float: right; margin-left: 1.5rem; margin-bottom: 1rem; }
 
+
+/* --- Standorte Seite --- */
+.hero-bg-standorte { background-image: url("../images/home/hero/slide3.webp"); } /* Wir nehmen das Luftbild, passt gut zu Standorte */
+
+.locations-grid {
+    display: grid;
+    gap: var(--space-md);
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    align-items: start;
+}
+
+.location-card {
+    background-color: var(--clr-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--clr-border);
+    transition: var(--transition-default);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.location-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.location-card.main-location {
+    border-top: 5px solid var(--clr-primary);
+    grid-column: 1 / -1; /* Nimmt auf kleinen Screens ganze Breite ein */
+}
+
+@media (min-width: 992px) {
+    .location-card.main-location {
+        grid-column: auto; /* Auf großen Screens normal im Grid */
+        grid-row: span 1;
+    }
+}
+
+.location-header {
+    padding: var(--space-md);
+    border-bottom: 1px solid var(--clr-bg-alt);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.location-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--clr-primary);
+}
+
+.badge {
+    background-color: var(--clr-primary);
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.location-body {
+    padding: var(--space-md);
+    flex-grow: 1;
+    font-size: 1rem;
+    color: var(--clr-secondary);
+}
+
+.contact-row {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+}
+
+.contact-row:last-child {
+    margin-bottom: 0;
+}
+
+.contact-row .icon-svg {
+    font-size: 1.2rem;
+    color: var(--clr-primary);
+    margin-top: 4px; /* Optische Ausrichtung zur ersten Textzeile */
+    flex-shrink: 0;
+}
+
+.contact-row address {
+    font-style: normal;
+    line-height: 1.5;
+}
+
+.contact-row a {
+    color: var(--clr-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.contact-row a:hover {
+    color: var(--clr-primary);
+}
+
+.location-footer {
+    padding: var(--space-sm) var(--space-md);
+    background-color: var(--clr-bg-alt);
+    border-top: 1px solid var(--clr-border);
+    text-align: right;
+}
 /* ==========================================================================
    Flash Messages (Benachrichtigungen)
    ========================================================================== */
