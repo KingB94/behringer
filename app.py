@@ -36,7 +36,15 @@ mail = Mail(app)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    # 1. Alle News laden
+    news_data = load_news_data()
+    
+    # 2. In eine Liste umwandeln und einfach die ersten 3 nehmen
+    # (Da deine JSON schon sortiert ist, reicht das völlig)
+    latest_news = list(news_data.items())[:3]
+    
+    # 3. An das Template übergeben
+    return render_template('index.html', latest_news=latest_news)
 
 # ─── FORMULAR KLASSE (Sicherheit & Validierung) ───────────────────
 class KontaktForm(FlaskForm):
