@@ -108,7 +108,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); color: var(--clr-seco
 .btn-primary:hover { background: var(--clr-gradient-start); color: var(--clr-white); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
 .btn-secondary {  background: var(--clr-white);color: var(--clr-primary); border: 1px solid var(--clr-primary); }
 .btn-secondary:hover {  background: var(--clr-primary);  color: var(--clr-white);  border-color: var(--clr-primary); transform: translateY(-2px);  box-shadow: var(--shadow-sm); }
-.btn-sm { padding: 0.6rem var(--space-sm); font-size: 0.9rem; }
+.btn-sm { margin-top: 10px; padding: 0.6rem var(--space-sm); font-size: 0.9rem; }
 .section { padding: var(--space-lg) 0; }
 @media (min-width: 768px) { .section { padding: var(--space-xl) 0; } }
 .section.bg-alternate { background: var(--clr-bg-alt); }
