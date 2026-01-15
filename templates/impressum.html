@@ -116,14 +116,5 @@
 {% endblock %}
 
 {% block scripts %}
-<script>
-    // Ersetze die 'UA-XXXXXXXX-X' mit deiner tatsächlichen Google Analytics Property ID
-    var gaProperty = 'UA-XXXXXXXX-X'; 
-    var disableStr = 'ga-disable-' + gaProperty;
-    function gaOptout() {
-        document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
-        window[disableStr] = true;
-        alert('Das Tracking durch Google Analytics wurde für diese Website in diesem Browser deaktiviert.');
-    }
-</script>
+
 {% endblock %}
