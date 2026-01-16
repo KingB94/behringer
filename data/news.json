@@ -13,7 +13,7 @@
       "category": "allgemein",
       "image": "/static/images/news/detailed_news/team2.webp",
       "summary": "Wir dürfen Frau Anita Pfaffinger und Frau Katheryna Didkovska bei uns im Team begrüßen.",
-      "content": "<p>Zunächst dürfen wir Frau Anita Pfaffinger bei uns im Team begrüßen. Sie unterstützt uns seit 01.06.25 tatkräftig im Sekretariat und ist eine unserer Stimmen am Telefon. Weiter unterstützt uns seit April Frau Katheryna Didkovska in der CAD Abteilung. Parallel absolviert sie ein Studium Bauingenieurwesen.</p><p>Frau Zollner verlässt unser Büro und wird nach ihrer abgeschlossenen Ausbildung zur Bauzeichnerin demnächst ein Studium beginnen. Auch Herr Lukasiewicz verlässt unser Ingenieurbüro und widmet sich neuen Herausforderungen. Wir möchten beiden für ihr Engagement danken und wünschen alles Gute für den weiteren Weg!</p>"
+      "content": "<p>Zunächst dürfen wir Frau <a href='/team#anita-pfaffinger'>Anita Pfaffinger</a> bei uns im Team begrüßen. Sie unterstützt uns seit 01.06.25 tatkräftig im Sekretariat und ist eine unserer Stimmen am Telefon. Weiter unterstützt uns seit April Frau <a href='/team#kateryna-didkovska'>Katheryna Didkovska</a> in der CAD Abteilung. Parallel absolviert sie ein Studium Bauingenieurwesen.</p><p>Frau Zollner verlässt unser Büro und wird nach ihrer abgeschlossenen Ausbildung zur Bauzeichnerin demnächst ein Studium beginnen. Auch Herr Lukasiewicz verlässt unser Ingenieurbüro und widmet sich neuen Herausforderungen. Wir möchten beiden für ihr Engagement danken und wünschen alles Gute für den weiteren Weg!</p>"
     },
     "spatenstich-neubaugebiet-allersheim": {
       "title": "Spatenstich Neubaugebiet Allersheim, Schwindegg",

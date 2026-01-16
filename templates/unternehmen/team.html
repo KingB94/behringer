@@ -4,7 +4,7 @@
 
 {% block content %}
 <main>
-    <section class="page-header-section">
+    <section class="page-hero-section hero-bg-team">
         <div class="container">
             <div id="breadcrumbs" class="breadcrumbs">
                 <a href="{{ url_for('index') }}#company" title="Unternehmen">Unternehmen</a>
@@ -196,7 +196,7 @@
                     </div>
                 </div>
                 
-                <div class="team-member">
+                <div class="team-member" id="anita-pfaffinger">
                     <div class="team-member-image-wrapper">
                         <img loading="lazy" src="{{ url_for('static', filename='images/team/anita.webp') }}" alt="Anita Pfaffinger">
                     </div>
@@ -231,17 +231,6 @@
 
                 <div class="team-member">
                     <div class="team-member-image-wrapper">
-                        <img loading="lazy" src="{{ url_for('static', filename='images/team/huber.webp') }}" alt="Viktoria Huber">
-                    </div>
-                    <div class="team-member-info">
-                       <h3>Viktoria Huber</h3>
-                        <p>Bauzeichnerin<br>CAD Konstruktion</p>
-                        <p><a href="mailto:v.huber@ib-behringer.de">v.huber@ib-behringer.de</a></p>
-                    </div>
-                </div>
-
-                <div class="team-member">
-                    <div class="team-member-image-wrapper">
                         <img loading="lazy" src="{{ url_for('static', filename='images/team/guggenberger.webp') }}" alt="Stefan Guggenberger">
                     </div>
                     <div class="team-member-info">
@@ -251,7 +240,7 @@
                     </div>
                 </div>
 
-                <div class="team-member">
+                <div class="team-member" id="kateryna-didkovska">
                     <div class="team-member-image-wrapper">
                          <img loading="lazy" src="{{ url_for('static', filename='images/team/didkovska.webp') }}" alt="Katheryna Dikovska">
                     </div>
