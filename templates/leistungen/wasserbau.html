@@ -62,6 +62,23 @@
                     </a>
                 </article>
 
+                <article class="portfolio-card">
+                    <a href="{{ url_for('projekt', project_slug='wasserbau/gep-mdf', back=request.path, back_text='Wasserbau') }}" class="portfolio-card-link">
+                        <div class="portfolio-card-inner">
+                            <div class="portfolio-thumbnail">
+                                <img src="{{ url_for('static', filename='images/referenzen/wasserbau/gep-mühldorf/1.webp') }}" alt="GEP Mühldorf" loading="lazy">
+                                <div class="portfolio-overlay">
+                                    <span class="portfolio-overlay-icon">➔</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-content">
+                                <h3 class="portfolio-title">Generalentwässerungsplan Mühldorf a. Inn</h3>
+                                <p class="portfolio-category">Hydraulische Netzberechnung, Wasserbau</p>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
             </div>
         </div>
     </section>

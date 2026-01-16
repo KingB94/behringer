@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}Projekt: GEP Mühldorf a. Inn - Behringer & Partner{% endblock %}
+{% block meta_description %}Generalentwässerungsplan Mühldorf: Aktualisierung nach DWA-A 102, hydraulische Netzberechnung für 131,5 km Kanalnetz & Wasserrechtsanträge.{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container project-detail-wrapper">
+        <div class="project-detail-layout">
+            <div class="project-main-image" style="align-self: center;">
+                <img src="{{ url_for('static', filename='images/referenzen/wasserbau/gep-mühldorf/1.webp') }}" 
+                     alt="GEP Mühldorf Hauptansicht" 
+                     style="width: 100%; height: auto; aspect-ratio: 2/1; object-fit: cover;">
+            </div>
+            
+            <div class="project-main-details">
+                <h1>Generalentwässerungsplan (GEP) Mühldorf a. Inn</h1>
+                
+                <div class="project-detail-item">
+                    <h3>Auftraggeber</h3>
+                    <p>Stadt Mühldorf a. Inn</p>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Stichpunkte zum Projekt</h3>
+                    <ul>
+                        <li>Aktualisierung des Generalentwässerungsplans aus 2008 und Umsetzung der zusätzlichen Anforderungen an die neue DWA-A 102</li>
+                        <li>Überrechnung des Bestands- und Prognosemodells inkl. fiktivem Zentralbeckenmodell</li>
+                        <li>Insgesamt: 131,5 km Kanallänge</li>
+                        <li>Die Ergebnisse wurden für die Beantragung neuer Wasserrechte verwendet</li>
+                    </ul>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Leistungsbereich</h3>
+                    <p>Hydrodynamische und hydraulische Netzberechnung</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-gallery-wrapper">
+            <h2 class="project-gallery-title">Weitere Bilder</h2>
+            
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                    <div class="numbertext">1 / 2</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/wasserbau/gep-mühldorf/1.webp') }}" alt="GEP Mühldorf Bild 1">
+                </div>
+                <div class="mySlides fade">
+                    <div class="numbertext">2 / 2</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/wasserbau/gep-mühldorf/2.webp') }}" alt="GEP Mühldorf Bild 2">
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+            </div>
+            
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/wasserbau/gep-mühldorf/1.webp') }}" onclick="currentSlide(1)" alt="Vorschau 1">
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/wasserbau/gep-mühldorf/2.webp') }}" onclick="currentSlide(2)" alt="Vorschau 2">
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let thumbnails = document.getElementsByClassName("thumbnail");
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < thumbnails.length; i++) {
+            thumbnails[i].className = thumbnails[i].className.replace(" active-thumbnail", "");
+        }
+        if (slides.length > 0) {
+            slides[slideIndex-1].style.display = "block";  
+            thumbnails[slideIndex-1].className += " active-thumbnail";
+        }
+    }
+</script>
+{% endblock %}
