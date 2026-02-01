@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}Projekt: Hydraulische Rohrnetzberechnung Mühldorf - Behringer & Partner{% endblock %}
+{% block meta_description %}Erstellung eines hydraulischen Modells für das Wasserleitungsnetz der Stadt Mühldorf (170 km). Analyse von Druckverhältnissen und Durchflüssen.{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container project-detail-wrapper">
+        <div class="project-detail-layout">
+            <div class="project-main-image">
+                <img src="{{ url_for('static', filename='images/referenzen/hydraulik/wv229/1.webp') }}" alt="Hydraulisches Modell Wasserversorgung Mühldorf">
+            </div>
+            
+            <div class="project-main-details">
+                <h1>Hydraulische Rohrnetzberechnung & Modellierung</h1>
+                <h2 style="font-size: 1.2rem; color: var(--clr-primary); margin-bottom: 1.5rem;">Stadtwerke Mühldorf a. Inn</h2>
+                
+                <div class="project-detail-item">
+                    <h3>Auftraggeber</h3>
+                    <p>Stadtwerke Mühldorf a. Inn</p>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Projektbeschreibung</h3>
+                    <p>Erstellung eines digitalen hydraulischen Modells des bestehenden Wasserleitungsnetzes zur detaillierten Analyse von Durchflüssen und Druckverhältnissen. Das Modell wurde mittels temporärer Durchflussmessungen in 8 Messgebieten kalibriert und plausibilisiert.</p>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Besondere Kennzahlen & Fakten</h3>
+                    <ul>
+                        <li><strong>Netzlänge:</strong> ca. 170 km Hauptleitungen</li>
+                        <li><strong>Struktur:</strong> 2 Druckzonen (Hoch- und Niederzone)</li>
+                        <li><strong>Armaturen:</strong> ca. 1.130 Hydranten & 8 Druckreduktionsventile</li>
+                        <li><strong>Versorgung:</strong> Hochbehälter Solling als zentraler Knotenpunkt</li>
+                        <li><strong>Datengrundlage:</strong> GIS-Daten & Wasserzählerdaten 2020–2022</li>
+                    </ul>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Ausführungszeitraum</h3>
+                    <p>2023 – 2024 (Bericht Januar 2025)</p>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Leistungsbereich</h3>
+                    <p>Wasserversorgung, Hydraulische Modellierung</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-gallery-wrapper">
+            <h2 class="project-gallery-title">Visualisierung & Messungen</h2>
+            
+            <div class="slideshow-container">
+                {% for i in range(1, 5) %}
+                <div class="mySlides fade">
+                    <div class="numbertext">{{ i }} / 4</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/hydraulik/wv229/' ~ i ~ '.webp') }}" alt="Modellierung Mühldorf Bild {{ i }}">
+                </div>
+                {% endfor %}
+
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+            </div>
+            
+            <div class="thumbnail-row">
+                {% for i in range(1, 5) %}
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/hydraulik/wv229/' ~ i ~ '.webp') }}" onclick="currentSlide({{ i }})" alt="Vorschaubild {{ i }}">
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let thumbnails = document.getElementsByClassName("thumbnail");
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < thumbnails.length; i++) {
+            thumbnails[i].className = thumbnails[i].className.replace(" active-thumbnail", "");
+        }
+        if (slides.length > 0) {
+            slides[slideIndex-1].style.display = "block";  
+            thumbnails[slideIndex-1].className += " active-thumbnail";
+        }
+    }
+</script>
+{% endblock %}

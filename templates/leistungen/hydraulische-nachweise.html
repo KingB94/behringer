@@ -73,22 +73,43 @@
                 </article>
 
                 <article class="portfolio-card">
-                    <a href="https://www.ib-behringer.de/projekt/integrales-hochwasserschutzkonzept-watzinger-bach/" class="portfolio-card-link" target="_blank" rel="noopener">
+                    <a href="{{ url_for('projekt', project_slug='hydraulik/stadtwerke-muehldorf', back=request.path, back_text='Hydraulische Nachweise') }}"
+                        class="portfolio-card-link">
                         <div class="portfolio-card-inner">
                             <div class="portfolio-thumbnail">
-                                <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2019/12/WH-Ist100-270x150.jpg" alt="Integrales Hochwasserschutzkonzept Watzinger Bach" loading="lazy">
+                                <img src="{{ url_for('static', filename='images/referenzen/hydraulik/wv229/1.webp') }}"
+                                    alt="Hydraulische Rohrnetzberechnung Mühldorf" loading="lazy">
                                 <div class="portfolio-overlay">
                                     <span class="portfolio-overlay-icon">➔</span>
                                 </div>
                             </div>
                             <div class="portfolio-content">
-                                <h3 class="portfolio-title">Integrales Hochwasserschutzkonzept Watzinger Bach</h3>
-                                <p class="portfolio-category">Hydraulische Nachweise, Wasserbau</p>
+                                <h3 class="portfolio-title">Rohrnetzberechnung Stadtwerke Mühldorf</h3>
+                                <p class="portfolio-category">Hydraulische Modellierung, Wasserversorgung</p>
                             </div>
                         </div>
                     </a>
                 </article>
 
+                <article class="portfolio-card">
+                    <a href="{{ url_for('projekt', project_slug='hydraulik/hochwasserschutz-reichertsheim', back=request.path, back_text='Hydraulische Nachweise') }}"
+                        class="portfolio-card-link">
+                        <div class="portfolio-card-inner">
+                            <div class="portfolio-thumbnail">
+                                <img src="{{ url_for('static', filename='images/referenzen/hydraulik/w110/1.webp') }}"
+                                    alt="Hochwasserschutz und Sturzflutkonzept Reichertsheim" loading="lazy">
+                                <div class="portfolio-overlay">
+                                    <span class="portfolio-overlay-icon">➔</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-content">
+                                <h3 class="portfolio-title">HWS- und Sturzflutkonzept Reichertsheim</h3>
+                                <p class="portfolio-category">2D-Hydraulik, Hochwasserschutz</p>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+                
             </div>
         </div>
     </section>

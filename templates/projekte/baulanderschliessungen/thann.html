@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Projekt: Gewerbegebiet Thann - Behringer & Partner{% endblock %}
+{% block meta_description %}Erschließung Gewerbegebiet Thann in Aschau a. Inn: Umfassender Ausbau der Staatsstraße 2355, barrierefreie Verkehrsplanung und moderne Siedlungswasserwirtschaft.{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container project-detail-wrapper">
+        <div class="project-detail-layout">
+            <div class="project-main-image">
+                <img src="{{ url_for('static', filename='images/referenzen/baulanderschliessung/e255/1.webp') }}" alt="Hauptbild Erschließung Gewerbegebiet Thann">
+            </div>
+            
+            <div class="project-main-details">
+                <h1>Erschließung Gewerbegebiet Thann & Umbau Staatsstraße 2355</h1>
+                
+                <div class="project-detail-item">
+                    <h3>Auftraggeber</h3>
+                    <p>Gemeinde Aschau a. Inn</p>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Stichpunkte zum Projekt</h3>
+                    <ul>
+                        <li>Verkehrsflächen (Asphalt, Pflaster, DOB): ca. 12.000 m²</li>
+                        <li>Umbau der Staatsstraße: Verbreiterung für Abbiegespuren und Bushaltestellen</li>
+                        <li>Barrierefreiheit: Sichere Querungsstellen für Menschen mit Seh- und Mobilitätsbehinderungen</li>
+                        <li>Neuanlage eines Geh- und Radwegs südlich der Staatsstraße</li>
+                        <li>Schmutzwasserfreispiegelkanal: ca. 610 m</li>
+                        <li>Wasserhauptleitung: ca. 1.250 m</li>
+                        <li>Komplexes Entwässerungssystem: Sickeranlagen, Rigolen, Mulden und Becken</li>
+                        <li>Umbau der Kreuzung Staatsstraße / GVS Litzlkirchen</li>
+                    </ul>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Ausführungszeitraum</h3>
+                    <p>2022 bis voraussichtlich Ende 2026</p>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Leistungsbereich</h3>
+                    <p>Erschließung, Straßenbau, Siedlungswasserwirtschaft</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-gallery-wrapper">
+            <h2 class="project-gallery-title">Weitere Bilder</h2>
+            
+            <div class="slideshow-container">
+                {% for i in range(1, 8) %}
+                <div class="mySlides fade">
+                    <div class="numbertext">{{ i }} / 7</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/baulanderschliessung/e255/' ~ i ~ '.webp') }}" alt="Gewerbegebiet Thann Bild {{ i }}">
+                </div>
+                {% endfor %}
+
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+            </div>
+            
+            <div class="thumbnail-row">
+                {% for i in range(1, 8) %}
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/baulanderschliessung/e255/' ~ i ~ '.webp') }}" onclick="currentSlide({{ i }})" alt="Vorschaubild {{ i }}">
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let thumbnails = document.getElementsByClassName("thumbnail");
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < thumbnails.length; i++) {
+            thumbnails[i].className = thumbnails[i].className.replace(" active-thumbnail", "");
+        }
+        if (slides.length > 0) {
+            slides[slideIndex-1].style.display = "block";  
+            thumbnails[slideIndex-1].className += " active-thumbnail";
+        }
+    }
+</script>
+{% endblock %}

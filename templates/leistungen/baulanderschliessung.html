@@ -79,6 +79,40 @@
                     </a>
                 </article>
 
+                <article class="portfolio-card">
+                    <a href="{{ url_for('projekt', project_slug='baulanderschliessungen/schwindegg', back=request.path, back_text='Baulanderschließung') }}" class="portfolio-card-link">
+                        <div class="portfolio-card-inner">
+                            <div class="portfolio-thumbnail">
+                                <img src="{{ url_for('static', filename='images/referenzen/baulanderschliessung/e263/1.webp') }}" alt="Erschließung Neubaugebiet Allersheim" loading="lazy">
+                                <div class="portfolio-overlay">
+                                    <span class="portfolio-overlay-icon">➔</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-content">
+                                <h3 class="portfolio-title">NBG Allersheim, Schwindegg</h3>
+                                <p class="portfolio-category">Erschließung, Starkregensimulation</p>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="portfolio-card">
+                    <a href="{{ url_for('projekt', project_slug='baulanderschliessungen/thann', back=request.path, back_text='Baulanderschließung') }}" class="portfolio-card-link">
+                        <div class="portfolio-card-inner">
+                            <div class="portfolio-thumbnail">
+                                <img src="{{ url_for('static', filename='images/referenzen/baulanderschliessung/e255/1.webp') }}" alt="Erschließung Gewerbegebiet Thann" loading="lazy">
+                                <div class="portfolio-overlay">
+                                    <span class="portfolio-overlay-icon">➔</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-content">
+                                <h3 class="portfolio-title">Gewerbegebiet Thann, Aschau a. Inn</h3>
+                                <p class="portfolio-category">Gewerbeerschließung, Straßenbau</p>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
             </div>
         </div>
     </section>

@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %}Projekt: Sturzflutkonzept Gelting - Behringer & Partner{% endblock %}
+{% block meta_description %}Integrales Sturzflutkonzept für Gelting und Ottersberg: Starkregen-Risikomanagement mit HydroAs-2D Modellierung und Maßnahmenkonzeption.{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container project-detail-wrapper">
+        <div class="project-detail-layout">
+            <div class="project-main-image">
+                <img src="{{ url_for('static', filename='images/referenzen/wasserbau/w86/1.webp') }}" alt="Hauptbild Sturzflutkonzept Gelting">
+            </div>
+            
+            <div class="project-main-details">
+                <h1>Integrales Sturzflutkonzept Gelting (W 86)</h1>
+                
+                <div class="project-detail-item">
+                    <h3>Auftraggeber</h3>
+                    <p>Gemeinde Pliening, Geltinger Straße 18, 85652 Pliening</p>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Stichpunkte zum Projekt</h3>
+                    <ul>
+                        <li>Untersuchungsgebiet: Ortsteile Gelting und Ottersberg (ca. 3,43 km²)</li>
+                        <li>Hydrologie: 6 Teileinzugsgebiete (SCS-CN-Verfahren)</li>
+                        <li>Simulation von Bemessungsereignissen: HN 30, HN 100 und HN-Extrem</li>
+                        <li>Analyse historischer Ereignisse (z. B. Starkregen vom 18.06.2018)</li>
+                        <li>Datengrundlagen: DGM 1x1 m, KOSTRA-DWD-2020</li>
+                        <li>Maßnahmen: Rückhaltebecken, Abfanggräben, Erdwälle und Drosselbauwerke</li>
+                    </ul>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Ausführungszeitraum</h3>
+                    <p>2022 – 2025 (Abgeschlossen am 20.11.2025)</p>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Leistungsbereich</h3>
+                    <p>Kommunale Sturzflutvorsorge / Starkregen-Risikomanagement (2D-Hydraulik)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-gallery-wrapper">
+            <h2 class="project-gallery-title">Visualisierung & Analyse</h2>
+            
+            <div class="slideshow-container">
+                {% for i in range(1, 6) %}
+                <div class="mySlides fade">
+                    <div class="numbertext">{{ i }} / 5</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/wasserbau/w86/' ~ i ~ '.webp') }}" alt="Sturzflutkonzept Gelting Analyse {{ i }}">
+                </div>
+                {% endfor %}
+
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+            </div>
+            
+            <div class="thumbnail-row">
+                {% for i in range(1, 6) %}
+                <img class="thumbnail" src="{{ url_for('static', filename='images/referenzen/wasserbau/w86/' ~ i ~ '.webp') }}" onclick="currentSlide({{ i }})" alt="Vorschaubild {{ i }}">
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let thumbnails = document.getElementsByClassName("thumbnail");
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < thumbnails.length; i++) {
+            thumbnails[i].className = thumbnails[i].className.replace(" active-thumbnail", "");
+        }
+        if (slides.length > 0) {
+            slides[slideIndex-1].style.display = "block";  
+            thumbnails[slideIndex-1].className += " active-thumbnail";
+        }
+    }
+</script>
+{% endblock %}
