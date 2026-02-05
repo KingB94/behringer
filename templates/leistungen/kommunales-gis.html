@@ -54,26 +54,35 @@
             <p class="section-subtitle">Ausgewählte Projekte aus dem Bereich Geoinformatik.</p>
             
             <div class="portfolio-grid">
-                
                 <article class="portfolio-card">
-                    <a href="{{ url_for('projekt', project_slug='kommunales-gis/leitungskataster', back=request.path, back_text='Kommunales GIS') }}" class="portfolio-card-link">
+                    <a href="{{ url_for('projekt', project_slug='kommunales-gis/kanalkataster_muehldorf', back=request.path, back_text='Kommunales GIS') }}" class="portfolio-card-link">
                         <div class="portfolio-card-inner">
                             <div class="portfolio-thumbnail">
-                                <img src="{{ url_for('static', filename='images/referenzen/kommunales-gis/leitungskataster_thumb.webp') }}" 
-                                     alt="Leitungskataster" loading="lazy">
-                                <div class="portfolio-overlay">
-                                    <span class="portfolio-overlay-icon">➔</span>
-                                </div>
+                                <img src="{{ url_for('static', filename='images/referenzen/kommunales-gis/muehldorf/1.webp') }}" alt="Vorschau Mühldorf">
                             </div>
                             <div class="portfolio-content">
-                                <h3 class="portfolio-title">Kommunales GIS & Leitungskataster</h3>
-                                <p class="portfolio-category">Geoinformatik, Kanal- & Wasserleitungen</p>
+                                <h3 class="portfolio-title">Kanalkataster Mühldorf a. Inn</h3>
+                                <p class="portfolio-category">Betreuung & Datenmanagement</p>
                             </div>
                         </div>
                     </a>
                 </article>
-
+            
+                <article class="portfolio-card">
+                    <a href="{{ url_for('projekt', project_slug='kommunales-gis/rohrbach', back=request.path, back_text='Kommunales GIS') }}" class="portfolio-card-link">
+                        <div class="portfolio-card-inner">
+                            <div class="portfolio-thumbnail">
+                                <img src="{{ url_for('static', filename='images/referenzen/kommunales-gis/rohrbach/1.webp') }}" alt="Vorschau VG Rohrbach">
+                            </div>
+                            <div class="portfolio-content">
+                                <h3 class="portfolio-title">Kataster VG Rohrbach</h3>
+                                <p class="portfolio-category">Kanal- & Wasserleitungskataster</p>
+                            </div>
+                        </div>
+                    </a>
+                </article>
             </div>
+
         </div>
     </section>
 </main>

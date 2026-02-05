@@ -84,19 +84,29 @@
                     </a>
                 </article>
 
-                <!-- Projekt 3: Waldkraiburg -->
                 <article class="portfolio-card">
-                    <a href="#" class="portfolio-card-link">
+                    <a href="{{ url_for('projekt', project_slug='fernwaerme/waldkraiburg-stadtmitte', back=request.path, back_text='Fernwärme') }}" class="portfolio-card-link">
                         <div class="portfolio-card-inner">
                             <div class="portfolio-thumbnail">
-                                <img src="{{ url_for('static', filename='images/fernwaerme.png') }}" alt="Fernwärmeversorgung Waldkraiburg 2022" loading="lazy">
-                                <div class="portfolio-overlay">
-                                    <span class="portfolio-overlay-icon">➔</span>
-                                </div>
+                                <img src="{{ url_for('static', filename='images/referenzen/fernwaerme/G183/1.webp') }}" alt="Vorschau G 183 Waldkraiburg">
                             </div>
                             <div class="portfolio-content">
-                                <h3 class="portfolio-title">Fernwärmeversorgung Waldkraiburg 2022</h3>
-                                <p class="portfolio-category">Fernwärme</p>
+                                <h3 class="portfolio-title">Waldkraiburg G 183 - Stadtmitte</h3>
+                                <p class="portfolio-category">Erschließung FW, Wasser & MSP</p>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="portfolio-card">
+                    <a href="{{ url_for('projekt', project_slug='fernwaerme/waldkraiburg-beethovenstrasse', back=request.path, back_text='Fernwärme') }}" class="portfolio-card-link">
+                        <div class="portfolio-card-inner">
+                            <div class="portfolio-thumbnail">
+                                <img src="{{ url_for('static', filename='images/referenzen/fernwaerme/G188/1.webp') }}" alt="Vorschau G 188 Beethovenstraße">
+                            </div>
+                            <div class="portfolio-content">
+                                <h3 class="portfolio-title">Waldkraiburg G 188 - Beethovenstraße</h3>
+                                <p class="portfolio-category">Erschließung & Steilhangverlegung</p>
                             </div>
                         </div>
                     </a>

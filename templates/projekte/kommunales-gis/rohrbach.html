@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %}Projekt: Kataster VG Rohrbach - Behringer & Partner{% endblock %}
+{% block meta_description %}Aufbau und Fortführung des Kanal- und Wasserleitungskatasters für die VG Rohrbach (Erharting, Niederbergkirchen, Niedertaufkirchen).{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container project-detail-wrapper">
+        <div class="project-detail-layout">
+            <div class="project-main-image">
+                <img src="{{ url_for('static', filename='images/referenzen/kommunales-gis/rohrbach/1.webp') }}" alt="Kanal- und Wasserleitungskataster VG Rohrbach">
+            </div>
+            
+            <div class="project-main-details">
+                <h1>Aufbau, Betreuung und Fortführung Kanal- u. Wasserleitungskataster VG Rohrbach</h1>
+                
+                <div class="project-detail-item">
+                    <h3>Auftraggeber</h3>
+                    <p>VG Rohrbach (Gemeinden Erharting, Niederbergkirchen, Niedertaufkirchen)</p>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Stichpunkte zum Projekt</h3>
+                    <ul>
+                        <li><strong>Abwassernetz:</strong> Ca. 60 km Freispiegelkanal und 40 km Druckleitungen mit ca. 1.350 Schächten und Pumpwerken.</li>
+                        <li><strong>Anschlussobjekte & Zubehör:</strong> Erfassung von ca. 1.550 Hausanschlussschächten und ca. 700 Sinkkästen inkl. zugehöriger Leitungen.</li>
+                        <li><strong>Wasserversorgung:</strong> Ca. 115 km Wasserleitungskataster inkl. ca. 2.800 Armaturen (Schieber, Hydranten etc.).</li>
+                        <li><strong>Planung:</strong> Unterstützung bei der fundierten Sanierungsplanung auf Basis der Katasterdaten.</li>
+                        <li><strong>Datenmanagement:</strong> Verwaltung und Aufbereitung technischer Datenformate (Shapefiles, XML, etc.).</li>
+                        <li><strong>Support:</strong> Kontinuierliche Unterstützung der Verwaltung im laufenden Betrieb.</li>
+                    </ul>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Leistungsbereich</h3>
+                    <p>Betreuung Kanal- und Wasserleitungskataster (Kommunales GIS)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-gallery-wrapper">
+            <h2 class="project-gallery-title">Weitere Bilder</h2>
+            
+            <div class="slideshow-container">
+                {% for i in range(1, 6) %}
+                <div class="mySlides fade">
+                    <div class="numbertext">{{ i }} / 5</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/kommunales-gis/rohrbach/' ~ i ~ '.webp') }}" alt="VG Rohrbach GIS Projekt Bild {{ i }}">
+                </div>
+                {% endfor %}
+
+                <a class="prev" id="prevSlide">❮</a>
+                <a class="next" id="nextSlide">❯</a>
+            </div>
+            
+            <div class="thumbnail-row">
+                {% for i in range(1, 6) %}
+                <img class="thumbnail"
+                     src="{{ url_for('static', filename='images/referenzen/kommunales-gis/rohrbach/' ~ i ~ '.webp') }}"
+                     data-slide="{{ i }}"
+                     alt="Vorschaubild {{ i }}">
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    let slideIndex = 1;
+    
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        const slides = document.getElementsByClassName("mySlides");
+        const thumbnails = document.getElementsByClassName("thumbnail");
+        
+        if (n > slides.length) { slideIndex = 1; }    
+        if (n < 1) { slideIndex = slides.length; }
+        
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < thumbnails.length; i++) {
+            thumbnails[i].classList.remove("active-thumbnail");
+        }
+        
+        if (slides.length > 0) {
+            slides[slideIndex - 1].style.display = "block";  
+            thumbnails[slideIndex - 1].classList.add("active-thumbnail");
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const thumbs = document.querySelectorAll('.thumbnail');
+        thumbs.forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                const slideNum = parseInt(this.getAttribute('data-slide'));
+                currentSlide(slideNum);
+            });
+        });
+
+        const prevBtn = document.getElementById('prevSlide');
+        const nextBtn = document.getElementById('nextSlide');
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function() { plusSlides(-1); });
+        }
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function() { plusSlides(1); });
+        }
+    });
+</script>
+{% endblock %}

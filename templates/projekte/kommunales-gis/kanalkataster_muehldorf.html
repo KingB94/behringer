@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block title %}Projekt: Kanalkataster Mühldorf a. Inn - Behringer & Partner{% endblock %}
+{% block meta_description %}Aufbau und kontinuierliche Betreuung des Kanalkatasters der Stadt Mühldorf a. Inn. Digitales Datenmanagement für 128 km Kanalnetz.{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container project-detail-wrapper">
+        <div class="project-detail-layout">
+            <div class="project-main-image">
+                <img src="{{ url_for('static', filename='images/referenzen/kommunales-gis/muehldorf/1.webp') }}" alt="Digitales Kanalkataster Stadt Mühldorf">
+            </div>
+            
+            <div class="project-main-details">
+                <h1>Aufbau, Betreuung und Fortführung Kanalkataster Mühldorf a. Inn</h1>
+                
+                <div class="project-detail-item">
+                    <h3>Auftraggeber</h3>
+                    <p>Stadt Mühldorf a. Inn</p>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Stichpunkte zum Projekt</h3>
+                    <ul>
+                        <li><strong>Netzumfang:</strong> Ca. 128 km Schmutz-, Misch- und Regenwasserkanal mit ca. 3.300 Schächten inkl. Versickerungsanlagen.</li>
+                        <li><strong>Anschlussobjekte:</strong> Erfassung von ca. 2.700 Hausanschlussschächten, 1.200 Sinkkästen und 230 Regenrinnen.</li>
+                        <li><strong>Hydraulik-Schnittstelle:</strong> Verknüpfung von GIS-Daten mit hydraulischen Modellen zur Sanierungsplanung.</li>
+                        <li><strong>Datenformat-Management:</strong> Professionelle Verwaltung von Shapefiles, XML und ISYBAU-Daten.</li>
+                        <li><strong>Koordination:</strong> Schnittstelle zwischen Bauamt und externen Dienstleistern der Stadt.</li>
+                        <li><strong>Support:</strong> Laufende Unterstützung im Betrieb und kontinuierliche Datenfortschreibung.</li>
+                    </ul>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Leistungsbereich</h3>
+                    <p>Betreuung Kanalkataster (Kommunales GIS)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-gallery-wrapper">
+            <h2 class="project-gallery-title">Weitere Bilder</h2>
+            
+            <div class="slideshow-container">
+                {% for i in range(1, 5) %}
+                <div class="mySlides fade">
+                    <div class="numbertext">{{ i }} / 4</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/kommunales-gis/muehldorf/' ~ i ~ '.webp') }}" alt="GIS Projekt Bild {{ i }}">
+                </div>
+                {% endfor %}
+
+                <a class="prev" id="prevSlide">❮</a>
+                <a class="next" id="nextSlide">❯</a>
+            </div>
+            
+            <div class="thumbnail-row">
+                {% for i in range(1, 5) %}
+                <img class="thumbnail"
+                     src="{{ url_for('static', filename='images/referenzen/kommunales-gis/muehldorf/' ~ i ~ '.webp') }}"
+                     data-slide="{{ i }}"
+                     alt="Vorschaubild {{ i }}">
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    let slideIndex = 1;
+    
+    // Initialisierung der Slideshow
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        const slides = document.getElementsByClassName("mySlides");
+        const thumbnails = document.getElementsByClassName("thumbnail");
+        
+        if (n > slides.length) { slideIndex = 1; }    
+        if (n < 1) { slideIndex = slides.length; }
+        
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < thumbnails.length; i++) {
+            thumbnails[i].classList.remove("active-thumbnail");
+        }
+        
+        if (slides.length > 0) {
+            slides[slideIndex - 1].style.display = "block";  
+            thumbnails[slideIndex - 1].classList.add("active-thumbnail");
+        }
+    }
+
+    // Event-Listener binden (behebt Probleme mit "function not defined")
+    document.addEventListener("DOMContentLoaded", function() {
+        const thumbs = document.querySelectorAll('.thumbnail');
+        thumbs.forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                const slideNum = parseInt(this.getAttribute('data-slide'));
+                currentSlide(slideNum);
+            });
+        });
+
+        const prevBtn = document.getElementById('prevSlide');
+        const nextBtn = document.getElementById('nextSlide');
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function() { plusSlides(-1); });
+        }
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function() { plusSlides(1); });
+        }
+    });
+</script>
+{% endblock %}

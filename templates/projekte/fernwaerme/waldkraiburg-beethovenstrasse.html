@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block title %}Projekt: Fernwärme Waldkraiburg G 188 - Behringer & Partner{% endblock %}
+{% block meta_description %}Erschließung Fernwärme Teil II Beethovenstraße: Anspruchsvolle Verlegung im Steilhang, Wasserleitungsbau und Stromtrassen für die Stadtwerke Waldkraiburg.{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container project-detail-wrapper">
+        <div class="project-detail-layout">
+            <div class="project-main-image">
+                <img src="{{ url_for('static', filename='images/referenzen/fernwaerme/G188/1.webp') }}" alt="Fernwärme-Erschließung Beethovenstraße Waldkraiburg">
+            </div>
+            
+            <div class="project-main-details">
+                <h1>G 188 Erschließung Fernwärme 2025 Teil II – Beethovenstraße/Geothermie</h1>
+                
+                <div class="project-detail-item">
+                    <h3>Auftraggeber</h3>
+                    <p>Stadtwerke Waldkraiburg GmbH</p>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Stichpunkte zum Projekt</h3>
+                    <ul>
+                        <li><strong>Fernwärme:</strong> Ca. 760 m FW-Leitung inkl. HA-Anschlüssen (KMR-Systeme bis DN 250/500).</li>
+                        <li><strong>Besonderheit:</strong> Technisch anspruchsvolle Verlegung der FW-Leitung (DN 250/500) im Steilhang.</li>
+                        <li><strong>Wasserversorgung:</strong> Ca. 1.220 m Wasserleitung inkl. Hausanschlüssen.</li>
+                        <li><strong>Stromtrasse:</strong> Ca. 540 m Trasse für Mittelspannung (2 bis 4 Kabelschutzrohre DN 160 parallel) inkl. 4 Kabelzugschächte (2000x1500 mm).</li>
+                        <li><strong>Vielseitigkeit:</strong> Kombination aus Tiefbau, komplexem Rohrleitungsbau und Geländeanpassung.</li>
+                    </ul>
+                </div>
+                
+                <div class="project-detail-item">
+                    <h3>Ausführungszeitraum</h3>
+                    <p>September 2025 bis voraussichtlich Juni 2026</p>
+                </div>
+
+                <div class="project-detail-item">
+                    <h3>Leistungsbereich</h3>
+                    <p>Erdarbeiten, Rohrleitungsbau, Pflasterarbeiten, Straßenbau</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-gallery-wrapper">
+            <h2 class="project-gallery-title">Projektbilder & Impressionen</h2>
+            
+            <div class="slideshow-container">
+                {% for i in range(1, 12) %}
+                <div class="mySlides fade">
+                    <div class="numbertext">{{ i }} / 11</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/fernwaerme/G188/' ~ i ~ '.webp') }}" alt="Baustelle Beethovenstraße G 188 Bild {{ i }}">
+                </div>
+                {% endfor %}
+
+                <a class="prev" id="prevSlide">❮</a>
+                <a class="next" id="nextSlide">❯</a>
+            </div>
+            
+            <div class="thumbnail-row">
+                {% for i in range(1, 12) %}
+                <img class="thumbnail"
+                     src="{{ url_for('static', filename='images/referenzen/fernwaerme/G188/' ~ i ~ '.webp') }}"
+                     data-slide="{{ i }}"
+                     alt="Vorschaubild {{ i }}">
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    let slideIndex = 1;
+    
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        const slides = document.getElementsByClassName("mySlides");
+        const thumbnails = document.getElementsByClassName("thumbnail");
+        
+        if (n > slides.length) { slideIndex = 1; }    
+        if (n < 1) { slideIndex = slides.length; }
+        
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < thumbnails.length; i++) {
+            thumbnails[i].classList.remove("active-thumbnail");
+        }
+        
+        if (slides.length > 0) {
+            slides[slideIndex - 1].style.display = "block";  
+            thumbnails[slideIndex - 1].classList.add("active-thumbnail");
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const thumbs = document.querySelectorAll('.thumbnail');
+        thumbs.forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                const slideNum = parseInt(this.getAttribute('data-slide'));
+                currentSlide(slideNum);
+            });
+        });
+
+        const prevBtn = document.getElementById('prevSlide');
+        const nextBtn = document.getElementById('nextSlide');
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function() { plusSlides(-1); });
+        }
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function() { plusSlides(1); });
+        }
+    });
+</script>
+{% endblock %}
