@@ -4,35 +4,356 @@
 
 {% block content %}
 <main>
-    <section class="page-hero-section" style="background-image: url('https://www.ib-behringer.de/wp/wp-content/uploads/2019/12/Tansania5.jpg');">
+    <section class="page-hero-section"
+        style="background-image: url('https://www.ib-behringer.de/wp/wp-content/uploads/2019/12/Tansania5.jpg');">
         <div class="container">
             <h1 class="page-title">Mädchenschule Chato</h1>
             <div class="breadcrumbs">
-                <a href="{{ url_for('index') }}">Startseite</a> <span class="arrow">/</span> 
+                <a href="{{ url_for('index') }}">Startseite</a> <span class="arrow">/</span>
                 <span>Wir unterstützen</span>
             </div>
         </div>
     </section>
 
+    <section class="section" style="background-color: #fff; padding-top: 2rem; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+        <div class="container" style="max-width: 1000px;">
+    
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 style="font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 1.5rem; font-weight: 700;">
+                    Fertigstellung der St. Albert Chato Secondary School
+                </h2>
+                <img src="{{ url_for('static', filename='images/maedchenschule-chato/tansania2.webp') }}"
+                    alt="Schülerinnen" style="width: 100%; border-radius: 4px; box-shadow: var(--shadow-md);">
+            </div>
+    
+            <div style="text-align: center; margin: 3rem 0;">
+                <p style="font-family: 'Comic Sans MS', cursive, sans-serif; font-size: 1.8rem; color: #5d8a66; margin-bottom: 0.5rem; line-height: 1.2;">
+                    „Bildung ist die mächtigste Waffe,<br>die Welt zu ändern.“
+                </p>
+                <p style="font-weight: 700; color: #5d8a66; font-size: 1.1rem;">Nelson Mandela</p>
+            </div>
+    
+            <div style="display: flex; flex-direction: column; gap: 4rem;">
+    
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; align-items: center;">
+                    <div style="position: relative;">
+                        <img src="{{ url_for('static', filename='images/maedchenschule-chato/map.webp') }}"
+                            alt="Karte Tansania" style="width: 100%; border: 1px solid #eee; border-radius: 2px;">
+                    </div>
+                    <div style="text-align: left;">
+                        <h3 style="font-size: 1.7rem; color: #5d8a66; margin-bottom: 1rem; font-weight: 700;">Hilfe, die zu 100% ankommt</h3>
+                        <p style="font-size: 1rem; line-height: 1.5; color: #333;">
+                            Ehrenamtlich und in Eigenregie organisieren das Ingenieurbüro Behringer & Partner mbB unter Leitung von Brigitte Behringer und Dr. Christian Hartig in Kooperation mit der Diözese Rulenge den Bau der Mädchenschule in Chato / Tansania.
+                        </p>
+                        <p style="font-weight: 700; font-size: 1.1rem; margin-top: 1rem;">
+                            Mit Ihrer Unterstützung kann der Unterricht 2027 starten!
+                        </p>
+                    </div>
+                </div>
+    
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; align-items: center;">
+                    <div style="order: 2;">
+                        <img src="{{ url_for('static', filename='images/maedchenschule-chato/Gruppenbild-2.webp') }}"
+                            alt="Projektleitung vor Ort" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 2px; box-shadow: var(--shadow-sm);">
+                    </div>
+                    <div style="order: 1; text-align: left;">
+                        <h4 style="font-size: 1.2rem; margin-bottom: 0.8rem; font-weight: 700;">Wir stellen die Umsetzung sicher</h4>
+                        <p style="font-size: 1rem; line-height: 1.5;">
+                            Entscheidend für den Erfolg ist der direkte Kontakt zur Projektleitung vor Ort. Brigitte Behringer und Dr. Christian Hartig überzeugten sich seit März 2022 mehrmals vom Baufortschritt und planten mit Father Erasto Naakule die nächsten Schritte.
+                        </p>
+                        <p style="margin-top: 1rem;">
+                            <a href="https://www.rulengengaradiocese.or.tz" target="_blank" style="text-decoration: underline; font-weight: 700; color: #005a9c;">www.rulengengaradiocese.or.tz</a>
+                        </p>
+                    </div>
+                </div>
+    
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; align-items: center;">
+                    <div style="order: 2;">
+                        <div style="position: relative; width: 100%; aspect-ratio: 4/3; background: #000; border-radius: 2px; overflow: hidden; box-shadow: var(--shadow-sm);">
+                            <video style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8;">
+                                <source src="{{ url_for('static', filename='videos/tansania_projekt.mp4') }}" type="video/mp4">
+                            </video>
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.5); border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                <div style="width: 0; height: 0; border-top: 12px solid transparent; border-bottom: 12px solid transparent; border-left: 18px solid white; margin-left: 5px;"></div>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.75rem; color: #888; margin-top: 0.5rem; text-align: right;">Video: Erster Besuch vor Ort – Sept. 2019</p>
+                    </div>
+                    <div style="order: 1; text-align: left;">
+                        <h4 style="font-size: 1.2rem; margin-bottom: 0.8rem; font-weight: 700;">Unsere Motivation: Nachhaltig für ein besseres Leben</h4>
+                        <p style="font-size: 1rem; line-height: 1.5;">
+                            Neben der Bildung wird die Schule mit sauberem Wasser und qualitativ guter Ernährung eine lebenswichtige Basis bilden. Dank des Schlafgebäudes werden auch Kinder aus entlegenen Dörfern „unsere“ Schule besuchen können.
+                        </p>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background-color: #fff; padding-top: 0;">
+        <div class="container" style="max-width: 1000px;">
+
+            <h2
+                style="font-size: 2rem; margin-bottom: 3rem; border-bottom: 2px solid var(--clr-primary); display: inline-block; padding-bottom: 5px;">
+                Baufortschritt
+            </h2>
+
+            <div class="chato-timeline" style="display: flex; flex-direction: column; gap: 4rem;">
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
+                    <img src="{{ url_for('static', filename='images/maedchenschule-chato/IMG-20231111-WA0000.webp') }}"
+                        alt="Rohbau Unterrichtsgebäude"
+                        style="width: 100%; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm);">
+                    <div>
+                        <span style="color: #888; font-weight: 700; display: block; margin-bottom: 0.5rem;">Juli
+                            2022</span>
+                        <p style="color: #a64d32; font-weight: 700; line-height: 1.3;">Rohbau des Unterrichtsgebäudes
+                            für ca. 120 Schülerinnen</p>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
+                    <img src="{{ url_for('static', filename='images/maedchenschule-chato/BaubeginnDez.22_Schlafs.webp') }}"
+                        alt="Baubeginn Schlafgebäude"
+                        style="width: 100%; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm);">
+                    <div>
+                        <span style="color: #888; font-weight: 700; display: block; margin-bottom: 0.5rem;">Dezember
+                            2022</span>
+                        <p style="color: #a64d32; font-weight: 700; line-height: 1.3;">Baubeginn des Schlafgebäudes für
+                            ca. 80 Schülerinnen (Rohbau fertiggestellt)</p>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
+                    <img src="{{ url_for('static', filename='images/maedchenschule-chato/oktober.webp') }}"
+                        alt="Rohbau Administrationsgebäude"
+                        style="width: 100%; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm);">
+                    <div>
+                        <span style="color: #888; font-weight: 700; display: block; margin-bottom: 0.5rem;">Oktober
+                            2024</span>
+                        <p style="color: #a64d32; font-weight: 700; line-height: 1.3;">Rohbau des
+                            Administrationsgebäudes mit Labor und EDV-Raum</p>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
+                    <img src="{{ url_for('static', filename='images/maedchenschule-chato/februar.webp') }}"
+                        alt="Baubeginn Sanitärgebäude"
+                        style="width: 100%; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm);">
+                    <div>
+                        <span style="color: #888; font-weight: 700; display: block; margin-bottom: 0.5rem;">Februar
+                            2025</span>
+                        <p style="color: #a64d32; font-weight: 700; line-height: 1.3;">Baubeginn des Sanitärgebäudes</p>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
+                    <img src="{{ url_for('static', filename='images/maedchenschule-chato/dezember.webp') }}"
+                        alt="Sanitärgebäude und Mensa fertig"
+                        style="width: 100%; border-radius: var(--radius-sm); box-shadow: var(--shadow-sm);">
+                    <div>
+                        <span style="color: #888; font-weight: 700; display: block; margin-bottom: 0.5rem;">Dezember
+                            2025</span>
+                        <p style="color: #a64d32; font-weight: 700; line-height: 1.3;">Sanitärgebäude und Mensa im
+                            Rohbau fertiggestellt</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <style>
+        @media (max-width: 768px) {
+            .chato-timeline>div {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+                text-align: center;
+            }
+        }
+    </style>
+
+    <section class="section" style="background-color: #fff; padding-top: 2rem;">
+        <div class="container" style="max-width: 1000px; text-align: center;">
+
+            <div style="margin-bottom: 4rem;">
+                <h3 style="color: #5d8a66; font-size: 1.5rem; margin-bottom: 0.5rem;">Bisher wurden 110.000€ gespendet.
+                </h3>
+                <h2 style="color: #5d8a66; font-size: 2.2rem; margin-bottom: 0.5rem; font-weight: 700;">Dank Ihrer
+                    Spende schaffen wir den Endspurt!</h2>
+                <p style="color: #5d8a66; font-size: 1.8rem; font-weight: 700;">Das Ziel: Schulstart 2027</p>
+            </div>
+
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; align-items: center; margin-bottom: 4rem;">
+
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <div style="position: relative; width: 250px;">
+                        <img src="{{ url_for('static', filename='images/maedchenschule-chato/herz.webp') }}"
+                            alt="Gezeichnetes rotes Herz" style="width: 100%;">
+                        <span
+                            style="font-family: 'Comic Sans MS', cursive, sans-serif; font-size: 1.8rem; color: #a64d32; position: absolute; bottom: 10%; right: 0;">DANKE!</span>
+                    </div>
+                </div>
+
+                <div
+                    style="text-align: left; background: #f9f9f9; padding: 2rem; border-radius: 8px; border: 1px dashed #ccc;">
+                    <h4 style="color: #5d8a66; text-decoration: underline; margin-bottom: 1rem; font-size: 1.1rem;">
+                        SPENDENKONTO:</h4>
+                    <p style="margin-bottom: 0.2rem; font-weight: 700; color: #444;">Missionsbenediktiner
+                        Münsterschwarzach</p>
+                    <p style="margin-bottom: 0.2rem; color: #444;">Liga Bank Regensburg</p>
+                    <p style="margin-bottom: 1.5rem; font-size: 1.2rem; letter-spacing: 1px; color: #000;">DE51 7509
+                        0300 0003 0150 33</p>
+
+                    <p style="margin-bottom: 1.5rem; line-height: 1.3;">
+                        <strong style="color: #5d8a66;">Verwendungszweck: Chato Mädchenschule</strong><br>
+                        <span style="font-size: 0.9rem; color: #666;">+ Ihre Adresse für die Spendenquittung</span>
+                    </p>
+
+                    <div
+                        style="display: flex; align-items: flex-start; gap: 1rem; border-top: 1px solid #eee; padding-top: 1rem;">
+                        <p style="font-size: 0.8rem; color: #666; flex: 1;">
+                            Sie tätigen Ihre Überweisung per Smartphone oder Tablet? Scannen Sie in Ihrer Banking-App
+                            einfach diesen QR-Code.
+                        </p>
+                        <img src="{{ url_for('static', filename='images/maedchenschule-chato/qr-code-spende.png') }}"
+                            alt="Spenden QR-Code"
+                            style="width: 100px; height: 100px; border: 1px solid #ddd; padding: 5px; background: #fff;">
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                <img src="{{ url_for('static', filename='images/maedchenschule-chato/teambild.webp') }}"
+                    alt="Bauarbeiten am Fenster" style="width: 100%; border-radius: 4px;">
+                <img src="{{ url_for('static', filename='images/maedchenschule-chato/Tafel_BBHartig.webp') }}"
+                    alt="Projektleitung vor Ort" style="width: 100%; border-radius: 4px;">
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section" style="background-color: #d2b48c; padding: 2rem 0;">
+        <div class="container"
+            style="max-width: 1000px; background-color: #fff; padding: 0; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-lg);">
+
+            <div style="position: relative; height: 300px; overflow: hidden;">
+                <img src="{{ url_for('static', filename='images/maedchenschule-chato/Tansania2.webp') }}"
+                    alt="Schülerinnen" style="width: 100%; height: 100%; object-fit: cover;">
+                <div
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center;">
+                    <h2
+                        style="color: #fff; font-size: 2.5rem; text-align: center; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                        Fertigstellung der St. Albert Chato<br>Secondary School</h2>
+                </div>
+            </div>
+
+            <div style="padding: 2rem; display: grid; grid-template-columns: 1fr 1.2fr; gap: 2.5rem;">
+
+                <div style="background-color: #a64d32; color: #fff; padding: 1.5rem; border-radius: 4px;">
+                    <h3
+                        style="color: #fff; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+                        Baufortschritt</h3>
+
+                    <div class="chato-mini-timeline"
+                        style="display: flex; flex-direction: column; gap: 1.5rem; font-size: 0.85rem;">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                            <img src="{{ url_for('static', filename='images/maedchenschule-chato/IMG-20231111-WA0000.webp') }}"
+                                style="width: 60px; height: 60px; object-fit: cover; border: 2px solid #fff;">
+                            <p><strong>Jul 2022:</strong> Rohbau Unterrichtsgebäude</p>
+                        </div>
+                        <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                            <img src="{{ url_for('static', filename='images/maedchenschule-chato/BaubeginnDez.22_Schlafs.webp') }}"
+                                style="width: 60px; height: 60px; object-fit: cover; border: 2px solid #fff;">
+                            <p><strong>Dez 2022:</strong> Rohbau Schlafgebäude</p>
+                        </div>
+                        <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                            <img src="{{ url_for('static', filename='images/maedchenschule-chato/oktober.webp') }}"
+                                style="width: 60px; height: 60px; object-fit: cover; border: 2px solid #fff;">
+                            <p><strong>Okt 2024:</strong> Administrationsgebäude</p>
+                        </div>
+                        <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                            <img src="{{ url_for('static', filename='images/maedchenschule-chato/februar.webp') }}"
+                                style="width: 60px; height: 60px; object-fit: cover; border: 2px solid #fff;">
+                            <p><strong>Feb 2025:</strong> Sanitärgebäude</p>
+                        </div>
+                    </div>
+
+                    <div
+                        style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 1rem; text-align: center;">
+                        <p style="font-weight: 700; font-size: 1.1rem;">SCHULSTART 2026</p>
+                        <p style="font-size: 0.8rem;">Innenausbau, Möbel, Ausstattung</p>
+                    </div>
+                </div>
+
+                <div
+                    style="font-size: 0.9rem; line-height: 1.4; display: flex; flex-direction: column; justify-content: space-between;">
+
+                    <div>
+                        <h4 style="color: #a64d32; margin-bottom: 0.5rem;">Wir stellen die Umsetzung sicher</h4>
+                        <p style="margin-bottom: 1rem;">Direkter Kontakt zur Projektleitung vor Ort stellt sicher, dass
+                            jeder Euro ankommt. Besuchen Sie <a href="https://www.rulengengaradiocese.or.tz"
+                                target="_blank"
+                                style="color: #a64d32; font-weight: 700;">www.rulengengaradiocese.or.tz</a> für mehr
+                            Infos.</p>
+
+                        <img src="{{ url_for('static', filename='images/maedchenschule-chato/Gruppenbild-2.webp') }}"
+                            alt="Team vor Ort" style="width: 100%; margin-bottom: 1rem; border-radius: 2px;">
+
+                        <h4 style="color: #a64d32; margin-bottom: 0.5rem;">Nachhaltig für ein besseres Leben</h4>
+                        <p>Bildung, sauberes Wasser und Ernährung bilden die Basis für ein selbstbestimmtes Leben der
+                            Mädchen.</p>
+                    </div>
+
+                    <div
+                        style="margin-top: 2rem; background: #fdf2f0; padding: 1rem; border-radius: 4px; border: 1px solid #f5dcd7; display: flex; justify-content: space-between; align-items: center;">
+                        <div style="font-size: 0.8rem;">
+                            <strong style="color: #a64d32; display: block; margin-bottom: 5px;">SPENDENKONTO:</strong>
+                            DE51 7509 0300 0003 0150 33<br>
+                            Missionsbenediktiner Münsterschwarzach
+                        </div>
+                        <img src="{{ url_for('static', filename='images/maedchenschule-chato/qr-mini.png') }}" alt="QR"
+                            style="width: 60px; height: 60px;">
+                    </div>
+                </div>
+
+            </div>
+
+            <div
+                style="background: #333; color: #fff; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem;">
+                <span>Dank Ihrer Spende schaffen wir den Endspurt!</span>
+                <a href="https://www.ib-behringer.de" target="_blank"
+                    style="color: #fff; text-decoration: underline;">Aktuelle Infos: www.ib-behringer.de</a>
+            </div>
+
+        </div>
+    </section>
+
+<!-- 
     <section class="page-content-section">
         <div class="container">
             <div class="intro-text" style="max-width: 800px; margin: 0 auto 3rem auto; text-align: center;">
-                <p class="text-lg">Das Ingenieurbüro Behringer & Partner unterstützt den Bau der Mädchenschule in Chato, Tansania. Hier finden Sie alle Updates, Berichte und Videos zum Projektfortschritt.</p>
-                <div style="margin: 2rem 0; box-shadow: var(--shadow-lg); border-radius: var(--radius-md); overflow: hidden;">
-                    <video controls style="width: 100%; display: block; background: #000;" poster="https://www.ib-behringer.de/wp/wp-content/uploads/2019/12/Tansania5.jpg">
+                <p class="text-lg">Das Ingenieurbüro Behringer & Partner unterstützt den Bau der Mädchenschule in Chato,
+                    Tansania. Hier finden Sie alle Updates, Berichte und Videos zum Projektfortschritt.</p>
+                <div
+                    style="margin: 2rem 0; box-shadow: var(--shadow-lg); border-radius: var(--radius-md); overflow: hidden;">
+                    <video controls style="width: 100%; display: block; background: #000;"
+                        poster="https://www.ib-behringer.de/wp/wp-content/uploads/2019/12/Tansania5.jpg">
                         <source src="{{ url_for('static', filename='videos/tansania_projekt.mp4') }}" type="video/mp4">
                         Ihr Browser unterstützt dieses Video-Tag nicht.
                     </video>
                 </div>
                 <div style="margin-top: 1.5rem;">
-                     <a href="#spenden" class="btn btn-primary">Jetzt Spenden</a>
+                    <a href="#spenden" class="btn btn-primary">Jetzt Spenden</a>
                 </div>
             </div>
-
+-->
             <hr class="wp-block-separator has-css-opacity">
 
             <h2 class="section-title" style="margin-bottom: 2rem;">Projekt-Tagebuch & Updates</h2>
-            
+
             <div class="news-grid">
                 {% for slug, item in news.items() %}
                 <div class="news-card">
@@ -53,24 +374,30 @@
 
             <div id="spenden" style="margin-top: 5rem; scroll-margin-top: 120px;">
                 <h2 class="wp-block-heading" style="text-align: center;">Helfen Sie mit</h2>
-                
+
                 <div style="display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 900px; margin: 0 auto;">
-                    
-                    <div class="donation-info" style="background: #f0f7ff; padding: 2rem; border-radius: var(--radius-md); border: 1px solid #cce5ff;">
+
+                    <div class="donation-info"
+                        style="background: #f0f7ff; padding: 2rem; border-radius: var(--radius-md); border: 1px solid #cce5ff;">
                         <h3 style="margin-top: 0; color: var(--clr-primary);">Spendenkonto</h3>
                         <table class="wp-block-table" style="width: 100%; border-collapse: collapse;">
                             <tbody>
                                 <tr>
-                                    <td style="padding: 8px 0; border-bottom: 1px solid #ddd;"><strong>Empfänger</strong></td>
-                                    <td style="padding: 8px 0; border-bottom: 1px solid #ddd;">Missionsbenediktiner Münsterschwarzach</td>
+                                    <td style="padding: 8px 0; border-bottom: 1px solid #ddd;">
+                                        <strong>Empfänger</strong></td>
+                                    <td style="padding: 8px 0; border-bottom: 1px solid #ddd;">Missionsbenediktiner
+                                        Münsterschwarzach</td>
                                 </tr>
                                 <tr>
-                                    <td style="padding: 8px 0; border-bottom: 1px solid #ddd;"><strong>Bank</strong></td>
+                                    <td style="padding: 8px 0; border-bottom: 1px solid #ddd;"><strong>Bank</strong>
+                                    </td>
                                     <td style="padding: 8px 0; border-bottom: 1px solid #ddd;">Liga Bank Regensburg</td>
                                 </tr>
                                 <tr>
-                                    <td style="padding: 8px 0; border-bottom: 1px solid #ddd;"><strong>IBAN</strong></td>
-                                    <td style="padding: 8px 0; border-bottom: 1px solid #ddd;">DE51 7509 0300 0003 0150 33</td>
+                                    <td style="padding: 8px 0; border-bottom: 1px solid #ddd;"><strong>IBAN</strong>
+                                    </td>
+                                    <td style="padding: 8px 0; border-bottom: 1px solid #ddd;">DE51 7509 0300 0003 0150
+                                        33</td>
                                 </tr>
                                 <tr>
                                     <td style="padding: 8px 0; border-bottom: 1px solid #ddd;"><strong>BIC</strong></td>
@@ -82,12 +409,15 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <p style="font-size: 0.85rem; margin-top: 1rem; color: #666;">Für eine Spendenquittung geben Sie bitte im Verwendungszweck Ihre genaue Anschrift an.</p>
+                        <p style="font-size: 0.85rem; margin-top: 1rem; color: #666;">Für eine Spendenquittung geben Sie
+                            bitte im Verwendungszweck Ihre genaue Anschrift an.</p>
                     </div>
 
                     <div style="text-align: center;">
                         <p style="margin-bottom: 1rem;">Bequem per Banking-App spenden:</p>
-                        <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2022/12/QR-Spende.jpg" alt="QR Code Spende" style="max-width: 200px; margin: 0 auto; box-shadow: var(--shadow-md); border-radius: var(--radius-sm);">
+                        <img src="https://www.ib-behringer.de/wp/wp-content/uploads/2022/12/QR-Spende.jpg"
+                            alt="QR Code Spende"
+                            style="max-width: 200px; margin: 0 auto; box-shadow: var(--shadow-md); border-radius: var(--radius-sm);">
                     </div>
                 </div>
             </div>
