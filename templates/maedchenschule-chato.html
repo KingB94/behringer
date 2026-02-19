@@ -354,69 +354,85 @@
     </section>
 
             <hr class="wp-block-separator has-css-opacity">
-
-            <h2 class="section-title" style="margin-bottom: 2rem;">Projekt-Tagebuch & Updates</h2>
-
-            <div class="news-grid">
-                {% for slug, item in news.items() %}
-                <div class="news-card">
-                    {% if item.image %}
-                    <a href="{{ url_for('news_detail', slug=slug) }}">
-                        <img src="{{ item.image }}" alt="{{ item.title }}" loading="lazy">
-                    </a>
-                    {% endif %}
-                    <div class="news-card-content">
-                        <small class="news-date">{{ item.date }}</small>
-                        <h3><a href="{{ url_for('news_detail', slug=slug) }}">{{ item.title }}</a></h3>
-                        <p>{{ item.summary }}</p>
-                        <a href="{{ url_for('news_detail', slug=slug) }}" class="btn btn-primary btn-sm">Mehr lesen</a>
+            <div style="padding: 5rem 0 2rem 0;">
+                <hr style="border: none; border-top: 1px solid #eee; max-width: 200px; margin: 0 auto;">
+            </div>
+        
+            <section class="section" style="background-color: #fcfcfc; padding: 5rem 0; border-top: 1px solid #f0f0f0; border-bottom: 1px solid #f0f0f0;">
+                <div class="container">
+                    <h2 class="section-title" style="margin-bottom: 3.5rem;">Projekt-Tagebuch & Updates</h2>
+        
+                    <div class="news-grid">
+                        {% for slug, item in news.items() %}
+                        <div class="news-card">
+                            {% if item.image %}
+                            <a href="{{ url_for('news_detail', slug=slug) }}">
+                                <img src="{{ item.image }}" alt="{{ item.title }}" loading="lazy">
+                            </a>
+                            {% endif %}
+                            <div class="news-card-content">
+                                <small class="news-date">{{ item.date }}</small>
+                                <h3><a href="{{ url_for('news_detail', slug=slug) }}">{{ item.title }}</a></h3>
+                                <p>{{ item.summary }}</p>
+                                <a href="{{ url_for('news_detail', slug=slug) }}" class="btn btn-primary btn-sm">Mehr lesen</a>
+                            </div>
+                        </div>
+                        {% endfor %}
                     </div>
                 </div>
-                {% endfor %}
-            </div>
-
-            <div id="spenden" style="margin-top: 5rem; scroll-margin-top: 120px;">
-                <h2 class="wp-block-heading" style="text-align: center;">Helfen Sie mit</h2>
-
-                <div style="display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 900px; margin: 0 auto;">
-
+            </section>
+        
+            <section id="spenden" class="section" style="padding: 7rem 0 10rem 0; background-color: #fff; scroll-margin-top: 120px;">
+                <div class="container" style="max-width: 850px;">
+                    
+                    <div style="text-align: center; margin-bottom: 4rem;">
+                        <h2 style="font-size: clamp(2rem, 5vw, 2.5rem); color: var(--clr-primary); margin-bottom: 1.5rem; font-weight: 700;">Helfen Sie mit</h2>
+                        <p style="font-size: 1.15rem; color: #666; max-width: 600px; margin: 0 auto;">
+                            Jeder Beitrag kommt zu 100% dem Bau und der Ausstattung der St. Albert Chato Secondary School zugute.
+                        </p>
+                    </div>
+        
                     <div class="donation-info"
-                        style="background: #f0f7ff; padding: 2rem; border-radius: var(--radius-md); border: 1px solid #cce5ff;">
-                        <h3 style="margin-top: 0; color: var(--clr-primary);">Spendenkonto</h3>
-                        <table class="wp-block-table" style="width: 100%; border-collapse: collapse;">
-                            <tbody>
-                                <tr>
-                                    <td style="padding: 8px 0; border-bottom: 1px solid #ddd;">
-                                        <strong>Empfänger</strong></td>
-                                    <td style="padding: 8px 0; border-bottom: 1px solid #ddd;">Missionsbenediktiner
-                                        Münsterschwarzach</td>
-                                </tr>
-                                <tr>
-                                    <td style="padding: 8px 0; border-bottom: 1px solid #ddd;"><strong>Bank</strong>
-                                    </td>
-                                    <td style="padding: 8px 0; border-bottom: 1px solid #ddd;">Liga Bank Regensburg</td>
-                                </tr>
-                                <tr>
-                                    <td style="padding: 8px 0; border-bottom: 1px solid #ddd;"><strong>IBAN</strong>
-                                    </td>
-                                    <td style="padding: 8px 0; border-bottom: 1px solid #ddd;">DE51 7509 0300 0003 0150
-                                        33</td>
-                                </tr>
-                                <tr>
-                                    <td style="padding: 8px 0; border-bottom: 1px solid #ddd;"><strong>BIC</strong></td>
-                                    <td style="padding: 8px 0; border-bottom: 1px solid #ddd;">GENODEF1MOS</td>
-                                </tr>
-                                <tr>
-                                    <td style="padding: 8px 0;"><strong>Verwendungszweck</strong></td>
-                                    <td style="padding: 8px 0;">Mädchenschule Chato</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p style="font-size: 0.85rem; margin-top: 1rem; color: #666;">Für eine Spendenquittung geben Sie
-                            bitte im Verwendungszweck Ihre genaue Anschrift an.</p>
+                        style="background: #f0f7ff; padding: clamp(1.5rem, 5vw, 3.5rem); border-radius: 12px; border: 1px solid #cce5ff; box-shadow: var(--shadow-lg);">
+                        
+                        <h3 style="margin-top: 0; color: var(--clr-primary); text-align: center; margin-bottom: 2.5rem; font-size: 1.75rem; font-weight: 700;">Spendenkonto</h3>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid #d0e4f7; padding-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
+                                <span style="font-weight: 700; color: #444; min-width: 120px;">Empfänger</span>
+                                <span style="text-align: right; color: #333;">Missionsbenediktiner Münsterschwarzach</span>
+                            </div>
+        
+                            <div style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid #d0e4f7; padding-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
+                                <span style="font-weight: 700; color: #444; min-width: 120px;">Bank</span>
+                                <span style="text-align: right; color: #333;">Liga Bank Regensburg</span>
+                            </div>
+        
+                            <div style="display: flex; flex-direction: column; border-bottom: 1px solid #d0e4f7; padding-bottom: 1rem; margin-top: 0.5rem;">
+                                <span style="font-weight: 700; color: var(--clr-primary); margin-bottom: 0.6rem;">IBAN</span>
+                                <span style="font-family: 'Courier New', Courier, monospace; font-size: clamp(1rem, 4vw, 1.4rem); letter-spacing: 1.5px; color: #000; font-weight: 700; word-break: break-all;">
+                                    DE51 7509 0300 0003 0150 33
+                                </span>
+                            </div>
+        
+                            <div style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid #d0e4f7; padding-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
+                                <span style="font-weight: 700; color: #444; min-width: 120px;">BIC</span>
+                                <span style="font-family: monospace; font-size: 1.1rem; color: #333;">GENODEF1MOS</span>
+                            </div>
+        
+                            <div style="background-color: var(--clr-primary); color: #fff; padding: 1.2rem; border-radius: 8px; text-align: center; margin-top: 1rem; box-shadow: var(--shadow-sm);">
+                                <span style="display: block; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3rem; opacity: 0.9;">Verwendungszweck</span>
+                                <strong style="font-size: 1.2rem;">Mädchenschule Chato</strong>
+                            </div>
+        
+                        </div>
+                        
+                        <p style="font-size: 0.9rem; margin-top: 2rem; color: #666; text-align: center; line-height: 1.5;">
+                            <i style="display: block; margin-bottom: 0.5rem;">Vielen Dank für Ihre Unterstützung!</i>
+                            Für eine Spendenquittung geben Sie bitte zusätzlich Ihre <strong>genaue Anschrift</strong> im Verwendungszweck an.
+                        </p>
                     </div>
-
                 </div>
-            </div>
-        </div>
-{% endblock %}
+            </section>
+        {% endblock %}
