@@ -9,6 +9,7 @@ from wtforms.validators import DataRequired, Email, Length
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_wtf.csrf import CSRFProtect
+from markupsafe import escape
 
 load_dotenv() 
 
@@ -224,30 +225,35 @@ def kontakt():
 
     # 2. Formular Validierung (Prüft CSRF Token, E-Mail Format, Pflichtfelder)
     if form.validate_on_submit():
-        name = form.name.data
-        email = form.email.data
-        nachricht = form.message.data
+        # DATEN SICHERN (HTML-Injection Schutz)
+        # Wir escapen die Eingaben, um bösartigen Code unschädlich zu machen
+        safe_name = escape(form.name.data)
+        safe_email = escape(form.email.data)
+        
+        # Nachricht für HTML vorbereiten: Erst escapen, dann Zeilenumbrüche umwandeln
+        message_raw = form.message.data
+        safe_message_html = escape(message_raw).replace('\n', '<br>')
 
-        # E-Mail Zusammenbau (wie vorher, nur sicherer durch Clean Data)
+        # E-Mail Zusammenbau
         msg = Message(
-            subject=f"Neue Kontaktanfrage von {name}",
+            subject=f"Neue Kontaktanfrage von {safe_name}",
             sender=("Kontaktformular Webseite", app.config['MAIL_USERNAME']),
-            recipients=['info@ib-behringer.de'] # oder deine Env Variable
+            recipients=['info@ib-behringer.de']
         )
 
-        # 1. Plain-Text-Version für E-Mail-Clients, die kein HTML unterstützen
+        # 1. Plain-Text-Version (Hier ist kein escape nötig, da kein HTML gerendert wird)
         msg.body = f"""
         Du hast eine neue Nachricht über das Kontaktformular erhalten:
         -----------------------------------
-        Name: {name}
-        E-Mail: {email}
+        Name: {form.name.data}
+        E-Mail: {form.email.data}
         -----------------------------------
         Nachricht:
-        {nachricht}
+        {message_raw}
         -----------------------------------
         """
 
-        # 2. Schön formatierte HTML-Version der E-Mail
+        # 2. Schön formatierte HTML-Version der E-Mail (mit sicheren Variablen)
         msg.html = f"""
         <!DOCTYPE html>
         <html lang="de">
@@ -270,7 +276,7 @@ def kontakt():
                     box-shadow: 0 4px 8px rgba(0,0,0,0.05);
                 }}
                 h2 {{
-                    color: #005a9c; /* Hauptfarbe Ihrer Webseite */
+                    color: #005a9c;
                     margin-top: 0;
                     border-bottom: 2px solid #e0e0e0;
                     padding-bottom: 10px;
@@ -291,6 +297,7 @@ def kontakt():
                     padding: 15px;
                     font-style: italic;
                     color: #555;
+                    line-height: 1.5;
                 }}
                 a {{
                     color: #007bff;
@@ -309,15 +316,15 @@ def kontakt():
                 <h2>Neue Kontaktanfrage</h2>
                 <div class="info-grid">
                     <strong>Von:</strong>
-                    <span>{name}</span>
+                    <span>{safe_name}</span>
                     
                     <strong>E-Mail:</strong>
-                    <span><a href="mailto:{email}">{email}</a></span>
+                    <span><a href="mailto:{safe_email}">{safe_email}</a></span>
                 </div>
                 
                 <h3>Nachricht:</h3>
                 <blockquote>
-                    <p>{nachricht.replace(chr(10), '<br>')}</p>
+                    <p>{safe_message_html}</p>
                 </blockquote>
             </div>
             <div class="footer">
@@ -337,7 +344,7 @@ def kontakt():
         return redirect(url_for('index') + '#contact')
 
     else:
-        # Falls Validierungsfehler auftreten (z.B. CSRF Token fehlt oder falsche Email)
+        # Falls Validierungsfehler auftreten
         for field, errors in form.errors.items():
             for error in errors:
                 flash(f"Fehler im Feld {field}: {error}", 'error')
