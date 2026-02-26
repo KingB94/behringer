@@ -1,54 +1,51 @@
 {% extends "base.html" %}
 
-{% block title %}Projekt: Fernwärme Waldkraiburg - Behringer & Partner{% endblock %}
-{% block meta_description %}Erschließung Fernwärme 2025 im Stadtgebiet Waldkraiburg: Neuverlegung von FW-Leitungen, Wasserleitungen und Mittelspannungstrassen.{% endblock %}
+{% block title %}Projekt: Kanalkataster Ebersberg - Behringer & Partner{% endblock %}
+{% block meta_description %}Kontinuierliche Betreuung und Datenpflege des Geoinformationssystems der Stadt Ebersberg. GIS-Management für 80 km Kanalnetz.{% endblock %}
 
 {% block content %}
 <main>
     <div class="container project-detail-wrapper">
         <div class="project-detail-layout">
             <div class="project-main-image">
-                <img src="{{ url_for('static', filename='images/referenzen/fernwaerme/G183/1.webp') }}" alt="Fernwärme-Erschließung Waldkraiburg G 183">
+                <img src="{{ url_for('static', filename='images/referenzen/kommunales-gis/ebersberg/1.webp') }}" alt="Geoinformationssystem Stadt Ebersberg">
             </div>
             
             <div class="project-main-details">
-                <h1>Erschließung Fernwärme 2025 im Stadtgebiet</h1>
+                <h1>Betreuung Geoinformationssystem / Kanalkataster Ebersberg</h1>
                 
                 <div class="project-detail-item">
                     <h3>Auftraggeber</h3>
-                    <p>Stadtwerke Waldkraiburg GmbH</p>
+                    <p>Stadt Ebersberg</p>
                 </div>
                 
                 <div class="project-detail-item">
                     <h3>Stichpunkte zum Projekt</h3>
                     <ul>
-                        <li><strong>Fernwärme:</strong> Neuverlegung von ca. 1.860 m FW-Leitung inkl. Hausanschlüssen (KMR-System DN 25/125 bis DN 100/250).</li>
-                        <li><strong>Wasserversorgung:</strong> Neuverlegung von ca. 2.765 m Trinkwasserleitung inkl. Hausanschlüssen (PE-HD DA 32 bis DA 160).</li>
-                        <li><strong>Strom / Mittelspannung:</strong> Verlegung von ca. 680 m Mittelspannungsleitungen in Kabelschutzrohren DN 160 inkl. Setzen von Kabelzugschächten (2000x1500 mm).</li>
-                        <li><strong>Komplexität:</strong> Koordinierte Verlegung verschiedener Sparten im innerstädtischen Bereich.</li>
+                        <li><strong>Netzumfang:</strong> Katasteraktualisierungen von ca. 80 km Hauptkanälen mit etwa 3.000 Schächten im Bestand.</li>
+                        <li><strong>Datenpflege:</strong> Kontinuierliche Aktualisierung von Leitungen, Anschlusspunkten und Bauwerken.</li>
+                        <li><strong>Hydraulik-Schnittstelle:</strong> Verknüpfung von GIS-Daten mit hydraulischen Modellen zur fundierten Sanierungsplanung von Entwässerungsnetzen.</li>
+                        <li><strong>Datenformat-Management:</strong> Professionelle Verwaltung und Aufbereitung technischer Daten (Shapefiles, XML, etc.).</li>
+                        <li><strong>Koordination:</strong> Enger Austausch und Zusammenarbeit mit dem Bauamt sowie externen Dienstleistern der Stadt.</li>
+                        <li><strong>Support:</strong> Laufende Unterstützung der Verwaltung im operativen Betrieb.</li>
                     </ul>
                 </div>
                 
                 <div class="project-detail-item">
-                    <h3>Ausführungszeitraum</h3>
-                    <p>Februar – Dezember 2025</p>
-                </div>
-
-                <div class="project-detail-item">
                     <h3>Leistungsbereich</h3>
-                    <p>Erdarbeiten, Rohrleitungsbau, Pflasterarbeiten und Straßenbau</p>
+                    <p>Betreuung Kanalkataster (Kommunales GIS)</p>
                 </div>
             </div>
         </div>
 
         <div class="project-gallery-wrapper">
-            <h2 class="project-gallery-title">Impressionen der Baustelle</h2>
+            <h2 class="project-gallery-title">Weitere Bilder</h2>
             
             <div class="slideshow-container">
-                {% for i in range(1, 9) %}
+                {% for i in range(1, 5) %}
                 <div class="mySlides fade">
-                    <div class="numbertext">{{ i }} / 8</div>
-                    <img src="{{ url_for('static', filename='images/referenzen/fernwaerme/G183/' ~ i ~ '.webp') }}" alt="Baustelle Waldkraiburg G 183 Bild {{ i }}">
+                    <div class="numbertext">{{ i }} / 4</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/kommunales-gis/ebersberg/' ~ i ~ '.webp') }}" alt="Ebersberg GIS Bild {{ i }}">
                 </div>
                 {% endfor %}
 
@@ -57,9 +54,9 @@
             </div>
             
             <div class="thumbnail-row">
-                {% for i in range(1, 9) %}
+                {% for i in range(1, 5) %}
                 <img class="thumbnail"
-                     src="{{ url_for('static', filename='images/referenzen/fernwaerme/G183/' ~ i ~ '.webp') }}"
+                     src="{{ url_for('static', filename='images/referenzen/kommunales-gis/ebersberg/' ~ i ~ '.webp') }}"
                      data-slide="{{ i }}"
                      alt="Vorschaubild {{ i }}">
                 {% endfor %}
@@ -72,7 +69,6 @@
 {% block scripts %}
 <script>
     let slideIndex = 1;
-    
     showSlides(slideIndex);
 
     function plusSlides(n) {

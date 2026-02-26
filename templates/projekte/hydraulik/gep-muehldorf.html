@@ -1,54 +1,49 @@
 {% extends "base.html" %}
 
-{% block title %}Projekt: Fernwärme Waldkraiburg - Behringer & Partner{% endblock %}
-{% block meta_description %}Erschließung Fernwärme 2025 im Stadtgebiet Waldkraiburg: Neuverlegung von FW-Leitungen, Wasserleitungen und Mittelspannungstrassen.{% endblock %}
+{% block title %}Projekt: GEP Stadt Mühldorf a. Inn - Behringer & Partner{% endblock %}
+{% block meta_description %}Aktualisierung des Generalentwässerungsplans der Stadt Mühldorf a. Inn gemäß DWA-A 102. Hydrodynamische Netzberechnung für 131,5 km Kanalnetz.{% endblock %}
 
 {% block content %}
 <main>
     <div class="container project-detail-wrapper">
         <div class="project-detail-layout">
             <div class="project-main-image">
-                <img src="{{ url_for('static', filename='images/referenzen/fernwaerme/G183/1.webp') }}" alt="Fernwärme-Erschließung Waldkraiburg G 183">
+                <img src="{{ url_for('static', filename='images/referenzen/hydraulik/aw402/1.webp') }}" alt="Generalentwässerungsplan Stadt Mühldorf">
             </div>
             
             <div class="project-main-details">
-                <h1>Erschließung Fernwärme 2025 im Stadtgebiet</h1>
+                <h1>Generalentwässerungsplan (GEP) Stadt Mühldorf a. Inn</h1>
                 
                 <div class="project-detail-item">
                     <h3>Auftraggeber</h3>
-                    <p>Stadtwerke Waldkraiburg GmbH</p>
+                    <p>Stadt Mühldorf a. Inn</p>
                 </div>
                 
                 <div class="project-detail-item">
                     <h3>Stichpunkte zum Projekt</h3>
                     <ul>
-                        <li><strong>Fernwärme:</strong> Neuverlegung von ca. 1.860 m FW-Leitung inkl. Hausanschlüssen (KMR-System DN 25/125 bis DN 100/250).</li>
-                        <li><strong>Wasserversorgung:</strong> Neuverlegung von ca. 2.765 m Trinkwasserleitung inkl. Hausanschlüssen (PE-HD DA 32 bis DA 160).</li>
-                        <li><strong>Strom / Mittelspannung:</strong> Verlegung von ca. 680 m Mittelspannungsleitungen in Kabelschutzrohren DN 160 inkl. Setzen von Kabelzugschächten (2000x1500 mm).</li>
-                        <li><strong>Komplexität:</strong> Koordinierte Verlegung verschiedener Sparten im innerstädtischen Bereich.</li>
+                        <li><strong>Normen-Update:</strong> Aktualisierung des Generalentwässerungsplans aus dem Jahr 2008 unter Berücksichtigung der neuen Anforderungen nach <strong>DWA-A 102</strong>.</li>
+                        <li><strong>Modellierung:</strong> Überrechnung des Bestands- und Prognosemodells inklusive eines fiktiven Zentralbeckenmodells.</li>
+                        <li><strong>Netzumfang:</strong> Hydrodynamische Berechnung von insgesamt <strong>131,5 km Kanallänge</strong>.</li>
+                        <li><strong>Zielsetzung:</strong> Die Ergebnisse dienten als Grundlage für die Beantragung neuer Wasserrechte.</li>
                     </ul>
                 </div>
                 
                 <div class="project-detail-item">
-                    <h3>Ausführungszeitraum</h3>
-                    <p>Februar – Dezember 2025</p>
-                </div>
-
-                <div class="project-detail-item">
                     <h3>Leistungsbereich</h3>
-                    <p>Erdarbeiten, Rohrleitungsbau, Pflasterarbeiten und Straßenbau</p>
+                    <p>Hydrodynamische und hydraulische Netzberechnung</p>
                 </div>
             </div>
         </div>
 
         <div class="project-gallery-wrapper">
-            <h2 class="project-gallery-title">Impressionen der Baustelle</h2>
+            <h2 class="project-gallery-title">Weitere Einblicke</h2>
             
             <div class="slideshow-container">
-                {% for i in range(1, 9) %}
+                {% for i in range(1, 3) %}
                 <div class="mySlides fade">
-                    <div class="numbertext">{{ i }} / 8</div>
-                    <img src="{{ url_for('static', filename='images/referenzen/fernwaerme/G183/' ~ i ~ '.webp') }}" alt="Baustelle Waldkraiburg G 183 Bild {{ i }}">
+                    <div class="numbertext">{{ i }} / 2</div>
+                    <img src="{{ url_for('static', filename='images/referenzen/hydraulik/aw402/' ~ i ~ '.webp') }}" alt="GEP Mühldorf Bild {{ i }}">
                 </div>
                 {% endfor %}
 
@@ -57,9 +52,9 @@
             </div>
             
             <div class="thumbnail-row">
-                {% for i in range(1, 9) %}
+                {% for i in range(1, 3) %}
                 <img class="thumbnail"
-                     src="{{ url_for('static', filename='images/referenzen/fernwaerme/G183/' ~ i ~ '.webp') }}"
+                     src="{{ url_for('static', filename='images/referenzen/hydraulik/aw402/' ~ i ~ '.webp') }}"
                      data-slide="{{ i }}"
                      alt="Vorschaubild {{ i }}">
                 {% endfor %}
@@ -72,7 +67,6 @@
 {% block scripts %}
 <script>
     let slideIndex = 1;
-    
     showSlides(slideIndex);
 
     function plusSlides(n) {
