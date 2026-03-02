@@ -236,17 +236,11 @@
                     </p>
                 </div>
             </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
-                <img src="{{ url_for('static', filename='images/maedchenschule-chato/teambild.webp') }}"
-                    alt="Bauarbeiten am Fenster" style="width: 100%; border-radius: 4px;">
-                <img src="{{ url_for('static', filename='images/maedchenschule-chato/Tafel_BBHartig.webp') }}"
-                    alt="Projektleitung vor Ort" style="width: 100%; border-radius: 4px;">
-            </div>
-
+            <!-- SLIDESHOW mit neuen Bildern -->
         </div>
     </section>
 
+    <!-- 
     <section class="section" style="background-color: #d2b48c; padding: 2rem 0;">
         <div class="container"
             style="max-width: 1000px; background-color: #fff; padding: 0; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-lg);">
@@ -355,30 +349,6 @@
                 <hr style="border: none; border-top: 1px solid #eee; max-width: 200px; margin: 0 auto;">
             </div>
         
-            <section class="section" style="background-color: #fcfcfc; padding: 5rem 0; border-top: 1px solid #f0f0f0; border-bottom: 1px solid #f0f0f0;">
-                <div class="container">
-                    <h2 class="section-title" style="margin-bottom: 3.5rem;">Projekt-Tagebuch & Updates</h2>
-        
-                    <div class="news-grid">
-                        {% for slug, item in news.items() %}
-                        <div class="news-card">
-                            {% if item.image %}
-                            <a href="{{ url_for('news_detail', slug=slug) }}">
-                                <img src="{{ item.image }}" alt="{{ item.title }}" loading="lazy">
-                            </a>
-                            {% endif %}
-                            <div class="news-card-content">
-                                <small class="news-date">{{ item.date }}</small>
-                                <h3><a href="{{ url_for('news_detail', slug=slug) }}">{{ item.title }}</a></h3>
-                                <p>{{ item.summary }}</p>
-                                <a href="{{ url_for('news_detail', slug=slug) }}" class="btn btn-primary btn-sm">Mehr lesen</a>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </section>
-        
             <section id="spenden" class="section" style="padding: 7rem 0 10rem 0; background-color: #fff; scroll-margin-top: 120px;">
                 <div class="container" style="max-width: 850px;">
                     
@@ -432,4 +402,6 @@
                     </div>
                 </div>
             </section>
+
+            -->
         {% endblock %}

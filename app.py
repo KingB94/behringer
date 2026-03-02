@@ -156,28 +156,15 @@ def impressum():
 
 @app.route('/maedchenschule-chato')
 def maedchenschule_chato():
-    # 1. Alle Daten laden
-    news_data = load_news_data()
-    
-    # 2. Filtern: Wir wollen hier nur Artikel mit der Kategorie 'chato'
-    # Wir erstellen ein neues Dictionary nur mit diesen Einträgen
-    chato_news = {slug: data for slug, data in news_data.items() if data.get('category') == 'chato'}
-    
-    # 3. WICHTIG: 'news=chato_news' übergibt die Daten an das HTML
-    return render_template('maedchenschule-chato.html', news=chato_news)
+    # Wir laden keine News mehr für diese Seite
+    return render_template('maedchenschule-chato.html')
 
-
-# Auch diese Route muss angepasst werden, damit sie funktioniert:
 @app.route('/neuigkeiten')
 def news():
-    # 1. Alle Daten laden
+    # Einfach alle vorhandenen Daten laden (Chato ist ja schon in der JSON gelöscht)
     news_data = load_news_data()
-    
-    # 2. Alle Daten an das Template übergeben
     return render_template('news.html', news=news_data)
 
-
-# UND du hast die Detail-Route vergessen! Ohne diese funktionieren die Links "Mehr lesen" nicht:
 @app.route('/neuigkeiten/<slug>')
 def news_detail(slug):
     news_data = load_news_data()
@@ -186,14 +173,8 @@ def news_detail(slug):
     if not post:
         abort(404)
     
-    # Back-Link Logik (damit der "Zurück"-Button weiß, woher man kam)
-    back_target = 'news'
-    back_text = 'Neuigkeiten'
-    if post.get('category') == 'chato':
-        back_target = 'maedchenschule_chato'
-        back_text = 'Mädchenschule Chato'
-
-    return render_template('news_detail.html', post=post, back_url=url_for(back_target), back_text=back_text)
+    # Vereinfachte Back-Link Logik (nur noch zurück zur News-Übersicht)
+    return render_template('news_detail.html', post=post, back_url=url_for('news'), back_text='Neuigkeiten')
 
 # ─── Back Routen für Projekte ───────────────────────────────────
 @app.route('/projekt/<path:project_slug>')
