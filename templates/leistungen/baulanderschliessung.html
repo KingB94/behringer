@@ -113,6 +113,25 @@
                     </a>
                 </article>
 
+                <article class="portfolio-card">
+                    <a
+                        href="{{ url_for('projekt', project_slug='siedlungswasserwirtschaft/massing', back=request.path, back_text='Baulanderschließung') }}">
+                        <div class="portfolio-card-inner">
+                            <div class="portfolio-thumbnail">
+                                <img src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/WV240_Massing/1.webp') }}"
+                                    alt="Erneuerung der Wasserleitung Eggenfeldener Straße in Massing" loading="lazy">
+                                <div class="portfolio-overlay">
+                                    <span class="portfolio-overlay-icon">➔</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-content">
+                                <h3 class="portfolio-title">Wasserversorgung Eggenfeldener Straße</h3>
+                                <p class="portfolio-category">Siedlungswasserwirtschaft, Erschließung</p>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
             </div>
         </div>
     </section>

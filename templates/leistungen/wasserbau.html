@@ -80,7 +80,7 @@
                 </article>
 
                 <article class="portfolio-card">
-                    <a href="{{ url_for('projekt', project_slug='hydraulik/Hochwasserschutzkonzept_Oberornau', back=request.path, back_text='Hydraulische Nachweise') }}" class="portfolio-card-link">
+                    <a href="{{ url_for('projekt', project_slug='hydraulik/Hochwasserschutzkonzept_Oberornau', back=request.path, back_text='Wasserbau') }}" class="portfolio-card-link">
                         <div class="portfolio-card-inner">
                             <div class="portfolio-thumbnail">
                                 <img src="{{ url_for('static', filename='images/referenzen/hydraulik/w30/1.webp') }}" alt="Hochwasserschutzkonzept Oberornau" loading="lazy">
@@ -91,6 +91,43 @@
                             <div class="portfolio-content">
                                 <h3 class="portfolio-title">Integrales Hochwasserschutzkonzept Oberornau</h3>
                                 <p class="portfolio-category">Hydraulische Berechnungen</p>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="portfolio-card">
+                    <a href="{{ url_for('projekt', project_slug='siedlungswasserwirtschaft/regenueberlauf-hummel', back=request.path, back_text='Wasserbau') }}"
+                        class="portfolio-card-link" target="_blank" rel="noopener">
+                        <div class="portfolio-card-inner">
+                            <div class="portfolio-thumbnail">
+                                <img src="{{ url_for('static', filename='images/referenzen/siedlungswasserwirtschaft/AW416_RUE_HUMMEL/1.webp') }}"
+                                    alt="Regenüberlauf Hummel" loading="lazy">
+                                <div class="portfolio-overlay">
+                                    <span class="portfolio-overlay-icon">➔</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-content">
+                                <h3 class="portfolio-title">Regenüberlauf Hummel in Massing</h3>
+                                <p class="portfolio-category">Hydraulische Nachweise, Siedlungswasserwirtschaft</p>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="portfolio-card">
+                    <a href="{{ url_for('projekt', project_slug='fernwaerme/reichertsheim', back=request.path, back_text='Wasserbau') }}" class="portfolio-card-link">
+                        <div class="portfolio-card-inner">
+                            <div class="portfolio-thumbnail">
+                                <!-- Hier das korrekte Bild G158/1.webp eingefügt -->
+                                <img src="{{ url_for('static', filename='images/referenzen/fernwaerme/G158/1.webp') }}" alt="Fernwärmeversorgung Reichertsheim" loading="lazy">
+                                <div class="portfolio-overlay">
+                                    <span class="portfolio-overlay-icon">➔</span>
+                                </div>
+                            </div>
+                            <div class="portfolio-content">
+                                <h3 class="portfolio-title">Fernwärme- und Wasserversorgung Reichertsheim</h3>
+                                <p class="portfolio-category">Fernwärme</p>
                             </div>
                         </div>
                     </a>
