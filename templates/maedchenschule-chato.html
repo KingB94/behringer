@@ -240,6 +240,59 @@
         </div>
     </section>
 
+    <section class="section slideshow-section" style="background-color: #f9f9f9; padding: 4rem 0;">
+        <div class="container" style="max-width: 1000px;">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: #5d8a66;">Eindrücke aus Chato</h2>
+            
+            <div class="chato-slideshow-container" style="position: relative; overflow: hidden; border-radius: 8px 8px 0 0; box-shadow: var(--shadow-lg); line-height: 0;">
+                {% for i in range(1, 24) %}
+                <div class="chato-slide fade" style="display: none;">
+                    <img src="{{ url_for('static', filename='images/maedchenschule-chato/chato' ~ i ~ '.webp') }}" 
+                         style="width: 100%; aspect-ratio: 16/9; object-fit: cover;" 
+                         alt="Eindruck aus Chato Bild {{ i }}">
+                </div>
+                {% endfor %}
+    
+                <a class="prev" onclick="plusChatoSlides(-1)" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); cursor: pointer; background: rgba(0,0,0,0.5); color: white; padding: 15px; border-radius: 50%; text-decoration: none; font-weight: bold; z-index: 2; line-height: 1;">❮</a>
+                <a class="next" onclick="plusChatoSlides(1)" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); cursor: pointer; background: rgba(0,0,0,0.5); color: white; padding: 15px; border-radius: 50%; text-decoration: none; font-weight: bold; z-index: 2; line-height: 1;">❯</a>
+            </div>
+    
+            <div class="thumbnail-bar" style="display: flex; overflow-x: auto; gap: 10px; padding: 15px; background: #333; border-radius: 0 0 8px 8px; scroll-behavior: smooth;">
+                {% for i in range(1, 24) %}
+                    {# 1. Pfad vorab definieren, um url_for sauber zu halten #}
+                    {% set img_path = 'images/maedchenschule-chato/chato' ~ i ~ '.webp' %}
+                    
+                    <img class="chato-thumb" 
+                         src="{{ url_for('static', filename=img_path) }}" 
+                         {# 2. i direkt ohne zusätzliche Leerzeichen übergeben #}
+                         onclick="currentChatoSlide({{ i }})" 
+                         style="height: 60px; aspect-ratio: 16/9; object-fit: cover; cursor: pointer; opacity: 0.5; transition: 0.3s; border-radius: 2px; flex-shrink: 0;"
+                         alt="Vorschau {{ i }}">
+                {% endfor %}
+            </div>
+            
+            <div style="text-align: center; margin-top: 1rem;">
+                <span id="slide-counter" style="font-size: 0.9rem; color: #666;">Bild 1 von 23</span>
+            </div>
+        </div>
+    </section>
+    
+    <style>
+        /* Styling für das aktive Thumbnail */
+        .chato-thumb.active {
+            opacity: 1 !important;
+            outline: 3px solid #5d8a66;
+        }
+        /* Scrollbar Design für die Thumbnails */
+        .thumbnail-bar::-webkit-scrollbar {
+            height: 6px;
+        }
+        .thumbnail-bar::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 10px;
+        }
+    </style>
+
     <!-- 
     <section class="section" style="background-color: #d2b48c; padding: 2rem 0;">
         <div class="container"
@@ -404,4 +457,57 @@
             </section>
 
             -->
+        </main>
         {% endblock %}
+
+        {% block scripts %}
+        <script>
+            let chatoIndex = 1;
+            showChatoSlides(chatoIndex);
+        
+            function plusChatoSlides(n) {
+                showChatoSlides(chatoIndex += n);
+            }
+        
+            function currentChatoSlide(n) {
+                showChatoSlides(chatoIndex = n);
+            }
+        
+            function showChatoSlides(n) {
+                let i;
+                let slides = document.getElementsByClassName("chato-slide");
+                let thumbs = document.getElementsByClassName("chato-thumb");
+                let counter = document.getElementById("slide-counter");
+                
+                if (n > slides.length) {chatoIndex = 1}    
+                if (n < 1) {chatoIndex = slides.length}
+                
+                // Alle Bilder und Thumbnails zurücksetzen
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";  
+                    thumbs[i].className = thumbs[i].className.replace(" active", "");
+                }
+                
+                // Aktives Bild anzeigen
+                slides[chatoIndex-1].style.display = "block";
+                
+                // Aktives Thumbnail markieren
+                thumbs[chatoIndex-1].className += " active";
+        
+                // Optional: Thumbnail automatisch in den Sichtbereich scrollen
+                thumbs[chatoIndex-1].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                
+                if(counter) {
+                    counter.innerHTML = "Bild " + chatoIndex + " von " + slides.length;
+                }
+            }
+        
+            // Automatischer Wechsel alle 6 Sekunden
+            let slideTimer = setInterval(() => {
+                plusChatoSlides(1);
+            }, 6000);
+        
+            // Timer stoppen, wenn der User selbst klickt
+            document.querySelector('.chato-slideshow-container').addEventListener('mouseenter', () => clearInterval(slideTimer));
+        </script>
+{% endblock %}
