@@ -175,13 +175,21 @@
                     <label for="message-input" class="visually-hidden">Ihre Nachricht</label>
                     <textarea id="message-input" name="message" placeholder="Ihre Nachricht" rows="6" required></textarea>
                     
+                    <div class="privacy-checkbox-wrapper" style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 1rem; text-align: left;">
+                        <input type="checkbox" id="privacy_consent" name="privacy_consent" required style="margin-top: 4px; cursor: pointer;">
+                        <label for="privacy_consent" style="font-size: 0.9rem; line-height: 1.4; cursor: pointer;">
+                            Ich habe die <a href="{{ url_for('impressum') }}#datenschutz" target="_blank" rel="noopener" style="text-decoration: underline;">Datenschutzerklärung</a> zur Kenntnis genommen und stimme zu, dass meine Angaben zur Kontaktaufnahme verarbeitet werden.
+                        </label>
+                    </div>
+                    
                     <button type="submit" class="btn btn-primary">Nachricht senden</button>
                 </form>
+                
                 <div class="contact-info">
                     <div class="map-container">
                         <iframe 
                         id="google-map-iframe"
-                        data-src="https://maps.google.com/maps?q=Ingenieurb%C3%BCro+Behringer+%26+Partner+mbB%2C+Luitpoldallee+32%2C+84453+M%C3%BChldorf+a.+Inn&t=&z=15&ie=UTF8&iwloc=B&output=embed"
+                        data-src="https://maps.google.com/maps?q=Luitpoldallee%2032,%2084453%20M%C3%BChldorf%20a.%20Inn&t=&z=15&ie=UTF8&iwloc=&output=embed"
                         width="100%" 
                         height="350" 
                         style="border:0; display:none;" 
@@ -189,7 +197,7 @@
                         loading="lazy" 
                         referrerpolicy="no-referrer-when-downgrade"
                         title="Standortkarte Google Maps">
-                    </iframe>
+                        </iframe>
                 
                         <div id="map-placeholder" class="map-placeholder">
                             <img src="{{ url_for('static', filename='images/map-placeholder.webp') }}" alt="Karte Vorschau" class="map-preview-img">
