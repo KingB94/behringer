@@ -1,4 +1,12 @@
 {
+    "fortschritt-maedchenschule-chato-2026": {
+      "title": "Update: Baufortschritt an der Mädchenschule Chato",
+      "date": "04.03.2026",
+      "category": "chato",
+      "image": "/static/images/maedchenschule-chato/Tansania2.webp",
+      "summary": "Die Bauarbeiten in Tansania schreiten dank Ihrer Unterstützung stetig voran. Ein wichtiger Meilenstein für den Schulstart 2027 ist erreicht.",
+      "content": "<p>Wir freuen uns, Ihnen heute ein aktuelles Update zu unserem Herzensprojekt in Tansania geben zu können. Die Arbeiten an der <strong>St. Albert Chato Secondary School</strong> kommen hervorragend voran. Nach der Fertigstellung der Rohbauten für das Unterrichtsgebäude und das Schlafgebäude liegt der Fokus nun auf dem Innenausbau und den Sanitäranlagen.</p><p>Dank der großzügigen Spenden konnten wir bereits die Mensa im Rohbau fertigstellen. Jeder Fortschritt vor Ort bringt uns dem Ziel näher, den ersten Schülerinnen im Jahr 2027 eine hochwertige Bildung und ein sicheres Zuhause zu bieten.</p><p>Detaillierte Einblicke, Bilder der Bauphasen und Informationen zur Geschichte des Projekts finden Sie auf unserer Projektseite:</p><p style='margin: 2rem 0; text-align: center;'><a href='/maedchenschule-chato' class='btn btn-primary'>Zur Projektseite Mädchenschule Chato</a></p><div style='display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin: 2rem 0;'><figure><img src='/static/images/maedchenschule-chato/IMG-20231111-WA0000.webp' style='width:100%; height:200px; object-fit:cover; border-radius:4px;' alt='Rohbau Unterrichtsgebäude'><figcaption style='font-size: 0.8rem; color: #666; margin-top: 5px;'>Das Unterrichtsgebäude nimmt Form an</figcaption></figure><figure><img src='/static/images/maedchenschule-chato/dezember.webp' style='width:100%; height:200px; object-fit:cover; border-radius:4px;' alt='Sanitärgebäude'><figcaption style='font-size: 0.8rem; color: #666; margin-top: 5px;'>Fertigstellung der Mensa & Sanitäranlagen</figcaption></figure><figure><img src='/static/images/maedchenschule-chato/oktober.webp' style='width:100%; height:200px; object-fit:cover; border-radius:4px;' alt='Administrationsgebäude'><figcaption style='font-size: 0.8rem; color: #666; margin-top: 5px;'>Rohbau des Administrationsgebäudes</figcaption></figure></div><p>Wir danken allen Spendern, die diesen Weg gemeinsam mit uns gehen. Jeder Euro kommt zu 100% vor Ort an.</p>"
+    },
     "froehliche-weihnachten-2025": {
       "title": "Fröhliche Weihnachten",
       "date": "11.12.2025",
