@@ -290,7 +290,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); color: var(--clr-seco
 .hero-bg-firmengeschichte { background-image: url("../images/home/hero/slide4.webp"); }
 .hero-bg-stellenangebote { background-image: url("../images/team/team-header2.webp"); }
 .hero-bg-team { background-image: url("../images/team/team-header.webp");  background-position: center 40%; }
-
+.hero-bg-chato { background-image: url("../images/maedchenschule-chato/Tansania5.webp"); }
 /* --- 4.3 Leistungs-Detailseiten --- */
 .leistung-detail-content .intro-text { text-align: center; max-width: 800px; margin: 0 auto var(--space-lg) auto; font-size: 1.1rem; color: #555; }
 .service-list-grid { list-style: none; padding: 0; margin: 0 0 var(--space-lg) 0; display: grid; gap: var(--space-md); }
@@ -420,6 +420,33 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); color: var(--clr-seco
 .entry-content .wp-block-image { margin-top: var(--space-sm); margin-bottom: var(--space-md); }
 .entry-content .wp-block-image.aligncenter, .entry-content figure.aligncenter { display: flex; justify-content: center; align-items: center; flex-direction: column; }
 .entry-content .wp-block-image img { border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); }
+
+/* --- Datenschutz-Checkbox Fix --- */
+.privacy-checkbox-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+/* Überschreibt die 100% Breite der anderen Inputs für die Checkbox */
+.contact-form input[type="checkbox"] {
+    width: auto;
+    margin-top: 4px; /* Optische Ausrichtung zur ersten Textzeile */
+    margin-bottom: 0;
+    cursor: pointer;
+    flex-shrink: 0; /* Verhindert, dass die Checkbox bei langem Text gequetscht wird */
+    box-shadow: none; /* Kein blauer Rand beim Klicken wie bei Textfeldern */
+}
+
+.privacy-checkbox-wrapper label {
+    font-size: 0.8rem; /* Hier kannst du die Schriftgröße anpassen (vorher 0.9rem) */
+    line-height: 1.4;
+    cursor: pointer;
+    color: #666; /* Etwas dezenteres Grau, damit es nicht so wuchtig wirkt */
+    margin-bottom: 0;
+}
 
 /* --- 4.6 Projekt-Detailseiten (z.B. Klugham) --- */
 .project-detail-wrapper { padding: var(--space-xl) 0; }

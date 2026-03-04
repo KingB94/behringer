@@ -4,7 +4,8 @@ from flask_mail import Mail, Message
 from flask import Flask, render_template, request, redirect, url_for, flash, abort
 import json
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, SubmitField
+# NEU: BooleanField für die Checkbox hinzugefügt
+from wtforms import StringField, TextAreaField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, Email, Length
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
@@ -53,13 +54,16 @@ class KontaktForm(FlaskForm):
     email = StringField('E-Mail', validators=[DataRequired(), Email(message="Ungültige E-Mail-Adresse.")])
     message = TextAreaField('Nachricht', validators=[DataRequired(), Length(min=10, message="Die Nachricht ist zu kurz.")])
     
+    # NEU: Datenschutz-Checkbox Validierung im Backend
+    privacy_consent = BooleanField('Datenschutz', validators=[DataRequired(message="Bitte akzeptieren Sie die Datenschutzerklärung.")])
+    
     # Honeypot-Feld (Für den Nutzer unsichtbar, Bots füllen es oft aus)
     # Wir nennen es "fax" oder "url", damit Bots denken, es sei wichtig.
     fax = StringField('Fax') 
 
     submit = SubmitField('Nachricht senden')
 
-# ─── HILFSFUNKTION ZUM LADEN DER DATEN ─────────────────────────────
+# ─── HILFSFUNKTION ZUM LADEN DATEN ─────────────────────────────
 def load_news_data():
     """Lädt die News-Artikel aus der JSON-Datei."""
     try:
@@ -75,8 +79,6 @@ def load_news_data():
         return {}
 
 # ─── Routes for “Leistungen” (Services) ───────────────────────────────────
-# Assuming these HTML files are in templates/leistungen/
-
 @app.route('/siedlungswasserwirtschaft')
 def siedlungswasserwirtschaft():
     return render_template('leistungen/siedlungswasserwirtschaft.html')
@@ -110,21 +112,19 @@ def wasserbau():
     return render_template('leistungen/wasserbau.html')
 
 # ─── Routes for “Unternehmen” (Company) ───────────────────────────────────
-# Assuming these HTML files are in templates/unternehmen/
-
-@app.route('/team') # Changed from /unternehmen/team to match url_for('unternehmen_team')
+@app.route('/team') 
 def unternehmen_team():
     return render_template('unternehmen/team.html')
 
-@app.route('/firmengeschichte') # Changed from /sonstiges/firmengeschichte
+@app.route('/firmengeschichte') 
 def firmengeschichte():
-    return render_template('unternehmen/firmengeschichte.html') # Assuming it's in unternehmen/
+    return render_template('unternehmen/firmengeschichte.html') 
 
-@app.route('/netzwerk') # Changed from /unternehmen/netzwerk
+@app.route('/netzwerk') 
 def unternehmen_netzwerk():
     return render_template('unternehmen/netzwerk.html')
 
-@app.route('/stellenangebote') # Changed from /unternehmen/stellenangebote
+@app.route('/stellenangebote') 
 def unternehmen_stellenangebote():
     return render_template('unternehmen/stellenangebote.html')
 
@@ -137,31 +137,24 @@ def standorte():
 def karriere_detail(job_slug):
     """
     Lädt dynamisch die HTML-Datei aus templates/jobs/
-    Beispiel: /karriere/bauzeichner lädt templates/jobs/bauzeichner.html
     """
     try:
-        # Wir bauen den Pfad: templates/jobs/slug.html
         template_name = f"jobs/{job_slug}.html"
         return render_template(template_name)
     except Exception:
-        # Falls die Datei nicht existiert, 404 zurückgeben
         return abort(404)
 
 # ─── Routes for other pages (e.g., Impressum, Special Projects) ───────────
-# Assuming these HTML files are directly in templates/
-
 @app.route('/impressum')
 def impressum():
-    return render_template('impressum.html') # Assuming it's in templates/
+    return render_template('impressum.html') 
 
 @app.route('/maedchenschule-chato')
 def maedchenschule_chato():
-    # Wir laden keine News mehr für diese Seite
     return render_template('maedchenschule-chato.html')
 
 @app.route('/neuigkeiten')
 def news():
-    # Einfach alle vorhandenen Daten laden (Chato ist ja schon in der JSON gelöscht)
     news_data = load_news_data()
     return render_template('news.html', news=news_data)
 
@@ -173,7 +166,6 @@ def news_detail(slug):
     if not post:
         abort(404)
     
-    # Vereinfachte Back-Link Logik (nur noch zurück zur News-Übersicht)
     return render_template('news_detail.html', post=post, back_url=url_for('news'), back_text='Neuigkeiten')
 
 # ─── Back Routen für Projekte ───────────────────────────────────
@@ -183,7 +175,6 @@ def projekt(project_slug):
     back_path = request.args.get('back')
     back_text = request.args.get('back_text')
 
-    # Erstellt den Dateipfad zur HTML-Datei dynamisch
     template_name = f"projekte/{project_slug}.html"
 
     return render_template(
@@ -194,47 +185,39 @@ def projekt(project_slug):
 
 # ─── Routen für Kontaktformular ───────────────────────────────────
 @app.route('/kontakt', methods=['POST'])
-@limiter.limit("3 per minute") # Maximal 3 Versuche pro Minute pro IP
+@limiter.limit("3 per minute") 
 def kontakt():
     form = KontaktForm()
     
-    # 1. Honeypot Check: Wenn das Feld "fax" ausgefüllt ist, ist es ein Bot.
-    # Wir tun so als ob es geklappt hat, senden aber nichts.
     if request.form.get('fax'):
         print("Bot erkannt (Honeypot ausgelöst).")
         return redirect(url_for('index') + '#contact')
 
-    # 2. Formular Validierung (Prüft CSRF Token, E-Mail Format, Pflichtfelder)
     if form.validate_on_submit():
-        # DATEN SICHERN (HTML-Injection Schutz)
-        # Wir escapen die Eingaben, um bösartigen Code unschädlich zu machen
         safe_name = escape(form.name.data)
         safe_email = escape(form.email.data)
         
-        # Nachricht für HTML vorbereiten: Erst escapen, dann Zeilenumbrüche umwandeln
         message_raw = form.message.data
         safe_message_html = escape(message_raw).replace('\n', '<br>')
 
-        # E-Mail Zusammenbau
         msg = Message(
             subject=f"Neue Kontaktanfrage von {safe_name}",
             sender=("Kontaktformular Webseite", app.config['MAIL_USERNAME']),
             recipients=['info@ib-behringer.de']
         )
 
-        # 1. Plain-Text-Version (Hier ist kein escape nötig, da kein HTML gerendert wird)
         msg.body = f"""
         Du hast eine neue Nachricht über das Kontaktformular erhalten:
         -----------------------------------
         Name: {form.name.data}
         E-Mail: {form.email.data}
+        Datenschutz akzeptiert: Ja
         -----------------------------------
         Nachricht:
         {message_raw}
         -----------------------------------
         """
 
-        # 2. Schön formatierte HTML-Version der E-Mail (mit sicheren Variablen)
         msg.html = f"""
         <!DOCTYPE html>
         <html lang="de">
@@ -301,6 +284,9 @@ def kontakt():
                     
                     <strong>E-Mail:</strong>
                     <span><a href="mailto:{safe_email}">{safe_email}</a></span>
+                    
+                    <strong>Datenschutz:</strong>
+                    <span style="color: green;">✔ Akzeptiert</span>
                 </div>
                 
                 <h3>Nachricht:</h3>
@@ -325,7 +311,6 @@ def kontakt():
         return redirect(url_for('index') + '#contact')
 
     else:
-        # Falls Validierungsfehler auftreten
         for field, errors in form.errors.items():
             for error in errors:
                 flash(f"Fehler im Feld {field}: {error}", 'error')
@@ -342,4 +327,5 @@ def internal_server_error(e):
     return render_template('500.html'), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # WICHTIG: debug=False für das Live-Hosting!
+    app.run(debug=False)

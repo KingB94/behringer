@@ -175,9 +175,9 @@
                     <label for="message-input" class="visually-hidden">Ihre Nachricht</label>
                     <textarea id="message-input" name="message" placeholder="Ihre Nachricht" rows="6" required></textarea>
                     
-                    <div class="privacy-checkbox-wrapper" style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 1rem; text-align: left;">
-                        <input type="checkbox" id="privacy_consent" name="privacy_consent" required style="margin-top: 4px; cursor: pointer;">
-                        <label for="privacy_consent" style="font-size: 0.9rem; line-height: 1.4; cursor: pointer;">
+                    <div class="privacy-checkbox-wrapper">
+                        <input type="checkbox" id="privacy_consent" name="privacy_consent" required>
+                        <label for="privacy_consent">
                             Ich habe die <a href="{{ url_for('impressum') }}#datenschutz" target="_blank" rel="noopener" style="text-decoration: underline;">Datenschutzerklärung</a> zur Kenntnis genommen und stimme zu, dass meine Angaben zur Kontaktaufnahme verarbeitet werden.
                         </label>
                     </div>

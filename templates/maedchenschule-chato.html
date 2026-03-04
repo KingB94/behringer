@@ -4,8 +4,7 @@
 
 {% block content %}
 <main>
-    <section class="page-hero-section"
-        style="background-image: url('https://www.ib-behringer.de/wp/wp-content/uploads/2019/12/Tansania5.jpg');">
+    <section class="page-hero-section hero-bg-chato">
         <div class="container">
             <h1 class="page-title">Mädchenschule Chato</h1>
             <div class="breadcrumbs">
@@ -14,26 +13,6 @@
             </div>
         </div>
     </section>
-
-    <!-- 
-    <section class="page-content-section">
-        <div class="container">
-            <div class="intro-text" style="max-width: 800px; margin: 0 auto 3rem auto; text-align: center;">
-                <p class="text-lg">Das Ingenieurbüro Behringer & Partner unterstützt den Bau der Mädchenschule in Chato,
-                    Tansania. Hier finden Sie alle Updates, Berichte und Videos zum Projektfortschritt.</p>
-                <div
-                    style="margin: 2rem 0; box-shadow: var(--shadow-lg); border-radius: var(--radius-md); overflow: hidden;">
-                    <video controls style="width: 100%; display: block; background: #000;"
-                        poster="https://www.ib-behringer.de/wp/wp-content/uploads/2019/12/Tansania5.jpg">
-                        <source src="{{ url_for('static', filename='videos/tansania_projekt.mp4') }}" type="video/mp4">
-                        Ihr Browser unterstützt dieses Video-Tag nicht.
-                    </video>
-                </div>
-                <div style="margin-top: 1.5rem;">
-                    <a href="#spenden" class="btn btn-primary">Jetzt Spenden</a>
-                </div>
-            </div>
--->
 
     <section class="section"
         style="background-color: #fff; padding-top: 2rem; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
@@ -105,7 +84,7 @@
                         <div id="video-wrapper"
                             style="position: relative; width: 100%; aspect-ratio: 16/9; background: #333; border-radius: 4px; overflow: hidden; box-shadow: var(--shadow-sm); cursor: pointer;">
 
-                            <img src="https://img.youtube.com/vi/GPn9DYGMM9w/maxresdefault.jpg"
+                            <img src="{{ url_for('static', filename='images/maedchenschule-chato/yt-placeholder.webp') }}"
                                 style="position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.7;"
                                 alt="Vorschau Video Chato">
 
@@ -329,170 +308,6 @@
         }
     </style>
 
-    <!-- 
-    <section class="section" style="background-color: #d2b48c; padding: 2rem 0;">
-        <div class="container"
-            style="max-width: 1000px; background-color: #fff; padding: 0; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-lg);">
-
-            <div style="position: relative; height: 300px; overflow: hidden;">
-                <img src="{{ url_for('static', filename='images/maedchenschule-chato/Tansania2.webp') }}"
-                    alt="Schülerinnen" style="width: 100%; height: 100%; object-fit: cover;">
-                <div
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center;">
-                    <h2
-                        style="color: #fff; font-size: 2.5rem; text-align: center; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
-                        Fertigstellung der St. Albert Chato<br>Secondary School</h2>
-                </div>
-            </div>
-
-            <div style="padding: 2rem; display: grid; grid-template-columns: 1fr 1.2fr; gap: 2.5rem;">
-
-                <div style="background-color: #a64d32; color: #fff; padding: 1.5rem; border-radius: 4px;">
-                    <h3
-                        style="color: #fff; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
-                        Baufortschritt</h3>
-
-                    <div class="chato-mini-timeline"
-                        style="display: flex; flex-direction: column; gap: 1.5rem; font-size: 0.85rem;">
-                        <div style="display: flex; gap: 1rem; align-items: flex-start;">
-                            <img src="{{ url_for('static', filename='images/maedchenschule-chato/IMG-20231111-WA0000.webp') }}"
-                                style="width: 60px; height: 60px; object-fit: cover; border: 2px solid #fff;">
-                            <p><strong>Jul 2022:</strong> Rohbau Unterrichtsgebäude</p>
-                        </div>
-                        <div style="display: flex; gap: 1rem; align-items: flex-start;">
-                            <img src="{{ url_for('static', filename='images/maedchenschule-chato/BaubeginnDez.22_Schlafs.webp') }}"
-                                style="width: 60px; height: 60px; object-fit: cover; border: 2px solid #fff;">
-                            <p><strong>Dez 2022:</strong> Rohbau Schlafgebäude</p>
-                        </div>
-                        <div style="display: flex; gap: 1rem; align-items: flex-start;">
-                            <img src="{{ url_for('static', filename='images/maedchenschule-chato/oktober.webp') }}"
-                                style="width: 60px; height: 60px; object-fit: cover; border: 2px solid #fff;">
-                            <p><strong>Okt 2024:</strong> Administrationsgebäude</p>
-                        </div>
-                        <div style="display: flex; gap: 1rem; align-items: flex-start;">
-                            <img src="{{ url_for('static', filename='images/maedchenschule-chato/februar.webp') }}"
-                                style="width: 60px; height: 60px; object-fit: cover; border: 2px solid #fff;">
-                            <p><strong>Feb 2025:</strong> Sanitärgebäude</p>
-                        </div>
-                    </div>
-
-                    <div
-                        style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 1rem; text-align: center;">
-                        <p style="font-weight: 700; font-size: 1.1rem;">SCHULSTART 2027</p>
-                        <p style="font-size: 0.8rem;">Innenausbau, Möbel, Ausstattung</p>
-                    </div>
-                </div>
-
-                <div
-                    style="font-size: 0.9rem; line-height: 1.4; display: flex; flex-direction: column; justify-content: space-between;">
-
-                    <div>
-                        <h4 style="color: #a64d32; margin-bottom: 0.5rem;">Wir stellen die Umsetzung sicher</h4>
-                        <p style="margin-bottom: 1rem;">Direkter Kontakt zur Projektleitung vor Ort stellt sicher, dass
-                            jeder Euro ankommt. Besuchen Sie <a href="https://www.rulengengaradiocese.or.tz"
-                                target="_blank"
-                                style="color: #a64d32; font-weight: 700;">www.rulengengaradiocese.or.tz</a> für mehr
-                            Infos.</p>
-
-                        <img src="{{ url_for('static', filename='images/maedchenschule-chato/Gruppenbild-2.webp') }}"
-                            alt="Team vor Ort" style="width: 100%; margin-bottom: 1rem; border-radius: 2px;">
-
-                        <h4 style="color: #a64d32; margin-bottom: 0.5rem;">Nachhaltig für ein besseres Leben</h4>
-                        <p>Bildung, sauberes Wasser und Ernährung bilden die Basis für ein selbstbestimmtes Leben der
-                            Mädchen.</p>
-                    </div>
-
-                    <div style="margin-top: 2rem; background: #fdf2f0; padding: 1.5rem; border-radius: 4px; border: 1px solid #f5dcd7; display: flex; justify-content: space-between; align-items: center; position: relative;">
-    
-                        <div style="font-size: 0.95rem; line-height: 1.4; color: #444;">
-                            <strong style="color: #a64d32; text-decoration: underline; display: block; margin-bottom: 8px; font-size: 1rem;">SPENDENKONTO:</strong>
-                            
-                            <div style="margin-bottom: 4px;">Missionsbenediktiner Münsterschwarzach</div>
-                            <div style="margin-bottom: 4px;">Liga Bank Regensburg</div>
-                            <div style="margin-bottom: 12px; font-weight: 500;">DE51 7509 0300 0003 0150 33</div>
-                    
-                            <div style="color: #a64d32; font-weight: 700;">
-                                Verwendungszweck: Chato Mädchenschule
-                            </div>
-                            <div style="text-align: right; font-size: 0.85rem; color: #666; margin-top: 2px;">
-                                + Ihre Adresse für die Spendenquittung
-                            </div>
-                        </div>
-                    
-                        <div style="flex: 0 0 120px; position: relative; margin-left: 1rem;">
-                            <img src="{{ url_for('static', filename='images/maedchenschule-chato/herz.webp') }}" 
-                                 alt="Herz" 
-                                 style="width: 100%; height: auto; opacity: 0.9;">
-                        </div>
-                    
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-            <hr class="wp-block-separator has-css-opacity">
-            <div style="padding: 5rem 0 2rem 0;">
-                <hr style="border: none; border-top: 1px solid #eee; max-width: 200px; margin: 0 auto;">
-            </div>
-        
-            <section id="spenden" class="section" style="padding: 7rem 0 10rem 0; background-color: #fff; scroll-margin-top: 120px;">
-                <div class="container" style="max-width: 850px;">
-                    
-                    <div style="text-align: center; margin-bottom: 4rem;">
-                        <h2 style="font-size: clamp(2rem, 5vw, 2.5rem); color: var(--clr-primary); margin-bottom: 1.5rem; font-weight: 700;">Helfen Sie mit</h2>
-                        <p style="font-size: 1.15rem; color: #666; max-width: 600px; margin: 0 auto;">
-                            Jeder Beitrag kommt zu 100% dem Bau und der Ausstattung der St. Albert Chato Secondary School zugute.
-                        </p>
-                    </div>
-        
-                    <div class="donation-info"
-                        style="background: #f0f7ff; padding: clamp(1.5rem, 5vw, 3.5rem); border-radius: 12px; border: 1px solid #cce5ff; box-shadow: var(--shadow-lg);">
-                        
-                        <h3 style="margin-top: 0; color: var(--clr-primary); text-align: center; margin-bottom: 2.5rem; font-size: 1.75rem; font-weight: 700;">Spendenkonto</h3>
-                        
-                        <div style="display: flex; flex-direction: column; gap: 1.2rem;">
-                            
-                            <div style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid #d0e4f7; padding-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
-                                <span style="font-weight: 700; color: #444; min-width: 120px;">Empfänger</span>
-                                <span style="text-align: right; color: #333;">Missionsbenediktiner Münsterschwarzach</span>
-                            </div>
-        
-                            <div style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid #d0e4f7; padding-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
-                                <span style="font-weight: 700; color: #444; min-width: 120px;">Bank</span>
-                                <span style="text-align: right; color: #333;">Liga Bank Regensburg</span>
-                            </div>
-        
-                            <div style="display: flex; flex-direction: column; border-bottom: 1px solid #d0e4f7; padding-bottom: 1rem; margin-top: 0.5rem;">
-                                <span style="font-weight: 700; color: var(--clr-primary); margin-bottom: 0.6rem;">IBAN</span>
-                                <span style="font-family: 'Courier New', Courier, monospace; font-size: clamp(1rem, 4vw, 1.4rem); letter-spacing: 1.5px; color: #000; font-weight: 700; word-break: break-all;">
-                                    DE51 7509 0300 0003 0150 33
-                                </span>
-                            </div>
-        
-                            <div style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid #d0e4f7; padding-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem;">
-                                <span style="font-weight: 700; color: #444; min-width: 120px;">BIC</span>
-                                <span style="font-family: monospace; font-size: 1.1rem; color: #333;">GENODEF1MOS</span>
-                            </div>
-        
-                            <div style="background-color: var(--clr-primary); color: #fff; padding: 1.2rem; border-radius: 8px; text-align: center; margin-top: 1rem; box-shadow: var(--shadow-sm);">
-                                <span style="display: block; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3rem; opacity: 0.9;">Verwendungszweck</span>
-                                <strong style="font-size: 1.2rem;">Mädchenschule Chato</strong>
-                            </div>
-        
-                        </div>
-                        
-                        <p style="font-size: 0.9rem; margin-top: 2rem; color: #666; text-align: center; line-height: 1.5;">
-                            <i style="display: block; margin-bottom: 0.5rem;">Vielen Dank für Ihre Unterstützung!</i>
-                            Für eine Spendenquittung geben Sie bitte zusätzlich Ihre <strong>genaue Anschrift</strong> im Verwendungszweck an.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            -->
 </main>
 {% endblock %}
 
@@ -514,6 +329,7 @@
         let slides = document.getElementsByClassName("chato-slide");
         let thumbs = document.getElementsByClassName("chato-thumb");
         let counter = document.getElementById("slide-counter");
+        let thumbBar = document.querySelector('.thumbnail-bar'); // NEU: Leiste definieren
 
         if (n > slides.length) { chatoIndex = 1 }
         if (n < 1) { chatoIndex = slides.length }
@@ -528,10 +344,16 @@
         slides[chatoIndex - 1].style.display = "block";
 
         // Aktives Thumbnail markieren
-        thumbs[chatoIndex - 1].className += " active";
+        let activeThumb = thumbs[chatoIndex - 1];
+        activeThumb.className += " active";
 
-        // Optional: Thumbnail automatisch in den Sichtbereich scrollen
-        thumbs[chatoIndex - 1].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        // NEU: Nur die Leiste horizontal scrollen, OHNE die Seite nach unten zu ziehen!
+        if (thumbBar && activeThumb) {
+            thumbBar.scrollTo({
+                left: activeThumb.offsetLeft - (thumbBar.offsetWidth / 2) + (activeThumb.offsetWidth / 2),
+                behavior: 'smooth'
+            });
+        }
 
         if (counter) {
             counter.innerHTML = "Bild " + chatoIndex + " von " + slides.length;
@@ -543,8 +365,9 @@
         plusChatoSlides(1);
     }, 6000);
 
-    // Timer stoppen, wenn der User selbst klickt
+    // Timer stoppen, wenn der User selbst klickt oder mit der Maus drüberfährt
     document.querySelector('.chato-slideshow-container').addEventListener('mouseenter', () => clearInterval(slideTimer));
+    document.querySelector('.thumbnail-bar').addEventListener('mouseenter', () => clearInterval(slideTimer));
 
     document.addEventListener('DOMContentLoaded', function () {
         const videoWrapper = document.getElementById('video-wrapper');
