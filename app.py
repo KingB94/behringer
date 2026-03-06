@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 import os
 from flask_mail import Mail, Message
-from flask import Flask, render_template, request, redirect, url_for, flash, abort
+from flask import Flask, render_template, request, redirect, url_for, flash, abort, send_from_directory
 import json
 from flask_wtf import FlaskForm
 # NEU: BooleanField für die Checkbox hinzugefügt
@@ -47,6 +47,11 @@ def index():
     
     # 3. An das Template übergeben
     return render_template('index.html', latest_news=latest_news)
+
+# Robots.txt
+@app.route('/robots.txt')
+def robots():
+    return send_from_directory(app.static_folder, 'robots.txt')
 
 # ─── FORMULAR KLASSE (Sicherheit & Validierung) ───────────────────
 class KontaktForm(FlaskForm):
