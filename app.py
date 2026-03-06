@@ -1,7 +1,8 @@
 from dotenv import load_dotenv
 import os
 from flask_mail import Mail, Message
-from flask import Flask, render_template, request, redirect, url_for, flash, abort, send_from_directory
+from flask import Flask, render_template, request, redirect, url_for, flash, abort, send_from_directory, make_response
+from datetime import date
 import json
 from flask_wtf import FlaskForm
 # NEU: BooleanField für die Checkbox hinzugefügt
@@ -52,6 +53,91 @@ def index():
 @app.route('/robots.txt')
 def robots():
     return send_from_directory(app.static_folder, 'robots.txt')
+
+# Sitemap.xml
+@app.route('/sitemap.xml')
+def sitemap():
+    base_url = 'https://www.ib-behringer.de'
+    lastmod = date.today().isoformat()
+
+    pages = [
+        # Hauptseiten
+        ('/', '1.0', 'weekly'),
+        ('/neuigkeiten', '0.9', 'weekly'),
+        # Leistungen
+        ('/siedlungswasserwirtschaft', '0.8', 'monthly'),
+        ('/strassenbau-brueckenbau', '0.8', 'monthly'),
+        ('/fernwaerme', '0.8', 'monthly'),
+        ('/hydraulische-nachweise', '0.8', 'monthly'),
+        ('/baulanderschliessung', '0.8', 'monthly'),
+        ('/kommunales-gis', '0.8', 'monthly'),
+        ('/sanierungen', '0.8', 'monthly'),
+        ('/wasserbau', '0.8', 'monthly'),
+        # Unternehmen
+        ('/team', '0.7', 'monthly'),
+        ('/firmengeschichte', '0.7', 'monthly'),
+        ('/netzwerk', '0.7', 'monthly'),
+        ('/stellenangebote', '0.7', 'monthly'),
+        ('/standorte', '0.7', 'monthly'),
+        # Karriere
+        ('/karriere/azubi-cad', '0.6', 'monthly'),
+        ('/karriere/bauzeichner', '0.6', 'monthly'),
+        ('/karriere/buerokraft', '0.6', 'monthly'),
+        ('/karriere/duales-studium-bauingenieurwesen', '0.6', 'monthly'),
+        ('/karriere/praktikant', '0.6', 'monthly'),
+        # Projekte – Siedlungswasserwirtschaft
+        ('/projekt/siedlungswasserwirtschaft/massing', '0.5', 'yearly'),
+        ('/projekt/siedlungswasserwirtschaft/klaeranlage-schwindegg', '0.5', 'yearly'),
+        ('/projekt/siedlungswasserwirtschaft/puertner-kreuzung', '0.5', 'yearly'),
+        ('/projekt/siedlungswasserwirtschaft/regenueberlauf-hummel', '0.5', 'yearly'),
+        ('/projekt/siedlungswasserwirtschaft/TV_MDF', '0.5', 'yearly'),
+        ('/projekt/siedlungswasserwirtschaft/stadtwerke-waldkraiburg', '0.5', 'yearly'),
+        # Projekte – Hydraulik
+        ('/projekt/hydraulik/Hochwasserschutzkonzept_Oberornau', '0.5', 'yearly'),
+        ('/projekt/hydraulik/hochwasserschutz-reichertsheim', '0.5', 'yearly'),
+        ('/projekt/hydraulik/stadtwerke-muehldorf', '0.5', 'yearly'),
+        ('/projekt/hydraulik/gep-muehldorf', '0.5', 'yearly'),
+        # Projekte – Sanierungen
+        ('/projekt/sanierungen/ausbau_mue_22', '0.5', 'yearly'),
+        ('/projekt/sanierungen/toeging', '0.5', 'yearly'),
+        ('/projekt/sanierungen/lichtenfels', '0.5', 'yearly'),
+        ('/projekt/sanierungen/kanalsanierung_mdf', '0.5', 'yearly'),
+        ('/projekt/sanierungen/ebersberg', '0.5', 'yearly'),
+        # Projekte – Baulanderschliessungen
+        ('/projekt/baulanderschliessungen/nbg-stocket', '0.5', 'yearly'),
+        ('/projekt/baulanderschliessungen/schwindegg', '0.5', 'yearly'),
+        ('/projekt/baulanderschliessungen/thann', '0.5', 'yearly'),
+        # Projekte – Fernwärme
+        ('/projekt/fernwaerme/reichertsheim', '0.5', 'yearly'),
+        ('/projekt/fernwaerme/wolfratshausen', '0.5', 'yearly'),
+        ('/projekt/fernwaerme/waldkraiburg-stadtmitte', '0.5', 'yearly'),
+        ('/projekt/fernwaerme/waldkraiburg-beethovenstrasse', '0.5', 'yearly'),
+        # Projekte – Straßenbau
+        ('/projekt/strassenbau/hirschbachbruecke', '0.5', 'yearly'),
+        ('/projekt/strassenbau/KV_LK_Altoetting', '0.5', 'yearly'),
+        ('/projekt/strassenbau/ornauer_bach', '0.5', 'yearly'),
+        ('/projekt/strassenbau/rottal_kreisverkehr', '0.5', 'yearly'),
+        # Projekte – Wasserbau
+        ('/projekt/wasserbau/salzach', '0.5', 'yearly'),
+        ('/projekt/wasserbau/gep-mdf', '0.5', 'yearly'),
+        ('/projekt/wasserbau/gelting', '0.5', 'yearly'),
+        # Projekte – Kommunales GIS
+        ('/projekt/kommunales-gis/kanalkataster_muehldorf', '0.5', 'yearly'),
+        ('/projekt/kommunales-gis/rohrbach', '0.5', 'yearly'),
+        ('/projekt/kommunales-gis/ebersberg', '0.5', 'yearly'),
+        # Sonstige
+        ('/impressum', '0.3', 'yearly'),
+    ]
+
+    # News-Artikel dynamisch hinzufügen
+    news_data = load_news_data()
+    for slug in news_data:
+        pages.append((f'/neuigkeiten/{slug}', '0.6', 'monthly'))
+
+    xml = render_template('sitemap.xml', pages=pages, base_url=base_url, lastmod=lastmod)
+    response = make_response(xml)
+    response.headers['Content-Type'] = 'application/xml'
+    return response
 
 # ─── FORMULAR KLASSE (Sicherheit & Validierung) ───────────────────
 class KontaktForm(FlaskForm):
