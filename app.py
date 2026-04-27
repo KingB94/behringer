@@ -244,6 +244,111 @@ def impressum():
 def maedchenschule_chato():
     return render_template('maedchenschule-chato.html')
 
+# ─── Redirects für alte WordPress-URLs (301 = permanent) ─────────────────────
+
+# Alte /leistung/... URLs (ohne 'en') → neue Leistungsseiten
+_leistung_map = {
+    'siedlungswasserwirtschaft': '/siedlungswasserwirtschaft',
+    'strassenbau-brueckenbau':   '/strassenbau-brueckenbau',
+    'fernwaerme':                '/fernwaerme',
+    'hydraulische-nachweise':    '/hydraulische-nachweise',
+    'baulanderschliessung':      '/baulanderschliessung',
+    'kommunales-gis':            '/kommunales-gis',
+    'sanierungen':               '/sanierungen',
+    'wasserbau':                 '/wasserbau',
+}
+
+@app.route('/leistung/<path:slug>')
+def redirect_leistung(slug):
+    # Entferne trailing /page/... Suffixe für den Lookup
+    base = slug.rstrip('/').split('/')[0]
+    target = _leistung_map.get(base, '/')
+    return redirect(target, 301)
+
+@app.route('/leistungen/')
+@app.route('/leistungen')
+def redirect_leistungen():
+    return redirect('/', 301)
+
+# Alte Karriere-URLs
+@app.route('/buerokraft-m-w-d/')
+@app.route('/buerokraft-m-w-d')
+def redirect_buerokraft():
+    return redirect('/karriere/buerokraft', 301)
+
+@app.route('/bauzeichner-m-w-d/')
+@app.route('/bauzeichner-m-w-d')
+def redirect_bauzeichner():
+    return redirect('/karriere/bauzeichner', 301)
+
+@app.route('/azubi-cad/')
+@app.route('/azubi-cad')
+def redirect_azubi():
+    return redirect('/karriere/azubi-cad', 301)
+
+@app.route('/duales-studium-bauingenieurwesen/')
+@app.route('/duales-studium-bauingenieurwesen')
+def redirect_duales_studium():
+    return redirect('/karriere/duales-studium-bauingenieurwesen', 301)
+
+@app.route('/praktikant/')
+@app.route('/praktikant')
+def redirect_praktikant():
+    return redirect('/karriere/praktikant', 301)
+
+# Alte Unternehmensseiten
+@app.route('/unternehmen/')
+@app.route('/unternehmen')
+def redirect_unternehmen():
+    return redirect('/firmengeschichte', 301)
+
+@app.route('/gesellschafter/')
+@app.route('/gesellschafter')
+def redirect_gesellschafter():
+    return redirect('/firmengeschichte', 301)
+
+# Kontakt (GET-Anfragen vom Crawler)
+@app.route('/kontakt/')
+@app.route('/kontakt')
+def redirect_kontakt():
+    return redirect('/#contact', 301)
+
+# Mädchenschule
+@app.route('/alle-beitraege-zur-maedchenschule-chato-tansania/')
+@app.route('/alle-beitraege-zur-maedchenschule-chato-tansania')
+def redirect_maedchenschule():
+    return redirect('/maedchenschule-chato', 301)
+
+# Downloads & Dateien
+@app.route('/downloads/')
+@app.route('/downloads')
+@app.route('/downloads/<path:_slug>')
+def redirect_downloads(_slug=None):
+    return redirect('/', 301)
+
+@app.route('/downloadkat/')
+@app.route('/downloadkat')
+@app.route('/downloadkat/<path:_slug>')
+def redirect_downloadkat(_slug=None):
+    return redirect('/', 301)
+
+# WordPress-Mediendateien und alte wp/-Pfade
+@app.route('/wp/<path:_slug>')
+def redirect_wp(_slug):
+    return redirect('/', 301)
+
+# Alte WordPress-Blogposts (datumbasiert: /20XX/...)
+@app.route('/<int:year>/<path:_slug>')
+def redirect_blog_post(year, _slug):
+    if 2000 <= year <= 2030:
+        return redirect('/neuigkeiten', 301)
+    return abort(404)
+
+# Alte Kategorieseiten
+@app.route('/category/<path:_slug>')
+def redirect_category(_slug):
+    return redirect('/neuigkeiten', 301)
+
 @app.route('/neuigkeiten')
 def news():
     news_data = load_news_data()
@@ -268,11 +373,14 @@ def projekt(project_slug):
 
     template_name = f"projekte/{project_slug}.html"
 
-    return render_template(
-        template_name,
-        back_url=back_path,
-        back_text=back_text
-    )
+    try:
+        return render_template(
+            template_name,
+            back_url=back_path,
+            back_text=back_text
+        )
+    except Exception:
+        return abort(404)
 
 # ─── Routen für Kontaktformular ───────────────────────────────────
 @app.route('/kontakt', methods=['POST'])
