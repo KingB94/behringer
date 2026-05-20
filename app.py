@@ -60,7 +60,7 @@ def sitemap():
     base_url = 'https://www.ib-behringer.de'
     lastmod = date.today().isoformat()
 
-    pages = [
+    raw_pages = [
         # Hauptseiten
         ('/', '1.0', 'weekly'),
         ('/neuigkeiten', '0.9', 'weekly'),
@@ -132,9 +132,23 @@ def sitemap():
     # News-Artikel dynamisch hinzufügen
     news_data = load_news_data()
     for slug in news_data:
-        pages.append((f'/neuigkeiten/{slug}', '0.6', 'monthly'))
+        raw_pages.append((f'/neuigkeiten/{slug}', '0.6', 'monthly'))
 
-    xml = render_template('sitemap.xml', pages=pages, base_url=base_url, lastmod=lastmod)
+    # Python-Bereinigung: Absolut saubere URLs generieren
+    final_pages = []
+    for path, priority, changefreq in raw_pages:
+        # Säubere den Pfad von Zeilenumbrüchen, Leerzeichen und Slashes am Anfang/Ende
+        clean_path = path.strip().strip('/')
+        
+        # Logik für fehlerfreie Slashes
+        if clean_path == "":
+            final_url = f"{base_url}/"
+        else:
+            final_url = f"{base_url}/{clean_path}/"
+            
+        final_pages.append((final_url, priority, changefreq))
+
+    xml = render_template('sitemap.xml', pages=final_pages, lastmod=lastmod)
     response = make_response(xml)
     response.headers['Content-Type'] = 'application/xml'
     return response
@@ -149,7 +163,6 @@ class KontaktForm(FlaskForm):
     privacy_consent = BooleanField('Datenschutz', validators=[DataRequired(message="Bitte akzeptieren Sie die Datenschutzerklärung.")])
     
     # Honeypot-Feld (Für den Nutzer unsichtbar, Bots füllen es oft aus)
-    # Wir nennen es "fax" oder "url", damit Bots denken, es sei wichtig.
     fax = StringField('Fax') 
 
     submit = SubmitField('Nachricht senden')
@@ -158,7 +171,6 @@ class KontaktForm(FlaskForm):
 def load_news_data():
     """Lädt die News-Artikel aus der JSON-Datei."""
     try:
-        # Pfad zur JSON Datei bauen
         file_path = os.path.join(app.root_path, 'data', 'news.json')
         with open(file_path, 'r', encoding='utf-8') as f:
             return json.load(f)
@@ -226,9 +238,6 @@ def standorte():
 # ─── Routes für Job-Detailseiten ───────────────────────────────────
 @app.route('/karriere/<path:job_slug>')
 def karriere_detail(job_slug):
-    """
-    Lädt dynamisch die HTML-Datei aus templates/jobs/
-    """
     try:
         template_name = f"jobs/{job_slug}.html"
         return render_template(template_name)
@@ -246,7 +255,6 @@ def maedchenschule_chato():
 
 # ─── Redirects für alte WordPress-URLs (301 = permanent) ─────────────────────
 
-# Alte /leistung/... URLs (ohne 'en') → neue Leistungsseiten
 _leistung_map = {
     'siedlungswasserwirtschaft': '/siedlungswasserwirtschaft',
     'strassenbau-brueckenbau':   '/strassenbau-brueckenbau',
@@ -260,7 +268,6 @@ _leistung_map = {
 
 @app.route('/leistung/<path:slug>')
 def redirect_leistung(slug):
-    # Entferne trailing /page/... Suffixe für den Lookup
     base = slug.rstrip('/').split('/')[0]
     target = _leistung_map.get(base, '/')
     return redirect(target, 301)
@@ -270,7 +277,6 @@ def redirect_leistung(slug):
 def redirect_leistungen():
     return redirect('/', 301)
 
-# Alte Karriere-URLs
 @app.route('/buerokraft-m-w-d/')
 @app.route('/buerokraft-m-w-d')
 def redirect_buerokraft():
@@ -296,7 +302,6 @@ def redirect_duales_studium():
 def redirect_praktikant():
     return redirect('/karriere/praktikant', 301)
 
-# Alte Unternehmensseiten
 @app.route('/unternehmen/')
 @app.route('/unternehmen')
 def redirect_unternehmen():
@@ -307,19 +312,16 @@ def redirect_unternehmen():
 def redirect_gesellschafter():
     return redirect('/firmengeschichte', 301)
 
-# Kontakt (GET-Anfragen vom Crawler)
 @app.route('/kontakt/')
 @app.route('/kontakt')
 def redirect_kontakt():
     return redirect('/#contact', 301)
 
-# Mädchenschule
 @app.route('/alle-beitraege-zur-maedchenschule-chato-tansania/')
 @app.route('/alle-beitraege-zur-maedchenschule-chato-tansania')
 def redirect_maedchenschule():
     return redirect('/maedchenschule-chato', 301)
 
-# Downloads & Dateien
 @app.route('/downloads/')
 @app.route('/downloads')
 @app.route('/downloads/<path:_slug>')
@@ -332,19 +334,16 @@ def redirect_downloads(_slug=None):
 def redirect_downloadkat(_slug=None):
     return redirect('/', 301)
 
-# WordPress-Mediendateien und alte wp/-Pfade
 @app.route('/wp/<path:_slug>')
 def redirect_wp(_slug):
     return redirect('/', 301)
 
-# Alte WordPress-Blogposts (datumbasiert: /20XX/...)
 @app.route('/<int:year>/<path:_slug>')
 def redirect_blog_post(year, _slug):
     if 2000 <= year <= 2030:
         return redirect('/neuigkeiten', 301)
     return abort(404)
 
-# Alte Kategorieseiten
 @app.route('/category/<path:_slug>')
 def redirect_category(_slug):
     return redirect('/neuigkeiten', 301)
@@ -364,15 +363,11 @@ def news_detail(slug):
     
     return render_template('news_detail.html', post=post, back_url=url_for('news'), back_text='Neuigkeiten')
 
-# ─── Back Routen für Projekte ───────────────────────────────────
 @app.route('/projekt/<path:project_slug>')
 def projekt(project_slug):
-    """ Diese eine Route verarbeitet alle deine Projektseiten. """
     back_path = request.args.get('back')
     back_text = request.args.get('back_text')
-
     template_name = f"projekte/{project_slug}.html"
-
     try:
         return render_template(
             template_name,
@@ -489,7 +484,7 @@ def kontakt():
                 </div>
                 
                 <h3>Nachricht:</h3>
-                <blockquote>
+                blockquote>
                     <p>{safe_message_html}</p>
                 </blockquote>
             </div>
@@ -526,5 +521,4 @@ def internal_server_error(e):
     return render_template('500.html'), 500
 
 if __name__ == '__main__':
-    # WICHTIG: debug=False für das Live-Hosting!
     app.run(debug=False)
