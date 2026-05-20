@@ -44,7 +44,7 @@
     {% endwith %}
     <header class="site-header">
         <div class="container header-inner">
-            <a href="{{ url_for('index') | string + '/' }}" class="logo">
+            <a href="{{ url_for('index') }}" class="logo">
                 <img src='{{ url_for("static", filename="images/layout/logo.png") }}' alt="Behringer & Partner Logo"
                     loading="lazy">
             </a>
@@ -56,40 +56,40 @@
                     <li>
                         <a href="{{ back_url }}" class="btn btn-primary btn-sm">❮ Zurück zu {{ back_text }}</a>
                     </li>
-                    <li><a href="{{ url_for('index') | string + '/' }}#contact" class="btn btn-primary btn-sm">Kontakt</a></li>
+                    <li><a href="{{ url_for('index') }}#contact" class="btn btn-primary btn-sm">Kontakt</a></li>
                 </ul>
 
                 {% else %}
 
                 <ul class="nav-list">
-                    <li><a href="{{ url_for('index') | string + '/' }}#about">Über uns</a></li>
-                    <li><a href="{{ url_for('news') | string + '/' }}">Neuigkeiten</a></li>
+                    <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
+                    <li><a href="{{ url_for('news') }}">Neuigkeiten</a></li>
                     <li class="nav-item dropdown">
-                        <a href="{{ url_for('index') | string + '/' }}#services" aria-haspopup="true" aria-expanded="false">
+                        <a href="{{ url_for('index') }}#services" aria-haspopup="true" aria-expanded="false">
                             <span>Leistungen <span class="dropdown-arrow">▼</span></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ url_for('siedlungswasserwirtschaft') | string + '/' }}">Siedlungswasserwirtschaft</a></li>
-                            <li><a href="{{ url_for('strassenbau_brueckenbau') | string + '/' }}">Straße&shy;bau & Brücken&shy;bau</a></li>
-                            <li><a href="{{ url_for('fernwaerme') | string + '/' }}">Fernwärme</a></li>
-                            <li><a href="{{ url_for('hydraulische_nachweise') | string + '/' }}">Hydraulische Nachweise</a></li>
-                            <li><a href="{{ url_for('baulanderschliessung') | string + '/' }}">Baulanderschließung</a></li>
-                            <li><a href="{{ url_for('kommunales_gis') | string + '/' }}">Kommunales GIS</a></li>
-                            <li><a href="{{ url_for('sanierungen') | string + '/' }}">Sanierungen</a></li>
-                            <li><a href="{{ url_for('wasserbau') | string + '/' }}">Wasserbau</a></li>
+                            <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
+                            <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straße&shy;bau & Brücken&shy;bau</a></li>
+                            <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
+                            <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
+                            <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
+                            <li><a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a></li>
+                            <li><a href="{{ url_for('sanierungen') }}">Sanierungen</a></li>
+                            <li><a href="{{ url_for('wasserbau') }}">Wasserbau</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="{{ url_for('index') | string + '/' }}#company" aria-haspopup="true" aria-expanded="false">
+                        <a href="{{ url_for('index') }}#company" aria-haspopup="true" aria-expanded="false">
                             <span>Unternehmen <span class="dropdown-arrow">▼</span></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ url_for('unternehmen_team') | string + '/' }}">Team</a></li>
-                            <li><a href="{{ url_for('firmengeschichte') | string + '/' }}">Firmengeschichte</a></li>
-                            <li><a href="{{ url_for('standorte') | string + '/' }}">Standorte</a></li>
-                            <li><a href="{{ url_for('unternehmen_netzwerk') | string + '/' }}">Netzwerk</a></li>
-                            <li><a href="{{ url_for('unternehmen_stellenangebote') | string + '/' }}">Stellenangebote</a></li>
+                            <li><a href="{{ url_for('unternehmen_team') }}">Team</a></li>
+                            <li><a href="{{ url_for('firmengeschichte') }}">Firmengeschichte</a></li>
+                            <li><a href="{{ url_for('standorte') }}">Standorte</a></li>
+                            <li><a href="{{ url_for('unternehmen_netzwerk') }}">Netzwerk</a></li>
+                            <li><a href="{{ url_for('unternehmen_stellenangebote') }}">Stellenangebote</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{ url_for('index') | string + '/' }}#contact" class="btn btn-primary">Kontakt</a></li>
+                    <li><a href="{{ url_for('index') }}#contact" class="btn btn-primary">Kontakt</a></li>
                 </ul>
 
                 {% endif %}
@@ -105,24 +105,24 @@
             <div>
                 <h4>Navigation</h4>
                 <ul>
-                    <li><a href="{{ url_for('index') | string + '/' }}#about">Über uns</a></li>
-                    <li><a href="{{ url_for('news') | string + '/' }}">Neuigkeiten</a></li>
-                    <li><a href="{{ url_for('index') | string + '/' }}#services">Leistungen</a></li>
-                    <li><a href="{{ url_for('index') | string + '/' }}#company">Unternehmen</a></li>
-                    <li><a href="{{ url_for('index') | string + '/' }}#contact">Kontakt</a></li>
+                    <li><a href="{{ url_for('index') }}#about">Über uns</a></li>
+                    <li><a href="{{ url_for('news') }}">Neuigkeiten</a></li>
+                    <li><a href="{{ url_for('index') }}#services">Leistungen</a></li>
+                    <li><a href="{{ url_for('index') }}#company">Unternehmen</a></li>
+                    <li><a href="{{ url_for('index') }}#contact">Kontakt</a></li>
                 </ul>
             </div>
             <div>
                 <h4>Leistungen</h4>
                 <ul>
-                    <li><a href="{{ url_for('siedlungswasserwirtschaft') | string + '/' }}">Siedlungswasserwirtschaft</a></li>
-                    <li><a href="{{ url_for('strassenbau_brueckenbau') | string + '/' }}">Straße&shy;bau & Brücken&shy;bau</a></li>
-                    <li><a href="{{ url_for('fernwaerme') | string + '/' }}">Fernwärme</a></li>
-                    <li><a href="{{ url_for('hydraulische_nachweise') | string + '/' }}">Hydraulische Nachweise</a></li>
-                    <li><a href="{{ url_for('baulanderschliessung') | string + '/' }}">Baulanderschließung</a></li>
-                    <li><a href="{{ url_for('kommunales_gis') | string + '/' }}">Kommunales GIS</a></li>
-                    <li><a href="{{ url_for('sanierungen') | string + '/' }}">Sanierungen</a></li>
-                    <li><a href="{{ url_for('wasserbau') | string + '/' }}">Wasserbau</a></li>
+                    <li><a href="{{ url_for('siedlungswasserwirtschaft') }}">Siedlungswasserwirtschaft</a></li>
+                    <li><a href="{{ url_for('strassenbau_brueckenbau') }}">Straße&shy;bau & Brücken&shy;bau</a></li>
+                    <li><a href="{{ url_for('fernwaerme') }}">Fernwärme</a></li>
+                    <li><a href="{{ url_for('hydraulische_nachweise') }}">Hydraulische Nachweise</a></li>
+                    <li><a href="{{ url_for('baulanderschliessung') }}">Baulanderschließung</a></li>
+                    <li><a href="{{ url_for('kommunales_gis') }}">Kommunales GIS</a></li>
+                    <li><a href="{{ url_for('sanierungen') }}">Sanierungen</a></li>
+                    <li><a href="{{ url_for('wasserbau') }}">Wasserbau</a></li>
                 </ul>
             </div>
             <div>
@@ -138,8 +138,8 @@
             <div>
                 <h4>Rechtliches</h4>
                 <ul>
-                    <li><a href="{{ url_for('impressum') | string + '/' }}">Impressum</a></li>
-                    <li><a href="{{ url_for('impressum') | string + '/' }}#datenschutz">Datenschutz</a></li>
+                    <li><a href="{{ url_for('impressum') }}">Impressum</a></li>
+                    <li><a href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></li>
                 </ul>
             </div>
             <div>
@@ -150,9 +150,9 @@
                 </div>
                 <h4 style="margin-top: 1.5rem;">Wir unterstützen</h4>
                 <p style="margin-bottom: var(--space-xs); line-height: 1.4;">
-                    <a href="{{ url_for('maedchenschule_chato') | string + '/' }}">Mädchenschule Chato, Tansania</a>
+                    <a href="{{ url_for('maedchenschule_chato') }}">Mädchenschule Chato, Tansania</a>
                 </p>
-                <a href="{{ url_for('maedchenschule_chato') | string + '/' }}">
+                <a href="{{ url_for('maedchenschule_chato') }}">
                     <img src="{{ url_for('static', filename='images/maedchenschule-chato/chato_schule_thumb.webp') }}"
                     alt="Mädchenschule Chato in Tansania" style="width:80px; border-radius:var(--radius-sm);">
                 </a>
@@ -160,8 +160,8 @@
         </div>
         <div class="footer-bottom">
             <p>© <span id="current-year">2024</span> Ingenieurbüro Behringer & Partner mbB. Alle Rechte vorbehalten.</p>
-            <p><a href="{{ url_for('impressum') | string + '/' }}">Impressum</a> | <a
-                    href="{{ url_for('impressum') | string + '/' }}#datenschutz">Datenschutz</a></p>
+            <p><a href="{{ url_for('impressum') }}">Impressum</a> | <a
+                    href="{{ url_for('impressum') }}#datenschutz">Datenschutz</a></p>
         </div>
     </footer>
 

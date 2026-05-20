@@ -144,7 +144,7 @@ def sitemap():
         if clean_path == "":
             final_url = f"{base_url}/"
         else:
-            final_url = f"{base_url}/{clean_path}/"
+            final_url = f"{base_url}/{clean_path}"
             
         final_pages.append((final_url, priority, changefreq))
 
@@ -484,7 +484,7 @@ def kontakt():
                 </div>
                 
                 <h3>Nachricht:</h3>
-                blockquote>
+                <blockquote>
                     <p>{safe_message_html}</p>
                 </blockquote>
             </div>

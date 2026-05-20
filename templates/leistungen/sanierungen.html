@@ -8,7 +8,7 @@
     <section class="page-hero-section hero-bg-sanierungen">
         <div class="container">
             <div id="breadcrumbs" class="breadcrumbs">
-                <a href="{{ url_for('index') | string + '/' }}#services" title="Leistungen">Leistungen</a>
+                <a href="{{ url_for('index') }}#services" title="Leistungen">Leistungen</a>
                 <span class="arrow">></span>
                 <span>Sanierungen</span>
             </div>
@@ -60,7 +60,7 @@
             <div class="portfolio-grid">
 
                 <article class="portfolio-card">
-                    <a href="{{ url_for('projekt', project_slug='sanierungen/kanalsanierung_mdf', back=request.path | string + '/', back_text='Sanierungen') }}"
+                    <a href="{{ url_for('projekt', project_slug='sanierungen/kanalsanierung_mdf', back=request.path, back_text='Sanierungen') }}"
                         class="portfolio-card-link">
                         <div class="portfolio-card-inner">
                             <div class="portfolio-thumbnail">
@@ -79,7 +79,7 @@
                 </article>
 
                 <article class="portfolio-card">
-                    <a href="{{ url_for('projekt', project_slug='sanierungen/ebersberg', back=request.path | string + '/', back_text='Sanierungen') }}" class="portfolio-card-link">
+                    <a href="{{ url_for('projekt', project_slug='sanierungen/ebersberg', back=request.path, back_text='Sanierungen') }}" class="portfolio-card-link">
                         <div class="portfolio-card-inner">
                             <div class="portfolio-thumbnail">
                                 <img src="{{ url_for('static', filename='images/referenzen/sanierungen/ebersberg/1.webp') }}" alt="Kanalsanierung Ebersberg" loading="lazy">
@@ -96,7 +96,7 @@
                 </article>
 
                 <article class="portfolio-card">
-                    <a href="{{ url_for('projekt', project_slug='sanierungen/toeging', back=request.path | string + '/', back_text='Sanierungen') }}" class="portfolio-card-link">
+                    <a href="{{ url_for('projekt', project_slug='sanierungen/toeging', back=request.path, back_text='Sanierungen') }}" class="portfolio-card-link">
                         <div class="portfolio-card-inner">
                             <div class="portfolio-thumbnail">
                                 <img src="{{ url_for('static', filename='images/referenzen/sanierungen/teoging/1.webp') }}" alt="Sanierung Töging" loading="lazy">
@@ -113,7 +113,7 @@
                 </article>
 
                 <article class="portfolio-card">
-                    <a href="{{ url_for('projekt', project_slug='sanierungen/ausbau_mue_22', back=request.path | string + '/', back_text='Sanierungen') }}" class="portfolio-card-link">
+                    <a href="{{ url_for('projekt', project_slug='sanierungen/ausbau_mue_22', back=request.path, back_text='Sanierungen') }}" class="portfolio-card-link">
                         <div class="portfolio-card-inner">
                             <div class="portfolio-thumbnail">
                                 <img src="{{ url_for('static', filename='images/referenzen/sanierungen/ausbau_mue_22/1.webp') }}" alt="Ausbau Kreisstraße Mü 22" loading="lazy">
@@ -130,7 +130,7 @@
                 </article>
 
                 <article class="portfolio-card">
-                    <a href="{{ url_for('projekt', project_slug='sanierungen/lichtenfels', back=request.path | string + '/', back_text='Sanierungen') }}" class="portfolio-card-link">
+                    <a href="{{ url_for('projekt', project_slug='sanierungen/lichtenfels', back=request.path, back_text='Sanierungen') }}" class="portfolio-card-link">
                         <div class="portfolio-card-inner">
                             <div class="portfolio-thumbnail">
                                 <img src="{{ url_for('static', filename='images/referenzen/sanierungen/lichtenfels/1.webp') }}" alt="Durchlassanierung Lichtenfels" loading="lazy">
@@ -147,7 +147,7 @@
                 </article>
 
                 <article class="portfolio-card">
-                    <a href="{{ url_for('projekt', project_slug='siedlungswasserwirtschaft/TV_MDF', back=request.path | string + '/', back_text='Sanierungen') }}"
+                    <a href="{{ url_for('projekt', project_slug='siedlungswasserwirtschaft/TV_MDF', back=request.path, back_text='Sanierungen') }}"
                         class="portfolio-card-link">
                         <div class="portfolio-card-inner">
                             <div class="portfolio-thumbnail">
