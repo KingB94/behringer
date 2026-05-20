@@ -57,14 +57,14 @@
                         
                         <p>{{ item.summary }}</p>
                         
-                        <a href="{{ url_for('news_detail', slug=slug) }}" class="btn btn-primary btn-sm">Mehr lesen</a>
+                        <a href="{{ url_for('news_detail', slug=slug) | string + '/' }}" class="btn btn-primary btn-sm">Mehr lesen</a>
                     </div>
                     {% endfor %}
                 </div>
             </div>
             <div class="news-dots"></div>
             <div style="text-align: center; margin-top: var(--space-lg);">
-                <a href="{{ url_for('news') }}" class="btn btn-primary">Alle Neuigkeiten ansehen</a>
+                <a href="{{ url_for('news') | string + '/' }}" class="btn btn-primary">Alle Neuigkeiten ansehen</a>
             </div>
         </div>
     </section>
@@ -75,49 +75,49 @@
             <p class="section-subtitle">Entdecken Sie unser breites Spektrum an Ingenieurdienstleistungen.</p>
             <div class="services-grid">
                 <div class="service-card" id="service-siedlung">
-                    <a href="{{ url_for('siedlungswasserwirtschaft') }}" class="service-link-wrapper">
+                    <a href="{{ url_for('siedlungswasserwirtschaft') | string + '/' }}" class="service-link-wrapper">
                         <img src="{{ url_for('static', filename='images/leistungen/icons/siedlungswasserwirtschaft.webp') }}" alt="" loading="lazy">
                         <h3>Siedlungswasserwirtschaft</h3>
                     </a>
                 </div>
                 <div class="service-card" id="service-strassen">
-                    <a href="{{ url_for('strassenbau_brueckenbau') }}" class="service-link-wrapper">
+                    <a href="{{ url_for('strassenbau_brueckenbau') | string + '/' }}" class="service-link-wrapper">
                         <img src="{{ url_for('static', filename='images/leistungen/icons/strassenbau.webp') }}" alt="" loading="lazy">
                         <h3>Straßenbau & Brückenbau</h3>
                     </a>
                 </div>
                 <div class="service-card" id="service-fernwaerme">
-                     <a href="{{ url_for('fernwaerme') }}" class="service-link-wrapper">
+                     <a href="{{ url_for('fernwaerme') | string + '/' }}" class="service-link-wrapper">
                         <img src="{{ url_for('static', filename='images/leistungen/icons/fernwaerme.webp') }}" alt="" loading="lazy">
                         <h3>Fernwärme</h3>
                     </a>
                 </div>
                 <div class="service-card" id="service-hydraulik">
-                     <a href="{{ url_for('hydraulische_nachweise') }}" class="service-link-wrapper">
+                     <a href="{{ url_for('hydraulische_nachweise') | string + '/' }}" class="service-link-wrapper">
                         <img src="{{ url_for('static', filename='images/leistungen/icons/hydraulischenachweise.webp') }}" alt="" loading="lazy">
                         <h3>Hydraulische Nachweise</h3>
                     </a>
                 </div>
                 <div class="service-card" id="service-bauland">
-                    <a href="{{ url_for('baulanderschliessung') }}" class="service-link-wrapper">
+                    <a href="{{ url_for('baulanderschliessung') | string + '/' }}" class="service-link-wrapper">
                         <img src="{{ url_for('static', filename='images/leistungen/icons/baulanderschliessung.webp') }}" alt="" loading="lazy">
                         <h3>Baulanderschließung</h3>
                     </a>
                 </div>
                 <div class="service-card" id="service-gis">
-                    <a href="{{ url_for('kommunales_gis') }}" class="service-link-wrapper">
+                    <a href="{{ url_for('kommunales_gis') | string + '/' }}" class="service-link-wrapper">
                         <img src="{{ url_for('static', filename='images/leistungen/icons/kommunalesgis.webp') }}" alt="" loading="lazy">
                         <h3>Kommunales GIS</h3>
                     </a>
                 </div>
                 <div class="service-card" id="service-sanierung">
-                    <a href="{{ url_for('sanierungen') }}" class="service-link-wrapper">
+                    <a href="{{ url_for('sanierungen') | string + '/' }}" class="service-link-wrapper">
                         <img src="{{ url_for('static', filename='images/leistungen/icons/sanierungen.webp') }}" alt="" loading="lazy">
                         <h3>Sanierungen</h3>
                     </a>
                 </div>
                 <div class="service-card" id="service-wasserbau">
-                    <a href="{{ url_for('wasserbau') }}" class="service-link-wrapper">
+                    <a href="{{ url_for('wasserbau') | string + '/' }}" class="service-link-wrapper">
                         <img src="{{ url_for('static', filename='images/leistungen/icons/wasserbau.webp') }}" alt="" loading="lazy">
                         <h3>Wasserbau</h3>
                     </a>
@@ -135,19 +135,19 @@
                     <h3>Unser Team</h3>
                     <p>Lernen Sie die engagierten Köpfe hinter Behringer & Partner kennen. Erfahrung und Expertise
                         vereint.</p>
-                    <a href="{{ url_for('unternehmen_team') }}" class="btn btn-primary btn-sm">Team kennenlernen</a>
+                    <a href="{{ url_for('unternehmen_team') | string + '/' }}" class="btn btn-primary btn-sm">Team kennenlernen</a>
                 </div>
                 <div class="info-card" id="company-history">
                     <h3>Firmengeschichte</h3>
                     <p>Seit 1968 gestalten wir Infrastruktur. Erfahren Sie mehr über unsere Meilensteine und
                         Entwicklung.</p>
-                    <a href="{{ url_for('firmengeschichte') }}" class="btn btn-primary btn-sm">Unsere Historie</a>
+                    <a href="{{ url_for('firmengeschichte') | string + '/' }}" class="btn btn-primary btn-sm">Unsere Historie</a>
                 </div>
                 <div class="info-card" id="company-jobs">
                     <h3>Karriere & Stellenangebote</h3>
                     <p>Werden Sie Teil unseres Teams! Entdecken Sie aktuelle Jobangebote und Karrieremöglichkeiten.
                     </p>
-                    <a href="{{ url_for('unternehmen_stellenangebote') }}" class="btn btn-primary btn-sm">Zu den Stellen</a>
+                    <a href="{{ url_for('unternehmen_stellenangebote') | string + '/' }}" class="btn btn-primary btn-sm">Zu den Stellen</a>
                 </div>
             </div>
         </div>
@@ -178,7 +178,7 @@
                     <div class="privacy-checkbox-wrapper">
                         <input type="checkbox" id="privacy_consent" name="privacy_consent" required>
                         <label for="privacy_consent">
-                            Ich habe die <a href="{{ url_for('impressum') }}#datenschutz" target="_blank" rel="noopener" style="text-decoration: underline;">Datenschutzerklärung</a> zur Kenntnis genommen und stimme zu, dass meine Angaben zur Kontaktaufnahme verarbeitet werden.
+                            Ich habe die <a href="{{ url_for('impressum') | string + '/' }}#datenschutz" target="_blank" rel="noopener" style="text-decoration: underline;">Datenschutzerklärung</a> zur Kenntnis genommen und stimme zu, dass meine Angaben zur Kontaktaufnahme verarbeitet werden.
                         </label>
                     </div>
                     
