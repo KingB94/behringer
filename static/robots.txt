@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.ib-behringer.de/sitemap.xml
+Sitemap: https://ib-behringer.de/sitemap.xml

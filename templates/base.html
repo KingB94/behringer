@@ -7,6 +7,8 @@
     <meta name="description" content="{% block meta_description %}Ingenieurbüro Behringer & Partner - Ihr Experte für Tiefbau, Wasserwirtschaft und Straßenbau seit 1968.{% endblock %}">
     <title>{% block title %}Behringer & Partner{% endblock %}</title>
 
+    <link rel="canonical" href="https://ib-behringer.de{{ request.path }}">
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
 
@@ -25,7 +27,7 @@
     <meta property="og:title" content="{% block og_title %}Behringer & Partner mbB{% endblock %}">
     <meta property="og:description" content="{% block og_description %}Ihr Partner im Tiefbau seit 1968.{% endblock %}">
     <meta property="og:image" content="{{ url_for('static', filename='images/layout/logo.png', _external=True) }}">
-    <meta property="og:url" content="{{ request.base_url }}{% if not request.base_url.endswith('/') %}/{% endif %}">
+    <meta property="og:url" content="https://ib-behringer.de{{ request.path }}">
     <meta property="og:type" content="website">
 </head>
 

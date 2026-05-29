@@ -18,6 +18,22 @@ load_dotenv()
 app = Flask(__name__)
 csrf = CSRFProtect(app)
 
+# --- Kanonische Domain (ohne www) ---
+CANONICAL_BASE = 'https://ib-behringer.de'
+
+# --- Trailing-Slash auf Nicht-Root-Pfaden entfernen (301) ---
+# Alte WordPress-URLs hatten Slashes am Ende (z. B. /team/). Diese werden
+# vor dem Routing sauber auf die Variante ohne Slash umgeleitet, damit kein
+# 5xx-Fehler entsteht.
+@app.before_request
+def strip_trailing_slash():
+    if request.method in ('GET', 'HEAD'):
+        path = request.path
+        if len(path) > 1 and path.endswith('/'):
+            new_path = path.rstrip('/')
+            query = f"?{request.query_string.decode()}" if request.query_string else ''
+            return redirect(f"{new_path}{query}", code=301)
+
 # --- Rate Limiter (Schutz vor Spam-Flutung) ---
 # Erlaubt max. 5 Anfragen pro Minute pro IP-Adresse auf geschützten Routen
 limiter = Limiter(
@@ -57,7 +73,7 @@ def robots():
 # Sitemap.xml
 @app.route('/sitemap.xml')
 def sitemap():
-    base_url = 'https://www.ib-behringer.de'
+    base_url = CANONICAL_BASE
     lastmod = date.today().isoformat()
 
     raw_pages = [
