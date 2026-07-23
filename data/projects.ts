@@ -1,0 +1,238 @@
+export type Project = {
+  bereich: string;
+  slug: string;
+  fragment: string;
+  title: string;
+  description: string | null;
+};
+
+export const PROJECTS: Project[] = [
+  {
+    bereich: "baulanderschliessungen",
+    slug: "nbg-stocket",
+    fragment: "projekte/baulanderschliessungen/nbg-stocket.html",
+    title: "Projekt: Erschließung NBG Stocket - Behringer & Partner",
+    description: "Erschließung NBG Stocket, Traunreut: Komplettes Infrastrukturprojekt mit Straßenbau (7.500 m²), Kanalisation, Lärmschutzwand & Wasserversorgung (2022-2023).",
+  },
+  {
+    bereich: "baulanderschliessungen",
+    slug: "schwindegg",
+    fragment: "projekte/baulanderschliessungen/schwindegg.html",
+    title: "Projekt: Erschließung Allersheim - Behringer & Partner",
+    description: "Erschließung des Neubaugebiets Allersheim in Schwindegg: 51 Bauparzellen, moderne Siedlungswasserwirtschaft und Optimierung durch Starkregensimulation.",
+  },
+  {
+    bereich: "baulanderschliessungen",
+    slug: "thann",
+    fragment: "projekte/baulanderschliessungen/thann.html",
+    title: "Projekt: Gewerbegebiet Thann - Behringer & Partner",
+    description: "Erschließung Gewerbegebiet Thann in Aschau a. Inn: Umfassender Ausbau der Staatsstraße 2355, barrierefreie Verkehrsplanung und moderne Siedlungswasserwirtschaft.",
+  },
+  {
+    bereich: "fernwaerme",
+    slug: "reichertsheim",
+    fragment: "projekte/fernwaerme/reichertsheim.html",
+    title: "Projekt: Fernwärme Reichertsheim - Behringer & Partner",
+    description: "Fernwärme- & Wasserversorgung Reichertsheim: Neubau von Hauptleitungen inkl. Hausanschlüsse und Straßenwiederherstellung (Lexenbergstraße) für eine zukunftssichere Versorgung.",
+  },
+  {
+    bereich: "fernwaerme",
+    slug: "waldkraiburg-beethovenstrasse",
+    fragment: "projekte/fernwaerme/waldkraiburg-beethovenstrasse.html",
+    title: "Projekt: Fernwärme Waldkraiburg - Behringer & Partner",
+    description: "Erschließung Fernwärme Teil II Beethovenstraße: Anspruchsvolle Verlegung im Steilhang, Wasserleitungsbau und Stromtrassen für die Stadtwerke Waldkraiburg.",
+  },
+  {
+    bereich: "fernwaerme",
+    slug: "waldkraiburg-stadtmitte",
+    fragment: "projekte/fernwaerme/waldkraiburg-stadtmitte.html",
+    title: "Projekt: Fernwärme Waldkraiburg - Behringer & Partner",
+    description: "Erschließung Fernwärme 2025 im Stadtgebiet Waldkraiburg: Neuverlegung von FW-Leitungen, Wasserleitungen und Mittelspannungstrassen.",
+  },
+  {
+    bereich: "fernwaerme",
+    slug: "wolfratshausen",
+    fragment: "projekte/fernwaerme/wolfratshausen.html",
+    title: "Projekt: Fernwärme Wolfratshausen - Behringer & Partner",
+    description: "Fernwärmenetz Wolfratshausen: Planung von 23 km Trasse inkl. 430 Anschlüssen & anspruchsvollen Gewässerquerungen (Mikrotunneling/Rohrbrücken) für die Stadtwerke.",
+  },
+  {
+    bereich: "hydraulik",
+    slug: "Hochwasserschutzkonzept_Oberornau",
+    fragment: "projekte/hydraulik/Hochwasserschutzkonzept_Oberornau.html",
+    title: "Projekt: Hochwasserschutzkonzept Oberornau - Behringer & Partner",
+    description: "Integrales Hochwasserschutzkonzept Oberornau: Planung von Rückhaltebecken (78.000 m³) und hydraulische Berechnungen für einen sicheren HQ100-Schutz in Obertaufkirchen.",
+  },
+  {
+    bereich: "hydraulik",
+    slug: "gep-muehldorf",
+    fragment: "projekte/hydraulik/gep-muehldorf.html",
+    title: "Projekt: GEP Stadt Mühldorf a. Inn - Behringer & Partner",
+    description: "Aktualisierung des Generalentwässerungsplans der Stadt Mühldorf a. Inn gemäß DWA-A 102. Hydrodynamische Netzberechnung für 131,5 km Kanalnetz.",
+  },
+  {
+    bereich: "hydraulik",
+    slug: "hochwasserschutz-reichertsheim",
+    fragment: "projekte/hydraulik/hochwasserschutz-reichertsheim.html",
+    title: "Projekt: Hochwasserschutz Reichertsheim - Behringer & Partner",
+    description: "Integrales Hochwasserschutz- und Sturzflutkonzept Reichertsheim: Hydrologische und hydraulische Modellierung für den Kagenbach und das Ortsgebiet.",
+  },
+  {
+    bereich: "hydraulik",
+    slug: "stadtwerke-muehldorf",
+    fragment: "projekte/hydraulik/stadtwerke-muehldorf.html",
+    title: "Projekt: Hydraulische Rohrnetzberechnung Mühldorf - Behringer & Partner",
+    description: "Erstellung eines hydraulischen Modells für das Wasserleitungsnetz der Stadt Mühldorf (170 km). Analyse von Druckverhältnissen und Durchflüssen.",
+  },
+  {
+    bereich: "kommunales-gis",
+    slug: "ebersberg",
+    fragment: "projekte/kommunales-gis/ebersberg.html",
+    title: "Projekt: Kanalkataster Ebersberg - Behringer & Partner",
+    description: "Kontinuierliche Betreuung und Datenpflege des Geoinformationssystems der Stadt Ebersberg. GIS-Management für 80 km Kanalnetz.",
+  },
+  {
+    bereich: "kommunales-gis",
+    slug: "kanalkataster_muehldorf",
+    fragment: "projekte/kommunales-gis/kanalkataster_muehldorf.html",
+    title: "Projekt: Kanalkataster Mühldorf a. Inn - Behringer & Partner",
+    description: "Aufbau und kontinuierliche Betreuung des Kanalkatasters der Stadt Mühldorf a. Inn. Digitales Datenmanagement für 128 km Kanalnetz.",
+  },
+  {
+    bereich: "kommunales-gis",
+    slug: "rohrbach",
+    fragment: "projekte/kommunales-gis/rohrbach.html",
+    title: "Projekt: Kataster VG Rohrbach - Behringer & Partner",
+    description: "Aufbau und Fortführung des Kanal- und Wasserleitungskatasters für die VG Rohrbach (Erharting, Niederbergkirchen, Niedertaufkirchen).",
+  },
+  {
+    bereich: "sanierungen",
+    slug: "ausbau_mue_22",
+    fragment: "projekte/sanierungen/ausbau_mue_22.html",
+    title: "Projekt: Ausbau Kreisstraße Mü 22 - Behringer & Partner",
+    description: "Straßenausbau Kreisstraße Mü 22 (B12 bis A94): 6,9 km Vollausbau in drei Bauabschnitten. Ein wichtiges Infrastrukturprojekt für den Landkreis Mühldorf a. Inn.",
+  },
+  {
+    bereich: "sanierungen",
+    slug: "ebersberg",
+    fragment: "projekte/sanierungen/ebersberg.html",
+    title: "Projekt: Kanalsanierung Ebersberg - Behringer & Partner",
+    description: "Kanalsanierung Ebersberg: Grabenlose Sanierung mittels GFK-Schlauchlinern (DN 250–600) und Hausanschlusslinern. Nachhaltige Instandsetzung für die Stadt Ebersberg.",
+  },
+  {
+    bereich: "sanierungen",
+    slug: "kanalsanierung_mdf",
+    fragment: "projekte/sanierungen/kanalsanierung_mdf.html",
+    title: "Projekt: Kanalsanierung Mühldorf a. Inn - Behringer & Partner",
+    description: "Kanalsanierung Mühldorf Stadtberg: Anspruchsvolle Sanierung im Inversionsverfahren (DN 500) unter Verkehr sowie ganzheitliche Instandsetzung inkl. Hausanschlüsse.",
+  },
+  {
+    bereich: "sanierungen",
+    slug: "lichtenfels",
+    fragment: "projekte/sanierungen/lichtenfels.html",
+    title: "Projekt: G 173 Durchlassanierung Lichtenfeld - Behringer & Partner",
+    description: "G 173 Durchlassanierung Lichtenfeld: Erneuerung eines Wellblechdurchlasses mittels GFK-Einzelrohrlining (DN 1400) inkl. Statik und Hydraulik für den Landkreis Lichtenfels.",
+  },
+  {
+    bereich: "sanierungen",
+    slug: "toeging",
+    fragment: "projekte/sanierungen/toeging.html",
+    title: "Projekt: Sanierung Töging a. Inn - Behringer & Partner",
+    description: "Tiefbau & Straßenbau Töging: Sanierung von Kanal, Wasserleitung und Straßenoberfläche in der Ohm-, Haydn- und Röntgenstraße für die Stadt Töging a. Inn.",
+  },
+  {
+    bereich: "siedlungswasserwirtschaft",
+    slug: "TV_MDF",
+    fragment: "projekte/siedlungswasserwirtschaft/TV_MDF.html",
+    title: "Projekt: Optische Inspektion Mühldorf a. Inn - Behringer & Partner",
+    description: "Kanalinspektion Mühldorf: HD-Reinigung, TV-Befahrung (11 km Kanal, 900 Anschlüsse), bautechnische Zustandsbewertung und GIS-Erfassung für die Stadt Mühldorf.",
+  },
+  {
+    bereich: "siedlungswasserwirtschaft",
+    slug: "klaeranlage-schwindegg",
+    fragment: "projekte/siedlungswasserwirtschaft/klaeranlage-schwindegg.html",
+    title: "Projekt: Kläranlage Schwindegg - Behringer & Partner",
+    description: "Ertüchtigung der Kläranlage Schwindegg auf 8.000 EW: Neubau von Belebungs- & Nachklärbecken sowie technische Modernisierung für effiziente Abwasserreinigung.",
+  },
+  {
+    bereich: "siedlungswasserwirtschaft",
+    slug: "massing",
+    fragment: "projekte/siedlungswasserwirtschaft/massing.html",
+    title: "Projekt: WV Eggenfeldener Straße Massing - Behringer & Partner",
+    description: "Erneuerung der Wasserleitung und Deckenbau in der Eggenfeldener Straße, Massing. Erfolgreiche Tiefbau- und Wasserversorgungsarbeiten für den Markt Massing (2024).",
+  },
+  {
+    bereich: "siedlungswasserwirtschaft",
+    slug: "puertner-kreuzung",
+    fragment: "projekte/siedlungswasserwirtschaft/puertner-kreuzung.html",
+    title: "Projekt: Wasser- und Stromversorgung Pürtner Kreuzung - Behringer & Partner",
+    description: "Infrastrukturprojekt Pürtner Kreuzung: Verlegung von Wasser-, Strom- & LWL-Leitungen sowie Straßenbeleuchtung für die Stadtwerke Waldkraiburg.",
+  },
+  {
+    bereich: "siedlungswasserwirtschaft",
+    slug: "regenueberlauf-hummel",
+    fragment: "projekte/siedlungswasserwirtschaft/regenueberlauf-hummel.html",
+    title: "Projekt: Regenüberlauf Hummel - Behringer & Partner",
+    description: "Regenüberlauf Hummel, Massing: Neubau & Sanierung von RÜ-Bauwerken, Großrohr-Kanalbau (DN 1300–1800) und Wasserleitungssanierung für eine sichere Entwässerung.",
+  },
+  {
+    bereich: "siedlungswasserwirtschaft",
+    slug: "stadtwerke-waldkraiburg",
+    fragment: "projekte/siedlungswasserwirtschaft/stadtwerke-waldkraiburg.html",
+    title: "Projekt: WV 235 Hans-Watzlik-Weg - Behringer & Partner",
+    description: "Regenüberlauf Hummel, Massing: Neubau & Sanierung von RÜ-Bauwerken, Großrohr-Kanalbau (DN 1300–1800) und Wasserleitungssanierung für eine sichere Entwässerung.",
+  },
+  {
+    bereich: "strassenbau",
+    slug: "KV_LK_Altoetting",
+    fragment: "projekte/strassenbau/KV_LK_Altoetting.html",
+    title: "Projekt: Kreisverkehr AÖ 22 / AÖ 24 - Behringer & Partner",
+    description: "Neubau Kreisverkehr AÖ 22 / AÖ 24 (Altötting): Verkehrssichere Umgestaltung inkl. Trassenverlegung, barrierefreier Bushaltestelle & Querungshilfen.",
+  },
+  {
+    bereich: "strassenbau",
+    slug: "hirschbachbruecke",
+    fragment: "projekte/strassenbau/hirschbachbruecke.html",
+    title: "Projekt: Instandsetzung Hirschbachbrücke Polling - Behringer & Partner",
+    description: "Instandsetzung Hirschbachbrücke Polling: Statische Verstärkung des 61m Rahmenbauwerks, Erneuerung der Decke & naturnaher Gerinneausbau für den Landkreis Mühldorf.",
+  },
+  {
+    bereich: "strassenbau",
+    slug: "ornauer_bach",
+    fragment: "projekte/strassenbau/ornauer_bach.html",
+    title: "Projekt: Ersatzneubau Brücke über den Ornauer Bach - Behringer & Partner",
+    description: "Brückenneubau Ornauer Bach (Neuhausen): Errichtung eines Stahlbeton-Rahmenbauwerks mit Tiefgründung auf Bohrpfählen für die Gemeinde Obertaufkirchen.",
+  },
+  {
+    bereich: "strassenbau",
+    slug: "rottal_kreisverkehr",
+    fragment: "projekte/strassenbau/rottal_kreisverkehr.html",
+    title: "Projekt: Umbau Kreuzung PAN46/PAN31 - Behringer & Partner",
+    description: "Kreisverkehr PAN46/PAN31 (Mitterskirchen): Verkehrssicherer Umbau inkl. 700 m Geh-/Radweg und anspruchsvoller Höhenplanung im Überschwemmungsgebiet.",
+  },
+  {
+    bereich: "wasserbau",
+    slug: "gelting",
+    fragment: "projekte/wasserbau/gelting.html",
+    title: "Projekt: Sturzflutkonzept Gelting - Behringer & Partner",
+    description: "Integrales Sturzflutkonzept für Gelting und Ottersberg: Starkregen-Risikomanagement mit HydroAs-2D Modellierung und Maßnahmenkonzeption.",
+  },
+  {
+    bereich: "wasserbau",
+    slug: "gep-mdf",
+    fragment: "projekte/wasserbau/gep-mdf.html",
+    title: "Projekt: GEP Mühldorf a. Inn - Behringer & Partner",
+    description: "Generalentwässerungsplan Mühldorf: Aktualisierung nach DWA-A 102, hydraulische Netzberechnung für 131,5 km Kanalnetz & Wasserrechtsanträge.",
+  },
+  {
+    bereich: "wasserbau",
+    slug: "salzach",
+    fragment: "projekte/wasserbau/salzach.html",
+    title: "Projekt: No Regret Maßnahme Salzach - Behringer & Partner",
+    description: "Hochwasserschutz Salzach (Tittmoning): Deichertüchtigung durch 870 m Stahlspundwand und ökologischer Uferrückbau (No Regret Maßnahme) für das Wasserwirtschaftsamt.",
+  },
+];
+
+export function getProject(bereich: string, slug: string): Project | undefined {
+  return PROJECTS.find((p) => p.bereich === bereich && p.slug === slug);
+}
