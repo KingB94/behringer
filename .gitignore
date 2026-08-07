@@ -6,3 +6,8 @@ instance/
 .DS_Store
 node_modules/
 .next/
+
+# Konfliktkopien von iCloud/Dropbox. Entstehen, wenn viele Dateien auf einmal
+# geändert werden (z. B. bei einem Lauf von optimize_images.py).
+* 2.*
+*conflicted copy*

@@ -109,9 +109,12 @@ die erhalten bleiben müssen:
 
 - Bildkonvertierung nach WebP: Hilfsskript `convertimages.py` (nur lokal, nicht
   Teil des Betriebs). Zum Verkleinern bestehender Bilder `optimize_images.py`.
-- Im Arbeitsverzeichnis liegen 0-Byte-Sync-Dubletten (`app 2.py`,
-  `templates/index 2.html`, …) aus iCloud/Dropbox. Sie sind untracked und
-  gehören nicht ins Repo.
+- Der Projektordner wird von iCloud/Dropbox synchronisiert. Werden viele
+  Dateien auf einmal geändert (z. B. durch `optimize_images.py`), legt der
+  Sync-Dienst Konfliktkopien der alten Stände an (`slide1 2.webp`,
+  `app 2.py`, …). Sie sind per `.gitignore` ausgeschlossen; wenn sie auftauchen,
+  können sie nach kurzer Prüfung gelöscht werden — der alte Stand steckt
+  ohnehin in der Git-History.
 
 ## Konventionen
 
