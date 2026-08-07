@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Technischer Fehler - Behringer & Partner{% endblock %}
+{% block meta_description %}Auf dieser Seite ist ein technischer Fehler aufgetreten. Bitte versuchen Sie es später erneut.{% endblock %}
+
+{% block content %}
+<main>
+    <section class="legal-content-section">
+        <div class="container">
+            <div class="entry-content">
+                <h1 class="entry-title">Technischer Fehler</h1>
+                <p>Auf unserer Seite ist ein unerwarteter Fehler aufgetreten.
+                   Wir bitten um Entschuldigung. Bitte versuchen Sie es in
+                   wenigen Augenblicken noch einmal.</p>
+                <p>
+                    <a class="btn-primary" href="{{ url_for('index') }}">Zur Startseite</a>
+                </p>
+                <p>Falls das Problem bestehen bleibt, erreichen Sie uns unter
+                   <a href="mailto:info@ib-behringer.de">info@ib-behringer.de</a>
+                   oder telefonisch unter +49 (0) 8631 98679-00.</p>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

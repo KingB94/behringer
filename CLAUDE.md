@@ -89,13 +89,29 @@ erhalten bleiben müssen: **CSRF** (Flask-WTF), **Honeypot**-Feld `fax`,
 - **Stellenangebot ändern:** `templates/jobs/*.html` bzw. Übersicht in
   `templates/unternehmen/stellenangebote.html`.
 
+## Bandbreite (Render Hobby: 5 GB/Monat)
+
+Das Limit wurde im August 2026 erreicht. Ursache waren Bilder in
+Kamera-Auflösung (bis 24 MP) — die Startseite allein wog ~26 MB. Maßnahmen,
+die erhalten bleiben müssen:
+
+- **Bilder vor dem Einchecken optimieren:** `venv/bin/python optimize_images.py`
+  (Regeln pro Ordner, `--dry-run` zeigt nur an). Faustregel: lange Kante auf das
+  Doppelte der Anzeigegröße begrenzen. Neue Bilder immer durchlaufen lassen.
+- **Cache-Header:** `url_for('static', …)` hängt automatisch `?v=<mtime>` an,
+  solche URLs werden ein Jahr gecacht (siehe `app.py`). Deshalb Assets **immer**
+  über `url_for` einbinden, nie mit hartem `/static/…`-Pfad.
+- **`static/robots.txt`** sperrt KI- und SEO-Crawler aus. Google/Bing bleiben
+  ausdrücklich erlaubt; `Google-Extended` betrifft nur KI-Training, nicht das
+  Ranking.
+
 ## Bekannte Punkte
 
-- Die Error-Handler in `app.py` verweisen auf `templates/404.html` / `500.html`,
-  die **nicht existieren** — unbekannte URLs können dadurch einen 500 statt 404
-  auslösen. Bei Gelegenheit echte Fehlerseiten ergänzen.
 - Bildkonvertierung nach WebP: Hilfsskript `convertimages.py` (nur lokal, nicht
-  Teil des Betriebs).
+  Teil des Betriebs). Zum Verkleinern bestehender Bilder `optimize_images.py`.
+- Im Arbeitsverzeichnis liegen 0-Byte-Sync-Dubletten (`app 2.py`,
+  `templates/index 2.html`, …) aus iCloud/Dropbox. Sie sind untracked und
+  gehören nicht ins Repo.
 
 ## Konventionen
 

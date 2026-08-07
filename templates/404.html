@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Seite nicht gefunden - Behringer & Partner{% endblock %}
+{% block meta_description %}Die aufgerufene Seite existiert nicht. Hier geht es zurück zur Startseite von Ingenieurbüro Behringer & Partner mbB.{% endblock %}
+
+{% block content %}
+<main>
+    <section class="legal-content-section">
+        <div class="container">
+            <div class="entry-content">
+                <h1 class="entry-title">Seite nicht gefunden</h1>
+                <p>Die von Ihnen aufgerufene Seite gibt es leider nicht (mehr).
+                   Möglicherweise hat sich die Adresse geändert oder es hat sich
+                   ein Tippfehler eingeschlichen.</p>
+                <p>Nutzen Sie gerne die Navigation oben oder kehren Sie zur
+                   Startseite zurück:</p>
+                <p>
+                    <a class="btn-primary" href="{{ url_for('index') }}">Zur Startseite</a>
+                </p>
+                <p>Sie erreichen uns auch direkt unter
+                   <a href="mailto:info@ib-behringer.de">info@ib-behringer.de</a>
+                   oder telefonisch unter +49 (0) 8631 98679-00.</p>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

@@ -53,6 +53,44 @@ app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
 
 mail = Mail(app)
 
+# --- Statische Dateien langlebig cachen (spart Bandbreite) ---
+# Bilder und CSS ändern sich selten, wurden bisher aber bei jedem Seitenaufruf
+# neu übertragen. url_for() hängt jetzt automatisch einen Versionsstempel
+# (?v=<Änderungszeit>) an jede Static-URL. Ändert sich eine Datei, ändert sich
+# die URL — der Browser lädt sie dann sofort neu, obwohl wir sie lange cachen.
+_STATIC_VERSIONEN = {}
+
+
+@app.url_defaults
+def static_versionsstempel(endpoint, values):
+    if endpoint != 'static' or 'filename' not in values:
+        return
+    dateiname = values['filename']
+    version = _STATIC_VERSIONEN.get(dateiname)
+    # Im Debug-Modus nicht zwischenspeichern, sonst greifen lokale Änderungen
+    # erst nach einem Neustart.
+    if version is None or app.debug:
+        try:
+            version = int(os.stat(os.path.join(app.static_folder, dateiname)).st_mtime)
+        except OSError:
+            return
+        _STATIC_VERSIONEN[dateiname] = version
+    values['v'] = version
+
+
+@app.after_request
+def cache_control_header(response):
+    if request.endpoint == 'static' and response.status_code == 200:
+        if request.args.get('v'):
+            # Versionierte URL: kann bedenkenlos dauerhaft gecacht werden.
+            response.headers['Cache-Control'] = 'public, max-age=31536000, immutable'
+        else:
+            # Ohne Stempel (z. B. Hintergrundbilder aus styles.css oder direkte
+            # Aufrufe durch Crawler): eine Woche.
+            response.headers['Cache-Control'] = 'public, max-age=604800'
+    return response
+
+
 @app.route('/')
 def index():
     # 1. Alle News laden
