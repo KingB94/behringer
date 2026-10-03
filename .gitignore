@@ -13,12 +13,23 @@
 *.tsbuildinfo
 next-env.d.ts
 
-# python (legacy, bis Cleanup)
+# Cloudflare (OpenNext)
+.open-next/
+.wrangler/
+cloudflare-env.d.ts
+.dev.vars
+.dev.vars.*
+
+# python (nur für optimize_images.py)
 __pycache__/
 *.pyc
 venv/
-instance/
 
 # misc
 .DS_Store
 npm-debug.log*
+
+# Konfliktkopien von iCloud/Dropbox. Entstehen, wenn viele Dateien auf einmal
+# geändert werden (z. B. bei einem Lauf von optimize_images.py).
+* 2.*
+*conflicted copy*
