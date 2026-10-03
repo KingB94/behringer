@@ -32,7 +32,8 @@ Stand bei Beginn (03.10.2026):
       Favicons 16/32
 - [x] OpenNext + Wrangler (`wrangler.jsonc`, `open-next.config.ts`),
       Cache-Header in `public/_headers`
-- [x] Kontaktformular → `mailto:`-Link + Telefon (kein Mail-Backend mehr)
+- [x] Kontaktformular ohne Server: öffnet beim Senden das Mail-Programm
+      (`mailto:` mit Betreff und Text), kein Mail-Backend mehr
 - [x] Datenschutz: Hosting Cloudflare statt Render, Abschnitt
       Kontaktformular und CSRF-Cookie ersetzt („setzt keine Cookies")
 - [x] `www` → nackte Domain als 301 in `next.config.ts`

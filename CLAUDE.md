@@ -30,9 +30,11 @@ Website des Ingenieurbüros Behringer & Partner mbB.
   Neue Einbettungen von Drittanbietern (Karten, Videos, Schriften von
   Google Fonts usw.) müssen genauso gehandhabt werden — nichts ohne Zustimmung
   von externen Servern nachladen.
-- **Kein Kontaktformular.** Kontakt läuft bewusst über `mailto:` und Telefon
-  (Startseite, Abschnitt `#contact`). Ein Formular bräuchte einen Mail-Dienst
-  im Worker plus Spam-Schutz und Anpassung der Datenschutzerklärung.
+- **Kontaktformular ohne Server** (`components/ContactForm.tsx`): Besucher
+  tippen Name, Betreff und Nachricht auf der Seite; beim Senden wird daraus
+  ein `mailto:`-Link, der ihr E-Mail-Programm mit fertiger Nachricht öffnet.
+  Die Website überträgt und speichert nichts. Ein echter Versand bräuchte
+  einen Mail-Dienst im Worker plus Spam-Schutz und Anpassung des Datenschutzes.
 - **Datenschutz-Text** steht im Impressum (`content/impressum.html`, Anker
   `#datenschutz`). Bei Änderungen an der Datenverarbeitung dort mit aktualisieren.
 - **SEO nicht brechen:** URLs stabil halten. Alte WordPress-URLs werden per

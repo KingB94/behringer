@@ -4,6 +4,7 @@ import AboutReveal from "@/components/AboutReveal";
 import HeroSlideshow from "@/components/HeroSlideshow";
 import NewsSlider from "@/components/NewsSlider";
 import ServiceCard from "@/components/ServiceCard";
+import ContactForm from "@/components/ContactForm";
 import TwoClickMap from "@/components/TwoClickMap";
 import { getLatestNews } from "@/lib/news";
 import { pageMetadata } from "@/lib/meta";
@@ -221,24 +222,7 @@ export default function Home() {
               Wir freuen uns auf Ihre Nachricht, Ihren Anruf oder Ihren Besuch.
             </p>
             <div className="contact-grid">
-              <div className="contact-direct">
-                <h3>Schreiben Sie uns</h3>
-                <p>
-                  Schildern Sie uns Ihr Vorhaben per E-Mail, wir melden uns
-                  zeitnah bei Ihnen. Oder rufen Sie uns direkt an.
-                </p>
-                <div className="contact-direct-actions">
-                  <a
-                    className="btn btn-primary"
-                    href="mailto:info@ib-behringer.de?subject=Anfrage%20%C3%BCber%20die%20Webseite"
-                  >
-                    E-Mail schreiben
-                  </a>
-                  <a className="btn btn-secondary" href="tel:+4986319867900">
-                    Anrufen
-                  </a>
-                </div>
-              </div>
+              <ContactForm />
               <div className="contact-info">
                 <TwoClickMap />
                 <address>

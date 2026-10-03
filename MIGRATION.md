@@ -105,6 +105,7 @@ Die Next.js-Fassung geht nicht auf Render, sondern auf **Cloudflare Workers**
 (Branch `cloudflare`, Ablauf in `LAUNCH.md`). Dabei geändert:
 
 - Kontaktformular samt Nodemailer, Rate-Limit und `/api/kontakt` entfernt;
-  stattdessen `mailto:`- und `tel:`-Links. `render.yaml` entfernt.
+  das Formular öffnet jetzt beim Senden das Mail-Programm des Besuchers
+  (`mailto:` mit Betreff und Text). `render.yaml` entfernt.
 - `main` (optimierte Bilder, Crawler-Sperren, Favicons) übernommen.
 - Next.js auf 16.3.x (Voraussetzung für `@opennextjs/cloudflare`).

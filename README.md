@@ -28,9 +28,10 @@ npm run deploy   # von Hand veröffentlichen (sonst per GitHub Action)
 
 ## Kontakt
 
-Kein Formular: Der Kontaktbereich der Startseite verlinkt per `mailto:` auf
-`info@ib-behringer.de` und per `tel:` auf die Zentrale. Dadurch setzt die Seite
-keinerlei Cookies und braucht kein Mail-Backend.
+`components/ContactForm.tsx`: Formular (Name, Telefon optional, Betreff,
+Nachricht), das beim Senden per `mailto:` das E-Mail-Programm des Besuchers
+mit fertiger Nachricht an `info@ib-behringer.de` öffnet. Kein Server, kein
+Mail-Backend, keine Cookies.
 
 ## Deployment (Cloudflare Workers)
 
