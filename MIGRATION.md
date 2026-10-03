@@ -96,3 +96,15 @@ npm start          # http://localhost:3000
 Ein paar Seiten zum Reinschauen:
 `/` · `/wasserbau` · `/neuigkeiten` · `/team` · `/maedchenschule-chato` ·
 `/projekt/wasserbau/gelting`
+
+---
+
+## Nachtrag Oktober 2026: Cloudflare statt Render
+
+Die Next.js-Fassung geht nicht auf Render, sondern auf **Cloudflare Workers**
+(Branch `cloudflare`, Ablauf in `LAUNCH.md`). Dabei geändert:
+
+- Kontaktformular samt Nodemailer, Rate-Limit und `/api/kontakt` entfernt;
+  stattdessen `mailto:`- und `tel:`-Links. `render.yaml` entfernt.
+- `main` (optimierte Bilder, Crawler-Sperren, Favicons) übernommen.
+- Next.js auf 16.3.x (Voraussetzung für `@opennextjs/cloudflare`).

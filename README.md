@@ -8,40 +8,36 @@ Migriert von einem früheren Flask-Setup; Design, URLs und SEO-Signale sind 1:1 
 ```bash
 npm install
 npm run dev      # http://localhost:3000
-npm run build    # Produktions-Build (SSG)
-npm start        # Produktions-Server
+npm run preview  # wie live im Cloudflare-Worker, http://localhost:8787
+npm run deploy   # von Hand veröffentlichen (sonst per GitHub Action)
 ```
-
-Für das Kontaktformular werden lokal SMTP-Zugangsdaten aus `.env` gelesen
-(`MAIL_SERVER`, `MAIL_PORT`, `MAIL_USE_TLS`, `MAIL_USERNAME`, `MAIL_PASSWORD`).
 
 ## Struktur
 
 - `app/` — Routen (App Router). Statische Inhaltsseiten rendern HTML-Fragmente
   aus `content/` via `lib/fragment.ts`.
 - `components/` — Interaktive Client-Komponenten (Hero-Slideshow, News-Slider,
-  Projekt-Galerie, 2-Klick Maps/YouTube, Kontaktformular u. a.).
+  Projekt-Galerie, 2-Klick Maps/YouTube u. a.).
 - `content/` — Aus den alten Templates extrahierte HTML-Fragmente (statische
   Seiten + 32 Projekte).
 - `data/` — `news.json`, `projects.ts`, `jobs.ts`.
-- `lib/` — Mailer (Nodemailer), Rate-Limit, News-Zugriff, Metadaten-Helfer.
-- `public/images/` — Bilder (früher `static/images/`).
+- `lib/` — News-Zugriff, Metadaten-Helfer, Fragment-Loader.
+- `public/images/` — Bilder (früher `static/images/`), `public/_headers` — Cache-Header.
+- `optimize_images.py` — Bilder verkleinern (lokal, nicht Teil des Builds).
 - `scripts/convertimages.py` — Hilfsskript zur WebP-Konvertierung (nicht Teil des Builds).
 
-## Kontaktformular
+## Kontakt
 
-`POST /api/kontakt` (Route Handler) → Nodemailer über die `MAIL_*`-Env-Vars an
-`info@ib-behringer.de`. Schutz: Honeypot-Feld `fax`, In-Memory-Rate-Limit
-(3/min pro IP), Same-Origin-Prüfung. Kein CSRF-Token nötig, da keine Cookies gesetzt werden.
+Kein Formular: Der Kontaktbereich der Startseite verlinkt per `mailto:` auf
+`info@ib-behringer.de` und per `tel:` auf die Zentrale. Dadurch setzt die Seite
+keinerlei Cookies und braucht kein Mail-Backend.
 
-## Deployment (Render.com)
+## Deployment (Cloudflare Workers)
 
-Node Web Service, Build `npm ci && npm run build`, Start `npm start`
-(siehe `render.yaml`). Env-Vars: die fünf `MAIL_*` + `NODE_VERSION=22`.
-
-Empfohlener Cut-over: neuen Service auf Branch `nextjs-migration` aufsetzen,
-prüfen, dann die Custom-Domain vom alten Flask-Service auf den neuen umhängen.
-Rollback = Domain zurückhängen.
+OpenNext (`@opennextjs/cloudflare`) übersetzt den Next-Build in einen Worker
+(`wrangler.jsonc`, `open-next.config.ts`). Jeder Push auf `main` veröffentlicht
+über `.github/workflows/deploy.yml`. Nie `wrangler deploy` direkt verwenden —
+siehe `CLAUDE.md`. Ablauf des Umzugs von Render: `LAUNCH.md`.
 
 ## Offener Punkt
 

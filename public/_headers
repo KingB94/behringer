@@ -1,0 +1,12 @@
+# Cache-Header für Cloudflare (Workers Static Assets).
+# Die Dateinamen unter /_next/static enthalten einen Inhalts-Hash und
+# ändern sich bei jeder Änderung — dürfen also dauerhaft gecacht werden.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Bilder und Favicons haben keinen Hash im Namen: eine Woche.
+/images/*
+  Cache-Control: public, max-age=604800
+
+/favicon/*
+  Cache-Control: public, max-age=604800

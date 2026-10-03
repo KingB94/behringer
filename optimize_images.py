@@ -3,7 +3,7 @@ Bilder für den Web-Einsatz optimieren (nur lokal, nicht Teil des Betriebs).
 
 Hintergrund: Die Originalbilder liegen in Kamera-Auflösung (bis 24 MP) vor,
 werden im Layout aber nur wenige hundert Pixel groß dargestellt. Das kostet
-unnötig Bandbreite (Render-Hobby-Plan: 5 GB/Monat).
+unnötig Bandbreite und Ladezeit.
 
 Regel: lange Kante auf das Maß begrenzen, das die Anzeige inkl. Retina (2x)
 tatsächlich braucht. Bilder, die schon klein genug sind, bleiben unangetastet.
@@ -18,9 +18,9 @@ import os
 
 from PIL import Image, ImageOps
 
-BASIS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "images")
+BASIS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "public", "images")
 
-# (Pfad-Präfix relativ zu static/images, max. lange Kante in px, WebP-Qualität)
+# (Pfad-Präfix relativ zu public/images, max. lange Kante in px, WebP-Qualität)
 # Die erste passende Regel gewinnt, daher speziell vor allgemein.
 REGELN = [
     # Briefkopf: enthält feine Linien und Text -> hohe Qualität halten,
@@ -47,7 +47,7 @@ STANDARD = (1600, 82)
 
 
 def regel_fuer(relpfad):
-    """Liefert (max_kante, qualitaet) für einen Pfad relativ zu static/images."""
+    """Liefert (max_kante, qualitaet) für einen Pfad relativ zu public/images."""
     for praefix, kante, qualitaet in REGELN:
         if relpfad == praefix or relpfad.startswith(praefix + os.sep) or relpfad.startswith(praefix):
             return kante, qualitaet

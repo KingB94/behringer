@@ -1,0 +1,45 @@
+{
+  // ---------------------------------------------------------------
+  // Cloudflare-Konfiguration (gleiches Muster wie reifenrol).
+  //
+  // Gebaut wird nicht direkt aus dem Next.js-Ordner: `opennextjs-cloudflare
+  // build` übersetzt die fertige Next-Ausgabe nach .open-next/ — dort liegen
+  // der Worker und die statischen Dateien, auf die es hier zeigt.
+  // ---------------------------------------------------------------
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ib-behringer",
+  "main": ".open-next/worker.js",
+
+  // nodejs_compat ist für Next.js Pflicht.
+  "compatibility_date": "2025-09-01",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // Alle vorgerenderten Seiten, Bilder und Schriften werden direkt vom
+  // CDN ausgeliefert, ohne den Worker überhaupt zu starten.
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS",
+    // Dateien werden ausgeliefert, wie sie heißen (kein Abschneiden von
+    // .html mit 307). Seiten liefert ohnehin der Worker.
+    "html_handling": "none"
+  },
+
+  // Eigene Adressen. Cloudflare legt die DNS-Einträge beim Veröffentlichen
+  // selbst an und erneuert das Zertifikat. Voraussetzung: Die Zone
+  // ib-behringer.de liegt im selben Cloudflare-Konto (Nameserver umgestellt).
+  //
+  // www ist dabei, obwohl die Seite unter der nackten Domain läuft: Der
+  // Worker muss die www-Adresse annehmen, um sie weiterzuleiten (301 in
+  // next.config.ts).
+  //
+  // Bis zur Umstellung der Nameserver auskommentiert lassen — die Seite ist
+  // dann unter ib-behringer.<konto>.workers.dev zum Testen erreichbar.
+  // "routes": [
+  //   { "pattern": "ib-behringer.de", "custom_domain": true },
+  //   { "pattern": "www.ib-behringer.de", "custom_domain": true }
+  // ],
+
+  "observability": {
+    "enabled": true
+  }
+}

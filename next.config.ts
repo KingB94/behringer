@@ -34,6 +34,22 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // www -> nackte Domain (kanonisch: https://ib-behringer.de).
+      // Host-Ausdruck mit ^…$ verankert, sonst träfe er auch sich selbst.
+      // Zwei Regeln, weil "/:pfad*" bei der Startseite wörtlich im
+      // Location-Kopf landen würde.
+      {
+        source: "/",
+        has: [{ type: "host", value: "^www\\.ib-behringer\\.de$" }],
+        destination: "https://ib-behringer.de/",
+        statusCode: 301,
+      },
+      {
+        source: "/:pfad+",
+        has: [{ type: "host", value: "^www\\.ib-behringer\\.de$" }],
+        destination: "https://ib-behringer.de/:pfad+",
+        statusCode: 301,
+      },
       ...leistungRedirects,
       // Fallback für tiefere /leistung/<slug>/... Pfade
       { source: "/leistung/:slug*", destination: "/", permanent: true },
@@ -41,7 +57,7 @@ const nextConfig: NextConfig = {
       ...jobRedirects,
       { source: "/unternehmen", destination: "/firmengeschichte", permanent: true },
       { source: "/gesellschafter", destination: "/firmengeschichte", permanent: true },
-      // Kontakt (GET): das Formular postet auf /api/kontakt, daher unkritisch
+      // Alte Kontaktseite -> Kontaktbereich der Startseite
       { source: "/kontakt", destination: "/#contact", permanent: true },
       {
         source: "/alle-beitraege-zur-maedchenschule-chato-tansania",
