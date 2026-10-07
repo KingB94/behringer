@@ -28,6 +28,278 @@
     <meta property="og:image" content="{{ url_for('static', filename='images/layout/logo.png', _external=True) }}">
     <meta property="og:url" content="https://ib-behringer.de{{ request.path }}">
     <meta property="og:type" content="website">
+    <!-- Schema.org (JSON-LD): Firma, Standorte, Einsatzgebiet. Bei Adress-/Telefonänderungen mitpflegen. -->
+    {% raw %}<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://ib-behringer.de/#organisation",
+      "name": "Behringer & Partner",
+      "legalName": "Ingenieurbüro Behringer & Partner mbB",
+      "url": "https://ib-behringer.de",
+      "logo": "https://ib-behringer.de/images/layout/logo.png",
+      "email": "info@ib-behringer.de",
+      "telephone": "+49 8631 98679-00",
+      "faxNumber": "+49 8631 98679-99",
+      "foundingDate": "1968",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Luitpoldallee 32",
+        "postalCode": "84453",
+        "addressLocality": "Mühldorf a. Inn",
+        "addressRegion": "Bayern",
+        "addressCountry": "DE"
+      },
+      "description": "Ingenieurbüro für kommunalen Tiefbau und Infrastrukturplanung aus Mühldorf a. Inn. Planung, Ausschreibung und Bauüberwachung für Städte, Gemeinden, Zweckverbände, Stadtwerke und weitere öffentliche Auftraggeber in Oberbayern und Niederbayern.",
+      "knowsAbout": [
+        "Siedlungswasserwirtschaft",
+        "Kanalbau und Kanalsanierung",
+        "Wasserversorgung",
+        "Straßenbau",
+        "Brückenbau",
+        "Wasserbau",
+        "Hochwasserschutz",
+        "Starkregen- und Sturzflutvorsorge",
+        "Baulanderschließung",
+        "Fernwärme",
+        "Hydraulische Berechnungen",
+        "Kommunales GIS und Kanalkataster"
+      ],
+      "areaServed": [
+        {
+          "@type": "AdministrativeArea",
+          "name": "Landkreis Mühldorf a. Inn"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Landkreis Altötting"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Landkreis Rottal-Inn"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Landkreis Rosenheim"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Landkreis Ebersberg"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Landkreis Traunstein"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Oberbayern"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Niederbayern"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Oberpfalz"
+        }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/ibb_mue/"
+      ],
+      "location": [
+        {
+          "@id": "https://ib-behringer.de/standorte#muehldorf"
+        },
+        {
+          "@id": "https://ib-behringer.de/standorte#simbach"
+        },
+        {
+          "@id": "https://ib-behringer.de/standorte#rossbach"
+        }
+      ]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://ib-behringer.de/standorte#muehldorf",
+      "name": "Ingenieurbüro Behringer & Partner mbB – Hauptsitz Mühldorf a. Inn",
+      "parentOrganization": {
+        "@id": "https://ib-behringer.de/#organisation"
+      },
+      "url": "https://ib-behringer.de/standorte",
+      "image": "https://ib-behringer.de/images/layout/logo.png",
+      "telephone": "+49 8631 98679-00",
+      "faxNumber": "+49 8631 98679-99",
+      "email": "info@ib-behringer.de",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Luitpoldallee 32",
+        "postalCode": "84453",
+        "addressLocality": "Mühldorf a. Inn",
+        "addressRegion": "Bayern",
+        "addressCountry": "DE"
+      },
+      "areaServed": [
+        {
+          "@type": "AdministrativeArea",
+          "name": "Landkreis Mühldorf a. Inn"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Landkreis Altötting"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Landkreis Rottal-Inn"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Landkreis Rosenheim"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Landkreis Ebersberg"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Landkreis Traunstein"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Oberbayern"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Niederbayern"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Oberpfalz"
+        }
+      ]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://ib-behringer.de/standorte#simbach",
+      "name": "Ingenieurbüro Behringer & Partner mbB – Zweigstelle Simbach a. Inn",
+      "parentOrganization": {
+        "@id": "https://ib-behringer.de/#organisation"
+      },
+      "url": "https://ib-behringer.de/standorte",
+      "image": "https://ib-behringer.de/images/layout/logo.png",
+      "telephone": "+49 8571 9250415",
+      "faxNumber": "+49 8571 921384",
+      "email": "info@ib-behringer.de",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Bahnhofplatz 4",
+        "postalCode": "84359",
+        "addressLocality": "Simbach a. Inn",
+        "addressRegion": "Bayern",
+        "addressCountry": "DE"
+      },
+      "areaServed": [
+        {
+          "@type": "AdministrativeArea",
+          "name": "Landkreis Mühldorf a. Inn"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Landkreis Altötting"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Landkreis Rottal-Inn"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Landkreis Rosenheim"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Landkreis Ebersberg"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Landkreis Traunstein"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Oberbayern"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Niederbayern"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Oberpfalz"
+        }
+      ]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://ib-behringer.de/standorte#rossbach",
+      "name": "Ingenieurbüro Behringer & Partner mbB – Zweigstelle Roßbach",
+      "parentOrganization": {
+        "@id": "https://ib-behringer.de/#organisation"
+      },
+      "url": "https://ib-behringer.de/standorte",
+      "image": "https://ib-behringer.de/images/layout/logo.png",
+      "telephone": "+49 8564 962959",
+      "faxNumber": "+49 8564 96296",
+      "email": "info@ib-behringer.de",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Haselbach 6",
+        "postalCode": "94439",
+        "addressLocality": "Roßbach",
+        "addressRegion": "Bayern",
+        "addressCountry": "DE"
+      },
+      "areaServed": [
+        {
+          "@type": "AdministrativeArea",
+          "name": "Landkreis Mühldorf a. Inn"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Landkreis Altötting"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Landkreis Rottal-Inn"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Landkreis Rosenheim"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Landkreis Ebersberg"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Landkreis Traunstein"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Oberbayern"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Niederbayern"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Oberpfalz"
+        }
+      ]
+    }
+  ]
+}
+    </script>{% endraw %}
 </head>
 
 <body>

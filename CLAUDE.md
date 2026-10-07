@@ -101,9 +101,16 @@ die erhalten bleiben müssen:
 - **Cache-Header:** `url_for('static', …)` hängt automatisch `?v=<mtime>` an,
   solche URLs werden ein Jahr gecacht (siehe `app.py`). Deshalb Assets **immer**
   über `url_for` einbinden, nie mit hartem `/static/…`-Pfad.
-- **`static/robots.txt`** sperrt KI- und SEO-Crawler aus. Google/Bing bleiben
-  ausdrücklich erlaubt; `Google-Extended` betrifft nur KI-Training, nicht das
-  Ranking.
+- **`static/robots.txt`:** Suchmaschinen **und KI-Crawler** (GPTBot,
+  OAI-SearchBot, ChatGPT-User, ClaudeBot, PerplexityBot, Google-Extended …) sind
+  seit Oktober 2026 bewusst erlaubt — der Kunde will in KI-Suchen auftauchen
+  (GEO). **Nicht wieder sperren.** Gesperrt sind nur reine Scraper und
+  SEO-Analyse-Crawler. In Cloudflare „AI-Bots blockieren“ / AI Crawl Control
+  ausgeschaltet lassen, sonst greift die Sperre trotzdem.
+- **Strukturierte Daten** (Schema.org, JSON-LD) für Firma und Standorte stehen
+  in `templates/base.html`. Bei Änderungen an Adressen/Telefonnummern mitpflegen.
+- **Referenzprojekte** haben das Feld „Ort / Landkreis“ (Ort, Landkreis,
+  Regierungsbezirk). Bei neuen Projekten immer mit angeben.
 
 ## Bekannte Punkte
 
