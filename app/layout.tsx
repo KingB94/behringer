@@ -9,6 +9,7 @@ import {
   OG_TITLE,
   OG_DESCRIPTION,
 } from "@/lib/meta";
+import { STRUCTURED_DATA } from "@/lib/structuredData";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -48,6 +49,10 @@ export default function RootLayout({
   return (
     <html lang="de">
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(STRUCTURED_DATA) }}
+        />
         <Header />
         {children}
         <Footer />

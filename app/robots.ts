@@ -3,30 +3,13 @@ import { SITE_URL } from "@/lib/meta";
 
 export const dynamic = "force-static";
 
-// KI-Crawler (Training / Scraping): bringen keine Besucher, ziehen aber die
-// komplette Bildergalerie. Google-Extended und Applebot-Extended betreffen
-// NUR das KI-Training, nicht die normale Google- bzw. Apple-Suche — das
-// Ranking bleibt davon unberührt.
-const KI_CRAWLER = [
-  "GPTBot",
-  "ChatGPT-User",
-  "OAI-SearchBot",
-  "ClaudeBot",
-  "anthropic-ai",
-  "Claude-Web",
-  "PerplexityBot",
-  "CCBot",
-  "Google-Extended",
-  "Applebot-Extended",
-  "Bytespider",
-  "meta-externalagent",
-  "FacebookBot",
-  "Amazonbot",
-  "Diffbot",
-  "ImagesiftBot",
-  "Omgilibot",
-  "YouBot",
-];
+// KI-Suchen (ChatGPT, Perplexity, Claude, Gemini, Copilot) sind ausdrücklich
+// erlaubt: Sie dürfen nur zitieren, was sie lesen können. Gilt auch für die
+// Trainings-Crawler (GPTBot, ClaudeBot, Google-Extended …), damit die Modelle
+// das Büro langfristig „kennen“. Bandbreite ist auf Cloudflare kein Thema.
+//
+// Gesperrt bleiben reine Scraper ohne Such- oder Assistenzfunktion.
+const SCRAPER = ["Bytespider", "Diffbot", "ImagesiftBot", "Omgilibot"];
 
 // SEO-Analysedienste: crawlen sehr gründlich, liefern uns selbst aber
 // keinen Mehrwert.
@@ -44,9 +27,9 @@ const SEO_CRAWLER = [
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      // Suchmaschinen sind ausdrücklich willkommen.
+      // Suchmaschinen und KI-Suchen sind ausdrücklich willkommen.
       { userAgent: "*", allow: "/" },
-      { userAgent: [...KI_CRAWLER, ...SEO_CRAWLER], disallow: "/" },
+      { userAgent: [...SCRAPER, ...SEO_CRAWLER], disallow: "/" },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
   };

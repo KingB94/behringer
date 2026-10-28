@@ -96,10 +96,18 @@ Cloudflare hat kein Bandbreiten-Limit, große Bilder kosten aber Ladezeit.
   (Regeln pro Ordner unter `public/images`, `--dry-run` zeigt nur an).
   Faustregel: lange Kante auf das Doppelte der Anzeigegröße begrenzen.
 - Bilder als `.webp` (bestehende Konvention).
-- **Crawler-Sperren** für KI- und SEO-Crawler stehen in `app/robots.ts`.
-  Google/Bing bleiben ausdrücklich erlaubt; `Google-Extended` betrifft nur
-  KI-Training, nicht das Ranking. In Cloudflare die „verwaltete robots.txt"
-  ausgeschaltet lassen, sonst wird die eigene überschrieben.
+- **Crawler-Regeln** stehen in `app/robots.ts`. Suchmaschinen **und KI-Crawler**
+  (GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, PerplexityBot,
+  Google-Extended …) sind seit Oktober 2026 bewusst erlaubt — der Kunde will
+  in KI-Suchen auftauchen (GEO). **Nicht wieder sperren.** Gesperrt sind nur
+  reine Scraper und SEO-Analyse-Crawler. In Cloudflare die „verwaltete
+  robots.txt" und „AI-Bots blockieren" / AI Crawl Control ausgeschaltet lassen,
+  sonst greift die Sperre trotzdem.
+- **Strukturierte Daten** (Schema.org, JSON-LD) für Firma und Standorte stehen in
+  `lib/structuredData.ts` und werden im Layout auf jeder Seite ausgegeben.
+  Bei Änderungen an Adressen/Telefonnummern dort mitpflegen.
+- **Referenzprojekte** haben das Feld „Ort / Landkreis“ (Ort, Landkreis,
+  Regierungsbezirk). Bei neuen Projekten immer mit angeben.
 
 ## Bekannte Punkte
 
