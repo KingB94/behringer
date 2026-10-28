@@ -5,135 +5,124 @@ Ziel: `https://ib-behringer.de` wird von Cloudflare Workers ausgeliefert
 Muster wie bei reifenrol (`../reifenrol/LAUNCH.md`).
 
 **Was gleich bleibt:** Die Domain bleibt bei IONOS registriert, die
-E-Mail-Postfächer bleiben bei IONOS. Nur die **Nameserver** wandern zu
-Cloudflare; die Mail-Einträge (MX, SPF, DKIM …) werden dort 1:1
-übernommen und zeigen weiterhin auf IONOS.
+40 E-Mail-Postfächer bleiben bei IONOS. Nur die **Nameserver** wandern zu
+Cloudflare; die Mail-Einträge (MX, SPF, DKIM …) stehen dort 1:1 und zeigen
+weiterhin auf IONOS. DNS-Änderungen bei IONOS wirken danach nicht mehr —
+gepflegt wird in Cloudflare.
 
 **Wer macht was:**
-- **Wir** (Cloudflare-Konto): Zone anlegen, Einträge prüfen, Worker veröffentlichen.
-- **IT-Verantwortlicher des Kunden** (IONOS-Konto): nur Schritt 5, die
-  Nameserver umstellen. Sonst nichts bei IONOS ändern oder kündigen.
+- **Wir** (Cloudflare-Konto „Bayern Digital“): Zone, Einträge, Worker.
+- **IT des Kunden** (Herbert Feuchtgruber, Feuchtgruber-EDV; IONOS-Konto):
+  nur Etappe 4, die Nameserver umstellen. Sonst nichts bei IONOS ändern,
+  löschen oder kündigen.
 
-Stand bei Beginn (03.10.2026):
-
-| | |
-| --- | --- |
-| Nameserver | `ns1050.ui-dns.org/.de/.com/.biz` (IONOS) |
-| Webseite | A `216.24.57.1`, `216.24.57.253`, `www` CNAME `behringer.onrender.com` (Render) |
-| DNSSEC | **aus** (kein DS bei der DENIC) — nichts abzuschalten |
-| CAA | `0 issue "letsencrypt.org"` |
+**Grundsatz für einen Umzug ohne Ausfall:** Nameserver-Wechsel und
+Website-Umzug passieren getrennt. Bei `.de` dauert es bis zu 24 Stunden, bis
+alle Resolver die neuen Nameserver kennen; so lange müssen IONOS und
+Cloudflare dieselben Antworten geben. Deshalb stehen die Render-Einträge
+zunächst auch in Cloudflare, und die Website wird erst umgeschaltet, wenn
+die Zone aktiv ist.
 
 ---
 
 ## Etappe 1 — Code ✅ (03.10.2026, Branch `cloudflare`)
 
-- [x] Next.js-Fassung (`nextjs-migration`) auf den Stand von `main`
-      gebracht: optimierte Bilder, Crawler-Sperren in `app/robots.ts`,
-      Favicons 16/32
-- [x] OpenNext + Wrangler (`wrangler.jsonc`, `open-next.config.ts`),
-      Cache-Header in `public/_headers`
-- [x] Kontaktformular ohne Server: öffnet beim Senden das Mail-Programm
-      (`mailto:` mit Betreff und Text), kein Mail-Backend mehr
-- [x] Datenschutz: Hosting Cloudflare statt Render, Abschnitt
-      Kontaktformular und CSRF-Cookie ersetzt („setzt keine Cookies")
-- [x] `www` → nackte Domain als 301 in `next.config.ts`
+- [x] Next.js-Fassung auf Cloudflare Workers (OpenNext), Cache-Header in
+      `public/_headers`, `www` → nackte Domain als 301
+- [x] Kontaktformular ohne Server (`mailto:`), Datenschutz angepasst
 - [x] `.github/workflows/deploy.yml`: jeder Push auf `main` veröffentlicht
-- [x] Örtlich geprüft mit `npm run preview`: alle 60 Sitemap-URLs 200,
-      unbekannte Adresse 404, Alt-Redirects 308, `www` 301, kein Set-Cookie
+- [x] 28.10.2026: Commit `8653dcb` von `main` (KI-Crawler erlaubt,
+      Schema.org, „Ort / Landkreis“) in die Next.js-Fassung übernommen
 
-## Etappe 2 — Testlauf auf workers.dev (wir)
+## Etappe 2 — Testlauf auf workers.dev ✅ (28.10.2026)
 
-1. [ ] `npx wrangler login` (Cloudflare-Konto, in dem die Zone liegen soll)
-2. [ ] `npm run deploy` — `routes` in `wrangler.jsonc` sind noch
-       auskommentiert, die Seite landet unter
-       `https://ib-behringer.<konto>.workers.dev`.
-       **Wichtig:** immer `npm run deploy` (bzw. `opennextjs-cloudflare deploy`),
-       nie `wrangler deploy` direkt — sonst fehlen die vorgerenderten Seiten
-       und die Inhaltsseiten antworten mit 500.
-3. [ ] Dort durchklicken, dem Kunden den Link zur Abnahme schicken.
+- [x] `npm run deploy` (routes auskommentiert) →
+      https://ib-behringer.landingpage-next.workers.dev
+- [x] Geprüft: alle 60 Sitemap-URLs 200, Alt-Redirects 308, unbekannte
+      Adresse 404, kein Set-Cookie, Canonical zeigt auf `ib-behringer.de`
+- [ ] Link dem Kunden zur Abnahme schicken
 
-## Etappe 3 — Zone in Cloudflare anlegen (wir)
+## Etappe 3 — Zone in Cloudflare ✅ (28.10.2026)
 
-4. [ ] *Add a site* → `ib-behringer.de` → Free. Cloudflare scannt die
-       bestehenden Einträge. Danach **mit dieser Soll-Liste abgleichen**
-       (Stand 03.10.2026, öffentlich abgefragt). Alle Einträge auf
-       **„DNS only" (graue Wolke)**, nicht „Proxied":
+Zone `ib-behringer.de` (Free, ID `387f223abf1f9fb4de133f57ce428d31`) ohne
+Auto-Scan angelegt, Einträge per API nach den IONOS-Screenshots vom
+28.10.2026 eingetragen. Alle **DNS only (graue Wolke)**:
 
-       | Typ | Name | Inhalt |
-       | --- | --- | --- |
-       | MX | `@` | `mx00.ionos.de` (Prio 10) |
-       | MX | `@` | `mx01.ionos.de` (Prio 10) |
-       | TXT | `@` | `v=spf1 include:_spf-eu.ionos.com ~all` |
-       | TXT | `_dmarc` | `v=DMARC1;p=none;sp=none;pct=100;rua=mailto:info@ib-behringer.de;ruf=mailto:info@ib-behringer.de;ri=86400;aspf=r;adkim=s;fo=1` |
-       | CNAME | `s1-ionos._domainkey` | `s1.dkim.ionos.com` |
-       | CNAME | `s2-ionos._domainkey` | `s2.dkim.ionos.com` |
-       | CNAME | `s42582890._domainkey` | `s42582890.dkim.ionos.com` |
-       | CNAME | `autodiscover` | `adsredir.ionos.info` |
-       | A | `ftp` | `217.160.223.17` |
+| Typ | Name | Inhalt |
+| --- | --- | --- |
+| MX | `@` | `mx00.ionos.de` (Prio 10) |
+| MX | `@` | `mx01.ionos.de` (Prio 10) |
+| TXT | `@` | `v=spf1 include:_spf-eu.ionos.com ~all` |
+| TXT | `_dmarc` | `v=DMARC1;p=none;sp=none;pct=100;rua=mailto:info@ib-behringer.de;ruf=mailto:info@ib-behringer.de;ri=86400;aspf=r;adkim=s;fo=1` |
+| CNAME | `s1-ionos._domainkey` | `s1.dkim.ionos.com` |
+| CNAME | `s2-ionos._domainkey` | `s2.dkim.ionos.com` |
+| CNAME | `s42582890._domainkey` | `s42582890.dkim.ionos.com` |
+| CNAME | `autodiscover` | `adsredir.ionos.info` |
+| A | `ftp` | `217.160.223.17` |
+| A | `@` | `216.24.57.1` (Render, vorerst) |
+| A | `@` | `216.24.57.253` (Render, vorerst) |
+| CNAME | `www` | `behringer.onrender.com` (Render, vorerst) |
+| CAA | `@` | `0 issue "letsencrypt.org"` / `"pki.goog"` / `"ssl.com"` |
 
-       Der Scan findet nur Namen, die er errät. **Den IT-Verantwortlichen
-       bitten, einen Screenshot/Export der DNS-Seite bei IONOS zu schicken**,
-       und Einträge, die dort zusätzlich stehen, von Hand nachtragen.
+- Bewusst **nicht** übernommen: CNAME `_domainconnect` →
+  `_domainconnect.1and1.com` (IONOS-Dienst, würde nach dem Umzug falsch
+  verweisen).
+- Bot-Einstellungen geprüft: AI-Bots-Blockade aus, verwaltete robots.txt
+  aus. „Always Use HTTPS“ an. DNSSEC aus. Email Routing **nicht**
+  aktivieren (würde die MX-Einträge ersetzen).
+- Nameserver für IONOS: **`laila.ns.cloudflare.com`**,
+  **`sterling.ns.cloudflare.com`**
 
-   - [ ] **Löschen:** die zwei A-Einträge `@` → `216.24.57.x` und den
-         CNAME `www` → `behringer.onrender.com` (Render). Die legt der
-         Worker in Schritt 6 selbst neu an; stehen sie noch da, schlägt
-         das Veröffentlichen fehl.
-   - [ ] **CAA:** Der Eintrag erlaubt nur Let's Encrypt. Cloudflare stellt
-         Zertifikate auch über Google Trust Services aus — CAA-Eintrag
-         entweder löschen oder um `0 issue "pki.goog"` und
-         `0 issue "ssl.com"` ergänzen.
-   - [ ] **Kein „Email Routing" aktivieren** — das würde die MX-Einträge
-         ersetzen.
+## Etappe 4 — Nameserver umstellen (IT des Kunden, IONOS)
 
-5. [ ] Cloudflare nennt zwei Nameserver (`xxx.ns.cloudflare.com`).
-       Diese an den IT-Verantwortlichen geben, **noch nicht umstellen**.
+1. [ ] Bei IONOS: *Domains & SSL* → `ib-behringer.de` → Reiter
+       *Nameserver* → „Eigene Nameserver verwenden“ →
+       `laila.ns.cloudflare.com` und `sterling.ns.cloudflare.com`
+       eintragen, alle `ns1050.ui-dns.*` entfernen, speichern. Die Warnung,
+       dass die DNS-Einstellungen bei IONOS dann nicht mehr gelten,
+       bestätigen.
+       Nicht: DNS-Einträge bei IONOS löschen, DNSSEC einschalten, SSL oder
+       Domain Guard bestellen, Verträge ändern.
+2. [ ] Warten, bis Cloudflare die Zone als **Active** meldet (Minuten bis
+       wenige Stunden). Die Website läuft in dieser Zeit weiter über Render.
 
-6. [ ] In `wrangler.jsonc` die `routes` einkommentieren, `npm run deploy`.
-       Legt die Einträge für `ib-behringer.de` und `www` samt Zertifikat
-       an. Solange die Nameserver noch bei IONOS stehen, merkt davon
-       niemand etwas.
+## Etappe 5 — Kontrolle nach dem DNS-Umzug (wir)
 
-## Etappe 4 — Nameserver umstellen (IT-Verantwortlicher, IONOS)
+3. [ ] `dig +short NS ib-behringer.de` → Cloudflare-Nameserver
+4. [ ] `dig +short MX ib-behringer.de @1.1.1.1` → `mx00/mx01.ionos.de`
+5. [ ] **Mail testen:** eine Mail von außen an `info@ib-behringer.de` und
+       eine von dort nach außen. Im Header SPF und DKIM „pass“.
 
-7. [ ] Bei IONOS: *Domains & SSL* → `ib-behringer.de` → *Nameserver* →
-       „Eigene Nameserver verwenden" → die zwei von Cloudflare eintragen,
-       alle IONOS-Nameserver entfernen. IONOS warnt, dass die dortigen
-       DNS-Einstellungen dann nicht mehr gelten — das ist so gewollt, sie
-       stehen ja in Cloudflare.
-       Der Domainvertrag und das Mail-Paket bleiben unverändert.
-8. [ ] Warten, bis Cloudflare die Zone als **Active** meldet (meist
-       Minuten bis wenige Stunden).
+## Etappe 6 — Website umschalten (wir, frühestens einen Tag nach Etappe 4)
 
-## Etappe 5 — Nachkontrolle (wir)
-
-9.  [ ] `dig +short NS ib-behringer.de` → Cloudflare-Nameserver
-10. [ ] `dig +short MX ib-behringer.de @1.1.1.1` → `mx00/mx01.ionos.de`
-11. [ ] **Mail testen:** eine Mail von außen an `info@ib-behringer.de`
-        schicken und eine von dort nach außen — kommen beide an?
-12. [ ] `https://ib-behringer.de/`, `/impressum`, `/robots.txt`,
-        `/sitemap.xml` → 200; `http://` und `www` → 301 auf
-        `https://ib-behringer.de/…`
-13. [ ] Cloudflare: SSL/TLS → Edge Certificates → **„Always Use HTTPS" an**;
-        AI Crawl Control → **verwaltete robots.txt aus** (sonst überschreibt
-        Cloudflare `app/robots.ts`). Beides stand bei Dandl/reifenrol falsch.
-14. [ ] GitHub `KingB94/behringer` → Settings → Secrets → Actions:
+6. [ ] Render: **Auto-Deploy des Flask-Services aus** — vor dem Merge, sonst
+       versucht Render, den Next.js-Stand von `main` als Flask zu bauen.
+7. [ ] In Cloudflare die drei Render-Einträge löschen (A `@` ×2, CNAME `www`).
+8. [ ] In `wrangler.jsonc` die `routes` einkommentieren, `npm run deploy`.
+       Legt die Einträge für `ib-behringer.de` und `www` samt Zertifikat an
+       (ein bis zwei Minuten Lücke).
+9. [ ] Prüfen: `https://ib-behringer.de/`, `/impressum`, `/robots.txt`,
+       `/sitemap.xml` → 200; `http://` und `www` → 301 auf
+       `https://ib-behringer.de/…`; `/leistung/wasserbau` → 308.
+10. [ ] GitHub `KingB94/behringer` → Settings → Secrets → Actions:
         `CLOUDFLARE_API_TOKEN` (nur Workers + Zone ib-behringer.de) und
         `CLOUDFLARE_ACCOUNT_ID`.
-15. [ ] Branch `cloudflare` nach `main` mergen → Workflow veröffentlicht.
+11. [ ] `origin/main` in `cloudflare` mergen (Konflikte bei `CLAUDE.md`,
+        `static/robots.txt`, `templates/…`: Flask-Dateien mit `git rm`
+        löschen), dann `cloudflare` nach `main` → Workflow veröffentlicht.
 
-## Etappe 6 — Render abschalten
+## Etappe 7 — Aufräumen (nach etwa einer Woche)
 
-16. [ ] Render: Auto-Deploy des Flask-Services sofort aus (sonst versucht
-        Render, den Next.js-Stand von `main` als Flask zu bauen).
-17. [ ] Nach ein paar Tagen ohne Auffälligkeiten (Render-Dashboard zeigt
-        keinen Traffic mehr): Service löschen, Abo kündigen.
-18. [ ] Google Search Console: Die Bestätigung läuft über das Meta-Tag im
-        Seitenkopf, bleibt also gültig. Einmal *Sitemap erneut einreichen*.
+12. [ ] Render: Custom Domain entfernen, Service löschen, Abo kündigen.
+13. [ ] Google Search Console: Bestätigung läuft über das Meta-Tag in
+        `app/layout.tsx`, bleibt gültig. Sitemap erneut einreichen.
+14. [ ] API-Token „ib-behringer Einrichtung“ löschen (läuft sonst am
+        04.11.2026 ab) und `.dev.vars` leeren.
 
 ## Rückweg
 
-Bis Schritt 17 ist alles umkehrbar: In Cloudflare die Einträge von Render
+Bis Schritt 12 ist alles umkehrbar: In Cloudflare die Render-Einträge
 wiederherstellen (A `@` → `216.24.57.1` / `216.24.57.253`, CNAME `www` →
 `behringer.onrender.com`) oder die Nameserver bei IONOS zurück auf
-`ns1050.ui-dns.*` stellen.
+`ns1050.ui-dns.org/.de/.com/.biz` stellen — die alten Einträge bei IONOS
+bleiben dafür unangetastet.
