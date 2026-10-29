@@ -172,7 +172,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); color: var(--clr-seco
 .hero-content p { font-size: clamp(1rem, 2.5vw, 1.25rem); margin-bottom: var(--space-md); color: var(--clr-text-light); max-width: 600px; margin-left: auto; margin-right: auto; }
 #about-headline { font-size: clamp(2rem, 4.5vw, 2.5rem); font-family: var(--font-heading); font-weight: 700; text-align: center; color: var(--clr-secondary); margin-bottom: var(--space-md); }
 #about .about-reveal-content { opacity: 0; transform: translateY(30px); max-height: 0; overflow: hidden; transition: opacity 0.5s ease-out, transform 0.5s ease-out, max-height 0.7s ease-in-out; }
-#about .about-reveal-content.is-visible { opacity: 1; transform: translateY(0); max-height: 2000px; }
+#about .about-reveal-content.is-visible { opacity: 1; transform: translateY(0); max-height: 4000px; }
 #about .container { padding-left: 1rem; padding-right: 1rem; }
 #about .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
 #about .mb-4 { margin-bottom: 1rem; }

@@ -98,7 +98,8 @@ export const STRUCTURED_DATA = {
       description:
         "Ingenieurbüro für kommunalen Tiefbau und Infrastrukturplanung aus Mühldorf a. Inn. " +
         "Planung, Ausschreibung und Bauüberwachung für Städte, Gemeinden, Zweckverbände, " +
-        "Stadtwerke und weitere öffentliche Auftraggeber in Oberbayern und Niederbayern.",
+        "Stadtwerke, Landkreise, Ämter und weitere öffentliche sowie private Auftraggeber " +
+        "in Oberbayern, Niederbayern und der Oberpfalz.",
       knowsAbout: FACHGEBIETE,
       areaServed,
       sameAs: ["https://www.instagram.com/ibb_mue/"],

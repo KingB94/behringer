@@ -11,7 +11,7 @@ import { pageMetadata } from "@/lib/meta";
 
 export const metadata: Metadata = pageMetadata({
   description:
-    "Wir planen und realisieren Infrastrukturprojekte: Straßenbau, Wasserbau, Fernwärme und mehr.",
+    "Ingenieurbüro für kommunalen Tiefbau aus Mühldorf a. Inn. Planung, Ausschreibung und Bauüberwachung für Kommunen, öffentliche und private Auftraggeber in Ober- und Niederbayern und der Oberpfalz.",
   path: "/",
 });
 
@@ -100,28 +100,54 @@ export default function Home() {
       <section className="hero">
         <HeroSlideshow slides={HERO_SLIDES} />
         <div className="hero-content">
-          <h1>Ihr Partner im Tiefbau seit 1968</h1>
-          <p>Wirtschaftliche und nachhaltige Lösungen mit modernster Technik.</p>
+          <h1>Ingenieurbüro für kommunalen Tiefbau und Infrastruktur</h1>
+          <p>
+            Planung, Ausschreibung und Bauüberwachung für Kommunen, öffentliche
+            und private Auftraggeber. Seit 1968 in Ober- und Niederbayern und
+            jetzt auch in der Oberpfalz für Sie da.
+          </p>
         </div>
       </section>
 
       <main>
         <section id="about" className="section">
           <div className="container mx-auto px-4-custom">
-            <h2 id="about-headline">Wer wir sind und was uns antreibt</h2>
+            <h2 id="about-headline">Ingenieurbüro für kommunale Infrastruktur</h2>
             <AboutReveal>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div className="order-2 lg:order-1">
                   <p className="text-lg mb-4">
-                    Seit über 25 Jahren ist das Ingenieurbüro Behringer Ihr
-                    verlässlicher Partner für anspruchsvolle Projekte im
-                    Bauingenieurwesen. Unser erfahrenes Team steht für
-                    Innovation, Präzision und nachhaltige Qualität.
+                    Das Ingenieurbüro Behringer & Partner berät, plant und
+                    begleitet seit 1968 Infrastrukturprojekte für Städte,
+                    Gemeinden, Zweckverbände, Stadtwerke, Landkreise, Ämter und
+                    weitere öffentliche Auftraggeber. Zudem bieten wir unser
+                    Portfolio auch privaten Bauherren an.
+                  </p>
+                  <p className="text-lg mb-4">
+                    <strong>Unsere Schwerpunkte:</strong>{" "}
+                    Siedlungswasserwirtschaft · Kanalsanierung · Straßen- und
+                    Brückenbau · Wasserbau und Starkregenvorsorge ·
+                    Baulanderschließung · Fernwärme · Kommunales GIS
+                  </p>
+                  <p className="text-lg mb-4">
+                    <strong>Alles aus einer Hand:</strong> Für alle unsere
+                    Projekte erbringen wir die Leistungsphasen 1 bis 9 nach HOAI
+                    einschließlich der örtlichen Bauüberwachung. Dazu bieten wir
+                    alle besonderen Leistungen, die im Projekt notwendig werden:
+                    von der Urgeländevermessung über Studien, Konzepte und
+                    Wirtschaftlichkeitsberechnungen bis zur Bestandsvermessung.
                   </p>
                   <p className="text-lg mb-6">
-                    Wir entwickeln maßgeschneiderte, wirtschaftliche Lösungen
-                    nach höchsten technischen Standards und begleiten Sie von
-                    der Idee bis zur erfolgreichen Realisierung Ihres Projekts.
+                    Von unserem Hauptsitz in Mühldorf a. Inn und den
+                    Zweigstellen in Simbach a. Inn und Roßbach betreuen wir
+                    Auftraggeber vor allem in den Landkreisen{" "}
+                    <strong>
+                      Mühldorf a. Inn, Altötting, Rottal-Inn, Rosenheim,
+                      Ebersberg und Traunstein
+                    </strong>{" "}
+                    und darüber hinaus in ganz Ober- und Niederbayern. Seit 2025
+                    können wir auch die Oberpfalz durch eine regelmäßige Präsenz
+                    vor Ort abdecken.
                   </p>
                 </div>
                 <div className="order-1 lg:order-2">
