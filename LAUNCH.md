@@ -73,9 +73,9 @@ Auto-Scan angelegt, Einträge per API nach den IONOS-Screenshots vom
 - Nameserver für IONOS: **`laila.ns.cloudflare.com`**,
   **`sterling.ns.cloudflare.com`**
 
-## Etappe 4 — Nameserver umstellen (IT des Kunden, IONOS)
+## Etappe 4 — Nameserver umstellen (IT des Kunden, IONOS) ✅ (05.11.2026)
 
-1. [ ] Bei IONOS: *Domains & SSL* → `ib-behringer.de` → Reiter
+1. [x] Bei IONOS: *Domains & SSL* → `ib-behringer.de` → Reiter
        *Nameserver* → „Eigene Nameserver verwenden“ →
        `laila.ns.cloudflare.com` und `sterling.ns.cloudflare.com`
        eintragen, alle `ns1050.ui-dns.*` entfernen, speichern. Die Warnung,
@@ -83,13 +83,14 @@ Auto-Scan angelegt, Einträge per API nach den IONOS-Screenshots vom
        bestätigen.
        Nicht: DNS-Einträge bei IONOS löschen, DNSSEC einschalten, SSL oder
        Domain Guard bestellen, Verträge ändern.
-2. [ ] Warten, bis Cloudflare die Zone als **Active** meldet (Minuten bis
+2. [x] Warten, bis Cloudflare die Zone als **Active** meldet (Minuten bis
        wenige Stunden). Die Website läuft in dieser Zeit weiter über Render.
 
 ## Etappe 5 — Kontrolle nach dem DNS-Umzug (wir)
 
-3. [ ] `dig +short NS ib-behringer.de` → Cloudflare-Nameserver
-4. [ ] `dig +short MX ib-behringer.de @1.1.1.1` → `mx00/mx01.ionos.de`
+3. [x] `dig +short NS ib-behringer.de` → Cloudflare-Nameserver
+       (05.11.2026: DENIC, 1.1.1.1, 8.8.8.8, 9.9.9.9 liefern laila/sterling)
+4. [x] (05.11.2026: MX, SPF, DMARC, alle DKIM-CNAMEs, autodiscover korrekt) `dig +short MX ib-behringer.de @1.1.1.1` → `mx00/mx01.ionos.de`
 5. [ ] **Mail testen:** eine Mail von außen an `info@ib-behringer.de` und
        eine von dort nach außen. Im Header SPF und DKIM „pass“.
 
