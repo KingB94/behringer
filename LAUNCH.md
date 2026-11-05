@@ -73,7 +73,7 @@ Auto-Scan angelegt, Einträge per API nach den IONOS-Screenshots vom
 - Nameserver für IONOS: **`laila.ns.cloudflare.com`**,
   **`sterling.ns.cloudflare.com`**
 
-## Etappe 4 — Nameserver umstellen (IT des Kunden, IONOS) ✅ (05.11.2026)
+## Etappe 4 — Nameserver umstellen (IT des Kunden, IONOS)
 
 1. [x] Bei IONOS: *Domains & SSL* → `ib-behringer.de` → Reiter
        *Nameserver* → „Eigene Nameserver verwenden“ →
@@ -83,7 +83,7 @@ Auto-Scan angelegt, Einträge per API nach den IONOS-Screenshots vom
        bestätigen.
        Nicht: DNS-Einträge bei IONOS löschen, DNSSEC einschalten, SSL oder
        Domain Guard bestellen, Verträge ändern.
-2. [x] Warten, bis Cloudflare die Zone als **Active** meldet (Minuten bis
+2. [ ] Warten, bis Cloudflare die Zone als **Active** meldet (Minuten bis
        wenige Stunden). Die Website läuft in dieser Zeit weiter über Render.
 
 ## Etappe 5 — Kontrolle nach dem DNS-Umzug (wir) ✅ (05.11.2026)
@@ -95,6 +95,23 @@ Auto-Scan angelegt, Einträge per API nach den IONOS-Screenshots vom
        eine von dort nach außen. Im Header SPF und DKIM „pass“.
 
 ## Etappe 6 — Website umschalten (wir, frühestens einen Tag nach Etappe 4)
+
+> **Voraussetzung: Zone im Dashboard „Aktiv“ (nicht „ausstehend“).** Dass
+> DENIC und die Resolver schon die Cloudflare-Nameserver liefern, reicht
+> nicht. Erster Versuch am 05.11.2026: Zone noch ausstehend → Cloudflare
+> gibt für die Worker-Domain keine Adresse aus → Seite rund 15 Minuten
+> offline, zurückgerollt auf Render.
+>
+> Weitere Lehren aus dem Versuch:
+> - wrangler überschreibt die von Hand angelegten Render-Einträge **nicht**
+>   (Fehler 100117) — sie müssen vorher im Dashboard gelöscht werden.
+>   Erst löschen, dann sofort `npm run deploy`.
+> - Rückweg: Worker-Domains entfernen (Workers → ib-behringer → Domains,
+>   oder API `DELETE /accounts/<id>/workers/domains/<id>`), Render-Einträge
+>   wieder anlegen — **„Nur DNS“ (graue Wolke)**, sonst kommt bei
+>   ausstehender Zone nichts durch.
+> - Seit dem Deploy ist die workers.dev-Adresse aus (kein `workers_dev` in
+>   `wrangler.jsonc`).
 
 6. [x] (05.11.2026) Render: **Auto-Deploy des Flask-Services aus** — vor dem Merge, sonst
        versucht Render, den Next.js-Stand von `main` als Flask zu bauen.
