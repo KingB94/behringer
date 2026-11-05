@@ -86,12 +86,12 @@ Auto-Scan angelegt, Einträge per API nach den IONOS-Screenshots vom
 2. [x] Warten, bis Cloudflare die Zone als **Active** meldet (Minuten bis
        wenige Stunden). Die Website läuft in dieser Zeit weiter über Render.
 
-## Etappe 5 — Kontrolle nach dem DNS-Umzug (wir)
+## Etappe 5 — Kontrolle nach dem DNS-Umzug (wir) ✅ (05.11.2026)
 
 3. [x] `dig +short NS ib-behringer.de` → Cloudflare-Nameserver
        (05.11.2026: DENIC, 1.1.1.1, 8.8.8.8, 9.9.9.9 liefern laila/sterling)
 4. [x] (05.11.2026: MX, SPF, DMARC, alle DKIM-CNAMEs, autodiscover korrekt) `dig +short MX ib-behringer.de @1.1.1.1` → `mx00/mx01.ionos.de`
-5. [ ] **Mail testen:** eine Mail von außen an `info@ib-behringer.de` und
+5. [x] (05.11.2026 erfolgreich) **Mail testen:** eine Mail von außen an `info@ib-behringer.de` und
        eine von dort nach außen. Im Header SPF und DKIM „pass“.
 
 ## Etappe 6 — Website umschalten (wir, frühestens einen Tag nach Etappe 4)
