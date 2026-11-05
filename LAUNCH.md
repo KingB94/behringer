@@ -94,7 +94,7 @@ Auto-Scan angelegt, Einträge per API nach den IONOS-Screenshots vom
 5. [x] (05.11.2026 erfolgreich) **Mail testen:** eine Mail von außen an `info@ib-behringer.de` und
        eine von dort nach außen. Im Header SPF und DKIM „pass“.
 
-## Etappe 6 — Website umschalten (wir, frühestens einen Tag nach Etappe 4)
+## Etappe 6 — Website umschalten ✅ (05.11.2026)
 
 > **Voraussetzung: Zone im Dashboard „Aktiv“ (nicht „ausstehend“).** Dass
 > DENIC und die Resolver schon die Cloudflare-Nameserver liefern, reicht
@@ -122,10 +122,10 @@ Auto-Scan angelegt, Einträge per API nach den IONOS-Screenshots vom
 9. [x] (05.11.2026, alles wie erwartet) Prüfen: `https://ib-behringer.de/`, `/impressum`, `/robots.txt`,
        `/sitemap.xml` → 200; `http://` und `www` → 301 auf
        `https://ib-behringer.de/…`; `/leistung/wasserbau` → 308.
-10. [ ] GitHub `KingB94/behringer` → Settings → Secrets → Actions:
+10. [x] (05.11.2026) GitHub `KingB94/behringer` → Settings → Secrets → Actions:
         `CLOUDFLARE_API_TOKEN` (nur Workers + Zone ib-behringer.de) und
         `CLOUDFLARE_ACCOUNT_ID`.
-11. [ ] `origin/main` in `cloudflare` mergen (Konflikte bei `CLAUDE.md`,
+11. [x] (05.11.2026, Merge `b4e525e`, erste Action grün) `origin/main` in `cloudflare` mergen (Konflikte bei `CLAUDE.md`,
         `static/robots.txt`, `templates/…`: Flask-Dateien mit `git rm`
         löschen), dann `cloudflare` nach `main` → Workflow veröffentlicht.
 
