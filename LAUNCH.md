@@ -73,7 +73,7 @@ Auto-Scan angelegt, Einträge per API nach den IONOS-Screenshots vom
 - Nameserver für IONOS: **`laila.ns.cloudflare.com`**,
   **`sterling.ns.cloudflare.com`**
 
-## Etappe 4 — Nameserver umstellen (IT des Kunden, IONOS)
+## Etappe 4 — Nameserver umstellen (IT des Kunden, IONOS) ✅ (05.11.2026)
 
 1. [x] Bei IONOS: *Domains & SSL* → `ib-behringer.de` → Reiter
        *Nameserver* → „Eigene Nameserver verwenden“ →
@@ -83,7 +83,7 @@ Auto-Scan angelegt, Einträge per API nach den IONOS-Screenshots vom
        bestätigen.
        Nicht: DNS-Einträge bei IONOS löschen, DNSSEC einschalten, SSL oder
        Domain Guard bestellen, Verträge ändern.
-2. [ ] Warten, bis Cloudflare die Zone als **Active** meldet (Minuten bis
+2. [x] (aktiv seit 05.11.2026 11:51 UTC) Warten, bis Cloudflare die Zone als **Active** meldet (Minuten bis
        wenige Stunden). Die Website läuft in dieser Zeit weiter über Render.
 
 ## Etappe 5 — Kontrolle nach dem DNS-Umzug (wir) ✅ (05.11.2026)
@@ -115,11 +115,11 @@ Auto-Scan angelegt, Einträge per API nach den IONOS-Screenshots vom
 
 6. [x] (05.11.2026) Render: **Auto-Deploy des Flask-Services aus** — vor dem Merge, sonst
        versucht Render, den Next.js-Stand von `main` als Flask zu bauen.
-7. [ ] In Cloudflare die drei Render-Einträge löschen (A `@` ×2, CNAME `www`).
-8. [ ] In `wrangler.jsonc` die `routes` einkommentieren, `npm run deploy`.
+7. [x] (05.11.2026) In Cloudflare die drei Render-Einträge löschen (A `@` ×2, CNAME `www`).
+8. [x] (05.11.2026) In `wrangler.jsonc` die `routes` einkommentieren, `npm run deploy`.
        Legt die Einträge für `ib-behringer.de` und `www` samt Zertifikat an
        (ein bis zwei Minuten Lücke).
-9. [ ] Prüfen: `https://ib-behringer.de/`, `/impressum`, `/robots.txt`,
+9. [x] (05.11.2026, alles wie erwartet) Prüfen: `https://ib-behringer.de/`, `/impressum`, `/robots.txt`,
        `/sitemap.xml` → 200; `http://` und `www` → 301 auf
        `https://ib-behringer.de/…`; `/leistung/wasserbau` → 308.
 10. [ ] GitHub `KingB94/behringer` → Settings → Secrets → Actions:

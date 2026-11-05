@@ -32,12 +32,11 @@
   // Worker muss die www-Adresse annehmen, um sie weiterzuleiten (301 in
   // next.config.ts).
   //
-  // Bis zur Umstellung der Nameserver auskommentiert lassen — die Seite ist
-  // dann unter ib-behringer.<konto>.workers.dev zum Testen erreichbar.
-  // "routes": [
-  //   { "pattern": "ib-behringer.de", "custom_domain": true },
-  //   { "pattern": "www.ib-behringer.de", "custom_domain": true }
-  // ],
+  // Aktiv seit 05.11.2026 (Umzug von Render).
+  "routes": [
+    { "pattern": "ib-behringer.de", "custom_domain": true },
+    { "pattern": "www.ib-behringer.de", "custom_domain": true }
+  ],
 
   "observability": {
     "enabled": true
