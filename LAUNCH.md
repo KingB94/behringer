@@ -96,7 +96,7 @@ Auto-Scan angelegt, Einträge per API nach den IONOS-Screenshots vom
 
 ## Etappe 6 — Website umschalten (wir, frühestens einen Tag nach Etappe 4)
 
-6. [ ] Render: **Auto-Deploy des Flask-Services aus** — vor dem Merge, sonst
+6. [x] (05.11.2026) Render: **Auto-Deploy des Flask-Services aus** — vor dem Merge, sonst
        versucht Render, den Next.js-Stand von `main` als Flask zu bauen.
 7. [ ] In Cloudflare die drei Render-Einträge löschen (A `@` ×2, CNAME `www`).
 8. [ ] In `wrangler.jsonc` die `routes` einkommentieren, `npm run deploy`.
