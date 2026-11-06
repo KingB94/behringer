@@ -134,7 +134,7 @@ Auto-Scan angelegt, Einträge per API nach den IONOS-Screenshots vom
 12. [x] (06.11.2026) Render: Service `behringer` gelöscht (Custom Domain
         damit weg). Letzte Abrechnung November: 1,29 $. Workspace bleibt im
         kostenlosen Hobby-Plan.
-13. [ ] Google Search Console: Bestätigung läuft über das Meta-Tag in
+13. [x] (06.11.2026, gelesen, 60 Seiten) Google Search Console: Bestätigung läuft über das Meta-Tag in
         `app/layout.tsx`, bleibt gültig. Sitemap erneut einreichen.
 14. [ ] API-Token „ib-behringer Einrichtung“ löschen (läuft sonst am
         04.11.2026 ab) und `.dev.vars` leeren.
