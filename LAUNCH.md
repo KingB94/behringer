@@ -131,13 +131,18 @@ Auto-Scan angelegt, Einträge per API nach den IONOS-Screenshots vom
 
 ## Etappe 7 — Aufräumen (nach etwa einer Woche)
 
-12. [ ] Render: Custom Domain entfernen, Service löschen, Abo kündigen.
+12. [x] (06.11.2026) Render: Service `behringer` gelöscht (Custom Domain
+        damit weg). Letzte Abrechnung November: 1,29 $. Workspace bleibt im
+        kostenlosen Hobby-Plan.
 13. [ ] Google Search Console: Bestätigung läuft über das Meta-Tag in
         `app/layout.tsx`, bleibt gültig. Sitemap erneut einreichen.
 14. [ ] API-Token „ib-behringer Einrichtung“ löschen (läuft sonst am
         04.11.2026 ab) und `.dev.vars` leeren.
 
 ## Rückweg
+
+> **Seit 06.11.2026 nicht mehr möglich** — der Render-Service ist gelöscht.
+> Der Flask-Stand liegt weiter in der Git-History (vor Merge `b4e525e`).
 
 Bis Schritt 12 ist alles umkehrbar: In Cloudflare die Render-Einträge
 wiederherstellen (A `@` → `216.24.57.1` / `216.24.57.253`, CNAME `www` →

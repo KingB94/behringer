@@ -15,7 +15,7 @@ Website des Ingenieurbüros Behringer & Partner mbB.
 - **Domain:** https://ib-behringer.de (kanonisch **ohne** `www`; `www` → 301).
   Domain und E-Mail-Postfächer liegen bei **IONOS** (Konto des Kunden, wir
   haben keinen Zugriff), DNS bei Cloudflare. Ablauf des Umzugs: `LAUNCH.md`.
-- **Früher:** Flask auf Render (bis Oktober 2026). Der Flask-Stand steckt in
+- **Früher:** Flask auf Render (bis 05.11.2026). Der Flask-Stand steckt in
   der Git-History vor dem Merge des Branches `cloudflare`.
 
 ## Wichtige Rahmenbedingungen (bitte immer einhalten)
