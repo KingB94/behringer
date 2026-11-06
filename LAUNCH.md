@@ -40,7 +40,7 @@ die Zone aktiv ist.
       https://ib-behringer.landingpage-next.workers.dev
 - [x] Geprüft: alle 60 Sitemap-URLs 200, Alt-Redirects 308, unbekannte
       Adresse 404, kein Set-Cookie, Canonical zeigt auf `ib-behringer.de`
-- [ ] Link dem Kunden zur Abnahme schicken
+- [x] ~~Link dem Kunden zur Abnahme schicken~~ (entfallen, direkt live gegangen)
 
 ## Etappe 3 — Zone in Cloudflare ✅ (28.10.2026)
 
