@@ -129,14 +129,14 @@ Auto-Scan angelegt, Einträge per API nach den IONOS-Screenshots vom
         `static/robots.txt`, `templates/…`: Flask-Dateien mit `git rm`
         löschen), dann `cloudflare` nach `main` → Workflow veröffentlicht.
 
-## Etappe 7 — Aufräumen (nach etwa einer Woche)
+## Etappe 7 — Aufräumen ✅ (06.11.2026)
 
 12. [x] (06.11.2026) Render: Service `behringer` gelöscht (Custom Domain
         damit weg). Letzte Abrechnung November: 1,29 $. Workspace bleibt im
         kostenlosen Hobby-Plan.
 13. [x] (06.11.2026, gelesen, 60 Seiten) Google Search Console: Bestätigung läuft über das Meta-Tag in
         `app/layout.tsx`, bleibt gültig. Sitemap erneut einreichen.
-14. [ ] API-Token „ib-behringer Einrichtung“ löschen (läuft sonst am
+14. [x] (06.11.2026) API-Token „ib-behringer Einrichtung“ löschen (läuft sonst am
         04.11.2026 ab) und `.dev.vars` leeren.
 
 ## Rückweg
